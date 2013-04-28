@@ -1,11 +1,11 @@
 #--Import--#
 #use o python 2.7.4 que é coisa de macho!!!!!!11!!!!!1!!onze!!!! - Lucas Sabião
-
-
-import _random
 import random
 import configparser
 import pickle
+import time
+
+#ASSISTA DEVIL SURVIVOR 2
 
 #--Variáveis de Texto--#
 nome_do_jogador = "Jogador"
@@ -26,6 +26,8 @@ objeto_01 = "não" #porta do quarto 10
 objeto_02 = "não" #energético do bêbado (ação revistar)
 objeto_03 = "não" #
 variável_lugar = "seu quarto"
+mostrar_save = ''
+temporário= False
 
 #--Variáveis de Número--#
 ponto_de_save = 0
@@ -62,37 +64,133 @@ calculo_da_fuga = 0
 variável_para_comparar = 0
 contador_de_batalha= 0
 contador_de_rodadas = 0
-#global nome_do_jogador, nome_do_inimigo,reserva_nome_do_jogador, ação_do_personagem, batalha_escapar, equipamento_roupa, equipamento_capa, equipamento_luva, equipamento_mãos, equipamento_botas, olhar_o_cenário, modificar_o_cenário, cheirar_o_cenário, objeto_00, objeto_01, objeto_02, objeto_03,variável_lugar,ponto_de_save, eegg, vida_máxima_personagem, vida_atual_personagem, dinheiro_do_personagem, ataque_do_personagem, defesa_do_personagem, agilidade_do_personagem,reserva_vida_máxima_personagem,reserva_vida_atual_personagem,reserva_ataque_do_personagem,reserva_defesa_do_personagem,reserva_agilidade_do_personagem, vida_máxima_inimigo, vida_atual_inimigo, ataque_do_inimigo, defesa_do_inimigo,situação_00, situação_01, situação_02, situação_03, situação_04,situação_05,situação_06,situação_07,situação_08,situação_09,situação_10, teste_de_sorte, calculo_do_dano, calculo_da_fuga, variável_para_comparar, contador_de_batalha, contador_de_rodadas
+#global nome_do_jogador, nome_do_inimigo,reserva_nome_do_jogador, ação_do_personagem, batalha_escapar, equipamento_roupa, equipamento_capa, equipamento_luva, equipamento_mãos, equipamento_botas, olhar_o_cenário, modificar_o_cenário, cheirar_o_cenário, objeto_00, objeto_01, objeto_02, objeto_03,variável_lugar,mostrar_save,ponto_de_save, eegg, vida_máxima_personagem, vida_atual_personagem, dinheiro_do_personagem, ataque_do_personagem, defesa_do_personagem, agilidade_do_personagem,reserva_vida_máxima_personagem,reserva_vida_atual_personagem,reserva_ataque_do_personagem,reserva_defesa_do_personagem,reserva_agilidade_do_personagem, vida_máxima_inimigo, vida_atual_inimigo, ataque_do_inimigo, defesa_do_inimigo,situação_00, situação_01, situação_02, situação_03, situação_04,situação_05,situação_06,situação_07,situação_08,situação_09,situação_10, teste_de_sorte, calculo_do_dano, calculo_da_fuga, variável_para_comparar, contador_de_batalha, contador_de_rodadas
+
+def lojaPadrão():
+    print(" - Olá, meu jovem! Em que posso ajudá-lo?\n")
+    time.sleep(5)
 
 #--Ficha do Personagem--#
 def ficha_personagem():
-    global nome_do_jogador, nome_do_inimigo,reserva_nome_do_jogador, ação_do_personagem, batalha_escapar, equipamento_roupa, equipamento_capa, equipamento_luva, equipamento_mãos, equipamento_botas, olhar_o_cenário, modificar_o_cenário, cheirar_o_cenário, objeto_00, objeto_01, objeto_02, objeto_03,variável_lugar,ponto_de_save, eegg, vida_máxima_personagem, vida_atual_personagem, dinheiro_do_personagem, ataque_do_personagem, defesa_do_personagem, agilidade_do_personagem,reserva_vida_máxima_personagem,reserva_vida_atual_personagem,reserva_ataque_do_personagem,reserva_defesa_do_personagem,reserva_agilidade_do_personagem, vida_máxima_inimigo, vida_atual_inimigo, ataque_do_inimigo, defesa_do_inimigo,situação_00, situação_01, situação_02, situação_03, situação_04,situação_05,situação_06,situação_07,situação_08,situação_09,situação_10, teste_de_sorte, calculo_do_dano, calculo_da_fuga, variável_para_comparar, contador_de_batalha, contador_de_rodadas
+    global nome_do_jogador, nome_do_inimigo,reserva_nome_do_jogador, ação_do_personagem, batalha_escapar, equipamento_roupa, equipamento_capa, equipamento_luva, equipamento_mãos, equipamento_botas, olhar_o_cenário, modificar_o_cenário, cheirar_o_cenário, objeto_00, objeto_01, objeto_02, objeto_03,variável_lugar,mostrar_save,ponto_de_save, eegg, vida_máxima_personagem, vida_atual_personagem, dinheiro_do_personagem, ataque_do_personagem, defesa_do_personagem, agilidade_do_personagem,reserva_vida_máxima_personagem,reserva_vida_atual_personagem,reserva_ataque_do_personagem,reserva_defesa_do_personagem,reserva_agilidade_do_personagem, vida_máxima_inimigo, vida_atual_inimigo, ataque_do_inimigo, defesa_do_inimigo,situação_00, situação_01, situação_02, situação_03, situação_04,situação_05,situação_06,situação_07,situação_08,situação_09,situação_10, teste_de_sorte, calculo_do_dano, calculo_da_fuga, variável_para_comparar, contador_de_batalha, contador_de_rodadas
     print("\n#", "-"*30,"#\n", "\nNome:", nome_do_jogador)
-    input("")
+    time.sleep(0.23)
     print("\nVida:", vida_atual_personagem, "de", vida_máxima_personagem)
-    input("")
+    time.sleep(0.23)
     print("\nAtaque:", ataque_do_personagem, "\nDefesa:", defesa_do_personagem, "\nAgilidade:", agilidade_do_personagem)
-    input("")
+    time.sleep(0.23)
     print("\nCapa:", equipamento_capa, "\nRoupa:", equipamento_roupa, "\nCalçados:", equipamento_botas,)
-    input("")
+    time.sleep(0.23)
     print("\nLuvas:" ,equipamento_luva,"\nArmamento:", equipamento_mãos)
-    input("")
+    time.sleep(0.23)
     print("\nDinheiro:", dinheiro_do_personagem, "Reais\n")
-    input("")
+    time.sleep(0.23)
     print("\n#", "-"*30,"#\n")
+    time.sleep(0.23)
 
 #--Save--#
 def save():
-    global nome_do_jogador, nome_do_inimigo,reserva_nome_do_jogador, ação_do_personagem, batalha_escapar, equipamento_roupa, equipamento_capa, equipamento_luva, equipamento_mãos, equipamento_botas, olhar_o_cenário, modificar_o_cenário, cheirar_o_cenário, objeto_00, objeto_01, objeto_02, objeto_03,variável_lugar,ponto_de_save, eegg, vida_máxima_personagem, vida_atual_personagem, dinheiro_do_personagem, ataque_do_personagem, defesa_do_personagem, agilidade_do_personagem,reserva_vida_máxima_personagem,reserva_vida_atual_personagem,reserva_ataque_do_personagem,reserva_defesa_do_personagem,reserva_agilidade_do_personagem, vida_máxima_inimigo, vida_atual_inimigo, ataque_do_inimigo, defesa_do_inimigo,situação_00, situação_01, situação_02, situação_03, situação_04,situação_05,situação_06,situação_07,situação_08,situação_09,situação_10, teste_de_sorte, calculo_do_dano, calculo_da_fuga, variável_para_comparar, contador_de_batalha, contador_de_rodadas
+    global nome_do_jogador, nome_do_inimigo,reserva_nome_do_jogador, ação_do_personagem, batalha_escapar, equipamento_roupa, equipamento_capa, equipamento_luva, equipamento_mãos, equipamento_botas, olhar_o_cenário, modificar_o_cenário, cheirar_o_cenário, objeto_00, objeto_01, objeto_02, objeto_03,variável_lugar,mostrar_save,ponto_de_save, eegg, vida_máxima_personagem, vida_atual_personagem, dinheiro_do_personagem, ataque_do_personagem, defesa_do_personagem, agilidade_do_personagem,reserva_vida_máxima_personagem,reserva_vida_atual_personagem,reserva_ataque_do_personagem,reserva_defesa_do_personagem,reserva_agilidade_do_personagem, vida_máxima_inimigo, vida_atual_inimigo, ataque_do_inimigo, defesa_do_inimigo,situação_00, situação_01, situação_02, situação_03, situação_04,situação_05,situação_06,situação_07,situação_08,situação_09,situação_10, teste_de_sorte, calculo_do_dano, calculo_da_fuga, variável_para_comparar, contador_de_batalha, contador_de_rodadas
     ficha_personagem()
     print('\nDeseja salvar seu progresso?("sim" ou "não")\n')
     while 1:
         ação_do_personagem = input("-")
         ação_do_personagem = ação_do_personagem.lower()
         if(ação_do_personagem=="sim" or ação_do_personagem=="s" or ação_do_personagem=="si" or ação_do_personagem=="sm" or ação_do_personagem=="im" or ação_do_personagem=="ssim"):
-            arq = open('\save.py', 'wb')
+            print("\nDeseja salvar em qual espaço?\n")
+            time.sleep(0.5)
+            arq = open('\espaço_save00.py', 'rb')
+            mostrar_save = pickle.load(arq)
+            print("\nEspaço  0:     Lugar:",mostrar_save[5], "\n          Nome:",mostrar_save[1],"  Vida:", mostrar_save[3],"\n          Ataque:",mostrar_save[7],"  Defesa:",mostrar_save[9],"  Agilidade:",mostrar_save[11])
+            arq.close
+            arq = open('\espaço_save01.py', 'rb')
+            mostrar_save = pickle.load(arq)
+            print("\nEspaço  1:     Lugar:",mostrar_save[5], "\n          Nome:",mostrar_save[1],"  Vida:", mostrar_save[3],"\n          Ataque:",mostrar_save[7],"  Defesa:",mostrar_save[9],"  Agilidade:",mostrar_save[11])
+            arq.close
+            arq = open('\espaço_save02.py', 'rb')
+            mostrar_save = pickle.load(arq)
+            print("\nEspaço  2:     Lugar:",mostrar_save[5], "\n          Nome:",mostrar_save[1],"  Vida:", mostrar_save[3],"\n          Ataque:",mostrar_save[7],"  Defesa:",mostrar_save[9],"  Agilidade:",mostrar_save[11])
+            arq.close
+            arq = open('\espaço_save03.py', 'rb')
+            mostrar_save = pickle.load(arq)
+            print("\nEspaço  3:     Lugar:",mostrar_save[5], "\n          Nome:",mostrar_save[1],"  Vida:", mostrar_save[3],"\n          Ataque:",mostrar_save[7],"  Defesa:",mostrar_save[9],"  Agilidade:",mostrar_save[11])
+            arq.close
+            arq = open('\espaço_save04.py', 'rb')
+            mostrar_save = pickle.load(arq)
+            print("\nEspaço  4:     Lugar:",mostrar_save[5], "\n          Nome:",mostrar_save[1],"  Vida:", mostrar_save[3],"\n          Ataque:",mostrar_save[7],"  Defesa:",mostrar_save[9],"  Agilidade:",mostrar_save[11])
+            arq.close
+            arq = open('\espaço_save05.py', 'rb')
+            mostrar_save = pickle.load(arq)
+            print("\nEspaço  5:     Lugar:",mostrar_save[5], "\n          Nome:",mostrar_save[1],"  Vida:", mostrar_save[3],"\n          Ataque:",mostrar_save[7],"  Defesa:",mostrar_save[9],"  Agilidade:",mostrar_save[11])
+            arq.close
+            arq = open('\espaço_save06.py', 'rb')
+            mostrar_save = pickle.load(arq)
+            print("\nEspaço  6:     Lugar:",mostrar_save[5], "\n          Nome:",mostrar_save[1],"  Vida:", mostrar_save[3],"\n          Ataque:",mostrar_save[7],"  Defesa:",mostrar_save[9],"  Agilidade:",mostrar_save[11])
+            arq.close
+            arq = open('\espaço_save07.py', 'rb')
+            mostrar_save = pickle.load(arq)
+            print("\nEspaço  7:     Lugar:",mostrar_save[5], "\n          Nome:",mostrar_save[1],"  Vida:", mostrar_save[3],"\n          Ataque:",mostrar_save[7],"  Defesa:",mostrar_save[9],"  Agilidade:",mostrar_save[11])
+            arq.close
+            arq = open('\espaço_save08.py', 'rb')
+            mostrar_save = pickle.load(arq)
+            print("\nEspaço  8:     Lugar:",mostrar_save[5], "\n          Nome:",mostrar_save[1],"  Vida:", mostrar_save[3],"\n          Ataque:",mostrar_save[7],"  Defesa:",mostrar_save[9],"  Agilidade:",mostrar_save[11])
+            arq.close
+            arq = open('\espaço_save09.py', 'rb')
+            mostrar_save = pickle.load(arq)
+            print("\nEspaço  9:     Lugar:",mostrar_save[5], "\n          Nome:",mostrar_save[1],"  Vida:", mostrar_save[3],"\n          Ataque:",mostrar_save[7],"  Defesa:",mostrar_save[9],"  Agilidade:",mostrar_save[11])
+            arq.close
+            while 1:
+                print("\n(Digite um número entre 0 e 9)")
+                ação_do_personagem=input("-")
+                if(ação_do_personagem=="0"):
+                    arq = open('\espaço_save00.py', 'wb')
+                    break
+                else:
+                    if(ação_do_personagem=="1"):
+                        arq = open('\espaço_save01.py', 'wb')
+                        break
+                    else:
+                        if(ação_do_personagem=="2"):
+                            arq = open('\espaço_save02.py', 'wb')
+                            break
+                        else:
+                            if(ação_do_personagem=="3"):
+                                arq = open('\espaço_save03.py', 'wb')
+                                break
+                            else:
+                                if(ação_do_personagem=="4"):
+                                    arq = open('\espaço_save04.py', 'wb')
+                                    break
+                                else:
+                                    if(ação_do_personagem=="5"):
+                                        arq = open('\espaço_save05.py', 'wb')
+                                        break
+                                    else:
+                                        if(ação_do_personagem=="6"):
+                                            arq = open('\espaço_save06.py', 'wb')
+                                            break
+                                        else:
+                                            if(ação_do_personagem=="7"):
+                                                arq = open('\espaço_save07.py', 'wb')
+                                                break
+                                            else:
+                                                if(ação_do_personagem=="8"):
+                                                    arq = open('\espaço_save08.py', 'wb')
+                                                    break
+                                                else:
+                                                    if(ação_do_personagem=="9"):
+                                                        arq = open('\espaço_save09.py', 'wb')
+                                                        break
+                                                    else:
+                                                        print("Entrada inválida!\n")
             #recomendo você usar um for aqui :) - Lucas Sabiao
+            mostrar_save = ("  Nome:", nome_do_jogador, "  Vida:", vida_máxima_personagem,"  Lugar:", variável_lugar, "  Ataque:", ataque_do_personagem, "  Defesa:", defesa_do_personagem,"  Agilidade:", agilidade_do_personagem)
+            pickle.dump(mostrar_save, arq)
             pickle.dump(nome_do_jogador, arq)
+            pickle.dump(nome_do_inimigo, arq)
+            pickle.dump(reserva_nome_do_jogador, arq)
+            pickle.dump(ação_do_personagem, arq)
+            pickle.dump(batalha_escapar, arq)
             pickle.dump(equipamento_roupa, arq)
             pickle.dump(equipamento_capa, arq)
             pickle.dump(equipamento_luva, arq)
@@ -104,6 +202,7 @@ def save():
             pickle.dump(objeto_00, arq)
             pickle.dump(objeto_01, arq)
             pickle.dump(objeto_02, arq)
+            pickle.dump(objeto_03, arq)
             pickle.dump(variável_lugar, arq)
             pickle.dump(ponto_de_save, arq)
             pickle.dump(eegg, arq)
@@ -113,10 +212,32 @@ def save():
             pickle.dump(ataque_do_personagem, arq)
             pickle.dump(defesa_do_personagem, arq)
             pickle.dump(agilidade_do_personagem, arq)
+            pickle.dump(reserva_vida_máxima_personagem, arq)
+            pickle.dump(reserva_vida_atual_personagem, arq)
+            pickle.dump(reserva_ataque_do_personagem, arq)
+            pickle.dump(reserva_defesa_do_personagem, arq)
+            pickle.dump(reserva_agilidade_do_personagem, arq)
+            pickle.dump(vida_máxima_inimigo, arq)
+            pickle.dump(vida_atual_inimigo, arq)
+            pickle.dump(ataque_do_inimigo, arq)
+            pickle.dump(defesa_do_inimigo, arq)
+            pickle.dump(situação_00, arq)
             pickle.dump(situação_01, arq)
             pickle.dump(situação_02, arq)
             pickle.dump(situação_03, arq)
             pickle.dump(situação_04, arq)
+            pickle.dump(situação_05, arq)
+            pickle.dump(situação_06, arq)
+            pickle.dump(situação_07, arq)
+            pickle.dump(situação_08, arq)
+            pickle.dump(situação_09, arq)
+            pickle.dump(situação_10, arq)
+            pickle.dump(teste_de_sorte, arq)
+            pickle.dump(calculo_do_dano, arq)
+            pickle.dump(calculo_da_fuga, arq)
+            pickle.dump(variável_para_comparar, arq)
+            pickle.dump(contador_de_batalha, arq)
+            pickle.dump(contador_de_rodadas, arq)
             arq.close
             print("\nPronto!\n")
             break
@@ -128,13 +249,13 @@ def save():
 
 #--Sistema de batalha--#
 def batalha():
-    global nome_do_jogador, nome_do_inimigo,reserva_nome_do_jogador, ação_do_personagem, batalha_escapar, equipamento_roupa, equipamento_capa, equipamento_luva, equipamento_mãos, equipamento_botas, olhar_o_cenário, modificar_o_cenário, cheirar_o_cenário, objeto_00, objeto_01, objeto_02, objeto_03,variável_lugar,ponto_de_save, eegg, vida_máxima_personagem, vida_atual_personagem, dinheiro_do_personagem, ataque_do_personagem, defesa_do_personagem, agilidade_do_personagem,reserva_vida_máxima_personagem,reserva_vida_atual_personagem,reserva_ataque_do_personagem,reserva_defesa_do_personagem,reserva_agilidade_do_personagem, vida_máxima_inimigo, vida_atual_inimigo, ataque_do_inimigo, defesa_do_inimigo,situação_00, situação_01, situação_02, situação_03, situação_04,situação_05,situação_06,situação_07,situação_08,situação_09,situação_10, teste_de_sorte, calculo_do_dano, calculo_da_fuga, variável_para_comparar, contador_de_batalha, contador_de_rodadas
+    global nome_do_jogador, nome_do_inimigo,reserva_nome_do_jogador, ação_do_personagem, batalha_escapar, equipamento_roupa, equipamento_capa, equipamento_luva, equipamento_mãos, equipamento_botas, olhar_o_cenário, modificar_o_cenário, cheirar_o_cenário, objeto_00, objeto_01, objeto_02, objeto_03,variável_lugar,mostrar_save,ponto_de_save, eegg, vida_máxima_personagem, vida_atual_personagem, dinheiro_do_personagem, ataque_do_personagem, defesa_do_personagem, agilidade_do_personagem,reserva_vida_máxima_personagem,reserva_vida_atual_personagem,reserva_ataque_do_personagem,reserva_defesa_do_personagem,reserva_agilidade_do_personagem, vida_máxima_inimigo, vida_atual_inimigo, ataque_do_inimigo, defesa_do_inimigo,situação_00, situação_01, situação_02, situação_03, situação_04,situação_05,situação_06,situação_07,situação_08,situação_09,situação_10, teste_de_sorte, calculo_do_dano, calculo_da_fuga, variável_para_comparar, contador_de_batalha, contador_de_rodadas
     input("\nBatalha!!!\nÉ hora da briga!!!\n")
     contador_de_rodadas=1
     while(vida_atual_inimigo>0):
         if(vida_atual_personagem<=0):
             break
-        print("\n]]", "="*30,"[[\n", "Início da rodada número ", contador_de_rodadas, "\n]]", "="*30,"[[\n")
+        print("\n]]", "="*30,"[[\n", "    Início da rodada número ", contador_de_rodadas, "\n]]", "="*30,"[[\n")
         if(vida_atual_personagem==1):
             if(contador_de_rodadas==1):
                 input("\nVocê entrou na batalha com apenas 1 ponto de vida!")
@@ -150,7 +271,7 @@ def batalha():
             contador_de_batalha=contador_de_batalha+1
         else:
             if(vida_atual_personagem<=vida_máxima_personagem*0.05):
-                teste_de_sorte=random.randrange(30)
+                teste_de_sorte=random.randrange(15)
                 if(teste_de_sorte==1):
                     input("\nVocê está dando o seu melhor para aguentar, isso está melhorando o seu fôlego!")
                     input("O limite dos seus pontos de vida aumentou!\n")
@@ -160,7 +281,8 @@ def batalha():
                         input("\nVocê está dando o seu melhor para aguentar, isso está melhorando o seu fôlego!")
                         input("O limite dos seus pontos de vida aumentou!\n")
                         vida_máxima_personagem=vida_máxima_personagem+(random.randrange(defesa_do_personagem)+1)
-        print("\n#", "-"*30,"#\n", "\n", nome_do_jogador, ":", vida_atual_personagem, "de", vida_máxima_personagem, " Pontos de Vida\n", nome_do_inimigo, ":", vida_atual_inimigo, "de", vida_máxima_inimigo, " Pontos de vida\n\n#", "-"*30,"#\nO que você fará agora, ", nome_do_jogador, "?\nAtacar, defender ou fugir?")
+        print("\n#", "-"*30,"#\n", "\n\n", nome_do_jogador, ":\n                    ",vida_atual_personagem, "\n                     de", vida_máxima_personagem, " Pontos de Vida\n\n", nome_do_inimigo, ":\n                    ", vida_atual_inimigo, "\n                     de", vida_máxima_inimigo, " Pontos de vida\n")
+        print("\n#", "-"*30,"#\nO que você fará agora, ", nome_do_jogador, "?\nAtacar, defender ou fugir?")
         ação_do_personagem = input("-")
         ação_do_personagem = ação_do_personagem.lower()
         while True:
@@ -185,7 +307,7 @@ def batalha():
                         input("\nNão importa, sua defesa é incrível!")
                         print("Além de defender você conseguiu contra-atacar, causando ", calculo_do_dano," pontos de dano ao inimigo!\n")
                         input("")
-                        teste_de_sorte = random.randrange(100)#aumento de defesa
+                        teste_de_sorte = random.randrange(140)#aumento de defesa
                         if (teste_de_sorte==10 or teste_de_sorte==20 or teste_de_sorte==30):
                             variável_para_comparar=defesa_do_personagem
                             defesa_do_personagem=defesa_do_personagem+(random.randrange(defesa_do_personagem))
@@ -198,11 +320,11 @@ def batalha():
                             input("\nVocê testou o seu limite e agora está mais forte!")
                             input("Seus pontos de defesa subiram!\n")
                             defesa_do_personagem=defesa_do_personagem+(random.randrange(defesa_do_personagem))+1
-                        if (teste_de_sorte==60):
+                        if (teste_de_sorte==100):
                             input("\nVocê testou o seu limite e agora está mais forte!")
                             input("Seus pontos de defesa subiram!\n")
                             defesa_do_personagem=defesa_do_personagem+(random.randrange(defesa_do_personagem))+2
-                        if (teste_de_sorte==70):
+                        if (teste_de_sorte==130):
                             input("\nVocê testou o seu limite e agora está mais forte!")
                             input("Seus pontos de defesa subiram!\n")
                             defesa_do_personagem=defesa_do_personagem+(random.randrange(defesa_do_personagem))+3
@@ -238,7 +360,7 @@ def batalha():
                         input("\nSua defesa é simplesmente  I M E N S A !")
                         print("O inimigo avançou furiosamente mas você o lançou para trás e contra-atacou causando ", calculo_do_dano, " pontos de dano ao inimigo!\n")
                         input("")
-                        teste_de_sorte = random.randrange(75)#aumento de defesa
+                        teste_de_sorte = random.randrange(100)#aumento de defesa
                         if (teste_de_sorte==1 or teste_de_sorte==15 or teste_de_sorte==30):
                             variável_para_comparar=defesa_do_personagem
                             defesa_do_personagem=defesa_do_personagem+(random.randrange(defesa_do_personagem))
@@ -272,7 +394,7 @@ def batalha():
                         if(calculo_do_dano==0):
                             input("\nVocê surpreendeu o inimigo que estava confiante,")
                             input("suas forças se anularam numa estrondosa colisão!\n")
-                            teste_de_sorte=random.randrange(100)
+                            teste_de_sorte=random.randrange(30)
                             if(teste_de_sorte==1):
                                 input("\nA liberação de energia durante a colisão despertou novos limites para sua força e agora está mais forte!")
                                 input("TODOS os seus pontos subiram!\n")
@@ -290,7 +412,7 @@ def batalha():
                         input("\nSua defesa É ENORME!")
                         print("Você barrou o ataque naturalmente e contra-atacou, causando ", calculo_do_dano, " pontos de dano ao inimigo!\n")
                         input("")
-                        teste_de_sorte = random.randrange(80)#aumento de defesa
+                        teste_de_sorte = random.randrange(100)#aumento de defesa
                         if (teste_de_sorte==1 or teste_de_sorte==15 or teste_de_sorte==30):
                             variável_para_comparar=defesa_do_personagem
                             defesa_do_personagem=defesa_do_personagem+(random.randrange(defesa_do_personagem))
@@ -338,6 +460,11 @@ def batalha():
                                 print("Além de te bloquear, ele te contra-atacou, causando ", calculo_do_dano, " pontos de dano!\n")
                                 input("")
                                 vida_atual_personagem = vida_atual_personagem-calculo_do_dano
+                                teste_de_sorte=random.randrange(10)
+                                if(teste_de_sorte==2):
+                                    input("\nVocê tentou ao máximo ultrapassar a defesa do seu inimigo, exigiu muito dos seus músculos que se fortaleceram!\n")
+                                    input("\nSeus pontos de ataque subiram!\n")
+                                    ataque_do_personagem=ataque_do_personagem+(random.randrange(ataque_do_personagem))+3
                             else:
                                 if (calculo_do_dano==0):#S_ataque(2ataque_do_personagem) ANULA S_defesa(3defesa_do_inimigo)
                                     input("\nA disputa de forças é intensa, você e seu inimigo deram o melhor de si, mas nenhum dos dois se sobrepôs!\n")
@@ -347,6 +474,11 @@ def batalha():
                                     print("Você causou ", calculo_do_dano, " pontos de dano ao seu inimigo!\n")
                                     input("")
                                     vida_atual_inimigo = vida_atual_inimigo-calculo_do_dano
+                                    teste_de_sorte=random.randrange(10)
+                                    if(teste_de_sorte==3):
+                                        input("\nA explosão de energia dos seus músculos os expandiu definitivamente!\n")
+                                        input("\nSeus pontos de ataque subiram!\n")
+                                        ataque_do_personagem=ataque_do_personagem+(random.randrange(ataque_do_personagem))+2
                         else:#S_ataque(2ataque_do_personagem) vs defesa(2defesa_do_inimigo)
                             calculo_do_dano = 2*ataque_do_personagem+(random.randrange(ataque_do_personagem))-2*defesa_do_inimigo-(random.randrange(defesa_do_inimigo))
                             if(calculo_do_dano<0):#S_ataque(2ataque_do_personagem) APANHA DE defesa(2defesa_do_inimigo)
@@ -380,11 +512,11 @@ def batalha():
                                         if(teste_de_sorte<4):
                                             input("\nVocê testou o seu limite e agora está mais forte!")
                                             input("Seus pontos de ataque subiram!\n")
-                                            ataque_do_personagem=ataque_do_personagem+(random.randrange(ataque_do_personagem))+1
+                                            ataque_do_personagem=ataque_do_personagem+(random.randrange(ataque_do_personagem))+2
                                         if(teste_de_sorte==4):
                                             input("\nVocê ultrapassou o seu limite e agora está mais forte!")
                                             input("Seus pontos de ataque subiram!\n")
-                                            ataque_do_personagem=ataque_do_personagem+(random.randrange(ataque_do_personagem))+2
+                                            ataque_do_personagem=ataque_do_personagem+(random.randrange(ataque_do_personagem))+3
                                     else:#S_ataque(2ataque_do_personagem) ATACA defesa(2defesa_do_inimigo)
                                         print("\nSeu ataque de golpes duplos pressionaram a defesa do seu inimigo, causando ",calculo_do_dano," pontos de dano!\n")
                                         input("")
@@ -412,7 +544,7 @@ def batalha():
                                 else:#ataque(ataque_do_personagem) ATACA S_defesa(3defesa_do_inimigo)
                                     print("\nDepois de alguns golpes, você tornou insignificante a vantagem defensiva do seu inimigo, causando humilhantes, ", calculo_do_dano," pontos de dano a ele!\n")
                                     input("")
-                                    teste_de_sorte=random.randrange(20)
+                                    teste_de_sorte=random.randrange(10)
                                     if(teste_de_sorte==1):
                                         input("\nVocê testou o seu limite e agora está mais forte!")
                                         input("Seus pontos de ataque subiram!\n")
@@ -448,6 +580,10 @@ def batalha():
                                 print("\nVocê causou significativos ", calculo_do_dano," pontos de dano ao inimigo!\n")
                                 input("")
                                 vida_atual_inimigo=vida_atual_inimigo-calculo_do_dano
+                                teste_de_sorte=random.randrange(10)
+                                if(teste_de_sorte==1):
+                                    input("\nSeus pontos de ataque subiram enquanto você forçava os seus músculos!\n")
+                                    ataque_do_personagem=ataque_do_personagem+(random.randrange(ataque_do_personagem))+2
                             else:
                                 input("\nMesmo sem se defender, a constituição do inimigo foi alta o suficiente para resistir ao seu ataque.\n")
                             calculo_do_dano=2*ataque_do_inimigo+random.randrange(ataque_do_inimigo)-defesa_do_personagem-random.randrange(defesa_do_personagem)
@@ -512,7 +648,7 @@ def batalha():
                                 input("\nMesmo sem se defender, sua constituição foi alta o suficiente para resistir ao ataque do oponente.\n")
             else:
                 if(ação_do_personagem=="fugir"):
-                    print("\nPostura de Batalha:\n", nome_do_jogador, "-> fugiva\n", nome_do_inimigo, "-> ofensiva\n")
+                    print("\nPostura de Batalha:\n", nome_do_jogador, "-> fugitiva\n", nome_do_inimigo, "-> ofensiva\n")
                     input("...")
                     input("\nVocê tenta aumentar o rítmo de esquiva...\n")
                     teste_de_sorte=random.randrange(10)+calculo_da_fuga
@@ -649,8 +785,9 @@ def matarAlguém():
 
 #--Seu prédio: Quarto Andar--#
 def seuPrédioQuartoAndar():
-    global nome_do_jogador, nome_do_inimigo,reserva_nome_do_jogador, ação_do_personagem, batalha_escapar, equipamento_roupa, equipamento_capa, equipamento_luva, equipamento_mãos, equipamento_botas, olhar_o_cenário, modificar_o_cenário, cheirar_o_cenário, objeto_00, objeto_01, objeto_02, objeto_03,variável_lugar,ponto_de_save, eegg, vida_máxima_personagem, vida_atual_personagem, dinheiro_do_personagem, ataque_do_personagem, defesa_do_personagem, agilidade_do_personagem,reserva_vida_máxima_personagem,reserva_vida_atual_personagem,reserva_ataque_do_personagem,reserva_defesa_do_personagem,reserva_agilidade_do_personagem, vida_máxima_inimigo, vida_atual_inimigo, ataque_do_inimigo, defesa_do_inimigo,situação_00, situação_01, situação_02, situação_03, situação_04,situação_05,situação_06,situação_07,situação_08,situação_09,situação_10, teste_de_sorte, calculo_do_dano, calculo_da_fuga, variável_para_comparar, contador_de_batalha, contador_de_rodadas
+    global nome_do_jogador, nome_do_inimigo,reserva_nome_do_jogador, ação_do_personagem, batalha_escapar, equipamento_roupa, equipamento_capa, equipamento_luva, equipamento_mãos, equipamento_botas, olhar_o_cenário, modificar_o_cenário, cheirar_o_cenário, objeto_00, objeto_01, objeto_02, objeto_03,variável_lugar,mostrar_save,ponto_de_save, eegg, vida_máxima_personagem, vida_atual_personagem, dinheiro_do_personagem, ataque_do_personagem, defesa_do_personagem, agilidade_do_personagem,reserva_vida_máxima_personagem,reserva_vida_atual_personagem,reserva_ataque_do_personagem,reserva_defesa_do_personagem,reserva_agilidade_do_personagem, vida_máxima_inimigo, vida_atual_inimigo, ataque_do_inimigo, defesa_do_inimigo,situação_00, situação_01, situação_02, situação_03, situação_04,situação_05,situação_06,situação_07,situação_08,situação_09,situação_10, teste_de_sorte, calculo_do_dano, calculo_da_fuga, variável_para_comparar, contador_de_batalha, contador_de_rodadas,temporário
     variável_lugar = "seu prédio, 4º andar"
+    temporário= False
     if(situação_00<5):
         input("Você foi abordado novamente pelo morador do quarto 44...")
         input(" - Nós sabemos que você não venceu nem do 3º andar, se não é capaz disso,\nnão é capaz de nos vencer!")
@@ -682,13 +819,13 @@ def seuPrédioQuartoAndar():
                 break
             else:
                 if(ação_do_personagem=="40"):
-                    if(situação00>6):
+                    if(situação_00>6):
                         input("Você já lutou aqui!")
                     else:
                         input(' - Aqui no 4º andar moram os mais fortes, mas há muita diferença entre nós!')
                         input(' - Por isso há uma ordem para nos enfrentar, começando por mim!')
                         input(' - Como não pegamos leve, nós apresentamos um "cartão de visita" ao oponente, para ele saber se é capaz de sobreviver.')
-                        nome_do_inimigo="Estudante Briguento do Quarto 40"
+                        nome_do_inimigo="Estudante Briguento \n do Quarto 40"
                         vida_máxima_inimigo=360
                         vida_atual_inimigo=360
                         ataque_do_inimigo=30
@@ -732,19 +869,19 @@ def seuPrédioQuartoAndar():
                                         if(vida_atual_personagem<=0):break
                                         else:
                                             input(" - Parabéns! Você é realmente forte!")
-                                            situação_00==situação_00+1
+                                            situação_00=situação_00+1
                                             break
                                     else:
                                         input(" - Parabéns! Você é realmente forte!")
-                                        situação_00==situação_00+1
+                                        situação_00=situação_00+1
                                         break
                                 else:
                                     print('ENTRADA INVÁLIDA! Digite "sim" ou "não".\n')
                 else:
                     if(ação_do_personagem=="41"):
-                        if(situação_00==8):
+                        if(situação_00==7):
                             input(' - Será que você está pronto para brigar comigo, fracote??? Hahahahaha!')
-                            nome_do_inimigo="Estudante Briguento do Quarto 41"
+                            nome_do_inimigo="Estudante Briguento \n do Quarto 41"
                             vida_máxima_inimigo=550
                             vida_atual_inimigo=550
                             ataque_do_inimigo=50
@@ -789,21 +926,24 @@ def seuPrédioQuartoAndar():
                                             if(vida_atual_personagem<=0):break
                                             else:
                                                 input(" - CARAMBA! E não é que você estava pronto mesmo?! Hahahaha... Tudo bem perder às vezes...")
-                                                situação_00==situação_00+1
+                                                situação_00=situação_00+1
                                                 break
                                         else:
                                             input(" - Parabéns! Você é realmente forte!")
-                                            situação_00==situação_00+1
+                                            situação_00=situação_00+1
                                             break
                                     else:
                                         print('ENTRADA INVÁLIDA! Digite "sim" ou "não".\n')
                         else:
-                            input(" - Você não pode me desafiar enquanto não vencer do briguento do quarto 40")
+                            if(situação_00>7):
+                                input("Você já lutou aqui!")
+                            else:
+                                input(" - Você não pode me desafiar enquanto não vencer do briguento do quarto 40")
                     else:
                         if(ação_do_personagem=="42"):
-                            if(situação_00==9):
+                            if(situação_00==8):
                                 input(' - Humhumhumhum... Você vai perder...')
-                                nome_do_inimigo="Estudante Briguenta do Quarto 42"
+                                nome_do_inimigo="Estudante Briguenta \n do Quarto 42"
                                 vida_máxima_inimigo=790
                                 vida_atual_inimigo=790
                                 ataque_do_inimigo=90
@@ -848,21 +988,24 @@ def seuPrédioQuartoAndar():
                                                 if(vida_atual_personagem<=0):break
                                                 else:
                                                     input(" - COMO?! COMO?! Você trapaceou! EU SEI!!! Mas tudo bem, você não conseguirá vencer o próximo, nem trapaceando MUITO!")
-                                                    situação_00==situação_00+1
+                                                    situação_00=situação_00+1
                                                     break
                                             else:
                                                 input(" - COMO?! COMO?! Você trapaceou! EU SEI!!! Mas tudo bem, você não conseguirá vencer o próximo, nem trapaceando MUITO!")
-                                                situação_00==situação_00+1
+                                                situação_00=situação_00+1
                                                 break
                                         else:
                                             print('ENTRADA INVÁLIDA! Digite "sim" ou "não".\n')
                             else:
-                                input("Você não pode me desafiar enquanto não vencer do briguento do quarto 41")
+                                if(situação_00>8):
+                                    input("Você já lutou aqui!")
+                                else:
+                                    input("Você não pode me desafiar enquanto não vencer do briguento do quarto 41")
                         else:
                             if(ação_do_personagem=="43"):
                                 if(situação_00==9):
                                     input(' - Sua presença é insignificante.')
-                                    nome_do_inimigo="Estudante Briguento do Quarto 43"
+                                    nome_do_inimigo="Estudante Briguento \n do Quarto 43"
                                     vida_máxima_inimigo=1500
                                     vida_atual_inimigo=1500
                                     ataque_do_inimigo=180
@@ -907,23 +1050,26 @@ def seuPrédioQuartoAndar():
                                                     if(vida_atual_personagem<=0):break
                                                     else:
                                                         input(" - Desgraçado... Você é forte demais...")
-                                                        situação_00==situação_00+1
+                                                        situação_00=situação_00+1
                                                         break
                                                 else:
                                                     input(" - Desgraçado... Você é forte demais...")
-                                                    situação_00==situação_00+1
+                                                    situação_00=situação_00+1
                                                     break
                                             else:
                                                 print('ENTRADA INVÁLIDA! Digite "sim" ou "não".\n')
                                 else:
-                                    input("Você não pode me desafiar enquanto não vencer do briguento do quarto 42")
+                                    if(situação_00>9):
+                                        input("Você já lutou aqui!")
+                                    else:
+                                        input("Você não pode me desafiar enquanto não vencer do briguento do quarto 42")
                             else:
                                 if(ação_do_personagem=="44"):
-                                    if(situação_00==9):
+                                    if(situação_00==10):
                                         input(' - Me perdôe pelo comportamento daqueles dois... Nenhum deles tem a cabeça no lugar.')
                                         input(" - Mesmo assim, é raro alguém passar do quarto 40, é raríssimo alguém chegar até mim.")
                                         input(" - Você é um briguento e tanto!")
-                                        nome_do_inimigo="Estudante Briguento do Quarto 43"
+                                        nome_do_inimigo="Estudante Briguento \n do Quarto 44"
                                         vida_máxima_inimigo=3200
                                         vida_atual_inimigo=3200
                                         ataque_do_inimigo=300
@@ -975,7 +1121,7 @@ def seuPrédioQuartoAndar():
                                                             equipamento_roupa="Malha Ninja"
                                                             defesa_do_personagem=defesa_do_personagem+20
                                                             agilidade_do_personagem=agilidade_do_personagem+3
-                                                            situação_00==situação_00+1
+                                                            situação_00=situação_00+1
                                                             break
                                                     else:
                                                         input(" - Incrível... Você é um gênio das batalhas! É realmente dígno do prêmio!")
@@ -986,14 +1132,17 @@ def seuPrédioQuartoAndar():
                                                         equipamento_roupa="Malha Ninja"
                                                         defesa_do_personagem=defesa_do_personagem+20
                                                         agilidade_do_personagem=agilidade_do_personagem+3
-                                                        situação_00==situação_00+1
+                                                        situação_00=situação_00+1
                                                         break
                                                 else:
                                                     print('ENTRADA INVÁLIDA! Digite "sim" ou "não".\n')
                                     else:
-                                        input("Você não pode me desafiar enquanto não vencer do briguento do quarto 43")
+                                        if(situação_00>10):
+                                            input("Você já lutou aqui!")
+                                        else:
+                                            input("Você não pode me desafiar enquanto não vencer do briguento do quarto 43")
                                 else:
-                                    if(ação_do_personagem == "salvar o jogo" or "guardar o jogo" or ação_do_personagem == "salvar jogo" or "guardar jogo" or ação_do_personagem == "salvar" or ação_do_personagem == "save" or ação_do_personagem == "save game" or ação_do_personagem == "salvar o progresso" or ação_do_personagem == "salvar progresso" or ação_do_personagem == "guardar o progresso" or ação_do_personagem == "guardar progresso" or ação_do_personagem == "save progress" or ação_do_personagem == "salva" or ação_do_personagem == "sava" or ação_do_personagem == "slvar" or ação_do_personagem == "svar" or ação_do_personagem == "svr" or ação_do_personagem == "slvr" or ação_do_personagem == "sav" or ação_do_personagem == "sve" or ação_do_personagem == "sv" or ação_do_personagem == "salvar o game" or ação_do_personagem == "guardar o game" or ação_do_personagem == "salvar game" or ação_do_personagem == "guardar game"):
+                                    if(ação_do_personagem == "salvar o jogo" or ação_do_personagem=="guardar o jogo" or ação_do_personagem == "salvar jogo" or ação_do_personagem=="guardar jogo" or ação_do_personagem == "salvar" or ação_do_personagem == "save" or ação_do_personagem == "save game" or ação_do_personagem == "salvar o progresso" or ação_do_personagem == "salvar progresso" or ação_do_personagem == "guardar o progresso" or ação_do_personagem == "guardar progresso" or ação_do_personagem == "save progress" or ação_do_personagem == "salva" or ação_do_personagem == "sava" or ação_do_personagem == "slvar" or ação_do_personagem == "svar" or ação_do_personagem == "svr" or ação_do_personagem == "slvr" or ação_do_personagem == "sav" or ação_do_personagem == "sve" or ação_do_personagem == "sv" or ação_do_personagem == "salvar o game" or ação_do_personagem == "guardar o game" or ação_do_personagem == "salvar game" or ação_do_personagem == "guardar game"):
                                         save()
                                     else:
                                         input("Entrada Inválida!")
@@ -1001,47 +1150,58 @@ def seuPrédioQuartoAndar():
 
 #--Seu prédio: Terceiro Andar--#
 def seuPrédioTerceiroAndar():
-    global nome_do_jogador, nome_do_inimigo,reserva_nome_do_jogador, ação_do_personagem, batalha_escapar, equipamento_roupa, equipamento_capa, equipamento_luva, equipamento_mãos, equipamento_botas, olhar_o_cenário, modificar_o_cenário, cheirar_o_cenário, objeto_00, objeto_01, objeto_02, objeto_03,variável_lugar,ponto_de_save, eegg, vida_máxima_personagem, vida_atual_personagem, dinheiro_do_personagem, ataque_do_personagem, defesa_do_personagem, agilidade_do_personagem,reserva_vida_máxima_personagem,reserva_vida_atual_personagem,reserva_ataque_do_personagem,reserva_defesa_do_personagem,reserva_agilidade_do_personagem, vida_máxima_inimigo, vida_atual_inimigo, ataque_do_inimigo, defesa_do_inimigo,situação_00, situação_01, situação_02, situação_03, situação_04,situação_05,situação_06,situação_07,situação_08,situação_09,situação_10, teste_de_sorte, calculo_do_dano, calculo_da_fuga, variável_para_comparar, contador_de_batalha, contador_de_rodadas
+    global nome_do_jogador, nome_do_inimigo,reserva_nome_do_jogador, ação_do_personagem, batalha_escapar, equipamento_roupa, equipamento_capa, equipamento_luva, equipamento_mãos, equipamento_botas, olhar_o_cenário, modificar_o_cenário, cheirar_o_cenário, objeto_00, objeto_01, objeto_02, objeto_03,variável_lugar,mostrar_save,ponto_de_save, eegg, vida_máxima_personagem, vida_atual_personagem, dinheiro_do_personagem, ataque_do_personagem, defesa_do_personagem, agilidade_do_personagem,reserva_vida_máxima_personagem,reserva_vida_atual_personagem,reserva_ataque_do_personagem,reserva_defesa_do_personagem,reserva_agilidade_do_personagem, vida_máxima_inimigo, vida_atual_inimigo, ataque_do_inimigo, defesa_do_inimigo,situação_00, situação_01, situação_02, situação_03, situação_04,situação_05,situação_06,situação_07,situação_08,situação_09,situação_10, teste_de_sorte, calculo_do_dano, calculo_da_fuga, variável_para_comparar, contador_de_batalha, contador_de_rodadas,temporário
+    if temporário==True:
+        input("Agora que você venceu todos os lutadores do 3º andar você subiu ao 4º.")
+        seuPrédioQuartoAndar()
     if(variável_lugar == "seu prédio, 4º andarb"):
         seuPrédioQuartoAndar()
-    variável_lugar = "seu prédio, 3º andar"
-    if(situação_00==0):
-        input("Você é abordado pelo morador do quarto 44...")
-        input(" - E aí, você é o morador do 13 né?...")
-        input("...")
-        input(" - Você é um pouco azarado, rapaz! ... Ou sortudo, depende do seu ponto de vista.")
-        print("...")
-        input(" - Okay, vou te explicar...")
-        input(" - Você sabe que nos dois últimos andares desse prédio, o terceiro e o quarto,")
-        input("só tem quartos de estudantes briguentos, e nós estamos desafiando outros\n arruaceiros a lutarem conosco!")
-        print("...")
-        input(" - Claro, se você vencer de todos nós, será recompensado!")
-        input(" - Vá em frente, visite um dos quartos para lutar com um de nós!")
-        input(" - Eu estarei lá em cima, no meu quarto, te esperando.")
-        input("\nEle subiu as escadas...")
-        input("...")
-        situação_00==situação_00+1
-    else:
-        if(situação_00==1):
-            input("Você ainda não venceu nenhuma luta do desafio dos estudantes briguentos!")
+    if(vida_atual_personagem>0):
+        variável_lugar = "seu prédio, 3º andar"
+        if(situação_00==0):
+            input("Você é abordado pelo morador do quarto 44...")
+            input(" - E aí, você é o morador do 13 né?...")
+            input("...")
+            input(" - Você é um pouco azarado, rapaz! ... Ou sortudo, depende do seu ponto de vista.")
+            print("...")
+            input(" - Okay, vou te explicar...")
+            input(" - Você sabe que nos dois últimos andares desse prédio, o terceiro e o quarto,")
+            input("só tem quartos de estudantes briguentos, e nós estamos desafiando outros\n arruaceiros a lutarem conosco!")
+            print("...")
+            input(" - Claro, se você vencer de todos nós, será recompensado!")
+            input(" - Vá em frente, visite um dos quartos para lutar com um de nós!")
+            input(" - Eu estarei lá em cima, no meu quarto, te esperando.")
+            input("\nEle subiu as escadas...")
+            input("...")
+            situação_00+=1
         else:
-            if(situação_00==2):
-                input("Você já venceu 1 luta do desafio dos estudantes briguentos!")
+            if(situação_00==1):
+                input("Você ainda não venceu nenhuma luta do desafio dos estudantes briguentos!")
             else:
-                if(situação_00>=3 and situação_00<6):
-                    input("Você já venceu",situação_00-1,"lutas do desafio dos estudantes briguentos!")
+                if(situação_00==2):
+                    input("Você já venceu 1 luta do desafio dos estudantes briguentos!")
                 else:
-                    if(situação_00<11):
-                        input("Você já venceu todas as lutas do terceiro andar, \nentão você continuou subindo para o 4º andar.")
-                        seuPrédioQuartoAndar()
-                        print("Como você já venceu as lutas aqui, você continuou descendo...")
+                    if(situação_00>=3 and situação_00<6):
+                        print("Você já venceu",situação_00-1,"lutas do desafio dos estudantes briguentos!")
+                        input("")
                     else:
-                        input("Você já venceu o desafio dos estudantes briguentos do seu prédio!")
+                        if(situação_00<9):
+                            input("Você já venceu todas as lutas do terceiro andar, \nentão você continuou subindo para o 4º andar.")
+                            seuPrédioQuartoAndar()
+                            variável_lugar = "seu prédio, 3º andar"
+                        else:
+                            input("Você já venceu o desafio dos estudantes briguentos do seu prédio!")
     while 1:
         if(vida_atual_personagem<=0):break
-        if(situação_00>=6):
-            input("Você desceu para o segundo andar.")
+        if(situação_00>=9):
+            variável_lugar = "seu prédio, 2º andar"
             break
+        else:
+            if(situação_00>6):
+                print("Como você já venceu as lutas aqui, você continuou descendo...")
+                input("Você desceu para o segundo andar.")
+                variável_lugar = "seu prédio, 2º andar"
+                break
         print("\n#", "-"*30,"#\n\nLista de Ações\n\nCenário:", variável_lugar,"\n\nVocê pode:\n\nchecar os quartos: 30, 31, 32, 33 e 34\n")
         print("\nver ficha do personagem\ndescer as escadas\n\nsalvar o jogo\n")
         print("\n#", "-"*30,"#\n")
@@ -1068,7 +1228,7 @@ def seuPrédioTerceiroAndar():
                     if(ação_do_personagem=="30"):
                         if(situação_05 == 0):
                             input("Eu sou o seu oponente! Vença todos deste andar para subir!")
-                            nome_do_inimigo="Estudante Briguento do Quarto 30"
+                            nome_do_inimigo="Estudante Briguento \n do Quarto 30"
                             vida_máxima_inimigo=110
                             vida_atual_inimigo=110
                             ataque_do_inimigo=5
@@ -1079,29 +1239,50 @@ def seuPrédioTerceiroAndar():
                                 input(" - Você é fraco, se fosse uma luta no andar de cima você teria morrido!")
                                 input(" - Vá cuidar desses seus ferimentos e volte para lutar mais!")
                             else:
-                                if(vida_atual_inimigo>0):
+                                if(vida_atual_inimigo>0 and vida_atual_personagem>1):
                                     while (vida_atual_inimigo>0):
                                         input(" - Você não pode fugir das lutas, é uma regra para continuar no desafio e ganhar o prêmio!")
                                         batalha()
-                                    if(vida_atual_personagem<=0):
-                                        vida_atual_personagem=1
-                                        input(" - Você é fraco, se fosse uma luta no andar de cima você teria morrido!")
-                                        input(" - Vá cuidar desses seus ferimentos e volte para lutar mais!")
-                                    else:
-                                        input(" - Isso aí! Você me venceu!")
-                                        situação_00=situação_00+1
-                                        situação_05=1
+                                        if(vida_atual_personagem<=0):
+                                            vida_atual_personagem=1
+                                            input(" - Você é fraco, se fosse uma luta no andar de cima você teria morrido!")
+                                            input(" - Vá cuidar desses seus ferimentos e volte para lutar mais!")
+                                            break
+                                        else:
+                                            input(" - Isso aí! Você me venceu!")
+                                            situação_00=situação_00+1
+                                            situação_05=1
+                                            if(situação_00==6):
+                                                temporário= True
+                                            else:
+                                                if(situação_00==2):
+                                                    input("Você já venceu 1 luta do desafio dos estudantes briguentos!")
+                                                else:
+                                                    if(situação_00>=3 and situação_00<6):
+                                                        print("Você já venceu",situação_00-1,"lutas do desafio dos estudantes briguentos!")
+                                                        input("")
+                                            break
                                 else:
                                     input(" - Isso aí! Você me venceu!")
                                     situação_00=situação_00+1
                                     situação_05=1
+                                    if(situação_00==6):
+                                        temporário= True
+                                    else:
+                                        if(situação_00==2):
+                                            input("Você já venceu 1 luta do desafio dos estudantes briguentos!")
+                                        else:
+                                            if(situação_00>=3 and situação_00<6):
+                                                print("Você já venceu",situação_00-1,"lutas do desafio dos estudantes briguentos!")
+                                                input("")
+                                        
                         else:
                             input("Você já lutou aqui!")
                     else:
                         if(ação_do_personagem=="31"):
                             if(situação_06 == 0):
                                 input(" - Você é o desafiante??? Parece um fracote!")
-                                nome_do_inimigo="Estudante Briguento do Quarto 31"
+                                nome_do_inimigo="Estudante Briguento \n do Quarto 31"
                                 vida_máxima_inimigo=130
                                 vida_atual_inimigo=130
                                 ataque_do_inimigo=13
@@ -1112,29 +1293,49 @@ def seuPrédioTerceiroAndar():
                                     input(" - Você é mesmo um fracote!")
                                     input(" - Vá se curar para continuar tentando subir para o quarto andar!")
                                 else:
-                                    if(vida_atual_inimigo>0):
+                                    if(vida_atual_inimigo>0 and vida_atual_personagem>1):
                                         while (vida_atual_inimigo>0):
                                             input(" - Volte aqui seu fracote! Não seja um covarde! Você não pode fugir de TODAS as lutas!")
                                             batalha()
-                                        if(vida_atual_personagem<=0):
-                                            vida_atual_personagem=1
-                                            input(" - Você é mesmo um fracote!")
-                                            input(" - Vá se curar para continuar tentando subir para o quarto andar!")
-                                        else:
-                                            input(" - Não vacile com os caras lá do quarto andar, eles não pegam leve!")
-                                            situação_00=situação_00+1
-                                            situação_06=1
+                                            if(vida_atual_personagem<=0):
+                                                vida_atual_personagem=1
+                                                input(" - Você é mesmo um fracote!")
+                                                input(" - Vá se curar para continuar tentando subir para o quarto andar!")
+                                                break
+                                            else:
+                                                input(" - Não vacile com os caras lá do quarto andar, eles não pegam leve!")
+                                                situação_00=situação_00+1
+                                                situação_06=1
+                                                if(situação_00==6):
+                                                    temporário= True
+                                                else:
+                                                    if(situação_00==2):
+                                                        input("Você já venceu 1 luta do desafio dos estudantes briguentos!")
+                                                    else:
+                                                        if(situação_00>=3 and situação_00<6):
+                                                            print("Você já venceu",situação_00-1,"lutas do desafio dos estudantes briguentos!")
+                                                            input("")
+                                                break
                                     else:
                                         input(" - Não vacile com os caras lá do quarto andar, eles não pegam leve!")
                                         situação_00=situação_00+1
                                         situação_06=1
+                                        if(situação_00==6):
+                                            temporário= True
+                                        else:
+                                            if(situação_00==2):
+                                                input("Você já venceu 1 luta do desafio dos estudantes briguentos!")
+                                            else:
+                                                if(situação_00>=3 and situação_00<6):
+                                                    print("Você já venceu",situação_00-1,"lutas do desafio dos estudantes briguentos!")
+                                                    input("")
                             else:
                                 input("Voce já lutou aqui!")
                         else:
                             if(ação_do_personagem=="32"):
                                 if(situação_07==0):
                                     input(" - Cai dentro, rapá!")
-                                    nome_do_inimigo="Estudante Briguento do Quarto 32"
+                                    nome_do_inimigo="Estudante Briguento \n do Quarto 32"
                                     vida_máxima_inimigo=100
                                     vida_atual_inimigo=100
                                     ataque_do_inimigo=8
@@ -1145,29 +1346,49 @@ def seuPrédioTerceiroAndar():
                                         input(" - Moleque criado a leite com pêra!")
                                         input(" - Lá em cima ninguém vai te dar essa colher de chá que eu to te dando!")
                                     else:
-                                        if(vida_atual_inimigo>0):
+                                        if(vida_atual_inimigo>0 and vida_atual_personagem>1):
                                             while (vida_atual_inimigo>0):
                                                 input(" - Ramelão, não foge da luta, não!")
                                                 batalha()
-                                            if(vida_atual_personagem<=0):
-                                                vida_atual_personagem=1
-                                                input(" - Moleque criado a leite com pêra!")
-                                                input(" - Lá em cima ninguém vai te dar essa colher de chá que eu to te dando!")
-                                            else:
-                                                input(" - Nada mal, quem sabe você consegue o prêmio! Nunca se sabe... ")
-                                                situação_00=situação_00+1
-                                                situação_07=1
+                                                if(vida_atual_personagem<=0):
+                                                    vida_atual_personagem=1
+                                                    input(" - Moleque criado a leite com pêra!")
+                                                    input(" - Lá em cima ninguém vai te dar essa colher de chá que eu to te dando!")
+                                                    break
+                                                else:
+                                                    input(" - Nada mal, quem sabe você consegue o prêmio! Nunca se sabe... ")
+                                                    situação_00=situação_00+1
+                                                    situação_07=1
+                                                    if(situação_00==6):
+                                                        temporário= True
+                                                    else:
+                                                        if(situação_00==2):
+                                                            input("Você já venceu 1 luta do desafio dos estudantes briguentos!")
+                                                        else:
+                                                            if(situação_00>=3 and situação_00<6):
+                                                                print("Você já venceu",situação_00-1,"lutas do desafio dos estudantes briguentos!")
+                                                                input("")
+                                                    break
                                         else:
                                             input(" - Nada mal, quem sabe você consegue o prêmio! Nunca se sabe... ")
                                             situação_00=situação_00+1
                                             situação_07=1
+                                            if(situação_00==6):
+                                                temporário= True
+                                            else:
+                                                if(situação_00==2):
+                                                    input("Você já venceu 1 luta do desafio dos estudantes briguentos!")
+                                                else:
+                                                    if(situação_00>=3 and situação_00<6):
+                                                        print("Você já venceu",situação_00-1,"lutas do desafio dos estudantes briguentos!")
+                                                        input("")
                                 else:
                                     input("Voce já lutou aqui!")
                             else:
                                 if(ação_do_personagem=="33"):
                                     if(situação_08==0):
                                         input(" - ÔÔô, CIDADÃO!")
-                                        nome_do_inimigo="Estudante Briguento do Quarto 33"
+                                        nome_do_inimigo="Estudante Briguento \n do Quarto 33"
                                         vida_máxima_inimigo=120
                                         vida_atual_inimigo=120
                                         ataque_do_inimigo=10
@@ -1178,29 +1399,49 @@ def seuPrédioTerceiroAndar():
                                             input(" - Olha lá, o cara não aguenta e depois vai chorando pra casa!")
                                             input(" - Se você continuar tropeçando assim, cedo ou tarde o mundo vai te atropelá!")
                                         else:
-                                            if(vida_atual_inimigo>0):
+                                            if(vida_atual_inimigo>0 and vida_atual_personagem>1):
                                                 while (vida_atual_inimigo>0):
                                                     input(" - Tá na hora de acordar pra vida, cidadão!")
                                                     batalha()
-                                                if(vida_atual_personagem<=0):
-                                                    vida_atual_personagem=1
-                                                    input(" - Olha lá, o cara não aguenta e depois vai chorando pra casa!")
-                                                    input(" - Se você continuar tropeçando assim, cedo ou tarde o mundo vai te atropelá!")
-                                                else:
-                                                    input(" - ACORDA CARA! Você não é mais nenhum menininho bobinho, não! ")
-                                                    situação_00=situação_00+1
-                                                    situação_08=1
+                                                    if(vida_atual_personagem<=0):
+                                                        vida_atual_personagem=1
+                                                        input(" - Olha lá, o cara não aguenta e depois vai chorando pra casa!")
+                                                        input(" - Se você continuar tropeçando assim, cedo ou tarde o mundo vai te atropelá!")
+                                                        break
+                                                    else:
+                                                        input(" - ACORDA CARA! Você não é mais nenhum menininho bobinho, não! ")
+                                                        situação_00=situação_00+1
+                                                        situação_08=1
+                                                        if(situação_00==6):
+                                                            temporário= True
+                                                        else:
+                                                            if(situação_00==2):
+                                                                input("Você já venceu 1 luta do desafio dos estudantes briguentos!")
+                                                            else:
+                                                                if(situação_00>=3 and situação_00<6):
+                                                                    print("Você já venceu",situação_00-1,"lutas do desafio dos estudantes briguentos!")
+                                                                    input("")
+                                                        break
                                             else:
                                                 input(" - ACORDA CARA! Você não é mais nenhum menininho bobinho, não! ")
                                                 situação_00=situação_00+1
                                                 situação_08=1
+                                                if(situação_00==6):
+                                                    temporário= True
+                                                else:
+                                                    if(situação_00==2):
+                                                        input("Você já venceu 1 luta do desafio dos estudantes briguentos!")
+                                                    else:
+                                                        if(situação_00>=3 and situação_00<6):
+                                                            print("Você já venceu",situação_00-1,"lutas do desafio dos estudantes briguentos!")
+                                                            input("")
                                     else:
                                         input("Você já lutou aqui!")
                                 else:
                                     if(ação_do_personagem=="34"):
                                         if(situação_09==0):
                                             input(" - Qual é, velho? O negócio é descer o murro de ferro na cara do inimigo!")
-                                            nome_do_inimigo="Estudante Briguento do Quarto 34"
+                                            nome_do_inimigo="Estudante Briguento \n do Quarto 34"
                                             vida_máxima_inimigo=66.6
                                             vida_atual_inimigo=66.6
                                             ataque_do_inimigo=10
@@ -1211,37 +1452,58 @@ def seuPrédioTerceiroAndar():
                                                 input(" - Você não tem um sangue fervente o suficiente para derreter o metal!")
                                                 input(" - Você precisa cauterizar suas feridas para chagas maiores tomarem o resto do seu corpo!")
                                             else:
-                                                if(vida_atual_inimigo>0):
+                                                if(vida_atual_inimigo>0 and vida_atual_personagem>1):
                                                     while (vida_atual_inimigo>0):
                                                         input(" - As mentiras já são antigas demais, mas você não quer saber!\nCorrer é uma futilidade!")
                                                         batalha()
-                                                    if(vida_atual_personagem<=0):
-                                                        vida_atual_personagem=1
-                                                        input(" - Você não tem um sangue fervente o suficiente para derreter o metal!")
-                                                        input(" - Você precisa cauterizar suas feridas para chagas maiores tomarem o resto do seu corpo!")
-                                                    else:
-                                                        input(" - A verdade é mais dura que o aço! Mas a visão nunca morre!")
-                                                        situação_00=situação_00+1
-                                                        situação_09=1
+                                                        if(vida_atual_personagem<=0):
+                                                            vida_atual_personagem=1
+                                                            input(" - Você não tem um sangue fervente o suficiente para derreter o metal!")
+                                                            input(" - Você precisa cauterizar suas feridas para chagas maiores tomarem o resto do seu corpo!")
+                                                            break
+                                                        else:
+                                                            input(" - A verdade é mais dura que o aço! Mas a visão nunca morre!")
+                                                            situação_00=situação_00+1
+                                                            situação_09=1
+                                                            if(situação_00==6):
+                                                                temporário= True
+                                                            else:
+                                                                if(situação_00==2):
+                                                                    input("Você já venceu 1 luta do desafio dos estudantes briguentos!")
+                                                                else:
+                                                                    if(situação_00>=3 and situação_00<6):
+                                                                        print("Você já venceu",situação_00-1,"lutas do desafio dos estudantes briguentos!")
+                                                                        input("")
+                                                            break
                                                 else:
                                                     input(" - A verdade é mais dura que o aço! Mas a visão nunca morre!")
                                                     situação_00=situação_00+1
                                                     situação_09=1
+                                                    if(situação_00==6):
+                                                        temporário= True
+                                                    else:
+                                                        if(situação_00==2):
+                                                            input("Você já venceu 1 luta do desafio dos estudantes briguentos!")
+                                                        else:
+                                                            if(situação_00>=3 and situação_00<6):
+                                                                print("Você já venceu",situação_00-1,"lutas do desafio dos estudantes briguentos!")
+                                                                input("")
                                         else:
                                             input("Você já lutou aqui!")
                                     else:
-                                        if(ação_do_personagem == "salvar o jogo" or "guardar o jogo" or ação_do_personagem == "salvar jogo" or "guardar jogo" or ação_do_personagem == "salvar" or ação_do_personagem == "save" or ação_do_personagem == "save game" or ação_do_personagem == "salvar o progresso" or ação_do_personagem == "salvar progresso" or ação_do_personagem == "guardar o progresso" or ação_do_personagem == "guardar progresso" or ação_do_personagem == "save progress" or ação_do_personagem == "salva" or ação_do_personagem == "sava" or ação_do_personagem == "slvar" or ação_do_personagem == "svar" or ação_do_personagem == "svr" or ação_do_personagem == "slvr" or ação_do_personagem == "sav" or ação_do_personagem == "sve" or ação_do_personagem == "sv" or ação_do_personagem == "salvar o game" or ação_do_personagem == "guardar o game" or ação_do_personagem == "salvar game" or ação_do_personagem == "guardar game"):
+                                        if(ação_do_personagem == "salvar o jogo" or ação_do_personagem=="guardar o jogo" or ação_do_personagem == "salvar jogo" or ação_do_personagem=="guardar jogo" or ação_do_personagem == "salvar" or ação_do_personagem == "save" or ação_do_personagem == "save game" or ação_do_personagem == "salvar o progresso" or ação_do_personagem == "salvar progresso" or ação_do_personagem == "guardar o progresso" or ação_do_personagem == "guardar progresso" or ação_do_personagem == "save progress" or ação_do_personagem == "salva" or ação_do_personagem == "sava" or ação_do_personagem == "slvar" or ação_do_personagem == "svar" or ação_do_personagem == "svr" or ação_do_personagem == "slvr" or ação_do_personagem == "sav" or ação_do_personagem == "sve" or ação_do_personagem == "sv" or ação_do_personagem == "salvar o game" or ação_do_personagem == "guardar o game" or ação_do_personagem == "salvar game" or ação_do_personagem == "guardar game"):
                                             save()
                                         else:
                                             input("Entrada Inválida!")
 
 #--Seu prédio: Segundo Andar--#
 def seuPrédioSegundoAndar():
-    global nome_do_jogador, nome_do_inimigo,reserva_nome_do_jogador, ação_do_personagem, batalha_escapar, equipamento_roupa, equipamento_capa, equipamento_luva, equipamento_mãos, equipamento_botas, olhar_o_cenário, modificar_o_cenário, cheirar_o_cenário, objeto_00, objeto_01, objeto_02, objeto_03,variável_lugar,ponto_de_save, eegg, vida_máxima_personagem, vida_atual_personagem, dinheiro_do_personagem, ataque_do_personagem, defesa_do_personagem, agilidade_do_personagem,reserva_vida_máxima_personagem,reserva_vida_atual_personagem,reserva_ataque_do_personagem,reserva_defesa_do_personagem,reserva_agilidade_do_personagem, vida_máxima_inimigo, vida_atual_inimigo, ataque_do_inimigo, defesa_do_inimigo,situação_00, situação_01, situação_02, situação_03, situação_04,situação_05,situação_06,situação_07,situação_08,situação_09,situação_10, teste_de_sorte, calculo_do_dano, calculo_da_fuga, variável_para_comparar, contador_de_batalha, contador_de_rodadas
+    global nome_do_jogador, nome_do_inimigo,reserva_nome_do_jogador, ação_do_personagem, batalha_escapar, equipamento_roupa, equipamento_capa, equipamento_luva, equipamento_mãos, equipamento_botas, olhar_o_cenário, modificar_o_cenário, cheirar_o_cenário, objeto_00, objeto_01, objeto_02, objeto_03,variável_lugar,mostrar_save,ponto_de_save, eegg, vida_máxima_personagem, vida_atual_personagem, dinheiro_do_personagem, ataque_do_personagem, defesa_do_personagem, agilidade_do_personagem,reserva_vida_máxima_personagem,reserva_vida_atual_personagem,reserva_ataque_do_personagem,reserva_defesa_do_personagem,reserva_agilidade_do_personagem, vida_máxima_inimigo, vida_atual_inimigo, ataque_do_inimigo, defesa_do_inimigo,situação_00, situação_01, situação_02, situação_03, situação_04,situação_05,situação_06,situação_07,situação_08,situação_09,situação_10, teste_de_sorte, calculo_do_dano, calculo_da_fuga, variável_para_comparar, contador_de_batalha, contador_de_rodadas
     if(variável_lugar == "seu prédio, 3º andarb" or variável_lugar == "seu prédio, 4º andarb"):
         seuPrédioTerceiroAndar()
     variável_lugar = "seu prédio, 2º andar"
     while 1:
+        if(vida_atual_personagem<=0):break
         print("\n#", "-"*30,"#\n\nLista de Ações\n\nCenário:", variável_lugar,"\n\nVocê pode:\n\nchecar os quartos\n")
         if(situação_02==1):
             print("\narrombar o quarto 24")
@@ -1535,6 +1797,8 @@ def seuPrédioSegundoAndar():
                                         input(" - Você chegou em boa hora! Entre e coma um pedaço de pizza comigo!")
                                         input("Você recuperou 50 pontos de vida!")
                                         vida_atual_personagem = vida_atual_personagem + 50
+                                        if(vida_atual_personagem>(vida_máxima_personagem+100)):
+                                            vida_atual_personagem=vida_máxima_personagem+100
                                         input(" - Até outra hora, vizinho!")
                                     else:
                                         input(" - Estou sem pizza agora... Talvez mais tarde...")
@@ -1683,39 +1947,51 @@ def seuPrédioSegundoAndar():
                                             if(situação_02==3):
                                                 input("Você já fez o bastante por aqui... Melhor se afastar.")
                                         else:
-                                            if(ação_do_personagem == "salvar o jogo" or "guardar o jogo" or ação_do_personagem == "salvar jogo" or "guardar jogo" or ação_do_personagem == "salvar" or ação_do_personagem == "save" or ação_do_personagem == "save game" or ação_do_personagem == "salvar o progresso" or ação_do_personagem == "salvar progresso" or ação_do_personagem == "guardar o progresso" or ação_do_personagem == "guardar progresso" or ação_do_personagem == "save progress" or ação_do_personagem == "salva" or ação_do_personagem == "sava" or ação_do_personagem == "slvar" or ação_do_personagem == "svar" or ação_do_personagem == "svr" or ação_do_personagem == "slvr" or ação_do_personagem == "sav" or ação_do_personagem == "sve" or ação_do_personagem == "sv" or ação_do_personagem == "salvar o game" or ação_do_personagem == "guardar o game" or ação_do_personagem == "salvar game" or ação_do_personagem == "guardar game"):
+                                            if(ação_do_personagem == "salvar o jogo" or ação_do_personagem=="guardar o jogo" or ação_do_personagem == "salvar jogo" or ação_do_personagem=="guardar jogo" or ação_do_personagem == "salvar" or ação_do_personagem == "save" or ação_do_personagem == "save game" or ação_do_personagem == "salvar o progresso" or ação_do_personagem == "salvar progresso" or ação_do_personagem == "guardar o progresso" or ação_do_personagem == "guardar progresso" or ação_do_personagem == "save progress" or ação_do_personagem == "salva" or ação_do_personagem == "sava" or ação_do_personagem == "slvar" or ação_do_personagem == "svar" or ação_do_personagem == "svr" or ação_do_personagem == "slvr" or ação_do_personagem == "sav" or ação_do_personagem == "sve" or ação_do_personagem == "sv" or ação_do_personagem == "salvar o game" or ação_do_personagem == "guardar o game" or ação_do_personagem == "salvar game" or ação_do_personagem == "guardar game"):
                                                 save()
                                             else:
                                                 input('Entrada Inválida!')
 
 #--Seu prédio: Primeiro Andar--#
 def seuPrédioPrimeiroAndar():
-    global nome_do_jogador, nome_do_inimigo,reserva_nome_do_jogador, ação_do_personagem, batalha_escapar, equipamento_roupa, equipamento_capa, equipamento_luva, equipamento_mãos, equipamento_botas, olhar_o_cenário, modificar_o_cenário, cheirar_o_cenário, objeto_00, objeto_01, objeto_02, objeto_03,variável_lugar,ponto_de_save, eegg, vida_máxima_personagem, vida_atual_personagem, dinheiro_do_personagem, ataque_do_personagem, defesa_do_personagem, agilidade_do_personagem,reserva_vida_máxima_personagem,reserva_vida_atual_personagem,reserva_ataque_do_personagem,reserva_defesa_do_personagem,reserva_agilidade_do_personagem, vida_máxima_inimigo, vida_atual_inimigo, ataque_do_inimigo, defesa_do_inimigo,situação_00, situação_01, situação_02, situação_03, situação_04,situação_05,situação_06,situação_07,situação_08,situação_09,situação_10, teste_de_sorte, calculo_do_dano, calculo_da_fuga, variável_para_comparar, contador_de_batalha, contador_de_rodadas
+    global nome_do_jogador, nome_do_inimigo,reserva_nome_do_jogador, ação_do_personagem, batalha_escapar, equipamento_roupa, equipamento_capa, equipamento_luva, equipamento_mãos, equipamento_botas, olhar_o_cenário, modificar_o_cenário, cheirar_o_cenário, objeto_00, objeto_01, objeto_02, objeto_03,variável_lugar,mostrar_save,ponto_de_save, eegg, vida_máxima_personagem, vida_atual_personagem, dinheiro_do_personagem, ataque_do_personagem, defesa_do_personagem, agilidade_do_personagem,reserva_vida_máxima_personagem,reserva_vida_atual_personagem,reserva_ataque_do_personagem,reserva_defesa_do_personagem,reserva_agilidade_do_personagem, vida_máxima_inimigo, vida_atual_inimigo, ataque_do_inimigo, defesa_do_inimigo,situação_00, situação_01, situação_02, situação_03, situação_04,situação_05,situação_06,situação_07,situação_08,situação_09,situação_10, teste_de_sorte, calculo_do_dano, calculo_da_fuga, variável_para_comparar, contador_de_batalha, contador_de_rodadas
     if(variável_lugar == "seu prédio, 2º andarb" or variável_lugar == "seu prédio, 3º andarb" or variável_lugar == "seu prédio, 4º andarb"):
         seuPrédioSegundoAndar()
-    variável_lugar = "seu prédio, 1º andar"
-    input("Agora você está no corredor do primeiro andar do seu prédio.")
-    print("\n#", "-"*30,"#\n", "\nLista de Ações\n\nCenário:", variável_lugar,"\n\nVocê pode:\nolhar\n")
-    if (olhar_o_cenário == "sim"):
-        print("\ncheirar\nchecar os quartos\n")
-        if (cheirar_o_cenário == "sim" and objeto_00 == "não"):
-            print("olhar o bêbado\n")
-    if(objeto_01 == "sim"):
-        print("\narrombar o quarto 10\n")
-    if (objeto_00 == "1"):
-        print("\nacordar o bêbado\n")
-        print("\nrevistar o bêbado\n")
-    if (objeto_00 == "2"):
-        print("\nmover o bêbado\n")
-    if (objeto_00 == "3"):
-        print("\natacar o bêbado\n")
-    if (objeto_00 == "sim"):
-        print("\nabrir a porta dos fundos\n")
-    print("\nver ficha do personagem\nsubir as escadas\ndescer as escadas\n\nsalvar o jogo\n", "\n#", "-"*30,"#\n")
-    print("\nO que você vai fazer, ", nome_do_jogador, "?\n")
-    ação_do_personagem = input("-")
-    ação_do_personagem = ação_do_personagem.lower()
+    if(vida_atual_personagem>0):
+        variável_lugar = "seu prédio, 1º andar"
+        print("Agora você está no corredor do primeiro andar do seu prédio.")
+        time.sleep(3)
+        print("\n#", "-"*30,"#\n", "\nLista de Ações\n\nCenário:", variável_lugar,"\n\nVocê pode:\nolhar\n")
+        time.sleep(1)
+        if (olhar_o_cenário == "sim"):
+            print("\ncheirar\nchecar os quartos\n")
+            time.sleep(1)
+            if (cheirar_o_cenário == "sim" and objeto_00 == "não"):
+                print("olhar o bêbado\n")
+                time.sleep(1)
+        if(objeto_01 == "sim"):
+            print("\narrombar o quarto 10\n")
+            time.sleep(1)
+        if (objeto_00 == "1"):
+            print("\nacordar o bêbado\n")
+            print("\nrevistar o bêbado\n")
+            time.sleep(1)
+        if (objeto_00 == "2"):
+            print("\nmover o bêbado\n")
+            time.sleep(1)
+        if (objeto_00 == "3"):
+            print("\natacar o bêbado\n")
+            time.sleep(1)
+        if (objeto_00 == "sim"):
+            print("\nabrir a porta dos fundos\n")
+            time.sleep(1)
+        print("\nver ficha do personagem\nsubir as escadas\ndescer as escadas\n\nsalvar o jogo\n", "\n#", "-"*30,"#\n")
+        time.sleep(2)
+        print("\nO que você vai fazer, ", nome_do_jogador, "?\n")
+        ação_do_personagem = input("-")
+        ação_do_personagem = ação_do_personagem.lower()
     while 1:
+        if(vida_atual_personagem<=0):break
         if(ação_do_personagem=="checar os quartos" or ação_do_personagem=="checar quartos" or ação_do_personagem=="checar" or ação_do_personagem=="quartos" or ação_do_personagem=="checaros quartos" or ação_do_personagem=="checar osquartos" or ação_do_personagem=="checarosquartos" or ação_do_personagem=="checa os quartos" or ação_do_personagem=="checa os quarto" or ação_do_personagem=="checa o quarto" or ação_do_personagem=="checa o quartos" or ação_do_personagem=="checar os quarto" or ação_do_personagem=="checar o quarto" or ação_do_personagem=="bater na porta de um dos quartos" or ação_do_personagem=="checar um dos quartos" or ação_do_personagem=="bater na porta dos quartos" or ação_do_personagem=="bater a porta dos quartos" or ação_do_personagem=="bater quartos" or ação_do_personagem=="bater"):
             print("Qual dos quartos?(10, 11, 12 ou 14)\n")
             ação_do_personagem = input("-")
@@ -1727,68 +2003,96 @@ def seuPrédioPrimeiroAndar():
         else:
             if(ação_do_personagem == "olhar" or ação_do_personagem == "ver" or ação_do_personagem == "olhar o quarto" or ação_do_personagem == "olha" or ação_do_personagem == "olhar quarto" or ação_do_personagem == "olha quarto" or ação_do_personagem == "olhar o quarto" or ação_do_personagem == "olha o quarto" or ação_do_personagem == "ve" or ação_do_personagem == "vê"):
                 if (cheirar_o_cenário == "1" or cheirar_o_cenário == "sim"):
-                    input("Você vê um corredor estreito com 5 portas, o seu e os outros quartos desse andar do prédio.")
-                    input("Num dos lados desse corredor há uma janela quebrada,")
-                    input("mas no outro se encontra um bêbado caido no chão, imundo e cercado de vômito encostado na porta dos fundos, impedindo o acesso.")
-                    input("E ao longo do corredor, em frente aos quartos há um par de escadas azul-pastel um pouco alaranjada ao redor das ferrugens.")
-                    input("A mais próxima sobe e a colada à parede desce.")
+                    print("Você vê um corredor estreito com 5 portas, o seu e os outros quartos desse andar do prédio.")
+                    time.sleep(3)
+                    print("Num dos lados desse corredor há uma janela quebrada,")
+                    time.sleep(3)
+                    print("mas no outro se encontra um bêbado caido no chão, imundo e cercado de vômito encostado na porta dos fundos, impedindo o acesso.")
+                    time.sleep(3)
+                    print("E ao longo do corredor, em frente aos quartos há um par de escadas azul-pastel um pouco alaranjada ao redor das ferrugens.")
+                    time.sleep(3)
+                    print("A mais próxima sobe e a colada à parede desce.")
+                    time.sleep(3)
                 else:
                     if (objeto_00 == "sim"):
-                        input("Você vê um corredor estreito com 5 portas, o seu e os outros quartos desse andar do prédio.")
-                        input("Num dos lados desse corredor há uma janela quebrada, mas no outro se encontra a porta dos fundos.")
-                        input("Ao longo do corredor, em frente aos quartos há um par de escadas azul-pastel um pouco alaranjada ao redor das ferrugens.")
-                        input("A mais próxima sobe e a colada à parede desce.")
+                        print("Você vê um corredor estreito com 5 portas, o seu e os outros quartos desse andar do prédio.")
+                        time.sleep(3)
+                        print("Num dos lados desse corredor há uma janela quebrada, mas no outro se encontra a porta dos fundos.")
+                        time.sleep(3)
+                        print("Ao longo do corredor, em frente aos quartos há um par de escadas azul-pastel um pouco alaranjada ao redor das ferrugens.")
+                        time.sleep(3)
+                        print("A mais próxima sobe e a colada à parede desce.")
+                        time.sleep(3)
                     else:
-                        input("Você vê um corredor estreito com 5 portas, o seu e os outros quartos desse andar do prédio.")
-                        input("Num dos lados desse corredor há uma janela quebrada,")
-                        input("mas no outro se encontra, encostado na porta dos fundos e caído no chão coberto por cacos de vidro, um homem sujo, cercado por algum líquido que parece laranja...")
-                        input("E ao longo do corredor, em frente aos quartos há um par de escadas azul-pastel um pouco alaranjada ao redor das ferrugens.")
-                        input("A mais próxima sobe e a colada à parede desce.")
+                        print("Você vê um corredor estreito com 5 portas, o seu e os outros quartos desse andar do prédio.")
+                        time.sleep(3)
+                        print("Num dos lados desse corredor há uma janela quebrada,")
+                        time.sleep(3)
+                        print("mas no outro se encontra, encostado na porta dos fundos e caído no chão coberto por cacos de vidro, um homem sujo, cercado por algum líquido que parece laranja...")
+                        time.sleep(3)
+                        print("E ao longo do corredor, em frente aos quartos há um par de escadas azul-pastel um pouco alaranjada ao redor das ferrugens.")
+                        time.sleep(3)
+                        print("A mais próxima sobe e a colada à parede desce.")
+                        time.sleep(3)
                         olhar_o_cenário = "sim"
             else:
                 if(ação_do_personagem=="cheirar" or ação_do_personagem=="cherar" or ação_do_personagem=="dar um tapa" or ação_do_personagem=="cheira" or ação_do_personagem=="chera"):
                     if(cheirar_o_cenário=="não"):
                         cheirar_o_cenário="sim"
-                    input("Você sente um cheiro forte de álcool e vômito")
+                    print("Você sente um cheiro forte de álcool e vômito")
+                    time.sleep(3)
                 else:
                     if(ação_do_personagem=="10"):
                         if(equipamento_capa=="Jaqueta de Couro"):
-                            input("Você vê uma porta arrombada... Não há mais nada de interessante dentro do quarto.")
+                            print("Você vê uma porta arrombada... Não há mais nada de interessante dentro do quarto.")
+                            time.sleep(3)
                         else:
-                            input("Você bateu na porta, mas ninguém atendeu... Ela parece fácil de ser arrombada...")
+                            print("Você bateu na porta, mas ninguém atendeu... Ela parece fácil de ser arrombada...")
+                            time.sleep(3)
                             objeto_01="sim"
                     else:
                         if(ação_do_personagem=="11"):
                             if(situação_01==0):
-                                input("Quando você bateu, a porta se abriu no primeiro toque por não ter uma fechadura...")
-                                input("Você vê, dentro da casa, uma mulher alta de ombros largos, BEM LARGOS, musculosa e com o maxilar largo...")
-                                input("Ela estava apenas de toalha...")
-                                input(" - MAS QUE ATREVIMENTO! SUMA DAQUI! - diz a mulher enquanto te epurra com a porta que é fechada violentamente.")
-                                input("Você perdeu 5 pontos de vida ao cair no corredor...")
+                                print("Quando você bateu, a porta se abriu no primeiro toque por não ter uma fechadura...")
+                                time.sleep(4)
+                                print("Você vê, dentro da casa, uma mulher alta de ombros largos, BEM LARGOS, musculosa e com o maxilar largo...")
+                                time.sleep(4)
+                                print("Ela estava apenas de toalha...")
+                                time.sleep(2)
+                                print(" - MAS QUE ATREVIMENTO! SUMA DAQUI! - diz a mulher enquanto te epurra com a porta que é fechada violentamente.")
+                                time.sleep(4)
+                                print("Você perdeu 5 pontos de vida ao cair no corredor...")
+                                time.sleep(3)
                                 vida_atual_personagem=vida_atual_personagem-5
                                 if(vida_atual_personagem<=0):
                                     vida_atual_personagem=1
                                 situação_01=1
                             else:
                                 if(situação_01==1):
-                                    input("Você empurrou a porta sem fechadura, mas moradora que ainda estava te toalha, furiosamente fechou a porta gritando, antes que você pudesse terminar de abrir!")
-                                    input("Você perdeu 5 pontos de vida ao cair no corredor...")
+                                    print("Você empurrou a porta sem fechadura, mas moradora que ainda estava te toalha, furiosamente fechou a porta gritando, antes que você pudesse terminar de abrir!")
+                                    time.sleep(3)
+                                    print("Você perdeu 5 pontos de vida ao cair no corredor...")
+                                    time.sleep(3)
                                     vida_atual_personagem=vida_atual_personagem-5
                                     if(vida_atual_personagem<=0):
                                         vida_atual_personagem=1
                                     situação_01=2
                                 else:
                                     if(situação_01==2):
-                                        input("Você abriu a porta e levou um soco na cara, caindo em seguida no chão do corredor.")
-                                        input("Você perdeu 10 pontos de vida...")
+                                        print("Você abriu a porta e levou um soco na cara, caindo em seguida no chão do corredor.")
+                                        time.sleep(3)
+                                        print("Você perdeu 10 pontos de vida...")
+                                        time.sleep(3)
                                         vida_atual_personagem=vida_atual_personagem-10
                                         if(vida_atual_personagem<=0):
                                             vida_atual_personagem=1
                                         situação_01=3
                                     else:
                                         if(situação_01==3):
-                                            input("Você abriu a porta e viu a mulher de toalha extremamente furiosa com os ombros levemente curvados, deixando à mostra seus braços musculosos e gigantescos.")
-                                            input(" - VOCÊ VAI APANHAR MUITO AGORA!")
+                                            print("Você abriu a porta e viu a mulher de toalha extremamente furiosa com os ombros levemente curvados, deixando à mostra seus braços musculosos e gigantescos.")
+                                            time.sleep(3)
+                                            print(" - VOCÊ VAI APANHAR MUITO AGORA!")
+                                            time.sleep(3)
                                             nome_do_inimigo="Mulher de Toalha"
                                             vida_máxima_inimigo=800
                                             vida_atual_inimigo=800
@@ -1797,7 +2101,8 @@ def seuPrédioPrimeiroAndar():
                                             batalha()
                                             if(vida_atual_personagem<=0):break
                                             if(vida_atual_inimigo>0):
-                                                input(" - E NÃO VOLTE MAIS AQUI!")
+                                                print(" - E NÃO VOLTE MAIS AQUI!")
+                                                time.sleep(3)
                                             else:
                                                 input("A mulher caiu inconsciente no chão...")
                                                 input("Dentro da casa você encontrou 200 reais e um suplemento alimentício")
@@ -1827,7 +2132,7 @@ def seuPrédioPrimeiroAndar():
                                         input("Esse é o seu quarto!")
                                         input("Você está atrasado demais para voltar!")
                                     else:
-                                        if(ação_do_personagem=="arrombar a porta do quarto 10" or ação_do_personagem=="arrombar o quarto 10" or ação_do_personagem=="arrombar" or ação_do_personagem=="arrombar a porta" or ação_do_personagem=="quarto 10" or ação_do_personagem=="entrar no quarto 10"):
+                                        if(ação_do_personagem=="arrombar a porta do quarto 10" or ação_do_personagem=="arrombar 10" or ação_do_personagem=="arrombar quarto 10" or ação_do_personagem=="arrombar o quarto 10" or ação_do_personagem=="arrombar" or ação_do_personagem=="arrombar a porta" or ação_do_personagem=="quarto 10" or ação_do_personagem=="entrar no quarto 10"):
                                             if(objeto_03=="sim"):
                                                 input("Você já arrombou essa porta... Não há mais nada de interessante dentro do quarto.")
                                             else:
@@ -1888,14 +2193,14 @@ def seuPrédioPrimeiroAndar():
                                                                         batalha()
                                                                         if(vida_atual_personagem<=0):break
                                                                         if(vida_atual_inimigo>0):
-                                                                            input("Você escapa da briga, mas em seguida o bêbado tosse sangue e cái no chão")
+                                                                            input("Você escapa da briga, mas em seguida o bêbado tosse sangue e cái no chão...")
                                                                         else:
                                                                             input("O bêbado coberto de bebida, vômito e sangue, cái de costas no chão,")
                                                                             input("sendo empalado pelos diversos cacos de vidro...")
                                                                             input("O sangue dele escorre pelo corredor até os seus pés...")
                                                                             input("Você vira o rosto fechando os olhos e abaixando os punhos...")
                                                                             input("Agora, desencostado da porta dos fundos, o bêbado já não é mais um impecílio...")
-                                                                            objeto_00="sim"
+                                                                        objeto_00="sim"
                                                                 else:
                                                                     if(ação_do_personagem=="abrir a porta dos fundos"):
                                                                         if(objeto_00=="sim"):
@@ -1935,7 +2240,7 @@ def seuPrédioPrimeiroAndar():
                                                                                 suaRua()
                                                                                 break
                                                                         else:
-                                                                            if(ação_do_personagem == "salvar o jogo" or "guardar o jogo" or ação_do_personagem == "salvar jogo" or "guardar jogo" or ação_do_personagem == "salvar" or ação_do_personagem == "save" or ação_do_personagem == "save game" or ação_do_personagem == "salvar o progresso" or ação_do_personagem == "salvar progresso" or ação_do_personagem == "guardar o progresso" or ação_do_personagem == "guardar progresso" or ação_do_personagem == "save progress" or ação_do_personagem == "salva" or ação_do_personagem == "sava" or ação_do_personagem == "slvar" or ação_do_personagem == "svar" or ação_do_personagem == "svr" or ação_do_personagem == "slvr" or ação_do_personagem == "sav" or ação_do_personagem == "sve" or ação_do_personagem == "sv" or ação_do_personagem == "salvar o game" or ação_do_personagem == "guardar o game" or ação_do_personagem == "salvar game" or ação_do_personagem == "guardar game"):
+                                                                            if(ação_do_personagem == "salvar o jogo" or ação_do_personagem=="guardar o jogo" or ação_do_personagem == "salvar jogo" or ação_do_personagem=="guardar jogo" or ação_do_personagem == "salvar" or ação_do_personagem == "save" or ação_do_personagem == "save game" or ação_do_personagem == "salvar o progresso" or ação_do_personagem == "salvar progresso" or ação_do_personagem == "guardar o progresso" or ação_do_personagem == "guardar progresso" or ação_do_personagem == "save progress" or ação_do_personagem == "salva" or ação_do_personagem == "sava" or ação_do_personagem == "slvar" or ação_do_personagem == "svar" or ação_do_personagem == "svr" or ação_do_personagem == "slvr" or ação_do_personagem == "sav" or ação_do_personagem == "sve" or ação_do_personagem == "sv" or ação_do_personagem == "salvar o game" or ação_do_personagem == "guardar o game" or ação_do_personagem == "salvar game" or ação_do_personagem == "guardar game"):
                                                                                 save()
                                                                             else:
                                                                                 input('Entrada Inválida!')
@@ -1960,20 +2265,142 @@ def seuPrédioPrimeiroAndar():
         ação_do_personagem = input("-")
         ação_do_personagem = ação_do_personagem.lower()
 
+#--Sua Rua--#
+def suaRua():
+    global nome_do_jogador, nome_do_inimigo,reserva_nome_do_jogador, ação_do_personagem, batalha_escapar, equipamento_roupa, equipamento_capa, equipamento_luva, equipamento_mãos, equipamento_botas, olhar_o_cenário, modificar_o_cenário, cheirar_o_cenário, objeto_00, objeto_01, objeto_02, objeto_03,variável_lugar,mostrar_save,ponto_de_save, eegg, vida_máxima_personagem, vida_atual_personagem, dinheiro_do_personagem, ataque_do_personagem, defesa_do_personagem, agilidade_do_personagem,reserva_vida_máxima_personagem,reserva_vida_atual_personagem,reserva_ataque_do_personagem,reserva_defesa_do_personagem,reserva_agilidade_do_personagem, vida_máxima_inimigo, vida_atual_inimigo, ataque_do_inimigo, defesa_do_inimigo,situação_00, situação_01, situação_02, situação_03, situação_04,situação_05,situação_06,situação_07,situação_08,situação_09,situação_10, teste_de_sorte, calculo_do_dano, calculo_da_fuga, variável_para_comparar, contador_de_batalha, contador_de_rodadas
+
 
 #####################----------------------------__BRIGA DE ESTUDANTE__----------------------------#####################
 while 1:
     while (vida_atual_personagem>0):
-        print("\n"," ","_"*73," ","\n","|  ","_"*69,"  |","\n","| |"," "*69,"| |","\n","| |","="*21,":","-"*21,":","="*21,"| |","\n","| |","="*21,":","="*21,":","="*21,"| |","\n","| |","="*21,":","="*21,":","="*21,"| |","\n","| |","="*69,"| |","\n","| |","="*24,"Briga de Estudante","="*25,"| |","\n","| |","="*19,"por:Fernando Luiz Neme Chibli","="*19,"| |","\n","| |","="*69,"| |","\n","| |","*="*14," [começar] ","=*"*14,"| |","\n","| |","="*32,"ou","="*33,"| |","\n","| |","*="*14,"[continuar]","=*"*14,"| |","\n","| |","="*69,"| |","\n","| |","="*21,":","="*21,":","="*21,"| |","\n","| |","="*21,":","="*21,":","="*21,"| |","\n","| |","="*21,":","-"*21,":","="*21,"| |\n","| |","_"*69,"| |","\n","|","_"*73,"|","\n",'\n\nDigite "começar" ou "continuar":')
+        print('''
+   _________________________________________________________________________  
+ |\ _______________________________________________________________________ /| 
+ | |                                                                       | | 
+ | | * =* =* =* =* =* =* = : --------------------- : = *= *= *= *= *= *= * | | 
+ | | ===================== : - - - - - - - - - - - : ===================== | | 
+ | | ===================== : ===================== : ===================== | | 
+ | | ===================== : ===================== : ===================== | | 
+ | | ===================== : ===================== : ===================== | | 
+ | | ===================================================================== | |
+ | | ==-==-==-==-==-==-=                               =-==-==-==-==-==-== | | 
+ | | =-==-==-==-==-==-==      Briga de Estudante       ==-==-==-==-==-==-= | | 
+ | | ==-==-==-==-==-==-= por:Fernando Luiz Neme Chibli =-==-==-==-==-==-== | |
+ | | =-==-==-==-==-==-==                               ==-==-==-==-==-==-= | | 
+ | | ==============================         ============================== | | 
+ | | *=*=*=*=*=*=*=*=*=*=*=*=*=    [começar]    =*=*=*=*=*=*=*=*=*=*=*=*=* | | 
+ | | ======================**=**=     ou     =**=**======================= | | 
+ | | *=*=*=*=*=*=*=*=*=*=*=*=*=   [continuar]   =*=*=*=*=*=*=*=*=*=*=*=*=* | | 
+ | | =============================           ============================= | | 
+ | | ===================== : ===================== : ===================== | | 
+ | | ===================== : ===================== : ===================== | | 
+ | | ===================== : ===================== : ===================== | |
+ | | ===================== : - - - - - - - - - - - : ===================== | | 
+ | | * =* =* =* =* =* =* = : --------------------- : = *= *= *= *= *= *= * | |
+ | |_______________________________________________________________________| | 
+ |/_________________________________________________________________________\|
+
+ Digite "começar" ou "continuar":''')
         while 1:
             ação_do_personagem = input("-")
             ação_do_personagem = ação_do_personagem.lower()
-            if(ação_do_personagem =="começar" or ação_do_personagem =="iniciar" or ação_do_personagem =="inicia" or ação_do_personagem =="inici" or ação_do_personagem =="inicio" or ação_do_personagem =="início" or ação_do_personagem =="new game" or ação_do_personagem =="start new game" or ação_do_personagem =="start" or ação_do_personagem =="start game" or ação_do_personagem =="comecar" or ação_do_personagem =="comeca" or ação_do_personagem =="começa" or ação_do_personagem =="com" or ação_do_personagem =="cmeçar" or ação_do_personagem =="cmecar" or ação_do_personagem =="comcar" or ação_do_personagem =="comçar" or ação_do_personagem =="comear" or ação_do_personagem =="comer" or ação_do_personagem =="cocar" or ação_do_personagem =="ccar" or ação_do_personagem =="cmcr" or ação_do_personagem =="cmecr" or ação_do_personagem =="coçar" or ação_do_personagem =="cçar" or ação_do_personagem =="cmçr" or ação_do_personagem =="cmeçr" or ação_do_personagem =="cumessá" or ação_do_personagem =="comessa" or ação_do_personagem =="comessar"):
+            if(ação_do_personagem =="começar" or ação_do_personagem == "meçar" or ação_do_personagem == "come" or ação_do_personagem =="iniciar" or ação_do_personagem =="inicia" or ação_do_personagem =="inici" or ação_do_personagem =="inicio" or ação_do_personagem =="início" or ação_do_personagem =="new game" or ação_do_personagem =="start new game" or ação_do_personagem =="start" or ação_do_personagem =="start game" or ação_do_personagem =="comecar" or ação_do_personagem =="comeca" or ação_do_personagem =="começa" or ação_do_personagem =="com" or ação_do_personagem =="cmeçar" or ação_do_personagem =="cmecar" or ação_do_personagem =="comcar" or ação_do_personagem =="comçar" or ação_do_personagem =="comear" or ação_do_personagem =="comer" or ação_do_personagem =="cocar" or ação_do_personagem =="ccar" or ação_do_personagem =="cmcr" or ação_do_personagem =="cmecr" or ação_do_personagem =="coçar" or ação_do_personagem =="cçar" or ação_do_personagem =="cmçr" or ação_do_personagem =="cmeçr" or ação_do_personagem =="cumessá" or ação_do_personagem =="comessa" or ação_do_personagem =="comessar"):
                 break
             else:
                 if (ação_do_personagem == "continuar" or ação_do_personagem == "ccontinuar" or ação_do_personagem == "continuarr" or ação_do_personagem == "conntinuar" or ação_do_personagem == "conttinuar" or ação_do_personagem == "continnuar" or ação_do_personagem == "ccontinuarr" or ação_do_personagem == "cconntinuar" or ação_do_personagem == "cconttinuar" or ação_do_personagem == "ccontinnuar" or ação_do_personagem == "cconnttinuar" or ação_do_personagem == "cconntinnuar" or ação_do_personagem == "cconntinuarr" or ação_do_personagem == "continuart" or ação_do_personagem == "cconttinnuar" or ação_do_personagem == "cconttinuarr" or ação_do_personagem == "cconnttinnuarr" or ação_do_personagem == "cntnr" or ação_do_personagem == "contnr" or ação_do_personagem == "continr" or ação_do_personagem == "continur" or ação_do_personagem == "cntinuar" or ação_do_personagem == "cntnuar" or ação_do_personagem == "cntnar" or ação_do_personagem == "cntinur" or ação_do_personagem == "cntinr" or ação_do_personagem == "cntinar" or ação_do_personagem == "contnur" or ação_do_personagem == "ontinuar" or ação_do_personagem == "cotinuar" or ação_do_personagem == "coninuar" or ação_do_personagem == "contiuar" or ação_do_personagem == "coinar" or ação_do_personagem == "continua" or ação_do_personagem == "cntn" or ação_do_personagem == "contn" or ação_do_personagem == "contin" or ação_do_personagem == "continu" or ação_do_personagem == "cntinua" or ação_do_personagem == "cntnua" or ação_do_personagem == "cntna" or ação_do_personagem == "cntinu" or ação_do_personagem == "cntin" or ação_do_personagem == "cntina" or ação_do_personagem == "contnu" or ação_do_personagem == "ontinua" or ação_do_personagem == "cotinua" or ação_do_personagem == "coninua" or ação_do_personagem == "contiua" or ação_do_personagem == "coina" or ação_do_personagem == "con" or ação_do_personagem == "cont" or ação_do_personagem == "conti" or ação_do_personagem == "ccontin" or ação_do_personagem == "ccontinu"):
-                    arq = open('\save.py', 'rb')
+                    print("\nDeseja continuar o jogo guardado em qual espaço?\n")
+                    time.sleep(1)
+                    arq = open('\espaço_save00.py', 'rb')
+                    mostrar_save = pickle.load(arq)
+                    print("\nEspaço  0:     Lugar:",mostrar_save[5], "\n          Nome:",mostrar_save[1],"  Vida:", mostrar_save[3],"\n          Ataque:",mostrar_save[7],"  Defesa:",mostrar_save[9],"  Agilidade:",mostrar_save[11])
+                    arq.close
+                    arq = open('\espaço_save01.py', 'rb')
+                    mostrar_save = pickle.load(arq)
+                    print("\nEspaço  1:     Lugar:",mostrar_save[5], "\n          Nome:",mostrar_save[1],"  Vida:", mostrar_save[3],"\n          Ataque:",mostrar_save[7],"  Defesa:",mostrar_save[9],"  Agilidade:",mostrar_save[11])
+                    arq.close
+                    arq = open('\espaço_save02.py', 'rb')
+                    mostrar_save = pickle.load(arq)
+                    print("\nEspaço  2:     Lugar:",mostrar_save[5], "\n          Nome:",mostrar_save[1],"  Vida:", mostrar_save[3],"\n          Ataque:",mostrar_save[7],"  Defesa:",mostrar_save[9],"  Agilidade:",mostrar_save[11])
+                    arq.close
+                    arq = open('\espaço_save03.py', 'rb')
+                    mostrar_save = pickle.load(arq)
+                    print("\nEspaço  3:     Lugar:",mostrar_save[5], "\n          Nome:",mostrar_save[1],"  Vida:", mostrar_save[3],"\n          Ataque:",mostrar_save[7],"  Defesa:",mostrar_save[9],"  Agilidade:",mostrar_save[11])
+                    arq.close
+                    arq = open('\espaço_save04.py', 'rb')
+                    mostrar_save = pickle.load(arq)
+                    print("\nEspaço  4:     Lugar:",mostrar_save[5], "\n          Nome:",mostrar_save[1],"  Vida:", mostrar_save[3],"\n          Ataque:",mostrar_save[7],"  Defesa:",mostrar_save[9],"  Agilidade:",mostrar_save[11])
+                    arq.close
+                    arq = open('\espaço_save05.py', 'rb')
+                    mostrar_save = pickle.load(arq)
+                    print("\nEspaço  5:     Lugar:",mostrar_save[5], "\n          Nome:",mostrar_save[1],"  Vida:", mostrar_save[3],"\n          Ataque:",mostrar_save[7],"  Defesa:",mostrar_save[9],"  Agilidade:",mostrar_save[11])
+                    arq.close
+                    arq = open('\espaço_save06.py', 'rb')
+                    mostrar_save = pickle.load(arq)
+                    print("\nEspaço  6:     Lugar:",mostrar_save[5], "\n          Nome:",mostrar_save[1],"  Vida:", mostrar_save[3],"\n          Ataque:",mostrar_save[7],"  Defesa:",mostrar_save[9],"  Agilidade:",mostrar_save[11])
+                    arq.close
+                    arq = open('\espaço_save07.py', 'rb')
+                    mostrar_save = pickle.load(arq)
+                    print("\nEspaço  7:     Lugar:",mostrar_save[5], "\n          Nome:",mostrar_save[1],"  Vida:", mostrar_save[3],"\n          Ataque:",mostrar_save[7],"  Defesa:",mostrar_save[9],"  Agilidade:",mostrar_save[11])
+                    arq.close
+                    arq = open('\espaço_save08.py', 'rb')
+                    mostrar_save = pickle.load(arq)
+                    print("\nEspaço  8:     Lugar:",mostrar_save[5], "\n          Nome:",mostrar_save[1],"  Vida:", mostrar_save[3],"\n          Ataque:",mostrar_save[7],"  Defesa:",mostrar_save[9],"  Agilidade:",mostrar_save[11])
+                    arq.close
+                    arq = open('\espaço_save09.py', 'rb')
+                    mostrar_save = pickle.load(arq)
+                    print("\nEspaço  9:     Lugar:",mostrar_save[5], "\n          Nome:",mostrar_save[1],"  Vida:", mostrar_save[3],"\n          Ataque:",mostrar_save[7],"  Defesa:",mostrar_save[9],"  Agilidade:",mostrar_save[11])
+                    arq.close
+                    while 1:
+                        print("\n(Digite um número entre 0 e 9)")
+                        ação_do_personagem=input("-")
+                        if(ação_do_personagem=="0"):
+                            arq = open('\espaço_save00.py', 'rb')
+                            break
+                        else:
+                            if(ação_do_personagem=="1"):
+                                arq = open('\espaço_save01.py', 'rb')
+                                break
+                            else:
+                                if(ação_do_personagem=="2"):
+                                    arq = open('\espaço_save02.py', 'rb')
+                                    break
+                                else:
+                                    if(ação_do_personagem=="3"):
+                                        arq = open('\espaço_save03.py', 'rb')
+                                        break
+                                    else:
+                                        if(ação_do_personagem=="4"):
+                                            arq = open('\espaço_save04.py', 'rb')
+                                            break
+                                        else:
+                                            if(ação_do_personagem=="5"):
+                                                arq = open('\espaço_save05.py', 'rb')
+                                                break
+                                            else:
+                                                if(ação_do_personagem=="6"):
+                                                    arq = open('\espaço_save06.py', 'rb')
+                                                    break
+                                                else:
+                                                    if(ação_do_personagem=="7"):
+                                                        arq = open('\espaço_save07.py', 'rb')
+                                                        break
+                                                    else:
+                                                        if(ação_do_personagem=="8"):
+                                                            arq = open('\espaço_save08.py', 'rb')
+                                                            break
+                                                        else:
+                                                            if(ação_do_personagem=="9"):
+                                                                arq = open('\espaço_save09.py', 'rb')
+                                                                break
+                                                            else:
+                                                                print("Entrada inválida!\n")
+                                                                time.sleep(0.5)
+                    mostrar_save = pickle.load(arq)
                     nome_do_jogador = pickle.load(arq)
+                    nome_do_inimigo = pickle.load(arq)
+                    reserva_nome_do_jogador = pickle.load(arq)
+                    ação_do_personagem = pickle.load(arq)
+                    batalha_escapar = pickle.load(arq)
                     equipamento_roupa = pickle.load(arq)
                     equipamento_capa = pickle.load(arq)
                     equipamento_luva = pickle.load(arq)
@@ -1985,6 +2412,7 @@ while 1:
                     objeto_00 = pickle.load(arq)
                     objeto_01 = pickle.load(arq)
                     objeto_02 = pickle.load(arq)
+                    objeto_03 = pickle.load(arq)
                     variável_lugar = pickle.load(arq)
                     ponto_de_save = pickle.load(arq)
                     eegg = pickle.load(arq)
@@ -1993,29 +2421,78 @@ while 1:
                     dinheiro_do_personagem = pickle.load(arq)
                     ataque_do_personagem = pickle.load(arq)
                     defesa_do_personagem = pickle.load(arq)
+                    agilidade_do_personagem = pickle.load(arq)
+                    reserva_vida_máxima_personagem = pickle.load(arq)
+                    reserva_vida_atual_personagem = pickle.load(arq)
+                    reserva_ataque_do_personagem = pickle.load(arq)
+                    reserva_defesa_do_personagem = pickle.load(arq)
+                    reserva_agilidade_do_personagem = pickle.load(arq)
+                    vida_máxima_inimigo = pickle.load(arq)
+                    vida_atual_inimigo = pickle.load(arq)
+                    ataque_do_inimigo = pickle.load(arq)
+                    defesa_do_inimigo = pickle.load(arq)
+                    situação_00 = pickle.load(arq)
                     situação_01 = pickle.load(arq)
                     situação_02 = pickle.load(arq)
                     situação_03 = pickle.load(arq)
                     situação_04 = pickle.load(arq)
+                    situação_05 = pickle.load(arq)
+                    situação_06 = pickle.load(arq)
+                    situação_07 = pickle.load(arq)
+                    situação_08 = pickle.load(arq)
+                    situação_09 = pickle.load(arq)
+                    situação_10 = pickle.load(arq)
+                    teste_de_sorte = pickle.load(arq)
+                    calculo_do_dano = pickle.load(arq)
+                    calculo_da_fuga = pickle.load(arq)
+                    variável_para_comparar = pickle.load(arq)
+                    contador_de_batalha= pickle.load(arq)
+                    contador_de_rodadas = pickle.load(arq)
                     arq.close
                     if(ponto_de_save>0):
                         print("\nCarregado!\n")
+                        time.sleep(0.5)
                         ficha_personagem()
                     else:
                         print("\nERRO: Você não possui dados salvos.\n")
+                        time.sleep(0.5)
                     break
                 else:            
                     print('Entrada inválida!\n')
         if(ponto_de_save==0):
-            input("\nIniciando novo jogo(aperte enter)\n")
+            print("\nIniciando novo jogo...\n")
+            time.sleep(2)
             print("\n\nVocê é um homem... Qual é o seu nome?\n")
             nome_do_jogador = input("-")
-            print("Muito prazer, ", nome_do_jogador,'.\nNós já nos conhecemos?(digite "não" para ver o tutorial)\n')
+            while 1:
+                print("Seu nome é", nome_do_jogador, "?")
+                while 2:
+                    ação_do_personagem = input("-")
+                    ação_do_personagem = ação_do_personagem.lower()
+                    if(ação_do_personagem=="sim" or ação_do_personagem=="s" or ação_do_personagem=="si" or ação_do_personagem=="sm" or ação_do_personagem=="im" or ação_do_personagem=="ssim"):
+                        break
+                    else:
+                        if(ação_do_personagem == "não" or ação_do_personagem=="n" or ação_do_personagem=="nao" or ação_do_personagem=="no" or ação_do_personagem=="na" or ação_do_personagem=="nã" or ação_do_personagem=="ao" or ação_do_personagem=="ão" or ação_do_personagem=="ñ" or ação_do_personagem=="ñão" or ação_do_personagem=="ño" or ação_do_personagem=="ñõ" or ação_do_personagem=="ñã" or ação_do_personagem=="ñaõ" or ação_do_personagem=="aõ"):
+                            print("\nEntão qual é o seu nome?\n")
+                            nome_do_jogador = input("-")
+                            break
+                        else:
+                            print('\nEntrada inválida, digite "sim" ou "não".\n')
+                            time.sleep(0.5)
+                if(ação_do_personagem=="sim" or ação_do_personagem=="s" or ação_do_personagem=="si" or ação_do_personagem=="sm" or ação_do_personagem=="im" or ação_do_personagem=="ssim"):
+                    break
+            print("Muito prazer, ", nome_do_jogador,'.')
+            time.sleep(2)
+            print('Nós já nos conhecemos?(digite "não" para ver o tutorial)\n')
             ação_do_personagem = input("-")
             ação_do_personagem = ação_do_personagem.lower()
             while 1:
                 if(ação_do_personagem=="sim" or ação_do_personagem=="s" or ação_do_personagem=="si" or ação_do_personagem=="sm" or ação_do_personagem=="im" or ação_do_personagem=="ssim"):
-                    print('Tem certeza?? Não me lembro de você... \n(eu REALMENTE recomendo que você digite "não" para ver o tutorial!)')
+                    print('Tem certeza??')
+                    time.sleep(2)
+                    print('Não me lembro de você...')
+                    time.sleep(1)
+                    print('(eu REALMENTE recomendo que você digite "não" para ver o tutorial!)')
                     ação_do_personagem = input("-")
                     ação_do_personagem = ação_do_personagem.lower()
                     break
@@ -2024,25 +2501,30 @@ while 1:
                         break
                     else:
                         print('Entrada inválida! Digite "sim" ou "não".')
+                        time.sleep(0.5)
                         ação_do_personagem = input("-")
                         ação_do_personagem = ação_do_personagem.lower()
             while 1:
                 if(ação_do_personagem=="sim" or ação_do_personagem=="s" or ação_do_personagem=="si" or ação_do_personagem=="sm" or ação_do_personagem=="im" or ação_do_personagem=="ssim"):
-                    if(objeto_00!="ganha presente"):
-                        print("\n")
-                        input("...")
-                        print("\n")
                     break
                 else:
                     if(ação_do_personagem == "não" or ação_do_personagem=="n" or ação_do_personagem=="nao" or ação_do_personagem=="no" or ação_do_personagem=="na" or ação_do_personagem=="nã" or ação_do_personagem=="ao" or ação_do_personagem=="ão" or ação_do_personagem=="ñ" or ação_do_personagem=="ñão" or ação_do_personagem=="ño" or ação_do_personagem=="ñõ" or ação_do_personagem=="ñã" or ação_do_personagem=="ñaõ" or ação_do_personagem=="aõ"):
-                        input('Sou o narrador da nossa história, vou apenas te guiar de acordo com as suas decisões...(aperte enter)')
-                        input('Então saiba que não vou facilitar as coisas para você!(perte enter)')
-                        input('Porém minha função é te guiar, ser os seus olhos, ouvidos, mãos e nariz,(erte enter)')
-                        input('e além disso você parece precisar de algumas instruções para tornar disso algo mais divertido.(rte enter)')
-                        input('\nToda vez antes da sua ação te mostrarei uma lista de ações possíveis de se realizar.(te enter)')
-                        input('\nE também te mostrarei se a sua ação for inválida.(e enter)')
-                        input('\nMas você só receberá minha atenção quando eu pedir,( enter)')
-                        input('você perceberá isso quando ver um hífen após a minha pergunta.(enter)')
+                        print('\nSou o narrador da nossa história, vou apenas te guiar de acordo com as suas decisões...')
+                        time.sleep(3)
+                        print('Então saiba que não vou facilitar as coisas para você!')
+                        time.sleep(4)
+                        print('Porém minha função é te guiar, ser os seus olhos, ouvidos, mãos e nariz,')
+                        time.sleep(4)
+                        print('e além disso você parece precisar de algumas instruções para tornar disso algo mais divertido.')
+                        time.sleep(4)
+                        print('\nToda vez antes da sua ação te mostrarei uma lista de ações possíveis de se realizar.')
+                        time.sleep(3)
+                        print('\nE também te mostrarei se a sua ação for inválida.')
+                        time.sleep(2)
+                        print('\nMas você só receberá minha atenção quando eu pedir,')
+                        time.sleep(5)
+                        print('você perceberá isso quando ver um hífen após a minha pergunta.')
+                        time.sleep(5)
                         print('Entendeu?')
                         ação_do_personagem = input("-")
                         ação_do_personagem = ação_do_personagem.lower()
@@ -2055,12 +2537,18 @@ while 1:
                                 print('\nEntrada inválida!\n\nVocê pode:\nconcordar comigo dizendo "sim"\n')
                             ação_do_personagem = input("-")
                             ação_do_personagem = ação_do_personagem.lower()
-                        input('Bom menino!(nter)')
-                        input('\nToda vez que você descobre algo, a lista muda.(ter)')
-                        input('\nAlguns comandos como "olhar" e "ver ficha do personagem" estarão sempre disponíveis,(er)')
-                        input('mas o resultado dessas ações podem mudar de acordo com o que você faz,(r)')
-                        input('sendo assim é altamente recomendável que você repita algumas ações em um mesmo cenário.()')
-                        input('\nAcho que já é o bastante para começarmos, mas posso repetir se você quiser...()')
+                        print('Bom menino!')
+                        time.sleep(2)
+                        print('\nAlguns comandos como "salvar o jogo" e "ver ficha do personagem" estarão quase sempre disponíveis.')
+                        time.sleep(2)
+                        print('\nToda vez que você descobre algo novo no cenário, a lista de ações muda,')
+                        time.sleep(3)
+                        print('mas os resultados dessas ações podem mudar de acordo com o que você faz,')
+                        time.sleep(4)
+                        print('sendo assim é altamente recomendável que você repita algumas ações em um mesmo cenário.')
+                        time.sleep(4)
+                        print('\nAcho que já é o bastante para começarmos, mas posso repetir se você quiser...')
+                        time.sleep(2)
                         print('Você entendeu tudo o que eu disse?')
                         objeto_00="ganha presente"
                     else:
@@ -2069,20 +2557,34 @@ while 1:
                     ação_do_personagem = ação_do_personagem.lower()
                     if(ação_do_personagem=="sim" or ação_do_personagem=="s" or ação_do_personagem=="si" or ação_do_personagem=="sm" or ação_do_personagem=="im" or ação_do_personagem=="ssim"):
                         ação_do_personagem="sim"
-            print("\nÓtimo, ",nome_do_jogador,".()")
-            input("\n")
             if(objeto_00=="ganha presente"):
-                input("Acho que começamos com o pé direito! Fico feliz que você tenha me escutado como um bom garoto!()")
-                input("Por isso deixei um presente para você no seu guarda-roupas, tenho certeza que você ficará feliz.()")
+                print("\nÓtimo, ",nome_do_jogador,".")
+                time.sleep(1)
+                print("Acho que começamos com o pé direito! Fico feliz que você tenha me escutado como um bom garoto!")
+                time.sleep(2)
+                print("Por isso deixei um presente para você no seu guarda-roupas, tenho certeza que você ficará feliz.")
+                time.sleep(2)
             else:
-                input("Apesar de eu não me lembrar de você... Você deve ser mesmo irrelevante!()")
+                print("Eu não me lembro de você...")
+                time.sleep(5)
+                print("Então você deve ser mesmo irrelevante!")
+                time.sleep(5)
 
 #####################----------------------------__INÍCIO DO JOGO__----------------------------#####################
-            input("\nCenário: acabou de amanhecer, seu quarto está desarrumado, você ainda está de pijama e atrasado para a aula - não que você se importe muito com isso.()")
-            print("\n#", "-"*30,"#\n\nLista de Ações\n\nCenário:", variável_lugar,"\n\nVocê pode:\n\nvestir\narrumar o quarto\nolhar\n")
+            print("\nCenário: acabou de amanhecer, seu quarto está desarrumado,")
+            time.sleep(2)
+            print("você ainda está de pijama e atrasado para a aula - não que você se importe muito com isso.")
+            time.sleep(3)
+            print("\n#", "-"*30,"#\n\nLista de Ações\n\nCenário:", variável_lugar)
+            time.sleep(2)
+            print("\n\nVocê pode:\n\nvestir\narrumar o quarto\nolhar\n")
+            time.sleep(2)
             if (olhar_o_cenário == "sim"):
                 print("\nolhar as gavetas\nolhar o guarda-roupas\nolhar a estante\nolhar pela janela\n")
-            print("\nver ficha do personagem\nsair do quarto\n\n#", "-"*30,"#\n")
+                time.sleep(2)
+            print("\nver ficha do personagem\nsair do quarto\n")
+            time.sleep(1)
+            print("\n#", "-"*30,"#\n")
             print("\nO que você vai fazer", nome_do_jogador,"?\n")
             ação_do_personagem = input("-")
             ação_do_personagem = ação_do_personagem.lower()
@@ -2090,98 +2592,128 @@ while 1:
                 if (ação_do_personagem == "ver ficha do personagem" or ação_do_personagem == "ver a ficha do personagem" or ação_do_personagem == "ver a ficha de personagem" or ação_do_personagem == "ficha" or ação_do_personagem=="ficha do personagem" or ação_do_personagem=="ficha de personagem" or ação_do_personagem=="ver ficha de personagem" or ação_do_personagem=="ver ficha" or ação_do_personagem == "olhar ficha do personagem" or ação_do_personagem == "ver minha ficha" or ação_do_personagem=="minha ficha" or ação_do_personagem=="ficha personagem" or ação_do_personagem=="olhar ficha de personagem" or ação_do_personagem=="olhar ficha"):
                     ficha_personagem()
                 else:
-                    if (ação_do_personagem== "vetir" or ação_do_personagem=="vesti" or ação_do_personagem=="veti" or ação_do_personagem=="estir" or ação_do_personagem=="esti" or ação_do_personagem=="etir" or ação_do_personagem == "vestir" or ação_do_personagem == "vestir uniforme" or ação_do_personagem == "vestir o uniforme" or ação_do_personagem == "vestir o uniforme estudantil" or ação_do_personagem == "vestir uniforme estudantil" or ação_do_personagem == "se vestir" or ação_do_personagem == "se vestir para a aula" or ação_do_personagem == "se vestir pra aula" or ação_do_personagem == "vestir para a aula" or ação_do_personagem == "me arrumar" or ação_do_personagem == "tomar banho" or ação_do_personagem == "ir ao banheiro" or ação_do_personagem == "cagar" or ação_do_personagem == "mijar" or ação_do_personagem == "fazer xixi" or ação_do_personagem == "trocar de roupa" or ação_do_personagem == "me trocar" or ação_do_personagem == "trocar"):
+                    if (ação_do_personagem== "vetir" or ação_do_personagem=="vest" or ação_do_personagem=="vesti" or ação_do_personagem=="veti" or ação_do_personagem=="estir" or ação_do_personagem=="esti" or ação_do_personagem=="etir" or ação_do_personagem == "vestir" or ação_do_personagem == "vestir uniforme" or ação_do_personagem == "vestir o uniforme" or ação_do_personagem == "vestir o uniforme estudantil" or ação_do_personagem == "vestir uniforme estudantil" or ação_do_personagem == "se vestir" or ação_do_personagem == "se vestir para a aula" or ação_do_personagem == "se vestir pra aula" or ação_do_personagem == "vestir para a aula" or ação_do_personagem == "me arrumar" or ação_do_personagem == "tomar banho" or ação_do_personagem == "ir ao banheiro" or ação_do_personagem == "cagar" or ação_do_personagem == "mijar" or ação_do_personagem == "fazer xixi" or ação_do_personagem == "trocar de roupa" or ação_do_personagem == "me trocar" or ação_do_personagem == "trocar"):
                         if (equipamento_roupa == "Pijama"):
-                            input("Você se vestiu para a aula.()\n")
+                            print("Você se vestiu para a aula.\n")
+                            time.sleep(1)
                             equipamento_roupa = "Uniforme Estudantil"
                             defesa_do_personagem=defesa_do_personagem+1
-                            input("Sua defesa aumentou em 1 ponto!()\n")
+                            print("Sua defesa aumentou em 1 ponto!\n")
+                            time.sleep(2)
                         else:
-                            input("Você já está vestido para a aula!()\n")
+                            print("Você já está vestido para a aula!\n")
+                            time.sleep(1)
                     else:
                         if (ação_do_personagem == "arrumar o quarto" or ação_do_personagem == "arrumar" or ação_do_personagem == "arrumar quarto" or ação_do_personagem == "arruma" or ação_do_personagem == "arruma o quarto" or ação_do_personagem == "arruma quarto" or ação_do_personagem == "quarto"):
                             if (modificar_o_cenário == "não"):
-                                input("Você achou 30 Reais enquanto arrumava o seu quarto!()\n")
+                                print("Você achou 30 Reais enquanto arrumava o seu quarto!\n")
+                                time.sleep(2)
                                 dinheiro_do_personagem = +30
                                 modificar_o_cenário = "sim"
                             else:
-                                input("Você já arrumou o seu quarto!()\n")
+                                print("Você já arrumou o seu quarto!\n")
+                                time.sleep(1)
                         else:
-                            if (ação_do_personagem == "olhar" or ação_do_personagem == "ver" or ação_do_personagem == "olhar o quarto" or ação_do_personagem == "olha" or ação_do_personagem == "olhar quarto" or ação_do_personagem == "olha quarto" or ação_do_personagem == "olhar o quarto" or ação_do_personagem == "olha o quarto" or ação_do_personagem == "ve" or ação_do_personagem == "vê"):
+                            if (ação_do_personagem == "olhar" or ação_do_personagem=="olh" or ação_do_personagem == "ver" or ação_do_personagem == "olhar o quarto" or ação_do_personagem == "olha" or ação_do_personagem == "olhar quarto" or ação_do_personagem == "olha quarto" or ação_do_personagem == "olhar o quarto" or ação_do_personagem == "olha o quarto" or ação_do_personagem == "ve" or ação_do_personagem == "vê"):
                                 if (modificar_o_cenário == "não"):
-                                    input("Você não consegue ver nada além de bagunça, MUITA BAGUNÇA!!!()\n")
+                                    print("Você não consegue ver nada além de bagunça, MUITA BAGUNÇA!!!\n")
+                                    time.sleep(2)
                                 else:
-                                    input("Você vê um quarto arrumado, com um guarda-roupas, uma estante de livros, uma mesa de escritório com gavetas e uma janela.()\n")
+                                    print("Você vê um quarto arrumado, com um guarda-roupas, uma estante de livros, uma mesa de escritório com gavetas e uma janela.\n")
+                                    time.sleep(3)
                                     olhar_o_cenário = "sim"
                             else:
-                                if (ação_do_personagem == "olhar as gavetas" or ação_do_personagem == "olha a gaveta" or ação_do_personagem == "olhar a gaveta" or ação_do_personagem == "olhar gaveta" or ação_do_personagem == "olhar as gaveta" or ação_do_personagem == "olha as gavetas" or ação_do_personagem == "olha gaveta" or ação_do_personagem == "olha as gaveta" or ação_do_personagem == "olha a gavetas" or ação_do_personagem == "ver as gavetas" or ação_do_personagem == "ver a gaveta" or ação_do_personagem == "ver as gaveta" or ação_do_personagem == "ver a gavetas" or ação_do_personagem=="gaveta" or ação_do_personagem=="gavetas"):
+                                if (ação_do_personagem == "olhar as gavetas" or ação_do_personagem == "olhar gavetas" or ação_do_personagem == "olha a gaveta" or ação_do_personagem == "olhar a gaveta" or ação_do_personagem == "olhar gaveta" or ação_do_personagem == "olhar as gaveta" or ação_do_personagem == "olha as gavetas" or ação_do_personagem == "olha gaveta" or ação_do_personagem == "olha as gaveta" or ação_do_personagem == "olha a gavetas" or ação_do_personagem == "ver as gavetas" or ação_do_personagem == "ver a gaveta" or ação_do_personagem == "ver as gaveta" or ação_do_personagem == "ver a gavetas" or ação_do_personagem=="gaveta" or ação_do_personagem=="gavetas"):
                                     if (equipamento_luva == "Soco-Inglês"):
-                                        input("Você olhou novamente as gavetas, mas não encontrou nada interessante.()\n")
+                                        print("Você olhou novamente as gavetas, mas não encontrou nada interessante.\n")
+                                        time.sleep(1)
                                     else:
-                                        input("Você achou um Soco-Inglês enquanto olhava as gavetas!()\n")
+                                        print("Você achou um Soco-Inglês enquanto olhava as gavetas!\n")
+                                        time.sleep(2)
                                         ataque_do_personagem = ataque_do_personagem +3;
                                         equipamento_luva = "Soco-Inglês"
-                                        input("Seu ataque aumentou em 3 pontos!()")
+                                        print("Seu ataque aumentou em 3 pontos!")
+                                        time.sleep(2)
                                 else:
-                                    if (ação_do_personagem == "olhar o guarda-roupas" or ação_do_personagem == "olha o guarda-roupas" or ação_do_personagem == "olha o guarda-roupa" or ação_do_personagem == "olhar o guarda-roupa" or ação_do_personagem == "olhar guarda-roupas" or ação_do_personagem == "olha guarda-roupas" or ação_do_personagem == "olha guarda-roupa" or ação_do_personagem == "olhar guarda-roupa" or ação_do_personagem == "olhar o guarda roupas" or ação_do_personagem == "olha o guarda roupas" or ação_do_personagem == "olha o guarda roupa" or ação_do_personagem == "olhar o guarda roupa" or ação_do_personagem == "olhar guarda roupas" or ação_do_personagem == "olha guarda roupas" or ação_do_personagem == "olha guarda roupa" or ação_do_personagem == "olhar guarda roupa" or ação_do_personagem == "olhar o guardaroupas" or ação_do_personagem == "olha o guardaroupas" or ação_do_personagem == "olha o guardaroupa" or ação_do_personagem == "olhar o guardaroupa" or ação_do_personagem == "olhar guardaroupas" or ação_do_personagem == "olha guardaroupas" or ação_do_personagem == "olha guardaroupa" or ação_do_personagem == "olhar guardaroupa" or ação_do_personagem == "olhar o guardarroupas" or ação_do_personagem == "olha o guardarroupas" or ação_do_personagem == "olha o guardarroupa" or ação_do_personagem == "olhar o guardarroupa" or ação_do_personagem == "olhar guardarroupas" or ação_do_personagem == "olha guardarroupas" or ação_do_personagem == "olha guardarroupa" or ação_do_personagem == "olhar guardarroupa" or ação_do_personagem == "guarda-roupa" or ação_do_personagem == "guarda-roupas" or ação_do_personagem == "guarda roupa" or ação_do_personagem == "guarda roupas" or ação_do_personagem == "guardaroupa" or ação_do_personagem == "guardaroupas" or ação_do_personagem == "guardarroupa" or ação_do_personagem == "guardarroupas" or ação_do_personagem == "olhar o armário" or ação_do_personagem == "olhar o armario" or ação_do_personagem == "olhar armário" or ação_do_personagem == "olhar armario" or ação_do_personagem == "olha o armário" or ação_do_personagem == "olha o armario" or ação_do_personagem == "olha armário" or ação_do_personagem == "olha armario" or ação_do_personagem == "armário" or ação_do_personagem == "armario" or ação_do_personagem == "sair do armário" or ação_do_personagem == "vestir smoking" or ação_do_personagem == "ver armário" or ação_do_personagem == "ver o armário" or ação_do_personagem == "ver armario" or ação_do_personagem == "ver o armario" or ação_do_personagem == "ver o guarda-roupas" or ação_do_personagem == "ver o guardarroupas" or ação_do_personagem == "ver o guarda roupas" or ação_do_personagem == "ver o guardaroupas" or ação_do_personagem == "ver o guarda-roupa" or ação_do_personagem == "ver o guardarroupa" or ação_do_personagem == "ver o guarda roupa" or ação_do_personagem == "ver o guardaroupa" or ação_do_personagem == "ver guarda-roupas" or ação_do_personagem == "ver guardarroupas" or ação_do_personagem == "ver guarda roupas" or ação_do_personagem == "ver guardaroupas" or ação_do_personagem == "ver guarda-roupa" or ação_do_personagem == "ver guardarroupa" or ação_do_personagem == "ver guarda roupa" or ação_do_personagem == "ver guardaroupa"):
+                                    if (ação_do_personagem == "olhar o guarda-roupas" or ação_do_personagem =="olhar o guarda" or ação_do_personagem =="olhar o garda" or ação_do_personagem == "guarda" or ação_do_personagem=="roupa" or ação_do_personagem == "olha o guarda-roupas" or ação_do_personagem == "olha o guarda-roupa" or ação_do_personagem == "olhar o guarda-roupa" or ação_do_personagem == "olhar guarda-roupas" or ação_do_personagem == "olha guarda-roupas" or ação_do_personagem == "olha guarda-roupa" or ação_do_personagem == "olhar guarda-roupa" or ação_do_personagem == "olhar o guarda roupas" or ação_do_personagem == "olha o guarda roupas" or ação_do_personagem == "olha o guarda roupa" or ação_do_personagem == "olhar o guarda roupa" or ação_do_personagem == "olhar guarda roupas" or ação_do_personagem == "olha guarda roupas" or ação_do_personagem == "olha guarda roupa" or ação_do_personagem == "olhar guarda roupa" or ação_do_personagem == "olhar o guardaroupas" or ação_do_personagem == "olha o guardaroupas" or ação_do_personagem == "olha o guardaroupa" or ação_do_personagem == "olhar o guardaroupa" or ação_do_personagem == "olhar guardaroupas" or ação_do_personagem == "olha guardaroupas" or ação_do_personagem == "olha guardaroupa" or ação_do_personagem == "olhar guardaroupa" or ação_do_personagem == "olhar o guardarroupas" or ação_do_personagem == "olha o guardarroupas" or ação_do_personagem == "olha o guardarroupa" or ação_do_personagem == "olhar o guardarroupa" or ação_do_personagem == "olhar guardarroupas" or ação_do_personagem == "olha guardarroupas" or ação_do_personagem == "olha guardarroupa" or ação_do_personagem == "olhar guardarroupa" or ação_do_personagem == "guarda-roupa" or ação_do_personagem == "guarda-roupas" or ação_do_personagem == "guarda roupa" or ação_do_personagem == "guarda roupas" or ação_do_personagem == "guardaroupa" or ação_do_personagem == "guardaroupas" or ação_do_personagem == "guardarroupa" or ação_do_personagem == "guardarroupas" or ação_do_personagem == "olhar o armário" or ação_do_personagem == "olhar o armario" or ação_do_personagem == "olhar armário" or ação_do_personagem == "olhar armario" or ação_do_personagem == "olha o armário" or ação_do_personagem == "olha o armario" or ação_do_personagem == "olha armário" or ação_do_personagem == "olha armario" or ação_do_personagem == "armário" or ação_do_personagem == "armario" or ação_do_personagem == "sair do armário" or ação_do_personagem == "vestir smoking" or ação_do_personagem == "ver armário" or ação_do_personagem == "ver o armário" or ação_do_personagem == "ver armario" or ação_do_personagem == "ver o armario" or ação_do_personagem == "ver o guarda-roupas" or ação_do_personagem == "ver o guardarroupas" or ação_do_personagem == "ver o guarda roupas" or ação_do_personagem == "ver o guardaroupas" or ação_do_personagem == "ver o guarda-roupa" or ação_do_personagem == "ver o guardarroupa" or ação_do_personagem == "ver o guarda roupa" or ação_do_personagem == "ver o guardaroupa" or ação_do_personagem == "ver guarda-roupas" or ação_do_personagem == "ver guardarroupas" or ação_do_personagem == "ver guarda roupas" or ação_do_personagem == "ver guardaroupas" or ação_do_personagem == "ver guarda-roupa" or ação_do_personagem == "ver guardarroupa" or ação_do_personagem == "ver guarda roupa" or ação_do_personagem == "ver guardaroupa"):
                                         if(objeto_00=="ganha presente"):
-                                            input("Você encontrou uma bela caixa de presente.()")
+                                            print("Você encontrou uma bela caixa de presente.")
+                                            time.sleep(2)
                                             print("Vai abrir?(sim ou não)")
                                             while 1:
                                                 ação_do_personagem = input("-")
                                                 ação_do_personagem = ação_do_personagem.lower()
                                                 if(ação_do_personagem=="sim" or ação_do_personagem=="s" or ação_do_personagem=="si" or ação_do_personagem=="sm" or ação_do_personagem=="im" or ação_do_personagem=="ssim"):
-                                                    input("Você desembalou a caixa de presente e...()")
-                                                    input("Encontrou um par de Papetes Masculinas!()\n")
-                                                    print("Você trocou seu par de", equipamento_botas,"pelo par de Papetes Masculinas!()")
-                                                    input("")
+                                                    print("Você desembalou a caixa de presente e...")
+                                                    time.sleep(3)
+                                                    print("Encontrou um par de Papetes Masculinas!\n")
+                                                    time.sleep(1)
+                                                    print("Você trocou seu par de", equipamento_botas,"pelo par de Papetes Masculinas!")
+                                                    time.sleep(2)
                                                     equipamento_botas = "Papetes Masculinas"
                                                     agilidade_do_personagem = agilidade_do_personagem + 1
-                                                    input("Sua agilidade aumentou em 1 ponto!()\n")
+                                                    print("Sua agilidade aumentou em 1 ponto!\n")
+                                                    time.sleep(2)
                                                     objeto_00 = "não"
                                                     break
                                                 else:
                                                     if(ação_do_personagem == "não" or ação_do_personagem=="n" or ação_do_personagem=="nao" or ação_do_personagem=="no" or ação_do_personagem=="na" or ação_do_personagem=="nã" or ação_do_personagem=="ao" or ação_do_personagem=="ão" or ação_do_personagem=="ñ" or ação_do_personagem=="ñão" or ação_do_personagem=="ño" or ação_do_personagem=="ñõ" or ação_do_personagem=="ñã" or ação_do_personagem=="ñaõ" or ação_do_personagem=="aõ"):
                                                         break
                                                     else:
-                                                        input('Entrada Inválida! Digite "sim" ou "não".()')
+                                                        print('Entrada Inválida! Digite "sim" ou "não".')
+                                                        time.sleep(0.5)
                                         else:
-                                            input("Você não vê muitas roupas... Você é muito pobre, arrume um emprego!()\n")
+                                            print("Você não vê muitas roupas... Você é muito pobre, arrume um emprego!\n")
+                                            time.sleep(1)
                                     else:
                                         if (ação_do_personagem == "olhar a janela"):###__EASTER-EGG
                                             if (eegg == 1):
-                                                input("Você vê...()")
-                                                input("...()")
-                                                input("Você vê uma janela, sua anta!()")
-                                                input("... Hunf...()")
-                                                input("Volte para as aulas de ortografia!()")
-                                                input("...()")
-                                                input("O quê? Você acha que eu fui muito grosso?()")
-                                                print("Okay, ", nome_do_jogador,", vamos lá...()")
-                                                input("")
-                                                input("Há uma diferença muito grande entre olhar A janela e olhar PELA janela!()")
-                                                input("Tente mais uma vez, sua anta!()")
+                                                print("Você vê...")
+                                                time.sleep(3.5)
+                                                print("Você vê uma janela, sua anta!")
+                                                time.sleep(0.5)
+                                                print("... Hunf...")
+                                                time.sleep(0.5)
+                                                print("Volte para as aulas de ortografia!")
+                                                time.sleep(0.5)
+                                                print("...")
+                                                time.sleep(2)
+                                                print("O quê? Você acha que eu fui muito grosso?")
+                                                time.sleep(1)
+                                                print("Okay, ", nome_do_jogador,", vamos lá...")
+                                                time.sleep(2.5)
+                                                print("Há uma diferença muito grande entre olhar A janela e olhar PELA janela!")
+                                                time.sleep(3)
+                                                print("Tente mais uma vez, sua anta!")
+                                                time.sleep(0.5)
                                                 eegg = 2
                                             else:
                                                 if (eegg == 2):
-                                                    input("Digitando errado MAIS UMA VEZ?!()")
-                                                    print("Okay, ", nome_do_jogador,", você já está passando dos limites da burrice...()")
-                                                    input("")
+                                                    print("Digitando errado MAIS UMA VEZ?!")
+                                                    time.sleep(0.5)
+                                                    print("Okay, ", nome_do_jogador,", você já está passando dos limites da burrice...")
+                                                    time.sleep(1)
                                                     eegg = 3
                                                 else:
                                                     if (eegg == 3):
-                                                        input("Você encara a janela...()")
-                                                        input("Você parece um retardado fazendo isso...()")
+                                                        print("Você encara a janela...")
+                                                        time.sleep(1)
+                                                        print("Você parece um retardado fazendo isso...")
+                                                        time.sleep(0.5)
                                                         eegg = 4
                                                     else:
                                                         if (eegg == 4):
-                                                            input('Enquanto você encarava a janela um pombo pousou nela...()')
-                                                            input('Ele olhou bem no fundo dos seus olhos e disse "Você é um idiota."...()')
-                                                            input('Não, ele não disse isso... Na verdade fui eu quem disse isso, seu idiota.()')
+                                                            print('Enquanto você encarava a janela um pombo pousou nela...')
+                                                            time.sleep(1)
+                                                            print('Ele olhou bem no fundo dos seus olhos e disse "Você é um idiota."...')
+                                                            time.sleep(1)
+                                                            print('Não, ele não disse isso... Na verdade fui eu quem disse isso, seu idiota.')
+                                                            time.sleep(1)
                                                             eegg = 5
                                                         else:
                                                             if (eegg == 5):
-                                                                input("Já chega! Você esgotou minha paciência!()")
+                                                                print("Já chega! Você esgotou minha paciência!")
+                                                                time.sleep(1.5)
                                                                 nome_do_inimigo="Narrador"
                                                                 vida_máxima_inimigo=100
                                                                 vida_atual_inimigo=100
@@ -2190,65 +2722,96 @@ while 1:
                                                                 batalha()
                                                                 if(vida_atual_personagem<=0):break
                                                                 if(vida_atual_inimigo>0):
-                                                                    input("Vou te deixar em paz por agora, mas tente voltar a me irritar para ver o que te acontece!()")
+                                                                    print("Vou te deixar em paz por agora, mas tente voltar a me irritar para ver o que te acontece!")
+                                                                    time.sleep(1)
                                                                 else:
-                                                                    input("Aaaah! Eu deveria ter me feito mais forte para essa luta...()")
-                                                                    input("Okay, você venceu... Mas pare de me irritar!()")
+                                                                    print("Aaaah! Eu deveria ter me feito mais forte para essa luta...")
+                                                                    time.sleep(1)
+                                                                    print("Okay, você venceu... Mas pare de me irritar!")
+                                                                    time.sleep(1)
                                                                     eegg = 6
                                                             else:
                                                                 if (eegg == 6):
-                                                                    input("...()")
+                                                                    print("...")
+                                                                    time.sleep(0.5)
                                                                     eegg = 7
                                                                 else:
-                                                                    input("Você vê uma janela que abre horizontalmente para as duas direções, \nsendo que o vidro da janela esquerda está rachado por, provavelmente, um apedrejamento. \nOs batentes são de madeira antiga, deteriorada pela ação de cupins.()")
+                                                                    print("Você vê uma janela que abre horizontalmente para as duas direções,")
+                                                                    time.sleep(0.5)
+                                                                    print("sendo que o vidro da janela esquerda está rachado por, provavelmente, um apedrejamento.")
+                                                                    time.sleep(1)
+                                                                    print("Os batentes são de madeira antiga, deteriorada pela ação de cupins.")
+                                                                    time.sleep(0.5)
                                         else:
                                             if (ação_do_personagem == "olhar pela janela" or ação_do_personagem == "olha pela janela" or ação_do_personagem == "janela" or ação_do_personagem ==  "olhar janela" or ação_do_personagem == "olha janela" or ação_do_personagem=="ver janela" or ação_do_personagem=="ver a janela"):
-                                                input("Você vê uma rua com prédios de classe baixa,()")
-                                                input("poucas pessoas passando com cara de cansadas,()")
-                                                input("mas você não consegue ver o horizonte,()")
-                                                input("já que você mora no primeiro andar e os prédios do outro()")
-                                                input("lado da rua são altos e próximos demais uns dos outros.()")
-                                                input("Você percebe um sujeito te encarando do outro lado da rua...()")
-                                                input("Ele está em pé e encostado na grade cinza, empoeirada e enferrujada()")
-                                                input("do prédio da frente um pouco à esquerda da porta dessa grade,()")
-                                                input("de modo a ficar de frente para a porta do seu prédio.()")
-                                                input("Sua face cheia de raiva expressa com rigidez a sua intenção,()")
-                                                input("sua jeans é velha, sua camisa é rasgada de forma a parecer uma regata,()")
-                                                input("enquanto seus braços cruzados parecem prontos para uma briga!()")
+                                                print("Você vê uma rua com prédios de classe baixa,")
+                                                time.sleep(3)
+                                                print("poucas pessoas passando com cara de cansadas,")
+                                                time.sleep(3)
+                                                print("mas você não consegue ver o horizonte,")
+                                                time.sleep(3)
+                                                print("já que você mora no primeiro andar e os prédios do outro")
+                                                time.sleep(4)
+                                                print("lado da rua são altos e próximos demais uns dos outros.")
+                                                time.sleep(4)
+                                                print("Você percebe um sujeito te encarando do outro lado da rua...")
+                                                time.sleep(4)
+                                                print("Ele está em pé e encostado na grade cinza, empoeirada e enferrujada")
+                                                time.sleep(4)
+                                                print("do prédio da frente um pouco à esquerda da porta dessa grade,")
+                                                time.sleep(4)
+                                                print("de modo a ficar de frente para a porta do seu prédio.")
+                                                time.sleep(3)
+                                                print("Sua face cheia de raiva expressa com rigidez a sua intenção,")
+                                                time.sleep(3)
+                                                print("sua jeans é velha, sua camisa é rasgada de forma a parecer uma regata,")
+                                                time.sleep(3)
+                                                print("enquanto seus braços cruzados parecem prontos para uma briga!")
+                                                time.sleep(5)
                                             else:
-                                                if (ação_do_personagem == "olhar a estante" or ação_do_personagem == "olhar estante" or ação_do_personagem == "olha a estante" or ação_do_personagem == "olha estante" or ação_do_personagem == "estante" or ação_do_personagem == "ver a estante" or ação_do_personagem == "ver estante" or ação_do_personagem == "ver a estante" or ação_do_personagem == "ver estante"):
-                                                    input("Você vê livros e apostilas rabiscadas na capa e a maioria rasgadas no canto dos furos das espirais.\n...\n Nada muito interessante...\n")
-                                                    input("Mas você vê um pedaço de papel vermelho colocado entre as páginas de um dos livros...")
+                                                if (ação_do_personagem == "olhar a estante" or ação_do_personagem =="ohar a estante" or ação_do_personagem =="ohar estante" or ação_do_personagem == "olhar estante" or ação_do_personagem == "olha a estante" or ação_do_personagem == "olha estante" or ação_do_personagem == "estante" or ação_do_personagem == "ver a estante" or ação_do_personagem == "ver estante" or ação_do_personagem == "ver a estante" or ação_do_personagem == "ver estante" or ação_do_personagem =="olahr a estante"):
+                                                    print("Você vê livros e apostilas rabiscadas na capa e a maioria rasgadas no canto dos furos das espirais.\n...\n Nada muito interessante...\n")
+                                                    time.sleep(1)
+                                                    print("Mas você vê um pedaço de papel vermelho colocado entre as páginas de um dos livros...")
+                                                    time.sleep(1)
                                                     print("Ler o bilhete??\n")
                                                     while 1:
                                                         ação_do_personagem=input("-")
                                                         ação_do_personagem=ação_do_personagem.lower()
                                                         if(ação_do_personagem=="sim" or ação_do_personagem=="s" or ação_do_personagem=="si" or ação_do_personagem=="sm" or ação_do_personagem=="im" or ação_do_personagem=="ssim"):
-                                                            input(' "       Você pode digitar seus comandos de outras formas, como por exemplo,')
-                                                            input("ao invés de digitar 'ver ficha do personagem' você pode simplesmente digitar 'ficha'!")
-                                                            input('Tente sempre digitar da forma mais simples, isso facilitará muito o seu jogo!')
-                                                            input('Não custa nada tentar! ;)')
-                                                            input('                               assinado: Programador "')
+                                                            print(' "       Você pode digitar seus comandos de outras formas, como por exemplo,')
+                                                            time.sleep(3)
+                                                            print("ao invés de digitar 'ver ficha do personagem' você pode simplesmente digitar 'ficha'!")
+                                                            time.sleep(3)
+                                                            print('Tente sempre digitar da forma mais simples, isso facilitará muito o seu jogo!')
+                                                            time.sleep(3)
+                                                            print('Não custa nada tentar! ;)')
+                                                            time.sleep(3)
+                                                            print('                               assinado: Programador "')
                                                             break
                                                         else:
                                                             if(ação_do_personagem == "não" or ação_do_personagem=="n" or ação_do_personagem=="nao" or ação_do_personagem=="no" or ação_do_personagem=="na" or ação_do_personagem=="nã" or ação_do_personagem=="ao" or ação_do_personagem=="ão" or ação_do_personagem=="ñ" or ação_do_personagem=="ñão" or ação_do_personagem=="ño" or ação_do_personagem=="ñõ" or ação_do_personagem=="ñã" or ação_do_personagem=="ñaõ" or ação_do_personagem=="aõ"):
-                                                                input("Você ignorou o bilhete.")
+                                                                print("Você ignorou o bilhete.")
+                                                                time.sleep(1)
                                                                 break
                                                             else:
-                                                                input('Entrada inválida! Digite "sim" ou "Não"')
+                                                                print('Entrada inválida! Digite "sim" ou "Não"')
                                                 else:
                                                     if (ação_do_personagem == "destruir o universo"): #Easter-Egg para o Yuri
-                                                        input("Adeus...")
+                                                        print("Adeus...")
+                                                        time.sleep(0.5)
                                                         while 1:
                                                             ação_do_personagem = input("")
                                                             ação_do_personagem = ação_do_personagem.lower()
                                                             if(ação_do_personagem=="reconstruir o universo" or ação_do_personagem == "construir o universo" or ação_do_personagem == "criar um novo universo" or ação_do_personagem == "construir um universo" or ação_do_personagem == "criar o universo"):
                                                                 break
-                                                        input("Olá!")
+                                                        print("Olá!")
+                                                        time.sleep(1)
                                                     else:
                                                         if(ação_do_personagem=="sair do quarto" or ação_do_personagem=="sair" or ação_do_personagem=="ir para a aula" or ação_do_personagem=="ir pra aula" or ação_do_personagem=="ir para aula" or ação_do_personagem=="ir à aula" or ação_do_personagem=="ir a aula" or ação_do_personagem=="sair quarto"):
                                                             while 1:
-                                                                input("Se sair você nao poderá voltar.")
+                                                                print("Se sair você nao poderá voltar.\n")
+                                                                time.sleep(3)
                                                                 print("Tem certeza que deseja sair? (sim ou não)")
                                                                 ação_do_personagem=input("-")
                                                                 ação_do_personagem=ação_do_personagem.lower()
@@ -2257,20 +2820,28 @@ while 1:
                                                                     break
                                                                 else:
                                                                     if(ação_do_personagem == "não" or ação_do_personagem=="n" or ação_do_personagem=="nao" or ação_do_personagem=="no" or ação_do_personagem=="na" or ação_do_personagem=="nã" or ação_do_personagem=="ao" or ação_do_personagem=="ão" or ação_do_personagem=="ñ" or ação_do_personagem=="ñão" or ação_do_personagem=="ño" or ação_do_personagem=="ñõ" or ação_do_personagem=="ñã" or ação_do_personagem=="ñaõ" or ação_do_personagem=="aõ"):
-                                                                        input("Você decidiu não sair do quarto.")
+                                                                        print("Você decidiu não sair do quarto.")
+                                                                        time.sleep(1)
                                                                         break
                                                                     else:
-                                                                        input("Entrada inválida!")
+                                                                        print("Entrada inválida!")
+                                                                        time.sleep(1)
                                                             if(ação_do_personagem=="sim"):
                                                                 break
                                                         else:
-                                                            input('\nEntrada Inválida!\n')
-                print("\n#", "-"*30,"#\n\nLista de Ações\n\nCenário:", variável_lugar,"\n\nVocê pode:\n\nvestir\narrumar o quarto\nolhar\n")
+                                                            print('\nEntrada Inválida!\n')
+                print("\n#", "-"*30,"#\n\nLista de Ações\n\nCenário:", variável_lugar)
+                time.sleep(0.23)
+                print("\n\nVocê pode:\n\nvestir\narrumar o quarto\nolhar\n")
+                time.sleep(0.23)
                 if (olhar_o_cenário == "sim"):
                     print("\nolhar as gavetas\nolhar o guarda-roupas\nolhar a estante\nolhar pela janela\n")
+                    time.sleep(0.5)
                 print("\nver ficha do personagem\nsair do quarto\n")
+                time.sleep(0.5)
                 if(eegg > 1 and eegg<6):
                     print("\nVocê não deve:\nolhar a janela\n")
+                    time.sleep(0.23)
                 print("\n#", "-"*30,"#\n")
                 print("\nE agora, ", nome_do_jogador,", o que você vai fazer?\n")
                 ação_do_personagem = input("-")
@@ -2279,24 +2850,26 @@ while 1:
             ponto_de_save = 1
             modificar_o_cenário = "não"
             olhar_o_cenário = "não"
-            input("Você saiu do seu quarto.")
+            print("Você saiu do seu quarto.")
+            time.sleep(1)
             save()
 
 ##########--------------------------------------------------FIM DA PRIMEIRA PARTE--------------------------------------------------##########
         if(ponto_de_save==1):
             if(variável_lugar == "seu prédio, 1º andar" or variável_lugar == "seu prédio, 2º andar" or variável_lugar == "seu prédio, 3º andar" or variável_lugar == "seu prédio, 4º andar"):
                 if(variável_lugar == "seu prédio, 1º andar"):
-                    variável_lugar == "seu prédio, 1º andarb"
+                    variável_lugar = "seu prédio, 1º andarb"
                 if(variável_lugar == "seu prédio, 2º andar"):
-                    variável_lugar == "seu prédio, 2º andarb"
+                    variável_lugar = "seu prédio, 2º andarb"
                 if(variável_lugar == "seu prédio, 3º andar"):
-                    variável_lugar == "seu prédio, 3º andarb"
+                    variável_lugar = "seu prédio, 3º andarb"
                 if(variável_lugar == "seu prédio, 4º andar"):
-                    variável_lugar == "seu prédio, 4º andarb"
+                    variável_lugar = "seu prédio, 4º andarb"
                 seuPrédioPrimeiroAndar()
-            input("\nCenário: Você continua atrasado para a aula - não que você deva se importar muito com isso.")
-            variável_lugar = "seu prédio, 1º andar"
-            seuPrédioPrimeiroAndar()
+            else:
+                input("\nCenário: Você continua atrasado para a aula - não que você deva se importar muito com isso.")
+                variável_lugar = "seu prédio, 1º andar"
+                seuPrédioPrimeiroAndar()
             if(vida_atual_personagem<=0):break
             ponto_de_save = 2
             variável_lugar = "em frente ao seu prédio"
@@ -2305,17 +2878,34 @@ while 1:
 
 ##########--------------------------------------------------FIM DA SEGUNDA PARTE--------------------------------------------------##########
         if(ponto_de_save==2):
-            input("Cenário:Agora você está na sua rua.\n")
-            input("Antes que você pudesse fazer alguma coisa,")
-            input("foi abordado por um homem aparentemente forte vestindo uma jeans velha \ne uma camisa que foi rasgada de forma a parecer uma regata...")
-            input("Seu rosto era magro, de tão afundadas que as bochechas eram, parecia uma caveira, \nsua pele queimada pelo Sol era cheia de manchas, seu cabelo crespo crescia por cima das ventas, \nmas a calvisse da sua fronte se extendia até a ponta extrema da sua arredondada e fosca cabeça...")
-            input(" - Cadê o dinheiro que você roubou do meu esquema?\n")
-            input("Mas você REALMENTE não sabia de esquema algum, quanto menos do dinheiro...")
-            input("Algo não parece certo...\n")
-            input(" - Não adianta negar!!! Escolhe, moleque: a grana ou a vida???")
+            print("\nCenário:Agora você está na sua rua.\n\n")
+            time.sleep(2)
+            print("Antes que você pudesse fazer alguma coisa,")
+            time.sleep(3)
+            print("foi abordado por um homem aparentemente forte vestindo uma jeans velha")
+            time.sleep(3)
+            print("e uma camisa que foi rasgada de forma a parecer uma regata...\n")
+            time.sleep(3)
+            print("Seu rosto era magro, de tão afundadas que as bochechas eram, parecia uma caveira,")
+            time.sleep(3)
+            print("sua pele queimada pelo Sol era cheia de manchas, seu cabelo crespo crescia por cima das ventas,")
+            time.sleep(3)
+            print("mas a calvisse da sua fronte se extendia até a ponta extrema da sua arredondada e fosca cabeça...\n")
+            time.sleep(3)
+            print(" - Cadê o dinheiro que você roubou do meu esquema?\n")
+            time.sleep(2)
+            print("Mas você REALMENTE não sabia de esquema algum, quanto menos do dinheiro...\n")
+            time.sleep(3)
+            print("Algo não parece certo...\n")
+            time.sleep(1)
+            print(" - Não adianta negar!!! Escolhe, moleque: a grana ou a vida???\n")
+            time.sleep(1)
             print("...")
-            input("Ele saca uma faca do bolso de trás!\n")
-            input(" - EU VOU TE QUEBRAR ATÉ VOCÊ ME DAR O DINHEIRO!!!\n")
+            time.sleep(3)
+            print("Ele saca uma faca do bolso de trás!\n")
+            time.sleep(2)
+            print(" - EU VOU TE QUEBRAR ATÉ VOCÊ ME DAR O DINHEIRO!!!\n")
+            time.sleep(2)
             nome_do_inimigo="Bandido"
             vida_máxima_inimigo=25000
             vida_atual_inimigo=25000
@@ -2324,16 +2914,31 @@ while 1:
             batalha()
             if(vida_atual_personagem<=0):
                 vida_atual_personagem=1
-                input("Você caiu no chão...")
-                input("Ajoelhado na sua barriga e com o antebraço apoiado no seu pescoço \no bandido soltou um sorriso amargo com seu olhar insano!")
-                input(" - HAHAHAHA! Você vai morrer!")
-                input("Você esta rendido...")
-                input("Com a outra mão ergueu a faca apontada para o seu peito!")
-                input("...")
-                input("!!!")
-                input("O bandido foi violentamente atingido por um soco...")
-                input("Você se levantou rapidamente e pôde, então, observar a sitiuação...")
-                input("Ele vestia uma blusa preta com a capa do The Rules of Hell do Black Sabbath estampada em cinza nela, \n uma calça preta rasgada nos joelhos e um all-star preto, além da jaqueta de couro, luvas, pulseiras e cinto, todos esses com spikes de titânio.")
+                print("Você caiu no chão...")
+                time.sleep(3)
+                print("Ajoelhado na sua barriga e com o antebraço apoiado no seu pescoço")
+                print("o bandido abriu um largo e amargo sorriso enquanto te fitava com seu olhar insano!")
+                time.sleep(4)
+                print(" - HAHAHAHA! Você vai morrer!")
+                time.sleep(3)
+                print("Você esta rendido...")
+                time.sleep(4)
+                print("Com a outra mão ergueu a faca apontada para o seu peito!")
+                time.sleep(3)
+                print("...")
+                time.sleep(5)
+                print("!!!")
+                time.sleep(3)
+                print("O bandido foi violentamente atingido por um soco...")
+                time.sleep(4)
+                print("Você se levantou rapidamente e pôde, então, observar a sitiuação...")
+                time.sleep(3)
+                print("Ele vestia uma blusa preta com a capa do The Rules of Hell do Black Sabbath estampada em cinza nela,")
+                time.sleep(5)
+                print("uma calça preta rasgada nos joelhos e um all-star preto,")
+                time.sleep(5)
+                print("além da jaqueta de couro, luvas, pulseiras e cinto, todos esses ultimos com spikes de titânio.")
+                time.sleep(6)
                 reserva_nome_do_jogador = nome_do_jogador
                 reserva_vida_máxima_personagem = vida_máxima_personagem
                 reserva_vida_atual_personagem = vida_atual_personagem
@@ -2353,36 +2958,169 @@ while 1:
                 ataque_do_personagem = reserva_ataque_do_personagem
                 defesa_do_personagem = reserva_defesa_do_personagem
                 agilidade_do_personagem = reserva_agilidade_do_personagem
-                input(" - Pare! Por favor!\n")
+                print(" - Pare! Por favor!\n")
+                time.sleep(3)
                 print("...")
-                input("Antes que você e o Headbanger pudessem perceber o som da moto, um comparsa o resgatou...")
-                input("Voce continua sem respostas...")
-                input("Será que você encontrará alguma pista na escola?")
+                time.sleep(3)
+                print("Antes que você e o Headbanger pudessem perceber o som da moto, um comparsa o resgatou...")
+                time.sleep(3)
+                print("O Headbanger se virou e olhou para você.")
+                time.sleep(3)
+                print(" - Você é fraco demais, mas tem muito potencial.")
+                time.sleep(3)
+                print(" - Não sei o que você fez para eles, mas você parece precisar de ajuda.")
+                time.sleep(3)
+                print(" - Vou procurar saber o que está acontecendo... Faça o mesmo, você também!")
+                time.sleep(3)
+                print(" - Ele sumiu pelos becos da rua...")
+                time.sleep(3)
+                print("Voce continua sem respostas...")
+                time.sleep(3)
+                print("Será que você encontrará alguma pista na escola?")
+                time.sleep(5)
             else:
                 if(vida_atual_inimigo>0):
                     while(vida_atual_inimigo>0):
-                        input("Você correu um pouco mas ele te alcançou de novo!\n")
+                        print("Você correu um pouco mas ele te alcançou de novo!\n")
                         batalha()
-                    if(vida_atual_personagem<=0):break
-                    input(" - Pare! Por favor!\n")
-                    print("...")
-                    input("Antes que você pudesse perceber o som da moto, um comparsa o resgatou...")
-                    input("Voce continua sem respostas...")
-                    input("Será que você encontrará alguma pista na escola?")
+                        if(vida_atual_personagem<=0):
+                            vida_atual_personagem=1
+                            print("Você caiu no chão...")
+                            time.sleep(3)
+                            print("Ajoelhado na sua barriga e com o antebraço apoiado no seu pescoço")
+                            print("o bandido abriu um largo e amargo sorriso enquanto te fitava com seu olhar insano!")
+                            time.sleep(4)
+                            print(" - HAHAHAHA! Você vai morrer!")
+                            time.sleep(3)
+                            print("Você esta rendido...")
+                            time.sleep(4)
+                            print("Com a outra mão ergueu a faca apontada para o seu peito!")
+                            time.sleep(3)
+                            print("...")
+                            time.sleep(5)
+                            print("!!!")
+                            time.sleep(3)
+                            print("O bandido foi violentamente atingido por um soco...")
+                            time.sleep(4)
+                            print("Você se levantou rapidamente e pôde, então, observar a sitiuação...")
+                            time.sleep(3)
+                            print("Ele vestia uma blusa preta com a capa do The Rules of Hell do Black Sabbath estampada em cinza nela,")
+                            time.sleep(5)
+                            print("uma calça preta rasgada nos joelhos e um all-star preto,")
+                            time.sleep(5)
+                            print("além da jaqueta de couro, luvas, pulseiras e cinto, todos esses ultimos com spikes de titânio.")
+                            time.sleep(6)
+                            reserva_nome_do_jogador = nome_do_jogador
+                            reserva_vida_máxima_personagem = vida_máxima_personagem
+                            reserva_vida_atual_personagem = vida_atual_personagem
+                            reserva_ataque_do_personagem = ataque_do_personagem
+                            reserva_defesa_do_personagem = defesa_do_personagem
+                            reserva_agilidade_do_personagem = agilidade_do_personagem
+                            nome_do_jogador = "Lutador Headbanger"
+                            vida_máxima_personagem = 100000
+                            vida_atual_personagem = 100000
+                            ataque_do_personagem = 1200
+                            defesa_do_personagem = 800
+                            agilidade_do_personagem = 5
+                            batalha()
+                            nome_do_jogador = reserva_nome_do_jogador
+                            vida_máxima_personagem = reserva_vida_máxima_personagem
+                            vida_atual_personagem = reserva_vida_atual_personagem
+                            ataque_do_personagem = reserva_ataque_do_personagem
+                            defesa_do_personagem = reserva_defesa_do_personagem
+                            agilidade_do_personagem = reserva_agilidade_do_personagem
+                            print(" - Pare! Por favor!\n")
+                            time.sleep(3)
+                            print("...")
+                            time.sleep(3)
+                            print("Antes que você e o Headbanger pudessem perceber o som da moto, um comparsa o resgatou...")
+                            time.sleep(3)
+                            print("O Headbanger se virou e olhou para você.")
+                            time.sleep(3)
+                            print(" - Você é fraco demais, mas tem muito potencial.")
+                            time.sleep(3)
+                            print(" - Não sei o que você fez para eles, mas você parece precisar de ajuda.")
+                            time.sleep(3)
+                            print(" - Vou procurar saber o que está acontecendo... Faça o mesmo, você também!")
+                            time.sleep(3)
+                            print(" - Ele sumiu pelos becos da rua...")
+                            time.sleep(3)
+                            print("Voce continua sem respostas...")
+                            time.sleep(3)
+                            print("Será que você encontrará alguma pista na escola?")
+                            time.sleep(5)
+                        else:
+                            print(" - Pare! Por favor!\n")
+                            time.sleep(3)
+                            print("...")
+                            time.sleep(3)
+                            print("Antes que você pudesse perceber o som da moto, um comparsa o resgatou...")
+                            time.sleep(3)
+                            print("Voce continua sem respostas...")
+                            time.sleep(3)
+                            print("Será que você encontrará alguma pista na escola?")
+                            time.sleep(5)
                 else:
-                    input(" - Pare! Por favor!\n")
+                    print(" - Pare! Por favor!\n")
+                    time.sleep(3)
                     print("...")
-                    input("Antes que você pudesse perceber o som da moto, um comparsa o resgatou...")
-                    input("Voce continua sem respostas...")
-                    input("Será que você encontrará alguma pista na escola?")
+                    time.sleep(3)
+                    print("Você escuta um som de moto ao fundo...")
+                    time.sleep(3)
+                    print("Um comparsa motoqueiro tentou te atropelar, mas você conseguiu executar uma evasão rolando para a calçada!")
+                    time.sleep(3)
+                    print(" - Agora você vai entregar o dinheiro, ou não vai?! - inqueriu, o motoqueiro montado em sua Twister 250.")
+                    time.sleep(3)
+                    nome_do_inimigo="Motoqueiro Comparsa"
+                    vida_máxima_inimigo=5000
+                    vida_atual_inimigo=5000
+                    ataque_do_inimigo=3000
+                    defesa_do_inimigo=100
+                    batalha()
+                    if(vida_atual_personagem<=0): break
+                    if(vida_atual_inimigo>0):
+                        print("Correndo entre uns becos da sua rua, você conseguiu se esconder...")
+                        time.sleep(2)
+                        print("...")
+                        time.sleep(2)
+                        print("...")
+                        time.sleep(2)
+                        print("Você conseguiu despitá-los...")
+                        time.sleep(2)
+                    else:
+                        print("Você derrotou os dois!")
+                        time.sleep(2)
+                        print("Eles estão desmaiados na rua...")
+                        time.sleep(2)
+                        print("Mas antes que você pudesse pensar em algo, o barrulho de várias sirenes te alertou!")
+                        time.sleep(2)
+                        print("Você se escondeu em um dos becos, mas pode assistir os policiais prendendo os dois bandidos...")
+                        time.sleep(2)
+                        print("Você conseguiu se manter escondido até a cena esfriar, mas continua sem respostas...")
+                        time.sleep(2)
             ponto_de_save = 3
             variável_lugar = "sua rua"
             save()
 
 ##########--------------------------------------------------FIM DA TERCEIRA PARTE--------------------------------------------------##########
         if(ponto_de_save==3):
-            input("Cenário:\n")
-            
+            if(variável_lugar == "seu prédio, 1º andar" or variável_lugar == "seu prédio, 2º andar" or variável_lugar == "seu prédio, 3º andar" or variável_lugar == "seu prédio, 4º andar"):
+                if(variável_lugar == "seu prédio, 1º andar"):
+                    variável_lugar = "seu prédio, 1º andarb"
+                if(variável_lugar == "seu prédio, 2º andar"):
+                    variável_lugar = "seu prédio, 2º andarb"
+                if(variável_lugar == "seu prédio, 3º andar"):
+                    variável_lugar = "seu prédio, 3º andarb"
+                if(variável_lugar == "seu prédio, 4º andar"):
+                    variável_lugar = "seu prédio, 4º andarb"
+                seuPrédioPrimeiroAndar()
+                variável_lugar = "sua rua"
+            else:
+                input("Cenário:Você está na sua rua, por agora tudo está calmo....")
+                suaRua()
+            if(vida_atual_personagem<=0):break
+            ponto_de_save = 4
+            save()
 
 ##########--------------------------------------------------FIM DO JOGO--------------------------------------------------##########
         break
