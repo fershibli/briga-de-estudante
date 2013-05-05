@@ -7,90 +7,464 @@ import time
 
 #ASSISTA DEVIL SURVIVOR 2
 
-#--Variáveis de Texto--#
-nome_do_jogador = "Jogador"
-nome_do_inimigo = "Inimigo"
-reserva_nome_do_jogador = ""
+#"Nome"[0], atq[1], def[2], agi[3], luk[4], vidamáxima[5], vidaatual[6], dinheiro[7]
+personagem_jogador = [ "Jogador", 10, 8, 1, 1, 100, 100, 0]
+personagem_reserva = [ "Jogador", 10, 8, 1, 1, 100, 100, 0]
+personagem_inimigo = [ "Inimigo", 10, 8, 1, 1, 100, 100]
+
+#["Nome"[0], atq[1], def[2], agi[3], luk[4], tipo[5], preço[6], recupera[7]
+
+desequipado_roupa = ["Nada", 0, 0, 0, 0, "roupa", 0, 0]
+desequipado_capa = ["Nada", 0, 0, 0, 0, "capa", 0, 0]
+desequipado_luva = ["Nada", 0, 0, 0, 0, "luva", 0, 0]
+desequipado_anel = ["Nada", 0, 0, 0, 0, "anel", 0, 0]
+desequipado_mãos = ["Nada", 0, 0, 0, 0, "armamento", 0, 0]
+desequipado_calçado = ["Nada", 0, 0, 0, 0, "calçados", 0, 0]
+espaço_vazio = ["Vazio", 0, 0, 0, 0, "inventário", 0, 0]
+
+pedaço_pizza = ["Pedaço de Pizza", 0, 0, 0, 0, "consumível", 5, 50]
+bolo_chocolate = ["Bolo de Chocolate", 0, 0, 0, 0, "consumível", 100, personagem_jogador[5]]
+
+pijama_inicial = ["Pijama", 0, 0, 0, 5, "roupa", 5, 0]
+uniforme_estudantil = ["Uniforme Estudantil",0,1,0,0,"roupa",5,0]
+malha_ninja = ["Malha Ninja", 5, 20, 5, 1, "roupa", 5000, 0]
+
+lápis_apontado = ["Lápis Apontado", 3,0,0,1,"armamento",2,0]
+punhal_envelhecido = ["Punhal Envelhecido", 10, 0,0,3,"armamento",300,0]
+talheres_prata = ["Talheres de prata(Garfo e Faca)", 8, 0,0,0,"armamento",10,0]
+
+jaqueta_imitação = ["Jaqueta de Imitação de Couro", 0, 20, 0, 0,"capa",150,0]
+jaqueta_couro = ["Jaqueta de Couro", 0, 200, 0, 10,"capa",2000,0]
+agasalho_lã = ["Agasalho de Lã", 0, 6, 0, 0,"capa",100,0]
+
+suplemento_alimentício = ["Suplemento Alimentício", 10, 0, 0, 0, "consumível de aprimoramento",5, 0]
+lata_energético = ["Energético", 0, 0, 0, 0, "consumível de aprimoramento",5, 50]
+
+luva_lã = ["Luvas de Lã", 0, 3, 0, 0, "luva", 20, 0]
+luva_imitação = ["Luvas de Imitação de Couro", 3, 3, 0, 0, "luva", 100, 0]
+soco_pvc = ["Soco-Inglês de PVC", 3, 0, 0, 0, "luva", 50, 0]
+luva_couro = ["Luvas de Couro", 8, 8, 0, 0, "luva", 500, 0]
+soco_latão = ["Soco-Inglês de Latão", 10, 0, 0, 0, "luva", 500, 0]
+luva_spikes_alu = ["Luvas de Couro com Spikes de Aluminio", 15, 15, 0, 0, "luva", 700, 0]
+soco_alu = ["Soco-Inglês de Alumínio", 25, 0, 0, 0, "luva", 700, 0]
+luva_spikes_aço = ["Luvas de Couro com Spikes de Aço", 25, 25, 0, 0, "luva", 1000, 0]
+soco_aço = ["Soco-Inglês de Alumínio de Aço", 30, 0, 0, 0, "luva", 1000, 0]
+luva_spikes_ag = ["Luvas de Couro com Spikes de Prata", 25, 25, 0, 5, "luva", 5000, 0]
+soco_ag = ["Soco-Inglês de Prata", 35, 0, 0, 5, "luva", 5000, 0]
+luva_spikes_au = ["Luvas de Couro com Spikes de Ouro", 250, 250, 0, 10, "luva", 10000, 0]
+soco_au = ["Soco-Inglês de Ouro", 350, 0, 0, 10, "luva", 10000, 0]
+luva_spikes_titânio = ["Luvas de Couro com Spikes de Titânio", 2500, 2500, 0, 20, "luva", 50000, 0]
+soco_titânio = ["Soco-Inglês de Titânio", 3500, 0, 0, 20, "luva", 50000, 0]
+
+anel_força1 = ["Anel da Força 1", 10, -2, -2, -2, "anel", 500, 0]
+anel_resistência1 = ["Anel da Resistência 1", -2, 10, -2, -2, "anel", 500, 0]
+anel_força2 = ["Anel da Força 2", 20, -4, -4, -4, "anel", 1000, 0]
+anel_resistência2 = ["Anel da Resistência 2", -4, 20, -4, -4, "anel", 1000, 0]
+anel_força3 = ["Anel da Força 2", 40, -8, -8, -8, "anel", 5000, 0]
+anel_resistência3 = ["Anel da Resistência 2", -8, 40, -8, -8, "anel", 5000, 0]
+
+anel_consistência1 = ["Anel da Consistência 1", -2, -2, -2, -2, "anel", 500, 10]
+anel_consistência2 = ["Anel da Consistência 2", -4, -4, -4, -4, "anel", 1000, 100]
+anel_consistência3 = ["Anel da Consistência 3", -8, -8, -8, -8, "anel", 5000, 1000]
+
+anel_da_imortalidade = ["Anel da Imortalidade", personagem_jogador[1], personagem_jogador[2], personagem_jogador[3], personagem_jogador[4], "anel", 100000, personagem_jogador[5]]
+anel_da_divindade = ["Anel da Divindade", personagem_jogador[1]*2, personagem_jogador[2]*2, personagem_jogador[3]*2, personagem_jogador[4]*2, "anel", 100000000, personagem_jogador[5]*2]
+
+chinelo_inicial = ["Chinelos", 0, 0, 0, -5, "calçados", 5, 0]
+papetes_masculinas = ["Papetes Masculinas", 0, 0, 1, 0, "calçados", 15, 0]
+tênis_velho = ["Tênis Velho", 0, 0, 2, 0, "calçados", 10, 0]
+tênis_simplório = ["Tênis Simplório", 0, 1, 2, 0, "calçados", 50, 0]
+sapato_simplório = ["Sapato Simplório", 0, 2, 1, 0, "calçados", 50, 0]
+tênis_comum = ["Tênis Comum", 0, 2, 2, 0, "calçados", 90, 0]
+tênis_trilha = ["Tênis de Trilha", 2, 8, 3, 0, "calçados", 400, 0]
+tênis_caminhada = ["Tênis de Caminhada", 0, 3, 5, 0, "calçados", 300, 0]
+tênis_corrida = ["Tênis de Corrida", 0, 5, 10, 0, "calçados", 500, 0]
+tênis_ZX5000 = ["Tênis ZX-5000", 10, 10, 11, 5, "calçados", 15000, 0]
+
+item_adicionado=espaço_vazio
+quantidade_adicionada=1
+
+equipado_roupa = pijama_inicial
+equipado_capa = desequipado_capa
+equipado_luva = desequipado_luva
+equipado_anel = desequipado_anel
+equipado_mãos = desequipado_mãos
+equipado_calçado = chinelo_inicial
+
+variável_cenário = ["não" ,"não" ,"não"]
+#[0]  olhar cenário primeira vez no seu quarto e reciclada no primeiro andar do seu prédio
+#[1]  modificar cenário primeira vez no seu quarto
+#[2]  cheirar cenário no primeiro andar do seu prédio
+
+objeto = ["não", "não", "não", "não", "não"]
+#[0]  presente do tutorial e reciclada no bêbado do 1ºandar
+#[1]  porta do quarto 10
+#[2]  energético do bêbado (ação revistar)
+#[3]  arrombar porta do quarto 10
+#[4]  mulher do bêbado - talheres de prata
+
+situação = [0  ,0,0,0 ,0,0  ,0,0,0 ,0,0]
+#[0]  dois últimos andares do seu prédio
+#[1]  quarto 11 do seu prédio
+#[2]  quarto 24 do seu prédio
+#[3]  quarto 21 do seu prédio
+#[4]  quarto 22 do seu prédio
+#[5]  quarto 30 do seu prédio
+#[6]  quarto 31 do seu prédio
+#[7]  quarto 32 do seu prédio
+#[8]  quarto 33 do seu prédio
+#[9]  quarto 34 do seu prédio
+#[10] quarto 20 do seu prédio
+
+temporário = [False, False]
+#[0]  verifica se pegou o uniforme no seu quarto depois é reciclada para verificar se já venceu o terceiro andar do seu prédio
+#[1]  verifica se pegou o soco inglês no seu quarto depois é reciclada para verificar se 
+
+variável_lugar = "seu quarto"
+ponto_de_save = 0
+
+mostrar_save = ''
+
+eegg = 1
+
 ação_do_personagem = "" 
 batalha_escapar = ""
-equipamento_roupa = "Pijama"
-equipamento_capa = "Nada"
-equipamento_luva = "Nada"
-equipamento_mãos = "Nada"
-equipamento_botas = "Chinelos"
-olhar_o_cenário = "não"
-modificar_o_cenário = "não"
-cheirar_o_cenário = "não"
-objeto_00 = "não" #presente do tutorial e depois passar a ser o bêbado do 1ºandar
-objeto_01 = "não" #porta do quarto 10
-objeto_02 = "não" #energético do bêbado (ação revistar)
-objeto_03 = "não" #
-variável_lugar = "seu quarto"
-mostrar_save = ''
-temporário= False
 
-#--Variáveis de Número--#
-ponto_de_save = 0
-eegg = 1
-vida_máxima_personagem = 100
-vida_atual_personagem = 100
-dinheiro_do_personagem = 0
-ataque_do_personagem = 10
-defesa_do_personagem = 8
-agilidade_do_personagem = 1
-reserva_vida_máxima_personagem = 100
-reserva_vida_atual_personagem = 100
-reserva_ataque_do_personagem = 10
-reserva_defesa_do_personagem = 8
-reserva_agilidade_do_personagem = 1
-vida_máxima_inimigo = 30
-vida_atual_inimigo = 30
-ataque_do_inimigo = 5
-defesa_do_inimigo = 5
-situação_00 = 0 #dois últimos andares do seu prédio
-situação_01 = 0 #quarto 11 do seu prédio
-situação_02 = 0 #quarto 24 do seu prédio
-situação_03 = 0 #quarto 21 do seu prédio
-situação_04 = 0 #quarto 22 do seu prédio
-situação_05 = 0 #quarto 30 do seu prédio
-situação_06 = 0 #quarto 31 do seu prédio
-situação_07 = 0 #quarto 32 do seu prédio
-situação_08 = 0 #quarto 33 do seu prédio
-situação_09 = 0 #quarto 34 do seu prédio
-situação_10 = 0 #quarto 20 do seu prédio
 teste_de_sorte = 0
 calculo_do_dano = 0
 calculo_da_fuga = 0
 variável_para_comparar = 0
 contador_de_batalha= 0
 contador_de_rodadas = 0
-#global nome_do_jogador, nome_do_inimigo,reserva_nome_do_jogador, ação_do_personagem, batalha_escapar, equipamento_roupa, equipamento_capa, equipamento_luva, equipamento_mãos, equipamento_botas, olhar_o_cenário, modificar_o_cenário, cheirar_o_cenário, objeto_00, objeto_01, objeto_02, objeto_03,variável_lugar,mostrar_save,ponto_de_save, eegg, vida_máxima_personagem, vida_atual_personagem, dinheiro_do_personagem, ataque_do_personagem, defesa_do_personagem, agilidade_do_personagem,reserva_vida_máxima_personagem,reserva_vida_atual_personagem,reserva_ataque_do_personagem,reserva_defesa_do_personagem,reserva_agilidade_do_personagem, vida_máxima_inimigo, vida_atual_inimigo, ataque_do_inimigo, defesa_do_inimigo,situação_00, situação_01, situação_02, situação_03, situação_04,situação_05,situação_06,situação_07,situação_08,situação_09,situação_10, teste_de_sorte, calculo_do_dano, calculo_da_fuga, variável_para_comparar, contador_de_batalha, contador_de_rodadas
 
+
+#global desequipado_roupa,desequipado_capa,desequipado_luva,desequipado_mãos,desequipado_calçado,espaço_vazio,pedaço_pizza,bolo_chocolate,pijama_inicial,uniforme_estudantil,malha_ninja,lápis_apontado,punhal_envelhecido,talheres_prata,jaqueta_imitação,jaqueta_couro,agasalho_lã,suplemento_alimentício,lata_energético,luva_lã,luva_couro,soco_pvc,soco_latão,luva_spikes_alu,soco_alu,luva_spikes_aço,soco_aço,luva_spikes_ag,soco_ag,luva_spikes_au,soco_au,luva_spikes_titânio,soco_titânio,anel_força1,anel_força2,anel_força3,anel_resistência1,anel_resistência2,anel_resistência3,anel_consistência1,anel_consistência2,anel_consistência3,anel_da_imortalidade,anel_da_divindade,chinelo_inicial,papetes_masculinas,tênis_velho,tênis_simplório,sapato_simplório,tênis_comum,tênis_trilha,tênis_caminhada,tênis_corrida,tênis_ZX5000,item_adicionado,quantidade_adicionada,equipado_roupa,equipado_capa,equipado_luva,equipado_anel,equipado_mãos,equipado_calçado,variável_cenário,objeto,situação,temporário,variável_lugar,ponto_de_save,mostrar_save, personagem_jogador,personagem_reserva,personagem_inimigo,eegg,ação_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,variável_para_comparar,contador_de_batalha,contador_de_rodadas,mala,loja_venda
+
+mala = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30],[espaço_vazio, espaço_vazio, espaço_vazio, espaço_vazio, espaço_vazio,espaço_vazio, espaço_vazio, espaço_vazio, espaço_vazio, espaço_vazio,espaço_vazio, espaço_vazio, espaço_vazio, espaço_vazio, espaço_vazio,espaço_vazio, espaço_vazio, espaço_vazio, espaço_vazio, espaço_vazio,espaço_vazio, espaço_vazio, espaço_vazio, espaço_vazio, espaço_vazio,espaço_vazio, espaço_vazio, espaço_vazio, espaço_vazio, espaço_vazio]
+loja_venda = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30],[espaço_vazio, espaço_vazio, espaço_vazio, espaço_vazio, espaço_vazio,espaço_vazio, espaço_vazio, espaço_vazio, espaço_vazio, espaço_vazio,espaço_vazio, espaço_vazio, espaço_vazio, espaço_vazio, espaço_vazio,espaço_vazio, espaço_vazio, espaço_vazio, espaço_vazio, espaço_vazio,espaço_vazio, espaço_vazio, espaço_vazio, espaço_vazio, espaço_vazio,espaço_vazio, espaço_vazio, espaço_vazio, espaço_vazio, espaço_vazio]
+
+#--Adicionar Item ao Inventário--#
+def adicionaItem():
+    global desequipado_roupa,desequipado_capa,desequipado_luva,desequipado_mãos,desequipado_calçado,espaço_vazio,pedaço_pizza,bolo_chocolate,pijama_inicial,uniforme_estudantil,malha_ninja,lápis_apontado,punhal_envelhecido,talheres_prata,jaqueta_imitação,jaqueta_couro,agasalho_lã,suplemento_alimentício,lata_energético,luva_lã,luva_couro,soco_pvc,soco_latão,luva_spikes_alu,soco_alu,luva_spikes_aço,soco_aço,luva_spikes_ag,soco_ag,luva_spikes_au,soco_au,luva_spikes_titânio,soco_titânio,anel_força1,anel_força2,anel_força3,anel_resistência1,anel_resistência2,anel_resistência3,anel_consistência1,anel_consistência2,anel_consistência3,anel_da_imortalidade,anel_da_divindade,chinelo_inicial,papetes_masculinas,tênis_velho,tênis_simplório,sapato_simplório,tênis_comum,tênis_trilha,tênis_caminhada,tênis_corrida,tênis_ZX5000,item_adicionado,quantidade_adicionada,equipado_roupa,equipado_capa,equipado_luva,equipado_anel,equipado_mãos,equipado_calçado,variável_cenário,objeto,situação,temporário,variável_lugar,ponto_de_save,mostrar_save, personagem_jogador,personagem_reserva,personagem_inimigo,eegg,ação_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,variável_para_comparar,contador_de_batalha,contador_de_rodadas,mala,loja_venda
+    while (quantidade_adicionada>0):
+        i=0
+        while i<=29:
+            if(mala[1][i]==espaço_vazio or mala[1][i][0]=="Nada"):
+                mala[1][i]=item_adicionado
+                break
+            i+=1
+        quantidade_adicionada-=1
+
+#--Inventário--#
+def inventárioPersonagem():
+    global desequipado_roupa,desequipado_capa,desequipado_luva,desequipado_mãos,desequipado_calçado,espaço_vazio,pedaço_pizza,bolo_chocolate,pijama_inicial,uniforme_estudantil,malha_ninja,lápis_apontado,punhal_envelhecido,talheres_prata,jaqueta_imitação,jaqueta_couro,agasalho_lã,suplemento_alimentício,lata_energético,luva_lã,luva_couro,soco_pvc,soco_latão,luva_spikes_alu,soco_alu,luva_spikes_aço,soco_aço,luva_spikes_ag,soco_ag,luva_spikes_au,soco_au,luva_spikes_titânio,soco_titânio,anel_força1,anel_força2,anel_força3,anel_resistência1,anel_resistência2,anel_resistência3,anel_consistência1,anel_consistência2,anel_consistência3,anel_da_imortalidade,anel_da_divindade,chinelo_inicial,papetes_masculinas,tênis_velho,tênis_simplório,sapato_simplório,tênis_comum,tênis_trilha,tênis_caminhada,tênis_corrida,tênis_ZX5000,item_adicionado,quantidade_adicionada,equipado_roupa,equipado_capa,equipado_luva,equipado_anel,equipado_mãos,equipado_calçado,variável_cenário,objeto,situação,temporário,variável_lugar,ponto_de_save,mostrar_save, personagem_jogador,personagem_reserva,personagem_inimigo,eegg,ação_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,variável_para_comparar,contador_de_batalha,contador_de_rodadas,mala,loja_venda
+    while 1:
+        print("Mochila:\n")
+        i=0
+        while i<=29:
+            if (mala[1][i]!=espaço_vazio and mala[1][i][0]!="Nada"):
+                print(mala[0][i]," : ",mala[1][i][0],"\n     (",mala[1][i][5],")\n")
+            i+=1
+        while 1:
+            print("Para analisar um item digite o número da sua posição!\nPara voltar ao jogo digite voltar.")
+            ação_do_personagem = input('-')
+            if ação_do_personagem.isnumeric():
+                ação_do_personagem=int(ação_do_personagem)
+                break
+            else:
+                if(ação_do_personagem=="voltar"):break
+                print("ENTRADA INVÁLIDA!")
+        if(ação_do_personagem=="voltar"):break
+        i=0
+        while i<=29:
+            if(i==ação_do_personagem):
+                break
+            i+=1
+        i=i-1
+        if(ação_do_personagem==mala[0][i] and mala[1][i]!=espaço_vazio and mala[1][i][0]!="Nada"):
+            if(mala[1][i][5]=="consumível de aprimoramento"):
+                print("\nNome:",mala[1][i][0], "\nTipo:",mala[1][i][5],"\nVida:",mala[1][i][7],"\nAtaque:",mala[1][i][1],"\nDefesa:",mala[1][i][2],"\nAgilidade:",mala[1][i][3],"\nSorte:",mala[1][i][4],"\n")
+                print("O que deseja fazer? (usar ou descartar)")
+                ação_do_personagem=input("-")
+                ação_do_personagem=ação_do_personagem.lower()
+                if(ação_do_personagem=="usar"):
+                    personagem_jogador[5]=personagem_jogador[5]+mala[1][i][7]
+                    personagem_jogador[6]=personagem_jogador[5]
+                    personagem_jogador[1]=personagem_jogador[1]+mala[1][i][1]
+                    personagem_jogador[2]=personagem_jogador[2]+mala[1][i][2]
+                    personagem_jogador[3]=personagem_jogador[3]+mala[1][i][3]
+                    personagem_jogador[4]=personagem_jogador[4]+mala[1][i][4]
+                    print("\nVocê usou", mala[1][i][0],"!\n")
+                    mala[1][i]=espaço_vazio
+                else:
+                    if(ação_do_personagem=="descartar"):
+                        while 1:
+                            print("\nTem certeza que deseja descartar?\n")
+                            ação_do_personagem=input("-")
+                            ação_do_personagem=ação_do_personagem.lower()
+                            if(ação_do_personagem!="não" or ação_do_personagem!="sim"):
+                                print("\nENTRADA INVÁLIDA!\n")
+                            else:break
+                        if(ação_do_personagem=="sim"):
+                            print("\nVocê descartou",mala[1][i][0],"!\n")
+                            mala[1][i]=espaço_vazio
+            if(mala[1][i][5]=="consumível"):
+                print("\nNome:",mala[1][i][0], "\nTipo:",mala[1][i][5],"\nVida:",mala[1][i][7],"\n")
+                print("O que deseja fazer? (usar ou descartar)")
+                ação_do_personagem=input("-")
+                ação_do_personagem=ação_do_personagem.lower()
+                if(ação_do_personagem=="usar"):
+                    personagem_jogador[6]=personagem_jogador[6]+mala[1][i][7]
+                    if (personagem_jogador[6]>personagem_jogador[5]+0.1*personagem_jogador[6]):
+                        personagem_jogador[6]=personagem_jogador[5]
+                    print("\nVocê usou", mala[1][i][0],"!\n")
+                    mala[1][i]=espaço_vazio
+                else:
+                    if(ação_do_personagem=="descartar"):
+                        while 1:
+                            print("\nTem certeza que deseja descartar?\n")
+                            ação_do_personagem=input("-")
+                            ação_do_personagem=ação_do_personagem.lower()
+                            if(ação_do_personagem!="não" or ação_do_personagem!="sim"):
+                                print("\nENTRADA INVÁLIDA!\n")
+                            else:break
+                        if(ação_do_personagem=="sim"):
+                            print("\nVocê descartou",mala[1][i][0],"!\n")
+                            mala[1][i]=espaço_vazio
+            if(mala[1][i][5]!="consumível de aprimoramento" and mala[1][i][5]!="consumível"):
+                print("\nNome:",mala[1][i][0],"\nTipo:",mala[1][i][5],"\nAtaque:",mala[1][i][1],"\nDefesa:",mala[1][i][2],"\nAgilidade:",mala[1][i][3],"\nSorte:",mala[1][i][4],"\n")
+                print("O que deseja fazer? (equipar ou descartar)")
+                ação_do_personagem=input("-")
+                ação_do_personagem=ação_do_personagem.lower()
+                if(ação_do_personagem=="descartar"):
+                    mala[1][i]=espaço_vazio
+                else:
+                    if(ação_do_personagem=="equipar"):
+                        if(mala[1][i][5]=="roupa"):
+                            print("Você guardou ", equipado_roupa[0]," e equipou ", mala[1][i][0],"!")
+                            personagem_jogador[1] = personagem_jogador[1] - equipado_roupa[1]
+                            personagem_jogador[2] = personagem_jogador[2] - equipado_roupa[2]
+                            personagem_jogador[3] = personagem_jogador[3] - equipado_roupa[3]
+                            personagem_jogador[4] = personagem_jogador[4] - equipado_roupa[4]
+                            personagem_jogador[5] = personagem_jogador[5] - equipado_roupa[7]
+                            item=equipado_roupa
+                            equipado_roupa=mala[1][i]
+                            mala[1][i]=item
+                            personagem_jogador[1] = personagem_jogador[1] + equipado_roupa[1]
+                            personagem_jogador[2] = personagem_jogador[2] + equipado_roupa[2]
+                            personagem_jogador[3] = personagem_jogador[3] + equipado_roupa[3]
+                            personagem_jogador[4] = personagem_jogador[4] + equipado_roupa[4]
+                            personagem_jogador[5] = personagem_jogador[5] + equipado_roupa[7]
+                        if(mala[1][i][5]=="capa"):                            
+                            personagem_jogador[1] = personagem_jogador[1] - equipado_capa[1]
+                            personagem_jogador[2] = personagem_jogador[2] - equipado_capa[2]
+                            personagem_jogador[3] = personagem_jogador[3] - equipado_capa[3]
+                            personagem_jogador[4] = personagem_jogador[4] - equipado_capa[4]
+                            personagem_jogador[5] = personagem_jogador[5] - equipado_capa[7]
+                            item=equipado_capa
+                            equipado_capa=mala[1][i]
+                            mala[1][i]=item
+                            personagem_jogador[1] = personagem_jogador[1] + equipado_capa[1]
+                            personagem_jogador[2] = personagem_jogador[2] + equipado_capa[2]
+                            personagem_jogador[3] = personagem_jogador[3] + equipado_capa[3]
+                            personagem_jogador[4] = personagem_jogador[4] + equipado_capa[4]
+                            personagem_jogador[5] = personagem_jogador[5] + equipado_capa[7]
+                        if(mala[1][i][5]=="luva"):
+                            personagem_jogador[1] = personagem_jogador[1] - equipado_luva[1]
+                            personagem_jogador[2] = personagem_jogador[2] - equipado_luva[2]
+                            personagem_jogador[3] = personagem_jogador[3] - equipado_luva[3]
+                            personagem_jogador[4] = personagem_jogador[4] - equipado_luva[4]
+                            personagem_jogador[5] = personagem_jogador[5] - equipado_luva[7]
+                            item=equipado_luva
+                            equipado_luva=mala[1][i]
+                            mala[1][i]=item
+                            personagem_jogador[1] = personagem_jogador[1] + equipado_luva[1]
+                            personagem_jogador[2] = personagem_jogador[2] + equipado_luva[2]
+                            personagem_jogador[3] = personagem_jogador[3] + equipado_luva[3]
+                            personagem_jogador[4] = personagem_jogador[4] + equipado_luva[4]
+                            personagem_jogador[5] = personagem_jogador[5] + equipado_luva[7]
+                        if(mala[1][i][5]=="anel"):
+                            personagem_jogador[1] = personagem_jogador[1] - equipado_anel[1]
+                            personagem_jogador[2] = personagem_jogador[2] - equipado_anel[2]
+                            personagem_jogador[3] = personagem_jogador[3] - equipado_anel[3]
+                            personagem_jogador[4] = personagem_jogador[4] - equipado_anel[4]
+                            personagem_jogador[5] = personagem_jogador[5] - equipado_anel[7]
+                            item=equipado_anel
+                            equipado_anel=mala[1][i]
+                            mala[1][i]=item
+                            personagem_jogador[1] = personagem_jogador[1] + equipado_anel[1]
+                            personagem_jogador[2] = personagem_jogador[2] + equipado_anel[2]
+                            personagem_jogador[3] = personagem_jogador[3] + equipado_anel[3]
+                            personagem_jogador[4] = personagem_jogador[4] + equipado_anel[4]
+                            personagem_jogador[5] = personagem_jogador[5] + equipado_anel[7]
+                        if(mala[1][i][5]=="armamento"):
+                            personagem_jogador[1] = personagem_jogador[1] - equipado_mãos[1]
+                            personagem_jogador[2] = personagem_jogador[2] - equipado_mãos[2]
+                            personagem_jogador[3] = personagem_jogador[3] - equipado_mãos[3]
+                            personagem_jogador[4] = personagem_jogador[4] - equipado_mãos[4]
+                            personagem_jogador[5] = personagem_jogador[5] - equipado_mãos[7]
+                            item=equipado_mãos
+                            equipado_mãos=mala[1][i]
+                            mala[1][i]=item
+                            personagem_jogador[1] = personagem_jogador[1] + equipado_mãos[1]
+                            personagem_jogador[2] = personagem_jogador[2] + equipado_mãos[2]
+                            personagem_jogador[3] = personagem_jogador[3] + equipado_mãos[3]
+                            personagem_jogador[4] = personagem_jogador[4] + equipado_mãos[4]
+                            personagem_jogador[5] = personagem_jogador[5] + equipado_mãos[7]
+                        if(mala[1][i][5]=="calçado"):
+                            personagem_jogador[1] = personagem_jogador[1] - equipado_calçado[1]
+                            personagem_jogador[2] = personagem_jogador[2] - equipado_calçado[2]
+                            personagem_jogador[3] = personagem_jogador[3] - equipado_calçado[3]
+                            personagem_jogador[4] = personagem_jogador[4] - equipado_calçado[4]
+                            personagem_jogador[5] = personagem_jogador[5] - equipado_calçado[7]
+                            item=equipado_calçado
+                            equipado_calçado=mala[1][i]
+                            mala[1][i]=item
+                            personagem_jogador[1] = personagem_jogador[1] + equipado_calçado[1]
+                            personagem_jogador[2] = personagem_jogador[2] + equipado_calçado[2]
+                            personagem_jogador[3] = personagem_jogador[3] + equipado_calçado[3]
+                            personagem_jogador[4] = personagem_jogador[4] + equipado_calçado[4]
+                            personagem_jogador[5] = personagem_jogador[5] + equipado_calçado[7]                            
+                        if(mala[1][i][5]=="consumível" or mala[1][i][5]=="consumível de aprimoramento"):
+                            print("você não pode equipar!")
+                    else:
+                        print("\nENTRADA INVÁLIDA!\n")
+
+#--Loja Padrão--#
 def lojaPadrão():
-    print(" - Olá, meu jovem! Em que posso ajudá-lo?\n")
-    time.sleep(5)
+    global desequipado_roupa,desequipado_capa,desequipado_luva,desequipado_mãos,desequipado_calçado,espaço_vazio,pedaço_pizza,bolo_chocolate,pijama_inicial,uniforme_estudantil,malha_ninja,lápis_apontado,punhal_envelhecido,talheres_prata,jaqueta_imitação,jaqueta_couro,agasalho_lã,suplemento_alimentício,lata_energético,luva_lã,luva_couro,soco_pvc,soco_latão,luva_spikes_alu,soco_alu,luva_spikes_aço,soco_aço,luva_spikes_ag,soco_ag,luva_spikes_au,soco_au,luva_spikes_titânio,soco_titânio,anel_força1,anel_força2,anel_força3,anel_resistência1,anel_resistência2,anel_resistência3,anel_consistência1,anel_consistência2,anel_consistência3,anel_da_imortalidade,anel_da_divindade,chinelo_inicial,papetes_masculinas,tênis_velho,tênis_simplório,sapato_simplório,tênis_comum,tênis_trilha,tênis_caminhada,tênis_corrida,tênis_ZX5000,item_adicionado,quantidade_adicionada,equipado_roupa,equipado_capa,equipado_luva,equipado_anel,equipado_mãos,equipado_calçado,variável_cenário,objeto,situação,temporário,variável_lugar,ponto_de_save,mostrar_save, personagem_jogador,personagem_reserva,personagem_inimigo,eegg,ação_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,variável_para_comparar,contador_de_batalha,contador_de_rodadas,mala,loja_venda
+    while 2:
+        print("\n(comprar, vender ou sair)")
+        ação_do_personagem=input("-")
+        ação_do_personagem=ação_do_personagem.lower()
+        if(ação_do_personagem=="vender"):
+            while 1:
+                print("Mochila:\n")
+                i=0
+                while i<=29:
+                    if (mala[1][i]!=espaço_vazio and mala[1][i][0]!="Nada"):
+                        print(mala[0][i]," : ",mala[1][i][0],"\n     (",mala[1][i][5],")\n")
+                    i+=1
+                while 1:
+                    print("Para analisar um item digite o número da sua posição!\nPara voltar ao jogo digite voltar.")
+                    ação_do_personagem = input('-')
+                    if ação_do_personagem.isnumeric():
+                        ação_do_personagem=int(ação_do_personagem)
+                        break
+                    else:
+                        ação_do_personagem=ação_do_personagem.lower()
+                        if(ação_do_personagem=="voltar"):break
+                        print("ENTRADA INVÁLIDA!")
+                if(ação_do_personagem=="voltar"):break
+                i=0
+                while i<=29:
+                    if(i==ação_do_personagem):
+                        break
+                    i+=1
+                i=i-1
+                if(ação_do_personagem==mala[0][i] and mala[1][i]!=espaço_vazio and mala[1][i][0]!="Nada"):
+                    if(mala[1][i][5]=="consumível de aprimoramento"):
+                        print("\nNome:",mala[1][i][0], "\nTipo:",mala[1][i][5],"\nVida:",mala[1][i][7],"\nAtaque:",mala[1][i][1],"\nDefesa:",mala[1][i][2],"\nAgilidade:",mala[1][i][3],"\nSorte:",mala[1][i][4],"\n")
+                if(mala[1][i][5]=="consumível"):
+                    print("\nNome:",mala[1][i][0], "\nTipo:",mala[1][i][5],"\nVida:",mala[1][i][7],"\n")
+                if(mala[1][i][5]!="consumível de aprimoramento" and mala[1][i][6]!="consumível"):
+                    print("\nNome:",mala[1][i][0],"\nTipo:",mala[1][i][5],"\nAtaque:",mala[1][i][1],"\nDefesa:",mala[1][i][2],"\nAgilidade:",mala[1][i][3],"\nSorte:",mala[1][i][4],"\n")
+                while 1:
+                    print("Posso comprar por ", mala[1][i][6]*0.5,"Reais.")
+                    print("Vai querer vender?(sim ou não)")
+                    ação_do_personagem=input("-")
+                    ação_do_personagem=ação_do_personagem.lower()
+                    if(ação_do_personagem == "não" or ação_do_personagem=="n" or ação_do_personagem=="nao" or ação_do_personagem=="no" or ação_do_personagem=="na" or ação_do_personagem=="nã" or ação_do_personagem=="ao" or ação_do_personagem=="ão" or ação_do_personagem=="ñ" or ação_do_personagem=="ñão" or ação_do_personagem=="ño" or ação_do_personagem=="ñõ" or ação_do_personagem=="ñã" or ação_do_personagem=="ñaõ" or ação_do_personagem=="aõ"):
+                        break
+                    if(ação_do_personagem=="sim" or ação_do_personagem=="s" or ação_do_personagem=="si" or ação_do_personagem=="sm" or ação_do_personagem=="im" or ação_do_personagem=="ssim"):
+                        personagem_jogador[7] = personagem_jogador[7] + mala[1][i][6]*0.5
+                        mala[1][i]=espaço_vazio
+                        print("Obrigado!")
+                        break
+        else:
+            if(ação_do_personagem == "comprar"):
+                while 1:
+                    print("Produtos a venda:\n")
+                    i=0
+                    while i<=29:
+                        if (loja_venda[1][i]!=espaço_vazio):
+                            print(loja_venda[0][i]," : ",loja_venda[1][i][0],"\n     (",loja_venda[1][i][5],")\n")
+                        i+=1
+                    while 1:
+                        print("Para analisar um item digite o número da sua posição!\nPara voltar ao jogo digite voltar.")
+                        ação_do_personagem = input('-')
+                        if ação_do_personagem.isnumeric():
+                            ação_do_personagem=int(ação_do_personagem)
+                            break
+                        else:
+                            ação_do_personagem=ação_do_personagem.lower()
+                            if(ação_do_personagem=="voltar"):break
+                            print("ENTRADA INVÁLIDA!")
+                    if(ação_do_personagem=="voltar"):break
+                    i=0
+                    while i<=29:
+                        if(i==ação_do_personagem):
+                            break
+                        i+=1
+                    i=i-1
+                    if(ação_do_personagem==loja_venda[0][i] and loja_venda[1][i]!=espaço_vazio):
+                        if(loja_venda[1][i][6]=="consumível de aprimoramento"):
+                            print("\nNome:",loja_venda[1][i][0], "\nTipo:",loja_venda[1][i][5],"\nVida:",loja_venda[1][i][7],"\nAtaque:",loja_venda[1][i][1],"\nDefesa:",loja_venda[1][i][2],"\nAgilidade:",loja_venda[1][i][3],"\nSorte:",loja_venda[1][i][4],"\n")
+                        if(loja_venda[1][i][6]=="consumível"):
+                            print("\nNome:",loja_venda[1][i][0], "\nTipo:",loja_venda[1][i][5],"\nVida:",loja_venda[1][i][7],"\n")
+                        if(loja_venda[1][i][6]!="consumível de aprimoramento" and loja_venda[1][i][6]!="consumível"):
+                            print("\nNome:",loja_venda[1][i][0],"\nTipo:",loja_venda[1][i][5],"\nAtaque:",loja_venda[1][i][1],"\nDefesa:",loja_venda[1][i][2],"\nAgilidade:",loja_venda[1][i][3],"\nSorte:",loja_venda[1][i][4],"\n")
+                        while 1:
+                            print("Deseja comprar? Quantos?(para desistir da compra digite 0)")
+                            ação_do_personagem = input('-')
+                            if ação_do_personagem.isnumeric():
+                                ação_do_personagem=int(ação_do_personagem)
+                                break
+                            else:
+                                ação_do_personagem=ação_do_personagem.lower()
+                                if(ação_do_personagem=="voltar"):break
+                                print("ENTRADA INVÁLIDA!")
+                        if(ação_do_personagem=="voltar"):break
+                        item_adicionado=loja_venda[1][i]
+                        quantidade_adicionada=ação_do_personagem
+                        while 1:
+                            print("Ficou ", loja_venda[1][i][6]*quantidade_adicionada,"Reais.")
+                            print("Vai comprar mesmo?(sim ou não)")
+                            ação_do_personagem=input("-")
+                            ação_do_personagem=ação_do_personagem.lower()
+                            if(ação_do_personagem == "não" or ação_do_personagem=="n" or ação_do_personagem=="nao" or ação_do_personagem=="no" or ação_do_personagem=="na" or ação_do_personagem=="nã" or ação_do_personagem=="ao" or ação_do_personagem=="ão" or ação_do_personagem=="ñ" or ação_do_personagem=="ñão" or ação_do_personagem=="ño" or ação_do_personagem=="ñõ" or ação_do_personagem=="ñã" or ação_do_personagem=="ñaõ" or ação_do_personagem=="aõ"):
+                                break
+                            else:
+                                if(ação_do_personagem=="sim" or ação_do_personagem=="s" or ação_do_personagem=="si" or ação_do_personagem=="sm" or ação_do_personagem=="im" or ação_do_personagem=="ssim"):
+                                    personagem_jogador[7] = personagem_jogador[7] - loja_venda[1][i][6]*quantidade_adicionada
+                                    adicionaItem()
+                                    print("Obrigado!")
+                                    break
+            else:
+                if(ação_do_personagem == "sair"):break
+                else:print("ENTRADA INVÁLIDA!")
 
 #--Ficha do Personagem--#
 def ficha_personagem():
-    global nome_do_jogador, nome_do_inimigo,reserva_nome_do_jogador, ação_do_personagem, batalha_escapar, equipamento_roupa, equipamento_capa, equipamento_luva, equipamento_mãos, equipamento_botas, olhar_o_cenário, modificar_o_cenário, cheirar_o_cenário, objeto_00, objeto_01, objeto_02, objeto_03,variável_lugar,mostrar_save,ponto_de_save, eegg, vida_máxima_personagem, vida_atual_personagem, dinheiro_do_personagem, ataque_do_personagem, defesa_do_personagem, agilidade_do_personagem,reserva_vida_máxima_personagem,reserva_vida_atual_personagem,reserva_ataque_do_personagem,reserva_defesa_do_personagem,reserva_agilidade_do_personagem, vida_máxima_inimigo, vida_atual_inimigo, ataque_do_inimigo, defesa_do_inimigo,situação_00, situação_01, situação_02, situação_03, situação_04,situação_05,situação_06,situação_07,situação_08,situação_09,situação_10, teste_de_sorte, calculo_do_dano, calculo_da_fuga, variável_para_comparar, contador_de_batalha, contador_de_rodadas
-    print("\n#", "-"*30,"#\n", "\nNome:", nome_do_jogador)
+    global desequipado_roupa,desequipado_capa,desequipado_luva,desequipado_mãos,desequipado_calçado,espaço_vazio,pedaço_pizza,bolo_chocolate,pijama_inicial,uniforme_estudantil,malha_ninja,lápis_apontado,punhal_envelhecido,talheres_prata,jaqueta_imitação,jaqueta_couro,agasalho_lã,suplemento_alimentício,lata_energético,luva_lã,luva_couro,soco_pvc,soco_latão,luva_spikes_alu,soco_alu,luva_spikes_aço,soco_aço,luva_spikes_ag,soco_ag,luva_spikes_au,soco_au,luva_spikes_titânio,soco_titânio,anel_força1,anel_força2,anel_força3,anel_resistência1,anel_resistência2,anel_resistência3,anel_consistência1,anel_consistência2,anel_consistência3,anel_da_imortalidade,anel_da_divindade,chinelo_inicial,papetes_masculinas,tênis_velho,tênis_simplório,sapato_simplório,tênis_comum,tênis_trilha,tênis_caminhada,tênis_corrida,tênis_ZX5000,item_adicionado,quantidade_adicionada,equipado_roupa,equipado_capa,equipado_luva,equipado_anel,equipado_mãos,equipado_calçado,variável_cenário,objeto,situação,temporário,variável_lugar,ponto_de_save,mostrar_save, personagem_jogador,personagem_reserva,personagem_inimigo,eegg,ação_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,variável_para_comparar,contador_de_batalha,contador_de_rodadas,mala,loja_venda
+    print("\n#", "-"*30,"#\n", "\nNome:", personagem_jogador[0])
     time.sleep(0.23)
-    print("\nVida:", vida_atual_personagem, "de", vida_máxima_personagem)
+    print("\nVida:", personagem_jogador[6], "de", personagem_jogador[5])
     time.sleep(0.23)
-    print("\nAtaque:", ataque_do_personagem, "\nDefesa:", defesa_do_personagem, "\nAgilidade:", agilidade_do_personagem)
+    print("\nAtaque:", personagem_jogador[1], "\nDefesa:", personagem_jogador[2], "\nAgilidade:", personagem_jogador[3], "\nSorte:", personagem_jogador[4])
     time.sleep(0.23)
-    print("\nCapa:", equipamento_capa, "\nRoupa:", equipamento_roupa, "\nCalçados:", equipamento_botas,)
+    print("\nCapa:", equipado_capa[0], "\nRoupa:", equipado_roupa[0], "\nCalçados:", equipado_calçado[0],)
     time.sleep(0.23)
-    print("\nLuvas:" ,equipamento_luva,"\nArmamento:", equipamento_mãos)
+    print("\nLuvas:" ,equipado_luva[0],"\nAnel:" ,equipado_anel[0],"\nArmamento:", equipado_mãos[0])
     time.sleep(0.23)
-    print("\nDinheiro:", dinheiro_do_personagem, "Reais\n")
+    print("\nDinheiro:", personagem_jogador[7], "Reais\n")
     time.sleep(0.23)
     print("\n#", "-"*30,"#\n")
     time.sleep(0.23)
 
 #--Save--#
 def save():
-    global nome_do_jogador, nome_do_inimigo,reserva_nome_do_jogador, ação_do_personagem, batalha_escapar, equipamento_roupa, equipamento_capa, equipamento_luva, equipamento_mãos, equipamento_botas, olhar_o_cenário, modificar_o_cenário, cheirar_o_cenário, objeto_00, objeto_01, objeto_02, objeto_03,variável_lugar,mostrar_save,ponto_de_save, eegg, vida_máxima_personagem, vida_atual_personagem, dinheiro_do_personagem, ataque_do_personagem, defesa_do_personagem, agilidade_do_personagem,reserva_vida_máxima_personagem,reserva_vida_atual_personagem,reserva_ataque_do_personagem,reserva_defesa_do_personagem,reserva_agilidade_do_personagem, vida_máxima_inimigo, vida_atual_inimigo, ataque_do_inimigo, defesa_do_inimigo,situação_00, situação_01, situação_02, situação_03, situação_04,situação_05,situação_06,situação_07,situação_08,situação_09,situação_10, teste_de_sorte, calculo_do_dano, calculo_da_fuga, variável_para_comparar, contador_de_batalha, contador_de_rodadas
+    global desequipado_roupa,desequipado_capa,desequipado_luva,desequipado_mãos,desequipado_calçado,espaço_vazio,pedaço_pizza,bolo_chocolate,pijama_inicial,uniforme_estudantil,malha_ninja,lápis_apontado,punhal_envelhecido,talheres_prata,jaqueta_imitação,jaqueta_couro,agasalho_lã,suplemento_alimentício,lata_energético,luva_lã,luva_couro,soco_pvc,soco_latão,luva_spikes_alu,soco_alu,luva_spikes_aço,soco_aço,luva_spikes_ag,soco_ag,luva_spikes_au,soco_au,luva_spikes_titânio,soco_titânio,anel_força1,anel_força2,anel_força3,anel_resistência1,anel_resistência2,anel_resistência3,anel_consistência1,anel_consistência2,anel_consistência3,anel_da_imortalidade,anel_da_divindade,chinelo_inicial,papetes_masculinas,tênis_velho,tênis_simplório,sapato_simplório,tênis_comum,tênis_trilha,tênis_caminhada,tênis_corrida,tênis_ZX5000,item_adicionado,quantidade_adicionada,equipado_roupa,equipado_capa,equipado_luva,equipado_anel,equipado_mãos,equipado_calçado,variável_cenário,objeto,situação,temporário,variável_lugar,ponto_de_save,mostrar_save, personagem_jogador,personagem_reserva,personagem_inimigo,eegg,ação_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,variável_para_comparar,contador_de_batalha,contador_de_rodadas,mala,loja_venda
     ficha_personagem()
     print('\nDeseja salvar seu progresso?("sim" ou "não")\n')
     while 1:
@@ -184,60 +558,90 @@ def save():
                                                     else:
                                                         print("Entrada inválida!\n")
             #recomendo você usar um for aqui :) - Lucas Sabiao
-            mostrar_save = ("  Nome:", nome_do_jogador, "  Vida:", vida_máxima_personagem,"  Lugar:", variável_lugar, "  Ataque:", ataque_do_personagem, "  Defesa:", defesa_do_personagem,"  Agilidade:", agilidade_do_personagem)
+            mostrar_save = ("  Nome:", personagem_jogador[0], "  Vida:", personagem_jogador[5],"  Lugar:", variável_lugar, "  Ataque:", personagem_jogador[1], "  Defesa:", personagem_jogador[2],"  Agilidade:", personagem_jogador[3])
             pickle.dump(mostrar_save, arq)
-            pickle.dump(nome_do_jogador, arq)
-            pickle.dump(nome_do_inimigo, arq)
-            pickle.dump(reserva_nome_do_jogador, arq)
-            pickle.dump(ação_do_personagem, arq)
-            pickle.dump(batalha_escapar, arq)
-            pickle.dump(equipamento_roupa, arq)
-            pickle.dump(equipamento_capa, arq)
-            pickle.dump(equipamento_luva, arq)
-            pickle.dump(equipamento_mãos, arq)
-            pickle.dump(equipamento_botas, arq)
-            pickle.dump(olhar_o_cenário, arq)
-            pickle.dump(modificar_o_cenário, arq)
-            pickle.dump(cheirar_o_cenário, arq)
-            pickle.dump(objeto_00, arq)
-            pickle.dump(objeto_01, arq)
-            pickle.dump(objeto_02, arq)
-            pickle.dump(objeto_03, arq)
+            pickle.dump(desequipado_roupa, arq)
+            pickle.dump(desequipado_capa, arq)
+            pickle.dump(desequipado_luva, arq)
+            pickle.dump(desequipado_mãos, arq)
+            pickle.dump(desequipado_calçado, arq)
+            pickle.dump(espaço_vazio, arq)
+            pickle.dump(pedaço_pizza, arq)
+            pickle.dump(bolo_chocolate, arq)
+            pickle.dump(pijama_inicial, arq)
+            pickle.dump(uniforme_estudantil, arq)
+            pickle.dump(malha_ninja, arq)
+            pickle.dump(lápis_apontado, arq)
+            pickle.dump(punhal_envelhecido, arq)
+            pickle.dump(talheres_prata, arq)
+            pickle.dump(jaqueta_imitação, arq)
+            pickle.dump(jaqueta_couro, arq)
+            pickle.dump(agasalho_lã, arq)
+            pickle.dump(suplemento_alimentício, arq)
+            pickle.dump(lata_energético, arq)
+            pickle.dump(luva_lã, arq)
+            pickle.dump(luva_couro, arq)
+            pickle.dump(soco_pvc, arq)
+            pickle.dump(soco_latão, arq)
+            pickle.dump(luva_spikes_alu, arq)
+            pickle.dump(soco_alu, arq)
+            pickle.dump(luva_spikes_aço, arq)
+            pickle.dump(soco_aço, arq)
+            pickle.dump(luva_spikes_ag, arq)
+            pickle.dump(soco_ag, arq)
+            pickle.dump(luva_spikes_au, arq)
+            pickle.dump(soco_au, arq)
+            pickle.dump(luva_spikes_titânio, arq)
+            pickle.dump(soco_titânio, arq)
+            pickle.dump(anel_força1, arq)
+            pickle.dump(anel_força2, arq)
+            pickle.dump(anel_força3, arq)
+            pickle.dump(anel_resistência1, arq)
+            pickle.dump(anel_resistência2, arq)
+            pickle.dump(anel_resistência3, arq)
+            pickle.dump(anel_consistência1, arq)
+            pickle.dump(anel_consistência2, arq)
+            pickle.dump(anel_consistência3, arq)
+            pickle.dump(anel_da_imortalidade, arq)
+            pickle.dump(anel_da_divindade, arq)
+            pickle.dump(chinelo_inicial, arq)
+            pickle.dump(papetes_masculinas, arq)
+            pickle.dump(tênis_velho, arq)
+            pickle.dump(tênis_simplório, arq)
+            pickle.dump(sapato_simplório, arq)
+            pickle.dump(tênis_comum, arq)
+            pickle.dump(tênis_trilha, arq)
+            pickle.dump(tênis_caminhada, arq)
+            pickle.dump(tênis_corrida, arq)
+            pickle.dump(tênis_ZX5000, arq)
+            pickle.dump(item_adicionado, arq)
+            pickle.dump(quantidade_adicionada, arq)
+            pickle.dump(equipado_roupa, arq)
+            pickle.dump(equipado_capa, arq)
+            pickle.dump(equipado_luva, arq)
+            pickle.dump(equipado_anel, arq)
+            pickle.dump(equipado_mãos, arq)
+            pickle.dump(equipado_calçado, arq)
+            pickle.dump(variável_cenário, arq)
+            pickle.dump(objeto, arq)
+            pickle.dump(situação, arq)
+            pickle.dump(temporário, arq)
             pickle.dump(variável_lugar, arq)
             pickle.dump(ponto_de_save, arq)
+            pickle.dump(personagem_jogador, arq)
+            pickle.dump(personagem_reserva, arq)
+            pickle.dump(personagem_inimigo, arq)
             pickle.dump(eegg, arq)
-            pickle.dump(vida_máxima_personagem, arq)
-            pickle.dump(vida_atual_personagem, arq)
-            pickle.dump(dinheiro_do_personagem, arq)
-            pickle.dump(ataque_do_personagem, arq)
-            pickle.dump(defesa_do_personagem, arq)
-            pickle.dump(agilidade_do_personagem, arq)
-            pickle.dump(reserva_vida_máxima_personagem, arq)
-            pickle.dump(reserva_vida_atual_personagem, arq)
-            pickle.dump(reserva_ataque_do_personagem, arq)
-            pickle.dump(reserva_defesa_do_personagem, arq)
-            pickle.dump(reserva_agilidade_do_personagem, arq)
-            pickle.dump(vida_máxima_inimigo, arq)
-            pickle.dump(vida_atual_inimigo, arq)
-            pickle.dump(ataque_do_inimigo, arq)
-            pickle.dump(defesa_do_inimigo, arq)
-            pickle.dump(situação_00, arq)
-            pickle.dump(situação_01, arq)
-            pickle.dump(situação_02, arq)
-            pickle.dump(situação_03, arq)
-            pickle.dump(situação_04, arq)
-            pickle.dump(situação_05, arq)
-            pickle.dump(situação_06, arq)
-            pickle.dump(situação_07, arq)
-            pickle.dump(situação_08, arq)
-            pickle.dump(situação_09, arq)
-            pickle.dump(situação_10, arq)
+            pickle.dump(ação_do_personagem, arq)
+            pickle.dump(batalha_escapar, arq)
             pickle.dump(teste_de_sorte, arq)
             pickle.dump(calculo_do_dano, arq)
             pickle.dump(calculo_da_fuga, arq)
             pickle.dump(variável_para_comparar, arq)
             pickle.dump(contador_de_batalha, arq)
             pickle.dump(contador_de_rodadas, arq)
+            pickle.dump(mala, arq)
+            pickle.dump(loja_venda, arq)
             arq.close
             print("\nPronto!\n")
             break
@@ -249,14 +653,14 @@ def save():
 
 #--Sistema de batalha--#
 def batalha():
-    global nome_do_jogador, nome_do_inimigo,reserva_nome_do_jogador, ação_do_personagem, batalha_escapar, equipamento_roupa, equipamento_capa, equipamento_luva, equipamento_mãos, equipamento_botas, olhar_o_cenário, modificar_o_cenário, cheirar_o_cenário, objeto_00, objeto_01, objeto_02, objeto_03,variável_lugar,mostrar_save,ponto_de_save, eegg, vida_máxima_personagem, vida_atual_personagem, dinheiro_do_personagem, ataque_do_personagem, defesa_do_personagem, agilidade_do_personagem,reserva_vida_máxima_personagem,reserva_vida_atual_personagem,reserva_ataque_do_personagem,reserva_defesa_do_personagem,reserva_agilidade_do_personagem, vida_máxima_inimigo, vida_atual_inimigo, ataque_do_inimigo, defesa_do_inimigo,situação_00, situação_01, situação_02, situação_03, situação_04,situação_05,situação_06,situação_07,situação_08,situação_09,situação_10, teste_de_sorte, calculo_do_dano, calculo_da_fuga, variável_para_comparar, contador_de_batalha, contador_de_rodadas
+    global desequipado_roupa,desequipado_capa,desequipado_luva,desequipado_mãos,desequipado_calçado,espaço_vazio,pedaço_pizza,bolo_chocolate,pijama_inicial,uniforme_estudantil,malha_ninja,lápis_apontado,punhal_envelhecido,talheres_prata,jaqueta_imitação,jaqueta_couro,agasalho_lã,suplemento_alimentício,lata_energético,luva_lã,luva_couro,soco_pvc,soco_latão,luva_spikes_alu,soco_alu,luva_spikes_aço,soco_aço,luva_spikes_ag,soco_ag,luva_spikes_au,soco_au,luva_spikes_titânio,soco_titânio,anel_força1,anel_força2,anel_força3,anel_resistência1,anel_resistência2,anel_resistência3,anel_consistência1,anel_consistência2,anel_consistência3,anel_da_imortalidade,anel_da_divindade,chinelo_inicial,papetes_masculinas,tênis_velho,tênis_simplório,sapato_simplório,tênis_comum,tênis_trilha,tênis_caminhada,tênis_corrida,tênis_ZX5000,item_adicionado,quantidade_adicionada,equipado_roupa,equipado_capa,equipado_luva,equipado_anel,equipado_mãos,equipado_calçado,variável_cenário,objeto,situação,temporário,variável_lugar,ponto_de_save,mostrar_save, personagem_jogador,personagem_reserva,personagem_inimigo,eegg,ação_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,variável_para_comparar,contador_de_batalha,contador_de_rodadas,mala,loja_venda
     input("\nBatalha!!!\nÉ hora da briga!!!\n")
     contador_de_rodadas=1
-    while(vida_atual_inimigo>0):
-        if(vida_atual_personagem<=0):
+    while(personagem_inimigo[6]>0):
+        if(personagem_jogador[6]<=0):
             break
         print("\n]]", "="*30,"[[\n", "    Início da rodada número ", contador_de_rodadas, "\n]]", "="*30,"[[\n")
-        if(vida_atual_personagem==1):
+        if(personagem_jogador[6]==1):
             if(contador_de_rodadas==1):
                 input("\nVocê entrou na batalha com apenas 1 ponto de vida!")
                 input("Seu último recurso é a tensão!\n")            
@@ -267,22 +671,22 @@ def batalha():
             if(contador_de_batalha>0):       
                 input("\nVocê aguentou mais uma rodada com apenas 1 ponto de vida!")
                 input("Você extendeu o limite do seu fôlego e agora o limite dos seus pontos de vida subiu!\n")
-                vida_máxima_personagem=vida_máxima_personagem+((contador_de_batalha)+(random.randrange(defesa_do_personagem)))
+                personagem_jogador[5]=personagem_jogador[5]+((contador_de_batalha)+(random.randrange(personagem_jogador[2])))
             contador_de_batalha=contador_de_batalha+1
         else:
-            if(vida_atual_personagem<=vida_máxima_personagem*0.05):
+            if(personagem_jogador[6]<=personagem_jogador[5]*0.05):
                 teste_de_sorte=random.randrange(15)
                 if(teste_de_sorte==1):
                     input("\nVocê está dando o seu melhor para aguentar, isso está melhorando o seu fôlego!")
                     input("O limite dos seus pontos de vida aumentou!\n")
-                    vida_máxima_personagem=vida_máxima_personagem+(random.randrange(defesa_do_personagem)+1)
+                    personagem_jogador[5]=personagem_jogador[5]+(random.randrange(personagem_jogador[2])+1)
                 else:
                     if(teste_de_sorte==5 or teste_de_sorte==6):
                         input("\nVocê está dando o seu melhor para aguentar, isso está melhorando o seu fôlego!")
                         input("O limite dos seus pontos de vida aumentou!\n")
-                        vida_máxima_personagem=vida_máxima_personagem+(random.randrange(defesa_do_personagem)+1)
-        print("\n#", "-"*30,"#\n", "\n\n", nome_do_jogador, ":\n                    ",vida_atual_personagem, "\n                     de", vida_máxima_personagem, " Pontos de Vida\n\n", nome_do_inimigo, ":\n                    ", vida_atual_inimigo, "\n                     de", vida_máxima_inimigo, " Pontos de vida\n")
-        print("\n#", "-"*30,"#\nO que você fará agora, ", nome_do_jogador, "?\nAtacar, defender ou fugir?")
+                        personagem_jogador[5]=personagem_jogador[5]+(random.randrange(personagem_jogador[2])+1)
+        print("\n#", "-"*30,"#\n", "\n\n", personagem_jogador[0], ":\n                    ",personagem_jogador[6], "\n                     de", personagem_jogador[5], " Pontos de Vida\n\n", personagem_inimigo[0], ":\n                    ", personagem_inimigo[6], "\n                     de", personagem_inimigo[5], " Pontos de vida\n")
+        print("\n#", "-"*30,"#\nO que você fará agora, ", personagem_jogador[0], "?\nAtacar, defender ou fugir?")
         ação_do_personagem = input("-")
         ação_do_personagem = ação_do_personagem.lower()
         while True:
@@ -292,104 +696,104 @@ def batalha():
                 ação_do_personagem = ação_do_personagem.lower()
             else: break
         contador_de_rodadas=contador_de_rodadas+1
-        if(ação_do_personagem == "defender"): #defesa(2defesa_do_personagem) vs ataque(ataque_do_inimigo)
-            print("\nPostura de Batalha:\n", nome_do_jogador, "-> defensiva\n", nome_do_inimigo, "-> ofensiva\n")
+        if(ação_do_personagem == "defender"): #defesa(2personagem_jogador[2]) vs ataque(personagem_inimigo[1])
+            print("\nPostura de Batalha:\n", personagem_jogador[0], "-> defensiva\n", personagem_inimigo[0], "-> ofensiva\n")
             input("...")
             teste_de_sorte = random.randrange(5)
-            if (teste_de_sorte==1):#S_defesa(3defesa_do_personagem) vs ataque(ataque_do_inimigo)
+            if (teste_de_sorte==1):#S_defesa(3personagem_jogador[2]) vs ataque(personagem_inimigo[1])
                 input("\nSua postura de defesa te favoreceu!\n")
                 teste_de_sorte = random.randrange(4)
-                if (teste_de_sorte==1):#S_defesa(3defesa_do_personagem) vs S_ataque(2ataque_do_inimigo)
+                if (teste_de_sorte==1):#S_defesa(3personagem_jogador[2]) vs S_ataque(2personagem_inimigo[1])
                     input("\n... Mas o ataque do inimigo foi crítico!\n")
-                    calculo_do_dano = (2*ataque_do_inimigo)+(random.randrange(ataque_do_inimigo))*(0.2)-(3*defesa_do_personagem)-(random.randrange(defesa_do_personagem))*(0.2)
-                    if (calculo_do_dano < 0):#S_defesa(3defesa_do_personagem) CONTRA-ATACA S_ataque(2ataque_do_inimigo)
-                        calculo_do_dano = (calculo_do_dano/2)*(-1)+((random.randrange(ataque_do_personagem))/2)*(0.2)
+                    calculo_do_dano = (2*personagem_inimigo[1])+(random.randrange(personagem_inimigo[1]))*(0.2)-(3*personagem_jogador[2])-(random.randrange(personagem_jogador[2]))*(0.2)
+                    if (calculo_do_dano < 0):#S_defesa(3personagem_jogador[2]) CONTRA-ATACA S_ataque(2personagem_inimigo[1])
+                        calculo_do_dano = (calculo_do_dano/2)*(-1)+((random.randrange(personagem_jogador[1]))/2)*(0.2)
                         input("\nNão importa, sua defesa é incrível!")
                         print("Além de defender você conseguiu contra-atacar, causando ", calculo_do_dano," pontos de dano ao inimigo!\n")
                         input("")
                         teste_de_sorte = random.randrange(140)#aumento de defesa
                         if (teste_de_sorte==10 or teste_de_sorte==20 or teste_de_sorte==30):
-                            variável_para_comparar=defesa_do_personagem
-                            defesa_do_personagem=defesa_do_personagem+(random.randrange(defesa_do_personagem))
-                            if (variável_para_comparar < defesa_do_personagem):
+                            variável_para_comparar=personagem_jogador[2]
+                            personagem_jogador[2]=personagem_jogador[2]+(random.randrange(personagem_jogador[2]))
+                            if (variável_para_comparar < personagem_jogador[2]):
                                 input("\nVocê testou o seu limite e agora está mais forte!")
                                 input("Seus pontos de defesa subiram!\n")
-                            if (variável_para_comparar > defesa_do_personagem):
-                                defesa_do_personagem=variável_para_comparar
+                            if (variável_para_comparar > personagem_jogador[2]):
+                                personagem_jogador[2]=variável_para_comparar
                         if (teste_de_sorte==40 or teste_de_sorte==50):
                             input("\nVocê testou o seu limite e agora está mais forte!")
                             input("Seus pontos de defesa subiram!\n")
-                            defesa_do_personagem=defesa_do_personagem+(random.randrange(defesa_do_personagem))+1
+                            personagem_jogador[2]=personagem_jogador[2]+(random.randrange(personagem_jogador[2]))+1
                         if (teste_de_sorte==100):
                             input("\nVocê testou o seu limite e agora está mais forte!")
                             input("Seus pontos de defesa subiram!\n")
-                            defesa_do_personagem=defesa_do_personagem+(random.randrange(defesa_do_personagem))+2
+                            personagem_jogador[2]=personagem_jogador[2]+(random.randrange(personagem_jogador[2]))+2
                         if (teste_de_sorte==130):
                             input("\nVocê testou o seu limite e agora está mais forte!")
                             input("Seus pontos de defesa subiram!\n")
-                            defesa_do_personagem=defesa_do_personagem+(random.randrange(defesa_do_personagem))+3
-                        vida_atual_inimigo = vida_atual_inimigo-calculo_do_dano
+                            personagem_jogador[2]=personagem_jogador[2]+(random.randrange(personagem_jogador[2]))+3
+                        personagem_inimigo[6] = personagem_inimigo[6]-calculo_do_dano
                     else:
-                        if (calculo_do_dano == 0):#S_defesa(3defesa_do_personagem) ANULA S_ataque(2ataque_do_inimigo)
+                        if (calculo_do_dano == 0):#S_defesa(3personagem_jogador[2]) ANULA S_ataque(2personagem_inimigo[1])
                             input("\nDefesa e ataque se anulam! A tensão aumenta!\n")
-                        else:#S_defesa(3defesa_do_personagem) APANHA DO S_ataque(2ataque_do_inimigo)
+                        else:#S_defesa(3personagem_jogador[2]) APANHA DO S_ataque(2personagem_inimigo[1])
                             print("\nVocê sofreu ", calculo_do_dano, " pontos de dano...\n")
                             input("")
-                            vida_atual_personagem = vida_atual_personagem - calculo_do_dano
-                else:#S_defesa(3defesa_do_personagem) vs ataque(ataque_do_inimigo)
-                    calculo_do_dano = (ataque_do_inimigo)+(random.randrange(ataque_do_inimigo))*(0.2)-(3*defesa_do_personagem)-(random.randrange(defesa_do_personagem))*(0.2)
-                    if (calculo_do_dano<0):#S_defesa(3defesa_do_personagem) CONTRA-ATACA ataque(ataque_do_inimigo)
-                        calculo_do_dano = (calculo_do_dano/2)*(-1)+((random.randrange(ataque_do_personagem))/2)*(0.2)
+                            personagem_jogador[6] = personagem_jogador[6] - calculo_do_dano
+                else:#S_defesa(3personagem_jogador[2]) vs ataque(personagem_inimigo[1])
+                    calculo_do_dano = (personagem_inimigo[1])+(random.randrange(personagem_inimigo[1]))*(0.2)-(3*personagem_jogador[2])-(random.randrange(personagem_jogador[2]))*(0.2)
+                    if (calculo_do_dano<0):#S_defesa(3personagem_jogador[2]) CONTRA-ATACA ataque(personagem_inimigo[1])
+                        calculo_do_dano = (calculo_do_dano/2)*(-1)+((random.randrange(personagem_jogador[1]))/2)*(0.2)
                         print("\nSua defesa foi tão grande que, além de bloquear o ataque, você conseguiu contra-atacar, causando ", calculo_do_dano," pontos de dano ao inimigo!\n")
                         input("")
-                        vida_atual_inimigo = vida_atual_inimigo-calculo_do_dano
+                        personagem_inimigo[6] = personagem_inimigo[6]-calculo_do_dano
                     else:
-                        if (calculo_do_dano ==0):#S_defesa(3defesa_do_personagem) ANULA ataque(ataque_do_inimigo)
+                        if (calculo_do_dano ==0):#S_defesa(3personagem_jogador[2]) ANULA ataque(personagem_inimigo[1])
                             input("\nSua defesa foi completa!\n")
-                        else:#S_defesa(3defesa_do_personagem) APANHA DO ataque(ataque_do_inimigo)
+                        else:#S_defesa(3personagem_jogador[2]) APANHA DO ataque(personagem_inimigo[1])
                             print("\nVocê sofreu míseros ", calculo_do_dano, " pontos de dano.\n")
                             input("")
-                            vida_atual_personagem = vida_atual_personagem-calculo_do_dano
+                            personagem_jogador[6] = personagem_jogador[6]-calculo_do_dano
             else:
                 teste_de_sorte = random.randrange(4)
-                if(teste_de_sorte==1):#defesa(2defesa_do_personagem) vs S_ataque(2ataque_do_inimigo)
-                    calculo_do_dano = 2*ataque_do_inimigo+(random.randrange(ataque_do_inimigo))*(0.2)-(1.5)*defesa_do_personagem-(random.randrange(defesa_do_personagem))*(0.2)
+                if(teste_de_sorte==1):#defesa(2personagem_jogador[2]) vs S_ataque(2personagem_inimigo[1])
+                    calculo_do_dano = 2*personagem_inimigo[1]+(random.randrange(personagem_inimigo[1]))*(0.2)-(1.5)*personagem_jogador[2]-(random.randrange(personagem_jogador[2]))*(0.2)
                     if (calculo_do_dano<0):
-                        calculo_do_dano = (calculo_do_dano/2)*(-1)+((random.randrange(ataque_do_personagem))/2)*(0.2)
+                        calculo_do_dano = (calculo_do_dano/2)*(-1)+((random.randrange(personagem_jogador[1]))/2)*(0.2)
                                             
                         input("\nSua defesa é simplesmente  I M E N S A !")
                         print("O inimigo avançou furiosamente mas você o lançou para trás e contra-atacou causando ", calculo_do_dano, " pontos de dano ao inimigo!\n")
                         input("")
                         teste_de_sorte = random.randrange(100)#aumento de defesa
                         if (teste_de_sorte==1 or teste_de_sorte==15 or teste_de_sorte==30):
-                            variável_para_comparar=defesa_do_personagem
-                            defesa_do_personagem=defesa_do_personagem+(random.randrange(defesa_do_personagem))
-                            if (variável_para_comparar < defesa_do_personagem):
+                            variável_para_comparar=personagem_jogador[2]
+                            personagem_jogador[2]=personagem_jogador[2]+(random.randrange(personagem_jogador[2]))
+                            if (variável_para_comparar < personagem_jogador[2]):
                                 input("\nVocê testou o seu limite e agora está mais forte!")
                                 input("Seus pontos de defesa subiram!\n")
-                            if (variável_para_comparar > defesa_do_personagem):
-                                defesa_do_personagem=variável_para_comparar
+                            if (variável_para_comparar > personagem_jogador[2]):
+                                personagem_jogador[2]=variável_para_comparar
                         if (teste_de_sorte==20 or teste_de_sorte==40):
                             input("\nVocê testou o seu limite e agora está mais forte!")
                             input("Seus pontos de defesa subiram!\n")
-                            defesa_do_personagem=defesa_do_personagem+(random.randrange(defesa_do_personagem))+1
+                            personagem_jogador[2]=personagem_jogador[2]+(random.randrange(personagem_jogador[2]))+1
                         if (teste_de_sorte==45):
                             input("\nVocê testou o seu limite e agora está mais forte!")
                             input("Seus pontos de defesa subiram!\n")
-                            defesa_do_personagem=defesa_do_personagem+(random.randrange(defesa_do_personagem))+2
+                            personagem_jogador[2]=personagem_jogador[2]+(random.randrange(personagem_jogador[2]))+2
                         if (teste_de_sorte==55):
                             input("\nVocê testou o seu limite e agora está mais forte!")
                             input("Seus pontos de defesa subiram!\n")
-                            defesa_do_personagem=defesa_do_personagem+(random.randrange(defesa_do_personagem))+3
+                            personagem_jogador[2]=personagem_jogador[2]+(random.randrange(personagem_jogador[2]))+3
                         if (teste_de_sorte==70):
-                            variável_para_comparar=defesa_do_personagem
-                            defesa_do_personagem=defesa_do_personagem+(random.randrange(defesa_do_personagem))+(random.randrange(ataque_do_personagem))
-                            if (variável_para_comparar < defesa_do_personagem):
+                            variável_para_comparar=personagem_jogador[2]
+                            personagem_jogador[2]=personagem_jogador[2]+(random.randrange(personagem_jogador[2]))+(random.randrange(personagem_jogador[1]))
+                            if (variável_para_comparar < personagem_jogador[2]):
                                 input("\nVocê testou o seu limite e agora está mais forte!")
                                 input("Seus pontos de defesa subiram!\n")
-                            if (variável_para_comparar > defesa_do_personagem):
-                                defesa_do_personagem=variável_para_comparar
-                        vida_atual_inimigo = vida_atual_inimigo-calculo_do_dano
+                            if (variável_para_comparar > personagem_jogador[2]):
+                                personagem_jogador[2]=variável_para_comparar
+                        personagem_inimigo[6] = personagem_inimigo[6]-calculo_do_dano
                     else:
                         if(calculo_do_dano==0):
                             input("\nVocê surpreendeu o inimigo que estava confiante,")
@@ -398,136 +802,136 @@ def batalha():
                             if(teste_de_sorte==1):
                                 input("\nA liberação de energia durante a colisão despertou novos limites para sua força e agora está mais forte!")
                                 input("TODOS os seus pontos subiram!\n")
-                                vida_máxima_personagem=vida_máxima_personagem+(random.randrange(vida_máxima_personagem))+3
-                                ataque_do_personagem=ataque_do_personagem+(random.randrange(ataque_do_personagem))+2
-                                defesa_do_personagem=defesa_do_personagem+(random.randrange(defesa_do_personagem))+1
+                                personagem_jogador[5]=personagem_jogador[5]+(random.randrange(personagem_jogador[5]))+3
+                                personagem_jogador[1]=personagem_jogador[1]+(random.randrange(personagem_jogador[1]))+2
+                                personagem_jogador[2]=personagem_jogador[2]+(random.randrange(personagem_jogador[2]))+1
                         else:
                             print("\nMesmo se defendendo, o impacto do ataque inimigo te causou ", calculo_do_dano, " pontos de dano!\n")
                             input("")
-                            vida_atual_personagem = vida_atual_personagem-calculo_do_dano
-                else:#defesa(2defesa_do_personagem) vs ataque(ataque_do_inimigo)
-                    calculo_do_dano = ataque_do_inimigo+(random.randrange(ataque_do_inimigo))-2*defesa_do_personagem-(random.randrange(defesa_do_personagem))
+                            personagem_jogador[6] = personagem_jogador[6]-calculo_do_dano
+                else:#defesa(2personagem_jogador[2]) vs ataque(personagem_inimigo[1])
+                    calculo_do_dano = personagem_inimigo[1]+(random.randrange(personagem_inimigo[1]))-2*personagem_jogador[2]-(random.randrange(personagem_jogador[2]))
                     if (calculo_do_dano<0):
-                        calculo_do_dano = calculo_do_dano*(-1)+((random.randrange(ataque_do_personagem))/2)
+                        calculo_do_dano = calculo_do_dano*(-1)+((random.randrange(personagem_jogador[1]))/2)
                         input("\nSua defesa É ENORME!")
                         print("Você barrou o ataque naturalmente e contra-atacou, causando ", calculo_do_dano, " pontos de dano ao inimigo!\n")
                         input("")
                         teste_de_sorte = random.randrange(100)#aumento de defesa
                         if (teste_de_sorte==1 or teste_de_sorte==15 or teste_de_sorte==30):
-                            variável_para_comparar=defesa_do_personagem
-                            defesa_do_personagem=defesa_do_personagem+(random.randrange(defesa_do_personagem))
-                            if (variável_para_comparar < defesa_do_personagem):
+                            variável_para_comparar=personagem_jogador[2]
+                            personagem_jogador[2]=personagem_jogador[2]+(random.randrange(personagem_jogador[2]))
+                            if (variável_para_comparar < personagem_jogador[2]):
                                 input("\nVocê testou o seu limite e agora está mais forte!")
                                 input("Seus pontos de defesa subiram!\n")
-                            if (variável_para_comparar > defesa_do_personagem):
-                                defesa_do_personagem=variável_para_comparar
+                            if (variável_para_comparar > personagem_jogador[2]):
+                                personagem_jogador[2]=variável_para_comparar
                         if (teste_de_sorte==20 or teste_de_sorte==40):
                             input("\nVocê testou o seu limite e agora está mais forte!")
                             input("Seus pontos de defesa subiram!\n")
-                            defesa_do_personagem=defesa_do_personagem+(random.randrange(defesa_do_personagem))+1
+                            personagem_jogador[2]=personagem_jogador[2]+(random.randrange(personagem_jogador[2]))+1
                         if (teste_de_sorte==45):
                             input("\nVocê testou o seu limite e agora está mais forte!")
                             input("Seus pontos de defesa subiram!\n")
-                            defesa_do_personagem=defesa_do_personagem+(random.randrange(defesa_do_personagem))+2
+                            personagem_jogador[2]=personagem_jogador[2]+(random.randrange(personagem_jogador[2]))+2
                         if (teste_de_sorte==55):
                             input("\nVocê testou o seu limite e agora está mais forte!")
                             input("Seus pontos de defesa subiram!\n")
-                            defesa_do_personagem=defesa_do_personagem+(random.randrange(defesa_do_personagem))+3
-                        vida_atual_inimigo = vida_atual_inimigo-calculo_do_dano
+                            personagem_jogador[2]=personagem_jogador[2]+(random.randrange(personagem_jogador[2]))+3
+                        personagem_inimigo[6] = personagem_inimigo[6]-calculo_do_dano
                     else:
                         if(calculo_do_dano==0):
                             input("\nVocê barrou o ataque do inimigo!\n")
                         else:
                             print("\nMesmo se defendendo, o impacto do ataque inimigo te causou ", calculo_do_dano, " pontos de dano!\n")
                             input("")
-                            vida_atual_personagem = vida_atual_personagem-calculo_do_dano
+                            personagem_jogador[6] = personagem_jogador[6]-calculo_do_dano
         else:
             if (ação_do_personagem=="atacar"):
                 teste_de_sorte=random.randrange(2)
-                if (teste_de_sorte==1):#ataque(ataque_do_personagem) vs defesa(2defesa_do_inimigo)
-                    print("\nPostura de Batalha:\n", nome_do_jogador, "-> ofensiva\n", nome_do_inimigo, "-> defensiva\n")
+                if (teste_de_sorte==1):#ataque(personagem_jogador[1]) vs defesa(2personagem_inimigo[2])
+                    print("\nPostura de Batalha:\n", personagem_jogador[0], "-> ofensiva\n", personagem_inimigo[0], "-> defensiva\n")
                     input("...")
                     teste_de_sorte=random.randrange(4)
-                    if (teste_de_sorte==1):#S_ataque(2ataque_do_personagem) vs defesa(2defesa_do_inimigo)
+                    if (teste_de_sorte==1):#S_ataque(2personagem_jogador[1]) vs defesa(2personagem_inimigo[2])
                         input("\nSeu ataque foi crítico!!!\n")
                         teste_de_sorte=random.randrange(5)
-                        if (teste_de_sorte==1):#S_ataque(2ataque_do_personagem) vs S_defesa(3defesa_do_inimigo)
+                        if (teste_de_sorte==1):#S_ataque(2personagem_jogador[1]) vs S_defesa(3personagem_inimigo[2])
                             input("\nApesar do seu crítico, você é pressionado pela postura de defesa do seu inimigo!\n")
-                            calculo_do_dano=2*ataque_do_personagem+(random.randrange(ataque_do_personagem))-3*defesa_do_inimigo-(random.randrange(defesa_do_inimigo))
-                            if (calculo_do_dano<0):#S_ataque(2ataque_do_personagem) APANHA DE S_defesa(3defesa_do_inimigo)
-                                calculo_do_dano = calculo_do_dano*(-1)+((random.randrange(ataque_do_inimigo))/2)
+                            calculo_do_dano=2*personagem_jogador[1]+(random.randrange(personagem_jogador[1]))-3*personagem_inimigo[2]-(random.randrange(personagem_inimigo[2]))
+                            if (calculo_do_dano<0):#S_ataque(2personagem_jogador[1]) APANHA DE S_defesa(3personagem_inimigo[2])
+                                calculo_do_dano = calculo_do_dano*(-1)+((random.randrange(personagem_inimigo[1]))/2)
                                 input("\nPor mais que tente, você não consegue atravessar a defesa do seu inimigo!")
                                 print("Além de te bloquear, ele te contra-atacou, causando ", calculo_do_dano, " pontos de dano!\n")
                                 input("")
-                                vida_atual_personagem = vida_atual_personagem-calculo_do_dano
+                                personagem_jogador[6] = personagem_jogador[6]-calculo_do_dano
                                 teste_de_sorte=random.randrange(10)
                                 if(teste_de_sorte==2):
                                     input("\nVocê tentou ao máximo ultrapassar a defesa do seu inimigo, exigiu muito dos seus músculos que se fortaleceram!\n")
                                     input("\nSeus pontos de ataque subiram!\n")
-                                    ataque_do_personagem=ataque_do_personagem+(random.randrange(ataque_do_personagem))+3
+                                    personagem_jogador[1]=personagem_jogador[1]+(random.randrange(personagem_jogador[1]))+3
                             else:
-                                if (calculo_do_dano==0):#S_ataque(2ataque_do_personagem) ANULA S_defesa(3defesa_do_inimigo)
+                                if (calculo_do_dano==0):#S_ataque(2personagem_jogador[1]) ANULA S_defesa(3personagem_inimigo[2])
                                     input("\nA disputa de forças é intensa, você e seu inimigo deram o melhor de si, mas nenhum dos dois se sobrepôs!\n")
-                                else:#S_ataque(2ataque_do_personagem) ATACA S_defesa(3defesa_do_inimigo)
+                                else:#S_ataque(2personagem_jogador[1]) ATACA S_defesa(3personagem_inimigo[2])
                                     input("\nSeu ataque foi explosivo!")
                                     input("Nem o melhor da defesa do seu inimigo foi capaz de conter sua ira!")
                                     print("Você causou ", calculo_do_dano, " pontos de dano ao seu inimigo!\n")
                                     input("")
-                                    vida_atual_inimigo = vida_atual_inimigo-calculo_do_dano
+                                    personagem_inimigo[6] = personagem_inimigo[6]-calculo_do_dano
                                     teste_de_sorte=random.randrange(10)
                                     if(teste_de_sorte==3):
                                         input("\nA explosão de energia dos seus músculos os expandiu definitivamente!\n")
                                         input("\nSeus pontos de ataque subiram!\n")
-                                        ataque_do_personagem=ataque_do_personagem+(random.randrange(ataque_do_personagem))+2
-                        else:#S_ataque(2ataque_do_personagem) vs defesa(2defesa_do_inimigo)
-                            calculo_do_dano = 2*ataque_do_personagem+(random.randrange(ataque_do_personagem))-2*defesa_do_inimigo-(random.randrange(defesa_do_inimigo))
-                            if(calculo_do_dano<0):#S_ataque(2ataque_do_personagem) APANHA DE defesa(2defesa_do_inimigo)
-                                calculo_do_dano=calculo_do_dano*(-1)+((random.randrange(ataque_do_inimigo))/2)
+                                        personagem_jogador[1]=personagem_jogador[1]+(random.randrange(personagem_jogador[1]))+2
+                        else:#S_ataque(2personagem_jogador[1]) vs defesa(2personagem_inimigo[2])
+                            calculo_do_dano = 2*personagem_jogador[1]+(random.randrange(personagem_jogador[1]))-2*personagem_inimigo[2]-(random.randrange(personagem_inimigo[2]))
+                            if(calculo_do_dano<0):#S_ataque(2personagem_jogador[1]) APANHA DE defesa(2personagem_inimigo[2])
+                                calculo_do_dano=calculo_do_dano*(-1)+((random.randrange(personagem_inimigo[1]))/2)
                                 input("\nVocê deu o seu máximo, mas mesmo assim nem se equiparou às habilidades de auto-defesa do seu inimigo!")
                                 print("Sem fazer muito esforço ele se defendeu e contra-atacou, te causando ", calculo_do_dano," pontos de dano!\n")
                                 input("")
-                                vida_atual_personagem = vida_atual_personagem - calculo_do_dano
+                                personagem_jogador[6] = personagem_jogador[6] - calculo_do_dano
                             else:
-                                if(calculo_do_dano==0):#S_ataque(2ataque_do_personagem) ANULA defesa(2defesa_do_inimigo)
+                                if(calculo_do_dano==0):#S_ataque(2personagem_jogador[1]) ANULA defesa(2personagem_inimigo[2])
                                     input("\nVocê assustou o inimigo por um instante, mas - por muito pouco - ele conseguiu barrar todos os seus movimentos ofensivos...\n")
                                 else:
                                     teste_de_sorte=random.randrange(5)
-                                    if(teste_de_sorte==1):#XS_ataque(3ataque_do_personagem) vs defesa(defesa_do_inimigo)
+                                    if(teste_de_sorte==1):#XS_ataque(3personagem_jogador[1]) vs defesa(personagem_inimigo[2])
                                         print("\nVocê rompeu a defesa do seu inimigo, causando ", calculo_do_dano," pontos de dano!")
                                         input("")
                                         input("\nSuper Crítico!!!\n")
                                         input("Você iniciou um ataque em frenesi!!!\n")
-                                        vida_atual_inimigo=vida_atual_inimigo-calculo_do_dano
+                                        personagem_inimigo[6]=personagem_inimigo[6]-calculo_do_dano
                                         teste_de_sorte=random.randrange(9)+1
-                                        while(teste_de_sorte>0):#XS_ataque(3ataque_do_personagem) ATACA defesa(defesa_do_inimigo)
-                                            calculo_do_dano=2*(random.randrange(ataque_do_personagem))-(random.randrange(defesa_do_inimigo))
+                                        while(teste_de_sorte>0):#XS_ataque(3personagem_jogador[1]) ATACA defesa(personagem_inimigo[2])
+                                            calculo_do_dano=2*(random.randrange(personagem_jogador[1]))-(random.randrange(personagem_inimigo[2]))
                                             while(calculo_do_dano<=0):
-                                                calculo_do_dano=2*(random.randrange(ataque_do_personagem))-(random.randrange(defesa_do_inimigo))
+                                                calculo_do_dano=2*(random.randrange(personagem_jogador[1]))-(random.randrange(personagem_inimigo[2]))
                                             print(calculo_do_dano," pontos de dano!\n")
                                             input("")
-                                            vida_atual_inimigo=vida_atual_inimigo-calculo_do_dano
+                                            personagem_inimigo[6]=personagem_inimigo[6]-calculo_do_dano
                                             teste_de_sorte=teste_de_sorte-1
                                         input("\nVocê desferiu toda sua fúria no inimigo!\n")
                                         teste_de_sorte=random.randrange(5)
                                         if(teste_de_sorte<4):
                                             input("\nVocê testou o seu limite e agora está mais forte!")
                                             input("Seus pontos de ataque subiram!\n")
-                                            ataque_do_personagem=ataque_do_personagem+(random.randrange(ataque_do_personagem))+2
+                                            personagem_jogador[1]=personagem_jogador[1]+(random.randrange(personagem_jogador[1]))+2
                                         if(teste_de_sorte==4):
                                             input("\nVocê ultrapassou o seu limite e agora está mais forte!")
                                             input("Seus pontos de ataque subiram!\n")
-                                            ataque_do_personagem=ataque_do_personagem+(random.randrange(ataque_do_personagem))+3
-                                    else:#S_ataque(2ataque_do_personagem) ATACA defesa(2defesa_do_inimigo)
+                                            personagem_jogador[1]=personagem_jogador[1]+(random.randrange(personagem_jogador[1]))+3
+                                    else:#S_ataque(2personagem_jogador[1]) ATACA defesa(2personagem_inimigo[2])
                                         print("\nSeu ataque de golpes duplos pressionaram a defesa do seu inimigo, causando ",calculo_do_dano," pontos de dano!\n")
                                         input("")
-                                        vida_atual_inimigo=vida_atual_inimigo-calculo_do_dano
-                    else:#ataque(ataque_do_personagem)
+                                        personagem_inimigo[6]=personagem_inimigo[6]-calculo_do_dano
+                    else:#ataque(personagem_jogador[1])
                         teste_de_sorte=random.randrange(5)
-                        if(teste_de_sorte==1):#ataque(ataque_do_personagem) vs S_defesa(3defesa_do_inimigo)
+                        if(teste_de_sorte==1):#ataque(personagem_jogador[1]) vs S_defesa(3personagem_inimigo[2])
                             input("\nA postura de defesa do seu inimigo te colocou numa situação difícil!\n")
-                            calculo_do_dano=ataque_do_personagem+random.randrange(ataque_do_personagem)-3*defesa_do_inimigo-random.randrange(defesa_do_inimigo)
-                            if(calculo_do_dano<0):#ataque(ataque_do_personagem) APANHA DE S_defesa(3defesa_do_inimigo)
-                                calculo_do_dano=calculo_do_dano*(-1)+((random.randrange(ataque_do_inimigo))/2)
+                            calculo_do_dano=personagem_jogador[1]+random.randrange(personagem_jogador[1])-3*personagem_inimigo[2]-random.randrange(personagem_inimigo[2])
+                            if(calculo_do_dano<0):#ataque(personagem_jogador[1]) APANHA DE S_defesa(3personagem_inimigo[2])
+                                calculo_do_dano=calculo_do_dano*(-1)+((random.randrange(personagem_inimigo[1]))/2)
                                 input("\nÉ muito difícil passar por tamanha defesa, seu ataque foi ínfimo, além de ser inutilizado, você sofreu represália...")
                                 print("Seu inimigo contra-atacou, causando ", calculo_do_dano, " pontos de dano.\n")
                                 input("")
@@ -535,120 +939,120 @@ def batalha():
                                 if(teste_de_sorte==1):
                                     input("\nVocê testou o seu limite e agora está mais forte!")
                                     input("Seus pontos de ataque subiram!\n")
-                                    ataque_do_personagem=ataque_do_personagem+(random.randrange(ataque_do_personagem))+1
-                                vida_atual_personagem=vida_atual_personagem-calculo_do_dano
+                                    personagem_jogador[1]=personagem_jogador[1]+(random.randrange(personagem_jogador[1]))+1
+                                personagem_jogador[6]=personagem_jogador[6]-calculo_do_dano
                             else:
-                                if(calculo_do_dano==0):#ataque(ataque_do_personagem) ANULA S_defesa(3defesa_do_inimigo)
+                                if(calculo_do_dano==0):#ataque(personagem_jogador[1]) ANULA S_defesa(3personagem_inimigo[2])
                                     print("\nO inimigo mal consegue reter seus golpes, mas o suficiente para pará-lo.")
                                     input("Ao mesmo tempo sua força foi o bastante para evitar um contra-ataque!\n")
-                                else:#ataque(ataque_do_personagem) ATACA S_defesa(3defesa_do_inimigo)
+                                else:#ataque(personagem_jogador[1]) ATACA S_defesa(3personagem_inimigo[2])
                                     print("\nDepois de alguns golpes, você tornou insignificante a vantagem defensiva do seu inimigo, causando humilhantes, ", calculo_do_dano," pontos de dano a ele!\n")
                                     input("")
                                     teste_de_sorte=random.randrange(10)
                                     if(teste_de_sorte==1):
                                         input("\nVocê testou o seu limite e agora está mais forte!")
                                         input("Seus pontos de ataque subiram!\n")
-                                        ataque_do_personagem=ataque_do_personagem+(random.randrange(ataque_do_personagem))+2
-                                    vida_atual_inimigo=vida_atual_inimigo-calculo_do_dano
-                        else:#ataque(ataque_do_personagem) vs defesa(2defesa_do_inimigo)
-                            calculo_do_dano = ataque_do_personagem+(random.randrange(ataque_do_personagem))-2*defesa_do_inimigo-(random.randrange(defesa_do_inimigo))
-                            if(calculo_do_dano<0):#ataque(ataque_do_personagem) APANHA DE defesa(2defesa_do_inimigo)
-                                calculo_do_dano=calculo_do_dano*(-1)+((random.randrange(ataque_do_inimigo))/2)
+                                        personagem_jogador[1]=personagem_jogador[1]+(random.randrange(personagem_jogador[1]))+2
+                                    personagem_inimigo[6]=personagem_inimigo[6]-calculo_do_dano
+                        else:#ataque(personagem_jogador[1]) vs defesa(2personagem_inimigo[2])
+                            calculo_do_dano = personagem_jogador[1]+(random.randrange(personagem_jogador[1]))-2*personagem_inimigo[2]-(random.randrange(personagem_inimigo[2]))
+                            if(calculo_do_dano<0):#ataque(personagem_jogador[1]) APANHA DE defesa(2personagem_inimigo[2])
+                                calculo_do_dano=calculo_do_dano*(-1)+((random.randrange(personagem_inimigo[1]))/2)
                                 print("\nO inimigo se defendeu e contra-atacou, te causando ", calculo_do_dano," pontos de dano!\n")
                                 input("")
-                                vida_atual_personagem = vida_atual_personagem - calculo_do_dano
+                                personagem_jogador[6] = personagem_jogador[6] - calculo_do_dano
                             else:
-                                if(calculo_do_dano==0):#ataque(ataque_do_personagem) ANULA defesa(2defesa_do_inimigo)
+                                if(calculo_do_dano==0):#ataque(personagem_jogador[1]) ANULA defesa(2personagem_inimigo[2])
                                     input("\nSeu oponente defendeu todos os seus golpes, mas você não deu brecha para que ele avançasse!\n")
-                                else:#ataque(ataque_do_personagem) ATACA defesa(2defesa_do_inimigo)
+                                else:#ataque(personagem_jogador[1]) ATACA defesa(2personagem_inimigo[2])
                                     print("\nVocê acertou o inimigo durante a disputa de forças, causando ",calculo_do_dano," pontos de dano!\n")
                                     input("")
-                                    vida_atual_inimigo=vida_atual_inimigo-calculo_do_dano
-                else:#ataque(ataque_do_personagem) vs ataque(ataque_do_inimigo)
-                    print("\nPostura de Batalha:\n", nome_do_jogador, "-> ofensiva\n", nome_do_inimigo, "-> ofensiva\n")
+                                    personagem_inimigo[6]=personagem_inimigo[6]-calculo_do_dano
+                else:#ataque(personagem_jogador[1]) vs ataque(personagem_inimigo[1])
+                    print("\nPostura de Batalha:\n", personagem_jogador[0], "-> ofensiva\n", personagem_inimigo[0], "-> ofensiva\n")
                     input("...")
                     teste_de_sorte=random.randrange(4)
-                    if (teste_de_sorte==1):#S_ataque(2ataque_do_personagem) vs ataque(ataque_do_inimigo)
+                    if (teste_de_sorte==1):#S_ataque(2personagem_jogador[1]) vs ataque(personagem_inimigo[1])
                         input("\nSeu ataque foi crítico!!!\n")
                         teste_de_sorte=random.randrange(4)
-                        if (teste_de_sorte==1):#S_ataque(2ataque_do_personagem) vs S_ataque(2ataque_do_inimigo)
+                        if (teste_de_sorte==1):#S_ataque(2personagem_jogador[1]) vs S_ataque(2personagem_inimigo[1])
                             input("\nMas o ataque do oponente também foi crítico!!!\n")
                             input("\nVocês entraram na briga pra valer!")
                             input("Avançaram de punhos cerrados, trocando golpes com as defesas abertas!\n")
-                            calculo_do_dano=2*ataque_do_personagem+random.randrange(ataque_do_personagem)-defesa_do_inimigo-random.randrange(defesa_do_inimigo)
+                            calculo_do_dano=2*personagem_jogador[1]+random.randrange(personagem_jogador[1])-personagem_inimigo[2]-random.randrange(personagem_inimigo[2])
                             if(calculo_do_dano>0):
                                 print("\nVocê causou significativos ", calculo_do_dano," pontos de dano ao inimigo!\n")
                                 input("")
-                                vida_atual_inimigo=vida_atual_inimigo-calculo_do_dano
+                                personagem_inimigo[6]=personagem_inimigo[6]-calculo_do_dano
                                 teste_de_sorte=random.randrange(10)
                                 if(teste_de_sorte==1):
                                     input("\nSeus pontos de ataque subiram enquanto você forçava os seus músculos!\n")
-                                    ataque_do_personagem=ataque_do_personagem+(random.randrange(ataque_do_personagem))+2
+                                    personagem_jogador[1]=personagem_jogador[1]+(random.randrange(personagem_jogador[1]))+2
                             else:
                                 input("\nMesmo sem se defender, a constituição do inimigo foi alta o suficiente para resistir ao seu ataque.\n")
-                            calculo_do_dano=2*ataque_do_inimigo+random.randrange(ataque_do_inimigo)-defesa_do_personagem-random.randrange(defesa_do_personagem)
+                            calculo_do_dano=2*personagem_inimigo[1]+random.randrange(personagem_inimigo[1])-personagem_jogador[2]-random.randrange(personagem_jogador[2])
                             if(calculo_do_dano>0):
                                 print("\nEnquanto o oponente te causou ", calculo_do_dano," pontos de dano!\n")
                                 input("")
-                                vida_atual_personagem=vida_atual_personagem-calculo_do_dano
+                                personagem_jogador[6]=personagem_jogador[6]-calculo_do_dano
                             else:
                                 input("\nMesmo sem se defender, sua constituição foi alta o suficiente para resistir ao ataque do oponente.\n")                                
-                        else:#S_ataque(2ataque_do_personagem) vs ataque(ataque_do_inimigo)
+                        else:#S_ataque(2personagem_jogador[1]) vs ataque(personagem_inimigo[1])
                             input("\nVocê avançou violentamente sobre o inimigo, pressionando-o sem compaixão!")
                             input("Apesar de forçar um leve recuo do inimigo, você não deixou de levar uns bons golpes!\n")                            
-                            calculo_do_dano=2*ataque_do_personagem+random.randrange(ataque_do_personagem)-defesa_do_inimigo-random.randrange(defesa_do_inimigo)
+                            calculo_do_dano=2*personagem_jogador[1]+random.randrange(personagem_jogador[1])-personagem_inimigo[2]-random.randrange(personagem_inimigo[2])
                             if(calculo_do_dano>0):
                                 print("\nVocê golpeou o inimigo até lhe causar ", calculo_do_dano," pontos de dano!\n")
                                 input("")
-                                vida_atual_inimigo=vida_atual_inimigo-calculo_do_dano
+                                personagem_inimigo[6]=personagem_inimigo[6]-calculo_do_dano
                             else:
                                 input("\nMesmo sem se defender, a constituição do inimigo foi alta o suficiente para resistir ao seu ataque.\n")
-                            calculo_do_dano=ataque_do_inimigo+random.randrange(ataque_do_inimigo)-defesa_do_personagem-random.randrange(defesa_do_personagem)
+                            calculo_do_dano=personagem_inimigo[1]+random.randrange(personagem_inimigo[1])-personagem_jogador[2]-random.randrange(personagem_jogador[2])
                             if(calculo_do_dano>0):
                                 print("\nJá o inimigo causou apenas ", calculo_do_dano," pontos de dano à você!\n")
                                 input("")
-                                vida_atual_personagem=vida_atual_personagem-calculo_do_dano
+                                personagem_jogador[6]=personagem_jogador[6]-calculo_do_dano
                             else:
                                 input("\nMesmo sem se defender, sua constituição foi alta o suficiente para resistir ao ataque do oponente.\n")                                
-                    else:#ataque(ataque_do_personagem) vs ataque(ataque_do_inimigo)
+                    else:#ataque(personagem_jogador[1]) vs ataque(personagem_inimigo[1])
                         teste_de_sorte=random.randrange(4)
-                        if(teste_de_sorte==1): #ataque(ataque_do_personagem) vs S_ataque(2ataque_do_inimigo)
+                        if(teste_de_sorte==1): #ataque(personagem_jogador[1]) vs S_ataque(2personagem_inimigo[1])
                             input("\nO ataque do oponente foi crítico!...\n")
                             input("\nVocê foi pressionado enquanto trocavam golpes, os socos e chutes do seu oponente te acertaram em pontos menos resistentes do seu corpo que estavam desprotegidos!")
                             input("Mesmo assim você manteve um bom rítmo de ataque!\n")
-                            calculo_do_dano=ataque_do_personagem+random.randrange(ataque_do_personagem)-defesa_do_inimigo-random.randrange(defesa_do_inimigo)
+                            calculo_do_dano=personagem_jogador[1]+random.randrange(personagem_jogador[1])-personagem_inimigo[2]-random.randrange(personagem_inimigo[2])
                             if(calculo_do_dano>0):
                                 print("\nVocê infringiu ", calculo_do_dano," pontos de dano ao inimigo!\n")
                                 input("")
-                                vida_atual_inimigo=vida_atual_inimigo-calculo_do_dano
+                                personagem_inimigo[6]=personagem_inimigo[6]-calculo_do_dano
                             else:
                                 input("\nMesmo sem se defender, a constituição do inimigo foi alta o suficiente para resistir ao seu ataque.\n")
-                            calculo_do_dano=2*ataque_do_inimigo+random.randrange(ataque_do_inimigo)-defesa_do_personagem-random.randrange(defesa_do_personagem)
+                            calculo_do_dano=2*personagem_inimigo[1]+random.randrange(personagem_inimigo[1])-personagem_jogador[2]-random.randrange(personagem_jogador[2])
                             if(calculo_do_dano>0):
                                 print("\nEnquanto o seu inimigo te agrediu violentamente, causando ", calculo_do_dano," pontos de dano à você!\n")
                                 input("")
-                                vida_atual_personagem=vida_atual_personagem-calculo_do_dano
+                                personagem_jogador[6]=personagem_jogador[6]-calculo_do_dano
                             else:
                                 input("\nMesmo sem se defender, sua constituição foi alta o suficiente para resistir ao ataque do oponente.\n")                                
-                        else:#ataque(ataque_do_personagem) vs ataque(ataque_do_inimigo)
+                        else:#ataque(personagem_jogador[1]) vs ataque(personagem_inimigo[1])
                             input("\nVocês se atacaram num ritmo leve, parecem estar testando um ao outro, ficou claro que nenhum dos dois mostrou tudo o que é capaz.\n")
-                            calculo_do_dano=ataque_do_personagem+random.randrange(ataque_do_personagem)-defesa_do_inimigo-random.randrange(defesa_do_inimigo)
+                            calculo_do_dano=personagem_jogador[1]+random.randrange(personagem_jogador[1])-personagem_inimigo[2]-random.randrange(personagem_inimigo[2])
                             if(calculo_do_dano>0):
                                 print("\nVocê feriu seu oponente em ", calculo_do_dano," pontos de dano!\n")
                                 input("")
-                                vida_atual_inimigo=vida_atual_inimigo-calculo_do_dano
+                                personagem_inimigo[6]=personagem_inimigo[6]-calculo_do_dano
                             else:
                                 input("\nMesmo sem se defender, a constituição do inimigo foi alta o suficiente para resistir ao seu ataque.\n")
-                            calculo_do_dano=ataque_do_inimigo+random.randrange(ataque_do_inimigo)-defesa_do_personagem-random.randrange(defesa_do_personagem)
+                            calculo_do_dano=personagem_inimigo[1]+random.randrange(personagem_inimigo[1])-personagem_jogador[2]-random.randrange(personagem_jogador[2])
                             if(calculo_do_dano>0):
                                 print("\nSeu inimigo te golpeou causando ", calculo_do_dano," pontos de dano!\n")
                                 input("")
-                                vida_atual_personagem=vida_atual_personagem-calculo_do_dano
+                                personagem_jogador[6]=personagem_jogador[6]-calculo_do_dano
                             else:
                                 input("\nMesmo sem se defender, sua constituição foi alta o suficiente para resistir ao ataque do oponente.\n")
             else:
                 if(ação_do_personagem=="fugir"):
-                    print("\nPostura de Batalha:\n", nome_do_jogador, "-> fugitiva\n", nome_do_inimigo, "-> ofensiva\n")
+                    print("\nPostura de Batalha:\n", personagem_jogador[0], "-> fugitiva\n", personagem_inimigo[0], "-> ofensiva\n")
                     input("...")
                     input("\nVocê tenta aumentar o rítmo de esquiva...\n")
                     teste_de_sorte=random.randrange(10)+calculo_da_fuga
@@ -671,7 +1075,7 @@ def batalha():
                         else:
                             if(teste_de_sorte>5):
                                 input('\nVocê não conseguiu uma brecha para fugir, nem pode se esquivar, mas pode se defender!\n')
-                                calculo_do_dano = ataque_do_inimigo+(random.randrange(ataque_do_inimigo))-2*defesa_do_personagem-(random.randrange(defesa_do_personagem))
+                                calculo_do_dano = personagem_inimigo[1]+(random.randrange(personagem_inimigo[1]))-2*personagem_jogador[2]-(random.randrange(personagem_jogador[2]))
                                 if (calculo_do_dano<0):
                                     input('\nSua defesa É ENORME!')
                                     input('Você barrou o ataque naturalmente e conseguiu afastar o inimigo, criando uma brecha para fugir!\n')
@@ -693,33 +1097,33 @@ def batalha():
                                     else:
                                         print("\nMesmo se defendendo, o impacto do ataque inimigo te causou ", calculo_do_dano, " pontos de dano!\n")
                                         input("")
-                                        vida_atual_personagem = vida_atual_personagem-calculo_do_dano
+                                        personagem_jogador[6] = personagem_jogador[6]-calculo_do_dano
                             else:
                                 if(teste_de_sorte>2):
                                     input('\nVocê não conseguiu uma brecha para fugir, se esquivar ou se defender...\n')
-                                    calculo_do_dano = ataque_do_inimigo+(random.randrange(ataque_do_inimigo))-defesa_do_personagem-(random.randrange(defesa_do_personagem))
+                                    calculo_do_dano = personagem_inimigo[1]+(random.randrange(personagem_inimigo[1]))-personagem_jogador[2]-(random.randrange(personagem_jogador[2]))
                                     if (calculo_do_dano>0):
                                         print("\nVocê foi atacado diretamente, sofrendo ", calculo_do_dano," pontos de dano!\n")
                                         input("")
-                                        vida_atual_personagem=vida_atual_personagem-calculo_do_dano
+                                        personagem_jogador[6]=personagem_jogador[6]-calculo_do_dano
                                     else:
                                         input("\nMesmo sem se defender, sua constituição foi alta o suficiente para resistir ao ataque do oponente.\n")
                                 else:
                                     input('\nVocê tropeçou ao tentar fugir!\n')
                                     input('\nO golpe do oponente foi crítico!\n')
-                                    calculo_do_dano = 2*ataque_do_inimigo+(random.randrange(ataque_do_inimigo))-defesa_do_personagem-(random.randrange(defesa_do_personagem))
+                                    calculo_do_dano = 2*personagem_inimigo[1]+(random.randrange(personagem_inimigo[1]))-personagem_jogador[2]-(random.randrange(personagem_jogador[2]))
                                     if (calculo_do_dano>0):
                                         print("\nO inimigo aproveitou a abertura na sua defesa e te atacou violentamente, causando ", calculo_do_dano," pontos de dano.\n")
                                         input("")
-                                        vida_atual_personagem=vida_atual_personagem-calculo_do_dano
+                                        personagem_jogador[6]=personagem_jogador[6]-calculo_do_dano
                                         teste_de_sorte=random.randrange(5)
                                         if(teste_de_sorte==1):
                                             input("\nVocê aumentou seu folego enquanto tentava escapar dos golpes que você levou em cheio!")
                                             input("O limite dos seus pontos de vida cresceu!")
-                                            vida_máxima_personagem=vida_máxima_personagem+(random.randrange(vida_máxima_personagem))+1
+                                            personagem_jogador[5]=personagem_jogador[5]+(random.randrange(personagem_jogador[5]))+1
                                     else:
                                         input("\nMesmo sem se defender, sua constituição foi alta o suficiente para resistir ao ataque do oponente.\n")
-                    calculo_da_fuga=calculo_da_fuga+(agilidade_do_personagem*0.25)
+                    calculo_da_fuga=calculo_da_fuga+(personagem_jogador[3]*0.25)
                     if(batalha_escapar =="sim"):
                         break
     batalha_escapar="não"
@@ -727,11 +1131,11 @@ def batalha():
     contador_de_batalha = 0
     contador_de_rodadas = 1
     input("\nFim da Batalha!\n")
-    if(vida_atual_inimigo<=0):
-        print("\n",nome_do_inimigo," foi derrotado!\n")
+    if(personagem_inimigo[6]<=0):
+        print("\n",personagem_inimigo[0]," foi derrotado!\n")
         input("")
     else:
-        if(vida_atual_personagem<=0):
+        if(personagem_jogador[6]<=0):
             input("\nVocê foi derrotado.\n")
         else:
             if(batalha_escapar =="sim"):
@@ -785,24 +1189,24 @@ def matarAlguém():
 
 #--Seu prédio: Quarto Andar--#
 def seuPrédioQuartoAndar():
-    global nome_do_jogador, nome_do_inimigo,reserva_nome_do_jogador, ação_do_personagem, batalha_escapar, equipamento_roupa, equipamento_capa, equipamento_luva, equipamento_mãos, equipamento_botas, olhar_o_cenário, modificar_o_cenário, cheirar_o_cenário, objeto_00, objeto_01, objeto_02, objeto_03,variável_lugar,mostrar_save,ponto_de_save, eegg, vida_máxima_personagem, vida_atual_personagem, dinheiro_do_personagem, ataque_do_personagem, defesa_do_personagem, agilidade_do_personagem,reserva_vida_máxima_personagem,reserva_vida_atual_personagem,reserva_ataque_do_personagem,reserva_defesa_do_personagem,reserva_agilidade_do_personagem, vida_máxima_inimigo, vida_atual_inimigo, ataque_do_inimigo, defesa_do_inimigo,situação_00, situação_01, situação_02, situação_03, situação_04,situação_05,situação_06,situação_07,situação_08,situação_09,situação_10, teste_de_sorte, calculo_do_dano, calculo_da_fuga, variável_para_comparar, contador_de_batalha, contador_de_rodadas,temporário
+    global desequipado_roupa,desequipado_capa,desequipado_luva,desequipado_mãos,desequipado_calçado,espaço_vazio,pedaço_pizza,bolo_chocolate,pijama_inicial,uniforme_estudantil,malha_ninja,lápis_apontado,punhal_envelhecido,talheres_prata,jaqueta_imitação,jaqueta_couro,agasalho_lã,suplemento_alimentício,lata_energético,luva_lã,luva_couro,soco_pvc,soco_latão,luva_spikes_alu,soco_alu,luva_spikes_aço,soco_aço,luva_spikes_ag,soco_ag,luva_spikes_au,soco_au,luva_spikes_titânio,soco_titânio,anel_força1,anel_força2,anel_força3,anel_resistência1,anel_resistência2,anel_resistência3,anel_consistência1,anel_consistência2,anel_consistência3,anel_da_imortalidade,anel_da_divindade,chinelo_inicial,papetes_masculinas,tênis_velho,tênis_simplório,sapato_simplório,tênis_comum,tênis_trilha,tênis_caminhada,tênis_corrida,tênis_ZX5000,item_adicionado,quantidade_adicionada,equipado_roupa,equipado_capa,equipado_luva,equipado_anel,equipado_mãos,equipado_calçado,variável_cenário,objeto,situação,temporário,variável_lugar,ponto_de_save,mostrar_save, personagem_jogador,personagem_reserva,personagem_inimigo,eegg,ação_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,variável_para_comparar,contador_de_batalha,contador_de_rodadas,mala,loja_venda
     variável_lugar = "seu prédio, 4º andar"
-    temporário= False
-    if(situação_00<5):
+    temporário[0]= False
+    if(situação[0]<5):
         input("Você foi abordado novamente pelo morador do quarto 44...")
         input(" - Nós sabemos que você não venceu nem do 3º andar, se não é capaz disso,\nnão é capaz de nos vencer!")
         input("Ele te empurrou escada abaixo... Você perdeu 5 pontos de vida durante a queda!")
-        vida_atual_personagem=vida_atual_personagem-5
-        if(vida_atual_personagem<=0):
-            vida_atual_personagem=1
+        personagem_jogador[6]=personagem_jogador[6]-5
+        if(personagem_jogador[6]<=0):
+            personagem_jogador[6]=1
     while 1:
-        if(situação_00<5):
+        if(situação[0]<5):
             input("Agora você está no terceiro andar.")
             break
         print("\n#", "-"*30,"#\n\nLista de Ações\n\nCenário:", variável_lugar,"\n\nVocê pode:\n\nchecar os quartos\n")
         print("\nver ficha do personagem\ndescer as escadas\n\nsalvar o jogo\n")
         print("\n#", "-"*30,"#\n")
-        print("\nE agora, ", nome_do_jogador,", o que você vai fazer?\n")
+        print("\nE agora, ", personagem_jogador[0],", o que você vai fazer?\n")
         ação_do_personagem = input("-")
         ação_do_personagem = ação_do_personagem.lower()
         if(ação_do_personagem=="checar os quartos" or ação_do_personagem=="checar quartos" or ação_do_personagem=="checar" or ação_do_personagem=="quartos" or ação_do_personagem=="checaros quartos" or ação_do_personagem=="checar osquartos" or ação_do_personagem=="checarosquartos" or ação_do_personagem=="checa os quartos" or ação_do_personagem=="checa os quarto" or ação_do_personagem=="checa o quarto" or ação_do_personagem=="checa o quartos" or ação_do_personagem=="checar os quarto" or ação_do_personagem=="checar o quarto" or ação_do_personagem=="bater na porta de um dos quartos" or ação_do_personagem=="checar um dos quartos" or ação_do_personagem=="bater na porta dos quartos" or ação_do_personagem=="bater a porta dos quartos" or ação_do_personagem=="bater quartos" or ação_do_personagem=="bater"):
@@ -819,19 +1223,15 @@ def seuPrédioQuartoAndar():
                 break
             else:
                 if(ação_do_personagem=="40"):
-                    if(situação_00>6):
+                    if(situação[0]>6):
                         input("Você já lutou aqui!")
                     else:
                         input(' - Aqui no 4º andar moram os mais fortes, mas há muita diferença entre nós!')
                         input(' - Por isso há uma ordem para nos enfrentar, começando por mim!')
                         input(' - Como não pegamos leve, nós apresentamos um "cartão de visita" ao oponente, para ele saber se é capaz de sobreviver.')
-                        nome_do_inimigo="Estudante Briguento \n do Quarto 40"
-                        vida_máxima_inimigo=360
-                        vida_atual_inimigo=360
-                        ataque_do_inimigo=30
-                        defesa_do_inimigo=15
+                        personagem_inimigo = [ "Estudante Briguento \n do Quarto 40", 30, 15, 1, 1, 360, 360]
                         input(" - Aqui está o meu:")
-                        print("\n", nome_do_inimigo,":",vida_máxima_inimigo,"pontos de vida.\nAtaque : ",ataque_do_inimigo,".     Defesa : ", defesa_do_inimigo,".\n")
+                        print("\n", personagem_inimigo[0],":",personagem_inimigo[5],"pontos de vida.\nAtaque : ",personagem_inimigo[1],".     Defesa : ", personagem_inimigo[2],".\n")
                         print('\nDeseja prosseguir com a luta?("sim" ou "não")\n')
                         while 1:
                             ação_do_personagem = input("-")
@@ -841,9 +1241,9 @@ def seuPrédioQuartoAndar():
                             else:
                                 if(ação_do_personagem=="sim" or ação_do_personagem=="s" or ação_do_personagem=="si" or ação_do_personagem=="sm" or ação_do_personagem=="im" or ação_do_personagem=="ssim"):
                                     batalha()
-                                    if(vida_atual_personagem<=0):break
-                                    if(vida_atual_inimigo>0):
-                                        while (vida_atual_inimigo>0):
+                                    if(personagem_jogador[6]<=0):break
+                                    if(personagem_inimigo[6]>0):
+                                        while (personagem_inimigo[6]>0):
                                             input(" - O que foi, desistiu?(sim ou não)")
                                             while 1:
                                                 ação_do_personagem=input("-")
@@ -856,7 +1256,7 @@ def seuPrédioQuartoAndar():
                                                         input(" - Tem certeza?(sim ou não) ... Se você fugir, deixará METADE DE TODO O SEU DINHEIRO conosco!")
                                                         if(ação_do_personagem=="sim" or ação_do_personagem=="s" or ação_do_personagem=="si" or ação_do_personagem=="sm" or ação_do_personagem=="im" or ação_do_personagem=="ssim"):
                                                             input(" - Muito obrigado pela colaboração financeira! Até outro dia, talvez...")
-                                                            dinheiro_do_personagem=dinheiro_do_personagem/2
+                                                            personagem_jogador[7]=personagem_jogador[7]/2
                                                             break
                                                         else:
                                                             if(ação_do_personagem == "não" or ação_do_personagem=="n" or ação_do_personagem=="nao" or ação_do_personagem=="no" or ação_do_personagem=="na" or ação_do_personagem=="nã" or ação_do_personagem=="ao" or ação_do_personagem=="ão" or ação_do_personagem=="ñ" or ação_do_personagem=="ñão" or ação_do_personagem=="ño" or ação_do_personagem=="ñõ" or ação_do_personagem=="ñã" or ação_do_personagem=="ñaõ" or ação_do_personagem=="aõ"):
@@ -866,28 +1266,24 @@ def seuPrédioQuartoAndar():
                                                                 print('ENTRADA INVÁLIDA! Digite "sim" ou "não".\n')
                                                     else:
                                                         print('ENTRADA INVÁLIDA! Digite "sim" ou "não".\n')
-                                        if(vida_atual_personagem<=0):break
+                                        if(personagem_jogador[6]<=0):break
                                         else:
                                             input(" - Parabéns! Você é realmente forte!")
-                                            situação_00=situação_00+1
+                                            situação[0]=situação[0]+1
                                             break
                                     else:
                                         input(" - Parabéns! Você é realmente forte!")
-                                        situação_00=situação_00+1
+                                        situação[0]=situação[0]+1
                                         break
                                 else:
                                     print('ENTRADA INVÁLIDA! Digite "sim" ou "não".\n')
                 else:
                     if(ação_do_personagem=="41"):
-                        if(situação_00==7):
+                        if(situação[0]==7):
                             input(' - Será que você está pronto para brigar comigo, fracote??? Hahahahaha!')
-                            nome_do_inimigo="Estudante Briguento \n do Quarto 41"
-                            vida_máxima_inimigo=550
-                            vida_atual_inimigo=550
-                            ataque_do_inimigo=50
-                            defesa_do_inimigo=30
+                            personagem_inimigo = [ "Estudante Briguento \n do Quarto 41", 50, 30, 1, 1, 550, 550]
                             input(" - Aqui está o meu cartão:")
-                            print("\n", nome_do_inimigo,":",vida_máxima_inimigo,"pontos de vida.\nAtaque : ",ataque_do_inimigo,".     Defesa : ", defesa_do_inimigo,".\n")
+                            print("\n", personagem_inimigo[0],":",personagem_inimigo[5],"pontos de vida.\nAtaque : ",personagem_inimigo[1],".     Defesa : ", personagem_inimigo[2],".\n")
                             print('\nDeseja prosseguir com a luta?("sim" ou "não")\n')
                             while 1:
                                 ação_do_personagem = input("-")
@@ -897,9 +1293,9 @@ def seuPrédioQuartoAndar():
                                 else:
                                     if(ação_do_personagem=="sim" or ação_do_personagem=="s" or ação_do_personagem=="si" or ação_do_personagem=="sm" or ação_do_personagem=="im" or ação_do_personagem=="ssim"):
                                         batalha()
-                                        if(vida_atual_personagem<=0):break
-                                        if(vida_atual_inimigo>0):
-                                            while (vida_atual_inimigo>0):
+                                        if(personagem_jogador[6]<=0):break
+                                        if(personagem_inimigo[6]>0):
+                                            while (personagem_inimigo[6]>0):
                                                 input(" - O que há? Vai cair fora mesmo???(sim ou não)")
                                                 while 1:
                                                     ação_do_personagem = input("-")
@@ -913,7 +1309,7 @@ def seuPrédioQuartoAndar():
                                                             if(ação_do_personagem=="sim" or ação_do_personagem=="s" or ação_do_personagem=="si" or ação_do_personagem=="sm" or ação_do_personagem=="im" or ação_do_personagem=="ssim"):
                                                                 input(" - Hahaha! Você não é o primeiro que sai do desafio! Por que você acha que tem um prêmio?")
                                                                 input(" - Você pode tentar de novo se quiser compensar a perda! HAHAHAHAHA!")
-                                                                dinheiro_do_personagem=dinheiro_do_personagem/2
+                                                                personagem_jogador[7]=personagem_jogador[7]/2
                                                                 break
                                                             else:
                                                                 if(ação_do_personagem == "não" or ação_do_personagem=="n" or ação_do_personagem=="nao" or ação_do_personagem=="no" or ação_do_personagem=="na" or ação_do_personagem=="nã" or ação_do_personagem=="ao" or ação_do_personagem=="ão" or ação_do_personagem=="ñ" or ação_do_personagem=="ñão" or ação_do_personagem=="ño" or ação_do_personagem=="ñõ" or ação_do_personagem=="ñã" or ação_do_personagem=="ñaõ" or ação_do_personagem=="aõ"):
@@ -923,33 +1319,29 @@ def seuPrédioQuartoAndar():
                                                                     print('ENTRADA INVÁLIDA! Digite "sim" ou "não".\n')
                                                         else:
                                                             print('ENTRADA INVÁLIDA! Digite "sim" ou "não".\n')
-                                            if(vida_atual_personagem<=0):break
+                                            if(personagem_jogador[6]<=0):break
                                             else:
                                                 input(" - CARAMBA! E não é que você estava pronto mesmo?! Hahahaha... Tudo bem perder às vezes...")
-                                                situação_00=situação_00+1
+                                                situação[0]=situação[0]+1
                                                 break
                                         else:
                                             input(" - Parabéns! Você é realmente forte!")
-                                            situação_00=situação_00+1
+                                            situação[0]=situação[0]+1
                                             break
                                     else:
                                         print('ENTRADA INVÁLIDA! Digite "sim" ou "não".\n')
                         else:
-                            if(situação_00>7):
+                            if(situação[0]>7):
                                 input("Você já lutou aqui!")
                             else:
                                 input(" - Você não pode me desafiar enquanto não vencer do briguento do quarto 40")
                     else:
                         if(ação_do_personagem=="42"):
-                            if(situação_00==8):
+                            if(situação[0]==8):
                                 input(' - Humhumhumhum... Você vai perder...')
-                                nome_do_inimigo="Estudante Briguenta \n do Quarto 42"
-                                vida_máxima_inimigo=790
-                                vida_atual_inimigo=790
-                                ataque_do_inimigo=90
-                                defesa_do_inimigo=70
+                                personagem_inimigo = [ "Estudante Briguento \n do Quarto 42", 90, 70, 1, 1, 790, 790]
                                 input(" - Veja:")
-                                print("\n", nome_do_inimigo,":",vida_máxima_inimigo,"pontos de vida.\nAtaque : ",ataque_do_inimigo,".     Defesa : ", defesa_do_inimigo,".\n")
+                                print("\n", personagem_inimigo[0],":",personagem_inimigo[5],"pontos de vida.\nAtaque : ",personagem_inimigo[1],".     Defesa : ", personagem_inimigo[2],".\n")
                                 print('\nDeseja prosseguir com a luta?("sim" ou "não")\n')
                                 while 1:
                                     ação_do_personagem = input("-")
@@ -959,9 +1351,9 @@ def seuPrédioQuartoAndar():
                                     else:
                                         if(ação_do_personagem=="sim" or ação_do_personagem=="s" or ação_do_personagem=="si" or ação_do_personagem=="sm" or ação_do_personagem=="im" or ação_do_personagem=="ssim"):
                                             batalha()
-                                            if(vida_atual_personagem<=0):break
-                                            if(vida_atual_inimigo>0):
-                                                while (vida_atual_inimigo>0):
+                                            if(personagem_jogador[6]<=0):break
+                                            if(personagem_inimigo[6]>0):
+                                                while (personagem_inimigo[6]>0):
                                                     input(" - Você vai fugir?(sim ou não) Humhumhumhum...")
                                                     while 1:
                                                         ação_do_personagem = input("-")
@@ -975,7 +1367,7 @@ def seuPrédioQuartoAndar():
                                                                 if(ação_do_personagem=="sim" or ação_do_personagem=="s" or ação_do_personagem=="si" or ação_do_personagem=="sm" or ação_do_personagem=="im" or ação_do_personagem=="ssim"):
                                                                     input(" - Humhumhumhum... Fraco! Eu sempre soube que você era fraco!")
                                                                     input(" - Volte quando você deixar de ser fraco! FWUAHAHAHAHAHAHAHA!!! NUNCAAA!!!")
-                                                                    dinheiro_do_personagem=dinheiro_do_personagem/2
+                                                                    personagem_jogador[7]=personagem_jogador[7]/2
                                                                     break
                                                                 else:
                                                                     if(ação_do_personagem == "não" or ação_do_personagem=="n" or ação_do_personagem=="nao" or ação_do_personagem=="no" or ação_do_personagem=="na" or ação_do_personagem=="nã" or ação_do_personagem=="ao" or ação_do_personagem=="ão" or ação_do_personagem=="ñ" or ação_do_personagem=="ñão" or ação_do_personagem=="ño" or ação_do_personagem=="ñõ" or ação_do_personagem=="ñã" or ação_do_personagem=="ñaõ" or ação_do_personagem=="aõ"):
@@ -985,33 +1377,29 @@ def seuPrédioQuartoAndar():
                                                                         print('ENTRADA INVÁLIDA! Digite "sim" ou "não".\n')
                                                             else:
                                                                 print('ENTRADA INVÁLIDA! Digite "sim" ou "não".\n')
-                                                if(vida_atual_personagem<=0):break
+                                                if(personagem_jogador[6]<=0):break
                                                 else:
                                                     input(" - COMO?! COMO?! Você trapaceou! EU SEI!!! Mas tudo bem, você não conseguirá vencer o próximo, nem trapaceando MUITO!")
-                                                    situação_00=situação_00+1
+                                                    situação[0]=situação[0]+1
                                                     break
                                             else:
                                                 input(" - COMO?! COMO?! Você trapaceou! EU SEI!!! Mas tudo bem, você não conseguirá vencer o próximo, nem trapaceando MUITO!")
-                                                situação_00=situação_00+1
+                                                situação[0]=situação[0]+1
                                                 break
                                         else:
                                             print('ENTRADA INVÁLIDA! Digite "sim" ou "não".\n')
                             else:
-                                if(situação_00>8):
+                                if(situação[0]>8):
                                     input("Você já lutou aqui!")
                                 else:
                                     input("Você não pode me desafiar enquanto não vencer do briguento do quarto 41")
                         else:
                             if(ação_do_personagem=="43"):
-                                if(situação_00==9):
+                                if(situação[0]==9):
                                     input(' - Sua presença é insignificante.')
-                                    nome_do_inimigo="Estudante Briguento \n do Quarto 43"
-                                    vida_máxima_inimigo=1500
-                                    vida_atual_inimigo=1500
-                                    ataque_do_inimigo=180
-                                    defesa_do_inimigo=100
+                                    personagem_inimigo = [ "Estudante Briguento \n do Quarto 43", 180, 100, 1, 1, 1500, 1500]
                                     input(" - Mas vou te dar a honra de apreciar o meu cartão:")
-                                    print("\n", nome_do_inimigo,":",vida_máxima_inimigo,"pontos de vida.\nAtaque : ",ataque_do_inimigo,".     Defesa : ", defesa_do_inimigo,".\n")
+                                    print("\n", personagem_inimigo[0],":",personagem_inimigo[5],"pontos de vida.\nAtaque : ",personagem_inimigo[1],".     Defesa : ", personagem_inimigo[2],".\n")
                                     print('\nDeseja prosseguir com a luta?("sim" ou "não")\n')
                                     while 1:
                                         ação_do_personagem = input("-")
@@ -1021,9 +1409,9 @@ def seuPrédioQuartoAndar():
                                         else:
                                             if(ação_do_personagem=="sim" or ação_do_personagem=="s" or ação_do_personagem=="si" or ação_do_personagem=="sm" or ação_do_personagem=="im" or ação_do_personagem=="ssim"):
                                                 batalha()
-                                                if(vida_atual_personagem<=0):break
-                                                if(vida_atual_inimigo>0):
-                                                    while (vida_atual_inimigo>0):
+                                                if(personagem_jogador[6]<=0):break
+                                                if(personagem_inimigo[6]>0):
+                                                    while (personagem_inimigo[6]>0):
                                                         input(" - ... Fugindo?(sim ou não)")
                                                         while 1:
                                                             ação_do_personagem = input("-")
@@ -1037,7 +1425,7 @@ def seuPrédioQuartoAndar():
                                                                     if(ação_do_personagem=="sim" or ação_do_personagem=="s" or ação_do_personagem=="si" or ação_do_personagem=="sm" or ação_do_personagem=="im" or ação_do_personagem=="ssim"):
                                                                         input(" - São os lixos como você que pagaram o prêmio que NUNCA SERÁ SEU!")
                                                                         input(" - Volte quando quiser apanhar mais!")
-                                                                        dinheiro_do_personagem=dinheiro_do_personagem/2
+                                                                        personagem_jogador[7]=personagem_jogador[7]/2
                                                                         break
                                                                     else:
                                                                         if(ação_do_personagem == "não" or ação_do_personagem=="n" or ação_do_personagem=="nao" or ação_do_personagem=="no" or ação_do_personagem=="na" or ação_do_personagem=="nã" or ação_do_personagem=="ao" or ação_do_personagem=="ão" or ação_do_personagem=="ñ" or ação_do_personagem=="ñão" or ação_do_personagem=="ño" or ação_do_personagem=="ñõ" or ação_do_personagem=="ñã" or ação_do_personagem=="ñaõ" or ação_do_personagem=="aõ"):
@@ -1047,35 +1435,31 @@ def seuPrédioQuartoAndar():
                                                                             print('ENTRADA INVÁLIDA! Digite "sim" ou "não".\n')
                                                                 else:
                                                                     print('ENTRADA INVÁLIDA! Digite "sim" ou "não".\n')
-                                                    if(vida_atual_personagem<=0):break
+                                                    if(personagem_jogador[6]<=0):break
                                                     else:
                                                         input(" - Desgraçado... Você é forte demais...")
-                                                        situação_00=situação_00+1
+                                                        situação[0]=situação[0]+1
                                                         break
                                                 else:
                                                     input(" - Desgraçado... Você é forte demais...")
-                                                    situação_00=situação_00+1
+                                                    situação[0]=situação[0]+1
                                                     break
                                             else:
                                                 print('ENTRADA INVÁLIDA! Digite "sim" ou "não".\n')
                                 else:
-                                    if(situação_00>9):
+                                    if(situação[0]>9):
                                         input("Você já lutou aqui!")
                                     else:
                                         input("Você não pode me desafiar enquanto não vencer do briguento do quarto 42")
                             else:
                                 if(ação_do_personagem=="44"):
-                                    if(situação_00==10):
+                                    if(situação[0]==10):
                                         input(' - Me perdôe pelo comportamento daqueles dois... Nenhum deles tem a cabeça no lugar.')
                                         input(" - Mesmo assim, é raro alguém passar do quarto 40, é raríssimo alguém chegar até mim.")
                                         input(" - Você é um briguento e tanto!")
-                                        nome_do_inimigo="Estudante Briguento \n do Quarto 44"
-                                        vida_máxima_inimigo=3200
-                                        vida_atual_inimigo=3200
-                                        ataque_do_inimigo=300
-                                        defesa_do_inimigo=200
+                                        personagem_inimigo = [ "Estudante Briguento \n do Quarto 44", 300, 200, 1, 1, 3200, 3200]
                                         input(" - Vamos logo ao que interessa:")
-                                        print("\n", nome_do_inimigo,":",vida_máxima_inimigo,"pontos de vida.\nAtaque : ",ataque_do_inimigo,".     Defesa : ", defesa_do_inimigo,".\n")
+                                        print("\n", personagem_inimigo[0],":",personagem_inimigo[5],"pontos de vida.\nAtaque : ",personagem_inimigo[1],".     Defesa : ", personagem_inimigo[2],".\n")
                                         print('\nDeseja prosseguir com a luta?("sim" ou "não")\n')
                                         while 1:
                                             ação_do_personagem = input("-")
@@ -1085,9 +1469,9 @@ def seuPrédioQuartoAndar():
                                             else:
                                                 if(ação_do_personagem=="sim" or ação_do_personagem=="s" or ação_do_personagem=="si" or ação_do_personagem=="sm" or ação_do_personagem=="im" or ação_do_personagem=="ssim"):
                                                     batalha()
-                                                    if(vida_atual_personagem<=0):break
-                                                    if(vida_atual_inimigo>0):
-                                                        while (vida_atual_inimigo>0):
+                                                    if(personagem_jogador[6]<=0):break
+                                                    if(personagem_inimigo[6]>0):
+                                                        while (personagem_inimigo[6]>0):
                                                             input(" - ... Vai abandonar a nossa luta?(sim ou não)")
                                                             while 1:
                                                                 ação_do_personagem = input("-")
@@ -1101,7 +1485,7 @@ def seuPrédioQuartoAndar():
                                                                         if(ação_do_personagem=="sim" or ação_do_personagem=="s" or ação_do_personagem=="si" or ação_do_personagem=="sm" or ação_do_personagem=="im" or ação_do_personagem=="ssim"):
                                                                             input(" - Recupere-se e treine mais!")
                                                                             input(" - Estarei esperando o seu retorno!")
-                                                                            dinheiro_do_personagem=dinheiro_do_personagem/2
+                                                                            personagem_jogador[7]=personagem_jogador[7]/2
                                                                             break
                                                                         else:
                                                                             if(ação_do_personagem == "não" or ação_do_personagem=="n" or ação_do_personagem=="nao" or ação_do_personagem=="no" or ação_do_personagem=="na" or ação_do_personagem=="nã" or ação_do_personagem=="ao" or ação_do_personagem=="ão" or ação_do_personagem=="ñ" or ação_do_personagem=="ñão" or ação_do_personagem=="ño" or ação_do_personagem=="ñõ" or ação_do_personagem=="ñã" or ação_do_personagem=="ñaõ" or ação_do_personagem=="aõ"):
@@ -1111,33 +1495,29 @@ def seuPrédioQuartoAndar():
                                                                                 print('ENTRADA INVÁLIDA! Digite "sim" ou "não".\n')
                                                                     else:
                                                                         print('ENTRADA INVÁLIDA! Digite "sim" ou "não".\n')
-                                                        if(vida_atual_personagem<=0):break
+                                                        if(personagem_jogador[6]<=0):break
                                                         else:
                                                             input(" - Incrível... Você é um gênio das batalhas! É realmente dígno do prêmio!")
                                                             input(" - Aqui está: uma Malha Ninja!")
-                                                            input("Você vestiu a Malha Ninja!")
-                                                            input("Sua agilidade aumentou em 3 pontos!")
-                                                            input("Sua defesa aumentou em 20 pontos!")
-                                                            equipamento_roupa="Malha Ninja"
-                                                            defesa_do_personagem=defesa_do_personagem+20
-                                                            agilidade_do_personagem=agilidade_do_personagem+3
-                                                            situação_00=situação_00+1
+                                                            input("Você guardou a Malha Ninja na sua Mochila!")
+                                                            quantidade_adicionada=1
+                                                            item_adicionado=malha_ninja
+                                                            adicionaItem()
+                                                            situação[0]=situação[0]+1
                                                             break
                                                     else:
                                                         input(" - Incrível... Você é um gênio das batalhas! É realmente dígno do prêmio!")
                                                         input(" - Aqui está: uma Malha Ninja!")
-                                                        input("Você vestiu a Malha Ninja!")
-                                                        input("Sua agilidade aumentou em 3 pontos!")
-                                                        input("Sua defesa aumentou em 20 pontos!")
-                                                        equipamento_roupa="Malha Ninja"
-                                                        defesa_do_personagem=defesa_do_personagem+20
-                                                        agilidade_do_personagem=agilidade_do_personagem+3
-                                                        situação_00=situação_00+1
+                                                        input("Você guardou a Malha Ninja na sua Mochila!")
+                                                        quantidade_adicionada=1
+                                                        item_adicionado=malha_ninja
+                                                        adicionaItem()
+                                                        situação[0]=situação[0]+1
                                                         break
                                                 else:
                                                     print('ENTRADA INVÁLIDA! Digite "sim" ou "não".\n')
                                     else:
-                                        if(situação_00>10):
+                                        if(situação[0]>10):
                                             input("Você já lutou aqui!")
                                         else:
                                             input("Você não pode me desafiar enquanto não vencer do briguento do quarto 43")
@@ -1145,20 +1525,23 @@ def seuPrédioQuartoAndar():
                                     if(ação_do_personagem == "salvar o jogo" or ação_do_personagem=="guardar o jogo" or ação_do_personagem == "salvar jogo" or ação_do_personagem=="guardar jogo" or ação_do_personagem == "salvar" or ação_do_personagem == "save" or ação_do_personagem == "save game" or ação_do_personagem == "salvar o progresso" or ação_do_personagem == "salvar progresso" or ação_do_personagem == "guardar o progresso" or ação_do_personagem == "guardar progresso" or ação_do_personagem == "save progress" or ação_do_personagem == "salva" or ação_do_personagem == "sava" or ação_do_personagem == "slvar" or ação_do_personagem == "svar" or ação_do_personagem == "svr" or ação_do_personagem == "slvr" or ação_do_personagem == "sav" or ação_do_personagem == "sve" or ação_do_personagem == "sv" or ação_do_personagem == "salvar o game" or ação_do_personagem == "guardar o game" or ação_do_personagem == "salvar game" or ação_do_personagem == "guardar game"):
                                         save()
                                     else:
-                                        input("Entrada Inválida!")
-        if(vida_atual_personagem<=0):break
+                                        if(ação_do_personagem=="inventário" or ação_do_personagem=="inventario" or ação_do_personagem=="iventario" or ação_do_personagem=="iventário" or ação_do_personagem=="mochila" or ação_do_personagem=="mochla" or ação_do_personagem=="mala" or ação_do_personagem=="bolsa" or ação_do_personagem=="itens" or ação_do_personagem=="ítens" or ação_do_personagem=="item"):
+                                            inventárioPersonagem()
+                                        else:
+                                            print('\nEntrada Inválida!\n')
+        if(personagem_jogador[6]<=0):break
 
 #--Seu prédio: Terceiro Andar--#
 def seuPrédioTerceiroAndar():
-    global nome_do_jogador, nome_do_inimigo,reserva_nome_do_jogador, ação_do_personagem, batalha_escapar, equipamento_roupa, equipamento_capa, equipamento_luva, equipamento_mãos, equipamento_botas, olhar_o_cenário, modificar_o_cenário, cheirar_o_cenário, objeto_00, objeto_01, objeto_02, objeto_03,variável_lugar,mostrar_save,ponto_de_save, eegg, vida_máxima_personagem, vida_atual_personagem, dinheiro_do_personagem, ataque_do_personagem, defesa_do_personagem, agilidade_do_personagem,reserva_vida_máxima_personagem,reserva_vida_atual_personagem,reserva_ataque_do_personagem,reserva_defesa_do_personagem,reserva_agilidade_do_personagem, vida_máxima_inimigo, vida_atual_inimigo, ataque_do_inimigo, defesa_do_inimigo,situação_00, situação_01, situação_02, situação_03, situação_04,situação_05,situação_06,situação_07,situação_08,situação_09,situação_10, teste_de_sorte, calculo_do_dano, calculo_da_fuga, variável_para_comparar, contador_de_batalha, contador_de_rodadas,temporário
-    if temporário==True:
+    global desequipado_roupa,desequipado_capa,desequipado_luva,desequipado_mãos,desequipado_calçado,espaço_vazio,pedaço_pizza,bolo_chocolate,pijama_inicial,uniforme_estudantil,malha_ninja,lápis_apontado,punhal_envelhecido,talheres_prata,jaqueta_imitação,jaqueta_couro,agasalho_lã,suplemento_alimentício,lata_energético,luva_lã,luva_couro,soco_pvc,soco_latão,luva_spikes_alu,soco_alu,luva_spikes_aço,soco_aço,luva_spikes_ag,soco_ag,luva_spikes_au,soco_au,luva_spikes_titânio,soco_titânio,anel_força1,anel_força2,anel_força3,anel_resistência1,anel_resistência2,anel_resistência3,anel_consistência1,anel_consistência2,anel_consistência3,anel_da_imortalidade,anel_da_divindade,chinelo_inicial,papetes_masculinas,tênis_velho,tênis_simplório,sapato_simplório,tênis_comum,tênis_trilha,tênis_caminhada,tênis_corrida,tênis_ZX5000,item_adicionado,quantidade_adicionada,equipado_roupa,equipado_capa,equipado_luva,equipado_anel,equipado_mãos,equipado_calçado,variável_cenário,objeto,situação,temporário,variável_lugar,ponto_de_save,mostrar_save, personagem_jogador,personagem_reserva,personagem_inimigo,eegg,ação_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,variável_para_comparar,contador_de_batalha,contador_de_rodadas,mala,loja_venda
+    if temporário[0]==True:
         input("Agora que você venceu todos os lutadores do 3º andar você subiu ao 4º.")
         seuPrédioQuartoAndar()
     if(variável_lugar == "seu prédio, 4º andarb"):
         seuPrédioQuartoAndar()
-    if(vida_atual_personagem>0):
+    if(personagem_jogador[6]>0):
         variável_lugar = "seu prédio, 3º andar"
-        if(situação_00==0):
+        if(situação[0]==0):
             input("Você é abordado pelo morador do quarto 44...")
             input(" - E aí, você é o morador do 13 né?...")
             input("...")
@@ -1173,31 +1556,31 @@ def seuPrédioTerceiroAndar():
             input(" - Eu estarei lá em cima, no meu quarto, te esperando.")
             input("\nEle subiu as escadas...")
             input("...")
-            situação_00+=1
+            situação[0]+=1
         else:
-            if(situação_00==1):
+            if(situação[0]==1):
                 input("Você ainda não venceu nenhuma luta do desafio dos estudantes briguentos!")
             else:
-                if(situação_00==2):
+                if(situação[0]==2):
                     input("Você já venceu 1 luta do desafio dos estudantes briguentos!")
                 else:
-                    if(situação_00>=3 and situação_00<6):
-                        print("Você já venceu",situação_00-1,"lutas do desafio dos estudantes briguentos!")
+                    if(situação[0]>=3 and situação[0]<6):
+                        print("Você já venceu",situação[0]-1,"lutas do desafio dos estudantes briguentos!")
                         input("")
                     else:
-                        if(situação_00<9):
+                        if(situação[0]<9):
                             input("Você já venceu todas as lutas do terceiro andar, \nentão você continuou subindo para o 4º andar.")
                             seuPrédioQuartoAndar()
                             variável_lugar = "seu prédio, 3º andar"
                         else:
                             input("Você já venceu o desafio dos estudantes briguentos do seu prédio!")
     while 1:
-        if(vida_atual_personagem<=0):break
-        if(situação_00>=9):
+        if(personagem_jogador[6]<=0):break
+        if(situação[0]>=9):
             variável_lugar = "seu prédio, 2º andar"
             break
         else:
-            if(situação_00>6):
+            if(situação[0]>6):
                 print("Como você já venceu as lutas aqui, você continuou descendo...")
                 input("Você desceu para o segundo andar.")
                 variável_lugar = "seu prédio, 2º andar"
@@ -1205,7 +1588,7 @@ def seuPrédioTerceiroAndar():
         print("\n#", "-"*30,"#\n\nLista de Ações\n\nCenário:", variável_lugar,"\n\nVocê pode:\n\nchecar os quartos: 30, 31, 32, 33 e 34\n")
         print("\nver ficha do personagem\ndescer as escadas\n\nsalvar o jogo\n")
         print("\n#", "-"*30,"#\n")
-        print("\nE agora, ", nome_do_jogador,", o que você vai fazer?\n")
+        print("\nE agora, ", personagem_jogador[0],", o que você vai fazer?\n")
         ação_do_personagem = input("-")
         ação_do_personagem = ação_do_personagem.lower()
         if(ação_do_personagem=="checar os quartos" or ação_do_personagem=="checar quartos" or ação_do_personagem=="checar" or ação_do_personagem=="quartos" or ação_do_personagem=="checaros quartos" or ação_do_personagem=="checar osquartos" or ação_do_personagem=="checarosquartos" or ação_do_personagem=="checa os quartos" or ação_do_personagem=="checa os quarto" or ação_do_personagem=="checa o quarto" or ação_do_personagem=="checa o quartos" or ação_do_personagem=="checar os quarto" or ação_do_personagem=="checar o quarto" or ação_do_personagem=="bater na porta de um dos quartos" or ação_do_personagem=="checar um dos quartos" or ação_do_personagem=="bater na porta dos quartos" or ação_do_personagem=="bater a porta dos quartos" or ação_do_personagem=="bater quartos" or ação_do_personagem=="bater"):
@@ -1226,267 +1609,247 @@ def seuPrédioTerceiroAndar():
                     break
                 else:
                     if(ação_do_personagem=="30"):
-                        if(situação_05 == 0):
+                        if(situação[5] == 0):
                             input("Eu sou o seu oponente! Vença todos deste andar para subir!")
-                            nome_do_inimigo="Estudante Briguento \n do Quarto 30"
-                            vida_máxima_inimigo=110
-                            vida_atual_inimigo=110
-                            ataque_do_inimigo=5
-                            defesa_do_inimigo=12
+                            personagem_inimigo = [ "Estudante Briguento \n do Quarto 30", 5, 12, 1, 1, 110, 110]
                             batalha()
-                            if(vida_atual_personagem<=0):
-                                vida_atual_personagem=1
+                            if(personagem_jogador[6]<=0):
+                                personagem_jogador[6]=1
                                 input(" - Você é fraco, se fosse uma luta no andar de cima você teria morrido!")
                                 input(" - Vá cuidar desses seus ferimentos e volte para lutar mais!")
                             else:
-                                if(vida_atual_inimigo>0 and vida_atual_personagem>1):
-                                    while (vida_atual_inimigo>0):
+                                if(personagem_inimigo[6]>0 and personagem_jogador[6]>1):
+                                    while (personagem_inimigo[6]>0):
                                         input(" - Você não pode fugir das lutas, é uma regra para continuar no desafio e ganhar o prêmio!")
                                         batalha()
-                                        if(vida_atual_personagem<=0):
-                                            vida_atual_personagem=1
+                                        if(personagem_jogador[6]<=0):
+                                            personagem_jogador[6]=1
                                             input(" - Você é fraco, se fosse uma luta no andar de cima você teria morrido!")
                                             input(" - Vá cuidar desses seus ferimentos e volte para lutar mais!")
                                             break
                                         else:
                                             input(" - Isso aí! Você me venceu!")
-                                            situação_00=situação_00+1
-                                            situação_05=1
-                                            if(situação_00==6):
-                                                temporário= True
+                                            situação[0]=situação[0]+1
+                                            situação[5]=1
+                                            if(situação[0]==6):
+                                                temporário[0]= True
                                             else:
-                                                if(situação_00==2):
+                                                if(situação[0]==2):
                                                     input("Você já venceu 1 luta do desafio dos estudantes briguentos!")
                                                 else:
-                                                    if(situação_00>=3 and situação_00<6):
-                                                        print("Você já venceu",situação_00-1,"lutas do desafio dos estudantes briguentos!")
+                                                    if(situação[0]>=3 and situação[0]<6):
+                                                        print("Você já venceu",situação[0]-1,"lutas do desafio dos estudantes briguentos!")
                                                         input("")
                                             break
                                 else:
                                     input(" - Isso aí! Você me venceu!")
-                                    situação_00=situação_00+1
-                                    situação_05=1
-                                    if(situação_00==6):
-                                        temporário= True
+                                    situação[0]=situação[0]+1
+                                    situação[5]=1
+                                    if(situação[0]==6):
+                                        temporário[0]= True
                                     else:
-                                        if(situação_00==2):
+                                        if(situação[0]==2):
                                             input("Você já venceu 1 luta do desafio dos estudantes briguentos!")
                                         else:
-                                            if(situação_00>=3 and situação_00<6):
-                                                print("Você já venceu",situação_00-1,"lutas do desafio dos estudantes briguentos!")
+                                            if(situação[0]>=3 and situação[0]<6):
+                                                print("Você já venceu",situação[0]-1,"lutas do desafio dos estudantes briguentos!")
                                                 input("")
                                         
                         else:
                             input("Você já lutou aqui!")
                     else:
                         if(ação_do_personagem=="31"):
-                            if(situação_06 == 0):
+                            if(situação[6] == 0):
                                 input(" - Você é o desafiante??? Parece um fracote!")
-                                nome_do_inimigo="Estudante Briguento \n do Quarto 31"
-                                vida_máxima_inimigo=130
-                                vida_atual_inimigo=130
-                                ataque_do_inimigo=13
-                                defesa_do_inimigo=4
+                                personagem_inimigo = [ "Estudante Briguento \n do Quarto 31", 13, 4, 1, 1, 130, 130]
                                 batalha()
-                                if(vida_atual_personagem<=0):
-                                    vida_atual_personagem=1
+                                if(personagem_jogador[6]<=0):
+                                    personagem_jogador[6]=1
                                     input(" - Você é mesmo um fracote!")
                                     input(" - Vá se curar para continuar tentando subir para o quarto andar!")
                                 else:
-                                    if(vida_atual_inimigo>0 and vida_atual_personagem>1):
-                                        while (vida_atual_inimigo>0):
+                                    if(personagem_inimigo[6]>0 and personagem_jogador[6]>1):
+                                        while (personagem_inimigo[6]>0):
                                             input(" - Volte aqui seu fracote! Não seja um covarde! Você não pode fugir de TODAS as lutas!")
                                             batalha()
-                                            if(vida_atual_personagem<=0):
-                                                vida_atual_personagem=1
+                                            if(personagem_jogador[6]<=0):
+                                                personagem_jogador[6]=1
                                                 input(" - Você é mesmo um fracote!")
                                                 input(" - Vá se curar para continuar tentando subir para o quarto andar!")
                                                 break
                                             else:
                                                 input(" - Não vacile com os caras lá do quarto andar, eles não pegam leve!")
-                                                situação_00=situação_00+1
-                                                situação_06=1
-                                                if(situação_00==6):
-                                                    temporário= True
+                                                situação[0]=situação[0]+1
+                                                situação[6]=1
+                                                if(situação[0]==6):
+                                                    temporário[0]= True
                                                 else:
-                                                    if(situação_00==2):
+                                                    if(situação[0]==2):
                                                         input("Você já venceu 1 luta do desafio dos estudantes briguentos!")
                                                     else:
-                                                        if(situação_00>=3 and situação_00<6):
-                                                            print("Você já venceu",situação_00-1,"lutas do desafio dos estudantes briguentos!")
+                                                        if(situação[0]>=3 and situação[0]<6):
+                                                            print("Você já venceu",situação[0]-1,"lutas do desafio dos estudantes briguentos!")
                                                             input("")
                                                 break
                                     else:
                                         input(" - Não vacile com os caras lá do quarto andar, eles não pegam leve!")
-                                        situação_00=situação_00+1
-                                        situação_06=1
-                                        if(situação_00==6):
-                                            temporário= True
+                                        situação[0]=situação[0]+1
+                                        situação[6]=1
+                                        if(situação[0]==6):
+                                            temporário[0]= True
                                         else:
-                                            if(situação_00==2):
+                                            if(situação[0]==2):
                                                 input("Você já venceu 1 luta do desafio dos estudantes briguentos!")
                                             else:
-                                                if(situação_00>=3 and situação_00<6):
-                                                    print("Você já venceu",situação_00-1,"lutas do desafio dos estudantes briguentos!")
+                                                if(situação[0]>=3 and situação[0]<6):
+                                                    print("Você já venceu",situação[0]-1,"lutas do desafio dos estudantes briguentos!")
                                                     input("")
                             else:
                                 input("Voce já lutou aqui!")
                         else:
                             if(ação_do_personagem=="32"):
-                                if(situação_07==0):
+                                if(situação[7]==0):
                                     input(" - Cai dentro, rapá!")
-                                    nome_do_inimigo="Estudante Briguento \n do Quarto 32"
-                                    vida_máxima_inimigo=100
-                                    vida_atual_inimigo=100
-                                    ataque_do_inimigo=8
-                                    defesa_do_inimigo=8
+                                    personagem_inimigo = [ "Estudante Briguento \n do Quarto 32", 8, 8, 1, 1, 100, 100]
                                     batalha()
-                                    if(vida_atual_personagem<=0):
-                                        vida_atual_personagem=1
+                                    if(personagem_jogador[6]<=0):
+                                        personagem_jogador[6]=1
                                         input(" - Moleque criado a leite com pêra!")
                                         input(" - Lá em cima ninguém vai te dar essa colher de chá que eu to te dando!")
                                     else:
-                                        if(vida_atual_inimigo>0 and vida_atual_personagem>1):
-                                            while (vida_atual_inimigo>0):
+                                        if(personagem_inimigo[6]>0 and personagem_jogador[6]>1):
+                                            while (personagem_inimigo[6]>0):
                                                 input(" - Ramelão, não foge da luta, não!")
                                                 batalha()
-                                                if(vida_atual_personagem<=0):
-                                                    vida_atual_personagem=1
+                                                if(personagem_jogador[6]<=0):
+                                                    personagem_jogador[6]=1
                                                     input(" - Moleque criado a leite com pêra!")
                                                     input(" - Lá em cima ninguém vai te dar essa colher de chá que eu to te dando!")
                                                     break
                                                 else:
                                                     input(" - Nada mal, quem sabe você consegue o prêmio! Nunca se sabe... ")
-                                                    situação_00=situação_00+1
-                                                    situação_07=1
-                                                    if(situação_00==6):
-                                                        temporário= True
+                                                    situação[0]=situação[0]+1
+                                                    situação[7]=1
+                                                    if(situação[0]==6):
+                                                        temporário[0]= True
                                                     else:
-                                                        if(situação_00==2):
+                                                        if(situação[0]==2):
                                                             input("Você já venceu 1 luta do desafio dos estudantes briguentos!")
                                                         else:
-                                                            if(situação_00>=3 and situação_00<6):
-                                                                print("Você já venceu",situação_00-1,"lutas do desafio dos estudantes briguentos!")
+                                                            if(situação[0]>=3 and situação[0]<6):
+                                                                print("Você já venceu",situação[0]-1,"lutas do desafio dos estudantes briguentos!")
                                                                 input("")
                                                     break
                                         else:
                                             input(" - Nada mal, quem sabe você consegue o prêmio! Nunca se sabe... ")
-                                            situação_00=situação_00+1
-                                            situação_07=1
-                                            if(situação_00==6):
-                                                temporário= True
+                                            situação[0]=situação[0]+1
+                                            situação[7]=1
+                                            if(situação[0]==6):
+                                                temporário[0]= True
                                             else:
-                                                if(situação_00==2):
+                                                if(situação[0]==2):
                                                     input("Você já venceu 1 luta do desafio dos estudantes briguentos!")
                                                 else:
-                                                    if(situação_00>=3 and situação_00<6):
-                                                        print("Você já venceu",situação_00-1,"lutas do desafio dos estudantes briguentos!")
+                                                    if(situação[0]>=3 and situação[0]<6):
+                                                        print("Você já venceu",situação[0]-1,"lutas do desafio dos estudantes briguentos!")
                                                         input("")
                                 else:
                                     input("Voce já lutou aqui!")
                             else:
                                 if(ação_do_personagem=="33"):
-                                    if(situação_08==0):
+                                    if(situação[8]==0):
                                         input(" - ÔÔô, CIDADÃO!")
-                                        nome_do_inimigo="Estudante Briguento \n do Quarto 33"
-                                        vida_máxima_inimigo=120
-                                        vida_atual_inimigo=120
-                                        ataque_do_inimigo=10
-                                        defesa_do_inimigo=8
+                                        personagem_inimigo = [ "Estudante Briguento \n do Quarto 33", 10, 8, 1, 1, 120, 120]
                                         batalha()
-                                        if(vida_atual_personagem<=0):
-                                            vida_atual_personagem=1
+                                        if(personagem_jogador[6]<=0):
+                                            personagem_jogador[6]=1
                                             input(" - Olha lá, o cara não aguenta e depois vai chorando pra casa!")
                                             input(" - Se você continuar tropeçando assim, cedo ou tarde o mundo vai te atropelá!")
                                         else:
-                                            if(vida_atual_inimigo>0 and vida_atual_personagem>1):
-                                                while (vida_atual_inimigo>0):
+                                            if(personagem_inimigo[6]>0 and personagem_jogador[6]>1):
+                                                while (personagem_inimigo[6]>0):
                                                     input(" - Tá na hora de acordar pra vida, cidadão!")
                                                     batalha()
-                                                    if(vida_atual_personagem<=0):
-                                                        vida_atual_personagem=1
+                                                    if(personagem_jogador[6]<=0):
+                                                        personagem_jogador[6]=1
                                                         input(" - Olha lá, o cara não aguenta e depois vai chorando pra casa!")
                                                         input(" - Se você continuar tropeçando assim, cedo ou tarde o mundo vai te atropelá!")
                                                         break
                                                     else:
                                                         input(" - ACORDA CARA! Você não é mais nenhum menininho bobinho, não! ")
-                                                        situação_00=situação_00+1
-                                                        situação_08=1
-                                                        if(situação_00==6):
-                                                            temporário= True
+                                                        situação[0]=situação[0]+1
+                                                        situação[8]=1
+                                                        if(situação[0]==6):
+                                                            temporário[0]= True
                                                         else:
-                                                            if(situação_00==2):
+                                                            if(situação[0]==2):
                                                                 input("Você já venceu 1 luta do desafio dos estudantes briguentos!")
                                                             else:
-                                                                if(situação_00>=3 and situação_00<6):
-                                                                    print("Você já venceu",situação_00-1,"lutas do desafio dos estudantes briguentos!")
+                                                                if(situação[0]>=3 and situação[0]<6):
+                                                                    print("Você já venceu",situação[0]-1,"lutas do desafio dos estudantes briguentos!")
                                                                     input("")
                                                         break
                                             else:
                                                 input(" - ACORDA CARA! Você não é mais nenhum menininho bobinho, não! ")
-                                                situação_00=situação_00+1
-                                                situação_08=1
-                                                if(situação_00==6):
-                                                    temporário= True
+                                                situação[0]=situação[0]+1
+                                                situação[8]=1
+                                                if(situação[0]==6):
+                                                    temporário[0]= True
                                                 else:
-                                                    if(situação_00==2):
+                                                    if(situação[0]==2):
                                                         input("Você já venceu 1 luta do desafio dos estudantes briguentos!")
                                                     else:
-                                                        if(situação_00>=3 and situação_00<6):
-                                                            print("Você já venceu",situação_00-1,"lutas do desafio dos estudantes briguentos!")
+                                                        if(situação[0]>=3 and situação[0]<6):
+                                                            print("Você já venceu",situação[0]-1,"lutas do desafio dos estudantes briguentos!")
                                                             input("")
                                     else:
                                         input("Você já lutou aqui!")
                                 else:
                                     if(ação_do_personagem=="34"):
-                                        if(situação_09==0):
+                                        if(situação[9]==0):
                                             input(" - Qual é, velho? O negócio é descer o murro de ferro na cara do inimigo!")
-                                            nome_do_inimigo="Estudante Briguento \n do Quarto 34"
-                                            vida_máxima_inimigo=66.6
-                                            vida_atual_inimigo=66.6
-                                            ataque_do_inimigo=10
-                                            defesa_do_inimigo=15
+                                            personagem_inimigo = [ "Estudante Briguento \n do Quarto 34", 10, 15, 1, 1, 66.6, 66.6]
                                             batalha()
-                                            if(vida_atual_personagem<=0):
-                                                vida_atual_personagem=1
+                                            if(personagem_jogador[6]<=0):
+                                                personagem_jogador[6]=1
                                                 input(" - Você não tem um sangue fervente o suficiente para derreter o metal!")
                                                 input(" - Você precisa cauterizar suas feridas para chagas maiores tomarem o resto do seu corpo!")
                                             else:
-                                                if(vida_atual_inimigo>0 and vida_atual_personagem>1):
-                                                    while (vida_atual_inimigo>0):
+                                                if(personagem_inimigo[6]>0 and personagem_jogador[6]>1):
+                                                    while (personagem_inimigo[6]>0):
                                                         input(" - As mentiras já são antigas demais, mas você não quer saber!\nCorrer é uma futilidade!")
                                                         batalha()
-                                                        if(vida_atual_personagem<=0):
-                                                            vida_atual_personagem=1
+                                                        if(personagem_jogador[6]<=0):
+                                                            personagem_jogador[6]=1
                                                             input(" - Você não tem um sangue fervente o suficiente para derreter o metal!")
                                                             input(" - Você precisa cauterizar suas feridas para chagas maiores tomarem o resto do seu corpo!")
                                                             break
                                                         else:
                                                             input(" - A verdade é mais dura que o aço! Mas a visão nunca morre!")
-                                                            situação_00=situação_00+1
-                                                            situação_09=1
-                                                            if(situação_00==6):
-                                                                temporário= True
+                                                            situação[0]=situação[0]+1
+                                                            situação[9]=1
+                                                            if(situação[0]==6):
+                                                                temporário[0]= True
                                                             else:
-                                                                if(situação_00==2):
+                                                                if(situação[0]==2):
                                                                     input("Você já venceu 1 luta do desafio dos estudantes briguentos!")
                                                                 else:
-                                                                    if(situação_00>=3 and situação_00<6):
-                                                                        print("Você já venceu",situação_00-1,"lutas do desafio dos estudantes briguentos!")
+                                                                    if(situação[0]>=3 and situação[0]<6):
+                                                                        print("Você já venceu",situação[0]-1,"lutas do desafio dos estudantes briguentos!")
                                                                         input("")
                                                             break
                                                 else:
                                                     input(" - A verdade é mais dura que o aço! Mas a visão nunca morre!")
-                                                    situação_00=situação_00+1
-                                                    situação_09=1
-                                                    if(situação_00==6):
-                                                        temporário= True
+                                                    situação[0]=situação[0]+1
+                                                    situação[9]=1
+                                                    if(situação[0]==6):
+                                                        temporário[0]= True
                                                     else:
-                                                        if(situação_00==2):
+                                                        if(situação[0]==2):
                                                             input("Você já venceu 1 luta do desafio dos estudantes briguentos!")
                                                         else:
-                                                            if(situação_00>=3 and situação_00<6):
-                                                                print("Você já venceu",situação_00-1,"lutas do desafio dos estudantes briguentos!")
+                                                            if(situação[0]>=3 and situação[0]<6):
+                                                                print("Você já venceu",situação[0]-1,"lutas do desafio dos estudantes briguentos!")
                                                                 input("")
                                         else:
                                             input("Você já lutou aqui!")
@@ -1494,22 +1857,25 @@ def seuPrédioTerceiroAndar():
                                         if(ação_do_personagem == "salvar o jogo" or ação_do_personagem=="guardar o jogo" or ação_do_personagem == "salvar jogo" or ação_do_personagem=="guardar jogo" or ação_do_personagem == "salvar" or ação_do_personagem == "save" or ação_do_personagem == "save game" or ação_do_personagem == "salvar o progresso" or ação_do_personagem == "salvar progresso" or ação_do_personagem == "guardar o progresso" or ação_do_personagem == "guardar progresso" or ação_do_personagem == "save progress" or ação_do_personagem == "salva" or ação_do_personagem == "sava" or ação_do_personagem == "slvar" or ação_do_personagem == "svar" or ação_do_personagem == "svr" or ação_do_personagem == "slvr" or ação_do_personagem == "sav" or ação_do_personagem == "sve" or ação_do_personagem == "sv" or ação_do_personagem == "salvar o game" or ação_do_personagem == "guardar o game" or ação_do_personagem == "salvar game" or ação_do_personagem == "guardar game"):
                                             save()
                                         else:
-                                            input("Entrada Inválida!")
+                                            if(ação_do_personagem=="inventário" or ação_do_personagem=="inventario" or ação_do_personagem=="iventario" or ação_do_personagem=="iventário" or ação_do_personagem=="mochila" or ação_do_personagem=="mochla" or ação_do_personagem=="mala" or ação_do_personagem=="bolsa" or ação_do_personagem=="itens" or ação_do_personagem=="ítens" or ação_do_personagem=="item"):
+                                                inventárioPersonagem()
+                                            else:
+                                                print('\nEntrada Inválida!\n')
 
 #--Seu prédio: Segundo Andar--#
 def seuPrédioSegundoAndar():
-    global nome_do_jogador, nome_do_inimigo,reserva_nome_do_jogador, ação_do_personagem, batalha_escapar, equipamento_roupa, equipamento_capa, equipamento_luva, equipamento_mãos, equipamento_botas, olhar_o_cenário, modificar_o_cenário, cheirar_o_cenário, objeto_00, objeto_01, objeto_02, objeto_03,variável_lugar,mostrar_save,ponto_de_save, eegg, vida_máxima_personagem, vida_atual_personagem, dinheiro_do_personagem, ataque_do_personagem, defesa_do_personagem, agilidade_do_personagem,reserva_vida_máxima_personagem,reserva_vida_atual_personagem,reserva_ataque_do_personagem,reserva_defesa_do_personagem,reserva_agilidade_do_personagem, vida_máxima_inimigo, vida_atual_inimigo, ataque_do_inimigo, defesa_do_inimigo,situação_00, situação_01, situação_02, situação_03, situação_04,situação_05,situação_06,situação_07,situação_08,situação_09,situação_10, teste_de_sorte, calculo_do_dano, calculo_da_fuga, variável_para_comparar, contador_de_batalha, contador_de_rodadas
+    global desequipado_roupa,desequipado_capa,desequipado_luva,desequipado_mãos,desequipado_calçado,espaço_vazio,pedaço_pizza,bolo_chocolate,pijama_inicial,uniforme_estudantil,malha_ninja,lápis_apontado,punhal_envelhecido,talheres_prata,jaqueta_imitação,jaqueta_couro,agasalho_lã,suplemento_alimentício,lata_energético,luva_lã,luva_couro,soco_pvc,soco_latão,luva_spikes_alu,soco_alu,luva_spikes_aço,soco_aço,luva_spikes_ag,soco_ag,luva_spikes_au,soco_au,luva_spikes_titânio,soco_titânio,anel_força1,anel_força2,anel_força3,anel_resistência1,anel_resistência2,anel_resistência3,anel_consistência1,anel_consistência2,anel_consistência3,anel_da_imortalidade,anel_da_divindade,chinelo_inicial,papetes_masculinas,tênis_velho,tênis_simplório,sapato_simplório,tênis_comum,tênis_trilha,tênis_caminhada,tênis_corrida,tênis_ZX5000,item_adicionado,quantidade_adicionada,equipado_roupa,equipado_capa,equipado_luva,equipado_anel,equipado_mãos,equipado_calçado,variável_cenário,objeto,situação,temporário,variável_lugar,ponto_de_save,mostrar_save, personagem_jogador,personagem_reserva,personagem_inimigo,eegg,ação_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,variável_para_comparar,contador_de_batalha,contador_de_rodadas,mala,loja_venda
     if(variável_lugar == "seu prédio, 3º andarb" or variável_lugar == "seu prédio, 4º andarb"):
         seuPrédioTerceiroAndar()
     variável_lugar = "seu prédio, 2º andar"
     while 1:
-        if(vida_atual_personagem<=0):break
+        if(personagem_jogador[6]<=0):break
         print("\n#", "-"*30,"#\n\nLista de Ações\n\nCenário:", variável_lugar,"\n\nVocê pode:\n\nchecar os quartos\n")
-        if(situação_02==1):
+        if(situação[2]==1):
             print("\narrombar o quarto 24")
         print("\nver ficha do personagem\nsubir as escadas\ndescer as escadas\n\nsalvar o jogo\n")
         print("\n#", "-"*30,"#\n")
-        print("\nE agora, ", nome_do_jogador,", o que você vai fazer?\n")
+        print("\nE agora, ", personagem_jogador[0],", o que você vai fazer?\n")
         ação_do_personagem = input("-")
         ação_do_personagem = ação_do_personagem.lower()
         if(ação_do_personagem=="checar os quartos" or ação_do_personagem=="checar quartos" or ação_do_personagem=="checar" or ação_do_personagem=="quartos" or ação_do_personagem=="checaros quartos" or ação_do_personagem=="checar osquartos" or ação_do_personagem=="checarosquartos" or ação_do_personagem=="checa os quartos" or ação_do_personagem=="checa os quarto" or ação_do_personagem=="checa o quarto" or ação_do_personagem=="checa o quartos" or ação_do_personagem=="checar os quarto" or ação_do_personagem=="checar o quarto" or ação_do_personagem=="bater na porta de um dos quartos" or ação_do_personagem=="checar um dos quartos" or ação_do_personagem=="bater na porta dos quartos" or ação_do_personagem=="bater a porta dos quartos" or ação_do_personagem=="bater quartos" or ação_do_personagem=="bater"):
@@ -1524,14 +1890,14 @@ def seuPrédioSegundoAndar():
             if(ação_do_personagem=="subir as escadas" or ação_do_personagem=="subir" or ação_do_personagem=="subir escadas" or ação_do_personagem=="subi" or ação_do_personagem=="subi as escadas" or ação_do_personagem=="subir escada" or ação_do_personagem=="subi escada" or ação_do_personagem=="subi a escada" or ação_do_personagem=="sobe"):
                 input("Você subiu para o terceiro andar, lá você encontrou cinco quartos de portas abertas e outra escada ascendente.")
                 seuPrédioTerceiroAndar()
-                if(vida_atual_personagem<=0):break
+                if(personagem_jogador[6]<=0):break
             else:
                 if(ação_do_personagem=="descer as escadas" or ação_do_personagem=="descer escadas" or ação_do_personagem=="descer escada" or ação_do_personagem=="descer a escada" or ação_do_personagem=="sair" or ação_do_personagem=="descer" or ação_do_personagem=="sair do prédio"):
                     input("Você desceu para o primeiro andar, o andar do seu quarto.")
                     break
                 else:
                     if(ação_do_personagem=="20"):
-                        if(situação_03==10):
+                        if(situação[3]==10):
                             input("Você já pegou tudo o que tinha para pegar aqui.")
                         else:
                             input("Você bate na porta e percebe, pelo barulho do trepidar da maçaneta, que ela está destrancada...")
@@ -1541,9 +1907,9 @@ def seuPrédioSegundoAndar():
                                 ação_do_personagem = ação_do_personagem.lower()
                                 if(ação_do_personagem=="sim" or ação_do_personagem=="s" or ação_do_personagem=="si" or ação_do_personagem=="sm" or ação_do_personagem=="im" or ação_do_personagem=="ssim"):
                                     input("Você entrou, não havia ninguém...")
-                                    input("Ao revistar o quarto você encontrou 30 Reais.")
-                                    dinheiro_do_personagem=dinheiro_do_personagem+30
-                                    situação_10=1
+                                    input("Ao revistar o quarto você encontrou 10 Reais.")
+                                    personagem_jogador[7]=personagem_jogador[7]+10
+                                    situação[10]=1
                                     break
                                 else:
                                     if(ação_do_personagem == "não" or ação_do_personagem=="n" or ação_do_personagem=="nao" or ação_do_personagem=="no" or ação_do_personagem=="na" or ação_do_personagem=="nã" or ação_do_personagem=="ao" or ação_do_personagem=="ão" or ação_do_personagem=="ñ" or ação_do_personagem=="ñão" or ação_do_personagem=="ño" or ação_do_personagem=="ñõ" or ação_do_personagem=="ñã" or ação_do_personagem=="ñaõ" or ação_do_personagem=="aõ"):
@@ -1553,189 +1919,161 @@ def seuPrédioSegundoAndar():
                                         input('ENTRADA INVÁLIDA! Digite "sim" ou "não"')
                     else:
                         if(ação_do_personagem=="21"):
-                            if(situação_03==7):
+                            if(situação[3]==7):
                                 input("Você bate na porta...")
                                 input(" - Olá! - diz o avô do garoto - Muito obrigado por treinar o meu neto,")
                                 input("agora ele não precisa se esconder mais dos trombadinhas da escola.")
-                            if(situação_03==6):
+                            if(situação[3]==6):
                                 input(" - Obrigado por me treinar, senhor.")
-                                nome_do_inimigo="Garoto, um Homem."
-                                vida_máxima_inimigo=20000
-                                vida_atual_inimigo=20000
-                                ataque_do_inimigo=1500
-                                defesa_do_inimigo=1000
+                                personagem_inimigo = [ "Garoto, um Homem", 1500, 1000, 1, 1, 20000, 20000]
                                 batalha()
-                                if(vida_atual_personagem<=0):
-                                    vida_atual_personagem=1
+                                if(personagem_jogador[6]<=0):
+                                    personagem_jogador[6]=1
                                     input(" - Me supere. Estarei te esperando.")
                                 else:
-                                    if(vida_atual_inimigo>0 and vida_atual_personagem>1):
-                                        while (vida_atual_inimigo>0):
+                                    if(personagem_inimigo[6]>0 and personagem_jogador[6]>1):
+                                        while (personagem_inimigo[6]>0):
                                             input(" - Não abandone nossa luta!")
                                             batalha()
-                                            if(vida_atual_personagem<=0):
-                                                vida_atual_personagem=1
+                                            if(personagem_jogador[6]<=0):
+                                                personagem_jogador[6]=1
                                                 input(" - Me supere. Estarei te esperando.")
                                             else:
-                                                if(vida_atual_inimigo<=0):
+                                                if(personagem_inimigo[6]<=0):
                                                     input(" - Obrigado, mesmo!")
-                                                    situação_03=7
+                                                    situação[3]=7
                                     else:
-                                        if(vida_atual_inimigo<=0):
+                                        if(personagem_inimigo[6]<=0):
                                             input(" - Obrigado, mesmo!")
-                                            situação_03=7
-                            if(situação_03==5):
+                                            situação[3]=7
+                            if(situação[3]==5):
                                 input(" - Estou empolgado! Não aguentava mais esperar pela nossa luta!")
-                                nome_do_inimigo="Garoto Forte"
-                                vida_máxima_inimigo=2000
-                                vida_atual_inimigo=2000
-                                ataque_do_inimigo=100
-                                defesa_do_inimigo=150
+                                personagem_inimigo = [ "Garoto Forte", 150, 100, 1, 1, 2000, 2000]
                                 batalha()
-                                if(vida_atual_personagem<=0):
-                                    vida_atual_personagem=1
+                                if(personagem_jogador[6]<=0):
+                                    personagem_jogador[6]=1
                                     input(" - Quando você estiver pronto para uma revanche, me procure novamente.")
                                 else:
-                                    if(vida_atual_inimigo>0 and vida_atual_personagem>1):
-                                        while (vida_atual_inimigo>0):
+                                    if(personagem_inimigo[6]>0 and personagem_jogador[6]>1):
+                                        while (personagem_inimigo[6]>0):
                                             input(" - A nossa luta não acabou ainda!")
                                             batalha()
-                                            if(vida_atual_personagem<=0):
-                                                vida_atual_personagem=1
+                                            if(personagem_jogador[6]<=0):
+                                                personagem_jogador[6]=1
                                                 input(" - Quando você estiver pronto para uma revanche, me procure novamente.")
                                             else:
-                                                if(vida_atual_inimigo<=0):
+                                                if(personagem_inimigo[6]<=0):
                                                     input(" - Incrível, você sempre me surpreende! Se prepare, da próxima vez estarei ainda mais forte!")
-                                                    situação_03=6
+                                                    situação[3]=6
                                     else:
-                                        if(vida_atual_inimigo<=0):
+                                        if(personagem_inimigo[6]<=0):
                                             input(" - Incrível, você sempre me surpreende! Se prepare, da próxima vez estarei ainda mais forte!")
-                                            situação_03=6
-                            if(situação_03==4):
+                                            situação[3]=6
+                            if(situação[3]==4):
                                 input(" - Dessa vez não vou perder tão fácil!")
-                                nome_do_inimigo="Garoto Sério"
-                                vida_máxima_inimigo=200
-                                vida_atual_inimigo=200
-                                ataque_do_inimigo=30
-                                defesa_do_inimigo=25
+                                personagem_inimigo = [ "Garoto Sério", 30, 25, 1, 1, 200, 200]
                                 batalha()
-                                if(vida_atual_personagem<=0):
-                                    vida_atual_personagem=1
+                                if(personagem_jogador[6]<=0):
+                                    personagem_jogador[6]=1
                                     input(" - Estou te levando a sério, não vou perder mais!")
                                     input(" - Estarei te esperando para uma revanche.")
                                 else:
-                                    if(vida_atual_inimigo>0 and vida_atual_personagem>1):
-                                        while (vida_atual_inimigo>0):
+                                    if(personagem_inimigo[6]>0 and personagem_jogador[6]>1):
+                                        while (personagem_inimigo[6]>0):
                                             input(" - Honre a nossa luta até o fim!")
                                             batalha()
-                                            if(vida_atual_personagem<=0):
-                                                vida_atual_personagem=1
+                                            if(personagem_jogador[6]<=0):
+                                                personagem_jogador[6]=1
                                                 input(" - Estou te levando a sério, não vou perder mais!")
                                                 input(" - Estarei te esperando para uma revanche.")
                                             else:
-                                                if(vida_atual_inimigo<=0):
+                                                if(personagem_inimigo[6]<=0):
                                                     input(" - Você é mesmo forte! Treinarei mais e estarei te esperando para o nosso próximo confronto!")
-                                                    situação_03=5
+                                                    situação[3]=5
                                     else:
-                                        if(vida_atual_inimigo<=0):
+                                        if(personagem_inimigo[6]<=0):
                                             input(" - Você é mesmo forte! Treinarei mais e estarei te esperando para o nosso próximo confronto!")
-                                            situação_03=5
-                            if(situação_03==3):
+                                            situação[3]=5
+                            if(situação[3]==3):
                                 input(" - Eu estava te esperando, panaca!")
-                                nome_do_inimigo="Garoto Convencido"
-                                vida_máxima_inimigo=110
-                                vida_atual_inimigo=110
-                                ataque_do_inimigo=8
-                                defesa_do_inimigo=12
+                                personagem_inimigo = [ "Garoto Convencido", 8, 12, 1, 1, 110, 110]
                                 batalha()
-                                if(vida_atual_personagem<=0):
-                                    vida_atual_personagem=1
+                                if(personagem_jogador[6]<=0):
+                                    personagem_jogador[6]=1
                                     input(" - Não aguenta o tranco, não? Hahaha!")
                                     input(" - Volte qualquer hora para apanhar mais!")
                                 else:
-                                    if(vida_atual_inimigo>0 and vida_atual_personagem>1):
-                                        while (vida_atual_inimigo>0):
+                                    if(personagem_inimigo[6]>0 and personagem_jogador[6]>1):
+                                        while (personagem_inimigo[6]>0):
                                             input(" - Volte aqui seu panaca!")
                                             batalha()
-                                            if(vida_atual_personagem<=0):
-                                                vida_atual_personagem=1
+                                            if(personagem_jogador[6]<=0):
+                                                personagem_jogador[6]=1
                                                 input(" - Não aguenta o tranco, não? Hahaha!")
                                                 input(" - Volte qualquer hora para apanhar mais!")
                                             else:
-                                                if(vida_atual_inimigo<=0):
+                                                if(personagem_inimigo[6]<=0):
                                                     input(" - Você é mesmo forte! Continuarei treinando e esperarei o nosso próximo confronto!")
-                                                    situação_03=4
+                                                    situação[3]=4
                                     else:
-                                        if(vida_atual_inimigo<=0):
+                                        if(personagem_inimigo[6]<=0):
                                             input(" - Você é mesmo forte! Continuarei treinando e esperarei o nosso próximo confronto!")
-                                            situação_03=4
-                            if(situação_03==2):
+                                            situação[3]=4
+                            if(situação[3]==2):
                                 input(" - Meu avô disse que você viria... - disse o garoto baixinho - Vamos logo ao que interessa!")
-                                nome_do_inimigo="Garoto Fracote"
-                                vida_máxima_inimigo=100
-                                vida_atual_inimigo=100
-                                ataque_do_inimigo=3
-                                defesa_do_inimigo=10
+                                personagem_inimigo = [ "Garoto Fracote", 3, 10, 1, 1, 100, 100]
                                 batalha()
-                                if(vida_atual_personagem<=0):
-                                    vida_atual_personagem=1
+                                if(personagem_jogador[6]<=0):
+                                    personagem_jogador[6]=1
                                     input(" - Você não é tão forte quanto meu avô falou.")
-                                    situação_03=3
+                                    situação[3]=3
                                 else:
-                                    if(vida_atual_inimigo>0 and vida_atual_personagem>1):
-                                        while (vida_atual_inimigo>0):
+                                    if(personagem_inimigo[6]>0 and personagem_jogador[6]>1):
+                                        while (personagem_inimigo[6]>0):
                                             input(" - Meu avô disse para não parar de lutar até eu não aguentar mais!")
                                             batalha()
-                                            if(vida_atual_personagem<=0):
-                                                vida_atual_personagem=1
+                                            if(personagem_jogador[6]<=0):
+                                                personagem_jogador[6]=1
                                                 input(" - Você não é tão forte quanto meu avô falou.")
-                                                situação_03=3
+                                                situação[3]=3
                                             else:
-                                                if(vida_atual_inimigo<=0):
+                                                if(personagem_inimigo[6]<=0):
                                                     input(" - Você é muito forte!!! Vou treinar e estarei te esperando para uma próxima luta!")
-                                                    situação_03=3
+                                                    situação[3]=3
                                     else:
-                                        if(vida_atual_inimigo<=0):
+                                        if(personagem_inimigo[6]<=0):
                                             input(" - Você é muito forte!!! Vou treinar e estarei te esperando para uma próxima luta!")
-                                            situação_03=3
-                            if(situação_03==1):
+                                            situação[3]=3
+                            if(situação[3]==1):
                                 input("A porta está trancada.")
-                            if(situação_03==0):
+                            if(situação[3]==0):
                                 input("Você bateu na porta...")
                                 input("Um senhor baixo e fracote abriu a porta... Ele parecia muito com um frango")
                                 input(" - O que que você quer?!")
                                 input("...")
                                 input(" - Saia daqui então!")
-                                nome_do_inimigo="Senhor Doente"
-                                vida_máxima_inimigo=50
-                                vida_atual_inimigo=50
-                                ataque_do_inimigo=5
-                                defesa_do_inimigo=3
+                                personagem_inimigo = [ "Senhor Doente", 5, 3, 1, 1, 50, 50]
                                 batalha()
-                                if(vida_atual_personagem<=0):break
-                                if(vida_atual_inimigo>0):
+                                if(personagem_jogador[6]<=0):break
+                                if(personagem_inimigo[6]>0):
                                     input("Depois de se afastar o senhor começou a gritar...")
                                     input("Com a mão no peito, ele começou a tossir...")
                                     input(" - Ahhhh... - gemiu o senhor que caia lentamente.")
                                     input(" - O QUÊ VOCÊ FEZ COM MEU AVÔ?! - era a voz de um menino vindo lá de dentro do quarto.")
                                     input("O menino pegou o senhor nos braços antes que tombasse e apertou algumas vezes uma bombinha para asma na boca dele...")
                                     input(" - VOCÊ VAI PAGAR CARO!")
-                                    nome_do_inimigo="Garoto Perturbado"
-                                    vida_máxima_inimigo=100
-                                    vida_atual_inimigo=100
-                                    ataque_do_inimigo=3
-                                    defesa_do_inimigo=10
+                                    personagem_inimigo = [ "Garoto Perturbado", 2, 10, 1, 1, 100, 100]
                                     batalha()
-                                    if(vida_atual_personagem<=0):break
-                                    if(vida_atual_inimigo>0):
+                                    if(personagem_jogador[6]<=0):break
+                                    if(personagem_inimigo[6]>0):
                                         input(" - SAIA JÁ DAQUI!")
                                         input("Em seguida ele fechou e trancou a porta.")
-                                        situação_03==1
+                                        situação[3]==1
                                     else:
                                         input("O garoto caiu no chão dentro da casa e começou a chorar.")
                                         input(" - SAIA DAQUI ANTES QUE EU CHAME A POLÍCIA! - disse o senhor que já estava um pouco melhor...")
                                         input("Em seguida ele fechou e trancou a porta.")
-                                        situação_03=1
+                                        situação[3]=1
                                 else:
                                     input("O senhor caiu no chão com uma mão no peito...")
                                     input("Ele tentava gritar algo enquanto estendia a outra mão...")
@@ -1755,54 +2093,51 @@ def seuPrédioSegundoAndar():
                                             input(" - ...")
                                             input(" - Não falo do coração na luta, isso você já tem, falo de armas...")
                                             input(" - Tome... Eu usava este punhal no meu tempo... Agora é seu.")
-                                            equipamento_mãos = "Punhal Envelhecido"
-                                            ataque_do_personagem = ataque_do_personagem+10
-                                            input("Seu ataque aumentou em 10 pontos!")
+                                            item_adicionado=punhal_envelhecido
+                                            quantidade_adicionada=1
+                                            adicionaItem()
+                                            input("Você guardou o Punhal Envelhecido na mala!")
                                             input(" - Se não for pedir demais, venha sempre que puder para treinar o meu neto... Ele ainda é muito fraco e eu não tenho mais o mesmo vigor de antes...")
-                                            situação_03=2
+                                            situação[3]=2
                                             break
                                         else:
                                             if(ação_do_personagem == "não" or ação_do_personagem=="n" or ação_do_personagem=="nao" or ação_do_personagem=="no" or ação_do_personagem=="na" or ação_do_personagem=="nã" or ação_do_personagem=="ao" or ação_do_personagem=="ão" or ação_do_personagem=="ñ" or ação_do_personagem=="ñão" or ação_do_personagem=="ño" or ação_do_personagem=="ñõ" or ação_do_personagem=="ñã" or ação_do_personagem=="ñaõ" or ação_do_personagem=="aõ"):
                                                 input(" - O QUÊ VOCÊ FEZ COM MEU AVÔ?! - era a voz de um menino vindo lá de dentro do quarto.")
                                                 input("O menino pegou o senhor nos braços antes que tombasse e apertou algumas vezes uma bombinha para asma na boca dele...")
                                                 input(" - VOCÊ VAI PAGAR CARO!")
-                                                nome_do_inimigo="Garoto Irritado"
-                                                vida_máxima_inimigo=100
-                                                vida_atual_inimigo=100
-                                                ataque_do_inimigo=10
-                                                defesa_do_inimigo=10
+                                                personagem_inimigo = [ "Garoto Irritado", 10, 10, 1, 1, 100, 100]
                                                 batalha()
-                                                if(vida_atual_personagem<=0):break
-                                                if(vida_atual_inimigo>0):
+                                                if(personagem_jogador[6]<=0):break
+                                                if(personagem_inimigo[6]>0):
                                                     input(" - SAIA JÁ DAQUI!")
                                                     input("Em seguida ele fechou e trancou a porta.")
-                                                    situação_03=1
+                                                    situação[3]=1
                                                 else:
                                                     input("O garoto caiu no chão dentro da casa e começou a chorar.")
                                                     input(" - SAIA DAQUI ANTES QUE EU CHAME A POLÍCIA! - disse o senhor que já estava um pouco melhor...")
                                                     input("Em seguida ele fechou e trancou a porta.")
-                                                    situação_03=1
+                                                    situação[3]=1
                                                 break
                                             else:
                                                 input('ENTRADA INVÁLIDA! Digite "sim" ou "não"')
                         else:
                             if(ação_do_personagem=="22"):
-                                if(situação_04==4):
+                                if(situação[4]==4):
                                     input("Voce bateu na porta...")
                                     input("Ninguém te atendeu.")
-                                if(situação_04==3):
+                                if(situação[4]==3):
                                     input(" - E aí, rapaz!")
                                     teste_de_sorte = random.randrange(3)
                                     if(teste_de_sorte==1):
                                         input(" - Você chegou em boa hora! Entre e coma um pedaço de pizza comigo!")
-                                        input("Você recuperou 50 pontos de vida!")
-                                        vida_atual_personagem = vida_atual_personagem + 50
-                                        if(vida_atual_personagem>(vida_máxima_personagem+100)):
-                                            vida_atual_personagem=vida_máxima_personagem+100
+                                        input("Você ganhou um pedaço de pizza!")
+                                        item_adicionado=pedaço_pizza
+                                        quantidade_adicionada=1
+                                        adicionaItem()
                                         input(" - Até outra hora, vizinho!")
                                     else:
                                         input(" - Estou sem pizza agora... Talvez mais tarde...")
-                                if(situação_04==2):
+                                if(situação[4]==2):
                                     input(" - O quê você quer aqui?")
                                     print("Você vai dizer a ele que comeu a sua pizza?(sim ou não)")
                                     while 1:
@@ -1813,33 +2148,35 @@ def seuPrédioSegundoAndar():
                                             input(" - VOCÊ...")
                                             input(" - Você é muito cara de pau mesmo, mas adimiro a sua sinceridade.")
                                             input(" - Eu sempre como pizza, quando você quiser passe aqui para pegar um pedaço.")
-                                            situação_04=3
+                                            situação[4]=3
                                             break
                                         else:
                                             if(ação_do_personagem == "não" or ação_do_personagem=="n" or ação_do_personagem=="nao" or ação_do_personagem=="no" or ação_do_personagem=="na" or ação_do_personagem=="nã" or ação_do_personagem=="ao" or ação_do_personagem=="ão" or ação_do_personagem=="ñ" or ação_do_personagem=="ñão" or ação_do_personagem=="ño" or ação_do_personagem=="ñõ" or ação_do_personagem=="ñã" or ação_do_personagem=="ñaõ" or ação_do_personagem=="aõ"):
                                                 input(" - ...")
                                                 input(" - Me deixe em paz!")
-                                                situação_04=4
+                                                situação[4]=4
                                                 break
                                             else:
                                                 input('Entrada inválida! Digite "sim" ou "não".')
-                                if(situação_04==1):
+                                if(situação[4]==1):
                                     input("Você bateu na porta do quarto, que agora está fechado.")
                                     input("Você escuta passos rápidos e violentos vindo à porta")
                                     input(" - EU TO MUITO PUTO! - diz o estudante que abriu violentamente a porta - ENTRARAM E COMERAM A MINHA PIZZA!")
                                     input("...")
                                     input(" - Ah esquece... Nem deve ter sido você...")
-                                    situação_04=2
-                                if(situação_04==0):
+                                    situação[4]=2
+                                if(situação[4]==0):
                                     input("O quarto está aberto, você entra e vê um estudante vagabundo dormindo num sofá com uma pizza no colo.")
                                     print("E aí, vai pegar essa pizza? (sim ou não)\n")
                                     while 1:
                                         ação_do_personagem = input("-")
                                         ação_do_personagem = ação_do_personagem.lower()
                                         if(ação_do_personagem=="sim" or ação_do_personagem=="s" or ação_do_personagem=="si" or ação_do_personagem=="sm" or ação_do_personagem=="im" or ação_do_personagem=="ssim"):
-                                            input("Você comeu a pizza e recuperou todos os seus pontos de vida!")
-                                            vida_atual_personagem=vida_máxima_personagem
-                                            situação_04=1
+                                            input("Você guardou a pizza inteira na mochila!")
+                                            item_adicionado=pedaço_pizza
+                                            quantidade_adicionada=8
+                                            adicionaItem()
+                                            situação[4]=1
                                             break
                                         else:
                                             if(ação_do_personagem == "não" or ação_do_personagem=="n" or ação_do_personagem=="nao" or ação_do_personagem=="no" or ação_do_personagem=="na" or ação_do_personagem=="nã" or ação_do_personagem=="ao" or ação_do_personagem=="ão" or ação_do_personagem=="ñ" or ação_do_personagem=="ñão" or ação_do_personagem=="ño" or ação_do_personagem=="ñõ" or ação_do_personagem=="ñã" or ação_do_personagem=="ñaõ" or ação_do_personagem=="aõ"):
@@ -1853,50 +2190,46 @@ def seuPrédioSegundoAndar():
                                    input("Parece abandonado por um bom tempo... Já tem fauna e flora prória!")
                                 else:
                                     if(ação_do_personagem=="24"):
-                                        if(situação_02==0):
+                                        if(situação[2]==0):
                                             input("Você encara um indivíduo de aparencia extravagante e vulgar encostado no batente da porta...")
                                             input(" - Qualé merh-mão? Tá querenu tretá?")
-                                            nome_do_inimigo="Mané de Boné"
-                                            vida_máxima_inimigo=100
-                                            vida_atual_inimigo=100
-                                            ataque_do_inimigo=10
-                                            defesa_do_inimigo=5
+                                            personagem_inimigo = [ "Mané de Boné", 10, 5, 1, 1, 100, 100]
                                             batalha()
-                                            if(vida_atual_personagem<=0):break
-                                            if(vida_atual_inimigo>0):
+                                            if(personagem_jogador[6]<=0):break
+                                            if(personagem_inimigo[6]>0):
                                                 input("Ele corre atrás de você e te dá um chute no joelho!")
                                                 input("!!!")
                                                 input("Você perdeu 30 pontos de vida!")
                                                 input(" - Fica diboa rapáh!")
-                                                vida_atual_personagem=vida_atual_personagem-30
+                                                personagem_jogador[6]=personagem_jogador[6]-30
                                                 input("Ele voltou ao batente da porta do quarto e agora está te encarando...")
                                                 input("Você me envergonha.")
                                             else:
                                                 input(" - Que isso maluco?! Que isso?!")
                                                 input("Ele entrou cambaleando para o quarto dele e se trancou!")
-                                                situação_02=1
-                                        if(situação_02==1):
+                                                situação[2]=1
+                                        if(situação[2]==1):
                                             input("O quarto está trancado...")
-                                        if(situação_02==2):
+                                        if(situação[2]==2):
                                             input("Você ve uma porta quebrada ao meio, caída, mas presa apenas pela dobradiça inferior, ")
                                             input("a superior segurava apenas um pedaço de madeira desprendido da porta.")
                                             input("Dentro você vê muito sangue pelo quarto, os poucos móveis quebrados, ")
                                             input("mas nada de valor...")
                                             matarAlguém()
-                                        if(situação_02==3):
+                                        if(situação[2]==3):
                                             input("Você ve uma porta quebrada ao meio, caída, mas presa apenas pela dobradiça inferior, ")
                                             input("a superior segurava apenas um pedaço de madeira desprendido da porta.")
                                             input("Também escuta, vindo lá de dentro, soluços em sussurros e sussurros em soluços...")
                                             input("Melhor não entrar... Não há nada de mais lá dentro.")
                                     else:
                                         if(ação_do_personagem=="arrombar a porta do quarto 24" or ação_do_personagem=="arrombar o quarto 24" or ação_do_personagem=="arrombar" or ação_do_personagem=="arrombar a porta" or ação_do_personagem=="entrar no quarto 24"):
-                                            if(situação_02==1):
+                                            if(situação[2]==1):
                                                 input("Você pisoteou a porta e entrou no quarto!")
                                                 input(" - Não, por favor nao!...")
                                                 while 1:
-                                                    if(situação_02==2):
+                                                    if(situação[2]==2):
                                                         break
-                                                    if(situação_02==3):
+                                                    if(situação[2]==3):
                                                         break
                                                     print("Melhor não continuar...(sim ou não)\n")
                                                     ação_do_personagem=input("-")
@@ -1922,14 +2255,14 @@ def seuPrédioSegundoAndar():
                                                                 input("Você o espancou até a morte...")
                                                                 input("...")
                                                                 matarAlguém()
-                                                                situação_02=2
+                                                                situação[2]=2
                                                                 break
                                                             else:
                                                                 if(ação_do_personagem == "não" or ação_do_personagem=="n" or ação_do_personagem=="nao" or ação_do_personagem=="no" or ação_do_personagem=="na" or ação_do_personagem=="nã" or ação_do_personagem=="ao" or ação_do_personagem=="ão" or ação_do_personagem=="ñ" or ação_do_personagem=="ñão" or ação_do_personagem=="ño" or ação_do_personagem=="ñõ" or ação_do_personagem=="ñã" or ação_do_personagem=="ñaõ" or ação_do_personagem=="aõ"):
                                                                     input("Você respirou fundo, abaixou os punhos e se retirou do quarto...")
-                                                                    vida_máxima_personagem=vida_máxima_personagem+50
-                                                                    vida_atual_personagem=vida_máxima_personagem
-                                                                    situação_02=3
+                                                                    personagem_jogador[5]=personagem_jogador[5]+50
+                                                                    personagem_jogador[6]=personagem_jogador[5]
+                                                                    situação[2]=3
                                                                     break
                                                                 else:
                                                                     input("Entrada inválida... A situação é tensa, mantenha a seriedade e responda corretamente.")
@@ -1937,61 +2270,64 @@ def seuPrédioSegundoAndar():
                                                     else:
                                                         if(ação_do_personagem == "não" or ação_do_personagem=="n" or ação_do_personagem=="nao" or ação_do_personagem=="no" or ação_do_personagem=="na" or ação_do_personagem=="nã" or ação_do_personagem=="ao" or ação_do_personagem=="ão" or ação_do_personagem=="ñ" or ação_do_personagem=="ñão" or ação_do_personagem=="ño" or ação_do_personagem=="ñõ" or ação_do_personagem=="ñã" or ação_do_personagem=="ñaõ" or ação_do_personagem=="aõ"):
                                                             input("Você respirou fundo, abaixou os punhos e se retirou do quarto...")
-                                                            vida_atual_personagem=vida_máxima_personagem
-                                                            situação_02=3
+                                                            personagem_jogador[6]=personagem_jogador[5]
+                                                            situação[2]=3
                                                             break
                                                         else:
                                                             input("Entrada inválida... A situação é tensa, mantenha a seriedade e responda corretamente.")
-                                            if(situação_04==2):
+                                            if(situação[4]==2):
                                                 matarAlguém()
-                                            if(situação_02==3):
+                                            if(situação[2]==3):
                                                 input("Você já fez o bastante por aqui... Melhor se afastar.")
                                         else:
                                             if(ação_do_personagem == "salvar o jogo" or ação_do_personagem=="guardar o jogo" or ação_do_personagem == "salvar jogo" or ação_do_personagem=="guardar jogo" or ação_do_personagem == "salvar" or ação_do_personagem == "save" or ação_do_personagem == "save game" or ação_do_personagem == "salvar o progresso" or ação_do_personagem == "salvar progresso" or ação_do_personagem == "guardar o progresso" or ação_do_personagem == "guardar progresso" or ação_do_personagem == "save progress" or ação_do_personagem == "salva" or ação_do_personagem == "sava" or ação_do_personagem == "slvar" or ação_do_personagem == "svar" or ação_do_personagem == "svr" or ação_do_personagem == "slvr" or ação_do_personagem == "sav" or ação_do_personagem == "sve" or ação_do_personagem == "sv" or ação_do_personagem == "salvar o game" or ação_do_personagem == "guardar o game" or ação_do_personagem == "salvar game" or ação_do_personagem == "guardar game"):
                                                 save()
                                             else:
-                                                input('Entrada Inválida!')
+                                                if(ação_do_personagem=="inventário" or ação_do_personagem=="inventario" or ação_do_personagem=="iventario" or ação_do_personagem=="iventário" or ação_do_personagem=="mochila" or ação_do_personagem=="mochla" or ação_do_personagem=="mala" or ação_do_personagem=="bolsa" or ação_do_personagem=="itens" or ação_do_personagem=="ítens" or ação_do_personagem=="item"):
+                                                    inventárioPersonagem()
+                                                else:
+                                                    print('\nEntrada Inválida!\n')
 
 #--Seu prédio: Primeiro Andar--#
 def seuPrédioPrimeiroAndar():
-    global nome_do_jogador, nome_do_inimigo,reserva_nome_do_jogador, ação_do_personagem, batalha_escapar, equipamento_roupa, equipamento_capa, equipamento_luva, equipamento_mãos, equipamento_botas, olhar_o_cenário, modificar_o_cenário, cheirar_o_cenário, objeto_00, objeto_01, objeto_02, objeto_03,variável_lugar,mostrar_save,ponto_de_save, eegg, vida_máxima_personagem, vida_atual_personagem, dinheiro_do_personagem, ataque_do_personagem, defesa_do_personagem, agilidade_do_personagem,reserva_vida_máxima_personagem,reserva_vida_atual_personagem,reserva_ataque_do_personagem,reserva_defesa_do_personagem,reserva_agilidade_do_personagem, vida_máxima_inimigo, vida_atual_inimigo, ataque_do_inimigo, defesa_do_inimigo,situação_00, situação_01, situação_02, situação_03, situação_04,situação_05,situação_06,situação_07,situação_08,situação_09,situação_10, teste_de_sorte, calculo_do_dano, calculo_da_fuga, variável_para_comparar, contador_de_batalha, contador_de_rodadas
+    global desequipado_roupa,desequipado_capa,desequipado_luva,desequipado_mãos,desequipado_calçado,espaço_vazio,pedaço_pizza,bolo_chocolate,pijama_inicial,uniforme_estudantil,malha_ninja,lápis_apontado,punhal_envelhecido,talheres_prata,jaqueta_imitação,jaqueta_couro,agasalho_lã,suplemento_alimentício,lata_energético,luva_lã,luva_couro,soco_pvc,soco_latão,luva_spikes_alu,soco_alu,luva_spikes_aço,soco_aço,luva_spikes_ag,soco_ag,luva_spikes_au,soco_au,luva_spikes_titânio,soco_titânio,anel_força1,anel_força2,anel_força3,anel_resistência1,anel_resistência2,anel_resistência3,anel_consistência1,anel_consistência2,anel_consistência3,anel_da_imortalidade,anel_da_divindade,chinelo_inicial,papetes_masculinas,tênis_velho,tênis_simplório,sapato_simplório,tênis_comum,tênis_trilha,tênis_caminhada,tênis_corrida,tênis_ZX5000,item_adicionado,quantidade_adicionada,equipado_roupa,equipado_capa,equipado_luva,equipado_anel,equipado_mãos,equipado_calçado,variável_cenário,objeto,situação,temporário,variável_lugar,ponto_de_save,mostrar_save, personagem_jogador,personagem_reserva,personagem_inimigo,eegg,ação_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,variável_para_comparar,contador_de_batalha,contador_de_rodadas,mala,loja_venda
     if(variável_lugar == "seu prédio, 2º andarb" or variável_lugar == "seu prédio, 3º andarb" or variável_lugar == "seu prédio, 4º andarb"):
         seuPrédioSegundoAndar()
-    if(vida_atual_personagem>0):
+    if(personagem_jogador[6]>0):
         variável_lugar = "seu prédio, 1º andar"
         print("Agora você está no corredor do primeiro andar do seu prédio.")
         time.sleep(3)
         print("\n#", "-"*30,"#\n", "\nLista de Ações\n\nCenário:", variável_lugar,"\n\nVocê pode:\nolhar\n")
         time.sleep(1)
-        if (olhar_o_cenário == "sim"):
+        if (variável_cenário[0] == "sim"):
             print("\ncheirar\nchecar os quartos\n")
             time.sleep(1)
-            if (cheirar_o_cenário == "sim" and objeto_00 == "não"):
+            if (variável_cenário[2] == "sim" and objeto[0] == "não"):
                 print("olhar o bêbado\n")
                 time.sleep(1)
-        if(objeto_01 == "sim"):
+        if(objeto[1] == "sim"):
             print("\narrombar o quarto 10\n")
             time.sleep(1)
-        if (objeto_00 == "1"):
+        if (objeto[0] == "1"):
             print("\nacordar o bêbado\n")
             print("\nrevistar o bêbado\n")
             time.sleep(1)
-        if (objeto_00 == "2"):
+        if (objeto[0] == "2"):
             print("\nmover o bêbado\n")
             time.sleep(1)
-        if (objeto_00 == "3"):
+        if (objeto[0] == "3"):
             print("\natacar o bêbado\n")
             time.sleep(1)
-        if (objeto_00 == "sim"):
+        if (objeto[0] == "sim"):
             print("\nabrir a porta dos fundos\n")
             time.sleep(1)
         print("\nver ficha do personagem\nsubir as escadas\ndescer as escadas\n\nsalvar o jogo\n", "\n#", "-"*30,"#\n")
         time.sleep(2)
-        print("\nO que você vai fazer, ", nome_do_jogador, "?\n")
+        print("\nO que você vai fazer, ", personagem_jogador[0], "?\n")
         ação_do_personagem = input("-")
         ação_do_personagem = ação_do_personagem.lower()
     while 1:
-        if(vida_atual_personagem<=0):break
+        if(personagem_jogador[6]<=0):break
         if(ação_do_personagem=="checar os quartos" or ação_do_personagem=="checar quartos" or ação_do_personagem=="checar" or ação_do_personagem=="quartos" or ação_do_personagem=="checaros quartos" or ação_do_personagem=="checar osquartos" or ação_do_personagem=="checarosquartos" or ação_do_personagem=="checa os quartos" or ação_do_personagem=="checa os quarto" or ação_do_personagem=="checa o quarto" or ação_do_personagem=="checa o quartos" or ação_do_personagem=="checar os quarto" or ação_do_personagem=="checar o quarto" or ação_do_personagem=="bater na porta de um dos quartos" or ação_do_personagem=="checar um dos quartos" or ação_do_personagem=="bater na porta dos quartos" or ação_do_personagem=="bater a porta dos quartos" or ação_do_personagem=="bater quartos" or ação_do_personagem=="bater"):
             print("Qual dos quartos?(10, 11, 12 ou 14)\n")
             ação_do_personagem = input("-")
@@ -2002,7 +2338,7 @@ def seuPrédioPrimeiroAndar():
             ficha_personagem()
         else:
             if(ação_do_personagem == "olhar" or ação_do_personagem == "ver" or ação_do_personagem == "olhar o quarto" or ação_do_personagem == "olha" or ação_do_personagem == "olhar quarto" or ação_do_personagem == "olha quarto" or ação_do_personagem == "olhar o quarto" or ação_do_personagem == "olha o quarto" or ação_do_personagem == "ve" or ação_do_personagem == "vê"):
-                if (cheirar_o_cenário == "1" or cheirar_o_cenário == "sim"):
+                if (variável_cenário[2] == "1" or variável_cenário[2] == "sim"):
                     print("Você vê um corredor estreito com 5 portas, o seu e os outros quartos desse andar do prédio.")
                     time.sleep(3)
                     print("Num dos lados desse corredor há uma janela quebrada,")
@@ -2014,7 +2350,7 @@ def seuPrédioPrimeiroAndar():
                     print("A mais próxima sobe e a colada à parede desce.")
                     time.sleep(3)
                 else:
-                    if (objeto_00 == "sim"):
+                    if (objeto[0] == "sim"):
                         print("Você vê um corredor estreito com 5 portas, o seu e os outros quartos desse andar do prédio.")
                         time.sleep(3)
                         print("Num dos lados desse corredor há uma janela quebrada, mas no outro se encontra a porta dos fundos.")
@@ -2034,25 +2370,25 @@ def seuPrédioPrimeiroAndar():
                         time.sleep(3)
                         print("A mais próxima sobe e a colada à parede desce.")
                         time.sleep(3)
-                        olhar_o_cenário = "sim"
+                        variável_cenário[0] = "sim"
             else:
                 if(ação_do_personagem=="cheirar" or ação_do_personagem=="cherar" or ação_do_personagem=="dar um tapa" or ação_do_personagem=="cheira" or ação_do_personagem=="chera"):
-                    if(cheirar_o_cenário=="não"):
-                        cheirar_o_cenário="sim"
+                    if(variável_cenário[2]=="não"):
+                        variável_cenário[2]="sim"
                     print("Você sente um cheiro forte de álcool e vômito")
                     time.sleep(3)
                 else:
                     if(ação_do_personagem=="10"):
-                        if(equipamento_capa=="Jaqueta de Couro"):
+                        if(objeto[3]=="sim"):
                             print("Você vê uma porta arrombada... Não há mais nada de interessante dentro do quarto.")
                             time.sleep(3)
                         else:
                             print("Você bateu na porta, mas ninguém atendeu... Ela parece fácil de ser arrombada...")
                             time.sleep(3)
-                            objeto_01="sim"
+                            objeto[1]="sim"
                     else:
                         if(ação_do_personagem=="11"):
-                            if(situação_01==0):
+                            if(situação[1]==0):
                                 print("Quando você bateu, a porta se abriu no primeiro toque por não ter uma fechadura...")
                                 time.sleep(4)
                                 print("Você vê, dentro da casa, uma mulher alta de ombros largos, BEM LARGOS, musculosa e com o maxilar largo...")
@@ -2063,55 +2399,53 @@ def seuPrédioPrimeiroAndar():
                                 time.sleep(4)
                                 print("Você perdeu 5 pontos de vida ao cair no corredor...")
                                 time.sleep(3)
-                                vida_atual_personagem=vida_atual_personagem-5
-                                if(vida_atual_personagem<=0):
-                                    vida_atual_personagem=1
-                                situação_01=1
+                                personagem_jogador[6]=personagem_jogador[6]-5
+                                if(personagem_jogador[6]<=0):
+                                    personagem_jogador[6]=1
+                                situação[1]=1
                             else:
-                                if(situação_01==1):
+                                if(situação[1]==1):
                                     print("Você empurrou a porta sem fechadura, mas moradora que ainda estava te toalha, furiosamente fechou a porta gritando, antes que você pudesse terminar de abrir!")
                                     time.sleep(3)
                                     print("Você perdeu 5 pontos de vida ao cair no corredor...")
                                     time.sleep(3)
-                                    vida_atual_personagem=vida_atual_personagem-5
-                                    if(vida_atual_personagem<=0):
-                                        vida_atual_personagem=1
-                                    situação_01=2
+                                    personagem_jogador[6]=personagem_jogador[6]-5
+                                    if(personagem_jogador[6]<=0):
+                                        personagem_jogador[6]=1
+                                    situação[1]=2
                                 else:
-                                    if(situação_01==2):
+                                    if(situação[1]==2):
                                         print("Você abriu a porta e levou um soco na cara, caindo em seguida no chão do corredor.")
                                         time.sleep(3)
                                         print("Você perdeu 10 pontos de vida...")
                                         time.sleep(3)
-                                        vida_atual_personagem=vida_atual_personagem-10
-                                        if(vida_atual_personagem<=0):
-                                            vida_atual_personagem=1
-                                        situação_01=3
+                                        personagem_jogador[6]=personagem_jogador[6]-10
+                                        if(personagem_jogador[6]<=0):
+                                            personagem_jogador[6]=1
+                                        situação[1]=3
                                     else:
-                                        if(situação_01==3):
+                                        if(situação[1]==3):
                                             print("Você abriu a porta e viu a mulher de toalha extremamente furiosa com os ombros levemente curvados, deixando à mostra seus braços musculosos e gigantescos.")
                                             time.sleep(3)
                                             print(" - VOCÊ VAI APANHAR MUITO AGORA!")
                                             time.sleep(3)
-                                            nome_do_inimigo="Mulher de Toalha"
-                                            vida_máxima_inimigo=800
-                                            vida_atual_inimigo=800
-                                            ataque_do_inimigo=20
-                                            defesa_do_inimigo=20
+                                            personagem_inimigo = [ "Mulher de Toalha", 20, 20, 1, 1, 800, 800]
                                             batalha()
-                                            if(vida_atual_personagem<=0):break
-                                            if(vida_atual_inimigo>0):
+                                            if(personagem_jogador[6]<=0):break
+                                            if(personagem_inimigo[6]>0):
                                                 print(" - E NÃO VOLTE MAIS AQUI!")
                                                 time.sleep(3)
                                             else:
                                                 input("A mulher caiu inconsciente no chão...")
-                                                input("Dentro da casa você encontrou 200 reais e um suplemento alimentício")
-                                                input("Você tomou o suplemento e aumentou seu ataque em 5 pontos!")
-                                                dinheiro_do_personagem=dinheiro_do_personagem+200
-                                                ataque_do_personagem=ataque_do_personagem+5
-                                                situação_01=4
+                                                input("Dentro da casa você encontrou 100 reais e um suplemento alimentício")
+                                                input("Você guardou ambos na mochila!")
+                                                personagem_jogador[7]=personagem_jogador[7]+100
+                                                quantidade_adicionada=1
+                                                item_adiconado=suplemento_alimentício
+                                                adicionaItem()
+                                                situação[1]=4
                                         else:
-                                            if(situação_01==4):
+                                            if(situação[1]==4):
                                                 input("Você entra no quarto, encontra a mulher que você derrotou caida no chão e mais nada além dos móveis velhos dela.")
                         else:
                             if(ação_do_personagem=="12"):
@@ -2121,11 +2455,45 @@ def seuPrédioPrimeiroAndar():
                                 input(" - Olá, meu jovem! Por que você não entra e prova um pouco do bolo que eu acabei de fazer?")
                                 input("...")
                                 input("Você recurperou TODOS os seus pontos de vida!")
-                                vida_atual_personagem=vida_máxima_personagem
+                                personagem_jogador[6]=personagem_jogador[5]
                             else:
                                 if(ação_do_personagem=="14"):
-                                    input("Você bateu na porta...")
-                                    input(" - JÁ DISSE PARA VOCÊ IR EMBORA SEU BÊBADO! - grita uma mulher de dentro da casa - NINGUÉM TE MERECE COMO MARIDO!")
+                                    if(objeto[4]=="sim"):
+                                        input("Suma daqui seu idiota... Deixe-a em paz...")
+                                    else:
+                                        if(objeto[0]=="sim" or objeto[0]=="pegou o dinheiro"):
+                                            input("Você bateu na porta...")
+                                            input("Você escuta passos de dentro vindo à porta...")
+                                            input(" - O que você quer? - questionou a mulher que abrira a porta aos prantos")
+                                            input("...")
+                                            input("Ela observa o corpo do marido no chão do corredor...")
+                                            input(" - F-Foi você?!...")
+                                            input("...")
+                                            input(" - VOCÊ VAI PAGAR CARO POR MATAR MEU MARIDO!")
+                                            personagem_inimigo = [ "Mulher aos Prantos", 20, 20, 1, 1, 100, 900]
+                                            batalha()
+                                            if(personagem_jogador[6]<=0):break
+                                            if(personagem_inimigo[6]>0):
+                                                print(" - CHEGA!")
+                                                time.sleep(3)
+                                                print(" - Você matou meu marido...")
+                                                time.sleep(3)
+                                                print(" - Como você teve a pachorra de me procurar?!")
+                                                time.sleep(3)
+                                                print("Ela fechou a porta chorando.")
+                                            else:
+                                                input("A mulher caiu inconsciente no chão...")
+                                                input("Dentro da casa você encontrou um par de talheres de prata...")
+                                                input("Você os guardou na mochila...")
+                                                input("...")
+                                                input("Seu idiota...")
+                                                quantidade_adicionada=1
+                                                item_adiconado=talheres_prata
+                                                adicionaItem()
+                                                objeto[4]="sim"
+                                        else:
+                                            input("Você bateu na porta...")
+                                            input(" - JÁ DISSE PARA VOCÊ IR EMBORA SEU BÊBADO! - grita uma mulher de dentro da casa - NINGUÉM TE MERECE COMO MARIDO!")
                                 else:
                                     if(ação_do_personagem=="13"):
                                         input("Você é bobo?")
@@ -2133,48 +2501,47 @@ def seuPrédioPrimeiroAndar():
                                         input("Você está atrasado demais para voltar!")
                                     else:
                                         if(ação_do_personagem=="arrombar a porta do quarto 10" or ação_do_personagem=="arrombar 10" or ação_do_personagem=="arrombar quarto 10" or ação_do_personagem=="arrombar o quarto 10" or ação_do_personagem=="arrombar" or ação_do_personagem=="arrombar a porta" or ação_do_personagem=="quarto 10" or ação_do_personagem=="entrar no quarto 10"):
-                                            if(objeto_03=="sim"):
+                                            if(objeto[3]=="sim"):
                                                 input("Você já arrombou essa porta... Não há mais nada de interessante dentro do quarto.")
                                             else:
                                                 input("Você entrou no quarto e encontrou uma Jaqueta de Couro!")
-                                                input("Você a vestiu.")
-                                                input("Sua defesa aumentou em 6 pontos!")
-                                                equipamento_capa="Jaqueta de Couro"
-                                                defesa_do_personagem=defesa_do_personagem+6
-                                                objeto_03="sim"
+                                                input("Você a guardou na mochila!")
+                                                item_adiconado=jaqueta_imitação
+                                                quantidade_adicionada=1
+                                                adicionaItem()
+                                                objeto[3]="sim"
                                         else:
                                             if(ação_do_personagem=="subir as escadas" or ação_do_personagem=="subir" or ação_do_personagem=="subir escadas" or ação_do_personagem=="subi" or ação_do_personagem=="subi as escadas" or ação_do_personagem=="subir escada" or ação_do_personagem=="subi escada" or ação_do_personagem=="subi a escada" or ação_do_personagem=="sobe"):
                                                 input("Você subiu para o segundo andar, lá você encontrou mais cinco quartos e outra escada ascendente.")
-                                                seuPrédioSegundoAndar() #MUDA DE MAPA SEM SALVAR
-                                                if(vida_atual_personagem<=0):break
+                                                seuPrédioSegundoAndar()
+                                                if(personagem_jogador[6]<=0):break
                                             else:
                                                 if(ação_do_personagem=="olhar o bêbado" or ação_do_personagem=="olhar bêbado" or ação_do_personagem=="olha o bêbado" or ação_do_personagem=="olha bÊbado" or ação_do_personagem=="olhar o bebado" or ação_do_personagem=="olhar bebado" or ação_do_personagem=="olha o bebado" or ação_do_personagem=="olha bebado"):
-                                                    objeto_00="1"
+                                                    objeto[0]="1"
                                                     input("Você vê um homem de 40 anos, coberto por cacos de vidro, bebida e vômito, dormindo no chão.")
                                                 else:
                                                     if(ação_do_personagem=="revistar o bêbado" or ação_do_personagem=="revistar bêbado" or ação_do_personagem=="revistar" or ação_do_personagem=="revista bêbado" or ação_do_personagem=="revista o bêbado" or ação_do_personagem=="revistar o bebado" or ação_do_personagem=="revistar bebado" or ação_do_personagem=="revistar" or ação_do_personagem=="revista bebado" or ação_do_personagem=="revista o bebado"):
-                                                        if(objeto_02=="não"):
-                                                            input("Você achou um energético!")
-                                                            input("Você aumentou o limite da vida em 50 pontos ao beber o energético!")
-                                                            input("E também recuperou seus pontos atuais de vida ao novo limite estabelecido!")
-                                                            vida_máxima_personagem=vida_máxima_personagem+50
-                                                            vida_atual_personagem=vida_máxima_personagem
-                                                            objeto_02="sim"
+                                                        if(objeto[2]=="não"):
+                                                            input("Você achou um energético e o guardou na mochila!")
+                                                            item_adicionado=lata_energético
+                                                            quantidade_adicionada=1
+                                                            adicionaItem()
+                                                            objeto[2]="sim"
                                                         else:
                                                             input("Você não encontrou mais nada...\n")
                                                     else:
                                                         if(ação_do_personagem=="acordar o bêbado" or ação_do_personagem=="acordar bêbado" or ação_do_personagem=="acorda o bêbado" or ação_do_personagem=="acorda bêbado" or ação_do_personagem=="acordar o bebado" or ação_do_personagem=="acordar bebado" or ação_do_personagem=="acorda o bebado" or ação_do_personagem=="acorda bebado"):
-                                                            objeto_00="2"
+                                                            objeto[0]="2"
                                                             input("Você tenta acordar o bêbado, mas não consegue...")
                                                         else:
                                                             if(ação_do_personagem=="mover o bêbado" or ação_do_personagem=="mover bêbado" or ação_do_personagem=="move o bêbado" or ação_do_personagem=="move bêbado" or ação_do_personagem=="mover o bebado" or ação_do_personagem=="mover bebado" or ação_do_personagem=="move o bebado" or ação_do_personagem=="move bebado" or ação_do_personagem=="mover" or ação_do_personagem=="move"):
-                                                                objeto_00="3"
+                                                                objeto[0]="3"
                                                                 input("Você pensa em mover o bêbado, mas o cheiro e a sujeira fazem você vomitar em cima dele!")
                                                                 input("...")
                                                                 input("Ele continua dormindo...")
                                                             else:
                                                                 if(ação_do_personagem=="atacar o bêbado" or ação_do_personagem=="atacar bêbado" or ação_do_personagem=="ataca o bêbado" or ação_do_personagem=="ataca bêbado" or ação_do_personagem=="atacar o bebado" or ação_do_personagem=="atacar bebado" or ação_do_personagem=="ataca o bebado" or ação_do_personagem=="ataca bebado" or ação_do_personagem=="atacar" or ação_do_personagem=="ataca"):
-                                                                    if(objeto_00!="sim" or objeto_00!="pegou o dinheiro"):
+                                                                    if(objeto[0]!="sim" or objeto[0]!="pegou o dinheiro"):
                                                                         input("Você chuta várias vezes o bêbado violentamente!")
                                                                         input("!!!")
                                                                         input("!!!")
@@ -2185,14 +2552,10 @@ def seuPrédioPrimeiroAndar():
                                                                         input("Ele se levanta e te empurra ganhando distância.")
                                                                         input("...")
                                                                         input(" - Ssseu muleque i-insstrosmestido!... *hic*\n")
-                                                                        nome_do_inimigo="Bêbado"
-                                                                        vida_máxima_inimigo=500
-                                                                        vida_atual_inimigo=30
-                                                                        ataque_do_inimigo=4
-                                                                        defesa_do_inimigo=4
+                                                                        personagem_inimigo = [ "Bêbado", 4, 4, 1, 1, 30, 500]
                                                                         batalha()
-                                                                        if(vida_atual_personagem<=0):break
-                                                                        if(vida_atual_inimigo>0):
+                                                                        if(personagem_jogador[6]<=0):break
+                                                                        if(personagem_inimigo[6]>0):
                                                                             input("Você escapa da briga, mas em seguida o bêbado tosse sangue e cái no chão...")
                                                                         else:
                                                                             input("O bêbado coberto de bebida, vômito e sangue, cái de costas no chão,")
@@ -2200,18 +2563,23 @@ def seuPrédioPrimeiroAndar():
                                                                             input("O sangue dele escorre pelo corredor até os seus pés...")
                                                                             input("Você vira o rosto fechando os olhos e abaixando os punhos...")
                                                                             input("Agora, desencostado da porta dos fundos, o bêbado já não é mais um impecílio...")
-                                                                        objeto_00="sim"
+                                                                        objeto[0]="sim"
                                                                 else:
                                                                     if(ação_do_personagem=="abrir a porta dos fundos"):
-                                                                        if(objeto_00=="sim"):
+                                                                        if(objeto[0]=="sim"):
                                                                             input("Você abre a porta... ")
                                                                             input("É um armário de limpesa.")
                                                                             input("Em meio às vassouras, rodos e outras coisas, você encontra uma mala...")
                                                                             input("Você abre a mala, encontra entre os materiais de escritório e 10 Reais!")
-                                                                            dinheiro_do_personagem=dinheiro_do_personagem+10
-                                                                            objeto_00="pegou o dinheiro"
+                                                                            input("...")
+                                                                            input("Você também achou um lápis apontado e o guardou na mochila!")
+                                                                            item_adicionado=lápis_apontado
+                                                                            quantidade_adicionada=1
+                                                                            adicionaItem()
+                                                                            personagem_jogador[7]=personagem_jogador[7]+10
+                                                                            objeto[0]="pegou o dinheiro"
                                                                         else:
-                                                                            if(objeto_00=="pegou o dinheiro"):
+                                                                            if(objeto[0]=="pegou o dinheiro"):
                                                                                 input("Você vê materiais de limpesa e uma maleta aberta.")
                                                                             else:
                                                                                 input("Não dá para abrir!")
@@ -2243,36 +2611,39 @@ def seuPrédioPrimeiroAndar():
                                                                             if(ação_do_personagem == "salvar o jogo" or ação_do_personagem=="guardar o jogo" or ação_do_personagem == "salvar jogo" or ação_do_personagem=="guardar jogo" or ação_do_personagem == "salvar" or ação_do_personagem == "save" or ação_do_personagem == "save game" or ação_do_personagem == "salvar o progresso" or ação_do_personagem == "salvar progresso" or ação_do_personagem == "guardar o progresso" or ação_do_personagem == "guardar progresso" or ação_do_personagem == "save progress" or ação_do_personagem == "salva" or ação_do_personagem == "sava" or ação_do_personagem == "slvar" or ação_do_personagem == "svar" or ação_do_personagem == "svr" or ação_do_personagem == "slvr" or ação_do_personagem == "sav" or ação_do_personagem == "sve" or ação_do_personagem == "sv" or ação_do_personagem == "salvar o game" or ação_do_personagem == "guardar o game" or ação_do_personagem == "salvar game" or ação_do_personagem == "guardar game"):
                                                                                 save()
                                                                             else:
-                                                                                input('Entrada Inválida!')
+                                                                                if(ação_do_personagem=="inventário" or ação_do_personagem=="inventario" or ação_do_personagem=="iventario" or ação_do_personagem=="iventário" or ação_do_personagem=="mochila" or ação_do_personagem=="mochla" or ação_do_personagem=="mala" or ação_do_personagem=="bolsa" or ação_do_personagem=="itens" or ação_do_personagem=="ítens" or ação_do_personagem=="item"):
+                                                                                    inventárioPersonagem()
+                                                                                else:
+                                                                                    print('\nEntrada Inválida!\n')
         print("\n#", "-"*30,"#\n", "\nLista de Ações\n\nCenário:", variável_lugar,"\n\nVocê pode:\nolhar\n")
-        if (olhar_o_cenário == "sim"):
+        if (variável_cenário[0] == "sim"):
             print("\ncheirar\nchecar os quartos\n")
-            if (cheirar_o_cenário == "sim" and objeto_00 == "não"):
+            if (variável_cenário[2] == "sim" and objeto[0] == "não"):
                 print("olhar o bêbado\n")
-        if(objeto_01 == "sim"):
+        if(objeto[1] == "sim"):
             print("\narrombar o quarto 10\n")
-        if (objeto_00 == "1"):
+        if (objeto[0] == "1"):
             print("\nacordar o bêbado\n")
             print("\nrevistar o bêbado\n")
-        if (objeto_00 == "2"):
+        if (objeto[0] == "2"):
             print("\nmover o bêbado\n")
-        if (objeto_00 == "3"):
+        if (objeto[0] == "3"):
             print("\natacar o bêbado\n")
-        if (objeto_00 == "sim"):
+        if (objeto[0] == "sim"):
             print("\nabrir a porta dos fundos\n")
         print("\nver ficha do personagem\nsubir as escadas\ndescer as escadas\n\nsalvar o jogo\n", "\n#", "-"*30,"#\n")
-        print("\nO que você fará agora, ", nome_do_jogador,"?\n")
+        print("\nO que você fará agora, ", personagem_jogador[0],"?\n")
         ação_do_personagem = input("-")
         ação_do_personagem = ação_do_personagem.lower()
 
 #--Sua Rua--#
 def suaRua():
-    global nome_do_jogador, nome_do_inimigo,reserva_nome_do_jogador, ação_do_personagem, batalha_escapar, equipamento_roupa, equipamento_capa, equipamento_luva, equipamento_mãos, equipamento_botas, olhar_o_cenário, modificar_o_cenário, cheirar_o_cenário, objeto_00, objeto_01, objeto_02, objeto_03,variável_lugar,mostrar_save,ponto_de_save, eegg, vida_máxima_personagem, vida_atual_personagem, dinheiro_do_personagem, ataque_do_personagem, defesa_do_personagem, agilidade_do_personagem,reserva_vida_máxima_personagem,reserva_vida_atual_personagem,reserva_ataque_do_personagem,reserva_defesa_do_personagem,reserva_agilidade_do_personagem, vida_máxima_inimigo, vida_atual_inimigo, ataque_do_inimigo, defesa_do_inimigo,situação_00, situação_01, situação_02, situação_03, situação_04,situação_05,situação_06,situação_07,situação_08,situação_09,situação_10, teste_de_sorte, calculo_do_dano, calculo_da_fuga, variável_para_comparar, contador_de_batalha, contador_de_rodadas
+    global desequipado_roupa,desequipado_capa,desequipado_luva,desequipado_mãos,desequipado_calçado,espaço_vazio,pedaço_pizza,bolo_chocolate,pijama_inicial,uniforme_estudantil,malha_ninja,lápis_apontado,punhal_envelhecido,talheres_prata,jaqueta_imitação,jaqueta_couro,agasalho_lã,suplemento_alimentício,lata_energético,luva_lã,luva_couro,soco_pvc,soco_latão,luva_spikes_alu,soco_alu,luva_spikes_aço,soco_aço,luva_spikes_ag,soco_ag,luva_spikes_au,soco_au,luva_spikes_titânio,soco_titânio,anel_força1,anel_força2,anel_força3,anel_resistência1,anel_resistência2,anel_resistência3,anel_consistência1,anel_consistência2,anel_consistência3,anel_da_imortalidade,anel_da_divindade,chinelo_inicial,papetes_masculinas,tênis_velho,tênis_simplório,sapato_simplório,tênis_comum,tênis_trilha,tênis_caminhada,tênis_corrida,tênis_ZX5000,item_adicionado,quantidade_adicionada,equipado_roupa,equipado_capa,equipado_luva,equipado_anel,equipado_mãos,equipado_calçado,variável_cenário,objeto,situação,temporário,variável_lugar,ponto_de_save,mostrar_save, personagem_jogador,personagem_reserva,personagem_inimigo,eegg,ação_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,variável_para_comparar,contador_de_batalha,contador_de_rodadas,mala,loja_venda
 
 
 #####################----------------------------__BRIGA DE ESTUDANTE__----------------------------#####################
 while 1:
-    while (vida_atual_personagem>0):
+    while (personagem_jogador[6]>0):
         print('''
    _________________________________________________________________________  
  |\ _______________________________________________________________________ /| 
@@ -2395,59 +2766,89 @@ while 1:
                                                             else:
                                                                 print("Entrada inválida!\n")
                                                                 time.sleep(0.5)
-                    mostrar_save = pickle.load(arq)
-                    nome_do_jogador = pickle.load(arq)
-                    nome_do_inimigo = pickle.load(arq)
-                    reserva_nome_do_jogador = pickle.load(arq)
-                    ação_do_personagem = pickle.load(arq)
-                    batalha_escapar = pickle.load(arq)
-                    equipamento_roupa = pickle.load(arq)
-                    equipamento_capa = pickle.load(arq)
-                    equipamento_luva = pickle.load(arq)
-                    equipamento_mãos = pickle.load(arq)
-                    equipamento_botas = pickle.load(arq)
-                    olhar_o_cenário = pickle.load(arq)
-                    modificar_o_cenário = pickle.load(arq)
-                    cheirar_o_cenário = pickle.load(arq)
-                    objeto_00 = pickle.load(arq)
-                    objeto_01 = pickle.load(arq)
-                    objeto_02 = pickle.load(arq)
-                    objeto_03 = pickle.load(arq)
+                    desequipado_roupa = pickle.load(arq)
+                    desequipado_capa = pickle.load(arq)
+                    desequipado_luva = pickle.load(arq)
+                    desequipado_mãos = pickle.load(arq)
+                    desequipado_calçado = pickle.load(arq)
+                    espaço_vazio = pickle.load(arq)
+                    pedaço_pizza = pickle.load(arq)
+                    bolo_chocolate = pickle.load(arq)
+                    pijama_inicial = pickle.load(arq)
+                    uniforme_estudantil = pickle.load(arq)
+                    malha_ninja = pickle.load(arq)
+                    lápis_apontado = pickle.load(arq)
+                    punhal_envelhecido = pickle.load(arq)
+                    talheres_prata = pickle.load(arq)
+                    jaqueta_imitação = pickle.load(arq)
+                    jaqueta_couro = pickle.load(arq)
+                    agasalho_lã = pickle.load(arq)
+                    suplemento_alimentício = pickle.load(arq)
+                    lata_energético = pickle.load(arq)
+                    luva_lã = pickle.load(arq)
+                    luva_couro = pickle.load(arq)
+                    soco_pvc = pickle.load(arq)
+                    soco_latão = pickle.load(arq)
+                    luva_spikes_alu = pickle.load(arq)
+                    soco_alu = pickle.load(arq)
+                    luva_spikes_aço = pickle.load(arq)
+                    soco_aço = pickle.load(arq)
+                    luva_spikes_ag = pickle.load(arq)
+                    soco_ag = pickle.load(arq)
+                    luva_spikes_au = pickle.load(arq)
+                    soco_au = pickle.load(arq)
+                    luva_spikes_titânio = pickle.load(arq)
+                    soco_titânio = pickle.load(arq)
+                    anel_força1 = pickle.load(arq)
+                    anel_força2 = pickle.load(arq)
+                    anel_força3 = pickle.load(arq)
+                    anel_resistência1 = pickle.load(arq)
+                    anel_resistência2 = pickle.load(arq)
+                    anel_resistência3 = pickle.load(arq)
+                    anel_consistência1 = pickle.load(arq)
+                    anel_consistência2 = pickle.load(arq)
+                    anel_consistência3 = pickle.load(arq)
+                    anel_da_imortalidade = pickle.load(arq)
+                    anel_da_divindade = pickle.load(arq)
+                    chinelo_inicial = pickle.load(arq)
+                    papetes_masculinas = pickle.load(arq)
+                    tênis_velho = pickle.load(arq)
+                    tênis_simplório = pickle.load(arq)
+                    sapato_simplório = pickle.load(arq)
+                    tênis_comum = pickle.load(arq)
+                    tênis_trilha = pickle.load(arq)
+                    tênis_caminhada = pickle.load(arq)
+                    tênis_corrida = pickle.load(arq)
+                    tênis_ZX5000 = pickle.load(arq)
+                    item_adicionado = pickle.load(arq)
+                    quantidade_adicionada = pickle.load(arq)
+                    equipado_roupa = pickle.load(arq)
+                    equipado_capa = pickle.load(arq)
+                    equipado_luva = pickle.load(arq)
+                    equipado_anel = pickle.load(arq)
+                    equipado_mãos = pickle.load(arq)
+                    equipado_calçado = pickle.load(arq)
+                    variável_cenário = pickle.load(arq)
+                    objeto = pickle.load(arq)
+                    situação = pickle.load(arq)
+                    temporário = pickle.load(arq)
                     variável_lugar = pickle.load(arq)
                     ponto_de_save = pickle.load(arq)
+                    mostrar_save = pickle.load(arq)
+                    personagem_jogador = pickle.load(arq)
+                    personagem_reserva = pickle.load(arq)
+                    personagem_inimigo = pickle.load(arq)
                     eegg = pickle.load(arq)
-                    vida_máxima_personagem = pickle.load(arq)
-                    vida_atual_personagem = pickle.load(arq)
-                    dinheiro_do_personagem = pickle.load(arq)
-                    ataque_do_personagem = pickle.load(arq)
-                    defesa_do_personagem = pickle.load(arq)
-                    agilidade_do_personagem = pickle.load(arq)
-                    reserva_vida_máxima_personagem = pickle.load(arq)
-                    reserva_vida_atual_personagem = pickle.load(arq)
-                    reserva_ataque_do_personagem = pickle.load(arq)
-                    reserva_defesa_do_personagem = pickle.load(arq)
-                    reserva_agilidade_do_personagem = pickle.load(arq)
-                    vida_máxima_inimigo = pickle.load(arq)
-                    vida_atual_inimigo = pickle.load(arq)
-                    ataque_do_inimigo = pickle.load(arq)
-                    defesa_do_inimigo = pickle.load(arq)
-                    situação_00 = pickle.load(arq)
-                    situação_01 = pickle.load(arq)
-                    situação_02 = pickle.load(arq)
-                    situação_03 = pickle.load(arq)
-                    situação_04 = pickle.load(arq)
-                    situação_05 = pickle.load(arq)
-                    situação_06 = pickle.load(arq)
-                    situação_07 = pickle.load(arq)
-                    situação_08 = pickle.load(arq)
-                    situação_09 = pickle.load(arq)
-                    situação_10 = pickle.load(arq)
+                    ação_do_personagem = pickle.load(arq)
+                    batalha_escapar = pickle.load(arq)
                     teste_de_sorte = pickle.load(arq)
                     calculo_do_dano = pickle.load(arq)
                     calculo_da_fuga = pickle.load(arq)
                     variável_para_comparar = pickle.load(arq)
-                    contador_de_batalha= pickle.load(arq)
+                    contador_de_batalha = pickle.load(arq)
                     contador_de_rodadas = pickle.load(arq)
+                    mala = pickle.load(arq)
+                    loja_venda = pickle.load(arq)
                     arq.close
                     if(ponto_de_save>0):
                         print("\nCarregado!\n")
@@ -2463,9 +2864,9 @@ while 1:
             print("\nIniciando novo jogo...\n")
             time.sleep(2)
             print("\n\nVocê é um homem... Qual é o seu nome?\n")
-            nome_do_jogador = input("-")
+            personagem_jogador[0] = input("-")
             while 1:
-                print("Seu nome é", nome_do_jogador, "?")
+                print("Seu nome é", personagem_jogador[0], "?")
                 while 2:
                     ação_do_personagem = input("-")
                     ação_do_personagem = ação_do_personagem.lower()
@@ -2474,14 +2875,14 @@ while 1:
                     else:
                         if(ação_do_personagem == "não" or ação_do_personagem=="n" or ação_do_personagem=="nao" or ação_do_personagem=="no" or ação_do_personagem=="na" or ação_do_personagem=="nã" or ação_do_personagem=="ao" or ação_do_personagem=="ão" or ação_do_personagem=="ñ" or ação_do_personagem=="ñão" or ação_do_personagem=="ño" or ação_do_personagem=="ñõ" or ação_do_personagem=="ñã" or ação_do_personagem=="ñaõ" or ação_do_personagem=="aõ"):
                             print("\nEntão qual é o seu nome?\n")
-                            nome_do_jogador = input("-")
+                            personagem_jogador[0] = input("-")
                             break
                         else:
                             print('\nEntrada inválida, digite "sim" ou "não".\n')
                             time.sleep(0.5)
                 if(ação_do_personagem=="sim" or ação_do_personagem=="s" or ação_do_personagem=="si" or ação_do_personagem=="sm" or ação_do_personagem=="im" or ação_do_personagem=="ssim"):
                     break
-            print("Muito prazer, ", nome_do_jogador,'.')
+            print("Muito prazer, ", personagem_jogador[0],'.')
             time.sleep(2)
             print('Nós já nos conhecemos?(digite "não" para ver o tutorial)\n')
             ação_do_personagem = input("-")
@@ -2550,15 +2951,15 @@ while 1:
                         print('\nAcho que já é o bastante para começarmos, mas posso repetir se você quiser...')
                         time.sleep(2)
                         print('Você entendeu tudo o que eu disse?')
-                        objeto_00="ganha presente"
+                        objeto[0]="ganha presente"
                     else:
                         print('Não entendi o que você quis dizer...\nPor favor, digite "sim" ou "não".\n')
                     ação_do_personagem = input("-")
                     ação_do_personagem = ação_do_personagem.lower()
                     if(ação_do_personagem=="sim" or ação_do_personagem=="s" or ação_do_personagem=="si" or ação_do_personagem=="sm" or ação_do_personagem=="im" or ação_do_personagem=="ssim"):
                         ação_do_personagem="sim"
-            if(objeto_00=="ganha presente"):
-                print("\nÓtimo, ",nome_do_jogador,".")
+            if(objeto[0]=="ganha presente"):
+                print("\nÓtimo, ",personagem_jogador[0],".")
                 time.sleep(1)
                 print("Acho que começamos com o pé direito! Fico feliz que você tenha me escutado como um bom garoto!")
                 time.sleep(2)
@@ -2566,9 +2967,9 @@ while 1:
                 time.sleep(2)
             else:
                 print("Eu não me lembro de você...")
-                time.sleep(5)
+                time.sleep(3)
                 print("Então você deve ser mesmo irrelevante!")
-                time.sleep(5)
+                time.sleep(3)
 
 #####################----------------------------__INÍCIO DO JOGO__----------------------------#####################
             print("\nCenário: acabou de amanhecer, seu quarto está desarrumado,")
@@ -2579,64 +2980,68 @@ while 1:
             time.sleep(2)
             print("\n\nVocê pode:\n\nvestir\narrumar o quarto\nolhar\n")
             time.sleep(2)
-            if (olhar_o_cenário == "sim"):
+            if (variável_cenário[0] == "sim"):
                 print("\nolhar as gavetas\nolhar o guarda-roupas\nolhar a estante\nolhar pela janela\n")
                 time.sleep(2)
             print("\nver ficha do personagem\nsair do quarto\n")
             time.sleep(1)
             print("\n#", "-"*30,"#\n")
-            print("\nO que você vai fazer", nome_do_jogador,"?\n")
+            print("\nO que você vai fazer", personagem_jogador[0],"?\n")
             ação_do_personagem = input("-")
             ação_do_personagem = ação_do_personagem.lower()
             while 1:
                 if (ação_do_personagem == "ver ficha do personagem" or ação_do_personagem == "ver a ficha do personagem" or ação_do_personagem == "ver a ficha de personagem" or ação_do_personagem == "ficha" or ação_do_personagem=="ficha do personagem" or ação_do_personagem=="ficha de personagem" or ação_do_personagem=="ver ficha de personagem" or ação_do_personagem=="ver ficha" or ação_do_personagem == "olhar ficha do personagem" or ação_do_personagem == "ver minha ficha" or ação_do_personagem=="minha ficha" or ação_do_personagem=="ficha personagem" or ação_do_personagem=="olhar ficha de personagem" or ação_do_personagem=="olhar ficha"):
                     ficha_personagem()
                 else:
-                    if (ação_do_personagem== "vetir" or ação_do_personagem=="vest" or ação_do_personagem=="vesti" or ação_do_personagem=="veti" or ação_do_personagem=="estir" or ação_do_personagem=="esti" or ação_do_personagem=="etir" or ação_do_personagem == "vestir" or ação_do_personagem == "vestir uniforme" or ação_do_personagem == "vestir o uniforme" or ação_do_personagem == "vestir o uniforme estudantil" or ação_do_personagem == "vestir uniforme estudantil" or ação_do_personagem == "se vestir" or ação_do_personagem == "se vestir para a aula" or ação_do_personagem == "se vestir pra aula" or ação_do_personagem == "vestir para a aula" or ação_do_personagem == "me arrumar" or ação_do_personagem == "tomar banho" or ação_do_personagem == "ir ao banheiro" or ação_do_personagem == "cagar" or ação_do_personagem == "mijar" or ação_do_personagem == "fazer xixi" or ação_do_personagem == "trocar de roupa" or ação_do_personagem == "me trocar" or ação_do_personagem == "trocar"):
-                        if (equipamento_roupa == "Pijama"):
-                            print("Você se vestiu para a aula.\n")
+                    if (ação_do_personagem== "vetir" or ação_do_personagem=="vest" or ação_do_personagem=="vesti" or ação_do_personagem=="veti" or ação_do_personagem=="estir" or ação_do_personagem=="esti" or ação_do_personagem=="etir" or ação_do_personagem == "vestir" or ação_do_personagem == "vesir" or ação_do_personagem == "vestir uniforme" or ação_do_personagem == "vestir o uniforme" or ação_do_personagem == "vestir o uniforme estudantil" or ação_do_personagem == "vestir uniforme estudantil" or ação_do_personagem == "se vestir" or ação_do_personagem == "se vestir para a aula" or ação_do_personagem == "se vestir pra aula" or ação_do_personagem == "vestir para a aula" or ação_do_personagem == "me arrumar" or ação_do_personagem == "tomar banho" or ação_do_personagem == "ir ao banheiro" or ação_do_personagem == "cagar" or ação_do_personagem == "mijar" or ação_do_personagem == "fazer xixi" or ação_do_personagem == "trocar de roupa" or ação_do_personagem == "me trocar" or ação_do_personagem == "trocar"):
+                        if (temporário[0] == False):
+                            print("Você colocou a mão embaixo do seu travesseiro e achou seu uniforme.\n")
                             time.sleep(1)
-                            equipamento_roupa = "Uniforme Estudantil"
-                            defesa_do_personagem=defesa_do_personagem+1
-                            print("Sua defesa aumentou em 1 ponto!\n")
+                            print("Você guardou o Uniforme Estudantil na sua mochila!\n")
                             time.sleep(2)
+                            item_adicionado=uniforme_estudantil
+                            quantidade_adicionada=1
+                            adicionaItem()
+                            temporário[0] = True
                         else:
-                            print("Você já está vestido para a aula!\n")
+                            print("Você já pegou seu uniforme!\n")
                             time.sleep(1)
                     else:
                         if (ação_do_personagem == "arrumar o quarto" or ação_do_personagem == "arrumar" or ação_do_personagem == "arrumar quarto" or ação_do_personagem == "arruma" or ação_do_personagem == "arruma o quarto" or ação_do_personagem == "arruma quarto" or ação_do_personagem == "quarto"):
-                            if (modificar_o_cenário == "não"):
-                                print("Você achou 30 Reais enquanto arrumava o seu quarto!\n")
+                            if (variável_cenário[1] == "não"):
+                                print("Você achou 15 Reais enquanto arrumava o seu quarto!\n")
                                 time.sleep(2)
-                                dinheiro_do_personagem = +30
-                                modificar_o_cenário = "sim"
+                                personagem_jogador[7] = +15
+                                variável_cenário[1] = "sim"
                             else:
                                 print("Você já arrumou o seu quarto!\n")
                                 time.sleep(1)
                         else:
                             if (ação_do_personagem == "olhar" or ação_do_personagem=="olh" or ação_do_personagem == "ver" or ação_do_personagem == "olhar o quarto" or ação_do_personagem == "olha" or ação_do_personagem == "olhar quarto" or ação_do_personagem == "olha quarto" or ação_do_personagem == "olhar o quarto" or ação_do_personagem == "olha o quarto" or ação_do_personagem == "ve" or ação_do_personagem == "vê"):
-                                if (modificar_o_cenário == "não"):
+                                if (variável_cenário[1] == "não"):
                                     print("Você não consegue ver nada além de bagunça, MUITA BAGUNÇA!!!\n")
                                     time.sleep(2)
                                 else:
                                     print("Você vê um quarto arrumado, com um guarda-roupas, uma estante de livros, uma mesa de escritório com gavetas e uma janela.\n")
                                     time.sleep(3)
-                                    olhar_o_cenário = "sim"
+                                    variável_cenário[0] = "sim"
                             else:
                                 if (ação_do_personagem == "olhar as gavetas" or ação_do_personagem == "olhar gavetas" or ação_do_personagem == "olha a gaveta" or ação_do_personagem == "olhar a gaveta" or ação_do_personagem == "olhar gaveta" or ação_do_personagem == "olhar as gaveta" or ação_do_personagem == "olha as gavetas" or ação_do_personagem == "olha gaveta" or ação_do_personagem == "olha as gaveta" or ação_do_personagem == "olha a gavetas" or ação_do_personagem == "ver as gavetas" or ação_do_personagem == "ver a gaveta" or ação_do_personagem == "ver as gaveta" or ação_do_personagem == "ver a gavetas" or ação_do_personagem=="gaveta" or ação_do_personagem=="gavetas"):
-                                    if (equipamento_luva == "Soco-Inglês"):
+                                    if (temporário[1] == True):
                                         print("Você olhou novamente as gavetas, mas não encontrou nada interessante.\n")
                                         time.sleep(1)
                                     else:
                                         print("Você achou um Soco-Inglês enquanto olhava as gavetas!\n")
                                         time.sleep(2)
-                                        ataque_do_personagem = ataque_do_personagem +3;
-                                        equipamento_luva = "Soco-Inglês"
-                                        print("Seu ataque aumentou em 3 pontos!")
+                                        item_adicionado=soco_pvc
+                                        quantidade_adicionada=1
+                                        adicionaItem()
+                                        print("Você o guardou na mochila!")
                                         time.sleep(2)
+                                        temporário[1]=True
                                 else:
                                     if (ação_do_personagem == "olhar o guarda-roupas" or ação_do_personagem =="olhar o guarda" or ação_do_personagem =="olhar o garda" or ação_do_personagem == "guarda" or ação_do_personagem=="roupa" or ação_do_personagem == "olha o guarda-roupas" or ação_do_personagem == "olha o guarda-roupa" or ação_do_personagem == "olhar o guarda-roupa" or ação_do_personagem == "olhar guarda-roupas" or ação_do_personagem == "olha guarda-roupas" or ação_do_personagem == "olha guarda-roupa" or ação_do_personagem == "olhar guarda-roupa" or ação_do_personagem == "olhar o guarda roupas" or ação_do_personagem == "olha o guarda roupas" or ação_do_personagem == "olha o guarda roupa" or ação_do_personagem == "olhar o guarda roupa" or ação_do_personagem == "olhar guarda roupas" or ação_do_personagem == "olha guarda roupas" or ação_do_personagem == "olha guarda roupa" or ação_do_personagem == "olhar guarda roupa" or ação_do_personagem == "olhar o guardaroupas" or ação_do_personagem == "olha o guardaroupas" or ação_do_personagem == "olha o guardaroupa" or ação_do_personagem == "olhar o guardaroupa" or ação_do_personagem == "olhar guardaroupas" or ação_do_personagem == "olha guardaroupas" or ação_do_personagem == "olha guardaroupa" or ação_do_personagem == "olhar guardaroupa" or ação_do_personagem == "olhar o guardarroupas" or ação_do_personagem == "olha o guardarroupas" or ação_do_personagem == "olha o guardarroupa" or ação_do_personagem == "olhar o guardarroupa" or ação_do_personagem == "olhar guardarroupas" or ação_do_personagem == "olha guardarroupas" or ação_do_personagem == "olha guardarroupa" or ação_do_personagem == "olhar guardarroupa" or ação_do_personagem == "guarda-roupa" or ação_do_personagem == "guarda-roupas" or ação_do_personagem == "guarda roupa" or ação_do_personagem == "guarda roupas" or ação_do_personagem == "guardaroupa" or ação_do_personagem == "guardaroupas" or ação_do_personagem == "guardarroupa" or ação_do_personagem == "guardarroupas" or ação_do_personagem == "olhar o armário" or ação_do_personagem == "olhar o armario" or ação_do_personagem == "olhar armário" or ação_do_personagem == "olhar armario" or ação_do_personagem == "olha o armário" or ação_do_personagem == "olha o armario" or ação_do_personagem == "olha armário" or ação_do_personagem == "olha armario" or ação_do_personagem == "armário" or ação_do_personagem == "armario" or ação_do_personagem == "sair do armário" or ação_do_personagem == "vestir smoking" or ação_do_personagem == "ver armário" or ação_do_personagem == "ver o armário" or ação_do_personagem == "ver armario" or ação_do_personagem == "ver o armario" or ação_do_personagem == "ver o guarda-roupas" or ação_do_personagem == "ver o guardarroupas" or ação_do_personagem == "ver o guarda roupas" or ação_do_personagem == "ver o guardaroupas" or ação_do_personagem == "ver o guarda-roupa" or ação_do_personagem == "ver o guardarroupa" or ação_do_personagem == "ver o guarda roupa" or ação_do_personagem == "ver o guardaroupa" or ação_do_personagem == "ver guarda-roupas" or ação_do_personagem == "ver guardarroupas" or ação_do_personagem == "ver guarda roupas" or ação_do_personagem == "ver guardaroupas" or ação_do_personagem == "ver guarda-roupa" or ação_do_personagem == "ver guardarroupa" or ação_do_personagem == "ver guarda roupa" or ação_do_personagem == "ver guardaroupa"):
-                                        if(objeto_00=="ganha presente"):
+                                        if(objeto[0]=="ganha presente"):
                                             print("Você encontrou uma bela caixa de presente.")
                                             time.sleep(2)
                                             print("Vai abrir?(sim ou não)")
@@ -2648,13 +3053,12 @@ while 1:
                                                     time.sleep(3)
                                                     print("Encontrou um par de Papetes Masculinas!\n")
                                                     time.sleep(1)
-                                                    print("Você trocou seu par de", equipamento_botas,"pelo par de Papetes Masculinas!")
+                                                    print("Você guardou as Papetes Masculinas na sua mochila!")
                                                     time.sleep(2)
-                                                    equipamento_botas = "Papetes Masculinas"
-                                                    agilidade_do_personagem = agilidade_do_personagem + 1
-                                                    print("Sua agilidade aumentou em 1 ponto!\n")
-                                                    time.sleep(2)
-                                                    objeto_00 = "não"
+                                                    item_adicionado=papetes_masculinas
+                                                    quantidade_adicionada=1
+                                                    adicionaItem()
+                                                    objeto[0] = "não"
                                                     break
                                                 else:
                                                     if(ação_do_personagem == "não" or ação_do_personagem=="n" or ação_do_personagem=="nao" or ação_do_personagem=="no" or ação_do_personagem=="na" or ação_do_personagem=="nã" or ação_do_personagem=="ao" or ação_do_personagem=="ão" or ação_do_personagem=="ñ" or ação_do_personagem=="ñão" or ação_do_personagem=="ño" or ação_do_personagem=="ñõ" or ação_do_personagem=="ñã" or ação_do_personagem=="ñaõ" or ação_do_personagem=="aõ"):
@@ -2680,7 +3084,7 @@ while 1:
                                                 time.sleep(2)
                                                 print("O quê? Você acha que eu fui muito grosso?")
                                                 time.sleep(1)
-                                                print("Okay, ", nome_do_jogador,", vamos lá...")
+                                                print("Okay, ", personagem_jogador[0],", vamos lá...")
                                                 time.sleep(2.5)
                                                 print("Há uma diferença muito grande entre olhar A janela e olhar PELA janela!")
                                                 time.sleep(3)
@@ -2691,7 +3095,7 @@ while 1:
                                                 if (eegg == 2):
                                                     print("Digitando errado MAIS UMA VEZ?!")
                                                     time.sleep(0.5)
-                                                    print("Okay, ", nome_do_jogador,", você já está passando dos limites da burrice...")
+                                                    print("Okay, ", personagem_jogador[0],", você já está passando dos limites da burrice...")
                                                     time.sleep(1)
                                                     eegg = 3
                                                 else:
@@ -2714,14 +3118,10 @@ while 1:
                                                             if (eegg == 5):
                                                                 print("Já chega! Você esgotou minha paciência!")
                                                                 time.sleep(1.5)
-                                                                nome_do_inimigo="Narrador"
-                                                                vida_máxima_inimigo=100
-                                                                vida_atual_inimigo=100
-                                                                ataque_do_inimigo=13
-                                                                defesa_do_inimigo=8
+                                                                personagem_inimigo = [ "Narrador", 13, 8, 1, 1, 100, 100]
                                                                 batalha()
-                                                                if(vida_atual_personagem<=0):break
-                                                                if(vida_atual_inimigo>0):
+                                                                if(personagem_jogador[6]<=0):break
+                                                                if(personagem_inimigo[6]>0):
                                                                     print("Vou te deixar em paz por agora, mas tente voltar a me irritar para ver o que te acontece!")
                                                                     time.sleep(1)
                                                                 else:
@@ -2829,12 +3229,15 @@ while 1:
                                                             if(ação_do_personagem=="sim"):
                                                                 break
                                                         else:
-                                                            print('\nEntrada Inválida!\n')
+                                                            if(ação_do_personagem=="inventário" or ação_do_personagem=="inventario" or ação_do_personagem=="iventario" or ação_do_personagem=="iventário" or ação_do_personagem=="mochila" or ação_do_personagem=="mochla" or ação_do_personagem=="mala" or ação_do_personagem=="bolsa" or ação_do_personagem=="itens" or ação_do_personagem=="ítens" or ação_do_personagem=="item"):
+                                                                inventárioPersonagem()
+                                                            else:
+                                                                print('\nEntrada Inválida!\n')
                 print("\n#", "-"*30,"#\n\nLista de Ações\n\nCenário:", variável_lugar)
                 time.sleep(0.23)
                 print("\n\nVocê pode:\n\nvestir\narrumar o quarto\nolhar\n")
                 time.sleep(0.23)
-                if (olhar_o_cenário == "sim"):
+                if (variável_cenário[0] == "sim"):
                     print("\nolhar as gavetas\nolhar o guarda-roupas\nolhar a estante\nolhar pela janela\n")
                     time.sleep(0.5)
                 print("\nver ficha do personagem\nsair do quarto\n")
@@ -2843,13 +3246,13 @@ while 1:
                     print("\nVocê não deve:\nolhar a janela\n")
                     time.sleep(0.23)
                 print("\n#", "-"*30,"#\n")
-                print("\nE agora, ", nome_do_jogador,", o que você vai fazer?\n")
+                print("\nE agora, ", personagem_jogador[0],", o que você vai fazer?\n")
                 ação_do_personagem = input("-")
                 ação_do_personagem = ação_do_personagem.lower()
-            if(vida_atual_personagem<=0):break
+            if(personagem_jogador[6]<=0):break
             ponto_de_save = 1
-            modificar_o_cenário = "não"
-            olhar_o_cenário = "não"
+            variável_cenário[1] = "não"
+            variável_cenário[0] = "não"
             print("Você saiu do seu quarto.")
             time.sleep(1)
             save()
@@ -2870,7 +3273,7 @@ while 1:
                 input("\nCenário: Você continua atrasado para a aula - não que você deva se importar muito com isso.")
                 variável_lugar = "seu prédio, 1º andar"
                 seuPrédioPrimeiroAndar()
-            if(vida_atual_personagem<=0):break
+            if(personagem_jogador[6]<=0):break
             ponto_de_save = 2
             variável_lugar = "em frente ao seu prédio"
             save()
@@ -2906,14 +3309,10 @@ while 1:
             time.sleep(2)
             print(" - EU VOU TE QUEBRAR ATÉ VOCÊ ME DAR O DINHEIRO!!!\n")
             time.sleep(2)
-            nome_do_inimigo="Bandido"
-            vida_máxima_inimigo=25000
-            vida_atual_inimigo=25000
-            ataque_do_inimigo=300
-            defesa_do_inimigo=100
+            personagem_inimigo = [ "Bandido", 300, 100, 1, 1, 25000, 25000]
             batalha()
-            if(vida_atual_personagem<=0):
-                vida_atual_personagem=1
+            if(personagem_jogador[6]<=0):
+                personagem_jogador[6]=1
                 print("Você caiu no chão...")
                 time.sleep(3)
                 print("Ajoelhado na sua barriga e com o antebraço apoiado no seu pescoço")
@@ -2939,25 +3338,10 @@ while 1:
                 time.sleep(5)
                 print("além da jaqueta de couro, luvas, pulseiras e cinto, todos esses ultimos com spikes de titânio.")
                 time.sleep(6)
-                reserva_nome_do_jogador = nome_do_jogador
-                reserva_vida_máxima_personagem = vida_máxima_personagem
-                reserva_vida_atual_personagem = vida_atual_personagem
-                reserva_ataque_do_personagem = ataque_do_personagem
-                reserva_defesa_do_personagem = defesa_do_personagem
-                reserva_agilidade_do_personagem = agilidade_do_personagem
-                nome_do_jogador = "Lutador Headbanger"
-                vida_máxima_personagem = 100000
-                vida_atual_personagem = 100000
-                ataque_do_personagem = 1200
-                defesa_do_personagem = 800
-                agilidade_do_personagem = 5
+                personagem_reserva = personagem_jogador
+                personagem_jogador = [ "Lutador Headbanger", 1200, 800, 5, 5, 100000, 100000,0]
                 batalha()
-                nome_do_jogador = reserva_nome_do_jogador
-                vida_máxima_personagem = reserva_vida_máxima_personagem
-                vida_atual_personagem = reserva_vida_atual_personagem
-                ataque_do_personagem = reserva_ataque_do_personagem
-                defesa_do_personagem = reserva_defesa_do_personagem
-                agilidade_do_personagem = reserva_agilidade_do_personagem
+                personagem_jogador = personagem_reserva
                 print(" - Pare! Por favor!\n")
                 time.sleep(3)
                 print("...")
@@ -2979,12 +3363,12 @@ while 1:
                 print("Será que você encontrará alguma pista na escola?")
                 time.sleep(5)
             else:
-                if(vida_atual_inimigo>0):
-                    while(vida_atual_inimigo>0):
+                if(personagem_inimigo[6]>0):
+                    while(personagem_inimigo[6]>0):
                         print("Você correu um pouco mas ele te alcançou de novo!\n")
                         batalha()
-                        if(vida_atual_personagem<=0):
-                            vida_atual_personagem=1
+                        if(personagem_jogador[6]<=0):
+                            personagem_jogador[6]=1
                             print("Você caiu no chão...")
                             time.sleep(3)
                             print("Ajoelhado na sua barriga e com o antebraço apoiado no seu pescoço")
@@ -3010,25 +3394,10 @@ while 1:
                             time.sleep(5)
                             print("além da jaqueta de couro, luvas, pulseiras e cinto, todos esses ultimos com spikes de titânio.")
                             time.sleep(6)
-                            reserva_nome_do_jogador = nome_do_jogador
-                            reserva_vida_máxima_personagem = vida_máxima_personagem
-                            reserva_vida_atual_personagem = vida_atual_personagem
-                            reserva_ataque_do_personagem = ataque_do_personagem
-                            reserva_defesa_do_personagem = defesa_do_personagem
-                            reserva_agilidade_do_personagem = agilidade_do_personagem
-                            nome_do_jogador = "Lutador Headbanger"
-                            vida_máxima_personagem = 100000
-                            vida_atual_personagem = 100000
-                            ataque_do_personagem = 1200
-                            defesa_do_personagem = 800
-                            agilidade_do_personagem = 5
+                            personagem_reserva = personagem_jogador
+                            personagem_jogador = [ "Lutador Headbanger", 1200, 800, 5, 5, 100000, 100000, 0]
                             batalha()
-                            nome_do_jogador = reserva_nome_do_jogador
-                            vida_máxima_personagem = reserva_vida_máxima_personagem
-                            vida_atual_personagem = reserva_vida_atual_personagem
-                            ataque_do_personagem = reserva_ataque_do_personagem
-                            defesa_do_personagem = reserva_defesa_do_personagem
-                            agilidade_do_personagem = reserva_agilidade_do_personagem
+                            personagem_jogador = personagem_reserva
                             print(" - Pare! Por favor!\n")
                             time.sleep(3)
                             print("...")
@@ -3071,14 +3440,10 @@ while 1:
                     time.sleep(3)
                     print(" - Agora você vai entregar o dinheiro, ou não vai?! - inqueriu, o motoqueiro montado em sua Twister 250.")
                     time.sleep(3)
-                    nome_do_inimigo="Motoqueiro Comparsa"
-                    vida_máxima_inimigo=5000
-                    vida_atual_inimigo=5000
-                    ataque_do_inimigo=3000
-                    defesa_do_inimigo=100
+                    personagem_inimigo = [ "Motoqueiro Comparsa", 3000, 10, 8, 1, 50, 50]
                     batalha()
-                    if(vida_atual_personagem<=0): break
-                    if(vida_atual_inimigo>0):
+                    if(personagem_jogador[6]<=0): break
+                    if(personagem_inimigo[6]>0):
                         print("Correndo entre uns becos da sua rua, você conseguiu se esconder...")
                         time.sleep(2)
                         print("...")
@@ -3118,53 +3483,153 @@ while 1:
             else:
                 input("Cenário:Você está na sua rua, por agora tudo está calmo....")
                 suaRua()
-            if(vida_atual_personagem<=0):break
+            if(personagem_jogador[6]<=0):break
             ponto_de_save = 4
             save()
 
 ##########--------------------------------------------------FIM DO JOGO--------------------------------------------------##########
         break
-    if (vida_atual_personagem <= 0):
-        print("Você morreu, ", nome_do_jogador, "...\nO jogo acabou para você...")
-        nome_do_jogador = "Jogador"
-        nome_do_inimigo = "Inimigo"
-        ação_do_personagem = "" 
-        batalha_escapar = ""
-        equipamento_roupa = "Pijama"
-        equipamento_capa = "Nada"
-        equipamento_luva = "Nada"
-        equipamento_mãos = "Nada"
-        olhar_o_cenário = "não"
-        modificar_o_cenário = "não"
-        cheirar_o_cenário = "não"
-        objeto_00 = "não"
-        objeto_01 = "não"
-        objeto_02 = "não"
+    if (personagem_jogador[6] <= 0):
+        print("Você morreu, ", personagem_jogador[0], "...\nO jogo acabou para você...")
+        #"Nome"[0], atq[1], def[2], agi[3], luk[4], vidamáxima[5], vidaatual[6], dinheiro[7]
+        personagem_jogador = [ "Jogador", 10, 8, 1, 1, 100, 100, 0]
+        personagem_reserva = [ "Jogador", 10, 8, 1, 1, 100, 100, 0]
+        personagem_inimigo = [ "Inimigo", 10, 8, 1, 1, 100, 100]
+
+        #["Nome"[0], atq[1], def[2], agi[3], luk[4], tipo[5], preço[6], recupera[7]
+
+        desequipado_roupa = ["Nada", 0, 0, 0, 0, "roupa", 0, 0]
+        desequipado_capa = ["Nada", 0, 0, 0, 0, "capa", 0, 0]
+        desequipado_luva = ["Nada", 0, 0, 0, 0, "luva", 0, 0]
+        desequipado_anel = ["Nada", 0, 0, 0, 0, "anel", 0, 0]
+        desequipado_mãos = ["Nada", 0, 0, 0, 0, "armamento", 0, 0]
+        desequipado_calçado = ["Nada", 0, 0, 0, 0, "calçados", 0, 0]
+        espaço_vazio = ["Vazio", 0, 0, 0, 0, "inventário", 0, 0]
+
+        pedaço_pizza = ["Pedaço de Pizza", 0, 0, 0, 0, "consumível", 5, 50]
+        bolo_chocolate = ["Bolo de Chocolate", 0, 0, 0, 0, "consumível", 100, personagem_jogador[5]]
+
+        pijama_inicial = ["Pijama", 0, 0, 0, 5, "roupa", 5, 0]
+        uniforme_estudantil = ["Uniforme Estudantil",0,1,0,0,"roupa",5,0]
+        malha_ninja = ["Malha Ninja", 5, 20, 5, 1, "roupa", 5000, 0]
+
+        lápis_apontado = ["Lápis Apontado", 3,0,0,1,"armamento",2,0]
+        punhal_envelhecido = ["Punhal Envelhecido", 10, 0,0,3,"armamento",300,0]
+        talheres_prata = ["Talheres de prata(Garfo e Faca)", 8, 0,0,0,"armamento",10,0]
+
+        jaqueta_imitação = ["Jaqueta de Imitação de Couro", 0, 20, 0, 0,"capa",150,0]
+        jaqueta_couro = ["Jaqueta de Couro", 0, 200, 0, 10,"capa",2000,0]
+        agasalho_lã = ["Agasalho de Lã", 0, 6, 0, 0,"capa",100,0]
+
+        suplemento_alimentício = ["Suplemento Alimentício", 10, 0, 0, 0, "consumível de aprimoramento",5, 0]
+        lata_energético = ["Energético", 0, 0, 0, 0, "consumível de aprimoramento",5, 50]
+
+        luva_lã = ["Luvas de Lã", 0, 3, 0, 0, "luva", 20, 0]
+        luva_imitação = ["Luvas de Imitação de Couro", 3, 3, 0, 0, "luva", 100, 0]
+        soco_pvc = ["Soco-Inglês de PVC", 3, 0, 0, 0, "luva", 50, 0]
+        luva_couro = ["Luvas de Couro", 8, 8, 0, 0, "luva", 500, 0]
+        soco_latão = ["Soco-Inglês de Latão", 10, 0, 0, 0, "luva", 500, 0]
+        luva_spikes_alu = ["Luvas de Couro com Spikes de Aluminio", 15, 15, 0, 0, "luva", 700, 0]
+        soco_alu = ["Soco-Inglês de Alumínio", 25, 0, 0, 0, "luva", 700, 0]
+        luva_spikes_aço = ["Luvas de Couro com Spikes de Aço", 25, 25, 0, 0, "luva", 1000, 0]
+        soco_aço = ["Soco-Inglês de Alumínio de Aço", 30, 0, 0, 0, "luva", 1000, 0]
+        luva_spikes_ag = ["Luvas de Couro com Spikes de Prata", 25, 25, 0, 5, "luva", 5000, 0]
+        soco_ag = ["Soco-Inglês de Prata", 35, 0, 0, 5, "luva", 5000, 0]
+        luva_spikes_au = ["Luvas de Couro com Spikes de Ouro", 250, 250, 0, 10, "luva", 10000, 0]
+        soco_au = ["Soco-Inglês de Ouro", 350, 0, 0, 10, "luva", 10000, 0]
+        luva_spikes_titânio = ["Luvas de Couro com Spikes de Titânio", 2500, 2500, 0, 20, "luva", 50000, 0]
+        soco_titânio = ["Soco-Inglês de Titânio", 3500, 0, 0, 20, "luva", 50000, 0]
+
+        anel_força1 = ["Anel da Força 1", 10, -2, -2, -2, "anel", 500, 0]
+        anel_resistência1 = ["Anel da Resistência 1", -2, 10, -2, -2, "anel", 500, 0]
+        anel_força2 = ["Anel da Força 2", 20, -4, -4, -4, "anel", 1000, 0]
+        anel_resistência2 = ["Anel da Resistência 2", -4, 20, -4, -4, "anel", 1000, 0]
+        anel_força3 = ["Anel da Força 2", 40, -8, -8, -8, "anel", 5000, 0]
+        anel_resistência3 = ["Anel da Resistência 2", -8, 40, -8, -8, "anel", 5000, 0]
+
+        anel_consistência1 = ["Anel da Consistência 1", -2, -2, -2, -2, "anel", 500, 10]
+        anel_consistência2 = ["Anel da Consistência 2", -4, -4, -4, -4, "anel", 1000, 100]
+        anel_consistência3 = ["Anel da Consistência 3", -8, -8, -8, -8, "anel", 5000, 1000]
+
+        anel_da_imortalidade = ["Anel da Imortalidade", personagem_jogador[1], personagem_jogador[2], personagem_jogador[3], personagem_jogador[4], "anel", 100000, personagem_jogador[5]]
+        anel_da_divindade = ["Anel da Divindade", personagem_jogador[1]*2, personagem_jogador[2]*2, personagem_jogador[3]*2, personagem_jogador[4]*2, "anel", 100000000, personagem_jogador[5]*2]
+
+        chinelo_inicial = ["Chinelos", 0, 0, 0, -5, "calçados", 5, 0]
+        papetes_masculinas = ["Papetes Masculinas", 0, 0, 1, 0, "calçados", 15, 0]
+        tênis_velho = ["Tênis Velho", 0, 0, 2, 0, "calçados", 10, 0]
+        tênis_simplório = ["Tênis Simplório", 0, 1, 2, 0, "calçados", 50, 0]
+        sapato_simplório = ["Sapato Simplório", 0, 2, 1, 0, "calçados", 50, 0]
+        tênis_comum = ["Tênis Comum", 0, 2, 2, 0, "calçados", 90, 0]
+        tênis_trilha = ["Tênis de Trilha", 2, 8, 3, 0, "calçados", 400, 0]
+        tênis_caminhada = ["Tênis de Caminhada", 0, 3, 5, 0, "calçados", 300, 0]
+        tênis_corrida = ["Tênis de Corrida", 0, 5, 10, 0, "calçados", 500, 0]
+        tênis_ZX5000 = ["Tênis ZX-5000", 10, 10, 11, 5, "calçados", 15000, 0]
+
+        item_adicionado=espaço_vazio
+        quantidade_adicionada=1
+
+        equipado_roupa = pijama_inicial
+        equipado_capa = desequipado_capa
+        equipado_luva = desequipado_luva
+        equipado_anel = desequipado_anel
+        equipado_mãos = desequipado_mãos
+        equipado_calçado = chinelo_inicial
+
+        variável_cenário = ["não" ,"não" ,"não"]
+        #[0]  olhar cenário primeira vez no seu quarto e reciclada no primeiro andar do seu prédio
+        #[1]  modificar cenário primeira vez no seu quarto
+        #[2]  cheirar cenário no primeiro andar do seu prédio
+
+        objeto = ["não", "não", "não", "não", "não"]
+        #[0]  presente do tutorial e reciclada no bêbado do 1ºandar
+        #[1]  porta do quarto 10
+        #[2]  energético do bêbado (ação revistar)
+        #[3]  arrombar porta do quarto 10
+        #[4]  mulher do bêbado - talheres de prata
+
+        situação = [0  ,0,0,0 ,0,0  ,0,0,0 ,0,0]
+        #[0]  dois últimos andares do seu prédio
+        #[1]  quarto 11 do seu prédio
+        #[2]  quarto 24 do seu prédio
+        #[3]  quarto 21 do seu prédio
+        #[4]  quarto 22 do seu prédio
+        #[5]  quarto 30 do seu prédio
+        #[6]  quarto 31 do seu prédio
+        #[7]  quarto 32 do seu prédio
+        #[8]  quarto 33 do seu prédio
+        #[9]  quarto 34 do seu prédio
+        #[10] quarto 20 do seu prédio
+
+        temporário = [False, False]
+        #[0]  verifica se pegou o uniforme no seu quarto depois é reciclada para verificar se já venceu o terceiro andar do seu prédio
+        #[1]  verifica se pegou o soco inglês no seu quarto depois é reciclada para verificar se 
+
         variável_lugar = "seu quarto"
         ponto_de_save = 0
+
+        mostrar_save = ''
+
         eegg = 1
-        vida_máxima_personagem = 100
-        vida_atual_personagem = 100
-        dinheiro_do_personagem = 0
-        ataque_do_personagem = 10
-        defesa_do_personagem = 8
-        vida_máxima_inimigo = 30
-        vida_atual_inimigo = 30
-        ataque_do_inimigo = 5
-        defesa_do_inimigo = 5
-        situação_01 = 0
-        situação_02 = 0
-        situação_03 = 0
-        situação_04 = 0
+
+        ação_do_personagem = "" 
+        batalha_escapar = ""
+
         teste_de_sorte = 0
         calculo_do_dano = 0
         calculo_da_fuga = 0
         variável_para_comparar = 0
         contador_de_batalha= 0
         contador_de_rodadas = 0
+
+
+        #global desequipado_roupa,desequipado_capa,desequipado_luva,desequipado_mãos,desequipado_calçado,espaço_vazio,pedaço_pizza,bolo_chocolate,pijama_inicial,uniforme_estudantil,malha_ninja,lápis_apontado,punhal_envelhecido,talheres_prata,jaqueta_imitação,jaqueta_couro,agasalho_lã,suplemento_alimentício,lata_energético,luva_lã,luva_couro,soco_pvc,soco_latão,luva_spikes_alu,soco_alu,luva_spikes_aço,soco_aço,luva_spikes_ag,soco_ag,luva_spikes_au,soco_au,luva_spikes_titânio,soco_titânio,anel_força1,anel_força2,anel_força3,anel_resistência1,anel_resistência2,anel_resistência3,anel_consistência1,anel_consistência2,anel_consistência3,anel_da_imortalidade,anel_da_divindade,chinelo_inicial,papetes_masculinas,tênis_velho,tênis_simplório,sapato_simplório,tênis_comum,tênis_trilha,tênis_caminhada,tênis_corrida,tênis_ZX5000,item_adicionado,quantidade_adicionada,equipado_roupa,equipado_capa,equipado_luva,equipado_anel,equipado_mãos,equipado_calçado,variável_cenário,objeto,situação,temporário,variável_lugar,ponto_de_save,mostrar_save, personagem_jogador,personagem_reserva,personagem_inimigo,eegg,ação_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,variável_para_comparar,contador_de_batalha,contador_de_rodadas,mala,loja_venda
+
+        mala = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30],[espaço_vazio, espaço_vazio, espaço_vazio, espaço_vazio, espaço_vazio,espaço_vazio, espaço_vazio, espaço_vazio, espaço_vazio, espaço_vazio,espaço_vazio, espaço_vazio, espaço_vazio, espaço_vazio, espaço_vazio,espaço_vazio, espaço_vazio, espaço_vazio, espaço_vazio, espaço_vazio,espaço_vazio, espaço_vazio, espaço_vazio, espaço_vazio, espaço_vazio,espaço_vazio, espaço_vazio, espaço_vazio, espaço_vazio, espaço_vazio]
+        loja_venda = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30],[espaço_vazio, espaço_vazio, espaço_vazio, espaço_vazio, espaço_vazio,espaço_vazio, espaço_vazio, espaço_vazio, espaço_vazio, espaço_vazio,espaço_vazio, espaço_vazio, espaço_vazio, espaço_vazio, espaço_vazio,espaço_vazio, espaço_vazio, espaço_vazio, espaço_vazio, espaço_vazio,espaço_vazio, espaço_vazio, espaço_vazio, espaço_vazio, espaço_vazio,espaço_vazio, espaço_vazio, espaço_vazio, espaço_vazio, espaço_vazio]
+
     else:
-        print("\nParabéns, ", nome_do_jogador,"!!! Você terminou o jogo!!!")
-    print("\nVocê deseja jogar novamente, ", nome_do_jogador,'?("sim" ou "não")\n')
+        print("\nParabéns, ", personagem_jogador[0],"!!! Você terminou o jogo!!!")
+    print("\nVocê deseja jogar novamente, ", personagem_jogador[0],'?("sim" ou "não")\n')
     while 1:
         ação_do_personagem = input("-")
         ação_do_personagem = ação_do_personagem.lower()
