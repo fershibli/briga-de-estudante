@@ -1,5 +1,5 @@
 #--Import--#
-#use o python 2.7.4 que √© coisa de macho!!!!!!11!!!!!1!!onze!!!! - Lucas Sabi√£o
+#use o python 2.7.4 que È coisa de macho!!!!!!11!!!!!1!!onze!!!! - Lucas Sabi„o
 import random
 import configparser
 import pickle
@@ -7,241 +7,248 @@ import time
 
 #ASSISTA DEVIL SURVIVOR 2
 
-#"Nome"[0], atq[1], def[2], agi[3], luk[4], vidam√°xima[5], vidaatual[6], dinheiro[7]
+#"Nome"[0], atq[1], def[2], agi[3], luk[4], vidam·xima[5], vidaatual[6], dinheiro[7]
 personagem_jogador = [ "Jogador", 10, 8, 1, 1, 100, 100, 0]
 personagem_reserva = [ "Jogador", 10, 8, 1, 1, 100, 100, 0]
 personagem_inimigo = [ "Inimigo", 10, 8, 1, 1, 100, 100]
 
-#["Nome"[0], atq[1], def[2], agi[3], luk[4], tipo[5], pre√ßo[6], recupera[7]
+#["Nome"[0], atq[1], def[2], agi[3], luk[4], tipo[5], preÁo[6], recupera[7]
 
 desequipado_roupa = ["Nada", 0, 0, 0, 0, "roupa", 0, 0]
 desequipado_capa = ["Nada", 0, 0, 0, 0, "capa", 0, 0]
 desequipado_luva = ["Nada", 0, 0, 0, 0, "luva", 0, 0]
 desequipado_anel = ["Nada", 0, 0, 0, 0, "anel", 0, 0]
-desequipado_m√£os = ["Nada", 0, 0, 0, 0, "armamento", 0, 0]
-desequipado_cal√ßado = ["Nada", 0, 0, 0, 0, "cal√ßados", 0, 0]
-espa√ßo_vazio = ["Vazio", 0, 0, 0, 0, "invent√°rio", 0, 0]
+desequipado_maos = ["Nada", 0, 0, 0, 0, "armamento", 0, 0]
+desequipado_calcado = ["Nada", 0, 0, 0, 0, "calÁados", 0, 0]
+espaÁo_vazio = ["Vazio", 0, 0, 0, 0, "invent·rio", 0, 0]
 
-peda√ßo_pizza = ["Peda√ßo de Pizza", 0, 0, 0, 0, "consum√≠vel", 5, 50]
-bolo_chocolate = ["Bolo de Chocolate", 0, 0, 0, 0, "consum√≠vel", 100, personagem_jogador[5]]
+pedaÁo_pizza = ["PedaÁo de Pizza", 0, 0, 0, 0, "consumÌvel", 5, 50]
+bolo_chocolate = ["Bolo de Chocolate", 0, 0, 0, 0, "consumÌvel", 100, personagem_jogador[5]]
 
 pijama_inicial = ["Pijama", 0, 0, 0, 5, "roupa", 5, 0]
 uniforme_estudantil = ["Uniforme Estudantil",0,1,0,0,"roupa",5,0]
 malha_ninja = ["Malha Ninja", 5, 20, 5, 1, "roupa", 5000, 0]
 
-l√°pis_apontado = ["L√°pis Apontado", 3,0,0,1,"armamento",2,0]
+lapis_apontado = ["L·pis Apontado", 3,0,0,1,"armamento",2,0]
 punhal_envelhecido = ["Punhal Envelhecido", 10, 0,0,3,"armamento",300,0]
 talheres_prata = ["Talheres de prata(Garfo e Faca)", 8, 0,0,0,"armamento",10,0]
 
-jaqueta_imita√ß√£o = ["Jaqueta de Imita√ß√£o de Couro", 0, 20, 0, 0,"capa",150,0]
+jaqueta_imitacao = ["Jaqueta de ImitaÁ„o de Couro", 0, 20, 0, 0,"capa",150,0]
 jaqueta_couro = ["Jaqueta de Couro", 0, 200, 0, 10,"capa",2000,0]
-agasalho_l√£ = ["Agasalho de L√£", 0, 6, 0, 0,"capa",100,0]
+agasalho_l„ = ["Agasalho de L„", 0, 6, 0, 0,"capa",100,0]
 
-suplemento_aliment√≠cio = ["Suplemento Aliment√≠cio", 10, 0, 0, 0, "consum√≠vel de aprimoramento",5, 0]
-lata_energ√©tico = ["Energ√©tico", 0, 0, 0, 0, "consum√≠vel de aprimoramento",5, 50]
+suplemento_alimentÌcio = ["Suplemento AlimentÌcio", 10, 0, 0, 0, "consumÌvel de aprimoramento",5, 0]
+lata_energÈtico = ["EnergÈtico", 0, 0, 0, 0, "consumÌvel de aprimoramento",5, 50]
 
-luva_l√£ = ["Luvas de L√£", 0, 3, 0, 0, "luva", 20, 0]
-luva_imita√ß√£o = ["Luvas de Imita√ß√£o de Couro", 3, 3, 0, 0, "luva", 100, 0]
-soco_pvc = ["Soco-Ingl√™s de PVC", 3, 0, 0, 0, "luva", 50, 0]
+luva_l„ = ["Luvas de L„", 0, 3, 0, 0, "luva", 20, 0]
+luva_imitacao = ["Luvas de ImitaÁ„o de Couro", 3, 3, 0, 0, "luva", 100, 0]
+soco_pvc = ["Soco-InglÍs de PVC", 3, 0, 0, 0, "luva", 50, 0]
 luva_couro = ["Luvas de Couro", 8, 8, 0, 0, "luva", 500, 0]
-soco_lat√£o = ["Soco-Ingl√™s de Lat√£o", 10, 0, 0, 0, "luva", 500, 0]
+soco_lat„o = ["Soco-InglÍs de Lat„o", 10, 0, 0, 0, "luva", 500, 0]
 luva_spikes_alu = ["Luvas de Couro com Spikes de Aluminio", 15, 15, 0, 0, "luva", 700, 0]
-soco_alu = ["Soco-Ingl√™s de Alum√≠nio", 25, 0, 0, 0, "luva", 700, 0]
-luva_spikes_a√ßo = ["Luvas de Couro com Spikes de A√ßo", 25, 25, 0, 0, "luva", 1000, 0]
-soco_a√ßo = ["Soco-Ingl√™s de Alum√≠nio de A√ßo", 30, 0, 0, 0, "luva", 1000, 0]
+soco_alu = ["Soco-InglÍs de AlumÌnio", 25, 0, 0, 0, "luva", 700, 0]
+luva_spikes_aÁo = ["Luvas de Couro com Spikes de AÁo", 25, 25, 0, 0, "luva", 1000, 0]
+soco_aÁo = ["Soco-InglÍs de AlumÌnio de AÁo", 30, 0, 0, 0, "luva", 1000, 0]
 luva_spikes_ag = ["Luvas de Couro com Spikes de Prata", 25, 25, 0, 5, "luva", 5000, 0]
-soco_ag = ["Soco-Ingl√™s de Prata", 35, 0, 0, 5, "luva", 5000, 0]
+soco_ag = ["Soco-InglÍs de Prata", 35, 0, 0, 5, "luva", 5000, 0]
 luva_spikes_au = ["Luvas de Couro com Spikes de Ouro", 250, 250, 0, 10, "luva", 10000, 0]
-soco_au = ["Soco-Ingl√™s de Ouro", 350, 0, 0, 10, "luva", 10000, 0]
-luva_spikes_tit√¢nio = ["Luvas de Couro com Spikes de Tit√¢nio", 2500, 2500, 0, 20, "luva", 50000, 0]
-soco_tit√¢nio = ["Soco-Ingl√™s de Tit√¢nio", 3500, 0, 0, 20, "luva", 50000, 0]
+soco_au = ["Soco-InglÍs de Ouro", 350, 0, 0, 10, "luva", 10000, 0]
+luva_spikes_tit‚nio = ["Luvas de Couro com Spikes de Tit‚nio", 2500, 2500, 0, 20, "luva", 50000, 0]
+soco_tit‚nio = ["Soco-InglÍs de Tit‚nio", 3500, 0, 0, 20, "luva", 50000, 0]
 
-anel_for√ßa1 = ["Anel da For√ßa 1", 10, -2, -2, -2, "anel", 500, 0]
-anel_resist√™ncia1 = ["Anel da Resist√™ncia 1", -2, 10, -2, -2, "anel", 500, 0]
-anel_for√ßa2 = ["Anel da For√ßa 2", 20, -4, -4, -4, "anel", 1000, 0]
-anel_resist√™ncia2 = ["Anel da Resist√™ncia 2", -4, 20, -4, -4, "anel", 1000, 0]
-anel_for√ßa3 = ["Anel da For√ßa 2", 40, -8, -8, -8, "anel", 5000, 0]
-anel_resist√™ncia3 = ["Anel da Resist√™ncia 2", -8, 40, -8, -8, "anel", 5000, 0]
+anel_forÁa1 = ["Anel da ForÁa 1", 10, -2, -2, -2, "anel", 500, 0]
+anel_resistÍncia1 = ["Anel da ResistÍncia 1", -2, 10, -2, -2, "anel", 500, 0]
+anel_forÁa2 = ["Anel da ForÁa 2", 20, -4, -4, -4, "anel", 1000, 0]
+anel_resistÍncia2 = ["Anel da ResistÍncia 2", -4, 20, -4, -4, "anel", 1000, 0]
+anel_forÁa3 = ["Anel da ForÁa 2", 40, -8, -8, -8, "anel", 5000, 0]
+anel_resistÍncia3 = ["Anel da ResistÍncia 2", -8, 40, -8, -8, "anel", 5000, 0]
 
-anel_consist√™ncia1 = ["Anel da Consist√™ncia 1", -2, -2, -2, -2, "anel", 500, 10]
-anel_consist√™ncia2 = ["Anel da Consist√™ncia 2", -4, -4, -4, -4, "anel", 1000, 100]
-anel_consist√™ncia3 = ["Anel da Consist√™ncia 3", -8, -8, -8, -8, "anel", 5000, 1000]
+anel_consistÍncia1 = ["Anel da ConsistÍncia 1", -2, -2, -2, -2, "anel", 500, 10]
+anel_consistÍncia2 = ["Anel da ConsistÍncia 2", -4, -4, -4, -4, "anel", 1000, 100]
+anel_consistÍncia3 = ["Anel da ConsistÍncia 3", -8, -8, -8, -8, "anel", 5000, 1000]
 
 anel_da_imortalidade = ["Anel da Imortalidade", personagem_jogador[1], personagem_jogador[2], personagem_jogador[3], personagem_jogador[4], "anel", 100000, personagem_jogador[5]]
 anel_da_divindade = ["Anel da Divindade", personagem_jogador[1]*2, personagem_jogador[2]*2, personagem_jogador[3]*2, personagem_jogador[4]*2, "anel", 100000000, personagem_jogador[5]*2]
 
-chinelo_inicial = ["Chinelos", 0, 0, 0, -5, "cal√ßados", 5, 0]
-papetes_masculinas = ["Papetes Masculinas", 0, 0, 1, 0, "cal√ßados", 15, 0]
-t√™nis_velho = ["T√™nis Velho", 0, 0, 2, 0, "cal√ßados", 10, 0]
-t√™nis_simpl√≥rio = ["T√™nis Simpl√≥rio", 0, 1, 2, 0, "cal√ßados", 50, 0]
-sapato_simpl√≥rio = ["Sapato Simpl√≥rio", 0, 2, 1, 0, "cal√ßados", 50, 0]
-t√™nis_comum = ["T√™nis Comum", 0, 2, 2, 0, "cal√ßados", 90, 0]
-t√™nis_trilha = ["T√™nis de Trilha", 2, 8, 3, 0, "cal√ßados", 400, 0]
-t√™nis_caminhada = ["T√™nis de Caminhada", 0, 3, 5, 0, "cal√ßados", 300, 0]
-t√™nis_corrida = ["T√™nis de Corrida", 0, 5, 10, 0, "cal√ßados", 500, 0]
-t√™nis_ZX5000 = ["T√™nis ZX-5000", 10, 10, 11, 5, "cal√ßados", 15000, 0]
+chinelo_inicial = ["Chinelos", 0, 0, 0, -5, "calÁados", 5, 0]
+papetes_masculinas = ["Papetes Masculinas", 0, 0, 1, 0, "calÁados", 15, 0]
+tÍnis_velho = ["TÍnis Velho", 0, 0, 2, 0, "calÁados", 10, 0]
+tÍnis_simplÛrio = ["TÍnis SimplÛrio", 0, 1, 2, 0, "calÁados", 50, 0]
+sapato_simplÛrio = ["Sapato SimplÛrio", 0, 2, 1, 0, "calÁados", 50, 0]
+tÍnis_comum = ["TÍnis Comum", 0, 2, 2, 0, "calÁados", 90, 0]
+tÍnis_trilha = ["TÍnis de Trilha", 2, 8, 3, 0, "calÁados", 400, 0]
+tÍnis_caminhada = ["TÍnis de Caminhada", 0, 3, 5, 0, "calÁados", 300, 0]
+tÍnis_corrida = ["TÍnis de Corrida", 0, 5, 10, 0, "calÁados", 500, 0]
+tÍnis_ZX5000 = ["TÍnis ZX-5000", 10, 10, 11, 5, "calÁados", 15000, 0]
 
-item_adicionado=espa√ßo_vazio
+item_adicionado=espaÁo_vazio
 quantidade_adicionada=1
 
 equipado_roupa = pijama_inicial
 equipado_capa = desequipado_capa
 equipado_luva = desequipado_luva
 equipado_anel = desequipado_anel
-equipado_m√£os = desequipado_m√£os
-equipado_cal√ßado = chinelo_inicial
+equipado_maos = desequipado_maos
+equipado_calcado = chinelo_inicial
 
-vari√°vel_cen√°rio = ["n√£o" ,"n√£o" ,"n√£o"]
-#[0]  olhar cen√°rio primeira vez no seu quarto e reciclada no primeiro andar do seu pr√©dio
-#[1]  modificar cen√°rio primeira vez no seu quarto
-#[2]  cheirar cen√°rio no primeiro andar do seu pr√©dio
+vari·vel_cen·rio = ["n„o" ,"n„o" ,"n„o"]
+#[0]  olhar cen·rio primeira vez no seu quarto e reciclada no primeiro andar do seu prÈdio
+#[1]  modificar cen·rio primeira vez no seu quarto
+#[2]  cheirar cen·rio no primeiro andar do seu prÈdio
 
-objeto = ["n√£o", "n√£o", "n√£o", "n√£o", "n√£o"]
-#[0]  presente do tutorial e reciclada no b√™bado do 1¬∫andar
+objeto = ["n„o", "n„o", "n„o", "n„o", "n„o"]
+#[0]  presente do tutorial e reciclada no bÍbado do 1∫andar
 #[1]  porta do quarto 10
-#[2]  energ√©tico do b√™bado (a√ß√£o revistar)
+#[2]  energÈtico do bÍbado (aÁ„o revistar)
 #[3]  arrombar porta do quarto 10
-#[4]  mulher do b√™bado - talheres de prata
+#[4]  mulher do bÍbado - talheres de prata
 
-situa√ß√£o = [0  ,0,0,0 ,0,0  ,0,0,0 ,0,0]
-#[0]  dois √∫ltimos andares do seu pr√©dio
-#[1]  quarto 11 do seu pr√©dio
-#[2]  quarto 24 do seu pr√©dio
-#[3]  quarto 21 do seu pr√©dio
-#[4]  quarto 22 do seu pr√©dio
-#[5]  quarto 30 do seu pr√©dio
-#[6]  quarto 31 do seu pr√©dio
-#[7]  quarto 32 do seu pr√©dio
-#[8]  quarto 33 do seu pr√©dio
-#[9]  quarto 34 do seu pr√©dio
-#[10] quarto 20 do seu pr√©dio
+situacao = [0  ,0,0,0 ,0,0  ,0,0,0 ,0,0]
+#[0]  dois ˙ltimos andares do seu prÈdio
+#[1]  quarto 11 do seu prÈdio
+#[2]  quarto 24 do seu prÈdio
+#[3]  quarto 21 do seu prÈdio
+#[4]  quarto 22 do seu prÈdio
+#[5]  quarto 30 do seu prÈdio
+#[6]  quarto 31 do seu prÈdio
+#[7]  quarto 32 do seu prÈdio
+#[8]  quarto 33 do seu prÈdio
+#[9]  quarto 34 do seu prÈdio
+#[10] quarto 20 do seu prÈdio
 
-tempor√°rio = [False, False]
-#[0]  verifica se pegou o uniforme no seu quarto depois √© reciclada para verificar se j√° venceu o terceiro andar do seu pr√©dio
-#[1]  verifica se pegou o soco ingl√™s no seu quarto depois √© reciclada para verificar se 
+tempor·rio = [False, False]
+#[0]  verifica se pegou o uniforme no seu quarto depois È reciclada para verificar se j· venceu o terceiro andar do seu prÈdio
+#[1]  verifica se pegou o soco inglÍs no seu quarto depois È reciclada para verificar se 
 
-vari√°vel_lugar = "seu quarto"
+vari·vel_lugar = "seu quarto"
 ponto_de_save = 0
 
 mostrar_save = ''
 
 eegg = 1
 
-a√ß√£o_do_personagem = "" 
+acao_do_personagem = "" 
 batalha_escapar = ""
 
 teste_de_sorte = 0
 calculo_do_dano = 0
 calculo_da_fuga = 0
-vari√°vel_para_comparar = 0
+vari·vel_para_comparar = 0
 contador_de_batalha= 0
 contador_de_rodadas = 0
 
 
-#global desequipado_roupa,desequipado_capa,desequipado_luva,desequipado_m√£os,desequipado_cal√ßado,espa√ßo_vazio,peda√ßo_pizza,bolo_chocolate,pijama_inicial,uniforme_estudantil,malha_ninja,l√°pis_apontado,punhal_envelhecido,talheres_prata,jaqueta_imita√ß√£o,jaqueta_couro,agasalho_l√£,suplemento_aliment√≠cio,lata_energ√©tico,luva_l√£,luva_couro,soco_pvc,soco_lat√£o,luva_spikes_alu,soco_alu,luva_spikes_a√ßo,soco_a√ßo,luva_spikes_ag,soco_ag,luva_spikes_au,soco_au,luva_spikes_tit√¢nio,soco_tit√¢nio,anel_for√ßa1,anel_for√ßa2,anel_for√ßa3,anel_resist√™ncia1,anel_resist√™ncia2,anel_resist√™ncia3,anel_consist√™ncia1,anel_consist√™ncia2,anel_consist√™ncia3,anel_da_imortalidade,anel_da_divindade,chinelo_inicial,papetes_masculinas,t√™nis_velho,t√™nis_simpl√≥rio,sapato_simpl√≥rio,t√™nis_comum,t√™nis_trilha,t√™nis_caminhada,t√™nis_corrida,t√™nis_ZX5000,item_adicionado,quantidade_adicionada,equipado_roupa,equipado_capa,equipado_luva,equipado_anel,equipado_m√£os,equipado_cal√ßado,vari√°vel_cen√°rio,objeto,situa√ß√£o,tempor√°rio,vari√°vel_lugar,ponto_de_save,mostrar_save, personagem_jogador,personagem_reserva,personagem_inimigo,eegg,a√ß√£o_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,vari√°vel_para_comparar,contador_de_batalha,contador_de_rodadas,mala,loja_venda
+#global desequipado_roupa,desequipado_capa,desequipado_luva,desequipado_maos,desequipado_calcado,espaÁo_vazio,pedaÁo_pizza,bolo_chocolate,pijama_inicial,uniforme_estudantil,malha_ninja,lapis_apontado,punhal_envelhecido,talheres_prata,jaqueta_imitacao,jaqueta_couro,agasalho_l„,suplemento_alimentÌcio,lata_energÈtico,luva_l„,luva_couro,soco_pvc,soco_lat„o,luva_spikes_alu,soco_alu,luva_spikes_aÁo,soco_aÁo,luva_spikes_ag,soco_ag,luva_spikes_au,soco_au,luva_spikes_tit‚nio,soco_tit‚nio,anel_forÁa1,anel_forÁa2,anel_forÁa3,anel_resistÍncia1,anel_resistÍncia2,anel_resistÍncia3,anel_consistÍncia1,anel_consistÍncia2,anel_consistÍncia3,anel_da_imortalidade,anel_da_divindade,chinelo_inicial,papetes_masculinas,tÍnis_velho,tÍnis_simplÛrio,sapato_simplÛrio,tÍnis_comum,tÍnis_trilha,tÍnis_caminhada,tÍnis_corrida,tÍnis_ZX5000,item_adicionado,quantidade_adicionada,equipado_roupa,equipado_capa,equipado_luva,equipado_anel,equipado_maos,equipado_calcado,vari·vel_cen·rio,objeto,situacao,tempor·rio,vari·vel_lugar,ponto_de_save,mostrar_save, personagem_jogador,personagem_reserva,personagem_inimigo,eegg,acao_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,vari·vel_para_comparar,contador_de_batalha,contador_de_rodadas,mala,loja_venda
 
-mala = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30],[espa√ßo_vazio, espa√ßo_vazio, espa√ßo_vazio, espa√ßo_vazio, espa√ßo_vazio,espa√ßo_vazio, espa√ßo_vazio, espa√ßo_vazio, espa√ßo_vazio, espa√ßo_vazio,espa√ßo_vazio, espa√ßo_vazio, espa√ßo_vazio, espa√ßo_vazio, espa√ßo_vazio,espa√ßo_vazio, espa√ßo_vazio, espa√ßo_vazio, espa√ßo_vazio, espa√ßo_vazio,espa√ßo_vazio, espa√ßo_vazio, espa√ßo_vazio, espa√ßo_vazio, espa√ßo_vazio,espa√ßo_vazio, espa√ßo_vazio, espa√ßo_vazio, espa√ßo_vazio, espa√ßo_vazio]
-loja_venda = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30],[espa√ßo_vazio, espa√ßo_vazio, espa√ßo_vazio, espa√ßo_vazio, espa√ßo_vazio,espa√ßo_vazio, espa√ßo_vazio, espa√ßo_vazio, espa√ßo_vazio, espa√ßo_vazio,espa√ßo_vazio, espa√ßo_vazio, espa√ßo_vazio, espa√ßo_vazio, espa√ßo_vazio,espa√ßo_vazio, espa√ßo_vazio, espa√ßo_vazio, espa√ßo_vazio, espa√ßo_vazio,espa√ßo_vazio, espa√ßo_vazio, espa√ßo_vazio, espa√ßo_vazio, espa√ßo_vazio,espa√ßo_vazio, espa√ßo_vazio, espa√ßo_vazio, espa√ßo_vazio, espa√ßo_vazio]
+mala = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30],[espaÁo_vazio, espaÁo_vazio, espaÁo_vazio, espaÁo_vazio, espaÁo_vazio,espaÁo_vazio, espaÁo_vazio, espaÁo_vazio, espaÁo_vazio, espaÁo_vazio,espaÁo_vazio, espaÁo_vazio, espaÁo_vazio, espaÁo_vazio, espaÁo_vazio,espaÁo_vazio, espaÁo_vazio, espaÁo_vazio, espaÁo_vazio, espaÁo_vazio,espaÁo_vazio, espaÁo_vazio, espaÁo_vazio, espaÁo_vazio, espaÁo_vazio,espaÁo_vazio, espaÁo_vazio, espaÁo_vazio, espaÁo_vazio, espaÁo_vazio]
+loja_venda = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30],[espaÁo_vazio, espaÁo_vazio, espaÁo_vazio, espaÁo_vazio, espaÁo_vazio,espaÁo_vazio, espaÁo_vazio, espaÁo_vazio, espaÁo_vazio, espaÁo_vazio,espaÁo_vazio, espaÁo_vazio, espaÁo_vazio, espaÁo_vazio, espaÁo_vazio,espaÁo_vazio, espaÁo_vazio, espaÁo_vazio, espaÁo_vazio, espaÁo_vazio,espaÁo_vazio, espaÁo_vazio, espaÁo_vazio, espaÁo_vazio, espaÁo_vazio,espaÁo_vazio, espaÁo_vazio, espaÁo_vazio, espaÁo_vazio, espaÁo_vazio]
 
-#--Adicionar Item ao Invent√°rio--#
+#--Adicionar Item ao Invent·rio--#
 def adicionaItem():
-    global desequipado_roupa,desequipado_capa,desequipado_luva,desequipado_m√£os,desequipado_cal√ßado,espa√ßo_vazio,peda√ßo_pizza,bolo_chocolate,pijama_inicial,uniforme_estudantil,malha_ninja,l√°pis_apontado,punhal_envelhecido,talheres_prata,jaqueta_imita√ß√£o,jaqueta_couro,agasalho_l√£,suplemento_aliment√≠cio,lata_energ√©tico,luva_l√£,luva_couro,soco_pvc,soco_lat√£o,luva_spikes_alu,soco_alu,luva_spikes_a√ßo,soco_a√ßo,luva_spikes_ag,soco_ag,luva_spikes_au,soco_au,luva_spikes_tit√¢nio,soco_tit√¢nio,anel_for√ßa1,anel_for√ßa2,anel_for√ßa3,anel_resist√™ncia1,anel_resist√™ncia2,anel_resist√™ncia3,anel_consist√™ncia1,anel_consist√™ncia2,anel_consist√™ncia3,anel_da_imortalidade,anel_da_divindade,chinelo_inicial,papetes_masculinas,t√™nis_velho,t√™nis_simpl√≥rio,sapato_simpl√≥rio,t√™nis_comum,t√™nis_trilha,t√™nis_caminhada,t√™nis_corrida,t√™nis_ZX5000,item_adicionado,quantidade_adicionada,equipado_roupa,equipado_capa,equipado_luva,equipado_anel,equipado_m√£os,equipado_cal√ßado,vari√°vel_cen√°rio,objeto,situa√ß√£o,tempor√°rio,vari√°vel_lugar,ponto_de_save,mostrar_save, personagem_jogador,personagem_reserva,personagem_inimigo,eegg,a√ß√£o_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,vari√°vel_para_comparar,contador_de_batalha,contador_de_rodadas,mala,loja_venda
+    global desequipado_roupa,desequipado_capa,desequipado_luva,desequipado_maos,desequipado_calcado,espaÁo_vazio,pedaÁo_pizza,bolo_chocolate,pijama_inicial,uniforme_estudantil,malha_ninja,lapis_apontado,punhal_envelhecido,talheres_prata,jaqueta_imitacao,jaqueta_couro,agasalho_l„,suplemento_alimentÌcio,lata_energÈtico,luva_l„,luva_couro,soco_pvc,soco_lat„o,luva_spikes_alu,soco_alu,luva_spikes_aÁo,soco_aÁo,luva_spikes_ag,soco_ag,luva_spikes_au,soco_au,luva_spikes_tit‚nio,soco_tit‚nio,anel_forÁa1,anel_forÁa2,anel_forÁa3,anel_resistÍncia1,anel_resistÍncia2,anel_resistÍncia3,anel_consistÍncia1,anel_consistÍncia2,anel_consistÍncia3,anel_da_imortalidade,anel_da_divindade,chinelo_inicial,papetes_masculinas,tÍnis_velho,tÍnis_simplÛrio,sapato_simplÛrio,tÍnis_comum,tÍnis_trilha,tÍnis_caminhada,tÍnis_corrida,tÍnis_ZX5000,item_adicionado,quantidade_adicionada,equipado_roupa,equipado_capa,equipado_luva,equipado_anel,equipado_maos,equipado_calcado,vari·vel_cen·rio,objeto,situacao,tempor·rio,vari·vel_lugar,ponto_de_save,mostrar_save, personagem_jogador,personagem_reserva,personagem_inimigo,eegg,acao_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,vari·vel_para_comparar,contador_de_batalha,contador_de_rodadas,mala,loja_venda
     while (quantidade_adicionada>0):
         i=0
         while i<=29:
-            if(mala[1][i]==espa√ßo_vazio or mala[1][i][0]=="Nada"):
+            if(mala[1][i]==espaÁo_vazio or mala[1][i][0]=="Nada"):
                 mala[1][i]=item_adicionado
                 break
             i+=1
         quantidade_adicionada-=1
 
-#--Invent√°rio--#
-def invent√°rioPersonagem():
-    global desequipado_roupa,desequipado_capa,desequipado_luva,desequipado_m√£os,desequipado_cal√ßado,espa√ßo_vazio,peda√ßo_pizza,bolo_chocolate,pijama_inicial,uniforme_estudantil,malha_ninja,l√°pis_apontado,punhal_envelhecido,talheres_prata,jaqueta_imita√ß√£o,jaqueta_couro,agasalho_l√£,suplemento_aliment√≠cio,lata_energ√©tico,luva_l√£,luva_couro,soco_pvc,soco_lat√£o,luva_spikes_alu,soco_alu,luva_spikes_a√ßo,soco_a√ßo,luva_spikes_ag,soco_ag,luva_spikes_au,soco_au,luva_spikes_tit√¢nio,soco_tit√¢nio,anel_for√ßa1,anel_for√ßa2,anel_for√ßa3,anel_resist√™ncia1,anel_resist√™ncia2,anel_resist√™ncia3,anel_consist√™ncia1,anel_consist√™ncia2,anel_consist√™ncia3,anel_da_imortalidade,anel_da_divindade,chinelo_inicial,papetes_masculinas,t√™nis_velho,t√™nis_simpl√≥rio,sapato_simpl√≥rio,t√™nis_comum,t√™nis_trilha,t√™nis_caminhada,t√™nis_corrida,t√™nis_ZX5000,item_adicionado,quantidade_adicionada,equipado_roupa,equipado_capa,equipado_luva,equipado_anel,equipado_m√£os,equipado_cal√ßado,vari√°vel_cen√°rio,objeto,situa√ß√£o,tempor√°rio,vari√°vel_lugar,ponto_de_save,mostrar_save, personagem_jogador,personagem_reserva,personagem_inimigo,eegg,a√ß√£o_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,vari√°vel_para_comparar,contador_de_batalha,contador_de_rodadas,mala,loja_venda
+#--Invent·rio--#
+def invent·rioPersonagem():
+    global desequipado_roupa,desequipado_capa,desequipado_luva,desequipado_maos,desequipado_calcado,espaÁo_vazio,pedaÁo_pizza,bolo_chocolate,pijama_inicial,uniforme_estudantil,malha_ninja,lapis_apontado,punhal_envelhecido,talheres_prata,jaqueta_imitacao,jaqueta_couro,agasalho_l„,suplemento_alimentÌcio,lata_energÈtico,luva_l„,luva_couro,soco_pvc,soco_lat„o,luva_spikes_alu,soco_alu,luva_spikes_aÁo,soco_aÁo,luva_spikes_ag,soco_ag,luva_spikes_au,soco_au,luva_spikes_tit‚nio,soco_tit‚nio,anel_forÁa1,anel_forÁa2,anel_forÁa3,anel_resistÍncia1,anel_resistÍncia2,anel_resistÍncia3,anel_consistÍncia1,anel_consistÍncia2,anel_consistÍncia3,anel_da_imortalidade,anel_da_divindade,chinelo_inicial,papetes_masculinas,tÍnis_velho,tÍnis_simplÛrio,sapato_simplÛrio,tÍnis_comum,tÍnis_trilha,tÍnis_caminhada,tÍnis_corrida,tÍnis_ZX5000,item_adicionado,quantidade_adicionada,equipado_roupa,equipado_capa,equipado_luva,equipado_anel,equipado_maos,equipado_calcado,vari·vel_cen·rio,objeto,situacao,tempor·rio,vari·vel_lugar,ponto_de_save,mostrar_save, personagem_jogador,personagem_reserva,personagem_inimigo,eegg,acao_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,vari·vel_para_comparar,contador_de_batalha,contador_de_rodadas,mala,loja_venda
     while 1:
         print("Mochila:\n")
+        time.sleep(0.5)
         i=0
         while i<=29:
-            if (mala[1][i]!=espa√ßo_vazio and mala[1][i][0]!="Nada"):
+            if (mala[1][i]!=espaÁo_vazio and mala[1][i][0]!="Nada"):
                 print(mala[0][i]," : ",mala[1][i][0],"\n     (",mala[1][i][5],")\n")
             i+=1
         while 1:
-            print("Para analisar um item digite o n√∫mero da sua posi√ß√£o!\nPara voltar ao jogo digite voltar.")
-            a√ß√£o_do_personagem = input('-')
-            if a√ß√£o_do_personagem.isnumeric():
-                a√ß√£o_do_personagem=int(a√ß√£o_do_personagem)
+            print("Para analisar um item digite o n˙mero da sua posiÁ„o!\nPara voltar ao jogo digite voltar.")
+            acao_do_personagem = input('-')
+            if acao_do_personagem.isnumeric():
+                acao_do_personagem=int(acao_do_personagem)
                 break
             else:
-                if(a√ß√£o_do_personagem=="voltar"):break
-                print("ENTRADA INV√ÅLIDA!")
-        if(a√ß√£o_do_personagem=="voltar"):break
+                if(acao_do_personagem=="voltar"):break
+                print("ENTRADA INV¡LIDA!")
+                time.sleep(0.5)
+        if(acao_do_personagem=="voltar"):break
         i=0
         while i<=29:
-            if(i==a√ß√£o_do_personagem):
+            if(i==acao_do_personagem):
                 break
             i+=1
         i=i-1
-        if(a√ß√£o_do_personagem==mala[0][i] and mala[1][i]!=espa√ßo_vazio and mala[1][i][0]!="Nada"):
-            if(mala[1][i][5]=="consum√≠vel de aprimoramento"):
+        if(acao_do_personagem==mala[0][i] and mala[1][i]!=espaÁo_vazio and mala[1][i][0]!="Nada"):
+            if(mala[1][i][5]=="consumÌvel de aprimoramento"):
                 print("\nNome:",mala[1][i][0], "\nTipo:",mala[1][i][5],"\nVida:",mala[1][i][7],"\nAtaque:",mala[1][i][1],"\nDefesa:",mala[1][i][2],"\nAgilidade:",mala[1][i][3],"\nSorte:",mala[1][i][4],"\n")
                 print("O que deseja fazer? (usar ou descartar)")
-                a√ß√£o_do_personagem=input("-")
-                a√ß√£o_do_personagem=a√ß√£o_do_personagem.lower()
-                if(a√ß√£o_do_personagem=="usar"):
+                acao_do_personagem=input("-")
+                acao_do_personagem=acao_do_personagem.lower()
+                if(acao_do_personagem=="usar"):
                     personagem_jogador[5]=personagem_jogador[5]+mala[1][i][7]
                     personagem_jogador[6]=personagem_jogador[5]
                     personagem_jogador[1]=personagem_jogador[1]+mala[1][i][1]
                     personagem_jogador[2]=personagem_jogador[2]+mala[1][i][2]
                     personagem_jogador[3]=personagem_jogador[3]+mala[1][i][3]
                     personagem_jogador[4]=personagem_jogador[4]+mala[1][i][4]
-                    print("\nVoc√™ usou", mala[1][i][0],"!\n")
-                    mala[1][i]=espa√ßo_vazio
+                    print("\nVocÍ usou", mala[1][i][0],"!\n")
+                    time.sleep(0.5)
+                    mala[1][i]=espaÁo_vazio
                 else:
-                    if(a√ß√£o_do_personagem=="descartar"):
+                    if(acao_do_personagem=="descartar"):
                         while 1:
                             print("\nTem certeza que deseja descartar?\n")
-                            a√ß√£o_do_personagem=input("-")
-                            a√ß√£o_do_personagem=a√ß√£o_do_personagem.lower()
-                            if(a√ß√£o_do_personagem!="n√£o" or a√ß√£o_do_personagem!="sim"):
-                                print("\nENTRADA INV√ÅLIDA!\n")
+                            acao_do_personagem=input("-")
+                            acao_do_personagem=acao_do_personagem.lower()
+                            if(acao_do_personagem!="n„o" or acao_do_personagem!="sim"):
+                                print("\nENTRADA INV¡LIDA!\n")
+                                time.sleep(0.5)
                             else:break
-                        if(a√ß√£o_do_personagem=="sim"):
-                            print("\nVoc√™ descartou",mala[1][i][0],"!\n")
-                            mala[1][i]=espa√ßo_vazio
-            if(mala[1][i][5]=="consum√≠vel"):
+                        if(acao_do_personagem=="sim"):
+                            print("\nVocÍ descartou",mala[1][i][0],"!\n")
+                            time.sleep(0.5)
+                            mala[1][i]=espaÁo_vazio
+            if(mala[1][i][5]=="consumÌvel"):
                 print("\nNome:",mala[1][i][0], "\nTipo:",mala[1][i][5],"\nVida:",mala[1][i][7],"\n")
                 print("O que deseja fazer? (usar ou descartar)")
-                a√ß√£o_do_personagem=input("-")
-                a√ß√£o_do_personagem=a√ß√£o_do_personagem.lower()
-                if(a√ß√£o_do_personagem=="usar"):
+                acao_do_personagem=input("-")
+                acao_do_personagem=acao_do_personagem.lower()
+                if(acao_do_personagem=="usar"):
                     personagem_jogador[6]=personagem_jogador[6]+mala[1][i][7]
                     if (personagem_jogador[6]>personagem_jogador[5]+0.1*personagem_jogador[6]):
                         personagem_jogador[6]=personagem_jogador[5]
-                    print("\nVoc√™ usou", mala[1][i][0],"!\n")
-                    mala[1][i]=espa√ßo_vazio
+                    print("\nVocÍ usou", mala[1][i][0],"!\n")
+                    time.sleep(0.5)
+                    mala[1][i]=espaÁo_vazio
                 else:
-                    if(a√ß√£o_do_personagem=="descartar"):
+                    if(acao_do_personagem=="descartar"):
                         while 1:
                             print("\nTem certeza que deseja descartar?\n")
-                            a√ß√£o_do_personagem=input("-")
-                            a√ß√£o_do_personagem=a√ß√£o_do_personagem.lower()
-                            if(a√ß√£o_do_personagem!="n√£o" or a√ß√£o_do_personagem!="sim"):
-                                print("\nENTRADA INV√ÅLIDA!\n")
+                            acao_do_personagem=input("-")
+                            acao_do_personagem=acao_do_personagem.lower()
+                            if(acao_do_personagem!="n„o" or acao_do_personagem!="sim"):
+                                print("\nENTRADA INV¡LIDA!\n")
+                                time.sleep(0.5)
                             else:break
-                        if(a√ß√£o_do_personagem=="sim"):
-                            print("\nVoc√™ descartou",mala[1][i][0],"!\n")
-                            mala[1][i]=espa√ßo_vazio
-            if(mala[1][i][5]!="consum√≠vel de aprimoramento" and mala[1][i][5]!="consum√≠vel"):
+                        if(acao_do_personagem=="sim"):
+                            print("\nVocÍ descartou",mala[1][i][0],"!\n")
+                            mala[1][i]=espaÁo_vazio
+            if(mala[1][i][5]!="consumÌvel de aprimoramento" and mala[1][i][5]!="consumÌvel"):
                 print("\nNome:",mala[1][i][0],"\nTipo:",mala[1][i][5],"\nAtaque:",mala[1][i][1],"\nDefesa:",mala[1][i][2],"\nAgilidade:",mala[1][i][3],"\nSorte:",mala[1][i][4],"\n")
                 print("O que deseja fazer? (equipar ou descartar)")
-                a√ß√£o_do_personagem=input("-")
-                a√ß√£o_do_personagem=a√ß√£o_do_personagem.lower()
-                if(a√ß√£o_do_personagem=="descartar"):
-                    mala[1][i]=espa√ßo_vazio
+                acao_do_personagem=input("-")
+                acao_do_personagem=acao_do_personagem.lower()
+                if(acao_do_personagem=="descartar"):
+                    mala[1][i]=espaÁo_vazio
                 else:
-                    if(a√ß√£o_do_personagem=="equipar"):
+                    if(acao_do_personagem=="equipar"):
                         if(mala[1][i][5]=="roupa"):
-                            print("Voc√™ guardou ", equipado_roupa[0]," e equipou ", mala[1][i][0],"!")
+                            print("VocÍ guardou ", equipado_roupa[0]," e equipou ", mala[1][i][0],"!")
                             personagem_jogador[1] = personagem_jogador[1] - equipado_roupa[1]
                             personagem_jogador[2] = personagem_jogador[2] - equipado_roupa[2]
                             personagem_jogador[3] = personagem_jogador[3] - equipado_roupa[3]
@@ -298,164 +305,183 @@ def invent√°rioPersonagem():
                             personagem_jogador[4] = personagem_jogador[4] + equipado_anel[4]
                             personagem_jogador[5] = personagem_jogador[5] + equipado_anel[7]
                         if(mala[1][i][5]=="armamento"):
-                            personagem_jogador[1] = personagem_jogador[1] - equipado_m√£os[1]
-                            personagem_jogador[2] = personagem_jogador[2] - equipado_m√£os[2]
-                            personagem_jogador[3] = personagem_jogador[3] - equipado_m√£os[3]
-                            personagem_jogador[4] = personagem_jogador[4] - equipado_m√£os[4]
-                            personagem_jogador[5] = personagem_jogador[5] - equipado_m√£os[7]
-                            item_adicionado=equipado_m√£os
-                            equipado_m√£os=mala[1][i]
+                            personagem_jogador[1] = personagem_jogador[1] - equipado_maos[1]
+                            personagem_jogador[2] = personagem_jogador[2] - equipado_maos[2]
+                            personagem_jogador[3] = personagem_jogador[3] - equipado_maos[3]
+                            personagem_jogador[4] = personagem_jogador[4] - equipado_maos[4]
+                            personagem_jogador[5] = personagem_jogador[5] - equipado_maos[7]
+                            item_adicionado=equipado_maos
+                            equipado_maos=mala[1][i]
                             mala[1][i]=item_adicionado
-                            personagem_jogador[1] = personagem_jogador[1] + equipado_m√£os[1]
-                            personagem_jogador[2] = personagem_jogador[2] + equipado_m√£os[2]
-                            personagem_jogador[3] = personagem_jogador[3] + equipado_m√£os[3]
-                            personagem_jogador[4] = personagem_jogador[4] + equipado_m√£os[4]
-                            personagem_jogador[5] = personagem_jogador[5] + equipado_m√£os[7]
-                        if(mala[1][i][5]=="cal√ßados"):
-                            personagem_jogador[1] = personagem_jogador[1] - equipado_cal√ßado[1]
-                            personagem_jogador[2] = personagem_jogador[2] - equipado_cal√ßado[2]
-                            personagem_jogador[3] = personagem_jogador[3] - equipado_cal√ßado[3]
-                            personagem_jogador[4] = personagem_jogador[4] - equipado_cal√ßado[4]
-                            personagem_jogador[5] = personagem_jogador[5] - equipado_cal√ßado[7]
-                            item_adicionado=equipado_cal√ßado
-                            equipado_cal√ßado=mala[1][i]
+                            personagem_jogador[1] = personagem_jogador[1] + equipado_maos[1]
+                            personagem_jogador[2] = personagem_jogador[2] + equipado_maos[2]
+                            personagem_jogador[3] = personagem_jogador[3] + equipado_maos[3]
+                            personagem_jogador[4] = personagem_jogador[4] + equipado_maos[4]
+                            personagem_jogador[5] = personagem_jogador[5] + equipado_maos[7]
+                        if(mala[1][i][5]=="calÁados"):
+                            personagem_jogador[1] = personagem_jogador[1] - equipado_calcado[1]
+                            personagem_jogador[2] = personagem_jogador[2] - equipado_calcado[2]
+                            personagem_jogador[3] = personagem_jogador[3] - equipado_calcado[3]
+                            personagem_jogador[4] = personagem_jogador[4] - equipado_calcado[4]
+                            personagem_jogador[5] = personagem_jogador[5] - equipado_calcado[7]
+                            item_adicionado=equipado_calcado
+                            equipado_calcado=mala[1][i]
                             mala[1][i]=item_adicionado
-                            personagem_jogador[1] = personagem_jogador[1] + equipado_cal√ßado[1]
-                            personagem_jogador[2] = personagem_jogador[2] + equipado_cal√ßado[2]
-                            personagem_jogador[3] = personagem_jogador[3] + equipado_cal√ßado[3]
-                            personagem_jogador[4] = personagem_jogador[4] + equipado_cal√ßado[4]
-                            personagem_jogador[5] = personagem_jogador[5] + equipado_cal√ßado[7]                            
-                        if(mala[1][i][5]=="consum√≠vel" or mala[1][i][5]=="consum√≠vel de aprimoramento"):
-                            print("voc√™ n√£o pode equipar!")
+                            personagem_jogador[1] = personagem_jogador[1] + equipado_calcado[1]
+                            personagem_jogador[2] = personagem_jogador[2] + equipado_calcado[2]
+                            personagem_jogador[3] = personagem_jogador[3] + equipado_calcado[3]
+                            personagem_jogador[4] = personagem_jogador[4] + equipado_calcado[4]
+                            personagem_jogador[5] = personagem_jogador[5] + equipado_calcado[7]                            
+                        if(mala[1][i][5]=="consumÌvel" or mala[1][i][5]=="consumÌvel de aprimoramento"):
+                            print("vocÍ n„o pode equipar!")
+                            time.sleep(0.5)
                     else:
-                        print("\nENTRADA INV√ÅLIDA!\n")
+                        print("\nENTRADA INV¡LIDA!\n")
+                        time.sleep(0.5)
 
-#--Loja Padr√£o--#
-def lojaPadr√£o():
-    global desequipado_roupa,desequipado_capa,desequipado_luva,desequipado_m√£os,desequipado_cal√ßado,espa√ßo_vazio,peda√ßo_pizza,bolo_chocolate,pijama_inicial,uniforme_estudantil,malha_ninja,l√°pis_apontado,punhal_envelhecido,talheres_prata,jaqueta_imita√ß√£o,jaqueta_couro,agasalho_l√£,suplemento_aliment√≠cio,lata_energ√©tico,luva_l√£,luva_couro,soco_pvc,soco_lat√£o,luva_spikes_alu,soco_alu,luva_spikes_a√ßo,soco_a√ßo,luva_spikes_ag,soco_ag,luva_spikes_au,soco_au,luva_spikes_tit√¢nio,soco_tit√¢nio,anel_for√ßa1,anel_for√ßa2,anel_for√ßa3,anel_resist√™ncia1,anel_resist√™ncia2,anel_resist√™ncia3,anel_consist√™ncia1,anel_consist√™ncia2,anel_consist√™ncia3,anel_da_imortalidade,anel_da_divindade,chinelo_inicial,papetes_masculinas,t√™nis_velho,t√™nis_simpl√≥rio,sapato_simpl√≥rio,t√™nis_comum,t√™nis_trilha,t√™nis_caminhada,t√™nis_corrida,t√™nis_ZX5000,item_adicionado,quantidade_adicionada,equipado_roupa,equipado_capa,equipado_luva,equipado_anel,equipado_m√£os,equipado_cal√ßado,vari√°vel_cen√°rio,objeto,situa√ß√£o,tempor√°rio,vari√°vel_lugar,ponto_de_save,mostrar_save, personagem_jogador,personagem_reserva,personagem_inimigo,eegg,a√ß√£o_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,vari√°vel_para_comparar,contador_de_batalha,contador_de_rodadas,mala,loja_venda
+#--Loja Padr„o--#
+def lojaPadr„o():
+    global desequipado_roupa,desequipado_capa,desequipado_luva,desequipado_maos,desequipado_calcado,espaÁo_vazio,pedaÁo_pizza,bolo_chocolate,pijama_inicial,uniforme_estudantil,malha_ninja,lapis_apontado,punhal_envelhecido,talheres_prata,jaqueta_imitacao,jaqueta_couro,agasalho_l„,suplemento_alimentÌcio,lata_energÈtico,luva_l„,luva_couro,soco_pvc,soco_lat„o,luva_spikes_alu,soco_alu,luva_spikes_aÁo,soco_aÁo,luva_spikes_ag,soco_ag,luva_spikes_au,soco_au,luva_spikes_tit‚nio,soco_tit‚nio,anel_forÁa1,anel_forÁa2,anel_forÁa3,anel_resistÍncia1,anel_resistÍncia2,anel_resistÍncia3,anel_consistÍncia1,anel_consistÍncia2,anel_consistÍncia3,anel_da_imortalidade,anel_da_divindade,chinelo_inicial,papetes_masculinas,tÍnis_velho,tÍnis_simplÛrio,sapato_simplÛrio,tÍnis_comum,tÍnis_trilha,tÍnis_caminhada,tÍnis_corrida,tÍnis_ZX5000,item_adicionado,quantidade_adicionada,equipado_roupa,equipado_capa,equipado_luva,equipado_anel,equipado_maos,equipado_calcado,vari·vel_cen·rio,objeto,situacao,tempor·rio,vari·vel_lugar,ponto_de_save,mostrar_save, personagem_jogador,personagem_reserva,personagem_inimigo,eegg,acao_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,vari·vel_para_comparar,contador_de_batalha,contador_de_rodadas,mala,loja_venda
     while 2:
         print("\n(comprar, vender ou sair)")
-        a√ß√£o_do_personagem=input("-")
-        a√ß√£o_do_personagem=a√ß√£o_do_personagem.lower()
-        if(a√ß√£o_do_personagem=="vender"):
+        acao_do_personagem=input("-")
+        acao_do_personagem=acao_do_personagem.lower()
+        if(acao_do_personagem=="vender"):
             while 1:
                 print("Mochila:\n")
+                time.sleep(0.5)
                 i=0
                 while i<=29:
-                    if (mala[1][i]!=espa√ßo_vazio and mala[1][i][0]!="Nada"):
+                    if (mala[1][i]!=espaÁo_vazio and mala[1][i][0]!="Nada"):
                         print(mala[0][i]," : ",mala[1][i][0],"\n     (",mala[1][i][5],")\n")
                     i+=1
                 while 1:
-                    print("Para analisar um item digite o n√∫mero da sua posi√ß√£o!\nPara voltar ao jogo digite voltar.")
-                    a√ß√£o_do_personagem = input('-')
-                    if a√ß√£o_do_personagem.isnumeric():
-                        a√ß√£o_do_personagem=int(a√ß√£o_do_personagem)
+                    print("Para analisar um item digite o n˙mero da sua posiÁ„o!\nPara voltar ao jogo digite voltar.")
+                    acao_do_personagem = input('-')
+                    if acao_do_personagem.isnumeric():
+                        acao_do_personagem=int(acao_do_personagem)
                         break
                     else:
-                        a√ß√£o_do_personagem=a√ß√£o_do_personagem.lower()
-                        if(a√ß√£o_do_personagem=="voltar"):break
-                        print("ENTRADA INV√ÅLIDA!")
-                if(a√ß√£o_do_personagem=="voltar"):break
+                        acao_do_personagem=acao_do_personagem.lower()
+                        if(acao_do_personagem=="voltar"):break
+                        print("ENTRADA INV¡LIDA!")
+                        time.sleep(0.5)
+                if(acao_do_personagem=="voltar"):break
                 i=0
                 while i<=29:
-                    if(i==a√ß√£o_do_personagem):
+                    if(i==acao_do_personagem):
                         break
                     i+=1
                 i=i-1
-                if(a√ß√£o_do_personagem==mala[0][i] and mala[1][i]!=espa√ßo_vazio and mala[1][i][0]!="Nada"):
-                    if(mala[1][i][5]=="consum√≠vel de aprimoramento"):
+                if(acao_do_personagem==mala[0][i] and mala[1][i]!=espaÁo_vazio and mala[1][i][0]!="Nada"):
+                    if(mala[1][i][5]=="consumÌvel de aprimoramento"):
                         print("\nNome:",mala[1][i][0], "\nTipo:",mala[1][i][5],"\nVida:",mala[1][i][7],"\nAtaque:",mala[1][i][1],"\nDefesa:",mala[1][i][2],"\nAgilidade:",mala[1][i][3],"\nSorte:",mala[1][i][4],"\n")
-                if(mala[1][i][5]=="consum√≠vel"):
+                if(mala[1][i][5]=="consumÌvel"):
                     print("\nNome:",mala[1][i][0], "\nTipo:",mala[1][i][5],"\nVida:",mala[1][i][7],"\n")
-                if(mala[1][i][5]!="consum√≠vel de aprimoramento" and mala[1][i][6]!="consum√≠vel"):
+                if(mala[1][i][5]!="consumÌvel de aprimoramento" and mala[1][i][6]!="consumÌvel"):
                     print("\nNome:",mala[1][i][0],"\nTipo:",mala[1][i][5],"\nAtaque:",mala[1][i][1],"\nDefesa:",mala[1][i][2],"\nAgilidade:",mala[1][i][3],"\nSorte:",mala[1][i][4],"\n")
                 while 1:
                     print("Posso comprar por ", mala[1][i][6]*0.5,"Reais.")
-                    print("Vai querer vender?(sim ou n√£o)")
-                    a√ß√£o_do_personagem=input("-")
-                    a√ß√£o_do_personagem=a√ß√£o_do_personagem.lower()
-                    if(a√ß√£o_do_personagem == "n√£o" or a√ß√£o_do_personagem=="n" or a√ß√£o_do_personagem=="nao" or a√ß√£o_do_personagem=="no" or a√ß√£o_do_personagem=="na" or a√ß√£o_do_personagem=="n√£" or a√ß√£o_do_personagem=="ao" or a√ß√£o_do_personagem=="√£o" or a√ß√£o_do_personagem=="√±" or a√ß√£o_do_personagem=="√±√£o" or a√ß√£o_do_personagem=="√±o" or a√ß√£o_do_personagem=="√±√µ" or a√ß√£o_do_personagem=="√±√£" or a√ß√£o_do_personagem=="√±a√µ" or a√ß√£o_do_personagem=="a√µ"):
+                    time.sleep(0.5)
+                    print("Vai querer vender?(sim ou n„o)")
+                    acao_do_personagem=input("-")
+                    acao_do_personagem=acao_do_personagem.lower()
+                    if(acao_do_personagem == "n„o" or acao_do_personagem=="n" or acao_do_personagem=="nao" or acao_do_personagem=="no" or acao_do_personagem=="na" or acao_do_personagem=="n„" or acao_do_personagem=="ao" or acao_do_personagem=="„o" or acao_do_personagem=="Ò" or acao_do_personagem=="Ò„o" or acao_do_personagem=="Òo" or acao_do_personagem=="Òı" or acao_do_personagem=="Ò„" or acao_do_personagem=="Òaı" or acao_do_personagem=="aı"):
                         break
-                    if(a√ß√£o_do_personagem=="sim" or a√ß√£o_do_personagem=="s" or a√ß√£o_do_personagem=="si" or a√ß√£o_do_personagem=="sm" or a√ß√£o_do_personagem=="im" or a√ß√£o_do_personagem=="ssim"):
-                        personagem_jogador[7] = personagem_jogador[7] + mala[1][i][6]*0.5
-                        mala[1][i]=espa√ßo_vazio
-                        print("Obrigado!")
-                        break
+                    else:
+                        if(acao_do_personagem=="sim" or acao_do_personagem=="s" or acao_do_personagem=="si" or acao_do_personagem=="sm" or acao_do_personagem=="im" or acao_do_personagem=="ssim"):
+                            personagem_jogador[7] = personagem_jogador[7] + mala[1][i][6]*0.5
+                            mala[1][i]=espaÁo_vazio
+                            print("Obrigado!")
+                            time.sleep(0.5)
+                            break
+                        else:
+                            print("ENTRADA INV¡LIDA!")
+                            time.sleep(0.5)
         else:
-            if(a√ß√£o_do_personagem == "comprar"):
+            if(acao_do_personagem == "comprar"):
                 while 1:
                     print("Produtos a venda:\n")
+                    time.sleep(0.5)
                     i=0
                     while i<=29:
-                        if (loja_venda[1][i]!=espa√ßo_vazio):
+                        if (loja_venda[1][i]!=espaÁo_vazio):
                             print(loja_venda[0][i]," : ",loja_venda[1][i][0],"\n     (",loja_venda[1][i][5],")\n")
                         i+=1
                     while 1:
-                        print("Para analisar um item digite o n√∫mero da sua posi√ß√£o!\nPara voltar ao jogo digite voltar.")
-                        a√ß√£o_do_personagem = input('-')
-                        if a√ß√£o_do_personagem.isnumeric():
-                            a√ß√£o_do_personagem=int(a√ß√£o_do_personagem)
+                        print("Para analisar um item digite o n˙mero da sua posiÁ„o!\nPara voltar ao jogo digite voltar.")
+                        acao_do_personagem = input('-')
+                        if acao_do_personagem.isnumeric():
+                            acao_do_personagem=int(acao_do_personagem)
                             break
                         else:
-                            a√ß√£o_do_personagem=a√ß√£o_do_personagem.lower()
-                            if(a√ß√£o_do_personagem=="voltar"):break
-                            print("ENTRADA INV√ÅLIDA!")
-                    if(a√ß√£o_do_personagem=="voltar"):break
+                            acao_do_personagem=acao_do_personagem.lower()
+                            if(acao_do_personagem=="voltar"):break
+                            print("ENTRADA INV¡LIDA!")
+                            time.sleep(0.5)
+                    if(acao_do_personagem=="voltar"):break
                     i=0
                     while i<=29:
-                        if(i==a√ß√£o_do_personagem):
+                        if(i==acao_do_personagem):
                             break
                         i+=1
                     i=i-1
-                    if(a√ß√£o_do_personagem==loja_venda[0][i] and loja_venda[1][i]!=espa√ßo_vazio):
-                        if(loja_venda[1][i][6]=="consum√≠vel de aprimoramento"):
+                    if(acao_do_personagem==loja_venda[0][i] and loja_venda[1][i]!=espaÁo_vazio):
+                        if(loja_venda[1][i][6]=="consumÌvel de aprimoramento"):
                             print("\nNome:",loja_venda[1][i][0], "\nTipo:",loja_venda[1][i][5],"\nVida:",loja_venda[1][i][7],"\nAtaque:",loja_venda[1][i][1],"\nDefesa:",loja_venda[1][i][2],"\nAgilidade:",loja_venda[1][i][3],"\nSorte:",loja_venda[1][i][4],"\n")
-                        if(loja_venda[1][i][6]=="consum√≠vel"):
+                        if(loja_venda[1][i][6]=="consumÌvel"):
                             print("\nNome:",loja_venda[1][i][0], "\nTipo:",loja_venda[1][i][5],"\nVida:",loja_venda[1][i][7],"\n")
-                        if(loja_venda[1][i][6]!="consum√≠vel de aprimoramento" and loja_venda[1][i][6]!="consum√≠vel"):
+                        if(loja_venda[1][i][6]!="consumÌvel de aprimoramento" and loja_venda[1][i][6]!="consumÌvel"):
                             print("\nNome:",loja_venda[1][i][0],"\nTipo:",loja_venda[1][i][5],"\nAtaque:",loja_venda[1][i][1],"\nDefesa:",loja_venda[1][i][2],"\nAgilidade:",loja_venda[1][i][3],"\nSorte:",loja_venda[1][i][4],"\n")
                         while 1:
                             print("Deseja comprar? Quantos?(para desistir da compra digite 0)")
-                            a√ß√£o_do_personagem = input('-')
-                            if a√ß√£o_do_personagem.isnumeric():
-                                a√ß√£o_do_personagem=int(a√ß√£o_do_personagem)
+                            acao_do_personagem = input('-')
+                            if acao_do_personagem.isnumeric():
+                                acao_do_personagem=int(acao_do_personagem)
                                 break
                             else:
-                                a√ß√£o_do_personagem=a√ß√£o_do_personagem.lower()
-                                if(a√ß√£o_do_personagem=="voltar"):break
-                                print("ENTRADA INV√ÅLIDA!")
-                        if(a√ß√£o_do_personagem=="voltar"):break
+                                acao_do_personagem=acao_do_personagem.lower()
+                                if(acao_do_personagem=="voltar"):break
+                                print("ENTRADA INV¡LIDA!")
+                                time.sleep(0.5)
+                        if(acao_do_personagem=="voltar"):break
                         item_adicionado=loja_venda[1][i]
-                        quantidade_adicionada=a√ß√£o_do_personagem
+                        quantidade_adicionada=acao_do_personagem
                         while 1:
                             print("Ficou ", loja_venda[1][i][6]*quantidade_adicionada,"Reais.")
-                            print("Vai comprar mesmo?(sim ou n√£o)")
-                            a√ß√£o_do_personagem=input("-")
-                            a√ß√£o_do_personagem=a√ß√£o_do_personagem.lower()
-                            if(a√ß√£o_do_personagem == "n√£o" or a√ß√£o_do_personagem=="n" or a√ß√£o_do_personagem=="nao" or a√ß√£o_do_personagem=="no" or a√ß√£o_do_personagem=="na" or a√ß√£o_do_personagem=="n√£" or a√ß√£o_do_personagem=="ao" or a√ß√£o_do_personagem=="√£o" or a√ß√£o_do_personagem=="√±" or a√ß√£o_do_personagem=="√±√£o" or a√ß√£o_do_personagem=="√±o" or a√ß√£o_do_personagem=="√±√µ" or a√ß√£o_do_personagem=="√±√£" or a√ß√£o_do_personagem=="√±a√µ" or a√ß√£o_do_personagem=="a√µ"):
+                            print("Vai comprar mesmo?(sim ou n„o)")
+                            acao_do_personagem=input("-")
+                            acao_do_personagem=acao_do_personagem.lower()
+                            if(acao_do_personagem == "n„o" or acao_do_personagem=="n" or acao_do_personagem=="nao" or acao_do_personagem=="no" or acao_do_personagem=="na" or acao_do_personagem=="n„" or acao_do_personagem=="ao" or acao_do_personagem=="„o" or acao_do_personagem=="Ò" or acao_do_personagem=="Ò„o" or acao_do_personagem=="Òo" or acao_do_personagem=="Òı" or acao_do_personagem=="Ò„" or acao_do_personagem=="Òaı" or acao_do_personagem=="aı"):
                                 break
                             else:
-                                if(a√ß√£o_do_personagem=="sim" or a√ß√£o_do_personagem=="s" or a√ß√£o_do_personagem=="si" or a√ß√£o_do_personagem=="sm" or a√ß√£o_do_personagem=="im" or a√ß√£o_do_personagem=="ssim"):
+                                if(acao_do_personagem=="sim" or acao_do_personagem=="s" or acao_do_personagem=="si" or acao_do_personagem=="sm" or acao_do_personagem=="im" or acao_do_personagem=="ssim"):
                                     personagem_jogador[7] = personagem_jogador[7] - loja_venda[1][i][6]*quantidade_adicionada
                                     adicionaItem()
                                     print("Obrigado!")
+                                    time.sleep(0.5)
                                     break
+                                else:
+                                    print("ENTRADA INV¡LIDA!")
+                                    time.sleep(0.5)
             else:
-                if(a√ß√£o_do_personagem == "sair"):break
-                else:print("ENTRADA INV√ÅLIDA!")
+                if(acao_do_personagem == "sair"):break
+                else:
+                    print("ENTRADA INV¡LIDA!")
+                    time.sleep(0.5)
 
 #--Ficha do Personagem--#
 def ficha_personagem():
-    global desequipado_roupa,desequipado_capa,desequipado_luva,desequipado_m√£os,desequipado_cal√ßado,espa√ßo_vazio,peda√ßo_pizza,bolo_chocolate,pijama_inicial,uniforme_estudantil,malha_ninja,l√°pis_apontado,punhal_envelhecido,talheres_prata,jaqueta_imita√ß√£o,jaqueta_couro,agasalho_l√£,suplemento_aliment√≠cio,lata_energ√©tico,luva_l√£,luva_couro,soco_pvc,soco_lat√£o,luva_spikes_alu,soco_alu,luva_spikes_a√ßo,soco_a√ßo,luva_spikes_ag,soco_ag,luva_spikes_au,soco_au,luva_spikes_tit√¢nio,soco_tit√¢nio,anel_for√ßa1,anel_for√ßa2,anel_for√ßa3,anel_resist√™ncia1,anel_resist√™ncia2,anel_resist√™ncia3,anel_consist√™ncia1,anel_consist√™ncia2,anel_consist√™ncia3,anel_da_imortalidade,anel_da_divindade,chinelo_inicial,papetes_masculinas,t√™nis_velho,t√™nis_simpl√≥rio,sapato_simpl√≥rio,t√™nis_comum,t√™nis_trilha,t√™nis_caminhada,t√™nis_corrida,t√™nis_ZX5000,item_adicionado,quantidade_adicionada,equipado_roupa,equipado_capa,equipado_luva,equipado_anel,equipado_m√£os,equipado_cal√ßado,vari√°vel_cen√°rio,objeto,situa√ß√£o,tempor√°rio,vari√°vel_lugar,ponto_de_save,mostrar_save, personagem_jogador,personagem_reserva,personagem_inimigo,eegg,a√ß√£o_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,vari√°vel_para_comparar,contador_de_batalha,contador_de_rodadas,mala,loja_venda
+    global desequipado_roupa,desequipado_capa,desequipado_luva,desequipado_maos,desequipado_calcado,espaÁo_vazio,pedaÁo_pizza,bolo_chocolate,pijama_inicial,uniforme_estudantil,malha_ninja,lapis_apontado,punhal_envelhecido,talheres_prata,jaqueta_imitacao,jaqueta_couro,agasalho_l„,suplemento_alimentÌcio,lata_energÈtico,luva_l„,luva_couro,soco_pvc,soco_lat„o,luva_spikes_alu,soco_alu,luva_spikes_aÁo,soco_aÁo,luva_spikes_ag,soco_ag,luva_spikes_au,soco_au,luva_spikes_tit‚nio,soco_tit‚nio,anel_forÁa1,anel_forÁa2,anel_forÁa3,anel_resistÍncia1,anel_resistÍncia2,anel_resistÍncia3,anel_consistÍncia1,anel_consistÍncia2,anel_consistÍncia3,anel_da_imortalidade,anel_da_divindade,chinelo_inicial,papetes_masculinas,tÍnis_velho,tÍnis_simplÛrio,sapato_simplÛrio,tÍnis_comum,tÍnis_trilha,tÍnis_caminhada,tÍnis_corrida,tÍnis_ZX5000,item_adicionado,quantidade_adicionada,equipado_roupa,equipado_capa,equipado_luva,equipado_anel,equipado_maos,equipado_calcado,vari·vel_cen·rio,objeto,situacao,tempor·rio,vari·vel_lugar,ponto_de_save,mostrar_save, personagem_jogador,personagem_reserva,personagem_inimigo,eegg,acao_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,vari·vel_para_comparar,contador_de_batalha,contador_de_rodadas,mala,loja_venda
     print("\n#", "-"*30,"#\n", "\nNome:", personagem_jogador[0])
     time.sleep(0.23)
     print("\nVida:", personagem_jogador[6], "de", personagem_jogador[5])
     time.sleep(0.23)
     print("\nAtaque:", personagem_jogador[1], "\nDefesa:", personagem_jogador[2], "\nAgilidade:", personagem_jogador[3], "\nSorte:", personagem_jogador[4])
     time.sleep(0.23)
-    print("\nCapa:", equipado_capa[0], "\nRoupa:", equipado_roupa[0], "\nCal√ßados:", equipado_cal√ßado[0],)
+    print("\nCapa:", equipado_capa[0], "\nRoupa:", equipado_roupa[0], "\nCalÁados:", equipado_calcado[0],)
     time.sleep(0.23)
-    print("\nLuvas:" ,equipado_luva[0],"\nAnel:" ,equipado_anel[0],"\nArmamento:", equipado_m√£os[0])
+    print("\nLuvas:" ,equipado_luva[0],"\nAnel:" ,equipado_anel[0],"\nArmamento:", equipado_maos[0])
     time.sleep(0.23)
     print("\nDinheiro:", personagem_jogador[7], "Reais\n")
     time.sleep(0.23)
@@ -464,488 +490,494 @@ def ficha_personagem():
 
 #--Save--#
 def save():
-    global desequipado_roupa,desequipado_capa,desequipado_luva,desequipado_m√£os,desequipado_cal√ßado,espa√ßo_vazio,peda√ßo_pizza,bolo_chocolate,pijama_inicial,uniforme_estudantil,malha_ninja,l√°pis_apontado,punhal_envelhecido,talheres_prata,jaqueta_imita√ß√£o,jaqueta_couro,agasalho_l√£,suplemento_aliment√≠cio,lata_energ√©tico,luva_l√£,luva_couro,soco_pvc,soco_lat√£o,luva_spikes_alu,soco_alu,luva_spikes_a√ßo,soco_a√ßo,luva_spikes_ag,soco_ag,luva_spikes_au,soco_au,luva_spikes_tit√¢nio,soco_tit√¢nio,anel_for√ßa1,anel_for√ßa2,anel_for√ßa3,anel_resist√™ncia1,anel_resist√™ncia2,anel_resist√™ncia3,anel_consist√™ncia1,anel_consist√™ncia2,anel_consist√™ncia3,anel_da_imortalidade,anel_da_divindade,chinelo_inicial,papetes_masculinas,t√™nis_velho,t√™nis_simpl√≥rio,sapato_simpl√≥rio,t√™nis_comum,t√™nis_trilha,t√™nis_caminhada,t√™nis_corrida,t√™nis_ZX5000,item_adicionado,quantidade_adicionada,equipado_roupa,equipado_capa,equipado_luva,equipado_anel,equipado_m√£os,equipado_cal√ßado,vari√°vel_cen√°rio,objeto,situa√ß√£o,tempor√°rio,vari√°vel_lugar,ponto_de_save,mostrar_save, personagem_jogador,personagem_reserva,personagem_inimigo,eegg,a√ß√£o_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,vari√°vel_para_comparar,contador_de_batalha,contador_de_rodadas,mala,loja_venda
+    global desequipado_roupa,desequipado_capa,desequipado_luva,desequipado_maos,desequipado_calcado,espaÁo_vazio,pedaÁo_pizza,bolo_chocolate,pijama_inicial,uniforme_estudantil,malha_ninja,lapis_apontado,punhal_envelhecido,talheres_prata,jaqueta_imitacao,jaqueta_couro,agasalho_l„,suplemento_alimentÌcio,lata_energÈtico,luva_l„,luva_couro,soco_pvc,soco_lat„o,luva_spikes_alu,soco_alu,luva_spikes_aÁo,soco_aÁo,luva_spikes_ag,soco_ag,luva_spikes_au,soco_au,luva_spikes_tit‚nio,soco_tit‚nio,anel_forÁa1,anel_forÁa2,anel_forÁa3,anel_resistÍncia1,anel_resistÍncia2,anel_resistÍncia3,anel_consistÍncia1,anel_consistÍncia2,anel_consistÍncia3,anel_da_imortalidade,anel_da_divindade,chinelo_inicial,papetes_masculinas,tÍnis_velho,tÍnis_simplÛrio,sapato_simplÛrio,tÍnis_comum,tÍnis_trilha,tÍnis_caminhada,tÍnis_corrida,tÍnis_ZX5000,item_adicionado,quantidade_adicionada,equipado_roupa,equipado_capa,equipado_luva,equipado_anel,equipado_maos,equipado_calcado,vari·vel_cen·rio,objeto,situacao,tempor·rio,vari·vel_lugar,ponto_de_save,mostrar_save, personagem_jogador,personagem_reserva,personagem_inimigo,eegg,acao_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,vari·vel_para_comparar,contador_de_batalha,contador_de_rodadas,mala,loja_venda
     ficha_personagem()
-    print('\nDeseja salvar seu progresso?("sim" ou "n√£o")\n')
+    print('\nDeseja salvar seu progresso?("sim" ou "n„o")\n')
+    time.sleep(0.5)
     while 1:
-        a√ß√£o_do_personagem = input("-")
-        a√ß√£o_do_personagem = a√ß√£o_do_personagem.lower()
-        if(a√ß√£o_do_personagem=="sim" or a√ß√£o_do_personagem=="s" or a√ß√£o_do_personagem=="si" or a√ß√£o_do_personagem=="sm" or a√ß√£o_do_personagem=="im" or a√ß√£o_do_personagem=="ssim"):
-            print("\nDeseja salvar em qual espa√ßo?\n")
+        acao_do_personagem = input("-")
+        acao_do_personagem = acao_do_personagem.lower()
+        if(acao_do_personagem=="sim" or acao_do_personagem=="s" or acao_do_personagem=="si" or acao_do_personagem=="sm" or acao_do_personagem=="im" or acao_do_personagem=="ssim"):
+            print("\nDeseja salvar em qual espaÁo?\n")
             time.sleep(0.5)
-            arq = open('\espa√ßo_save00.py', 'rb')
+            arq = open('\espaÁo_save00.py', 'rb')
             mostrar_save = pickle.load(arq)
-            print("\nEspa√ßo  0:     Lugar:",mostrar_save[5], "\n          Nome:",mostrar_save[1],"  Vida:", mostrar_save[3],"\n          Ataque:",mostrar_save[7],"  Defesa:",mostrar_save[9],"  Agilidade:",mostrar_save[11])
+            print("\nEspaÁo  0:     Lugar:",mostrar_save[5], "\n          Nome:",mostrar_save[1],"  Vida:", mostrar_save[3],"\n          Ataque:",mostrar_save[7],"  Defesa:",mostrar_save[9],"  Agilidade:",mostrar_save[11])
             arq.close
-            arq = open('\espa√ßo_save01.py', 'rb')
+            arq = open('\espaÁo_save01.py', 'rb')
             mostrar_save = pickle.load(arq)
-            print("\nEspa√ßo  1:     Lugar:",mostrar_save[5], "\n          Nome:",mostrar_save[1],"  Vida:", mostrar_save[3],"\n          Ataque:",mostrar_save[7],"  Defesa:",mostrar_save[9],"  Agilidade:",mostrar_save[11])
+            print("\nEspaÁo  1:     Lugar:",mostrar_save[5], "\n          Nome:",mostrar_save[1],"  Vida:", mostrar_save[3],"\n          Ataque:",mostrar_save[7],"  Defesa:",mostrar_save[9],"  Agilidade:",mostrar_save[11])
             arq.close
-            arq = open('\espa√ßo_save02.py', 'rb')
+            arq = open('\espaÁo_save02.py', 'rb')
             mostrar_save = pickle.load(arq)
-            print("\nEspa√ßo  2:     Lugar:",mostrar_save[5], "\n          Nome:",mostrar_save[1],"  Vida:", mostrar_save[3],"\n          Ataque:",mostrar_save[7],"  Defesa:",mostrar_save[9],"  Agilidade:",mostrar_save[11])
+            print("\nEspaÁo  2:     Lugar:",mostrar_save[5], "\n          Nome:",mostrar_save[1],"  Vida:", mostrar_save[3],"\n          Ataque:",mostrar_save[7],"  Defesa:",mostrar_save[9],"  Agilidade:",mostrar_save[11])
             arq.close
-            arq = open('\espa√ßo_save03.py', 'rb')
+            arq = open('\espaÁo_save03.py', 'rb')
             mostrar_save = pickle.load(arq)
-            print("\nEspa√ßo  3:     Lugar:",mostrar_save[5], "\n          Nome:",mostrar_save[1],"  Vida:", mostrar_save[3],"\n          Ataque:",mostrar_save[7],"  Defesa:",mostrar_save[9],"  Agilidade:",mostrar_save[11])
+            print("\nEspaÁo  3:     Lugar:",mostrar_save[5], "\n          Nome:",mostrar_save[1],"  Vida:", mostrar_save[3],"\n          Ataque:",mostrar_save[7],"  Defesa:",mostrar_save[9],"  Agilidade:",mostrar_save[11])
             arq.close
-            arq = open('\espa√ßo_save04.py', 'rb')
+            arq = open('\espaÁo_save04.py', 'rb')
             mostrar_save = pickle.load(arq)
-            print("\nEspa√ßo  4:     Lugar:",mostrar_save[5], "\n          Nome:",mostrar_save[1],"  Vida:", mostrar_save[3],"\n          Ataque:",mostrar_save[7],"  Defesa:",mostrar_save[9],"  Agilidade:",mostrar_save[11])
+            print("\nEspaÁo  4:     Lugar:",mostrar_save[5], "\n          Nome:",mostrar_save[1],"  Vida:", mostrar_save[3],"\n          Ataque:",mostrar_save[7],"  Defesa:",mostrar_save[9],"  Agilidade:",mostrar_save[11])
             arq.close
-            arq = open('\espa√ßo_save05.py', 'rb')
+            arq = open('\espaÁo_save05.py', 'rb')
             mostrar_save = pickle.load(arq)
-            print("\nEspa√ßo  5:     Lugar:",mostrar_save[5], "\n          Nome:",mostrar_save[1],"  Vida:", mostrar_save[3],"\n          Ataque:",mostrar_save[7],"  Defesa:",mostrar_save[9],"  Agilidade:",mostrar_save[11])
+            print("\nEspaÁo  5:     Lugar:",mostrar_save[5], "\n          Nome:",mostrar_save[1],"  Vida:", mostrar_save[3],"\n          Ataque:",mostrar_save[7],"  Defesa:",mostrar_save[9],"  Agilidade:",mostrar_save[11])
             arq.close
-            arq = open('\espa√ßo_save06.py', 'rb')
+            arq = open('\espaÁo_save06.py', 'rb')
             mostrar_save = pickle.load(arq)
-            print("\nEspa√ßo  6:     Lugar:",mostrar_save[5], "\n          Nome:",mostrar_save[1],"  Vida:", mostrar_save[3],"\n          Ataque:",mostrar_save[7],"  Defesa:",mostrar_save[9],"  Agilidade:",mostrar_save[11])
+            print("\nEspaÁo  6:     Lugar:",mostrar_save[5], "\n          Nome:",mostrar_save[1],"  Vida:", mostrar_save[3],"\n          Ataque:",mostrar_save[7],"  Defesa:",mostrar_save[9],"  Agilidade:",mostrar_save[11])
             arq.close
-            arq = open('\espa√ßo_save07.py', 'rb')
+            arq = open('\espaÁo_save07.py', 'rb')
             mostrar_save = pickle.load(arq)
-            print("\nEspa√ßo  7:     Lugar:",mostrar_save[5], "\n          Nome:",mostrar_save[1],"  Vida:", mostrar_save[3],"\n          Ataque:",mostrar_save[7],"  Defesa:",mostrar_save[9],"  Agilidade:",mostrar_save[11])
+            print("\nEspaÁo  7:     Lugar:",mostrar_save[5], "\n          Nome:",mostrar_save[1],"  Vida:", mostrar_save[3],"\n          Ataque:",mostrar_save[7],"  Defesa:",mostrar_save[9],"  Agilidade:",mostrar_save[11])
             arq.close
-            arq = open('\espa√ßo_save08.py', 'rb')
+            arq = open('\espaÁo_save08.py', 'rb')
             mostrar_save = pickle.load(arq)
-            print("\nEspa√ßo  8:     Lugar:",mostrar_save[5], "\n          Nome:",mostrar_save[1],"  Vida:", mostrar_save[3],"\n          Ataque:",mostrar_save[7],"  Defesa:",mostrar_save[9],"  Agilidade:",mostrar_save[11])
+            print("\nEspaÁo  8:     Lugar:",mostrar_save[5], "\n          Nome:",mostrar_save[1],"  Vida:", mostrar_save[3],"\n          Ataque:",mostrar_save[7],"  Defesa:",mostrar_save[9],"  Agilidade:",mostrar_save[11])
             arq.close
-            arq = open('\espa√ßo_save09.py', 'rb')
+            arq = open('\espaÁo_save09.py', 'rb')
             mostrar_save = pickle.load(arq)
-            print("\nEspa√ßo  9:     Lugar:",mostrar_save[5], "\n          Nome:",mostrar_save[1],"  Vida:", mostrar_save[3],"\n          Ataque:",mostrar_save[7],"  Defesa:",mostrar_save[9],"  Agilidade:",mostrar_save[11])
+            print("\nEspaÁo  9:     Lugar:",mostrar_save[5], "\n          Nome:",mostrar_save[1],"  Vida:", mostrar_save[3],"\n          Ataque:",mostrar_save[7],"  Defesa:",mostrar_save[9],"  Agilidade:",mostrar_save[11])
             arq.close
             while 1:
-                print("\n(Digite um n√∫mero entre 0 e 9)")
-                a√ß√£o_do_personagem=input("-")
-                if(a√ß√£o_do_personagem=="0"):
-                    arq = open('\espa√ßo_save00.py', 'wb')
+                print("\n(Digite um n˙mero entre 0 e 9)")
+                acao_do_personagem=input("-")
+                if(acao_do_personagem=="0"):
+                    arq = open('\espaÁo_save00.py', 'wb')
                     break
                 else:
-                    if(a√ß√£o_do_personagem=="1"):
-                        arq = open('\espa√ßo_save01.py', 'wb')
+                    if(acao_do_personagem=="1"):
+                        arq = open('\espaÁo_save01.py', 'wb')
                         break
                     else:
-                        if(a√ß√£o_do_personagem=="2"):
-                            arq = open('\espa√ßo_save02.py', 'wb')
+                        if(acao_do_personagem=="2"):
+                            arq = open('\espaÁo_save02.py', 'wb')
                             break
                         else:
-                            if(a√ß√£o_do_personagem=="3"):
-                                arq = open('\espa√ßo_save03.py', 'wb')
+                            if(acao_do_personagem=="3"):
+                                arq = open('\espaÁo_save03.py', 'wb')
                                 break
                             else:
-                                if(a√ß√£o_do_personagem=="4"):
-                                    arq = open('\espa√ßo_save04.py', 'wb')
+                                if(acao_do_personagem=="4"):
+                                    arq = open('\espaÁo_save04.py', 'wb')
                                     break
                                 else:
-                                    if(a√ß√£o_do_personagem=="5"):
-                                        arq = open('\espa√ßo_save05.py', 'wb')
+                                    if(acao_do_personagem=="5"):
+                                        arq = open('\espaÁo_save05.py', 'wb')
                                         break
                                     else:
-                                        if(a√ß√£o_do_personagem=="6"):
-                                            arq = open('\espa√ßo_save06.py', 'wb')
+                                        if(acao_do_personagem=="6"):
+                                            arq = open('\espaÁo_save06.py', 'wb')
                                             break
                                         else:
-                                            if(a√ß√£o_do_personagem=="7"):
-                                                arq = open('\espa√ßo_save07.py', 'wb')
+                                            if(acao_do_personagem=="7"):
+                                                arq = open('\espaÁo_save07.py', 'wb')
                                                 break
                                             else:
-                                                if(a√ß√£o_do_personagem=="8"):
-                                                    arq = open('\espa√ßo_save08.py', 'wb')
+                                                if(acao_do_personagem=="8"):
+                                                    arq = open('\espaÁo_save08.py', 'wb')
                                                     break
                                                 else:
-                                                    if(a√ß√£o_do_personagem=="9"):
-                                                        arq = open('\espa√ßo_save09.py', 'wb')
+                                                    if(acao_do_personagem=="9"):
+                                                        arq = open('\espaÁo_save09.py', 'wb')
                                                         break
                                                     else:
-                                                        print("Entrada inv√°lida!\n")
-            #recomendo voc√™ usar um for aqui :) - Lucas Sabiao
-            mostrar_save = ("  Nome:", personagem_jogador[0], "  Vida:", personagem_jogador[5],"  Lugar:", vari√°vel_lugar, "  Ataque:", personagem_jogador[1], "  Defesa:", personagem_jogador[2],"  Agilidade:", personagem_jogador[3])
+                                                        print("Entrada inv·lida!\n")
+                                                        time.sleep(0.5)
+            #recomendo vocÍ usar um for aqui :) - Lucas Sabiao
+            mostrar_save = ("  Nome:", personagem_jogador[0], "  Vida:", personagem_jogador[5],"  Lugar:", vari·vel_lugar, "  Ataque:", personagem_jogador[1], "  Defesa:", personagem_jogador[2],"  Agilidade:", personagem_jogador[3])
             pickle.dump(mostrar_save, arq)
-            pickle.dump(desequipado_roupa, arq)
-            pickle.dump(desequipado_capa, arq)
-            pickle.dump(desequipado_luva, arq)
-            pickle.dump(desequipado_m√£os, arq)
-            pickle.dump(desequipado_cal√ßado, arq)
-            pickle.dump(espa√ßo_vazio, arq)
-            pickle.dump(peda√ßo_pizza, arq)
-            pickle.dump(bolo_chocolate, arq)
-            pickle.dump(pijama_inicial, arq)
-            pickle.dump(uniforme_estudantil, arq)
-            pickle.dump(malha_ninja, arq)
-            pickle.dump(l√°pis_apontado, arq)
-            pickle.dump(punhal_envelhecido, arq)
-            pickle.dump(talheres_prata, arq)
-            pickle.dump(jaqueta_imita√ß√£o, arq)
-            pickle.dump(jaqueta_couro, arq)
-            pickle.dump(agasalho_l√£, arq)
-            pickle.dump(suplemento_aliment√≠cio, arq)
-            pickle.dump(lata_energ√©tico, arq)
-            pickle.dump(luva_l√£, arq)
-            pickle.dump(luva_couro, arq)
-            pickle.dump(soco_pvc, arq)
-            pickle.dump(soco_lat√£o, arq)
-            pickle.dump(luva_spikes_alu, arq)
-            pickle.dump(soco_alu, arq)
-            pickle.dump(luva_spikes_a√ßo, arq)
-            pickle.dump(soco_a√ßo, arq)
-            pickle.dump(luva_spikes_ag, arq)
-            pickle.dump(soco_ag, arq)
-            pickle.dump(luva_spikes_au, arq)
-            pickle.dump(soco_au, arq)
-            pickle.dump(luva_spikes_tit√¢nio, arq)
-            pickle.dump(soco_tit√¢nio, arq)
-            pickle.dump(anel_for√ßa1, arq)
-            pickle.dump(anel_for√ßa2, arq)
-            pickle.dump(anel_for√ßa3, arq)
-            pickle.dump(anel_resist√™ncia1, arq)
-            pickle.dump(anel_resist√™ncia2, arq)
-            pickle.dump(anel_resist√™ncia3, arq)
-            pickle.dump(anel_consist√™ncia1, arq)
-            pickle.dump(anel_consist√™ncia2, arq)
-            pickle.dump(anel_consist√™ncia3, arq)
-            pickle.dump(anel_da_imortalidade, arq)
-            pickle.dump(anel_da_divindade, arq)
-            pickle.dump(chinelo_inicial, arq)
-            pickle.dump(papetes_masculinas, arq)
-            pickle.dump(t√™nis_velho, arq)
-            pickle.dump(t√™nis_simpl√≥rio, arq)
-            pickle.dump(sapato_simpl√≥rio, arq)
-            pickle.dump(t√™nis_comum, arq)
-            pickle.dump(t√™nis_trilha, arq)
-            pickle.dump(t√™nis_caminhada, arq)
-            pickle.dump(t√™nis_corrida, arq)
-            pickle.dump(t√™nis_ZX5000, arq)
-            pickle.dump(item_adicionado, arq)
-            pickle.dump(quantidade_adicionada, arq)
             pickle.dump(equipado_roupa, arq)
             pickle.dump(equipado_capa, arq)
             pickle.dump(equipado_luva, arq)
             pickle.dump(equipado_anel, arq)
-            pickle.dump(equipado_m√£os, arq)
-            pickle.dump(equipado_cal√ßado, arq)
-            pickle.dump(vari√°vel_cen√°rio, arq)
+            pickle.dump(equipado_maos, arq)
+            pickle.dump(equipado_calcado, arq)
+            pickle.dump(vari·vel_cen·rio, arq)
             pickle.dump(objeto, arq)
-            pickle.dump(situa√ß√£o, arq)
-            pickle.dump(tempor√°rio, arq)
-            pickle.dump(vari√°vel_lugar, arq)
+            pickle.dump(situacao, arq)
+            pickle.dump(tempor·rio, arq)
+            pickle.dump(vari·vel_lugar, arq)
             pickle.dump(ponto_de_save, arq)
             pickle.dump(personagem_jogador, arq)
             pickle.dump(personagem_reserva, arq)
             pickle.dump(personagem_inimigo, arq)
-            pickle.dump(eegg, arq)
-            pickle.dump(a√ß√£o_do_personagem, arq)
-            pickle.dump(batalha_escapar, arq)
-            pickle.dump(teste_de_sorte, arq)
-            pickle.dump(calculo_do_dano, arq)
-            pickle.dump(calculo_da_fuga, arq)
-            pickle.dump(vari√°vel_para_comparar, arq)
-            pickle.dump(contador_de_batalha, arq)
-            pickle.dump(contador_de_rodadas, arq)
             pickle.dump(mala, arq)
-            pickle.dump(loja_venda, arq)
             arq.close
             print("\nPronto!\n")
             break
         else:
-            if(a√ß√£o_do_personagem == "n√£o" or a√ß√£o_do_personagem=="n" or a√ß√£o_do_personagem=="nao" or a√ß√£o_do_personagem=="no" or a√ß√£o_do_personagem=="na" or a√ß√£o_do_personagem=="n√£" or a√ß√£o_do_personagem=="ao" or a√ß√£o_do_personagem=="√£o" or a√ß√£o_do_personagem=="√±" or a√ß√£o_do_personagem=="√±√£o" or a√ß√£o_do_personagem=="√±o" or a√ß√£o_do_personagem=="√±√µ" or a√ß√£o_do_personagem=="√±√£" or a√ß√£o_do_personagem=="√±a√µ" or a√ß√£o_do_personagem=="a√µ"):
+            if(acao_do_personagem == "n„o" or acao_do_personagem=="n" or acao_do_personagem=="nao" or acao_do_personagem=="no" or acao_do_personagem=="na" or acao_do_personagem=="n„" or acao_do_personagem=="ao" or acao_do_personagem=="„o" or acao_do_personagem=="Ò" or acao_do_personagem=="Ò„o" or acao_do_personagem=="Òo" or acao_do_personagem=="Òı" or acao_do_personagem=="Ò„" or acao_do_personagem=="Òaı" or acao_do_personagem=="aı"):
                 break
             else:
-                print('ENTRADA INV√ÅLIDA! Digite "sim" ou "n√£o".\n')
+                print('ENTRADA INV¡LIDA! Digite "sim" ou "n„o".\n')
+                time.sleep(0.5)
 
 #--Sistema de batalha--#
 def batalha():
-    global desequipado_roupa,desequipado_capa,desequipado_luva,desequipado_m√£os,desequipado_cal√ßado,espa√ßo_vazio,peda√ßo_pizza,bolo_chocolate,pijama_inicial,uniforme_estudantil,malha_ninja,l√°pis_apontado,punhal_envelhecido,talheres_prata,jaqueta_imita√ß√£o,jaqueta_couro,agasalho_l√£,suplemento_aliment√≠cio,lata_energ√©tico,luva_l√£,luva_couro,soco_pvc,soco_lat√£o,luva_spikes_alu,soco_alu,luva_spikes_a√ßo,soco_a√ßo,luva_spikes_ag,soco_ag,luva_spikes_au,soco_au,luva_spikes_tit√¢nio,soco_tit√¢nio,anel_for√ßa1,anel_for√ßa2,anel_for√ßa3,anel_resist√™ncia1,anel_resist√™ncia2,anel_resist√™ncia3,anel_consist√™ncia1,anel_consist√™ncia2,anel_consist√™ncia3,anel_da_imortalidade,anel_da_divindade,chinelo_inicial,papetes_masculinas,t√™nis_velho,t√™nis_simpl√≥rio,sapato_simpl√≥rio,t√™nis_comum,t√™nis_trilha,t√™nis_caminhada,t√™nis_corrida,t√™nis_ZX5000,item_adicionado,quantidade_adicionada,equipado_roupa,equipado_capa,equipado_luva,equipado_anel,equipado_m√£os,equipado_cal√ßado,vari√°vel_cen√°rio,objeto,situa√ß√£o,tempor√°rio,vari√°vel_lugar,ponto_de_save,mostrar_save, personagem_jogador,personagem_reserva,personagem_inimigo,eegg,a√ß√£o_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,vari√°vel_para_comparar,contador_de_batalha,contador_de_rodadas,mala,loja_venda
-    input("\nBatalha!!!\n√â hora da briga!!!\n")
+    global desequipado_roupa,desequipado_capa,desequipado_luva,desequipado_maos,desequipado_calcado,espaÁo_vazio,pedaÁo_pizza,bolo_chocolate,pijama_inicial,uniforme_estudantil,malha_ninja,lapis_apontado,punhal_envelhecido,talheres_prata,jaqueta_imitacao,jaqueta_couro,agasalho_l„,suplemento_alimentÌcio,lata_energÈtico,luva_l„,luva_couro,soco_pvc,soco_lat„o,luva_spikes_alu,soco_alu,luva_spikes_aÁo,soco_aÁo,luva_spikes_ag,soco_ag,luva_spikes_au,soco_au,luva_spikes_tit‚nio,soco_tit‚nio,anel_forÁa1,anel_forÁa2,anel_forÁa3,anel_resistÍncia1,anel_resistÍncia2,anel_resistÍncia3,anel_consistÍncia1,anel_consistÍncia2,anel_consistÍncia3,anel_da_imortalidade,anel_da_divindade,chinelo_inicial,papetes_masculinas,tÍnis_velho,tÍnis_simplÛrio,sapato_simplÛrio,tÍnis_comum,tÍnis_trilha,tÍnis_caminhada,tÍnis_corrida,tÍnis_ZX5000,item_adicionado,quantidade_adicionada,equipado_roupa,equipado_capa,equipado_luva,equipado_anel,equipado_maos,equipado_calcado,vari·vel_cen·rio,objeto,situacao,tempor·rio,vari·vel_lugar,ponto_de_save,mostrar_save, personagem_jogador,personagem_reserva,personagem_inimigo,eegg,acao_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,vari·vel_para_comparar,contador_de_batalha,contador_de_rodadas,mala,loja_venda
+    print("\nBatalha!!!\n… hora da briga!!!\n")
+    time.sleep(2)
     contador_de_rodadas=1
     while(personagem_inimigo[6]>0):
         if(personagem_jogador[6]<=0):
             break
-        print("\n]]", "="*30,"[[\n", "    In√≠cio da rodada n√∫mero ", contador_de_rodadas, "\n]]", "="*30,"[[\n")
+        print("\n]]", "="*30,"[[\n", "    InÌcio da rodada n˙mero ", contador_de_rodadas, "\n]]", "="*30,"[[\n")
         if(personagem_jogador[6]==1):
             if(contador_de_rodadas==1):
-                input("\nVoc√™ entrou na batalha com apenas 1 ponto de vida!")
-                input("Seu √∫ltimo recurso √© a tens√£o!\n")            
+                print("\nVocÍ entrou na batalha com apenas 1 ponto de vida!")
+                time.sleep(0.5)
+                print("Seu ˙ltimo recurso È a tens„o!\n")
+                time.sleep(0.5)
             else:
                 if(contador_de_batalha==0):
-                    input("\nVoc√™ est√° com apenas 1 ponto de vida!")
-                    input("Seu √∫ltimo recurso √© a tens√£o!\n")            
+                    print("\nVocÍ est· com apenas 1 ponto de vida!")
+                    time.sleep(0.5)
+                    print("Seu ˙ltimo recurso È a tens„o!\n")
+                    time.sleep(0.5)
             if(contador_de_batalha>0):       
-                input("\nVoc√™ aguentou mais uma rodada com apenas 1 ponto de vida!")
-                input("Voc√™ extendeu o limite do seu f√¥lego e agora o limite dos seus pontos de vida subiu!\n")
+                print("\nVocÍ aguentou mais uma rodada com apenas 1 ponto de vida!")
+                time.sleep(0.5)
+                print("VocÍ extendeu o limite do seu fÙlego e agora o limite dos seus pontos de vida subiu!\n")
+                time.sleep(1)
                 personagem_jogador[5]=personagem_jogador[5]+((contador_de_batalha)+(random.randrange(personagem_jogador[2])))
             contador_de_batalha=contador_de_batalha+1
         else:
             if(personagem_jogador[6]<=personagem_jogador[5]*0.05):
                 teste_de_sorte=random.randrange(150)
                 if(teste_de_sorte<=10+personagem_jogador[4]):
-                    input("\nVoc√™ est√° dando o seu melhor para aguentar, isso est√° melhorando o seu f√¥lego!")
-                    input("O limite dos seus pontos de vida aumentou!\n")
+                    print("\nVocÍ est· dando o seu melhor para aguentar, isso est· melhorando o seu fÙlego!")
+                    time.sleep(0.5)
+                    print("O limite dos seus pontos de vida aumentou!\n")
+                    time.sleep(1)
                     personagem_jogador[5]=personagem_jogador[5]+(random.randrange(personagem_jogador[2])+1)
         print("\n#", "-"*30,"#\n", "\n\n", personagem_jogador[0], ":\n                    ",personagem_jogador[6], "\n                     de", personagem_jogador[5], " Pontos de Vida\n\n", personagem_inimigo[0], ":\n                    ", personagem_inimigo[6], "\n                     de", personagem_inimigo[5], " Pontos de vida\n")
-        print("\n#", "-"*30,"#\nO que voc√™ far√° agora, ", personagem_jogador[0], "?\nAtacar, defender ou fugir?")
-        a√ß√£o_do_personagem = input("-")
-        a√ß√£o_do_personagem = a√ß√£o_do_personagem.lower()
+        time.sleep(0.1)
+        print("\n#", "-"*30,"#\nO que vocÍ far· agora, ", personagem_jogador[0], "?\nAtacar, defender ou fugir?")
+        time.sleep(0.15)
+        acao_do_personagem = input("-")
+        acao_do_personagem = acao_do_personagem.lower()
         while True:
-            if(a√ß√£o_do_personagem != "atacar" and a√ß√£o_do_personagem != "defender" and a√ß√£o_do_personagem != "fugir" and a√ß√£o_do_personagem!="f" and a√ß√£o_do_personagem!="fugri" and a√ß√£o_do_personagem!="fguir" and a√ß√£o_do_personagem!="fugeir" and a√ß√£o_do_personagem!="furig" and a√ß√£o_do_personagem!="fuer" and a√ß√£o_do_personagem!="ffugri" and a√ß√£o_do_personagem!="gfuir" and a√ß√£o_do_personagem!="fiur" and a√ß√£o_do_personagem!="fugi" and a√ß√£o_do_personagem!="fugr" and a√ß√£o_do_personagem!="fug" and a√ß√£o_do_personagem!="fgir" and a√ß√£o_do_personagem!="fir" and a√ß√£o_do_personagem!="fgr" and a√ß√£o_do_personagem!="ugir" and a√ß√£o_do_personagem!="gir" and a√ß√£o_do_personagem!="figr" and a√ß√£o_do_personagem!="fu" and a√ß√£o_do_personagem != "d" and a√ß√£o_do_personagem != "defende" and a√ß√£o_do_personagem != "defern" and a√ß√£o_do_personagem != "defenrede" and a√ß√£o_do_personagem != "ddefender" and a√ß√£o_do_personagem != "defenrd" and a√ß√£o_do_personagem != "deffender" and a√ß√£o_do_personagem != "defendder" and a√ß√£o_do_personagem != "ddeffender" and a√ß√£o_do_personagem != "defnder" and a√ß√£o_do_personagem != "defndr" and a√ß√£o_do_personagem != "dfnder" and a√ß√£o_do_personagem != "dfendr" and a√ß√£o_do_personagem != "defnde" and a√ß√£o_do_personagem != "defnd" and a√ß√£o_do_personagem != "dfede" and a√ß√£o_do_personagem != "def" and a√ß√£o_do_personagem!="a" and a√ß√£o_do_personagem!="at" and a√ß√£o_do_personagem!="ata" and a√ß√£o_do_personagem!="atac" and a√ß√£o_do_personagem!="ataca" and a√ß√£o_do_personagem!="atcar" and a√ß√£o_do_personagem!="tacar" and a√ß√£o_do_personagem!="aacar" and a√ß√£o_do_personagem!="ataar" and a√ß√£o_do_personagem!="atacr" and a√ß√£o_do_personagem!="acar" and a√ß√£o_do_personagem!="aaar" and a√ß√£o_do_personagem!="aacr" and a√ß√£o_do_personagem!="aaca" and a√ß√£o_do_personagem!="atar" and a√ß√£o_do_personagem!="atcr" and a√ß√£o_do_personagem!="atca" and a√ß√£o_do_personagem!="ata" and a√ß√£o_do_personagem!="ataa" and a√ß√£o_do_personagem!="atara" and a√ß√£o_do_personagem!="stssr" and a√ß√£o_do_personagem!="atavar" and a√ß√£o_do_personagem!="atahvea" and a√ß√£o_do_personagem!="atrex" and a√ß√£o_do_personagem!="atasfa" and a√ß√£o_do_personagem!="atacart" and a√ß√£o_do_personagem!="taacar" and a√ß√£o_do_personagem!="tacaar" and a√ß√£o_do_personagem!="tacara" and a√ß√£o_do_personagem!="aactar" and a√ß√£o_do_personagem!="aacatr" and a√ß√£o_do_personagem!="aacart" and a√ß√£o_do_personagem!="aatcar" and a√ß√£o_do_personagem!="cataar" and a√ß√£o_do_personagem!="taaacar" and a√ß√£o_do_personagem!="catar" and a√ß√£o_do_personagem!="rataca" and a√ß√£o_do_personagem!="atraca" and a√ß√£o_do_personagem!="atracar"):
-                print("\nComando inv√°lido! Voc√™ s√≥ pode atacar, defender ou fugir!\n")
-                a√ß√£o_do_personagem = input("-")
-                a√ß√£o_do_personagem = a√ß√£o_do_personagem.lower()
+            if(acao_do_personagem != "atacar" and acao_do_personagem != "defender" and acao_do_personagem != "fugir" and acao_do_personagem!="f" and acao_do_personagem!="fugri" and acao_do_personagem!="fguir" and acao_do_personagem!="fugeir" and acao_do_personagem!="furig" and acao_do_personagem!="fuer" and acao_do_personagem!="ffugri" and acao_do_personagem!="gfuir" and acao_do_personagem!="fiur" and acao_do_personagem!="fugi" and acao_do_personagem!="fugr" and acao_do_personagem!="fug" and acao_do_personagem!="fgir" and acao_do_personagem!="fir" and acao_do_personagem!="fgr" and acao_do_personagem!="ugir" and acao_do_personagem!="gir" and acao_do_personagem!="figr" and acao_do_personagem!="fu" and acao_do_personagem != "d" and acao_do_personagem != "defende" and acao_do_personagem != "defern" and acao_do_personagem != "defenrede" and acao_do_personagem != "ddefender" and acao_do_personagem != "defenrd" and acao_do_personagem != "deffender" and acao_do_personagem != "defendder" and acao_do_personagem != "ddeffender" and acao_do_personagem != "defnder" and acao_do_personagem != "defndr" and acao_do_personagem != "dfnder" and acao_do_personagem != "dfendr" and acao_do_personagem != "defnde" and acao_do_personagem != "defnd" and acao_do_personagem != "dfede" and acao_do_personagem != "def" and acao_do_personagem!="a" and acao_do_personagem!="at" and acao_do_personagem!="ata" and acao_do_personagem!="atac" and acao_do_personagem!="ataca" and acao_do_personagem!="atcar" and acao_do_personagem!="tacar" and acao_do_personagem!="aacar" and acao_do_personagem!="ataar" and acao_do_personagem!="atacr" and acao_do_personagem!="acar" and acao_do_personagem!="aaar" and acao_do_personagem!="aacr" and acao_do_personagem!="aaca" and acao_do_personagem!="atar" and acao_do_personagem!="atcr" and acao_do_personagem!="atca" and acao_do_personagem!="ata" and acao_do_personagem!="ataa" and acao_do_personagem!="atara" and acao_do_personagem!="stssr" and acao_do_personagem!="atavar" and acao_do_personagem!="atahvea" and acao_do_personagem!="atrex" and acao_do_personagem!="atasfa" and acao_do_personagem!="atacart" and acao_do_personagem!="taacar" and acao_do_personagem!="tacaar" and acao_do_personagem!="tacara" and acao_do_personagem!="aactar" and acao_do_personagem!="aacatr" and acao_do_personagem!="aacart" and acao_do_personagem!="aatcar" and acao_do_personagem!="cataar" and acao_do_personagem!="taaacar" and acao_do_personagem!="catar" and acao_do_personagem!="rataca" and acao_do_personagem!="atraca" and acao_do_personagem!="atracar"):
+                print("\nComando inv·lido! VocÍ sÛ pode atacar, defender ou fugir!\n")
+                time.sleep(0.5)
+                acao_do_personagem = input("-")
+                acao_do_personagem = acao_do_personagem.lower()
             else: break
         contador_de_rodadas=contador_de_rodadas+1
-        if(a√ß√£o_do_personagem == "defender" or a√ß√£o_do_personagem == "d" or a√ß√£o_do_personagem == "defende" or a√ß√£o_do_personagem == "defern" or a√ß√£o_do_personagem == "defenrede" or a√ß√£o_do_personagem == "ddefender" or a√ß√£o_do_personagem == "defenrd" or a√ß√£o_do_personagem == "deffender" or a√ß√£o_do_personagem == "defendder" or a√ß√£o_do_personagem == "ddeffender" or a√ß√£o_do_personagem == "defnder" or a√ß√£o_do_personagem == "defndr" or a√ß√£o_do_personagem == "dfnder" or a√ß√£o_do_personagem == "dfendr" or a√ß√£o_do_personagem == "defnde" or a√ß√£o_do_personagem == "defnd" or a√ß√£o_do_personagem == "dfede" or a√ß√£o_do_personagem == "def"): #defesa(2personagem_jogador[2]) vs ataque(personagem_inimigo[1])
+        if(acao_do_personagem == "defender" or acao_do_personagem == "d" or acao_do_personagem == "defende" or acao_do_personagem == "defern" or acao_do_personagem == "defenrede" or acao_do_personagem == "ddefender" or acao_do_personagem == "defenrd" or acao_do_personagem == "deffender" or acao_do_personagem == "defendder" or acao_do_personagem == "ddeffender" or acao_do_personagem == "defnder" or acao_do_personagem == "defndr" or acao_do_personagem == "dfnder" or acao_do_personagem == "dfendr" or acao_do_personagem == "defnde" or acao_do_personagem == "defnd" or acao_do_personagem == "dfede" or acao_do_personagem == "def"): #defesa(2personagem_jogador[2]) vs ataque(personagem_inimigo[1])
             print("\nPostura de Batalha:\n", personagem_jogador[0], "-> defensiva\n", personagem_inimigo[0], "-> ofensiva\n")
-            input("...")
+            time.sleep(1)
             teste_de_sorte = random.randrange(50)
             if (teste_de_sorte<=10+personagem_jogador[4]-personagem_inimigo[4]):#S_defesa(3personagem_jogador[2]) vs ataque(personagem_inimigo[1])
-                input("\nSua postura de defesa te favoreceu!\n")
+                print("\nSua postura de defesa te favoreceu!\n")
+                time.sleep(1)
                 teste_de_sorte = random.randrange(40)
                 if (teste_de_sorte<=10+personagem_inimigo[4]-personagem_jogador[4]):#S_defesa(3personagem_jogador[2]) vs S_ataque(2personagem_inimigo[1])
-                    input("\n... Mas o ataque do inimigo foi cr√≠tico!\n")
+                    print("\n... Mas o ataque do inimigo foi crÌtico!\n")
+                    time.sleep(1)
                     teste_de_sorte = random.randrange(300)
                     if(teste_de_sorte<=30+personagem_jogador[3]+personagem_jogador[4]-personagem_inimigo[3]-personagem_inimigo[4]):
-                        input("\nVoc√™ conseguiu esquivar de todos os ataques, o inimigo nem pode tocar em voc√™!")
+                        print("\nVocÍ conseguiu esquivar de todos os ataques, o inimigo nem pode tocar em vocÍ!")
+                        time.sleep(1)
                     else:
                         calculo_do_dano = (2*personagem_inimigo[1])+(random.randrange(personagem_inimigo[1]))*(0.2)-(3*personagem_jogador[2])-(random.randrange(personagem_jogador[2]))*(0.2)
                         if (calculo_do_dano < 0):#S_defesa(3personagem_jogador[2]) CONTRA-ATACA S_ataque(2personagem_inimigo[1])
                             calculo_do_dano = (calculo_do_dano/2)*(-1)+((random.randrange(personagem_jogador[1]))/2)*(0.2)
-                            input("\nN√£o importa, sua defesa √© incr√≠vel!")
-                            print("Al√©m de defender voc√™ conseguiu contra-atacar, causando ", calculo_do_dano," pontos de dano ao inimigo!\n")
-                            input("")
+                            print("\nN„o importa, sua defesa È incrÌvel!")
+                            time.sleep(1)
+                            print("AlÈm de defender vocÍ conseguiu contra-atacar, causando ", calculo_do_dano," pontos de dano ao inimigo!\n")
+                            time.sleep(1.5)
                             teste_de_sorte = random.randrange(5)#aumento de defesa
                             if(teste_de_sorte<=1):
                                 teste_de_sorte = random.randrange(100)
                                 if (teste_de_sorte<=30+personagem_jogador[4]):
-                                    vari√°vel_para_comparar=personagem_jogador[2]
+                                    vari·vel_para_comparar=personagem_jogador[2]
                                     personagem_jogador[2]=personagem_jogador[2]+(random.randrange(personagem_jogador[2]))
-                                    if (vari√°vel_para_comparar < personagem_jogador[2]):
-                                        input("\nVoc√™ testou o seu limite e agora est√° mais forte!")
-                                        input("Seus pontos de defesa subiram!\n")
-                                    if (vari√°vel_para_comparar > personagem_jogador[2]):
-                                        personagem_jogador[2]=vari√°vel_para_comparar
+                                    if (vari·vel_para_comparar < personagem_jogador[2]):
+                                        print("\nVocÍ testou o seu limite e agora est· mais forte!")
+                                        time.sleep(1)
+                                        print("Seus pontos de defesa subiram!\n")
+                                        time.sleep(1)
+                                    if (vari·vel_para_comparar > personagem_jogador[2]):
+                                        personagem_jogador[2]=vari·vel_para_comparar
                             if(teste_de_sorte>=4):
                                 teste_de_sorte = random.randrange(100)
                                 if (teste_de_sorte<=20+personagem_jogador[4]):
-                                    input("\nVoc√™ testou o seu limite e agora est√° mais forte!")
-                                    input("Seus pontos de defesa subiram!\n")
+                                    print("\nVocÍ testou o seu limite e agora est· mais forte!")
+                                    time.sleep(1)
+                                    print("Seus pontos de defesa subiram!\n")
+                                    time.sleep(1)
                                     personagem_jogador[2]=personagem_jogador[2]+(random.randrange(personagem_jogador[2]))+1
                             if(teste_de_sorte==3):
                                 teste_de_sorte = random.randrange(100)
                                 if (teste_de_sorte<=10+personagem_jogador[4]):
-                                    input("\nVoc√™ testou o seu limite e agora est√° mais forte!")
-                                    input("Seus pontos de defesa subiram!\n")
+                                    print("\nVocÍ testou o seu limite e agora est· mais forte!")
+                                    time.sleep(1)
+                                    print("Seus pontos de defesa subiram!\n")
+                                    time.sleep(1)
                                     personagem_jogador[2]=personagem_jogador[2]+(random.randrange(personagem_jogador[2]))+2
                             if(teste_de_sorte==2):
                                 teste_de_sorte = random.randrange(100)
                                 if (teste_de_sorte==10+personagem_jogador[4]):
-                                    input("\nVoc√™ testou o seu limite e agora est√° mais forte!")
-                                    input("Seus pontos de defesa subiram!\n")
+                                    print("\nVocÍ testou o seu limite e agora est· mais forte!")
+                                    time.sleep(1)
+                                    print("Seus pontos de defesa subiram!\n")
+                                    time.sleep(1)
                                     personagem_jogador[2]=personagem_jogador[2]+(random.randrange(personagem_jogador[2]))+3
                             personagem_inimigo[6] = personagem_inimigo[6]-calculo_do_dano
                         else:
                             if (calculo_do_dano == 0):#S_defesa(3personagem_jogador[2]) ANULA S_ataque(2personagem_inimigo[1])
-                                input("\nDefesa e ataque se anulam! A tens√£o aumenta!\n")
+                                print("\nDefesa e ataque se anulam! A tens„o aumenta!\n")
+                                time.sleep(1)
                             else:#S_defesa(3personagem_jogador[2]) APANHA DO S_ataque(2personagem_inimigo[1])
-                                print("\nVoc√™ sofreu ", calculo_do_dano, " pontos de dano...\n")
-                                input("")
+                                print("\nVocÍ sofreu ", calculo_do_dano, " pontos de dano...\n")
+                                time.sleep(1)
                                 personagem_jogador[6] = personagem_jogador[6] - calculo_do_dano
                 else:#S_defesa(3personagem_jogador[2]) vs ataque(personagem_inimigo[1])
                     teste_de_sorte = random.randrange(300)
                     if(teste_de_sorte<=30+personagem_jogador[3]+personagem_jogador[4]-personagem_inimigo[3]-personagem_inimigo[4]):
-                        input("\nVoc√™ conseguiu esquivar de todos os ataques, o inimigo nem pode tocar em voc√™!")
+                        print("\nVocÍ conseguiu esquivar de todos os ataques, o inimigo nem pode tocar em vocÍ!")
+                        time.sleep(1)
                     else:
                         calculo_do_dano = (personagem_inimigo[1])+(random.randrange(personagem_inimigo[1]))*(0.2)-(3*personagem_jogador[2])-(random.randrange(personagem_jogador[2]))*(0.2)
                         if (calculo_do_dano<0):#S_defesa(3personagem_jogador[2]) CONTRA-ATACA ataque(personagem_inimigo[1])
                             calculo_do_dano = (calculo_do_dano/2)*(-1)+((random.randrange(personagem_jogador[1]))/2)*(0.2)
-                            print("\nSua defesa foi t√£o grande que, al√©m de bloquear o ataque, voc√™ conseguiu contra-atacar, causando ", calculo_do_dano," pontos de dano ao inimigo!\n")
-                            input("")
+                            print("\nSua defesa foi t„o grande que, alÈm de bloquear o ataque, vocÍ conseguiu contra-atacar, causando ", calculo_do_dano," pontos de dano ao inimigo!\n")
+                            time.sleep(1)
                             personagem_inimigo[6] = personagem_inimigo[6]-calculo_do_dano
                         else:
                             if (calculo_do_dano ==0):#S_defesa(3personagem_jogador[2]) ANULA ataque(personagem_inimigo[1])
-                                input("\nSua defesa foi completa!\n")
+                                print("\nSua defesa foi completa!\n")
+                                time.sleep(1)
                             else:#S_defesa(3personagem_jogador[2]) APANHA DO ataque(personagem_inimigo[1])
-                                print("\nVoc√™ sofreu m√≠seros ", calculo_do_dano, " pontos de dano.\n")
-                                input("")
+                                print("\nVocÍ sofreu mÌseros ", calculo_do_dano, " pontos de dano.\n")
+                                time.sleep(1)
                                 personagem_jogador[6] = personagem_jogador[6]-calculo_do_dano
             else:
                 teste_de_sorte = random.randrange(40)
                 if(teste_de_sorte<=10-personagem_jogador[4]+personagem_inimigo[4]):#defesa(2personagem_jogador[2]) vs S_ataque(2personagem_inimigo[1])
                     teste_de_sorte = random.randrange(300)
                     if(teste_de_sorte<=30+personagem_jogador[3]+personagem_jogador[4]-personagem_inimigo[3]-personagem_inimigo[4]):
-                        input("\nVoc√™ conseguiu esquivar de todos os ataques, o inimigo nem pode tocar em voc√™!")
+                        print("\nVocÍ conseguiu esquivar de todos os ataques, o inimigo nem pode tocar em vocÍ!")
+                        time.sleep(1)
                     else:
                         calculo_do_dano = 2*personagem_inimigo[1]+(random.randrange(personagem_inimigo[1]))*(0.2)-(1.5)*personagem_jogador[2]-(random.randrange(personagem_jogador[2]))*(0.2)
                         if (calculo_do_dano<0):
                             calculo_do_dano = (calculo_do_dano/2)*(-1)+((random.randrange(personagem_jogador[1]))/2)*(0.2)
-                                                
-                            input("\nSua defesa √© simplesmente  I M E N S A !")
-                            print("O inimigo avan√ßou furiosamente mas voc√™ o lan√ßou para tr√°s e contra-atacou causando ", calculo_do_dano, " pontos de dano ao inimigo!\n")
-                            input("")
+                            print("\nSua defesa È simplesmente  I M E N S A !")
+                            time.sleep(1)
+                            print("O inimigo avanÁou furiosamente mas vocÍ o lanÁou para tr·s e contra-atacou causando ", calculo_do_dano, " pontos de dano ao inimigo!\n")
+                            time.sleep(1.5)
                             teste_de_sorte = random.randrange(6)#aumento de defesa
                             if(teste_de_sorte<=1):
                                 teste_de_sorte = random.randrange(100)
                                 if (teste_de_sorte<=30+personagem_jogador[4]):
-                                    vari√°vel_para_comparar=personagem_jogador[2]
+                                    vari·vel_para_comparar=personagem_jogador[2]
                                     personagem_jogador[2]=personagem_jogador[2]+(random.randrange(personagem_jogador[2]))
-                                    if (vari√°vel_para_comparar < personagem_jogador[2]):
-                                        input("\nVoc√™ testou o seu limite e agora est√° mais forte!")
-                                        input("Seus pontos de defesa subiram!\n")
-                                    if (vari√°vel_para_comparar > personagem_jogador[2]):
-                                        personagem_jogador[2]=vari√°vel_para_comparar
+                                    if (vari·vel_para_comparar < personagem_jogador[2]):
+                                        print("\nVocÍ testou o seu limite e agora est· mais forte!")
+                                        time.sleep(1)
+                                        print("Seus pontos de defesa subiram!\n")
+                                        time.sleep(1)
+                                    if (vari·vel_para_comparar > personagem_jogador[2]):
+                                        personagem_jogador[2]=vari·vel_para_comparar
                             if(teste_de_sorte==2):
                                 teste_de_sorte = random.randrange(200)
                                 if (teste_de_sorte<=40+personagem_jogador[4]):
-                                    input("\nVoc√™ testou o seu limite e agora est√° mais forte!")
-                                    input("Seus pontos de defesa subiram!\n")
+                                    print("\nVocÍ testou o seu limite e agora est· mais forte!")
+                                    time.sleep(1)
+                                    print("Seus pontos de defesa subiram!\n")
+                                    time.sleep(1)
                                     personagem_jogador[2]=personagem_jogador[2]+(random.randrange(personagem_jogador[2]))+1
                             if(teste_de_sorte==3):
                                 teste_de_sorte = random.randrange(200)
                                 if (teste_de_sorte<=20+personagem_jogador[4]):
-                                    input("\nVoc√™ testou o seu limite e agora est√° mais forte!")
-                                    input("Seus pontos de defesa subiram!\n")
+                                    print("\nVocÍ testou o seu limite e agora est· mais forte!")
+                                    time.sleep(1)
+                                    print("Seus pontos de defesa subiram!\n")
+                                    time.sleep(1)
                                     personagem_jogador[2]=personagem_jogador[2]+(random.randrange(personagem_jogador[2]))+2
                             if(teste_de_sorte==4):
                                 teste_de_sorte = random.randrange(300)
                                 if (teste_de_sorte<=30+personagem_jogador[4]):
-                                    input("\nVoc√™ testou o seu limite e agora est√° mais forte!")
-                                    input("Seus pontos de defesa subiram!\n")
+                                    print("\nVocÍ testou o seu limite e agora est· mais forte!")
+                                    time.sleep(1)
+                                    print("Seus pontos de defesa subiram!\n")
+                                    time.sleep(1)
                                     personagem_jogador[2]=personagem_jogador[2]+(random.randrange(personagem_jogador[2]))+3
                             if(teste_de_sorte>=5):
                                 teste_de_sorte = random.randrange(100)
                                 if (teste_de_sorte<=10+personagem_jogador[4]):
-                                    vari√°vel_para_comparar=personagem_jogador[2]
+                                    vari·vel_para_comparar=personagem_jogador[2]
                                     personagem_jogador[2]=personagem_jogador[2]+(random.randrange(personagem_jogador[2]))+(random.randrange(personagem_jogador[1]))
-                                    if (vari√°vel_para_comparar < personagem_jogador[2]):
-                                        input("\nVoc√™ testou o seu limite e agora est√° mais forte!")
-                                        input("Seus pontos de defesa subiram!\n")
-                                    if (vari√°vel_para_comparar > personagem_jogador[2]):
-                                        personagem_jogador[2]=vari√°vel_para_comparar
+                                    if (vari·vel_para_comparar < personagem_jogador[2]):
+                                        print("\nVocÍ testou o seu limite e agora est· mais forte!")
+                                        time.sleep(1)
+                                        print("Seus pontos de defesa subiram!\n")
+                                        time.sleep(1)
+                                    if (vari·vel_para_comparar > personagem_jogador[2]):
+                                        personagem_jogador[2]=vari·vel_para_comparar
                             personagem_inimigo[6] = personagem_inimigo[6]-calculo_do_dano
                         else:
                             if(calculo_do_dano==0):
-                                input("\nVoc√™ surpreendeu o inimigo que estava confiante,")
-                                input("suas for√ßas se anularam numa estrondosa colis√£o!\n")
+                                print("\nVocÍ surpreendeu o inimigo que estava confiante,")
+                                time.sleep(1)
+                                print("suas forÁas se anularam numa estrondosa colis„o!\n")
+                                time.sleep(1)
                                 teste_de_sorte=random.randrange(300)
                                 if(teste_de_sorte<=10+personagem_jogador[4]):
-                                    input("\nA libera√ß√£o de energia durante a colis√£o despertou novos limites para sua for√ßa e agora est√° mais forte!")
-                                    input("TODOS os seus pontos subiram!\n")
+                                    print("\nA liberacao de energia durante a colis„o despertou novos limites para sua forÁa e agora est· mais forte!")
+                                    time.sleep(1.5)
+                                    print("TODOS os seus pontos subiram!\n")
+                                    time.sleep(1.5)
                                     personagem_jogador[5]=personagem_jogador[5]+(random.randrange(personagem_jogador[5]))+3
                                     personagem_jogador[1]=personagem_jogador[1]+(random.randrange(personagem_jogador[1]))+2
                                     personagem_jogador[2]=personagem_jogador[2]+(random.randrange(personagem_jogador[2]))+1
                             else:
                                 print("\nMesmo se defendendo, o impacto do ataque inimigo te causou ", calculo_do_dano, " pontos de dano!\n")
-                                input("")
+                                time.sleep(1)
                                 personagem_jogador[6] = personagem_jogador[6]-calculo_do_dano
                 else:#defesa(2personagem_jogador[2]) vs ataque(personagem_inimigo[1])
                     teste_de_sorte = random.randrange(300)
                     if(teste_de_sorte<=30+personagem_jogador[3]+personagem_jogador[4]-personagem_inimigo[3]-personagem_inimigo[4]):
-                        input("\nVoc√™ conseguiu esquivar de todos os ataques, o inimigo nem pode tocar em voc√™!")
+                        print("\nVocÍ conseguiu esquivar de todos os ataques, o inimigo nem pode tocar em vocÍ!")
+                        time.sleep(1)
                     else:
                         calculo_do_dano = personagem_inimigo[1]+(random.randrange(personagem_inimigo[1]))-2*personagem_jogador[2]-(random.randrange(personagem_jogador[2]))
                         if (calculo_do_dano<0):
                             calculo_do_dano = calculo_do_dano*(-1)+((random.randrange(personagem_jogador[1]))/2)
-                            input("\nSua defesa √â ENORME!")
-                            print("Voc√™ barrou o ataque naturalmente e contra-atacou, causando ", calculo_do_dano, " pontos de dano ao inimigo!\n")
-                            input("")
+                            print("\nSua defesa … ENORME!")
+                            time.sleep(1)
+                            print("VocÍ barrou o ataque naturalmente e contra-atacou, causando ", calculo_do_dano, " pontos de dano ao inimigo!\n")
+                            time.sleep(1.5)
                             teste_de_sorte = random.randrange(5)#aumento de defesa
                             if(teste_de_sorte<=1):
                                 teste_de_sorte = random.randrange(100)
                                 if (teste_de_sorte<=30+personagem_jogador[4]):
-                                    vari√°vel_para_comparar=personagem_jogador[2]
+                                    vari·vel_para_comparar=personagem_jogador[2]
                                     personagem_jogador[2]=personagem_jogador[2]+(random.randrange(personagem_jogador[2]))
-                                    if (vari√°vel_para_comparar < personagem_jogador[2]):
-                                        input("\nVoc√™ testou o seu limite e agora est√° mais forte!")
-                                        input("Seus pontos de defesa subiram!\n")
-                                    if (vari√°vel_para_comparar > personagem_jogador[2]):
-                                        personagem_jogador[2]=vari√°vel_para_comparar
+                                    if (vari·vel_para_comparar < personagem_jogador[2]):
+                                        print("\nVocÍ testou o seu limite e agora est· mais forte!")
+                                        time.sleep(1)
+                                        print("Seus pontos de defesa subiram!\n")
+                                        time.sleep(1)
+                                    if (vari·vel_para_comparar > personagem_jogador[2]):
+                                        personagem_jogador[2]=vari·vel_para_comparar
                             if(teste_de_sorte>=4):
                                 teste_de_sorte = random.randrange(200)
                                 if (teste_de_sorte<=40+personagem_jogador[4]):
-                                    input("\nVoc√™ testou o seu limite e agora est√° mais forte!")
-                                    input("Seus pontos de defesa subiram!\n")
+                                    print("\nVocÍ testou o seu limite e agora est· mais forte!")
+                                    time.sleep(1)
+                                    print("Seus pontos de defesa subiram!\n")
+                                    time.sleep(1)
                                     personagem_jogador[2]=personagem_jogador[2]+(random.randrange(personagem_jogador[2]))+1
                             if(teste_de_sorte==3):
                                 teste_de_sorte = random.randrange(200)
                                 if (teste_de_sorte<=20+personagem_jogador[4]):
-                                    input("\nVoc√™ testou o seu limite e agora est√° mais forte!")
-                                    input("Seus pontos de defesa subiram!\n")
+                                    print("\nVocÍ testou o seu limite e agora est· mais forte!")
+                                    time.sleep(1)
+                                    print("Seus pontos de defesa subiram!\n")
+                                    time.sleep(1)
                                     personagem_jogador[2]=personagem_jogador[2]+(random.randrange(personagem_jogador[2]))+2
                             if(teste_de_sorte==2):
                                 teste_de_sorte = random.randrange(300)
                                 if (teste_de_sorte<=30+personagem_jogador[4]):
-                                    input("\nVoc√™ testou o seu limite e agora est√° mais forte!")
-                                    input("Seus pontos de defesa subiram!\n")
+                                    print("\nVocÍ testou o seu limite e agora est· mais forte!")
+                                    time.sleep(1)
+                                    print("Seus pontos de defesa subiram!\n")
+                                    time.sleep(1)
                                     personagem_jogador[2]=personagem_jogador[2]+(random.randrange(personagem_jogador[2]))+3
                             personagem_inimigo[6] = personagem_inimigo[6]-calculo_do_dano
                         else:
                             if(calculo_do_dano==0):
-                                input("\nVoc√™ barrou o ataque do inimigo!\n")
+                                print("\nVocÍ barrou o ataque do inimigo!\n")
+                                time.sleep(1)
                             else:
                                 print("\nMesmo se defendendo, o impacto do ataque inimigo te causou ", calculo_do_dano, " pontos de dano!\n")
-                                input("")
+                                time.sleep(1.5)
                                 personagem_jogador[6] = personagem_jogador[6]-calculo_do_dano
         else:
-            if (a√ß√£o_do_personagem=="atacar" or a√ß√£o_do_personagem=="a" or a√ß√£o_do_personagem=="at" or a√ß√£o_do_personagem=="ata" or a√ß√£o_do_personagem=="atac" or a√ß√£o_do_personagem=="ataca" or a√ß√£o_do_personagem=="atcar" or a√ß√£o_do_personagem=="tacar" or a√ß√£o_do_personagem=="aacar" or a√ß√£o_do_personagem=="ataar" or a√ß√£o_do_personagem=="atacr" or a√ß√£o_do_personagem=="acar" or a√ß√£o_do_personagem=="aaar" or a√ß√£o_do_personagem=="aacr" or a√ß√£o_do_personagem=="aaca" or a√ß√£o_do_personagem=="atar" or a√ß√£o_do_personagem=="atcr" or a√ß√£o_do_personagem=="atca" or a√ß√£o_do_personagem=="ata" or a√ß√£o_do_personagem=="ataa" or a√ß√£o_do_personagem=="atara" or a√ß√£o_do_personagem=="stssr" or a√ß√£o_do_personagem=="atavar" or a√ß√£o_do_personagem=="atahvea" or a√ß√£o_do_personagem=="atrex" or a√ß√£o_do_personagem=="atasfa" or a√ß√£o_do_personagem=="atacart" or a√ß√£o_do_personagem=="taacar" or a√ß√£o_do_personagem=="tacaar" or a√ß√£o_do_personagem=="tacara" or a√ß√£o_do_personagem=="aactar" or a√ß√£o_do_personagem=="aacatr" or a√ß√£o_do_personagem=="aacart" or a√ß√£o_do_personagem=="aatcar" or a√ß√£o_do_personagem=="cataar" or a√ß√£o_do_personagem=="taaacar" or a√ß√£o_do_personagem=="catar" or a√ß√£o_do_personagem=="rataca" or a√ß√£o_do_personagem=="atraca" or a√ß√£o_do_personagem=="atracar"):
+            if (acao_do_personagem=="atacar" or acao_do_personagem=="a" or acao_do_personagem=="at" or acao_do_personagem=="ata" or acao_do_personagem=="atac" or acao_do_personagem=="ataca" or acao_do_personagem=="atcar" or acao_do_personagem=="tacar" or acao_do_personagem=="aacar" or acao_do_personagem=="ataar" or acao_do_personagem=="atacr" or acao_do_personagem=="acar" or acao_do_personagem=="aaar" or acao_do_personagem=="aacr" or acao_do_personagem=="aaca" or acao_do_personagem=="atar" or acao_do_personagem=="atcr" or acao_do_personagem=="atca" or acao_do_personagem=="ata" or acao_do_personagem=="ataa" or acao_do_personagem=="atara" or acao_do_personagem=="stssr" or acao_do_personagem=="atavar" or acao_do_personagem=="atahvea" or acao_do_personagem=="atrex" or acao_do_personagem=="atasfa" or acao_do_personagem=="atacart" or acao_do_personagem=="taacar" or acao_do_personagem=="tacaar" or acao_do_personagem=="tacara" or acao_do_personagem=="aactar" or acao_do_personagem=="aacatr" or acao_do_personagem=="aacart" or acao_do_personagem=="aatcar" or acao_do_personagem=="cataar" or acao_do_personagem=="taaacar" or acao_do_personagem=="catar" or acao_do_personagem=="rataca" or acao_do_personagem=="atraca" or acao_do_personagem=="atracar"):
                 teste_de_sorte=random.randrange(2)
                 if (teste_de_sorte==1):#ataque(personagem_jogador[1]) vs defesa(2personagem_inimigo[2])
                     print("\nPostura de Batalha:\n", personagem_jogador[0], "-> ofensiva\n", personagem_inimigo[0], "-> defensiva\n")
-                    input("...")
+                    time.sleep(1)
                     teste_de_sorte=random.randrange(40)
                     if (teste_de_sorte<=10+personagem_jogador[4]-personagem_inimigo[4]):#S_ataque(2personagem_jogador[1]) vs defesa(2personagem_inimigo[2])
-                        input("\nSeu ataque foi cr√≠tico!!!\n")
+                        print("\nSeu ataque foi crÌtico!!!\n")
+                        time.sleep(1)
                         teste_de_sorte=random.randrange(50)
                         if (teste_de_sorte<=10+personagem_inimigo[4]-personagem_jogador[4]):#S_ataque(2personagem_jogador[1]) vs S_defesa(3personagem_inimigo[2])
-                            input("\nApesar do seu cr√≠tico, voc√™ √© pressionado pela postura de defesa do seu inimigo!\n")
+                            print("\nApesar do seu crÌtico, vocÍ È pressionado pela postura de defesa do seu inimigo!\n")
+                            time.sleep(1.5)
                             teste_de_sorte = random.randrange(300)
                             if(teste_de_sorte<=30-personagem_jogador[3]-personagem_jogador[4]+personagem_inimigo[3]+personagem_inimigo[4]):
-                                input("\nSeu oponente conseguiu esquivar de todos os seus ataques, voc√™ nem p√¥de tocar no inimigo!")
+                                print("\nSeu oponente conseguiu esquivar de todos os seus ataques, vocÍ nem pÙde tocar no inimigo!")
+                                time.sleep(1)
                             else:
                                 calculo_do_dano=2*personagem_jogador[1]+(random.randrange(personagem_jogador[1]))-3*personagem_inimigo[2]-(random.randrange(personagem_inimigo[2]))
                                 if (calculo_do_dano<0):#S_ataque(2personagem_jogador[1]) APANHA DE S_defesa(3personagem_inimigo[2])
                                     calculo_do_dano = calculo_do_dano*(-1)+((random.randrange(personagem_inimigo[1]))/2)
-                                    input("\nPor mais que tente, voc√™ n√£o consegue atravessar a defesa do seu inimigo!")
-                                    print("Al√©m de te bloquear, ele te contra-atacou, causando ", calculo_do_dano, " pontos de dano!\n")
-                                    input("")
+                                    print("\nPor mais que tente, vocÍ n„o consegue atravessar a defesa do seu inimigo!")
+                                    time.sleep(1)
+                                    print("AlÈm de te bloquear, ele te contra-atacou, causando ", calculo_do_dano, " pontos de dano!\n")
+                                    time.sleep(1)
                                     personagem_jogador[6] = personagem_jogador[6]-calculo_do_dano
                                     teste_de_sorte=random.randrange(200)
                                     if(teste_de_sorte<=20+personagem_jogador[4]):
-                                        input("\nVoc√™ tentou ao m√°ximo ultrapassar a defesa do seu inimigo, exigiu muito dos seus m√∫sculos que se fortaleceram!\n")
-                                        input("\nSeus pontos de ataque subiram!\n")
+                                        print("\nVocÍ tentou ao m·ximo ultrapassar a defesa do seu inimigo, exigiu muito dos seus m˙sculos que se fortaleceram!\n")
+                                        time.sleep(1.5)
+                                        print("\nSeus pontos de ataque subiram!\n")
+                                        time.sleep(1)
                                         personagem_jogador[1]=personagem_jogador[1]+(random.randrange(personagem_jogador[1]))+3
                                 else:
                                     if (calculo_do_dano==0):#S_ataque(2personagem_jogador[1]) ANULA S_defesa(3personagem_inimigo[2])
-                                        input("\nA disputa de for√ßas √© intensa, voc√™ e seu inimigo deram o melhor de si, mas nenhum dos dois se sobrep√¥s!\n")
+                                        print("\nA disputa de forÁas È intensa, vocÍ e seu inimigo deram o melhor de si, mas nenhum dos dois se sobrepÙs!\n")
+                                        time.sleep(1.5)
                                     else:#S_ataque(2personagem_jogador[1]) ATACA S_defesa(3personagem_inimigo[2])
-                                        input("\nSeu ataque foi explosivo!")
-                                        input("Nem o melhor da defesa do seu inimigo foi capaz de conter sua ira!")
-                                        print("Voc√™ causou ", calculo_do_dano, " pontos de dano ao seu inimigo!\n")
-                                        input("")
+                                        print("\nSeu ataque foi explosivo!")
+                                        time.sleep(1)
+                                        print("Nem o melhor da defesa do seu inimigo foi capaz de conter sua ira!")
+                                        time.sleep(1)
+                                        print("VocÍ causou ", calculo_do_dano, " pontos de dano ao seu inimigo!\n")
+                                        time.sleep(1)
                                         personagem_inimigo[6] = personagem_inimigo[6]-calculo_do_dano
                                         teste_de_sorte=random.randrange(100)
                                         if(teste_de_sorte==10+personagem_jogador[4]):
-                                            input("\nA explos√£o de energia dos seus m√∫sculos os expandiu definitivamente!\n")
-                                            input("\nSeus pontos de ataque subiram!\n")
+                                            print("\nA explos„o de energia dos seus m˙sculos os expandiu definitivamente!\n")
+                                            time.sleep(1)
+                                            print("\nSeus pontos de ataque subiram!\n")
+                                            time.sleep(1)
                                             personagem_jogador[1]=personagem_jogador[1]+(random.randrange(personagem_jogador[1]))+2
                         else:#S_ataque(2personagem_jogador[1]) vs defesa(2personagem_inimigo[2])
                             teste_de_sorte = random.randrange(300)
                             if(teste_de_sorte<=30-personagem_jogador[3]-personagem_jogador[4]+personagem_inimigo[3]+personagem_inimigo[4]):
-                                input("\nSeu oponente conseguiu esquivar de todos os seus ataques, voc√™ nem p√¥de tocar no inimigo!")
+                                print("\nSeu oponente conseguiu esquivar de todos os seus ataques, vocÍ nem pÙde tocar no inimigo!")
+                                time.sleep(1)
                             else:
                                 calculo_do_dano = 2*personagem_jogador[1]+(random.randrange(personagem_jogador[1]))-2*personagem_inimigo[2]-(random.randrange(personagem_inimigo[2]))
                                 if(calculo_do_dano<0):#S_ataque(2personagem_jogador[1]) APANHA DE defesa(2personagem_inimigo[2])
                                     calculo_do_dano=calculo_do_dano*(-1)+((random.randrange(personagem_inimigo[1]))/2)
-                                    input("\nVoc√™ deu o seu m√°ximo, mas mesmo assim nem se equiparou √†s habilidades de auto-defesa do seu inimigo!")
-                                    print("Sem fazer muito esfor√ßo ele se defendeu e contra-atacou, te causando ", calculo_do_dano," pontos de dano!\n")
-                                    input("")
+                                    print("\nVocÍ deu o seu m·ximo, mas mesmo assim nem se equiparou ‡s habilidades de auto-defesa do seu inimigo!")
+                                    time.sleep(1.5)
+                                    print("Sem fazer muito esforÁo ele se defendeu e contra-atacou, te causando ", calculo_do_dano," pontos de dano!\n")
+                                    time.sleep(1.5)
                                     personagem_jogador[6] = personagem_jogador[6] - calculo_do_dano
                                 else:
                                     if(calculo_do_dano==0):#S_ataque(2personagem_jogador[1]) ANULA defesa(2personagem_inimigo[2])
-                                        input("\nVoc√™ assustou o inimigo por um instante, mas - por muito pouco - ele conseguiu barrar todos os seus movimentos ofensivos...\n")
+                                        print("\nVocÍ assustou o inimigo por um instante, mas - por muito pouco - ele conseguiu barrar todos os seus movimentos ofensivos...\n")
+                                        time.sleep(1.5)
                                     else:
                                         teste_de_sorte=random.randrange(50)
                                         if(teste_de_sorte<=10+personagem_jogador[4]):#XS_ataque(3personagem_jogador[1]) vs defesa(personagem_inimigo[2])
-                                            print("\nVoc√™ rompeu a defesa do seu inimigo, causando ", calculo_do_dano," pontos de dano!")
-                                            input("")
-                                            input("\nSuper Cr√≠tico!!!\n")
-                                            input("Voc√™ iniciou um ataque em frenesi!!!\n")
+                                            print("\nVocÍ rompeu a defesa do seu inimigo, causando ", calculo_do_dano," pontos de dano!")
+                                            time.sleep(1.5)
+                                            print("\nSuper CrÌtico!!!\n")
+                                            time.sleep(2)
+                                            print("VocÍ iniciou um ataque em frenesi!!!\n")
+                                            time.sleep(1)
                                             personagem_inimigo[6]=personagem_inimigo[6]-calculo_do_dano
                                             teste_de_sorte=random.randrange(9)+1
                                             while(teste_de_sorte>0):#XS_ataque(3personagem_jogador[1]) ATACA defesa(personagem_inimigo[2])
@@ -953,212 +985,264 @@ def batalha():
                                                 while(calculo_do_dano<=0):
                                                     calculo_do_dano=2*(random.randrange(personagem_jogador[1]))-(random.randrange(personagem_inimigo[2]))
                                                 print(calculo_do_dano," pontos de dano!\n")
-                                                input("")
+                                                time.sleep(0.25)
                                                 personagem_inimigo[6]=personagem_inimigo[6]-calculo_do_dano
                                                 teste_de_sorte=teste_de_sorte-1
-                                            input("\nVoc√™ desferiu toda sua f√∫ria no inimigo!\n")
+                                            print("\nVocÍ desferiu toda sua f˙ria no inimigo!\n")
+                                            time.sleep(1)
                                             teste_de_sorte=random.randrange(3)
                                             if(teste_de_sorte<=1):
                                                 teste_de_sorte=random.randrange(100)
                                                 if(teste_de_sorte<=10+personagem_jogador[4]):
-                                                    input("\nVoc√™ testou o seu limite e agora est√° mais forte!")
-                                                    input("Seus pontos de ataque subiram!\n")
+                                                    print("\nVocÍ testou o seu limite e agora est· mais forte!")
+                                                    time.sleep(1)
+                                                    print("Seus pontos de ataque subiram!\n")
+                                                    time.sleep(1)
                                                     personagem_jogador[1]=personagem_jogador[1]+(random.randrange(personagem_jogador[1]))+2
                                             if(teste_de_sorte>=2):
                                                 teste_de_sorte=random.randrange(100)
                                                 if(teste_de_sorte<=10+personagem_jogador[4]):
-                                                    input("\nVoc√™ ultrapassou o seu limite e agora est√° mais forte!")
-                                                    input("Seus pontos de ataque subiram!\n")
+                                                    print("\nVocÍ ultrapassou o seu limite e agora est· mais forte!")
+                                                    time.sleep(1)
+                                                    print("Seus pontos de ataque subiram!\n")
+                                                    time.sleep(1)
                                                     personagem_jogador[1]=personagem_jogador[1]+(random.randrange(personagem_jogador[1]))+3
                                         else:#S_ataque(2personagem_jogador[1]) ATACA defesa(2personagem_inimigo[2])
                                             print("\nSeu ataque de golpes duplos pressionaram a defesa do seu inimigo, causando ",calculo_do_dano," pontos de dano!\n")
-                                            input("")
+                                            time.sleep(1.5)
                                             teste_de_sorte=random.randrange(200)
                                             if(teste_de_sorte<=20+personagem_jogador[4]):
-                                                input("\nVoc√™ aprimorou o ritmo dos seus ataques e agora est√° mais forte!")
-                                                input("Seus pontos de ataque subiram!\n")
+                                                print("\nVocÍ aprimorou o ritmo dos seus ataques e agora est· mais forte!")
+                                                time.sleep(1)
+                                                print("Seus pontos de ataque subiram!\n")
+                                                time.sleep(1)
                                                 personagem_jogador[1]=personagem_jogador[1]+(random.randrange(personagem_jogador[1]))+1
                                             personagem_inimigo[6]=personagem_inimigo[6]-calculo_do_dano
                     else:#ataque(personagem_jogador[1])
                         teste_de_sorte=random.randrange(50)
                         if(teste_de_sorte<=10+personagem_inimigo[4]-personagem_jogador[4]):#ataque(personagem_jogador[1]) vs S_defesa(3personagem_inimigo[2])
-                            input("\nA postura de defesa do seu inimigo te colocou numa situa√ß√£o dif√≠cil!\n")
+                            print("\nA postura de defesa do seu inimigo te colocou numa situaÁ„o difÌcil!\n")
+                            time.sleep(1)
                             teste_de_sorte = random.randrange(300)
                             if(teste_de_sorte<=30-personagem_jogador[3]-personagem_jogador[4]+personagem_inimigo[3]+personagem_inimigo[4]):
-                                input("\nSeu oponente conseguiu esquivar de todos os seus ataques, voc√™ nem p√¥de tocar no inimigo!")
+                                print("\nSeu oponente conseguiu esquivar de todos os seus ataques, vocÍ nem pÙde tocar no inimigo!")
+                                time.sleep(1)
                             else:
                                 calculo_do_dano=personagem_jogador[1]+random.randrange(personagem_jogador[1])-3*personagem_inimigo[2]-random.randrange(personagem_inimigo[2])
                                 if(calculo_do_dano<0):#ataque(personagem_jogador[1]) APANHA DE S_defesa(3personagem_inimigo[2])
                                     calculo_do_dano=calculo_do_dano*(-1)+((random.randrange(personagem_inimigo[1]))/2)
-                                    input("\n√â muito dif√≠cil passar por tamanha defesa, seu ataque foi √≠nfimo, al√©m de ser inutilizado, voc√™ sofreu repres√°lia...")
+                                    print("\n… muito difÌcil passar por tamanha defesa, seu ataque foi Ìnfimo, alÈm de ser inutilizado, vocÍ sofreu repres·lia...")
+                                    time.sleep(1.5)
                                     print("Seu inimigo contra-atacou, causando ", calculo_do_dano, " pontos de dano.\n")
-                                    input("")
+                                    time.sleep(1)
                                     teste_de_sorte=random.randrange(100)
                                     if(teste_de_sorte<=10+personagem_jogador[4]):
-                                        input("\nVoc√™ testou o seu limite e agora est√° mais forte!")
-                                        input("Seus pontos de ataque subiram!\n")
+                                        print("\nVocÍ testou o seu limite e agora est· mais forte!")
+                                        time.sleep(1)
+                                        print("Seus pontos de ataque subiram!\n")
+                                        time.sleep(1)
                                         personagem_jogador[1]=personagem_jogador[1]+(random.randrange(personagem_jogador[1]))+1
                                     personagem_jogador[6]=personagem_jogador[6]-calculo_do_dano
                                 else:
                                     if(calculo_do_dano==0):#ataque(personagem_jogador[1]) ANULA S_defesa(3personagem_inimigo[2])
-                                        print("\nO inimigo mal consegue reter seus golpes, mas o suficiente para par√°-lo.")
-                                        input("Ao mesmo tempo sua for√ßa foi o bastante para evitar um contra-ataque!\n")
+                                        print("\nO inimigo mal consegue reter seus golpes, mas o suficiente para par·-lo.")
+                                        time.sleep(1)
+                                        print("Ao mesmo tempo sua forÁa foi o bastante para evitar um contra-ataque!\n")
+                                        time.sleep(1)
                                     else:#ataque(personagem_jogador[1]) ATACA S_defesa(3personagem_inimigo[2])
-                                        print("\nDepois de alguns golpes, voc√™ tornou insignificante a vantagem defensiva do seu inimigo, causando humilhantes, ", calculo_do_dano," pontos de dano a ele!\n")
-                                        input("")
+                                        print("\nDepois de alguns golpes, vocÍ tornou insignificante a vantagem defensiva do seu inimigo, \ncausando humilhantes, ", calculo_do_dano," pontos de dano a ele!\n")
+                                        time.sleep(2)
                                         teste_de_sorte=random.randrange(200)
                                         if(teste_de_sorte<=10+personagem_jogador[4]):
-                                            input("\nVoc√™ testou o seu limite e agora est√° mais forte!")
-                                            input("Seus pontos de ataque subiram!\n")
+                                            print("\nVocÍ testou o seu limite e agora est· mais forte!")
+                                            time.sleep(1)
+                                            print("Seus pontos de ataque subiram!\n")
+                                            time.sleep(1)
                                             personagem_jogador[1]=personagem_jogador[1]+(random.randrange(personagem_jogador[1]))+2
                                         personagem_inimigo[6]=personagem_inimigo[6]-calculo_do_dano
                         else:#ataque(personagem_jogador[1]) vs defesa(2personagem_inimigo[2])
                             teste_de_sorte = random.randrange(300)
                             if(teste_de_sorte<=30-personagem_jogador[3]-personagem_jogador[4]+personagem_inimigo[3]+personagem_inimigo[4]):
-                                input("\nSeu oponente conseguiu esquivar de todos os seus ataques, voc√™ nem p√¥de tocar no inimigo!")
+                                print("\nSeu oponente conseguiu esquivar de todos os seus ataques, vocÍ nem pÙde tocar no inimigo!")
+                                time.sleep(1)
                             else:
                                 calculo_do_dano = personagem_jogador[1]+(random.randrange(personagem_jogador[1]))-2*personagem_inimigo[2]-(random.randrange(personagem_inimigo[2]))
                                 if(calculo_do_dano<0):#ataque(personagem_jogador[1]) APANHA DE defesa(2personagem_inimigo[2])
                                     calculo_do_dano=calculo_do_dano*(-1)+((random.randrange(personagem_inimigo[1]))/2)
                                     print("\nO inimigo se defendeu e contra-atacou, te causando ", calculo_do_dano," pontos de dano!\n")
-                                    input("")
+                                    time.sleep(1)
                                     teste_de_sorte=random.randrange(100)
                                     if(teste_de_sorte<=10+personagem_jogador[4]):
-                                        input("\nVoc√™ descobriu mais sobre a sua for√ßa durante a disputa e agora est√° mais forte!")
-                                        input("Seus pontos de ataque subiram\n!")
+                                        print("\nVocÍ descobriu mais sobre a sua forÁa durante a disputa e agora est· mais forte!")
+                                        time.sleep(1)
+                                        print("Seus pontos de ataque subiram\n!")
+                                        time.sleep(1)
                                         personagem_jogador[1]=personagem_jogador[1]+(random.randrange(personagem_jogador[1]))+1
                                     personagem_jogador[6] = personagem_jogador[6] - calculo_do_dano
                                 else:
                                     if(calculo_do_dano==0):#ataque(personagem_jogador[1]) ANULA defesa(2personagem_inimigo[2])
-                                        input("\nSeu oponente defendeu todos os seus golpes, mas voc√™ n√£o deu brecha para que ele avan√ßasse!\n")
+                                        print("\nSeu oponente defendeu todos os seus golpes, mas vocÍ n„o deu brecha para que ele avanÁasse!\n")
+                                        time.sleep(1)
                                         teste_de_sorte=random.randrange(200)
                                         if(teste_de_sorte<=10+personagem_jogador[4]):
-                                            input("\nO trabalho que seu inimigo te deu te rendeu frutos!")
-                                            input("Voc√™ descobriu mais sobre as t√°ticas de luta dele e est√° mais forte!")
-                                            input("Seus pontos de ataque subiram!\n")
+                                            print("\nO trabalho que seu inimigo te deu rendeu frutos!")
+                                            time.sleep(1)
+                                            print("VocÍ descobriu mais sobre as t·ticas de luta dele e est· mais forte!")
+                                            time.sleep(1)
+                                            print("Seus pontos de ataque subiram!\n")
+                                            time.sleep(1)
                                             personagem_jogador[1]=personagem_jogador[1]+(random.randrange(personagem_jogador[1]))+(random.randrange(personagem_jogador[4]))+1
                                     else:#ataque(personagem_jogador[1]) ATACA defesa(2personagem_inimigo[2])
-                                        print("\nVoc√™ acertou o inimigo durante a disputa de for√ßas, causando ",calculo_do_dano," pontos de dano!\n")
-                                        input("")
+                                        print("\nVocÍ acertou o inimigo durante a disputa de forÁas, causando ",calculo_do_dano," pontos de dano!\n")
+                                        time.sleep(1)
                                         personagem_inimigo[6]=personagem_inimigo[6]-calculo_do_dano
                 else:#ataque(personagem_jogador[1]) vs ataque(personagem_inimigo[1])
                     print("\nPostura de Batalha:\n", personagem_jogador[0], "-> ofensiva\n", personagem_inimigo[0], "-> ofensiva\n")
-                    input("...")
+                    time.sleep(1)
                     teste_de_sorte=random.randrange(40)
                     if (teste_de_sorte<=10+personagem_jogador[4]-personagem_inimigo[4]):#S_ataque(2personagem_jogador[1]) vs ataque(personagem_inimigo[1])
-                        input("\nSeu ataque foi cr√≠tico!!!\n")
+                        print("\nSeu ataque foi crÌtico!!!\n")
+                        time.sleep(1)
                         teste_de_sorte=random.randrange(40)
                         if (teste_de_sorte<=10-personagem_jogador[4]+personagem_inimigo[4]):#S_ataque(2personagem_jogador[1]) vs S_ataque(2personagem_inimigo[1])
-                            input("\nMas o ataque do oponente tamb√©m foi cr√≠tico!!!\n")
-                            input("\nVoc√™s entraram na briga pra valer!")
-                            input("Avan√ßaram de punhos cerrados, trocando golpes com as defesas abertas!\n")
+                            print("\nMas o ataque do oponente tambÈm foi crÌtico!!!\n")
+                            time.sleep(1)
+                            print("\nVocÍs entraram na briga pra valer!")
+                            time.sleep(0.5)
+                            print("AvanÁaram de punhos cerrados, trocando golpes com as defesas abertas!\n")
+                            time.sleep(1)
                             calculo_do_dano=2*personagem_jogador[1]+random.randrange(personagem_jogador[1])-personagem_inimigo[2]-random.randrange(personagem_inimigo[2])
                             if(calculo_do_dano>0):
-                                print("\nVoc√™ causou significativos ", calculo_do_dano," pontos de dano ao inimigo!\n")
-                                input("")
+                                print("\nVocÍ causou significativos ", calculo_do_dano," pontos de dano ao inimigo!\n")
+                                time.sleep(1)
                                 personagem_inimigo[6]=personagem_inimigo[6]-calculo_do_dano
                                 teste_de_sorte=random.randrange(100)
                                 if(teste_de_sorte<=10+personagem_jogador[4]):
-                                    input("\nSeus pontos de ataque subiram enquanto voc√™ for√ßava os seus m√∫sculos!\n")
+                                    print("\nSeus pontos de ataque subiram enquanto vocÍ forÁava os seus m˙sculos!\n")
+                                    time.sleep(1)
                                     personagem_jogador[1]=personagem_jogador[1]+(random.randrange(personagem_jogador[1]))+2
                             else:
-                                input("\nMesmo sem se defender, a constitui√ß√£o do inimigo foi alta o suficiente para resistir ao seu ataque.\n")
+                                print("\nMesmo sem se defender, a constituiÁ„o do inimigo foi alta o suficiente para resistir ao seu ataque.\n")
+                                time.sleep(1.5)
                             calculo_do_dano=2*personagem_inimigo[1]+random.randrange(personagem_inimigo[1])-personagem_jogador[2]-random.randrange(personagem_jogador[2])
                             if(calculo_do_dano>0):
                                 print("\nEnquanto o oponente te causou ", calculo_do_dano," pontos de dano!\n")
-                                input("")
+                                time.sleep(1)
                                 personagem_jogador[6]=personagem_jogador[6]-calculo_do_dano
                             else:
-                                input("\nMesmo sem se defender, sua constitui√ß√£o foi alta o suficiente para resistir ao ataque do oponente.\n")                                
+                                print("\nMesmo sem se defender, sua constituiÁ„o foi alta o suficiente para resistir ao ataque do oponente.\n")
+                                time.sleep(1.5)
                         else:#S_ataque(2personagem_jogador[1]) vs ataque(personagem_inimigo[1])
-                            input("\nVoc√™ avan√ßou violentamente sobre o inimigo, pressionando-o sem compaix√£o!")
-                            input("Apesar de for√ßar um leve recuo do inimigo, voc√™ n√£o deixou de levar uns bons golpes!\n")                            
+                            print("\nVocÍ avanÁou violentamente sobre o inimigo, pressionando-o sem compaix„o!")
+                            time.sleep(1.5)
+                            print("Apesar de forÁar um leve recuo do inimigo, vocÍ n„o deixou de levar uns bons golpes!\n")
+                            time.sleep(1.5)
                             calculo_do_dano=2*personagem_jogador[1]+random.randrange(personagem_jogador[1])-personagem_inimigo[2]-random.randrange(personagem_inimigo[2])
                             if(calculo_do_dano>0):
-                                print("\nVoc√™ golpeou o inimigo at√© lhe causar ", calculo_do_dano," pontos de dano!\n")
-                                input("")
+                                print("\nVocÍ golpeou o inimigo atÈ lhe causar ", calculo_do_dano," pontos de dano!\n")
+                                time.sleep(1)
                                 personagem_inimigo[6]=personagem_inimigo[6]-calculo_do_dano
                             else:
-                                input("\nMesmo sem se defender, a constitui√ß√£o do inimigo foi alta o suficiente para resistir ao seu ataque.\n")
+                                print("\nMesmo sem se defender, a constituiÁ„o do inimigo foi alta o suficiente para resistir ao seu ataque.\n")
+                                time.sleep(1.5)
                             calculo_do_dano=personagem_inimigo[1]+random.randrange(personagem_inimigo[1])-personagem_jogador[2]-random.randrange(personagem_jogador[2])
                             if(calculo_do_dano>0):
-                                print("\nJ√° o inimigo causou apenas ", calculo_do_dano," pontos de dano √† voc√™!\n")
-                                input("")
+                                print("\nJ· o inimigo causou apenas ", calculo_do_dano," pontos de dano ‡ vocÍ!\n")
+                                time.sleep(1)
                                 personagem_jogador[6]=personagem_jogador[6]-calculo_do_dano
                             else:
-                                input("\nMesmo sem se defender, sua constitui√ß√£o foi alta o suficiente para resistir ao ataque do oponente.\n")                                
+                                print("\nMesmo sem se defender, sua constituiÁ„o foi alta o suficiente para resistir ao ataque do oponente.\n")
+                                time.sleep(1.5)
                     else:#ataque(personagem_jogador[1]) vs ataque(personagem_inimigo[1])
                         teste_de_sorte=random.randrange(40)
                         if(teste_de_sorte==10+personagem_inimigo[4]-personagem_jogador[4]): #ataque(personagem_jogador[1]) vs S_ataque(2personagem_inimigo[1])
-                            input("\nO ataque do oponente foi cr√≠tico!...\n")
-                            input("\nVoc√™ foi pressionado enquanto trocavam golpes, os socos e chutes do seu oponente te acertaram em pontos menos resistentes do seu corpo que estavam desprotegidos!")
-                            input("Mesmo assim voc√™ manteve um bom r√≠tmo de ataque!\n")
+                            print("\nO ataque do oponente foi crÌtico!...\n")
+                            time.sleep(1)
+                            print("\nVocÍ foi pressionado enquanto trocavam golpes, \nos socos e chutes do seu oponente te acertaram em pontos menos resistentes do seu corpo que estavam desprotegidos!")
+                            time.sleep(2)
+                            print("Mesmo assim vocÍ manteve um bom rÌtmo de ataque!\n")
+                            time.sleep(1)
                             calculo_do_dano=personagem_jogador[1]+random.randrange(personagem_jogador[1])-personagem_inimigo[2]-random.randrange(personagem_inimigo[2])
                             if(calculo_do_dano>0):
-                                print("\nVoc√™ infringiu ", calculo_do_dano," pontos de dano ao inimigo!\n")
-                                input("")
+                                print("\nVocÍ infringiu ", calculo_do_dano," pontos de dano ao inimigo!\n")
+                                time.sleep(1)
                                 personagem_inimigo[6]=personagem_inimigo[6]-calculo_do_dano
                             else:
-                                input("\nMesmo sem se defender, a constitui√ß√£o do inimigo foi alta o suficiente para resistir ao seu ataque.\n")
+                                print("\nMesmo sem se defender, a constituiÁ„o do inimigo foi alta o suficiente para resistir ao seu ataque.\n")
+                                time.sleep(1.5)
                             calculo_do_dano=2*personagem_inimigo[1]+random.randrange(personagem_inimigo[1])-personagem_jogador[2]-random.randrange(personagem_jogador[2])
                             if(calculo_do_dano>0):
-                                print("\nEnquanto o seu inimigo te agrediu violentamente, causando ", calculo_do_dano," pontos de dano √† voc√™!\n")
-                                input("")
+                                print("\nEnquanto o seu inimigo te agrediu violentamente, causando ", calculo_do_dano," pontos de dano ‡ vocÍ!\n")
+                                time.sleep(1)
                                 personagem_jogador[6]=personagem_jogador[6]-calculo_do_dano
                             else:
-                                input("\nMesmo sem se defender, sua constitui√ß√£o foi alta o suficiente para resistir ao ataque do oponente.\n")                                
+                                print("\nMesmo sem se defender, sua constituiÁ„o foi alta o suficiente para resistir ao ataque do oponente.\n")
+                                time.sleep(1.5)
                         else:#ataque(personagem_jogador[1]) vs ataque(personagem_inimigo[1])
-                            input("\nVoc√™s se atacaram num ritmo leve, parecem estar testando um ao outro, ficou claro que nenhum dos dois mostrou tudo o que √© capaz.\n")
+                            print("\nVocÍs se atacaram num ritmo leve, parecem estar testando um ao outro,\n ficou claro que nenhum dos dois mostrou tudo o que È capaz.\n")
+                            time.sleep(2)
                             calculo_do_dano=personagem_jogador[1]+random.randrange(personagem_jogador[1])-personagem_inimigo[2]-random.randrange(personagem_inimigo[2])
                             if(calculo_do_dano>0):
-                                print("\nVoc√™ feriu seu oponente em ", calculo_do_dano," pontos de dano!\n")
-                                input("")
+                                print("\nVocÍ feriu seu oponente em ", calculo_do_dano," pontos de dano!\n")
+                                time.sleep(1)
                                 personagem_inimigo[6]=personagem_inimigo[6]-calculo_do_dano
                             else:
-                                input("\nMesmo sem se defender, a constitui√ß√£o do inimigo foi alta o suficiente para resistir ao seu ataque.\n")
+                                print("\nMesmo sem se defender, a constituiÁ„o do inimigo foi alta o suficiente para resistir ao seu ataque.\n")
+                                time.sleep(1.5)
                             calculo_do_dano=personagem_inimigo[1]+random.randrange(personagem_inimigo[1])-personagem_jogador[2]-random.randrange(personagem_jogador[2])
                             if(calculo_do_dano>0):
                                 print("\nSeu inimigo te golpeou causando ", calculo_do_dano," pontos de dano!\n")
-                                input("")
+                                time.sleep(1)
                                 personagem_jogador[6]=personagem_jogador[6]-calculo_do_dano
                             else:
-                                input("\nMesmo sem se defender, sua constitui√ß√£o foi alta o suficiente para resistir ao ataque do oponente.\n")
+                                print("\nMesmo sem se defender, sua constituiÁ„o foi alta o suficiente para resistir ao ataque do oponente.\n")
+                                time.sleep(1.5)
             else:
-                if(a√ß√£o_do_personagem=="fugir" or a√ß√£o_do_personagem=="f" or a√ß√£o_do_personagem=="fugri" or a√ß√£o_do_personagem=="fguir" or a√ß√£o_do_personagem=="fugeir" or a√ß√£o_do_personagem=="furig" or a√ß√£o_do_personagem=="fuer" or a√ß√£o_do_personagem=="ffugri" or a√ß√£o_do_personagem=="gfuir" or a√ß√£o_do_personagem=="fiur" or a√ß√£o_do_personagem=="fugi" or a√ß√£o_do_personagem=="fugr" or a√ß√£o_do_personagem=="fug" or a√ß√£o_do_personagem=="fgir" or a√ß√£o_do_personagem=="fir" or a√ß√£o_do_personagem=="fgr" or a√ß√£o_do_personagem=="ugir" or a√ß√£o_do_personagem=="gir" or a√ß√£o_do_personagem=="figr" or a√ß√£o_do_personagem=="fu"):
+                if(acao_do_personagem=="fugir" or acao_do_personagem=="f" or acao_do_personagem=="fugri" or acao_do_personagem=="fguir" or acao_do_personagem=="fugeir" or acao_do_personagem=="furig" or acao_do_personagem=="fuer" or acao_do_personagem=="ffugri" or acao_do_personagem=="gfuir" or acao_do_personagem=="fiur" or acao_do_personagem=="fugi" or acao_do_personagem=="fugr" or acao_do_personagem=="fug" or acao_do_personagem=="fgir" or acao_do_personagem=="fir" or acao_do_personagem=="fgr" or acao_do_personagem=="ugir" or acao_do_personagem=="gir" or acao_do_personagem=="figr" or acao_do_personagem=="fu"):
                     print("\nPostura de Batalha:\n", personagem_jogador[0], "-> fugitiva\n", personagem_inimigo[0], "-> ofensiva\n")
-                    input("...")
-                    input("\nVoc√™ tenta aumentar o r√≠tmo de esquiva...\n")
+                    time.sleep(1)
+                    print("\nVocÍ tenta aumentar o rÌtmo de esquiva...\n")
+                    time.sleep(1)
                     teste_de_sorte=random.randrange(10)+calculo_da_fuga
                     if(teste_de_sorte==10):
-                        input('\nVoc√™ esquivou de qualquer manobra ofensiva do oponente e conseguiu uma brecha para fugir!\n')
-                        print('\nDeseja fugir da luta?("sim" ou "n√£o")\n')
+                        print('\nVocÍ esquivou de qualquer manobra ofensiva do oponente e conseguiu uma brecha para fugir!\n')
+                        time.sleep(1.5)
+                        print('\nDeseja fugir da luta?("sim" ou "n„o")\n')
+                        time.sleep(0.5)
                         batalha_escapar=""
-                        while(batalha_escapar != "n√£o"):
+                        while(batalha_escapar != "n„o"):
                             batalha_escapar = input('-')
                             batalha_escapar = batalha_escapar.lower()
-                            if(batalha_escapar!="n√£o" and batalha_escapar != "sim"):
-                                print('\nEntrada invalida! Digite "sim" ou "n√£o".\n')
+                            if(batalha_escapar!="n„o" and batalha_escapar != "sim"):
+                                print('\nEntrada invalida! Digite "sim" ou "n„o".\n')
+                                time.sleep(0.5)
                             if(batalha_escapar =="sim"):
                                 break
                         if(batalha_escapar =="sim"):
                             break
                     else:
                         if(teste_de_sorte>8):
-                            input('\nVoc√™ esquivou de qualquer manobra ofensiva do oponente, mas n√£o conseguiu uma brecha para fugir...\n')
+                            print('\nVocÍ esquivou de qualquer manobra ofensiva do oponente, mas n„o conseguiu uma brecha para fugir...\n')
+                            time.sleep(1.5)
                         else:
                             if(teste_de_sorte>5):
-                                input('\nVoc√™ n√£o conseguiu uma brecha para fugir, nem pode se esquivar, mas pode se defender!\n')
+                                print('\nVocÍ n„o conseguiu uma brecha para fugir, nem pode se esquivar, mas pode se defender!\n')
+                                time.sleep(1.5)
                                 calculo_do_dano = personagem_inimigo[1]+(random.randrange(personagem_inimigo[1]))-2*personagem_jogador[2]-(random.randrange(personagem_jogador[2]))
                                 if (calculo_do_dano<0):
-                                    input('\nSua defesa √â ENORME!')
-                                    input('Voc√™ barrou o ataque naturalmente e conseguiu afastar o inimigo, criando uma brecha para fugir!\n')
-                                    print('\nDeseja fugir da luta?("sim" ou "n√£o")\n')
+                                    print('\nSua defesa … ENORME!')
+                                    time.sleep(1)
+                                    print('VocÍ barrou o ataque naturalmente e conseguiu afastar o inimigo, criando uma brecha para fugir!\n')
+                                    time.sleep(1.5)
+                                    print('\nDeseja fugir da luta?("sim" ou "n„o")\n')
+                                    time.sleep(0.5)
                                     batalha_escapar=""
-                                    while(batalha_escapar != "n√£o"):
+                                    while(batalha_escapar != "n„o"):
                                         batalha_escapar = input('-')
                                         batalha_escapar = batalha_escapar.lower()
-                                        if(batalha_escapar!="n√£o" and batalha_escapar != "sim"):
-                                            print('\nEntrada invalida! Digite "sim" ou "n√£o".\n')
+                                        if(batalha_escapar!="n„o" and batalha_escapar != "sim"):
+                                            print('\nEntrada invalida! Digite "sim" ou "n„o".\n')
+                                            time.sleep(0.5)
                                         if(batalha_escapar =="sim"):
                                             break
                                     if(batalha_escapar =="sim"):
@@ -1166,1552 +1250,1981 @@ def batalha():
                                         break
                                 else:
                                     if(calculo_do_dano==0):
-                                        input("\nVoc√™ barrou o ataque do inimigo!\n")
+                                        print("\nVocÍ barrou o ataque do inimigo!\n")
+                                        time.sleep(1)
                                     else:
                                         print("\nMesmo se defendendo, o impacto do ataque inimigo te causou ", calculo_do_dano, " pontos de dano!\n")
-                                        input("")
+                                        time.sleep(1.5)
                                         personagem_jogador[6] = personagem_jogador[6]-calculo_do_dano
                             else:
                                 if(teste_de_sorte>2):
-                                    input('\nVoc√™ n√£o conseguiu uma brecha para fugir, se esquivar ou se defender...\n')
+                                    print('\nVocÍ n„o conseguiu uma brecha para fugir, se esquivar ou se defender...\n')
+                                    time.sleep(1)
                                     calculo_do_dano = personagem_inimigo[1]+(random.randrange(personagem_inimigo[1]))-personagem_jogador[2]-(random.randrange(personagem_jogador[2]))
                                     if (calculo_do_dano>0):
-                                        print("\nVoc√™ foi atacado diretamente, sofrendo ", calculo_do_dano," pontos de dano!\n")
-                                        input("")
+                                        print("\nVocÍ foi atacado diretamente, sofrendo ", calculo_do_dano," pontos de dano!\n")
+                                        time.sleep(1.5)
                                         personagem_jogador[6]=personagem_jogador[6]-calculo_do_dano
                                     else:
-                                        input("\nMesmo sem se defender, sua constitui√ß√£o foi alta o suficiente para resistir ao ataque do oponente.\n")
+                                        print("\nMesmo sem se defender, sua constituiÁ„o foi alta o suficiente para resistir ao ataque do oponente.\n")
+                                        time.sleep(1.5)
                                 else:
-                                    input('\nVoc√™ trope√ßou ao tentar fugir!\n')
-                                    input('\nO golpe do oponente foi cr√≠tico!\n')
+                                    print('\nVocÍ tropeÁou ao tentar fugir!\n')
+                                    time.sleep(1)
+                                    print('\nO golpe do oponente foi crÌtico!\n')
+                                    time.sleep(1)
                                     calculo_do_dano = 2*personagem_inimigo[1]+(random.randrange(personagem_inimigo[1]))-personagem_jogador[2]-(random.randrange(personagem_jogador[2]))
                                     if (calculo_do_dano>0):
                                         print("\nO inimigo aproveitou a abertura na sua defesa e te atacou violentamente, causando ", calculo_do_dano," pontos de dano.\n")
-                                        input("")
+                                        time.sleep(1.5)
                                         personagem_jogador[6]=personagem_jogador[6]-calculo_do_dano
-                                        teste_de_sorte=random.randrange(5)
-                                        if(teste_de_sorte==1):
-                                            input("\nVoc√™ aumentou seu folego enquanto tentava escapar dos golpes que voc√™ levou em cheio!")
-                                            input("O limite dos seus pontos de vida cresceu!")
+                                        teste_de_sorte=random.randrange(100)
+                                        if(teste_de_sorte<=20+personagem_jogador[4]):
+                                            print("\nVocÍ aumentou seu folego enquanto tentava escapar dos golpes que vocÍ levou em cheio!")
+                                            time.sleep(1)
+                                            print("O limite dos seus pontos de vida cresceu!")
+                                            time.sleep(1)
                                             personagem_jogador[5]=personagem_jogador[5]+(random.randrange(personagem_jogador[5]))+1
                                     else:
-                                        input("\nMesmo sem se defender, sua constitui√ß√£o foi alta o suficiente para resistir ao ataque do oponente.\n")
+                                        print("\nMesmo sem se defender, sua constituiÁ„o foi alta o suficiente para resistir ao ataque do oponente.\n")
+                                        time.sleep(1.5)
                     calculo_da_fuga=calculo_da_fuga+((personagem_jogador[3]-personagem_inimigo[3])*0.10)+((personagem_jogador[4]-personagem_inimigo[4])*0.10)
                     if(batalha_escapar =="sim"):
                         break
-    batalha_escapar="n√£o"
-    vari√°vel_para_comparar = 0
+    batalha_escapar="n„o"
+    vari·vel_para_comparar = 0
     contador_de_batalha = 0
     contador_de_rodadas = 1
-    input("\nFim da Batalha!\n")
+    print("\nFim da Batalha!\n")
+    time.sleep(1)
     if(personagem_inimigo[6]<=0):
         print("\n",personagem_inimigo[0]," foi derrotado!\n")
-        input("")
+        time.sleep(2)
     else:
         if(personagem_jogador[6]<=0):
-            input("\nVoc√™ foi derrotado.\n")
+            print("\nVocÍ foi derrotado.\n")
+            time.sleep(2)
         else:
             if(batalha_escapar =="sim"):
-                input("\nVoc√™ conseguiu escapar!\n")
+                print("\nVocÍ conseguiu escapar!\n")
+                time.sleep(1.5)
                 batalha_escapar="escapou"
 
-#--Matar algu√©m--#
-def matarAlgu√©m():
-    input("Voc√™ o matou!")
-    input("                                         Voc√™ o matou!")
+#--Matar alguÈm--#
+def matarAlguÈm():
+    input("VocÍ entrou em conflito com a sua consciÍncia(Aperte ENTER)")
+    input("VocÍ o matou!")
+    input("                                         VocÍ o matou!")
     input("Seu assassino!")
-    input("                                Voc√™ o matou!")
-    input("             Voc√™ o matou!")
+    input("                                VocÍ o matou!")
+    input("             VocÍ o matou!")
     input("                                    Seu assassino!")
-    input("Voc√™ o matou!")
-    input("                          Voc√™ o matou!")
-    input("     Voc√™ o matou!")
-    input("                 Voc√™ o matou!")
-    input("Voc√™ o matou!")
+    input("VocÍ o matou!")
+    input("                          VocÍ o matou!")
+    input("     VocÍ o matou!")
+    input("                 VocÍ o matou!")
+    input("VocÍ o matou!")
     input("                                Seu monstro!")
     input("                                      Seu monstro!")
-    input("          Voc√™ o matou!")
-    input("     Voc√™ o matou!")
+    input("          VocÍ o matou!")
+    input("     VocÍ o matou!")
     input("                     Seu monstro!")
-    input("                                Voc√™ o matou!")
-    input("                    Voc√™ o matou!")
-    input("                                         Voc√™ o matou!")
-    input("      Voc√™ o matou!")
+    input("                                VocÍ o matou!")
+    input("                    VocÍ o matou!")
+    input("                                         VocÍ o matou!")
+    input("      VocÍ o matou!")
     input("                                Seu monstro!")
-    input("Voc√™ o matou!")
-    input("            Voc√™ o matou!")
+    input("VocÍ o matou!")
+    input("            VocÍ o matou!")
     input("Seu monstro!")
-    input("                                   Voc√™ o matou!")
-    input("                          Voc√™ o matou!")
-    input("        Voc√™ o matou!")
+    input("                                   VocÍ o matou!")
+    input("                          VocÍ o matou!")
+    input("        VocÍ o matou!")
     input("                               Seu assassino!")
-    input("               Voc√™ o matou!")
+    input("               VocÍ o matou!")
     input("Seu assassino!")
-    input("         Voc√™ o matou!")
+    input("         VocÍ o matou!")
     input("                               Seu assassino!")
-    input("                  Voc√™ o matou!")
+    input("                  VocÍ o matou!")
     input("Seu assassino!")
-    input("                                         Voc√™ o matou!")
-    input("                                Voc√™ o matou!")
-    input("          Voc√™ o matou!")
+    input("                                         VocÍ o matou!")
+    input("                                VocÍ o matou!")
+    input("          VocÍ o matou!")
     input("     ")
-    input("     Ele...")
-    input("     Ele era um ser vivo...")
-    input("     Ele era um ser humano...")
-    input("                   E voc√™ o matou!")
+    print("     Ele...")
+    time.sleep(1)
+    print("     Ele era um ser vivo...")
+    time.sleep(1)
+    print("     Ele era um ser humano...")
+    time.sleep(1)
+    print("                   E vocÍ o matou!")
+    time.sleep(1)
 
-#--Seu pr√©dio: Quarto Andar--#
-def seuPr√©dioQuartoAndar():
-    global desequipado_roupa,desequipado_capa,desequipado_luva,desequipado_m√£os,desequipado_cal√ßado,espa√ßo_vazio,peda√ßo_pizza,bolo_chocolate,pijama_inicial,uniforme_estudantil,malha_ninja,l√°pis_apontado,punhal_envelhecido,talheres_prata,jaqueta_imita√ß√£o,jaqueta_couro,agasalho_l√£,suplemento_aliment√≠cio,lata_energ√©tico,luva_l√£,luva_couro,soco_pvc,soco_lat√£o,luva_spikes_alu,soco_alu,luva_spikes_a√ßo,soco_a√ßo,luva_spikes_ag,soco_ag,luva_spikes_au,soco_au,luva_spikes_tit√¢nio,soco_tit√¢nio,anel_for√ßa1,anel_for√ßa2,anel_for√ßa3,anel_resist√™ncia1,anel_resist√™ncia2,anel_resist√™ncia3,anel_consist√™ncia1,anel_consist√™ncia2,anel_consist√™ncia3,anel_da_imortalidade,anel_da_divindade,chinelo_inicial,papetes_masculinas,t√™nis_velho,t√™nis_simpl√≥rio,sapato_simpl√≥rio,t√™nis_comum,t√™nis_trilha,t√™nis_caminhada,t√™nis_corrida,t√™nis_ZX5000,item_adicionado,quantidade_adicionada,equipado_roupa,equipado_capa,equipado_luva,equipado_anel,equipado_m√£os,equipado_cal√ßado,vari√°vel_cen√°rio,objeto,situa√ß√£o,tempor√°rio,vari√°vel_lugar,ponto_de_save,mostrar_save, personagem_jogador,personagem_reserva,personagem_inimigo,eegg,a√ß√£o_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,vari√°vel_para_comparar,contador_de_batalha,contador_de_rodadas,mala,loja_venda
-    vari√°vel_lugar = "seu pr√©dio, 4¬∫ andar"
-    tempor√°rio[0]= False
-    if(situa√ß√£o[0]<5):
-        input("Voc√™ foi abordado novamente pelo morador do quarto 44...")
-        input(" - N√≥s sabemos que voc√™ n√£o venceu nem do 3¬∫ andar, se n√£o √© capaz disso,\nn√£o √© capaz de nos vencer!")
-        input("Ele te empurrou escada abaixo... Voc√™ perdeu 5 pontos de vida durante a queda!")
+#--Seu prÈdio: Quarto Andar--#
+def seuPrÈdioQuartoAndar():
+    global desequipado_roupa,desequipado_capa,desequipado_luva,desequipado_maos,desequipado_calcado,espaÁo_vazio,pedaÁo_pizza,bolo_chocolate,pijama_inicial,uniforme_estudantil,malha_ninja,lapis_apontado,punhal_envelhecido,talheres_prata,jaqueta_imitacao,jaqueta_couro,agasalho_l„,suplemento_alimentÌcio,lata_energÈtico,luva_l„,luva_couro,soco_pvc,soco_lat„o,luva_spikes_alu,soco_alu,luva_spikes_aÁo,soco_aÁo,luva_spikes_ag,soco_ag,luva_spikes_au,soco_au,luva_spikes_tit‚nio,soco_tit‚nio,anel_forÁa1,anel_forÁa2,anel_forÁa3,anel_resistÍncia1,anel_resistÍncia2,anel_resistÍncia3,anel_consistÍncia1,anel_consistÍncia2,anel_consistÍncia3,anel_da_imortalidade,anel_da_divindade,chinelo_inicial,papetes_masculinas,tÍnis_velho,tÍnis_simplÛrio,sapato_simplÛrio,tÍnis_comum,tÍnis_trilha,tÍnis_caminhada,tÍnis_corrida,tÍnis_ZX5000,item_adicionado,quantidade_adicionada,equipado_roupa,equipado_capa,equipado_luva,equipado_anel,equipado_maos,equipado_calcado,vari·vel_cen·rio,objeto,situacao,tempor·rio,vari·vel_lugar,ponto_de_save,mostrar_save, personagem_jogador,personagem_reserva,personagem_inimigo,eegg,acao_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,vari·vel_para_comparar,contador_de_batalha,contador_de_rodadas,mala,loja_venda
+    vari·vel_lugar = "seu prÈdio, 4∫ andar"
+    tempor·rio[0]= False
+    if(situacao[0]<5):
+        print("VocÍ foi abordado novamente pelo morador do quarto 44...")
+        time.sleep(1)
+        print(" - NÛs sabemos que vocÍ n„o venceu nem do 3∫ andar, se n„o È capaz disso,\nn„o È capaz de nos vencer!")
+        time.sleep(1)
+        print("Ele te empurrou escada abaixo... VocÍ perdeu 5 pontos de vida durante a queda!")
+        time.sleep(1)
         personagem_jogador[6]=personagem_jogador[6]-5
         if(personagem_jogador[6]<=0):
             personagem_jogador[6]=1
     while 1:
-        if(situa√ß√£o[0]<5):
-            input("Agora voc√™ est√° no terceiro andar.")
+        if(situacao[0]<5):
+            print("Agora vocÍ est· no terceiro andar.")
+            time.sleep(1)
             break
-        print("\n#", "-"*30,"#\n\nLista de A√ß√µes\n\nCen√°rio:", vari√°vel_lugar,"\n\nVoc√™ pode:\n\nchecar os quartos\n")
+        print("\n#", "-"*30,"#\n\nLista de AÁıes\n\nCen·rio:", vari·vel_lugar,"\n\nVocÍ pode:\n\nchecar os quartos\n")
         print("\nver ficha do personagem\nver mochila\ndescer as escadas\n\nsalvar o jogo\n")
         print("\n#", "-"*30,"#\n")
-        print("\nE agora, ", personagem_jogador[0],", o que voc√™ vai fazer?\n")
-        a√ß√£o_do_personagem = input("-")
-        a√ß√£o_do_personagem = a√ß√£o_do_personagem.lower()
-        if(a√ß√£o_do_personagem=="checar os quartos" or a√ß√£o_do_personagem=="checar quartos" or a√ß√£o_do_personagem=="checar" or a√ß√£o_do_personagem=="quartos" or a√ß√£o_do_personagem=="checaros quartos" or a√ß√£o_do_personagem=="checar osquartos" or a√ß√£o_do_personagem=="checarosquartos" or a√ß√£o_do_personagem=="checa os quartos" or a√ß√£o_do_personagem=="checa os quarto" or a√ß√£o_do_personagem=="checa o quarto" or a√ß√£o_do_personagem=="checa o quartos" or a√ß√£o_do_personagem=="checar os quarto" or a√ß√£o_do_personagem=="checar o quarto" or a√ß√£o_do_personagem=="bater na porta de um dos quartos" or a√ß√£o_do_personagem=="checar um dos quartos" or a√ß√£o_do_personagem=="bater na porta dos quartos" or a√ß√£o_do_personagem=="bater a porta dos quartos" or a√ß√£o_do_personagem=="bater quartos" or a√ß√£o_do_personagem=="bater"):
+        print("\nE agora, ", personagem_jogador[0],", o que vocÍ vai fazer?\n")
+        acao_do_personagem = input("-")
+        acao_do_personagem = acao_do_personagem.lower()
+        if(acao_do_personagem=="checar os quartos" or acao_do_personagem=="checar quartos" or acao_do_personagem=="checar" or acao_do_personagem=="quartos" or acao_do_personagem=="checaros quartos" or acao_do_personagem=="checar osquartos" or acao_do_personagem=="checarosquartos" or acao_do_personagem=="checa os quartos" or acao_do_personagem=="checa os quarto" or acao_do_personagem=="checa o quarto" or acao_do_personagem=="checa o quartos" or acao_do_personagem=="checar os quarto" or acao_do_personagem=="checar o quarto" or acao_do_personagem=="bater na porta de um dos quartos" or acao_do_personagem=="checar um dos quartos" or acao_do_personagem=="bater na porta dos quartos" or acao_do_personagem=="bater a porta dos quartos" or acao_do_personagem=="bater quartos" or acao_do_personagem=="bater"):
             print("Qual dos quartos?(40, 41, 42, 43 ou 44)\n")
-            a√ß√£o_do_personagem = input("-")
-            a√ß√£o_do_personagem = a√ß√£o_do_personagem.lower()
-            if(a√ß√£o_do_personagem!="40" and a√ß√£o_do_personagem!="41" and a√ß√£o_do_personagem!="42" and a√ß√£o_do_personagem!="43" and a√ß√£o_do_personagem!="44"):
-                a√ß√£o_do_personagem="entrada inv√°lida!"
-        if (a√ß√£o_do_personagem == "ver ficha do personagem" or a√ß√£o_do_personagem == "ver a ficha do personagem" or a√ß√£o_do_personagem == "ver a ficha de personagem" or a√ß√£o_do_personagem == "ficha" or a√ß√£o_do_personagem=="ficha do personagem" or a√ß√£o_do_personagem=="ficha de personagem" or a√ß√£o_do_personagem=="ver ficha de personagem" or a√ß√£o_do_personagem=="ver ficha" or a√ß√£o_do_personagem == "olhar ficha do personagem" or a√ß√£o_do_personagem == "ver minha ficha" or a√ß√£o_do_personagem=="minha ficha" or a√ß√£o_do_personagem=="ficha personagem" or a√ß√£o_do_personagem=="olhar ficha de personagem" or a√ß√£o_do_personagem=="olhar ficha"):
+            acao_do_personagem = input("-")
+            acao_do_personagem = acao_do_personagem.lower()
+            if(acao_do_personagem!="40" and acao_do_personagem!="41" and acao_do_personagem!="42" and acao_do_personagem!="43" and acao_do_personagem!="44"):
+                acao_do_personagem="entrada inv·lida!"
+        if (acao_do_personagem == "ver ficha do personagem" or acao_do_personagem == "ver a ficha do personagem" or acao_do_personagem == "ver a ficha de personagem" or acao_do_personagem == "ficha" or acao_do_personagem=="ficha do personagem" or acao_do_personagem=="ficha de personagem" or acao_do_personagem=="ver ficha de personagem" or acao_do_personagem=="ver ficha" or acao_do_personagem == "olhar ficha do personagem" or acao_do_personagem == "ver minha ficha" or acao_do_personagem=="minha ficha" or acao_do_personagem=="ficha personagem" or acao_do_personagem=="olhar ficha de personagem" or acao_do_personagem=="olhar ficha"):
             ficha_personagem()
         else:
-            if(a√ß√£o_do_personagem=="descer as escadas" or a√ß√£o_do_personagem=="descer escadas" or a√ß√£o_do_personagem=="descer escada" or a√ß√£o_do_personagem=="descer a escada" or a√ß√£o_do_personagem=="sair" or a√ß√£o_do_personagem=="descer" or a√ß√£o_do_personagem=="sair do pr√©dio"):
-                input("Voc√™ desceu para o terceiro andar.")
+            if(acao_do_personagem=="descer as escadas" or acao_do_personagem=="descer escadas" or acao_do_personagem=="descer escada" or acao_do_personagem=="descer a escada" or acao_do_personagem=="sair" or acao_do_personagem=="descer" or acao_do_personagem=="sair do prÈdio"):
+                print("VocÍ desceu para o terceiro andar.")
+                time.sleep(1)
                 break
             else:
-                if(a√ß√£o_do_personagem=="40"):
-                    if(situa√ß√£o[0]>6):
-                        input("Voc√™ j√° lutou aqui!")
+                if(acao_do_personagem=="40"):
+                    if(situacao[0]>6):
+                        print("VocÍ j· lutou aqui!")
+                        time.sleep(1)
                     else:
-                        input(' - Aqui no 4¬∫ andar moram os mais fortes, mas h√° muita diferen√ßa entre n√≥s!')
-                        input(' - Por isso h√° uma ordem para nos enfrentar, come√ßando por mim!')
-                        input(' - Como n√£o pegamos leve, n√≥s apresentamos um "cart√£o de visita" ao oponente, para ele saber se √© capaz de sobreviver.')
+                        print(' - Aqui no 4∫ andar moram os mais fortes, mas h· muita diferenÁa entre nÛs!')
+                        time.sleep(1)
+                        print(' - Por isso h· uma ordem para nos enfrentar, comeÁando por mim!')
+                        time.sleep(1)
+                        print(' - Como n„o pegamos leve, nÛs apresentamos um "cart„o de visita" ao oponente, para ele saber se È capaz de sobreviver.')
+                        time.sleep(1)
                         personagem_inimigo = [ "Estudante Briguento \n do Quarto 40", 30, 15, 5, 5, 360, 360]
-                        input(" - Aqui est√° o meu:")
+                        print(" - Aqui est· o meu:")
+                        time.sleep(0.5)
                         print("\n", personagem_inimigo[0],":",personagem_inimigo[5],"pontos de vida.\nAtaque : ",personagem_inimigo[1],".     Defesa : ", personagem_inimigo[2],".\n")
-                        print('\nDeseja prosseguir com a luta?("sim" ou "n√£o")\n')
+                        time.sleep(1)
+                        print('\nDeseja prosseguir com a luta?("sim" ou "n„o")\n')
+                        time.sleep(0.5)
                         while 1:
-                            a√ß√£o_do_personagem = input("-")
-                            a√ß√£o_do_personagem = a√ß√£o_do_personagem.lower()
-                            if(a√ß√£o_do_personagem == "n√£o" or a√ß√£o_do_personagem=="n" or a√ß√£o_do_personagem=="nao" or a√ß√£o_do_personagem=="no" or a√ß√£o_do_personagem=="na" or a√ß√£o_do_personagem=="n√£" or a√ß√£o_do_personagem=="ao" or a√ß√£o_do_personagem=="√£o" or a√ß√£o_do_personagem=="√±" or a√ß√£o_do_personagem=="√±√£o" or a√ß√£o_do_personagem=="√±o" or a√ß√£o_do_personagem=="√±√µ" or a√ß√£o_do_personagem=="√±√£" or a√ß√£o_do_personagem=="√±a√µ" or a√ß√£o_do_personagem=="a√µ"):
+                            acao_do_personagem = input("-")
+                            acao_do_personagem = acao_do_personagem.lower()
+                            if(acao_do_personagem == "n„o" or acao_do_personagem=="n" or acao_do_personagem=="nao" or acao_do_personagem=="no" or acao_do_personagem=="na" or acao_do_personagem=="n„" or acao_do_personagem=="ao" or acao_do_personagem=="„o" or acao_do_personagem=="Ò" or acao_do_personagem=="Ò„o" or acao_do_personagem=="Òo" or acao_do_personagem=="Òı" or acao_do_personagem=="Ò„" or acao_do_personagem=="Òaı" or acao_do_personagem=="aı"):
                                 break
                             else:
-                                if(a√ß√£o_do_personagem=="sim" or a√ß√£o_do_personagem=="s" or a√ß√£o_do_personagem=="si" or a√ß√£o_do_personagem=="sm" or a√ß√£o_do_personagem=="im" or a√ß√£o_do_personagem=="ssim"):
+                                if(acao_do_personagem=="sim" or acao_do_personagem=="s" or acao_do_personagem=="si" or acao_do_personagem=="sm" or acao_do_personagem=="im" or acao_do_personagem=="ssim"):
                                     batalha()
                                     if(personagem_jogador[6]<=0):break
                                     if(personagem_inimigo[6]>0):
                                         while (personagem_inimigo[6]>0):
-                                            input(" - O que foi, desistiu?(sim ou n√£o)")
+                                            print(" - O que foi, desistiu?(sim ou n„o)")
+                                            time.sleep(0.5)
                                             while 1:
-                                                a√ß√£o_do_personagem=input("-")
-                                                a√ß√£o_do_personagem = a√ß√£o_do_personagem.lower()
-                                                if(a√ß√£o_do_personagem == "n√£o" or a√ß√£o_do_personagem=="n" or a√ß√£o_do_personagem=="nao" or a√ß√£o_do_personagem=="no" or a√ß√£o_do_personagem=="na" or a√ß√£o_do_personagem=="n√£" or a√ß√£o_do_personagem=="ao" or a√ß√£o_do_personagem=="√£o" or a√ß√£o_do_personagem=="√±" or a√ß√£o_do_personagem=="√±√£o" or a√ß√£o_do_personagem=="√±o" or a√ß√£o_do_personagem=="√±√µ" or a√ß√£o_do_personagem=="√±√£" or a√ß√£o_do_personagem=="√±a√µ" or a√ß√£o_do_personagem=="a√µ"):
-                                                    input(" - Ent√£o vamos voltar a lutar!")
+                                                acao_do_personagem=input("-")
+                                                acao_do_personagem = acao_do_personagem.lower()
+                                                if(acao_do_personagem == "n„o" or acao_do_personagem=="n" or acao_do_personagem=="nao" or acao_do_personagem=="no" or acao_do_personagem=="na" or acao_do_personagem=="n„" or acao_do_personagem=="ao" or acao_do_personagem=="„o" or acao_do_personagem=="Ò" or acao_do_personagem=="Ò„o" or acao_do_personagem=="Òo" or acao_do_personagem=="Òı" or acao_do_personagem=="Ò„" or acao_do_personagem=="Òaı" or acao_do_personagem=="aı"):
+                                                    print(" - Ent„o vamos voltar a lutar!")
+                                                    time.sleep(1)
                                                     batalha()
                                                 else:
-                                                    if(a√ß√£o_do_personagem=="sim" or a√ß√£o_do_personagem=="s" or a√ß√£o_do_personagem=="si" or a√ß√£o_do_personagem=="sm" or a√ß√£o_do_personagem=="im" or a√ß√£o_do_personagem=="ssim"):
-                                                        input(" - Tem certeza?(sim ou n√£o) ... Se voc√™ fugir, deixar√° METADE DE TODO O SEU DINHEIRO conosco!")
-                                                        if(a√ß√£o_do_personagem=="sim" or a√ß√£o_do_personagem=="s" or a√ß√£o_do_personagem=="si" or a√ß√£o_do_personagem=="sm" or a√ß√£o_do_personagem=="im" or a√ß√£o_do_personagem=="ssim"):
-                                                            input(" - Muito obrigado pela colabora√ß√£o financeira! At√© outro dia, talvez...")
+                                                    if(acao_do_personagem=="sim" or acao_do_personagem=="s" or acao_do_personagem=="si" or acao_do_personagem=="sm" or acao_do_personagem=="im" or acao_do_personagem=="ssim"):
+                                                        print(" - Tem certeza?(sim ou n„o) ... Se vocÍ fugir, deixar· METADE DE TODO O SEU DINHEIRO conosco!")
+                                                        time.sleep(0.5)
+                                                        acao_do_personagem=input("-")
+                                                        acao_do_personagem=acao_do_personagem.lower()
+                                                        if(acao_do_personagem=="sim" or acao_do_personagem=="s" or acao_do_personagem=="si" or acao_do_personagem=="sm" or acao_do_personagem=="im" or acao_do_personagem=="ssim"):
+                                                            print(" - Muito obrigado pela colaboraÁ„o financeira! AtÈ outro dia, talvez...")
+                                                            time.sleep(1)
                                                             personagem_jogador[7]=personagem_jogador[7]/2
                                                             break
                                                         else:
-                                                            if(a√ß√£o_do_personagem == "n√£o" or a√ß√£o_do_personagem=="n" or a√ß√£o_do_personagem=="nao" or a√ß√£o_do_personagem=="no" or a√ß√£o_do_personagem=="na" or a√ß√£o_do_personagem=="n√£" or a√ß√£o_do_personagem=="ao" or a√ß√£o_do_personagem=="√£o" or a√ß√£o_do_personagem=="√±" or a√ß√£o_do_personagem=="√±√£o" or a√ß√£o_do_personagem=="√±o" or a√ß√£o_do_personagem=="√±√µ" or a√ß√£o_do_personagem=="√±√£" or a√ß√£o_do_personagem=="√±a√µ" or a√ß√£o_do_personagem=="a√µ"):
-                                                                input(" - Ent√£o vamos voltar a lutar!")
+                                                            if(acao_do_personagem == "n„o" or acao_do_personagem=="n" or acao_do_personagem=="nao" or acao_do_personagem=="no" or acao_do_personagem=="na" or acao_do_personagem=="n„" or acao_do_personagem=="ao" or acao_do_personagem=="„o" or acao_do_personagem=="Ò" or acao_do_personagem=="Ò„o" or acao_do_personagem=="Òo" or acao_do_personagem=="Òı" or acao_do_personagem=="Ò„" or acao_do_personagem=="Òaı" or acao_do_personagem=="aı"):
+                                                                print(" - Ent„o vamos voltar a lutar!")
+                                                                time.sleep(1)
                                                                 batalha()
                                                             else:
-                                                                print('ENTRADA INV√ÅLIDA! Digite "sim" ou "n√£o".\n')
+                                                                print('ENTRADA INV¡LIDA! Digite "sim" ou "n„o".\n')
+                                                                time.sleep(0.5)
                                                     else:
-                                                        print('ENTRADA INV√ÅLIDA! Digite "sim" ou "n√£o".\n')
+                                                        print('ENTRADA INV¡LIDA! Digite "sim" ou "n„o".\n')
+                                                        time.sleep(0.5)
                                         if(personagem_jogador[6]<=0):break
                                         else:
-                                            input(" - Parab√©ns! Voc√™ √© realmente forte!")
-                                            situa√ß√£o[0]=situa√ß√£o[0]+1
+                                            print(" - ParabÈns! VocÍ È realmente forte!")
+                                            time.sleep(1)
+                                            situacao[0]=situacao[0]+1
                                             break
                                     else:
-                                        input(" - Parab√©ns! Voc√™ √© realmente forte!")
-                                        situa√ß√£o[0]=situa√ß√£o[0]+1
+                                        print(" - ParabÈns! VocÍ È realmente forte!")
+                                        time.sleep(1)
+                                        situacao[0]=situacao[0]+1
                                         break
                                 else:
-                                    print('ENTRADA INV√ÅLIDA! Digite "sim" ou "n√£o".\n')
+                                    print('ENTRADA INV¡LIDA! Digite "sim" ou "n„o".\n')
+                                    time.sleep(0.5)
                 else:
-                    if(a√ß√£o_do_personagem=="41"):
-                        if(situa√ß√£o[0]==7):
-                            input(' - Ser√° que voc√™ est√° pronto para brigar comigo, fracote??? Hahahahaha!')
+                    if(acao_do_personagem=="41"):
+                        if(situacao[0]==7):
+                            print(' - SER¡ que vocÍ est· PRONTO para brigar comigo, fracote??? Hahahahaha!')
+                            time.sleep(1)
                             personagem_inimigo = [ "Estudante Briguento \n do Quarto 41", 50, 30, 10, 10, 550, 550]
-                            input(" - Aqui est√° o meu cart√£o:")
+                            print(" - Aqui est· o meu cart„o:")
+                            time.sleep(0.5)
                             print("\n", personagem_inimigo[0],":",personagem_inimigo[5],"pontos de vida.\nAtaque : ",personagem_inimigo[1],".     Defesa : ", personagem_inimigo[2],".\n")
-                            print('\nDeseja prosseguir com a luta?("sim" ou "n√£o")\n')
+                            time.sleep(1)
+                            print('\nDeseja prosseguir com a luta?("sim" ou "n„o")\n')
+                            time.sleep(0.5)
                             while 1:
-                                a√ß√£o_do_personagem = input("-")
-                                a√ß√£o_do_personagem = a√ß√£o_do_personagem.lower()
-                                if(a√ß√£o_do_personagem == "n√£o" or a√ß√£o_do_personagem=="n" or a√ß√£o_do_personagem=="nao" or a√ß√£o_do_personagem=="no" or a√ß√£o_do_personagem=="na" or a√ß√£o_do_personagem=="n√£" or a√ß√£o_do_personagem=="ao" or a√ß√£o_do_personagem=="√£o" or a√ß√£o_do_personagem=="√±" or a√ß√£o_do_personagem=="√±√£o" or a√ß√£o_do_personagem=="√±o" or a√ß√£o_do_personagem=="√±√µ" or a√ß√£o_do_personagem=="√±√£" or a√ß√£o_do_personagem=="√±a√µ" or a√ß√£o_do_personagem=="a√µ"):
+                                acao_do_personagem = input("-")
+                                acao_do_personagem = acao_do_personagem.lower()
+                                if(acao_do_personagem == "n„o" or acao_do_personagem=="n" or acao_do_personagem=="nao" or acao_do_personagem=="no" or acao_do_personagem=="na" or acao_do_personagem=="n„" or acao_do_personagem=="ao" or acao_do_personagem=="„o" or acao_do_personagem=="Ò" or acao_do_personagem=="Ò„o" or acao_do_personagem=="Òo" or acao_do_personagem=="Òı" or acao_do_personagem=="Ò„" or acao_do_personagem=="Òaı" or acao_do_personagem=="aı"):
                                     break
                                 else:
-                                    if(a√ß√£o_do_personagem=="sim" or a√ß√£o_do_personagem=="s" or a√ß√£o_do_personagem=="si" or a√ß√£o_do_personagem=="sm" or a√ß√£o_do_personagem=="im" or a√ß√£o_do_personagem=="ssim"):
+                                    if(acao_do_personagem=="sim" or acao_do_personagem=="s" or acao_do_personagem=="si" or acao_do_personagem=="sm" or acao_do_personagem=="im" or acao_do_personagem=="ssim"):
                                         batalha()
                                         if(personagem_jogador[6]<=0):break
                                         if(personagem_inimigo[6]>0):
                                             while (personagem_inimigo[6]>0):
-                                                input(" - O que h√°? Vai cair fora mesmo???(sim ou n√£o)")
+                                                print(" - O que h·? Vai cair fora mesmo???(sim ou n„o)")
+                                                time.sleep(0.5)
                                                 while 1:
-                                                    a√ß√£o_do_personagem = input("-")
-                                                    a√ß√£o_do_personagem = a√ß√£o_do_personagem.lower()
-                                                    if(a√ß√£o_do_personagem == "n√£o" or a√ß√£o_do_personagem=="n" or a√ß√£o_do_personagem=="nao" or a√ß√£o_do_personagem=="no" or a√ß√£o_do_personagem=="na" or a√ß√£o_do_personagem=="n√£" or a√ß√£o_do_personagem=="ao" or a√ß√£o_do_personagem=="√£o" or a√ß√£o_do_personagem=="√±" or a√ß√£o_do_personagem=="√±√£o" or a√ß√£o_do_personagem=="√±o" or a√ß√£o_do_personagem=="√±√µ" or a√ß√£o_do_personagem=="√±√£" or a√ß√£o_do_personagem=="√±a√µ" or a√ß√£o_do_personagem=="a√µ"):
-                                                        input(" - Ent√£o cai dentro!!!")
+                                                    acao_do_personagem = input("-")
+                                                    acao_do_personagem = acao_do_personagem.lower()
+                                                    if(acao_do_personagem == "n„o" or acao_do_personagem=="n" or acao_do_personagem=="nao" or acao_do_personagem=="no" or acao_do_personagem=="na" or acao_do_personagem=="n„" or acao_do_personagem=="ao" or acao_do_personagem=="„o" or acao_do_personagem=="Ò" or acao_do_personagem=="Ò„o" or acao_do_personagem=="Òo" or acao_do_personagem=="Òı" or acao_do_personagem=="Ò„" or acao_do_personagem=="Òaı" or acao_do_personagem=="aı"):
+                                                        print(" - Ent„o cai dentro!!!")
+                                                        time.sleep(1)
                                                         batalha()
                                                     else:
-                                                        if(a√ß√£o_do_personagem=="sim" or a√ß√£o_do_personagem=="s" or a√ß√£o_do_personagem=="si" or a√ß√£o_do_personagem=="sm" or a√ß√£o_do_personagem=="im" or a√ß√£o_do_personagem=="ssim"):
-                                                            input(" - √â s√©rio?(sim ou n√£o) ... Se voc√™ fugir, deixar√° METADE DE TODO O SEU DINHEIRO conosco!")
-                                                            if(a√ß√£o_do_personagem=="sim" or a√ß√£o_do_personagem=="s" or a√ß√£o_do_personagem=="si" or a√ß√£o_do_personagem=="sm" or a√ß√£o_do_personagem=="im" or a√ß√£o_do_personagem=="ssim"):
-                                                                input(" - Hahaha! Voc√™ n√£o √© o primeiro que sai do desafio! Por que voc√™ acha que tem um pr√™mio?")
-                                                                input(" - Voc√™ pode tentar de novo se quiser compensar a perda! HAHAHAHAHA!")
+                                                        if(acao_do_personagem=="sim" or acao_do_personagem=="s" or acao_do_personagem=="si" or acao_do_personagem=="sm" or acao_do_personagem=="im" or acao_do_personagem=="ssim"):
+                                                            print(" - … sÈrio?(sim ou n„o) ... Se vocÍ fugir, deixar· METADE DE TODO O SEU DINHEIRO conosco!")
+                                                            time.sleep(0.5)
+                                                            acao_do_personagem=input("-")
+                                                            acao_do_personagem=acao_do_personagem.lower()
+                                                            if(acao_do_personagem=="sim" or acao_do_personagem=="s" or acao_do_personagem=="si" or acao_do_personagem=="sm" or acao_do_personagem=="im" or acao_do_personagem=="ssim"):
+                                                                print(" - Hahaha! VocÍ n„o È o primeiro que sai do desafio! Por que vocÍ acha que tem um prÍmio?")
+                                                                time.sleep(0.5)
+                                                                print(" - VocÍ pode tentar de novo se quiser compensar a perda! HAHAHAHAHA!")
+                                                                time.sleep(0.5)
                                                                 personagem_jogador[7]=personagem_jogador[7]/2
                                                                 break
                                                             else:
-                                                                if(a√ß√£o_do_personagem == "n√£o" or a√ß√£o_do_personagem=="n" or a√ß√£o_do_personagem=="nao" or a√ß√£o_do_personagem=="no" or a√ß√£o_do_personagem=="na" or a√ß√£o_do_personagem=="n√£" or a√ß√£o_do_personagem=="ao" or a√ß√£o_do_personagem=="√£o" or a√ß√£o_do_personagem=="√±" or a√ß√£o_do_personagem=="√±√£o" or a√ß√£o_do_personagem=="√±o" or a√ß√£o_do_personagem=="√±√µ" or a√ß√£o_do_personagem=="√±√£" or a√ß√£o_do_personagem=="√±a√µ" or a√ß√£o_do_personagem=="a√µ"):
-                                                                    input(" - Ent√£o cai dentro!!!")
+                                                                if(acao_do_personagem == "n„o" or acao_do_personagem=="n" or acao_do_personagem=="nao" or acao_do_personagem=="no" or acao_do_personagem=="na" or acao_do_personagem=="n„" or acao_do_personagem=="ao" or acao_do_personagem=="„o" or acao_do_personagem=="Ò" or acao_do_personagem=="Ò„o" or acao_do_personagem=="Òo" or acao_do_personagem=="Òı" or acao_do_personagem=="Ò„" or acao_do_personagem=="Òaı" or acao_do_personagem=="aı"):
+                                                                    print(" - Ent„o cai dentro!!!")
+                                                                    time.sleep(1)
                                                                     batalha()
                                                                 else:
-                                                                    print('ENTRADA INV√ÅLIDA! Digite "sim" ou "n√£o".\n')
+                                                                    print('ENTRADA INV¡LIDA! Digite "sim" ou "n„o".\n')
+                                                                    time.sleep(0.5)
                                                         else:
-                                                            print('ENTRADA INV√ÅLIDA! Digite "sim" ou "n√£o".\n')
+                                                            print('ENTRADA INV¡LIDA! Digite "sim" ou "n„o".\n')
+                                                            time.sleep(0.5)
                                             if(personagem_jogador[6]<=0):break
                                             else:
-                                                input(" - CARAMBA! E n√£o √© que voc√™ estava pronto mesmo?! Hahahaha... Tudo bem perder √†s vezes...")
-                                                situa√ß√£o[0]=situa√ß√£o[0]+1
+                                                print(" - CARAMBA! E n„o È que vocÍ estava pronto mesmo?! Hahahaha... Tudo bem perder ‡s vezes...")
+                                                time.sleep(1)
+                                                situacao[0]=situacao[0]+1
                                                 break
                                         else:
-                                            input(" - Parab√©ns! Voc√™ √© realmente forte!")
-                                            situa√ß√£o[0]=situa√ß√£o[0]+1
+                                            print(" - CARAMBA! E n„o È que vocÍ estava pronto mesmo?! Hahahaha... Tudo bem perder ‡s vezes...")
+                                            time.sleep(1)
+                                            situacao[0]=situacao[0]+1
                                             break
                                     else:
-                                        print('ENTRADA INV√ÅLIDA! Digite "sim" ou "n√£o".\n')
+                                        print('ENTRADA INV¡LIDA! Digite "sim" ou "n„o".\n')
+                                        time.sleep(0.5)
                         else:
-                            if(situa√ß√£o[0]>7):
-                                input("Voc√™ j√° lutou aqui!")
+                            if(situacao[0]>7):
+                                print("VocÍ j· lutou aqui!")
+                                time.sleep(1)
                             else:
-                                input(" - Voc√™ n√£o pode me desafiar enquanto n√£o vencer do briguento do quarto 40")
+                                print(" - VocÍ n„o pode me desafiar enquanto n„o vencer do briguento do quarto 40")
+                                time.sleep(1)
                     else:
-                        if(a√ß√£o_do_personagem=="42"):
-                            if(situa√ß√£o[0]==8):
-                                input(' - Humhumhumhum... Voc√™ vai perder...')
+                        if(acao_do_personagem=="42"):
+                            if(situacao[0]==8):
+                                print(' - Humhumhumhum... VocÍ vai perder...')
+                                time.sleep(1)
                                 personagem_inimigo = [ "Estudante Briguento \n do Quarto 42", 90, 70, 15, 15, 790, 790]
-                                input(" - Veja:")
+                                print(" - Veja:")
+                                time.sleep(0.5)
                                 print("\n", personagem_inimigo[0],":",personagem_inimigo[5],"pontos de vida.\nAtaque : ",personagem_inimigo[1],".     Defesa : ", personagem_inimigo[2],".\n")
-                                print('\nDeseja prosseguir com a luta?("sim" ou "n√£o")\n')
+                                time.sleep(1)
+                                print('\nDeseja prosseguir com a luta?("sim" ou "n„o")\n')
+                                time.sleep(0.5)
                                 while 1:
-                                    a√ß√£o_do_personagem = input("-")
-                                    a√ß√£o_do_personagem = a√ß√£o_do_personagem.lower()
-                                    if(a√ß√£o_do_personagem == "n√£o" or a√ß√£o_do_personagem=="n" or a√ß√£o_do_personagem=="nao" or a√ß√£o_do_personagem=="no" or a√ß√£o_do_personagem=="na" or a√ß√£o_do_personagem=="n√£" or a√ß√£o_do_personagem=="ao" or a√ß√£o_do_personagem=="√£o" or a√ß√£o_do_personagem=="√±" or a√ß√£o_do_personagem=="√±√£o" or a√ß√£o_do_personagem=="√±o" or a√ß√£o_do_personagem=="√±√µ" or a√ß√£o_do_personagem=="√±√£" or a√ß√£o_do_personagem=="√±a√µ" or a√ß√£o_do_personagem=="a√µ"):
+                                    acao_do_personagem = input("-")
+                                    acao_do_personagem = acao_do_personagem.lower()
+                                    if(acao_do_personagem == "n„o" or acao_do_personagem=="n" or acao_do_personagem=="nao" or acao_do_personagem=="no" or acao_do_personagem=="na" or acao_do_personagem=="n„" or acao_do_personagem=="ao" or acao_do_personagem=="„o" or acao_do_personagem=="Ò" or acao_do_personagem=="Ò„o" or acao_do_personagem=="Òo" or acao_do_personagem=="Òı" or acao_do_personagem=="Ò„" or acao_do_personagem=="Òaı" or acao_do_personagem=="aı"):
                                         break
                                     else:
-                                        if(a√ß√£o_do_personagem=="sim" or a√ß√£o_do_personagem=="s" or a√ß√£o_do_personagem=="si" or a√ß√£o_do_personagem=="sm" or a√ß√£o_do_personagem=="im" or a√ß√£o_do_personagem=="ssim"):
+                                        if(acao_do_personagem=="sim" or acao_do_personagem=="s" or acao_do_personagem=="si" or acao_do_personagem=="sm" or acao_do_personagem=="im" or acao_do_personagem=="ssim"):
                                             batalha()
                                             if(personagem_jogador[6]<=0):break
                                             if(personagem_inimigo[6]>0):
                                                 while (personagem_inimigo[6]>0):
-                                                    input(" - Voc√™ vai fugir?(sim ou n√£o) Humhumhumhum...")
+                                                    print(" - VocÍ vai fugir?(sim ou n„o) Humhumhumhum...")
+                                                    time.sleep(0.5)
                                                     while 1:
-                                                        a√ß√£o_do_personagem = input("-")
-                                                        a√ß√£o_do_personagem = a√ß√£o_do_personagem.lower()
-                                                        if(a√ß√£o_do_personagem == "n√£o" or a√ß√£o_do_personagem=="n" or a√ß√£o_do_personagem=="nao" or a√ß√£o_do_personagem=="no" or a√ß√£o_do_personagem=="na" or a√ß√£o_do_personagem=="n√£" or a√ß√£o_do_personagem=="ao" or a√ß√£o_do_personagem=="√£o" or a√ß√£o_do_personagem=="√±" or a√ß√£o_do_personagem=="√±√£o" or a√ß√£o_do_personagem=="√±o" or a√ß√£o_do_personagem=="√±√µ" or a√ß√£o_do_personagem=="√±√£" or a√ß√£o_do_personagem=="√±a√µ" or a√ß√£o_do_personagem=="a√µ"):
-                                                            input(" - Venha!!!")
+                                                        acao_do_personagem = input("-")
+                                                        acao_do_personagem = acao_do_personagem.lower()
+                                                        if(acao_do_personagem == "n„o" or acao_do_personagem=="n" or acao_do_personagem=="nao" or acao_do_personagem=="no" or acao_do_personagem=="na" or acao_do_personagem=="n„" or acao_do_personagem=="ao" or acao_do_personagem=="„o" or acao_do_personagem=="Ò" or acao_do_personagem=="Ò„o" or acao_do_personagem=="Òo" or acao_do_personagem=="Òı" or acao_do_personagem=="Ò„" or acao_do_personagem=="Òaı" or acao_do_personagem=="aı"):
+                                                            print(" - Venha!!!")
+                                                            time.sleep(1)
                                                             batalha()
                                                         else:
-                                                            if(a√ß√£o_do_personagem=="sim" or a√ß√£o_do_personagem=="s" or a√ß√£o_do_personagem=="si" or a√ß√£o_do_personagem=="sm" or a√ß√£o_do_personagem=="im" or a√ß√£o_do_personagem=="ssim"):
-                                                                input(" - Voc√™ vai mesmo?(sim ou n√£o) ... Se voc√™ fugir, deixar√° METADE DE TODO O SEU DINHEIRO conosco!")
-                                                                if(a√ß√£o_do_personagem=="sim" or a√ß√£o_do_personagem=="s" or a√ß√£o_do_personagem=="si" or a√ß√£o_do_personagem=="sm" or a√ß√£o_do_personagem=="im" or a√ß√£o_do_personagem=="ssim"):
-                                                                    input(" - Humhumhumhum... Fraco! Eu sempre soube que voc√™ era fraco!")
-                                                                    input(" - Volte quando voc√™ deixar de ser fraco! FWUAHAHAHAHAHAHAHA!!! NUNCAAA!!!")
+                                                            if(acao_do_personagem=="sim" or acao_do_personagem=="s" or acao_do_personagem=="si" or acao_do_personagem=="sm" or acao_do_personagem=="im" or acao_do_personagem=="ssim"):
+                                                                print(" - VocÍ vai mesmo?(sim ou n„o) ... Se vocÍ fugir, deixar· METADE DE TODO O SEU DINHEIRO conosco!")
+                                                                time.sleep(0.5)
+                                                                acao_do_personagem=input("-")
+                                                                acao_do_personagem=acao_do_personagem.lower()
+                                                                if(acao_do_personagem=="sim" or acao_do_personagem=="s" or acao_do_personagem=="si" or acao_do_personagem=="sm" or acao_do_personagem=="im" or acao_do_personagem=="ssim"):
+                                                                    print(" - Humhumhumhum... Fraco! Eu sempre soube que vocÍ era fraco!")
+                                                                    time.sleep(0.5)
+                                                                    print(" - Volte quando vocÍ deixar de ser fraco! FWUAHAHAHAHAHAHAHA!!! NUNCAAA!!!")
+                                                                    time.sleep(0.5)
                                                                     personagem_jogador[7]=personagem_jogador[7]/2
                                                                     break
                                                                 else:
-                                                                    if(a√ß√£o_do_personagem == "n√£o" or a√ß√£o_do_personagem=="n" or a√ß√£o_do_personagem=="nao" or a√ß√£o_do_personagem=="no" or a√ß√£o_do_personagem=="na" or a√ß√£o_do_personagem=="n√£" or a√ß√£o_do_personagem=="ao" or a√ß√£o_do_personagem=="√£o" or a√ß√£o_do_personagem=="√±" or a√ß√£o_do_personagem=="√±√£o" or a√ß√£o_do_personagem=="√±o" or a√ß√£o_do_personagem=="√±√µ" or a√ß√£o_do_personagem=="√±√£" or a√ß√£o_do_personagem=="√±a√µ" or a√ß√£o_do_personagem=="a√µ"):
-                                                                        input(" - Venha!!!")
+                                                                    if(acao_do_personagem == "n„o" or acao_do_personagem=="n" or acao_do_personagem=="nao" or acao_do_personagem=="no" or acao_do_personagem=="na" or acao_do_personagem=="n„" or acao_do_personagem=="ao" or acao_do_personagem=="„o" or acao_do_personagem=="Ò" or acao_do_personagem=="Ò„o" or acao_do_personagem=="Òo" or acao_do_personagem=="Òı" or acao_do_personagem=="Ò„" or acao_do_personagem=="Òaı" or acao_do_personagem=="aı"):
+                                                                        print(" - Venha!!!")
+                                                                        time.sleep(1)
                                                                         batalha()
                                                                     else:
-                                                                        print('ENTRADA INV√ÅLIDA! Digite "sim" ou "n√£o".\n')
+                                                                        print('ENTRADA INV¡LIDA! Digite "sim" ou "n„o".\n')
+                                                                        time.sleep(0.5)
                                                             else:
-                                                                print('ENTRADA INV√ÅLIDA! Digite "sim" ou "n√£o".\n')
+                                                                print('ENTRADA INV¡LIDA! Digite "sim" ou "n„o".\n')
+                                                                time.sleep(0.5)
                                                 if(personagem_jogador[6]<=0):break
                                                 else:
-                                                    input(" - COMO?! COMO?! Voc√™ trapaceou! EU SEI!!! Mas tudo bem, voc√™ n√£o conseguir√° vencer o pr√≥ximo, nem trapaceando MUITO!")
-                                                    situa√ß√£o[0]=situa√ß√£o[0]+1
+                                                    print(" - COMO?! COMO?! VocÍ trapaceou! EU SEI!!! Mas tudo bem, vocÍ n„o conseguir· vencer o prÛximo, nem trapaceando MUITO!")
+                                                    situacao[0]=situacao[0]+1
                                                     break
                                             else:
-                                                input(" - COMO?! COMO?! Voc√™ trapaceou! EU SEI!!! Mas tudo bem, voc√™ n√£o conseguir√° vencer o pr√≥ximo, nem trapaceando MUITO!")
-                                                situa√ß√£o[0]=situa√ß√£o[0]+1
+                                                print(" - COMO?! COMO?! VocÍ trapaceou! EU SEI!!! Mas tudo bem, vocÍ n„o conseguir· vencer o prÛximo, nem trapaceando MUITO!")
+                                                situacao[0]=situacao[0]+1
                                                 break
                                         else:
-                                            print('ENTRADA INV√ÅLIDA! Digite "sim" ou "n√£o".\n')
+                                            print('ENTRADA INV¡LIDA! Digite "sim" ou "n„o".\n')
+                                            time.sleep(0.5)
                             else:
-                                if(situa√ß√£o[0]>8):
-                                    input("Voc√™ j√° lutou aqui!")
+                                if(situacao[0]>8):
+                                    print("VocÍ j· lutou aqui!")
+                                    time.sleep(1)
                                 else:
-                                    input("Voc√™ n√£o pode me desafiar enquanto n√£o vencer do briguento do quarto 41")
+                                    print("VocÍ n„o pode me desafiar enquanto n„o vencer do briguento do quarto 41")
+                                    time.sleep(1)
                         else:
-                            if(a√ß√£o_do_personagem=="43"):
-                                if(situa√ß√£o[0]==9):
-                                    input(' - Sua presen√ßa √© insignificante.')
+                            if(acao_do_personagem=="43"):
+                                if(situacao[0]==9):
+                                    print(' - Sua presenÁa È insignificante.')
+                                    time.sleep(1)
                                     personagem_inimigo = [ "Estudante Briguento \n do Quarto 43", 180, 100, 20, 20, 1500, 1500]
-                                    input(" - Mas vou te dar a honra de apreciar o meu cart√£o:")
+                                    print(" - Mas vou te dar a honra de apreciar o meu cart„o:")
+                                    time.sleep(0.5)
                                     print("\n", personagem_inimigo[0],":",personagem_inimigo[5],"pontos de vida.\nAtaque : ",personagem_inimigo[1],".     Defesa : ", personagem_inimigo[2],".\n")
-                                    print('\nDeseja prosseguir com a luta?("sim" ou "n√£o")\n')
+                                    time.sleep(1)
+                                    print('\nDeseja prosseguir com a luta?("sim" ou "n„o")\n')
+                                    time.sleep(0.5)
                                     while 1:
-                                        a√ß√£o_do_personagem = input("-")
-                                        a√ß√£o_do_personagem = a√ß√£o_do_personagem.lower()
-                                        if(a√ß√£o_do_personagem == "n√£o" or a√ß√£o_do_personagem=="n" or a√ß√£o_do_personagem=="nao" or a√ß√£o_do_personagem=="no" or a√ß√£o_do_personagem=="na" or a√ß√£o_do_personagem=="n√£" or a√ß√£o_do_personagem=="ao" or a√ß√£o_do_personagem=="√£o" or a√ß√£o_do_personagem=="√±" or a√ß√£o_do_personagem=="√±√£o" or a√ß√£o_do_personagem=="√±o" or a√ß√£o_do_personagem=="√±√µ" or a√ß√£o_do_personagem=="√±√£" or a√ß√£o_do_personagem=="√±a√µ" or a√ß√£o_do_personagem=="a√µ"):
+                                        acao_do_personagem = input("-")
+                                        acao_do_personagem = acao_do_personagem.lower()
+                                        if(acao_do_personagem == "n„o" or acao_do_personagem=="n" or acao_do_personagem=="nao" or acao_do_personagem=="no" or acao_do_personagem=="na" or acao_do_personagem=="n„" or acao_do_personagem=="ao" or acao_do_personagem=="„o" or acao_do_personagem=="Ò" or acao_do_personagem=="Ò„o" or acao_do_personagem=="Òo" or acao_do_personagem=="Òı" or acao_do_personagem=="Ò„" or acao_do_personagem=="Òaı" or acao_do_personagem=="aı"):
                                             break
                                         else:
-                                            if(a√ß√£o_do_personagem=="sim" or a√ß√£o_do_personagem=="s" or a√ß√£o_do_personagem=="si" or a√ß√£o_do_personagem=="sm" or a√ß√£o_do_personagem=="im" or a√ß√£o_do_personagem=="ssim"):
+                                            if(acao_do_personagem=="sim" or acao_do_personagem=="s" or acao_do_personagem=="si" or acao_do_personagem=="sm" or acao_do_personagem=="im" or acao_do_personagem=="ssim"):
                                                 batalha()
                                                 if(personagem_jogador[6]<=0):break
                                                 if(personagem_inimigo[6]>0):
                                                     while (personagem_inimigo[6]>0):
-                                                        input(" - ... Fugindo?(sim ou n√£o)")
+                                                        print(" - ... Fugindo?(sim ou n„o)")
+                                                        time.sleep(0.5)
                                                         while 1:
-                                                            a√ß√£o_do_personagem = input("-")
-                                                            a√ß√£o_do_personagem = a√ß√£o_do_personagem.lower()
-                                                            if(a√ß√£o_do_personagem == "n√£o" or a√ß√£o_do_personagem=="n" or a√ß√£o_do_personagem=="nao" or a√ß√£o_do_personagem=="no" or a√ß√£o_do_personagem=="na" or a√ß√£o_do_personagem=="n√£" or a√ß√£o_do_personagem=="ao" or a√ß√£o_do_personagem=="√£o" or a√ß√£o_do_personagem=="√±" or a√ß√£o_do_personagem=="√±√£o" or a√ß√£o_do_personagem=="√±o" or a√ß√£o_do_personagem=="√±√µ" or a√ß√£o_do_personagem=="√±√£" or a√ß√£o_do_personagem=="√±a√µ" or a√ß√£o_do_personagem=="a√µ"):
-                                                                input(" - Voc√™ vai MORRER!!!")
+                                                            acao_do_personagem = input("-")
+                                                            acao_do_personagem = acao_do_personagem.lower()
+                                                            if(acao_do_personagem == "n„o" or acao_do_personagem=="n" or acao_do_personagem=="nao" or acao_do_personagem=="no" or acao_do_personagem=="na" or acao_do_personagem=="n„" or acao_do_personagem=="ao" or acao_do_personagem=="„o" or acao_do_personagem=="Ò" or acao_do_personagem=="Ò„o" or acao_do_personagem=="Òo" or acao_do_personagem=="Òı" or acao_do_personagem=="Ò„" or acao_do_personagem=="Òaı" or acao_do_personagem=="aı"):
+                                                                print(" - VocÍ vai MORRER!!!")
+                                                                time.sleep(1)
                                                                 batalha()
                                                             else:
-                                                                if(a√ß√£o_do_personagem=="sim" or a√ß√£o_do_personagem=="s" or a√ß√£o_do_personagem=="si" or a√ß√£o_do_personagem=="sm" or a√ß√£o_do_personagem=="im" or a√ß√£o_do_personagem=="ssim"):
-                                                                    input(" - Vai fugir mesmo, lixo?(sim ou n√£o) ... Se voc√™ fugir, deixar√° METADE DE TODO O SEU DINHEIRO conosco!")
-                                                                    if(a√ß√£o_do_personagem=="sim" or a√ß√£o_do_personagem=="s" or a√ß√£o_do_personagem=="si" or a√ß√£o_do_personagem=="sm" or a√ß√£o_do_personagem=="im" or a√ß√£o_do_personagem=="ssim"):
-                                                                        input(" - S√£o os lixos como voc√™ que pagaram o pr√™mio que NUNCA SER√Å SEU!")
-                                                                        input(" - Volte quando quiser apanhar mais!")
+                                                                if(acao_do_personagem=="sim" or acao_do_personagem=="s" or acao_do_personagem=="si" or acao_do_personagem=="sm" or acao_do_personagem=="im" or acao_do_personagem=="ssim"):
+                                                                    print(" - Vai fugir mesmo, lixo?(sim ou n„o) ... Se vocÍ fugir, deixar· METADE DE TODO O SEU DINHEIRO conosco!")
+                                                                    time.sleep(0.5)
+                                                                    acao_do_personagem=input("-")
+                                                                    acao_do_personagem=acao_do_personagem.lower()
+                                                                    if(acao_do_personagem=="sim" or acao_do_personagem=="s" or acao_do_personagem=="si" or acao_do_personagem=="sm" or acao_do_personagem=="im" or acao_do_personagem=="ssim"):
+                                                                        print(" - S„o os lixos como vocÍ que pagaram o prÍmio que NUNCA SER¡ SEU!")
+                                                                        time.sleep(0.5)
+                                                                        print(" - Volte quando quiser apanhar mais!")
+                                                                        time.sleep(0.5)
                                                                         personagem_jogador[7]=personagem_jogador[7]/2
                                                                         break
                                                                     else:
-                                                                        if(a√ß√£o_do_personagem == "n√£o" or a√ß√£o_do_personagem=="n" or a√ß√£o_do_personagem=="nao" or a√ß√£o_do_personagem=="no" or a√ß√£o_do_personagem=="na" or a√ß√£o_do_personagem=="n√£" or a√ß√£o_do_personagem=="ao" or a√ß√£o_do_personagem=="√£o" or a√ß√£o_do_personagem=="√±" or a√ß√£o_do_personagem=="√±√£o" or a√ß√£o_do_personagem=="√±o" or a√ß√£o_do_personagem=="√±√µ" or a√ß√£o_do_personagem=="√±√£" or a√ß√£o_do_personagem=="√±a√µ" or a√ß√£o_do_personagem=="a√µ"):
-                                                                            input(" - Voc√™ vai MORRER!!!")
+                                                                        if(acao_do_personagem == "n„o" or acao_do_personagem=="n" or acao_do_personagem=="nao" or acao_do_personagem=="no" or acao_do_personagem=="na" or acao_do_personagem=="n„" or acao_do_personagem=="ao" or acao_do_personagem=="„o" or acao_do_personagem=="Ò" or acao_do_personagem=="Ò„o" or acao_do_personagem=="Òo" or acao_do_personagem=="Òı" or acao_do_personagem=="Ò„" or acao_do_personagem=="Òaı" or acao_do_personagem=="aı"):
+                                                                            print(" - VocÍ vai MORRER!!!")
+                                                                            time.sleep(1)
                                                                             batalha()
                                                                         else:
-                                                                            print('ENTRADA INV√ÅLIDA! Digite "sim" ou "n√£o".\n')
+                                                                            print('ENTRADA INV¡LIDA! Digite "sim" ou "n„o".\n')
+                                                                            time.sleep(0.5)
                                                                 else:
-                                                                    print('ENTRADA INV√ÅLIDA! Digite "sim" ou "n√£o".\n')
+                                                                    print('ENTRADA INV¡LIDA! Digite "sim" ou "n„o".\n')
+                                                                    time.sleep(0.5)
                                                     if(personagem_jogador[6]<=0):break
                                                     else:
-                                                        input(" - Desgra√ßado... Voc√™ √© forte demais...")
-                                                        situa√ß√£o[0]=situa√ß√£o[0]+1
+                                                        print(" - DesgraÁado... VocÍ È forte demais...")
+                                                        time.sleep(1)
+                                                        situacao[0]=situacao[0]+1
                                                         break
                                                 else:
-                                                    input(" - Desgra√ßado... Voc√™ √© forte demais...")
-                                                    situa√ß√£o[0]=situa√ß√£o[0]+1
+                                                    print(" - DesgraÁado... VocÍ È forte demais...")
+                                                    time.sleep(1)
+                                                    situacao[0]=situacao[0]+1
                                                     break
                                             else:
-                                                print('ENTRADA INV√ÅLIDA! Digite "sim" ou "n√£o".\n')
+                                                print('ENTRADA INV¡LIDA! Digite "sim" ou "n„o".\n')
+                                                time.sleep(0.5)
                                 else:
-                                    if(situa√ß√£o[0]>9):
-                                        input("Voc√™ j√° lutou aqui!")
+                                    if(situacao[0]>9):
+                                        print("VocÍ j· lutou aqui!")
+                                        time.sleep(1)
                                     else:
-                                        input("Voc√™ n√£o pode me desafiar enquanto n√£o vencer do briguento do quarto 42")
+                                        print("VocÍ n„o pode me desafiar enquanto n„o vencer do briguento do quarto 42")
+                                        time.sleep(1)
                             else:
-                                if(a√ß√£o_do_personagem=="44"):
-                                    if(situa√ß√£o[0]==10):
-                                        input(' - Me perd√¥e pelo comportamento daqueles dois... Nenhum deles tem a cabe√ßa no lugar.')
-                                        input(" - Mesmo assim, √© raro algu√©m passar do quarto 40, √© rar√≠ssimo algu√©m chegar at√© mim.")
-                                        input(" - Voc√™ √© um briguento e tanto!")
+                                if(acao_do_personagem=="44"):
+                                    if(situacao[0]==10):
+                                        print(' - Me perdÙe pelo comportamento daqueles dois... Nenhum deles tem a cabeÁa no lugar.')
+                                        time.sleep(1)
+                                        print(" - Mesmo assim, È raro alguÈm passar do quarto 40, È rarÌssimo alguÈm chegar atÈ mim.")
+                                        time.sleep(1)
+                                        print(" - VocÍ È um briguento e tanto!")
+                                        time.sleep(1)
                                         personagem_inimigo = [ "Estudante Briguento \n do Quarto 44", 300, 200, 40, 40, 3200, 3200]
-                                        input(" - Vamos logo ao que interessa:")
+                                        print(" - Vamos logo ao que interessa:")
+                                        time.sleep(0.5)
                                         print("\n", personagem_inimigo[0],":",personagem_inimigo[5],"pontos de vida.\nAtaque : ",personagem_inimigo[1],".     Defesa : ", personagem_inimigo[2],".\n")
-                                        print('\nDeseja prosseguir com a luta?("sim" ou "n√£o")\n')
+                                        time.sleep(1)
+                                        print('\nDeseja prosseguir com a luta?("sim" ou "n„o")\n')
+                                        time.sleep(0.5)
                                         while 1:
-                                            a√ß√£o_do_personagem = input("-")
-                                            a√ß√£o_do_personagem = a√ß√£o_do_personagem.lower()
-                                            if(a√ß√£o_do_personagem == "n√£o" or a√ß√£o_do_personagem=="n" or a√ß√£o_do_personagem=="nao" or a√ß√£o_do_personagem=="no" or a√ß√£o_do_personagem=="na" or a√ß√£o_do_personagem=="n√£" or a√ß√£o_do_personagem=="ao" or a√ß√£o_do_personagem=="√£o" or a√ß√£o_do_personagem=="√±" or a√ß√£o_do_personagem=="√±√£o" or a√ß√£o_do_personagem=="√±o" or a√ß√£o_do_personagem=="√±√µ" or a√ß√£o_do_personagem=="√±√£" or a√ß√£o_do_personagem=="√±a√µ" or a√ß√£o_do_personagem=="a√µ"):
+                                            acao_do_personagem = input("-")
+                                            acao_do_personagem = acao_do_personagem.lower()
+                                            if(acao_do_personagem == "n„o" or acao_do_personagem=="n" or acao_do_personagem=="nao" or acao_do_personagem=="no" or acao_do_personagem=="na" or acao_do_personagem=="n„" or acao_do_personagem=="ao" or acao_do_personagem=="„o" or acao_do_personagem=="Ò" or acao_do_personagem=="Ò„o" or acao_do_personagem=="Òo" or acao_do_personagem=="Òı" or acao_do_personagem=="Ò„" or acao_do_personagem=="Òaı" or acao_do_personagem=="aı"):
                                                 break
                                             else:
-                                                if(a√ß√£o_do_personagem=="sim" or a√ß√£o_do_personagem=="s" or a√ß√£o_do_personagem=="si" or a√ß√£o_do_personagem=="sm" or a√ß√£o_do_personagem=="im" or a√ß√£o_do_personagem=="ssim"):
+                                                if(acao_do_personagem=="sim" or acao_do_personagem=="s" or acao_do_personagem=="si" or acao_do_personagem=="sm" or acao_do_personagem=="im" or acao_do_personagem=="ssim"):
                                                     batalha()
                                                     if(personagem_jogador[6]<=0):break
                                                     if(personagem_inimigo[6]>0):
                                                         while (personagem_inimigo[6]>0):
-                                                            input(" - ... Vai abandonar a nossa luta?(sim ou n√£o)")
+                                                            print(" - ... Vai abandonar a nossa luta?(sim ou n„o)")
+                                                            time.sleep(0.5)
                                                             while 1:
-                                                                a√ß√£o_do_personagem = input("-")
-                                                                a√ß√£o_do_personagem = a√ß√£o_do_personagem.lower()
-                                                                if(a√ß√£o_do_personagem == "n√£o" or a√ß√£o_do_personagem=="n" or a√ß√£o_do_personagem=="nao" or a√ß√£o_do_personagem=="no" or a√ß√£o_do_personagem=="na" or a√ß√£o_do_personagem=="n√£" or a√ß√£o_do_personagem=="ao" or a√ß√£o_do_personagem=="√£o" or a√ß√£o_do_personagem=="√±" or a√ß√£o_do_personagem=="√±√£o" or a√ß√£o_do_personagem=="√±o" or a√ß√£o_do_personagem=="√±√µ" or a√ß√£o_do_personagem=="√±√£" or a√ß√£o_do_personagem=="√±a√µ" or a√ß√£o_do_personagem=="a√µ"):
-                                                                    input(" - Desde o in√≠cio, eu sabia que voc√™ n√£o era qualquer um!")
+                                                                acao_do_personagem = input("-")
+                                                                acao_do_personagem = acao_do_personagem.lower()
+                                                                if(acao_do_personagem == "n„o" or acao_do_personagem=="n" or acao_do_personagem=="nao" or acao_do_personagem=="no" or acao_do_personagem=="na" or acao_do_personagem=="n„" or acao_do_personagem=="ao" or acao_do_personagem=="„o" or acao_do_personagem=="Ò" or acao_do_personagem=="Ò„o" or acao_do_personagem=="Òo" or acao_do_personagem=="Òı" or acao_do_personagem=="Ò„" or acao_do_personagem=="Òaı" or acao_do_personagem=="aı"):
+                                                                    print(" - Desde o inÌcio, eu sabia que vocÍ n„o era qualquer um!")
+                                                                    time.sleep(1)
                                                                     batalha()
                                                                 else:
-                                                                    if(a√ß√£o_do_personagem=="sim" or a√ß√£o_do_personagem=="s" or a√ß√£o_do_personagem=="si" or a√ß√£o_do_personagem=="sm" or a√ß√£o_do_personagem=="im" or a√ß√£o_do_personagem=="ssim"):
-                                                                        input(" - Certeza, vai abandonar a √∫ltima luta?(sim ou n√£o) ... Se voc√™ fugir, deixar√° METADE DE TODO O SEU DINHEIRO conosco!")
-                                                                        if(a√ß√£o_do_personagem=="sim" or a√ß√£o_do_personagem=="s" or a√ß√£o_do_personagem=="si" or a√ß√£o_do_personagem=="sm" or a√ß√£o_do_personagem=="im" or a√ß√£o_do_personagem=="ssim"):
-                                                                            input(" - Recupere-se e treine mais!")
-                                                                            input(" - Estarei esperando o seu retorno!")
+                                                                    if(acao_do_personagem=="sim" or acao_do_personagem=="s" or acao_do_personagem=="si" or acao_do_personagem=="sm" or acao_do_personagem=="im" or acao_do_personagem=="ssim"):
+                                                                        print(" - Certeza, vai abandonar a ˙ltima luta?(sim ou n„o) ... Se vocÍ fugir, deixar· METADE DE TODO O SEU DINHEIRO conosco!")
+                                                                        time.sleep(0.5)
+                                                                        acao_do_personagem=input("-")
+                                                                        acao_do_personagem=acao_do_personagem.lower()
+                                                                        if(acao_do_personagem=="sim" or acao_do_personagem=="s" or acao_do_personagem=="si" or acao_do_personagem=="sm" or acao_do_personagem=="im" or acao_do_personagem=="ssim"):
+                                                                            print(" - Recupere-se e treine mais!")
+                                                                            time.sleep(0.5)
+                                                                            print(" - Estarei esperando o seu retorno!")
+                                                                            time.sleep(0.5)
                                                                             personagem_jogador[7]=personagem_jogador[7]/2
                                                                             break
                                                                         else:
-                                                                            if(a√ß√£o_do_personagem == "n√£o" or a√ß√£o_do_personagem=="n" or a√ß√£o_do_personagem=="nao" or a√ß√£o_do_personagem=="no" or a√ß√£o_do_personagem=="na" or a√ß√£o_do_personagem=="n√£" or a√ß√£o_do_personagem=="ao" or a√ß√£o_do_personagem=="√£o" or a√ß√£o_do_personagem=="√±" or a√ß√£o_do_personagem=="√±√£o" or a√ß√£o_do_personagem=="√±o" or a√ß√£o_do_personagem=="√±√µ" or a√ß√£o_do_personagem=="√±√£" or a√ß√£o_do_personagem=="√±a√µ" or a√ß√£o_do_personagem=="a√µ"):
-                                                                                input(" - Ainda bem, n√£o quero deixar a nossa luta para depois!!!")
+                                                                            if(acao_do_personagem == "n„o" or acao_do_personagem=="n" or acao_do_personagem=="nao" or acao_do_personagem=="no" or acao_do_personagem=="na" or acao_do_personagem=="n„" or acao_do_personagem=="ao" or acao_do_personagem=="„o" or acao_do_personagem=="Ò" or acao_do_personagem=="Ò„o" or acao_do_personagem=="Òo" or acao_do_personagem=="Òı" or acao_do_personagem=="Ò„" or acao_do_personagem=="Òaı" or acao_do_personagem=="aı"):
+                                                                                print(" - Ainda bem, n„o quero deixar a nossa luta para depois!!!")
+                                                                                time.sleep(1)
                                                                                 batalha()
                                                                             else:
-                                                                                print('ENTRADA INV√ÅLIDA! Digite "sim" ou "n√£o".\n')
+                                                                                print('ENTRADA INV¡LIDA! Digite "sim" ou "n„o".\n')
+                                                                                time.sleep(0.5)
                                                                     else:
-                                                                        print('ENTRADA INV√ÅLIDA! Digite "sim" ou "n√£o".\n')
+                                                                        print('ENTRADA INV¡LIDA! Digite "sim" ou "n„o".\n')
+                                                                        time.sleep(0.5)
                                                         if(personagem_jogador[6]<=0):break
                                                         else:
-                                                            input(" - Incr√≠vel... Voc√™ √© um g√™nio das batalhas! √â realmente d√≠gno do pr√™mio!")
-                                                            input(" - Aqui est√°: uma Malha Ninja!")
-                                                            input("Voc√™ guardou a Malha Ninja na sua Mochila!")
+                                                            print(" - IncrÌvel... VocÍ È um gÍnio das batalhas! … realmente dÌgno do prÍmio!")
+                                                            time.sleep(1)
+                                                            print(" - Aqui est·: uma Malha Ninja!")
+                                                            time.sleep(0.5)
+                                                            print("VocÍ guardou a Malha Ninja na sua Mochila!")
+                                                            time.sleep(1)
                                                             quantidade_adicionada=1
                                                             item_adicionado=malha_ninja
                                                             adicionaItem()
-                                                            situa√ß√£o[0]=situa√ß√£o[0]+1
+                                                            situacao[0]=situacao[0]+1
                                                             break
                                                     else:
-                                                        input(" - Incr√≠vel... Voc√™ √© um g√™nio das batalhas! √â realmente d√≠gno do pr√™mio!")
-                                                        input(" - Aqui est√°: uma Malha Ninja!")
-                                                        input("Voc√™ guardou a Malha Ninja na sua Mochila!")
+                                                        print(" - IncrÌvel... VocÍ È um gÍnio das batalhas! … realmente dÌgno do prÍmio!")
+                                                        time.sleep(1)
+                                                        print(" - Aqui est·: uma Malha Ninja!")
+                                                        time.sleep(0.5)
+                                                        print("VocÍ guardou a Malha Ninja na sua Mochila!")
+                                                        time.sleep(1)
                                                         quantidade_adicionada=1
                                                         item_adicionado=malha_ninja
                                                         adicionaItem()
-                                                        situa√ß√£o[0]=situa√ß√£o[0]+1
+                                                        situacao[0]=situacao[0]+1
                                                         break
                                                 else:
-                                                    print('ENTRADA INV√ÅLIDA! Digite "sim" ou "n√£o".\n')
+                                                    print('ENTRADA INV¡LIDA! Digite "sim" ou "n„o".\n')
                                     else:
-                                        if(situa√ß√£o[0]>10):
-                                            input("Voc√™ j√° lutou aqui!")
+                                        if(situacao[0]>10):
+                                            print("VocÍ j· lutou aqui!")
+                                            time.sleep(1)
                                         else:
-                                            input("Voc√™ n√£o pode me desafiar enquanto n√£o vencer do briguento do quarto 43")
+                                            print(" - VocÍ n„o pode me desafiar enquanto n„o vencer do briguento do quarto 43")
+                                            time.sleep(1)
                                 else:
-                                    if(a√ß√£o_do_personagem == "salvar o jogo" or a√ß√£o_do_personagem=="guardar o jogo" or a√ß√£o_do_personagem == "salvar jogo" or a√ß√£o_do_personagem=="guardar jogo" or a√ß√£o_do_personagem == "salvar" or a√ß√£o_do_personagem == "save" or a√ß√£o_do_personagem == "save game" or a√ß√£o_do_personagem == "salvar o progresso" or a√ß√£o_do_personagem == "salvar progresso" or a√ß√£o_do_personagem == "guardar o progresso" or a√ß√£o_do_personagem == "guardar progresso" or a√ß√£o_do_personagem == "save progress" or a√ß√£o_do_personagem == "salva" or a√ß√£o_do_personagem == "sava" or a√ß√£o_do_personagem == "slvar" or a√ß√£o_do_personagem == "svar" or a√ß√£o_do_personagem == "svr" or a√ß√£o_do_personagem == "slvr" or a√ß√£o_do_personagem == "sav" or a√ß√£o_do_personagem == "sve" or a√ß√£o_do_personagem == "sv" or a√ß√£o_do_personagem == "salvar o game" or a√ß√£o_do_personagem == "guardar o game" or a√ß√£o_do_personagem == "salvar game" or a√ß√£o_do_personagem == "guardar game"):
+                                    if(acao_do_personagem == "salvar o jogo" or acao_do_personagem=="guardar o jogo" or acao_do_personagem == "salvar jogo" or acao_do_personagem=="guardar jogo" or acao_do_personagem == "salvar" or acao_do_personagem == "save" or acao_do_personagem == "save game" or acao_do_personagem == "salvar o progresso" or acao_do_personagem == "salvar progresso" or acao_do_personagem == "guardar o progresso" or acao_do_personagem == "guardar progresso" or acao_do_personagem == "save progress" or acao_do_personagem == "salva" or acao_do_personagem == "sava" or acao_do_personagem == "slvar" or acao_do_personagem == "svar" or acao_do_personagem == "svr" or acao_do_personagem == "slvr" or acao_do_personagem == "sav" or acao_do_personagem == "sve" or acao_do_personagem == "sv" or acao_do_personagem == "salvar o game" or acao_do_personagem == "guardar o game" or acao_do_personagem == "salvar game" or acao_do_personagem == "guardar game"):
                                         save()
                                     else:
-                                        if(a√ß√£o_do_personagem=="ver a bolsa" or a√ß√£o_do_personagem=="ver invent√°rio" or a√ß√£o_do_personagem=="ver o invent√°rio" or a√ß√£o_do_personagem=="ver bolsa" or a√ß√£o_do_personagem=="ver mochila" or a√ß√£o_do_personagem=="ver mala" or a√ß√£o_do_personagem=="ver a mochila" or a√ß√£o_do_personagem=="ver a mala" or a√ß√£o_do_personagem=="invent√°rio" or a√ß√£o_do_personagem=="inventario" or a√ß√£o_do_personagem=="iventario" or a√ß√£o_do_personagem=="ivent√°rio" or a√ß√£o_do_personagem=="mochila" or a√ß√£o_do_personagem=="mochla" or a√ß√£o_do_personagem=="mala" or a√ß√£o_do_personagem=="bolsa" or a√ß√£o_do_personagem=="itens" or a√ß√£o_do_personagem=="√≠tens" or a√ß√£o_do_personagem=="item"):
-                                            invent√°rioPersonagem()
+                                        if(acao_do_personagem=="ver a bolsa" or acao_do_personagem=="ver invent·rio" or acao_do_personagem=="ver o invent·rio" or acao_do_personagem=="ver bolsa" or acao_do_personagem=="ver mochila" or acao_do_personagem=="ver mala" or acao_do_personagem=="ver a mochila" or acao_do_personagem=="ver a mala" or acao_do_personagem=="invent·rio" or acao_do_personagem=="inventario" or acao_do_personagem=="iventario" or acao_do_personagem=="ivent·rio" or acao_do_personagem=="mochila" or acao_do_personagem=="mochla" or acao_do_personagem=="mala" or acao_do_personagem=="bolsa" or acao_do_personagem=="itens" or acao_do_personagem=="Ìtens" or acao_do_personagem=="item"):
+                                            invent·rioPersonagem()
                                         else:
-                                            print('\nEntrada Inv√°lida!\n')
+                                            print('\nEntrada Inv·lida!\n')
+                                            time.sleep(0.5)
         if(personagem_jogador[6]<=0):break
 
-#--Seu pr√©dio: Terceiro Andar--#
-def seuPr√©dioTerceiroAndar():
-    global desequipado_roupa,desequipado_capa,desequipado_luva,desequipado_m√£os,desequipado_cal√ßado,espa√ßo_vazio,peda√ßo_pizza,bolo_chocolate,pijama_inicial,uniforme_estudantil,malha_ninja,l√°pis_apontado,punhal_envelhecido,talheres_prata,jaqueta_imita√ß√£o,jaqueta_couro,agasalho_l√£,suplemento_aliment√≠cio,lata_energ√©tico,luva_l√£,luva_couro,soco_pvc,soco_lat√£o,luva_spikes_alu,soco_alu,luva_spikes_a√ßo,soco_a√ßo,luva_spikes_ag,soco_ag,luva_spikes_au,soco_au,luva_spikes_tit√¢nio,soco_tit√¢nio,anel_for√ßa1,anel_for√ßa2,anel_for√ßa3,anel_resist√™ncia1,anel_resist√™ncia2,anel_resist√™ncia3,anel_consist√™ncia1,anel_consist√™ncia2,anel_consist√™ncia3,anel_da_imortalidade,anel_da_divindade,chinelo_inicial,papetes_masculinas,t√™nis_velho,t√™nis_simpl√≥rio,sapato_simpl√≥rio,t√™nis_comum,t√™nis_trilha,t√™nis_caminhada,t√™nis_corrida,t√™nis_ZX5000,item_adicionado,quantidade_adicionada,equipado_roupa,equipado_capa,equipado_luva,equipado_anel,equipado_m√£os,equipado_cal√ßado,vari√°vel_cen√°rio,objeto,situa√ß√£o,tempor√°rio,vari√°vel_lugar,ponto_de_save,mostrar_save, personagem_jogador,personagem_reserva,personagem_inimigo,eegg,a√ß√£o_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,vari√°vel_para_comparar,contador_de_batalha,contador_de_rodadas,mala,loja_venda
-    if tempor√°rio[0]==True:
-        input("Agora que voc√™ venceu todos os lutadores do 3¬∫ andar voc√™ subiu ao 4¬∫.")
-        seuPr√©dioQuartoAndar()
-    if(vari√°vel_lugar == "seu pr√©dio, 4¬∫ andarb"):
-        seuPr√©dioQuartoAndar()
+#--Seu prÈdio: Terceiro Andar--#
+def seuPrÈdioTerceiroAndar():
+    global desequipado_roupa,desequipado_capa,desequipado_luva,desequipado_maos,desequipado_calcado,espaÁo_vazio,pedaÁo_pizza,bolo_chocolate,pijama_inicial,uniforme_estudantil,malha_ninja,lapis_apontado,punhal_envelhecido,talheres_prata,jaqueta_imitacao,jaqueta_couro,agasalho_l„,suplemento_alimentÌcio,lata_energÈtico,luva_l„,luva_couro,soco_pvc,soco_lat„o,luva_spikes_alu,soco_alu,luva_spikes_aÁo,soco_aÁo,luva_spikes_ag,soco_ag,luva_spikes_au,soco_au,luva_spikes_tit‚nio,soco_tit‚nio,anel_forÁa1,anel_forÁa2,anel_forÁa3,anel_resistÍncia1,anel_resistÍncia2,anel_resistÍncia3,anel_consistÍncia1,anel_consistÍncia2,anel_consistÍncia3,anel_da_imortalidade,anel_da_divindade,chinelo_inicial,papetes_masculinas,tÍnis_velho,tÍnis_simplÛrio,sapato_simplÛrio,tÍnis_comum,tÍnis_trilha,tÍnis_caminhada,tÍnis_corrida,tÍnis_ZX5000,item_adicionado,quantidade_adicionada,equipado_roupa,equipado_capa,equipado_luva,equipado_anel,equipado_maos,equipado_calcado,vari·vel_cen·rio,objeto,situacao,tempor·rio,vari·vel_lugar,ponto_de_save,mostrar_save, personagem_jogador,personagem_reserva,personagem_inimigo,eegg,acao_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,vari·vel_para_comparar,contador_de_batalha,contador_de_rodadas,mala,loja_venda
+    if tempor·rio[0]==True:
+        print("Agora que vocÍ venceu todos os lutadores do 3∫ andar vocÍ subiu ao 4∫.")
+        time.sleep(1)
+        seuPrÈdioQuartoAndar()
+    if(vari·vel_lugar == "seu prÈdio, 4∫ andarb"):
+        seuPrÈdioQuartoAndar()
     if(personagem_jogador[6]>0):
-        vari√°vel_lugar = "seu pr√©dio, 3¬∫ andar"
-        if(situa√ß√£o[0]==0):
-            input("Voc√™ √© abordado pelo morador do quarto 44...")
-            input(" - E a√≠, voc√™ √© o morador do 13 n√©?...")
-            input("...")
-            input(" - Voc√™ √© um pouco azarado, rapaz! ... Ou sortudo, depende do seu ponto de vista.")
+        vari·vel_lugar = "seu prÈdio, 3∫ andar"
+        if(situacao[0]==0):
+            print("VocÍ È abordado pelo morador do quarto 44...")
+            time.sleep(1)
+            print(" - E aÌ, vocÍ È o morador do 13 nÈ?...")
+            time.sleep(1)
             print("...")
-            input(" - Okay, vou te explicar...")
-            input(" - Voc√™ sabe que nos dois √∫ltimos andares desse pr√©dio, o terceiro e o quarto,")
-            input("s√≥ tem quartos de estudantes briguentos, e n√≥s estamos desafiando outros\n arruaceiros a lutarem conosco!")
+            time.sleep(0.5)
+            print(" - VocÍ È um pouco azarado, rapaz! ... Ou sortudo, depende do seu ponto de vista.")
+            time.sleep(1)
             print("...")
-            input(" - Claro, se voc√™ vencer de todos n√≥s, ser√° recompensado!")
-            input(" - V√° em frente, visite um dos quartos para lutar com um de n√≥s!")
-            input(" - Eu estarei l√° em cima, no meu quarto, te esperando.")
-            input("\nEle subiu as escadas...")
-            input("...")
-            situa√ß√£o[0]+=1
+            time.sleep(0.5)
+            print(" - Okay, vou te explicar...")
+            time.sleep(1)
+            print(" - VocÍ sabe que nos dois ˙ltimos andares desse prÈdio, o terceiro e o quarto,")
+            time.sleep(1)
+            print("sÛ tem quartos de estudantes briguentos, e nÛs estamos desafiando outros\n arruaceiros a lutarem conosco!")
+            time.sleep(1)
+            print("...")
+            time.sleep(0.5)
+            print(" - Claro, se vocÍ vencer de todos nÛs, ser· recompensado!")
+            time.sleep(1)
+            print(" - V· em frente, visite um dos quartos para lutar com um de nÛs!")
+            time.sleep(1)
+            print(" - Eu estarei l· em cima, no meu quarto, te esperando.")
+            time.sleep(1)
+            print("\nEle subiu as escadas...")
+            time.sleep(1)
+            print("...")
+            time.sleep(0.5)
+            situacao[0]+=1
         else:
-            if(situa√ß√£o[0]==1):
-                input("Voc√™ ainda n√£o venceu nenhuma luta do desafio dos estudantes briguentos!")
+            if(situacao[0]==1):
+                print("VocÍ ainda n„o venceu nenhuma luta do desafio dos estudantes briguentos!")
+                time.sleep(0.5)
             else:
-                if(situa√ß√£o[0]==2):
-                    input("Voc√™ j√° venceu 1 luta do desafio dos estudantes briguentos!")
+                if(situacao[0]==2):
+                    print("VocÍ j· venceu 1 luta do desafio dos estudantes briguentos!")
+                    time.sleep(0.5)
                 else:
-                    if(situa√ß√£o[0]>=3 and situa√ß√£o[0]<6):
-                        print("Voc√™ j√° venceu",situa√ß√£o[0]-1,"lutas do desafio dos estudantes briguentos!")
-                        input("")
+                    if(situacao[0]>=3 and situacao[0]<6):
+                        print("VocÍ j· venceu",situacao[0]-1,"lutas do desafio dos estudantes briguentos!")
+                        time.sleep(0.5)
                     else:
-                        if(situa√ß√£o[0]<9):
-                            input("Voc√™ j√° venceu todas as lutas do terceiro andar, \nent√£o voc√™ continuou subindo para o 4¬∫ andar.")
-                            seuPr√©dioQuartoAndar()
-                            vari√°vel_lugar = "seu pr√©dio, 3¬∫ andar"
+                        if(situacao[0]<9):
+                            print("VocÍ j· venceu todas as lutas do terceiro andar, \nent„o vocÍ continuou subindo para o 4∫ andar.")
+                            time.sleep(0.5)
+                            seuPrÈdioQuartoAndar()
+                            vari·vel_lugar = "seu prÈdio, 3∫ andar"
                         else:
-                            input("Voc√™ j√° venceu o desafio dos estudantes briguentos do seu pr√©dio!")
+                            print("VocÍ j· venceu o desafio dos estudantes briguentos do seu prÈdio!")
+                            time.sleep(1)
     while 1:
         if(personagem_jogador[6]<=0):break
-        if(situa√ß√£o[0]>=9):
-            vari√°vel_lugar = "seu pr√©dio, 2¬∫ andar"
+        if(situacao[0]>=9):
+            vari·vel_lugar = "seu prÈdio, 2∫ andar"
             break
         else:
-            if(situa√ß√£o[0]>6):
-                print("Como voc√™ j√° venceu as lutas aqui, voc√™ continuou descendo...")
-                input("Voc√™ desceu para o segundo andar.")
-                vari√°vel_lugar = "seu pr√©dio, 2¬∫ andar"
+            if(situacao[0]>6):
+                print("Como vocÍ j· venceu as lutas aqui, vocÍ continuou descendo...")
+                time.sleep(0.5)
+                print("VocÍ desceu para o segundo andar.")
+                time.sleep(0.5)
+                vari·vel_lugar = "seu prÈdio, 2∫ andar"
                 break
-        print("\n#", "-"*30,"#\n\nLista de A√ß√µes\n\nCen√°rio:", vari√°vel_lugar,"\n\nVoc√™ pode:\n\nchecar os quartos: 30, 31, 32, 33 e 34\n")
+        print("\n#", "-"*30,"#\n\nLista de AÁıes\n\nCen·rio:", vari·vel_lugar,"\n\nVocÍ pode:\n\nchecar os quartos: 30, 31, 32, 33 e 34\n")
         print("\nver ficha do personagem\nver mochila\ndescer as escadas\n\nsalvar o jogo\n")
         print("\n#", "-"*30,"#\n")
-        print("\nE agora, ", personagem_jogador[0],", o que voc√™ vai fazer?\n")
-        a√ß√£o_do_personagem = input("-")
-        a√ß√£o_do_personagem = a√ß√£o_do_personagem.lower()
-        if(a√ß√£o_do_personagem=="checar os quartos" or a√ß√£o_do_personagem=="checar quartos" or a√ß√£o_do_personagem=="checar" or a√ß√£o_do_personagem=="quartos" or a√ß√£o_do_personagem=="checaros quartos" or a√ß√£o_do_personagem=="checar osquartos" or a√ß√£o_do_personagem=="checarosquartos" or a√ß√£o_do_personagem=="checa os quartos" or a√ß√£o_do_personagem=="checa os quarto" or a√ß√£o_do_personagem=="checa o quarto" or a√ß√£o_do_personagem=="checa o quartos" or a√ß√£o_do_personagem=="checar os quarto" or a√ß√£o_do_personagem=="checar o quarto" or a√ß√£o_do_personagem=="bater na porta de um dos quartos" or a√ß√£o_do_personagem=="checar um dos quartos" or a√ß√£o_do_personagem=="bater na porta dos quartos" or a√ß√£o_do_personagem=="bater a porta dos quartos" or a√ß√£o_do_personagem=="bater quartos" or a√ß√£o_do_personagem=="bater"):
+        print("\nE agora, ", personagem_jogador[0],", o que vocÍ vai fazer?\n")
+        acao_do_personagem = input("-")
+        acao_do_personagem = acao_do_personagem.lower()
+        if(acao_do_personagem=="checar os quartos" or acao_do_personagem=="checar quartos" or acao_do_personagem=="checar" or acao_do_personagem=="quartos" or acao_do_personagem=="checaros quartos" or acao_do_personagem=="checar osquartos" or acao_do_personagem=="checarosquartos" or acao_do_personagem=="checa os quartos" or acao_do_personagem=="checa os quarto" or acao_do_personagem=="checa o quarto" or acao_do_personagem=="checa o quartos" or acao_do_personagem=="checar os quarto" or acao_do_personagem=="checar o quarto" or acao_do_personagem=="bater na porta de um dos quartos" or acao_do_personagem=="checar um dos quartos" or acao_do_personagem=="bater na porta dos quartos" or acao_do_personagem=="bater a porta dos quartos" or acao_do_personagem=="bater quartos" or acao_do_personagem=="bater"):
             print("Qual dos quartos?(30, 31, 32, 33 ou 34)\n")
-            a√ß√£o_do_personagem = input("-")
-            a√ß√£o_do_personagem = a√ß√£o_do_personagem.lower()
-            if(a√ß√£o_do_personagem!="30" and a√ß√£o_do_personagem!="31" and a√ß√£o_do_personagem!="32" and a√ß√£o_do_personagem!="33" and a√ß√£o_do_personagem!="34"):
-                a√ß√£o_do_personagem="entrada inv√°lida!"
-        if (a√ß√£o_do_personagem == "ver ficha do personagem" or a√ß√£o_do_personagem == "ver a ficha do personagem" or a√ß√£o_do_personagem == "ver a ficha de personagem" or a√ß√£o_do_personagem == "ficha" or a√ß√£o_do_personagem=="ficha do personagem" or a√ß√£o_do_personagem=="ficha de personagem" or a√ß√£o_do_personagem=="ver ficha de personagem" or a√ß√£o_do_personagem=="ver ficha" or a√ß√£o_do_personagem == "olhar ficha do personagem" or a√ß√£o_do_personagem == "ver minha ficha" or a√ß√£o_do_personagem=="minha ficha" or a√ß√£o_do_personagem=="ficha personagem" or a√ß√£o_do_personagem=="olhar ficha de personagem" or a√ß√£o_do_personagem=="olhar ficha"):
+            time.sleep(0.5)
+            acao_do_personagem = input("-")
+            acao_do_personagem = acao_do_personagem.lower()
+            if(acao_do_personagem!="30" and acao_do_personagem!="31" and acao_do_personagem!="32" and acao_do_personagem!="33" and acao_do_personagem!="34"):
+                acao_do_personagem="entrada inv·lida!"
+        if (acao_do_personagem == "ver ficha do personagem" or acao_do_personagem == "ver a ficha do personagem" or acao_do_personagem == "ver a ficha de personagem" or acao_do_personagem == "ficha" or acao_do_personagem=="ficha do personagem" or acao_do_personagem=="ficha de personagem" or acao_do_personagem=="ver ficha de personagem" or acao_do_personagem=="ver ficha" or acao_do_personagem == "olhar ficha do personagem" or acao_do_personagem == "ver minha ficha" or acao_do_personagem=="minha ficha" or acao_do_personagem=="ficha personagem" or acao_do_personagem=="olhar ficha de personagem" or acao_do_personagem=="olhar ficha"):
             ficha_personagem()
         else:
-            if(a√ß√£o_do_personagem=="subir as escadas" or a√ß√£o_do_personagem=="subir" or a√ß√£o_do_personagem=="subir escadas" or a√ß√£o_do_personagem=="subi" or a√ß√£o_do_personagem=="subi as escadas" or a√ß√£o_do_personagem=="subir escada" or a√ß√£o_do_personagem=="subi escada" or a√ß√£o_do_personagem=="subi a escada" or a√ß√£o_do_personagem=="sobe"):
-                input("Voc√™ subiu para o quarto andar, l√° voc√™ encontrou mais cinco quartos de portas abertas.")
-                seuPr√©dioQuartoAndar()
+            if(acao_do_personagem=="subir as escadas" or acao_do_personagem=="subir" or acao_do_personagem=="subir escadas" or acao_do_personagem=="subi" or acao_do_personagem=="subi as escadas" or acao_do_personagem=="subir escada" or acao_do_personagem=="subi escada" or acao_do_personagem=="subi a escada" or acao_do_personagem=="sobe"):
+                print("VocÍ subiu para o quarto andar, l· vocÍ encontrou mais cinco quartos de portas abertas.")
+                time.sleep(0.5)
+                seuPrÈdioQuartoAndar()
             else:
-                if(a√ß√£o_do_personagem=="descer as escadas" or a√ß√£o_do_personagem=="descer escadas" or a√ß√£o_do_personagem=="descer escada" or a√ß√£o_do_personagem=="descer a escada" or a√ß√£o_do_personagem=="sair" or a√ß√£o_do_personagem=="descer" or a√ß√£o_do_personagem=="sair do pr√©dio"):
-                    input("Voc√™ desceu para o segundo andar.")
+                if(acao_do_personagem=="descer as escadas" or acao_do_personagem=="descer escadas" or acao_do_personagem=="descer escada" or acao_do_personagem=="descer a escada" or acao_do_personagem=="sair" or acao_do_personagem=="descer" or acao_do_personagem=="sair do prÈdio"):
+                    print("VocÍ desceu para o segundo andar.")
+                    time.sleep(0.5)
                     break
                 else:
-                    if(a√ß√£o_do_personagem=="30"):
-                        if(situa√ß√£o[5] == 0):
-                            input("Eu sou o seu oponente! Ven√ßa todos deste andar para subir!")
+                    if(acao_do_personagem=="30"):
+                        if(situacao[5] == 0):
+                            print("Eu sou o seu oponente! VenÁa todos deste andar para subir!")
+                            time.sleep(2)
                             personagem_inimigo = [ "Estudante Briguento \n do Quarto 30", 5, 12, 2, 2, 110, 110]
                             batalha()
                             if(personagem_jogador[6]<=0):
                                 personagem_jogador[6]=1
-                                input(" - Voc√™ √© fraco, se fosse uma luta no andar de cima voc√™ teria morrido!")
-                                input(" - V√° cuidar desses seus ferimentos e volte para lutar mais!")
+                                print(" - VocÍ È fraco, se fosse uma luta no andar de cima vocÍ teria morrido!")
+                                time.sleep(0.5)
+                                print(" - V· cuidar desses seus ferimentos e volte para lutar mais!")
+                                time.sleep(0.5)
                             else:
                                 if(personagem_inimigo[6]>0 and personagem_jogador[6]>1):
                                     while (personagem_inimigo[6]>0):
-                                        input(" - Voc√™ n√£o pode fugir das lutas, √© uma regra para continuar no desafio e ganhar o pr√™mio!")
+                                        print(" - VocÍ n„o pode fugir das lutas, È uma regra para continuar no desafio e ganhar o prÍmio!")
+                                        time.sleep(1)
                                         batalha()
                                         if(personagem_jogador[6]<=0):
                                             personagem_jogador[6]=1
-                                            input(" - Voc√™ √© fraco, se fosse uma luta no andar de cima voc√™ teria morrido!")
-                                            input(" - V√° cuidar desses seus ferimentos e volte para lutar mais!")
+                                            print(" - VocÍ È fraco, se fosse uma luta no andar de cima vocÍ teria morrido!")
+                                            time.sleep(0.5)
+                                            print(" - V· cuidar desses seus ferimentos e volte para lutar mais!")
+                                            time.sleep(0.5)
                                             break
                                         else:
-                                            input(" - Isso a√≠! Voc√™ me venceu!")
-                                            situa√ß√£o[0]=situa√ß√£o[0]+1
-                                            situa√ß√£o[5]=1
-                                            if(situa√ß√£o[0]==6):
-                                                tempor√°rio[0]= True
+                                            print(" - Isso aÌ! VocÍ me venceu!")
+                                            time.sleep(1)
+                                            situacao[0]=situacao[0]+1
+                                            situacao[5]=1
+                                            if(situacao[0]==6):
+                                                tempor·rio[0]= True
                                             else:
-                                                if(situa√ß√£o[0]==2):
-                                                    input("Voc√™ j√° venceu 1 luta do desafio dos estudantes briguentos!")
+                                                if(situacao[0]==2):
+                                                    print("VocÍ j· venceu 1 luta do desafio dos estudantes briguentos!")
+                                                    time.sleep(1)
                                                 else:
-                                                    if(situa√ß√£o[0]>=3 and situa√ß√£o[0]<6):
-                                                        print("Voc√™ j√° venceu",situa√ß√£o[0]-1,"lutas do desafio dos estudantes briguentos!")
-                                                        input("")
+                                                    if(situacao[0]>=3 and situacao[0]<6):
+                                                        print("VocÍ j· venceu",situacao[0]-1,"lutas do desafio dos estudantes briguentos!")
+                                                        time.sleep(1)
                                             break
                                 else:
-                                    input(" - Isso a√≠! Voc√™ me venceu!")
-                                    situa√ß√£o[0]=situa√ß√£o[0]+1
-                                    situa√ß√£o[5]=1
-                                    if(situa√ß√£o[0]==6):
-                                        tempor√°rio[0]= True
+                                    print(" - Isso aÌ! VocÍ me venceu!")
+                                    time.sleep(1)
+                                    situacao[0]=situacao[0]+1
+                                    situacao[5]=1
+                                    if(situacao[0]==6):
+                                        tempor·rio[0]= True
                                     else:
-                                        if(situa√ß√£o[0]==2):
-                                            input("Voc√™ j√° venceu 1 luta do desafio dos estudantes briguentos!")
+                                        if(situacao[0]==2):
+                                            print("VocÍ j· venceu 1 luta do desafio dos estudantes briguentos!")
+                                            time.sleep(1)
                                         else:
-                                            if(situa√ß√£o[0]>=3 and situa√ß√£o[0]<6):
-                                                print("Voc√™ j√° venceu",situa√ß√£o[0]-1,"lutas do desafio dos estudantes briguentos!")
-                                                input("")
-                                        
+                                            if(situacao[0]>=3 and situacao[0]<6):
+                                                print("VocÍ j· venceu",situacao[0]-1,"lutas do desafio dos estudantes briguentos!")
+                                                time.sleep(1)
                         else:
-                            input("Voc√™ j√° lutou aqui!")
+                            print("VocÍ j· lutou aqui!")
+                            time.sleep(1)
                     else:
-                        if(a√ß√£o_do_personagem=="31"):
-                            if(situa√ß√£o[6] == 0):
-                                input(" - Voc√™ √© o desafiante??? Parece um fracote!")
+                        if(acao_do_personagem=="31"):
+                            if(situacao[6] == 0):
+                                print(" - VocÍ È o desafiante??? Parece um fracote!")
+                                time.sleep(2)
                                 personagem_inimigo = [ "Estudante Briguento \n do Quarto 31", 13, 4, 5, 1, 130, 130]
                                 batalha()
                                 if(personagem_jogador[6]<=0):
                                     personagem_jogador[6]=1
-                                    input(" - Voc√™ √© mesmo um fracote!")
-                                    input(" - V√° se curar para continuar tentando subir para o quarto andar!")
+                                    print(" - VocÍ È mesmo um fracote!")
+                                    time.sleep(0.5)
+                                    print(" - V· se curar para continuar tentando subir para o quarto andar!")
+                                    time.sleep(0.5)
                                 else:
                                     if(personagem_inimigo[6]>0 and personagem_jogador[6]>1):
                                         while (personagem_inimigo[6]>0):
-                                            input(" - Volte aqui seu fracote! N√£o seja um covarde! Voc√™ n√£o pode fugir de TODAS as lutas!")
+                                            print(" - Volte aqui seu fracote! N„o seja um covarde! VocÍ n„o pode fugir de TODAS as lutas!")
+                                            time.sleep(1)
                                             batalha()
                                             if(personagem_jogador[6]<=0):
                                                 personagem_jogador[6]=1
-                                                input(" - Voc√™ √© mesmo um fracote!")
-                                                input(" - V√° se curar para continuar tentando subir para o quarto andar!")
+                                                print(" - VocÍ È mesmo um fracote!")
+                                                time.sleep(0.5)
+                                                print(" - V· se curar para continuar tentando subir para o quarto andar!")
+                                                time.sleep(0.5)
                                                 break
                                             else:
-                                                input(" - N√£o vacile com os caras l√° do quarto andar, eles n√£o pegam leve!")
-                                                situa√ß√£o[0]=situa√ß√£o[0]+1
-                                                situa√ß√£o[6]=1
-                                                if(situa√ß√£o[0]==6):
-                                                    tempor√°rio[0]= True
+                                                print(" - N„o vacile com os caras l· do quarto andar, eles n„o pegam leve!")
+                                                time.sleep(1)
+                                                situacao[0]=situacao[0]+1
+                                                situacao[6]=1
+                                                if(situacao[0]==6):
+                                                    tempor·rio[0]= True
                                                 else:
-                                                    if(situa√ß√£o[0]==2):
-                                                        input("Voc√™ j√° venceu 1 luta do desafio dos estudantes briguentos!")
+                                                    if(situacao[0]==2):
+                                                        print("VocÍ j· venceu 1 luta do desafio dos estudantes briguentos!")
+                                                        time.sleep(1)
                                                     else:
-                                                        if(situa√ß√£o[0]>=3 and situa√ß√£o[0]<6):
-                                                            print("Voc√™ j√° venceu",situa√ß√£o[0]-1,"lutas do desafio dos estudantes briguentos!")
-                                                            input("")
+                                                        if(situacao[0]>=3 and situacao[0]<6):
+                                                            print("VocÍ j· venceu",situacao[0]-1,"lutas do desafio dos estudantes briguentos!")
+                                                            time.sleep(1)
                                                 break
                                     else:
-                                        input(" - N√£o vacile com os caras l√° do quarto andar, eles n√£o pegam leve!")
-                                        situa√ß√£o[0]=situa√ß√£o[0]+1
-                                        situa√ß√£o[6]=1
-                                        if(situa√ß√£o[0]==6):
-                                            tempor√°rio[0]= True
+                                        print(" - N„o vacile com os caras l· do quarto andar, eles n„o pegam leve!")
+                                        time.sleep(1)
+                                        situacao[0]=situacao[0]+1
+                                        situacao[6]=1
+                                        if(situacao[0]==6):
+                                            tempor·rio[0]= True
                                         else:
-                                            if(situa√ß√£o[0]==2):
-                                                input("Voc√™ j√° venceu 1 luta do desafio dos estudantes briguentos!")
+                                            if(situacao[0]==2):
+                                                print("VocÍ j· venceu 1 luta do desafio dos estudantes briguentos!")
+                                                time.sleep(1)
                                             else:
-                                                if(situa√ß√£o[0]>=3 and situa√ß√£o[0]<6):
-                                                    print("Voc√™ j√° venceu",situa√ß√£o[0]-1,"lutas do desafio dos estudantes briguentos!")
-                                                    input("")
+                                                if(situacao[0]>=3 and situacao[0]<6):
+                                                    print("VocÍ j· venceu",situacao[0]-1,"lutas do desafio dos estudantes briguentos!")
+                                                    time.sleep(1)
                             else:
-                                input("Voce j√° lutou aqui!")
+                                print("Voce j· lutou aqui!")
+                                time.sleep(1)
                         else:
-                            if(a√ß√£o_do_personagem=="32"):
-                                if(situa√ß√£o[7]==0):
-                                    input(" - Cai dentro, rap√°!")
+                            if(acao_do_personagem=="32"):
+                                if(situacao[7]==0):
+                                    print(" - Cai dentro, rap·!")
+                                    time.sleep(2)
                                     personagem_inimigo = [ "Estudante Briguento \n do Quarto 32", 8, 8, 2, 1, 100, 100]
                                     batalha()
                                     if(personagem_jogador[6]<=0):
                                         personagem_jogador[6]=1
-                                        input(" - Moleque criado a leite com p√™ra!")
-                                        input(" - L√° em cima ningu√©m vai te dar essa colher de ch√° que eu to te dando!")
+                                        print(" - Moleque criado a leite com pÍra!")
+                                        time.sleep(0.5)
+                                        print(" - L· em cima ninguÈm vai te dar essa colher de ch· que eu to te dando!")
+                                        time.sleep(0.5)
                                     else:
                                         if(personagem_inimigo[6]>0 and personagem_jogador[6]>1):
                                             while (personagem_inimigo[6]>0):
-                                                input(" - Ramel√£o, n√£o foge da luta, n√£o!")
+                                                print(" - Ramel„o, n„o foge da luta, n„o!")
+                                                time.sleep(1)
                                                 batalha()
                                                 if(personagem_jogador[6]<=0):
                                                     personagem_jogador[6]=1
-                                                    input(" - Moleque criado a leite com p√™ra!")
-                                                    input(" - L√° em cima ningu√©m vai te dar essa colher de ch√° que eu to te dando!")
+                                                    print(" - Moleque criado a leite com pÍra!")
+                                                    time.sleep(0.5)
+                                                    print(" - L· em cima ninguÈm vai te dar essa colher de ch· que eu to te dando!")
+                                                    time.sleep(0.5)
                                                     break
                                                 else:
-                                                    input(" - Nada mal, quem sabe voc√™ consegue o pr√™mio! Nunca se sabe... ")
-                                                    situa√ß√£o[0]=situa√ß√£o[0]+1
-                                                    situa√ß√£o[7]=1
-                                                    if(situa√ß√£o[0]==6):
-                                                        tempor√°rio[0]= True
+                                                    print(" - Nada mal, quem sabe vocÍ consegue o prÍmio! Nunca se sabe... ")
+                                                    time.sleep(1)
+                                                    situacao[0]=situacao[0]+1
+                                                    situacao[7]=1
+                                                    if(situacao[0]==6):
+                                                        tempor·rio[0]= True
                                                     else:
-                                                        if(situa√ß√£o[0]==2):
-                                                            input("Voc√™ j√° venceu 1 luta do desafio dos estudantes briguentos!")
+                                                        if(situacao[0]==2):
+                                                            print("VocÍ j· venceu 1 luta do desafio dos estudantes briguentos!")
+                                                            time.sleep(1)
                                                         else:
-                                                            if(situa√ß√£o[0]>=3 and situa√ß√£o[0]<6):
-                                                                print("Voc√™ j√° venceu",situa√ß√£o[0]-1,"lutas do desafio dos estudantes briguentos!")
-                                                                input("")
+                                                            if(situacao[0]>=3 and situacao[0]<6):
+                                                                print("VocÍ j· venceu",situacao[0]-1,"lutas do desafio dos estudantes briguentos!")
+                                                                time.sleep(1)
                                                     break
                                         else:
-                                            input(" - Nada mal, quem sabe voc√™ consegue o pr√™mio! Nunca se sabe... ")
-                                            situa√ß√£o[0]=situa√ß√£o[0]+1
-                                            situa√ß√£o[7]=1
-                                            if(situa√ß√£o[0]==6):
-                                                tempor√°rio[0]= True
+                                            print(" - Nada mal, quem sabe vocÍ consegue o prÍmio! Nunca se sabe... ")
+                                            time.sleep(1)
+                                            situacao[0]=situacao[0]+1
+                                            situacao[7]=1
+                                            if(situacao[0]==6):
+                                                tempor·rio[0]= True
                                             else:
-                                                if(situa√ß√£o[0]==2):
-                                                    input("Voc√™ j√° venceu 1 luta do desafio dos estudantes briguentos!")
+                                                if(situacao[0]==2):
+                                                    print("VocÍ j· venceu 1 luta do desafio dos estudantes briguentos!")
+                                                    time.sleep(1)
                                                 else:
-                                                    if(situa√ß√£o[0]>=3 and situa√ß√£o[0]<6):
-                                                        print("Voc√™ j√° venceu",situa√ß√£o[0]-1,"lutas do desafio dos estudantes briguentos!")
-                                                        input("")
+                                                    if(situacao[0]>=3 and situacao[0]<6):
+                                                        print("VocÍ j· venceu",situacao[0]-1,"lutas do desafio dos estudantes briguentos!")
+                                                        time.sleep(1)
                                 else:
-                                    input("Voce j√° lutou aqui!")
+                                    print("Voce j· lutou aqui!")
+                                    time.sleep(1)
                             else:
-                                if(a√ß√£o_do_personagem=="33"):
-                                    if(situa√ß√£o[8]==0):
-                                        input(" - √î√î√¥, CIDAD√ÉO!")
+                                if(acao_do_personagem=="33"):
+                                    if(situacao[8]==0):
+                                        print(" - ‘‘Ù, CIDAD√O!")
+                                        time.sleep(2)
                                         personagem_inimigo = [ "Estudante Briguento \n do Quarto 33", 10, 8, 5, 5, 120, 120]
                                         batalha()
                                         if(personagem_jogador[6]<=0):
                                             personagem_jogador[6]=1
-                                            input(" - Olha l√°, o cara n√£o aguenta e depois vai chorando pra casa!")
-                                            input(" - Se voc√™ continuar trope√ßando assim, cedo ou tarde o mundo vai te atropel√°!")
+                                            print(" - Olha l·, o cara n„o aguenta e depois vai chorando pra casa!")
+                                            time.sleep(0.5)
+                                            print(" - Se vocÍ continuar tropeÁando assim, cedo ou tarde o mundo vai te atropel·!")
+                                            time.sleep(0.5)
                                         else:
                                             if(personagem_inimigo[6]>0 and personagem_jogador[6]>1):
                                                 while (personagem_inimigo[6]>0):
-                                                    input(" - T√° na hora de acordar pra vida, cidad√£o!")
+                                                    print(" - T· na hora de acordar pra vida, cidad„o!")
+                                                    time.sleep(1)
                                                     batalha()
                                                     if(personagem_jogador[6]<=0):
                                                         personagem_jogador[6]=1
-                                                        input(" - Olha l√°, o cara n√£o aguenta e depois vai chorando pra casa!")
-                                                        input(" - Se voc√™ continuar trope√ßando assim, cedo ou tarde o mundo vai te atropel√°!")
+                                                        print(" - Olha l·, o cara n„o aguenta e depois vai chorando pra casa!")
+                                                        time.sleep(0.5)
+                                                        print(" - Se vocÍ continuar tropeÁando assim, cedo ou tarde o mundo vai te atropel·!")
+                                                        time.sleep(0.5)
                                                         break
                                                     else:
-                                                        input(" - ACORDA CARA! Voc√™ n√£o √© mais nenhum menininho bobinho, n√£o! ")
-                                                        situa√ß√£o[0]=situa√ß√£o[0]+1
-                                                        situa√ß√£o[8]=1
-                                                        if(situa√ß√£o[0]==6):
-                                                            tempor√°rio[0]= True
+                                                        print(" - ACORDA CARA! VocÍ n„o È mais nenhum menininho bobinho, n„o! ")
+                                                        time.sleep(1)
+                                                        situacao[0]=situacao[0]+1
+                                                        situacao[8]=1
+                                                        if(situacao[0]==6):
+                                                            tempor·rio[0]= True
                                                         else:
-                                                            if(situa√ß√£o[0]==2):
-                                                                input("Voc√™ j√° venceu 1 luta do desafio dos estudantes briguentos!")
+                                                            if(situacao[0]==2):
+                                                                print("VocÍ j· venceu 1 luta do desafio dos estudantes briguentos!")
+                                                                time.sleep(1)
                                                             else:
-                                                                if(situa√ß√£o[0]>=3 and situa√ß√£o[0]<6):
-                                                                    print("Voc√™ j√° venceu",situa√ß√£o[0]-1,"lutas do desafio dos estudantes briguentos!")
-                                                                    input("")
+                                                                if(situacao[0]>=3 and situacao[0]<6):
+                                                                    print("VocÍ j· venceu",situacao[0]-1,"lutas do desafio dos estudantes briguentos!")
+                                                                    time.sleep(1)
                                                         break
                                             else:
-                                                input(" - ACORDA CARA! Voc√™ n√£o √© mais nenhum menininho bobinho, n√£o! ")
-                                                situa√ß√£o[0]=situa√ß√£o[0]+1
-                                                situa√ß√£o[8]=1
-                                                if(situa√ß√£o[0]==6):
-                                                    tempor√°rio[0]= True
+                                                print(" - ACORDA CARA! VocÍ n„o È mais nenhum menininho bobinho, n„o! ")
+                                                time.sleep(1)
+                                                situaÁ„o[0]=situaÁ„o[0]+1
+                                                situaÁ„o[8]=1
+                                                if(situaÁ„o[0]==6):
+                                                    tempor·rio[0]= True
                                                 else:
-                                                    if(situa√ß√£o[0]==2):
-                                                        input("Voc√™ j√° venceu 1 luta do desafio dos estudantes briguentos!")
+                                                    if(situaÁ„o[0]==2):
+                                                        print("VocÍ j· venceu 1 luta do desafio dos estudantes briguentos!")
+                                                        time.sleep(1)
                                                     else:
-                                                        if(situa√ß√£o[0]>=3 and situa√ß√£o[0]<6):
-                                                            print("Voc√™ j√° venceu",situa√ß√£o[0]-1,"lutas do desafio dos estudantes briguentos!")
-                                                            input("")
+                                                        if(situaÁ„o[0]>=3 and situaÁ„o[0]<6):
+                                                            print("VocÍ j· venceu",situaÁ„o[0]-1,"lutas do desafio dos estudantes briguentos!")
+                                                            time.sleep(1)
                                     else:
-                                        input("Voc√™ j√° lutou aqui!")
+                                        print("VocÍ j· lutou aqui!")
+                                        time.sleep(1)
                                 else:
-                                    if(a√ß√£o_do_personagem=="34"):
-                                        if(situa√ß√£o[9]==0):
-                                            input(" - Qual √©, velho? O neg√≥cio √© descer o murro de ferro na cara do inimigo!")
-                                            personagem_inimigo = [ "Estudante Briguento \n do Quarto 34", 10, 15, 6, 6, 66.6, 66.6]
+                                    if(aÁ„o_do_personagem=="34"):
+                                        if(situaÁ„o[9]==0):
+                                            print(" - Qual È, velho? O negÛcio È descer o murro de ferro na cara do inimigo!")
+                                            time.sleep(2)
+                                            personagem_inimigo = [ "Estudante Briguento \n do Quarto 34", 20, 20, 6, 6, 66.6, 66.6]
                                             batalha()
                                             if(personagem_jogador[6]<=0):
                                                 personagem_jogador[6]=1
-                                                input(" - Voc√™ n√£o tem um sangue fervente o suficiente para derreter o metal!")
-                                                input(" - Voc√™ precisa cauterizar suas feridas para chagas maiores tomarem o resto do seu corpo!")
+                                                print(" - VocÍ n„o tem um sangue fervente o suficiente para derreter o metal!")
+                                                time.sleep(0.5)
+                                                print(" - VocÍ precisa cauterizar suas feridas para chagas maiores tomarem o resto do seu corpo!")
+                                                time.sleep(0.5)
                                             else:
                                                 if(personagem_inimigo[6]>0 and personagem_jogador[6]>1):
                                                     while (personagem_inimigo[6]>0):
-                                                        input(" - As mentiras j√° s√£o antigas demais, mas voc√™ n√£o quer saber!\nCorrer √© uma futilidade!")
+                                                        print(" - As mentiras j· s„o antigas demais, mas vocÍ n„o quer saber!\nCorrer È uma futilidade!")
+                                                        time.sleep(1)
                                                         batalha()
                                                         if(personagem_jogador[6]<=0):
                                                             personagem_jogador[6]=1
-                                                            input(" - Voc√™ n√£o tem um sangue fervente o suficiente para derreter o metal!")
-                                                            input(" - Voc√™ precisa cauterizar suas feridas para chagas maiores tomarem o resto do seu corpo!")
+                                                            print(" - VocÍ n„o tem um sangue fervente o suficiente para derreter o metal!")
+                                                            time.sleep(1)
+                                                            print(" - VocÍ precisa cauterizar suas feridas para chagas maiores tomarem o resto do seu corpo!")
+                                                            time.sleep(1)
                                                             break
                                                         else:
-                                                            input(" - A verdade √© mais dura que o a√ßo! Mas a vis√£o nunca morre!")
-                                                            situa√ß√£o[0]=situa√ß√£o[0]+1
-                                                            situa√ß√£o[9]=1
-                                                            if(situa√ß√£o[0]==6):
-                                                                tempor√°rio[0]= True
+                                                            print(" - A verdade È mais dura que o aÁo! Mas a vis„o nunca morre!")
+                                                            time.sleep(1)
+                                                            situaÁ„o[0]=situaÁ„o[0]+1
+                                                            situaÁ„o[9]=1
+                                                            if(situaÁ„o[0]==6):
+                                                                tempor·rio[0]= True
                                                             else:
-                                                                if(situa√ß√£o[0]==2):
-                                                                    input("Voc√™ j√° venceu 1 luta do desafio dos estudantes briguentos!")
+                                                                if(situaÁ„o[0]==2):
+                                                                    print("VocÍ j· venceu 1 luta do desafio dos estudantes briguentos!")
+                                                                    time.sleep(1)
                                                                 else:
-                                                                    if(situa√ß√£o[0]>=3 and situa√ß√£o[0]<6):
-                                                                        print("Voc√™ j√° venceu",situa√ß√£o[0]-1,"lutas do desafio dos estudantes briguentos!")
-                                                                        input("")
+                                                                    if(situaÁ„o[0]>=3 and situaÁ„o[0]<6):
+                                                                        print("VocÍ j· venceu",situaÁ„o[0]-1,"lutas do desafio dos estudantes briguentos!")
+                                                                        time.sleep(1)
                                                             break
                                                 else:
-                                                    input(" - A verdade √© mais dura que o a√ßo! Mas a vis√£o nunca morre!")
-                                                    situa√ß√£o[0]=situa√ß√£o[0]+1
-                                                    situa√ß√£o[9]=1
-                                                    if(situa√ß√£o[0]==6):
-                                                        tempor√°rio[0]= True
+                                                    print(" - A verdade È mais dura que o aÁo! Mas a vis„o nunca morre!")
+                                                    time.sleep(1)
+                                                    situaÁ„o[0]=situaÁ„o[0]+1
+                                                    situaÁ„o[9]=1
+                                                    if(situaÁ„o[0]==6):
+                                                        tempor·rio[0]= True
                                                     else:
-                                                        if(situa√ß√£o[0]==2):
-                                                            input("Voc√™ j√° venceu 1 luta do desafio dos estudantes briguentos!")
+                                                        if(situaÁ„o[0]==2):
+                                                            print("VocÍ j· venceu 1 luta do desafio dos estudantes briguentos!")
+                                                            time.sleep(1)
                                                         else:
-                                                            if(situa√ß√£o[0]>=3 and situa√ß√£o[0]<6):
-                                                                print("Voc√™ j√° venceu",situa√ß√£o[0]-1,"lutas do desafio dos estudantes briguentos!")
-                                                                input("")
+                                                            if(situaÁ„o[0]>=3 and situaÁ„o[0]<6):
+                                                                print("VocÍ j· venceu",situaÁ„o[0]-1,"lutas do desafio dos estudantes briguentos!")
+                                                                time.sleep(1)
                                         else:
-                                            input("Voc√™ j√° lutou aqui!")
+                                            print("VocÍ j· lutou aqui!")
+                                            time.sleep(0.5)
                                     else:
-                                        if(a√ß√£o_do_personagem == "salvar o jogo" or a√ß√£o_do_personagem=="guardar o jogo" or a√ß√£o_do_personagem == "salvar jogo" or a√ß√£o_do_personagem=="guardar jogo" or a√ß√£o_do_personagem == "salvar" or a√ß√£o_do_personagem == "save" or a√ß√£o_do_personagem == "save game" or a√ß√£o_do_personagem == "salvar o progresso" or a√ß√£o_do_personagem == "salvar progresso" or a√ß√£o_do_personagem == "guardar o progresso" or a√ß√£o_do_personagem == "guardar progresso" or a√ß√£o_do_personagem == "save progress" or a√ß√£o_do_personagem == "salva" or a√ß√£o_do_personagem == "sava" or a√ß√£o_do_personagem == "slvar" or a√ß√£o_do_personagem == "svar" or a√ß√£o_do_personagem == "svr" or a√ß√£o_do_personagem == "slvr" or a√ß√£o_do_personagem == "sav" or a√ß√£o_do_personagem == "sve" or a√ß√£o_do_personagem == "sv" or a√ß√£o_do_personagem == "salvar o game" or a√ß√£o_do_personagem == "guardar o game" or a√ß√£o_do_personagem == "salvar game" or a√ß√£o_do_personagem == "guardar game"):
+                                        if(aÁ„o_do_personagem == "salvar o jogo" or aÁ„o_do_personagem=="guardar o jogo" or aÁ„o_do_personagem == "salvar jogo" or aÁ„o_do_personagem=="guardar jogo" or aÁ„o_do_personagem == "salvar" or aÁ„o_do_personagem == "save" or aÁ„o_do_personagem == "save game" or aÁ„o_do_personagem == "salvar o progresso" or aÁ„o_do_personagem == "salvar progresso" or aÁ„o_do_personagem == "guardar o progresso" or aÁ„o_do_personagem == "guardar progresso" or aÁ„o_do_personagem == "save progress" or aÁ„o_do_personagem == "salva" or aÁ„o_do_personagem == "sava" or aÁ„o_do_personagem == "slvar" or aÁ„o_do_personagem == "svar" or aÁ„o_do_personagem == "svr" or aÁ„o_do_personagem == "slvr" or aÁ„o_do_personagem == "sav" or aÁ„o_do_personagem == "sve" or aÁ„o_do_personagem == "sv" or aÁ„o_do_personagem == "salvar o game" or aÁ„o_do_personagem == "guardar o game" or aÁ„o_do_personagem == "salvar game" or aÁ„o_do_personagem == "guardar game"):
                                             save()
                                         else:
-                                            if(a√ß√£o_do_personagem=="ver a bolsa" or a√ß√£o_do_personagem=="ver invent√°rio" or a√ß√£o_do_personagem=="ver o invent√°rio" or a√ß√£o_do_personagem=="ver bolsa" or a√ß√£o_do_personagem=="ver mochila" or a√ß√£o_do_personagem=="ver mala" or a√ß√£o_do_personagem=="ver a mochila" or a√ß√£o_do_personagem=="ver a mala" or a√ß√£o_do_personagem=="invent√°rio" or a√ß√£o_do_personagem=="inventario" or a√ß√£o_do_personagem=="iventario" or a√ß√£o_do_personagem=="ivent√°rio" or a√ß√£o_do_personagem=="mochila" or a√ß√£o_do_personagem=="mochla" or a√ß√£o_do_personagem=="mala" or a√ß√£o_do_personagem=="bolsa" or a√ß√£o_do_personagem=="itens" or a√ß√£o_do_personagem=="√≠tens" or a√ß√£o_do_personagem=="item"):
-                                                invent√°rioPersonagem()
+                                            if(aÁ„o_do_personagem=="ver a bolsa" or aÁ„o_do_personagem=="ver invent·rio" or aÁ„o_do_personagem=="ver o invent·rio" or aÁ„o_do_personagem=="ver bolsa" or aÁ„o_do_personagem=="ver mochila" or aÁ„o_do_personagem=="ver mala" or aÁ„o_do_personagem=="ver a mochila" or aÁ„o_do_personagem=="ver a mala" or aÁ„o_do_personagem=="invent·rio" or aÁ„o_do_personagem=="inventario" or aÁ„o_do_personagem=="iventario" or aÁ„o_do_personagem=="ivent·rio" or aÁ„o_do_personagem=="mochila" or aÁ„o_do_personagem=="mochla" or aÁ„o_do_personagem=="mala" or aÁ„o_do_personagem=="bolsa" or aÁ„o_do_personagem=="itens" or aÁ„o_do_personagem=="Ìtens" or aÁ„o_do_personagem=="item"):
+                                                invent·rioPersonagem()
                                             else:
-                                                print('\nEntrada Inv√°lida!\n')
+                                                print('\nEntrada Inv·lida!\n')
+                                                time.sleep(0.5)
 
-#--Seu pr√©dio: Segundo Andar--#
-def seuPr√©dioSegundoAndar():
-    global desequipado_roupa,desequipado_capa,desequipado_luva,desequipado_m√£os,desequipado_cal√ßado,espa√ßo_vazio,peda√ßo_pizza,bolo_chocolate,pijama_inicial,uniforme_estudantil,malha_ninja,l√°pis_apontado,punhal_envelhecido,talheres_prata,jaqueta_imita√ß√£o,jaqueta_couro,agasalho_l√£,suplemento_aliment√≠cio,lata_energ√©tico,luva_l√£,luva_couro,soco_pvc,soco_lat√£o,luva_spikes_alu,soco_alu,luva_spikes_a√ßo,soco_a√ßo,luva_spikes_ag,soco_ag,luva_spikes_au,soco_au,luva_spikes_tit√¢nio,soco_tit√¢nio,anel_for√ßa1,anel_for√ßa2,anel_for√ßa3,anel_resist√™ncia1,anel_resist√™ncia2,anel_resist√™ncia3,anel_consist√™ncia1,anel_consist√™ncia2,anel_consist√™ncia3,anel_da_imortalidade,anel_da_divindade,chinelo_inicial,papetes_masculinas,t√™nis_velho,t√™nis_simpl√≥rio,sapato_simpl√≥rio,t√™nis_comum,t√™nis_trilha,t√™nis_caminhada,t√™nis_corrida,t√™nis_ZX5000,item_adicionado,quantidade_adicionada,equipado_roupa,equipado_capa,equipado_luva,equipado_anel,equipado_m√£os,equipado_cal√ßado,vari√°vel_cen√°rio,objeto,situa√ß√£o,tempor√°rio,vari√°vel_lugar,ponto_de_save,mostrar_save, personagem_jogador,personagem_reserva,personagem_inimigo,eegg,a√ß√£o_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,vari√°vel_para_comparar,contador_de_batalha,contador_de_rodadas,mala,loja_venda
-    if(vari√°vel_lugar == "seu pr√©dio, 3¬∫ andarb" or vari√°vel_lugar == "seu pr√©dio, 4¬∫ andarb"):
-        seuPr√©dioTerceiroAndar()
-    vari√°vel_lugar = "seu pr√©dio, 2¬∫ andar"
+#--Seu prÈdio: Segundo Andar--#
+def seuPrÈdioSegundoAndar():
+    global desequipado_roupa,desequipado_capa,desequipado_luva,desequipado_maos,desequipado_calcado,espaÁo_vazio,pedaÁo_pizza,bolo_chocolate,pijama_inicial,uniforme_estudantil,malha_ninja,lapis_apontado,punhal_envelhecido,talheres_prata,jaqueta_imitaÁ„o,jaqueta_couro,agasalho_l„,suplemento_alimentÌcio,lata_energÈtico,luva_l„,luva_couro,soco_pvc,soco_lat„o,luva_spikes_alu,soco_alu,luva_spikes_aÁo,soco_aÁo,luva_spikes_ag,soco_ag,luva_spikes_au,soco_au,luva_spikes_tit‚nio,soco_tit‚nio,anel_forÁa1,anel_forÁa2,anel_forÁa3,anel_resistÍncia1,anel_resistÍncia2,anel_resistÍncia3,anel_consistÍncia1,anel_consistÍncia2,anel_consistÍncia3,anel_da_imortalidade,anel_da_divindade,chinelo_inicial,papetes_masculinas,tÍnis_velho,tÍnis_simplÛrio,sapato_simplÛrio,tÍnis_comum,tÍnis_trilha,tÍnis_caminhada,tÍnis_corrida,tÍnis_ZX5000,item_adicionado,quantidade_adicionada,equipado_roupa,equipado_capa,equipado_luva,equipado_anel,equipado_maos,equipado_calcado,vari·vel_cen·rio,objeto,situaÁ„o,tempor·rio,vari·vel_lugar,ponto_de_save,mostrar_save, personagem_jogador,personagem_reserva,personagem_inimigo,eegg,aÁ„o_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,vari·vel_para_comparar,contador_de_batalha,contador_de_rodadas,mala,loja_venda
+    if(vari·vel_lugar == "seu prÈdio, 3∫ andarb" or vari·vel_lugar == "seu prÈdio, 4∫ andarb"):
+        seuPrÈdioTerceiroAndar()
+    vari·vel_lugar = "seu prÈdio, 2∫ andar"
     while 1:
         if(personagem_jogador[6]<=0):break
-        print("\n#", "-"*30,"#\n\nLista de A√ß√µes\n\nCen√°rio:", vari√°vel_lugar,"\n\nVoc√™ pode:\n\nchecar os quartos\n")
-        if(situa√ß√£o[2]==1):
+        print("\n#", "-"*30,"#\n\nLista de AÁıes\n\nCen·rio:", vari·vel_lugar,"\n\nVocÍ pode:\n\nchecar os quartos\n")
+        if(situaÁ„o[2]==1):
             print("\narrombar o quarto 24")
         print("\nver ficha do personagem\nver mochila\nsubir as escadas\ndescer as escadas\n\nsalvar o jogo\n")
         print("\n#", "-"*30,"#\n")
-        print("\nE agora, ", personagem_jogador[0],", o que voc√™ vai fazer?\n")
-        a√ß√£o_do_personagem = input("-")
-        a√ß√£o_do_personagem = a√ß√£o_do_personagem.lower()
-        if(a√ß√£o_do_personagem=="checar os quartos" or a√ß√£o_do_personagem=="checar quartos" or a√ß√£o_do_personagem=="checar" or a√ß√£o_do_personagem=="quartos" or a√ß√£o_do_personagem=="checaros quartos" or a√ß√£o_do_personagem=="checar osquartos" or a√ß√£o_do_personagem=="checarosquartos" or a√ß√£o_do_personagem=="checa os quartos" or a√ß√£o_do_personagem=="checa os quarto" or a√ß√£o_do_personagem=="checa o quarto" or a√ß√£o_do_personagem=="checa o quartos" or a√ß√£o_do_personagem=="checar os quarto" or a√ß√£o_do_personagem=="checar o quarto" or a√ß√£o_do_personagem=="bater na porta de um dos quartos" or a√ß√£o_do_personagem=="checar um dos quartos" or a√ß√£o_do_personagem=="bater na porta dos quartos" or a√ß√£o_do_personagem=="bater a porta dos quartos" or a√ß√£o_do_personagem=="bater quartos" or a√ß√£o_do_personagem=="bater"):
+        print("\nE agora, ", personagem_jogador[0],", o que vocÍ vai fazer?\n")
+        aÁ„o_do_personagem = input("-")
+        aÁ„o_do_personagem = aÁ„o_do_personagem.lower()
+        if(aÁ„o_do_personagem=="checar os quartos" or aÁ„o_do_personagem=="checar quartos" or aÁ„o_do_personagem=="checar" or aÁ„o_do_personagem=="quartos" or aÁ„o_do_personagem=="checaros quartos" or aÁ„o_do_personagem=="checar osquartos" or aÁ„o_do_personagem=="checarosquartos" or aÁ„o_do_personagem=="checa os quartos" or aÁ„o_do_personagem=="checa os quarto" or aÁ„o_do_personagem=="checa o quarto" or aÁ„o_do_personagem=="checa o quartos" or aÁ„o_do_personagem=="checar os quarto" or aÁ„o_do_personagem=="checar o quarto" or aÁ„o_do_personagem=="bater na porta de um dos quartos" or aÁ„o_do_personagem=="checar um dos quartos" or aÁ„o_do_personagem=="bater na porta dos quartos" or aÁ„o_do_personagem=="bater a porta dos quartos" or aÁ„o_do_personagem=="bater quartos" or aÁ„o_do_personagem=="bater"):
             print("Qual dos quartos?(20, 21, 22, 23 ou 24)\n")
-            a√ß√£o_do_personagem = input("-")
-            a√ß√£o_do_personagem = a√ß√£o_do_personagem.lower()
-            if(a√ß√£o_do_personagem!="20" and a√ß√£o_do_personagem!="21" and a√ß√£o_do_personagem!="22" and a√ß√£o_do_personagem!="23" and a√ß√£o_do_personagem!="24"):
-                a√ß√£o_do_personagem="entrada inv√°lida!"
-        if (a√ß√£o_do_personagem == "ver ficha do personagem" or a√ß√£o_do_personagem == "ver a ficha do personagem" or a√ß√£o_do_personagem == "ver a ficha de personagem" or a√ß√£o_do_personagem == "ficha" or a√ß√£o_do_personagem=="ficha do personagem" or a√ß√£o_do_personagem=="ficha de personagem" or a√ß√£o_do_personagem=="ver ficha de personagem" or a√ß√£o_do_personagem=="ver ficha" or a√ß√£o_do_personagem == "olhar ficha do personagem" or a√ß√£o_do_personagem == "ver minha ficha" or a√ß√£o_do_personagem=="minha ficha" or a√ß√£o_do_personagem=="ficha personagem" or a√ß√£o_do_personagem=="olhar ficha de personagem" or a√ß√£o_do_personagem=="olhar ficha"):
+            aÁ„o_do_personagem = input("-")
+            aÁ„o_do_personagem = aÁ„o_do_personagem.lower()
+            if(aÁ„o_do_personagem!="20" and aÁ„o_do_personagem!="21" and aÁ„o_do_personagem!="22" and aÁ„o_do_personagem!="23" and aÁ„o_do_personagem!="24"):
+                aÁ„o_do_personagem="entrada inv·lida!"
+        if (aÁ„o_do_personagem == "ver ficha do personagem" or aÁ„o_do_personagem == "ver a ficha do personagem" or aÁ„o_do_personagem == "ver a ficha de personagem" or aÁ„o_do_personagem == "ficha" or aÁ„o_do_personagem=="ficha do personagem" or aÁ„o_do_personagem=="ficha de personagem" or aÁ„o_do_personagem=="ver ficha de personagem" or aÁ„o_do_personagem=="ver ficha" or aÁ„o_do_personagem == "olhar ficha do personagem" or aÁ„o_do_personagem == "ver minha ficha" or aÁ„o_do_personagem=="minha ficha" or aÁ„o_do_personagem=="ficha personagem" or aÁ„o_do_personagem=="olhar ficha de personagem" or aÁ„o_do_personagem=="olhar ficha"):
             ficha_personagem()
         else:
-            if(a√ß√£o_do_personagem=="subir as escadas" or a√ß√£o_do_personagem=="subir" or a√ß√£o_do_personagem=="subir escadas" or a√ß√£o_do_personagem=="subi" or a√ß√£o_do_personagem=="subi as escadas" or a√ß√£o_do_personagem=="subir escada" or a√ß√£o_do_personagem=="subi escada" or a√ß√£o_do_personagem=="subi a escada" or a√ß√£o_do_personagem=="sobe"):
-                input("Voc√™ subiu para o terceiro andar, l√° voc√™ encontrou cinco quartos de portas abertas e outra escada ascendente.")
-                seuPr√©dioTerceiroAndar()
+            if(aÁ„o_do_personagem=="subir as escadas" or aÁ„o_do_personagem=="subir" or aÁ„o_do_personagem=="subir escadas" or aÁ„o_do_personagem=="subi" or aÁ„o_do_personagem=="subi as escadas" or aÁ„o_do_personagem=="subir escada" or aÁ„o_do_personagem=="subi escada" or aÁ„o_do_personagem=="subi a escada" or aÁ„o_do_personagem=="sobe"):
+                print("VocÍ subiu para o terceiro andar,")
+                time.sleep(0.5)
+                print("l· vocÍ encontrou cinco quartos de portas abertas e outra escada ascendente.")
+                time.sleep(1)
+                seuPrÈdioTerceiroAndar()
                 if(personagem_jogador[6]<=0):break
             else:
-                if(a√ß√£o_do_personagem=="descer as escadas" or a√ß√£o_do_personagem=="descer escadas" or a√ß√£o_do_personagem=="descer escada" or a√ß√£o_do_personagem=="descer a escada" or a√ß√£o_do_personagem=="sair" or a√ß√£o_do_personagem=="descer" or a√ß√£o_do_personagem=="sair do pr√©dio"):
-                    input("Voc√™ desceu para o primeiro andar, o andar do seu quarto.")
+                if(aÁ„o_do_personagem=="descer as escadas" or aÁ„o_do_personagem=="descer escadas" or aÁ„o_do_personagem=="descer escada" or aÁ„o_do_personagem=="descer a escada" or aÁ„o_do_personagem=="sair" or aÁ„o_do_personagem=="descer" or aÁ„o_do_personagem=="sair do prÈdio"):
+                    print("VocÍ desceu para o primeiro andar, o andar do seu quarto.")
+                    time.sleep(1)
                     break
                 else:
-                    if(a√ß√£o_do_personagem=="20"):
-                        if(situa√ß√£o[3]==10):
-                            input("Voc√™ j√° pegou tudo o que tinha para pegar aqui.")
+                    if(aÁ„o_do_personagem=="20"):
+                        if(situaÁ„o[3]==10):
+                            print("VocÍ j· pegou tudo o que tinha para pegar aqui.")
+                            time.sleep(0.5)
                         else:
-                            input("Voc√™ bate na porta e percebe, pelo barulho do trepidar da ma√ßaneta, que ela est√° destrancada...")
-                            print("Abrir a porta?(sim ou n√£o)")
+                            print("VocÍ bate na porta e percebe, pelo barulho do trepidar da maÁaneta, que ela est· destrancada...")
+                            time.sleep(2)
+                            print("Abrir a porta?(sim ou n„o)")
                             while 1:
-                                a√ß√£o_do_personagem = input("-")
-                                a√ß√£o_do_personagem = a√ß√£o_do_personagem.lower()
-                                if(a√ß√£o_do_personagem=="sim" or a√ß√£o_do_personagem=="s" or a√ß√£o_do_personagem=="si" or a√ß√£o_do_personagem=="sm" or a√ß√£o_do_personagem=="im" or a√ß√£o_do_personagem=="ssim"):
-                                    input("Voc√™ entrou, n√£o havia ningu√©m...")
-                                    input("Ao revistar o quarto voc√™ encontrou 10 Reais.")
+                                aÁ„o_do_personagem = input("-")
+                                aÁ„o_do_personagem = aÁ„o_do_personagem.lower()
+                                if(aÁ„o_do_personagem=="sim" or aÁ„o_do_personagem=="s" or aÁ„o_do_personagem=="si" or aÁ„o_do_personagem=="sm" or aÁ„o_do_personagem=="im" or aÁ„o_do_personagem=="ssim"):
+                                    print("VocÍ entrou, n„o havia ninguÈm...")
+                                    time.sleep(2)
+                                    print("Ao revistar o quarto vocÍ encontrou 10 Reais!")
+                                    time.sleep(1)
                                     personagem_jogador[7]=personagem_jogador[7]+10
-                                    situa√ß√£o[10]=1
+                                    situaÁ„o[10]=1
                                     break
                                 else:
-                                    if(a√ß√£o_do_personagem == "n√£o" or a√ß√£o_do_personagem=="n" or a√ß√£o_do_personagem=="nao" or a√ß√£o_do_personagem=="no" or a√ß√£o_do_personagem=="na" or a√ß√£o_do_personagem=="n√£" or a√ß√£o_do_personagem=="ao" or a√ß√£o_do_personagem=="√£o" or a√ß√£o_do_personagem=="√±" or a√ß√£o_do_personagem=="√±√£o" or a√ß√£o_do_personagem=="√±o" or a√ß√£o_do_personagem=="√±√µ" or a√ß√£o_do_personagem=="√±√£" or a√ß√£o_do_personagem=="√±a√µ" or a√ß√£o_do_personagem=="a√µ"):
-                                        input("Voc√™ ignorou o quarto...")
+                                    if(aÁ„o_do_personagem == "n„o" or aÁ„o_do_personagem=="n" or aÁ„o_do_personagem=="nao" or aÁ„o_do_personagem=="no" or aÁ„o_do_personagem=="na" or aÁ„o_do_personagem=="n„" or aÁ„o_do_personagem=="ao" or aÁ„o_do_personagem=="„o" or aÁ„o_do_personagem=="Ò" or aÁ„o_do_personagem=="Ò„o" or aÁ„o_do_personagem=="Òo" or aÁ„o_do_personagem=="Òı" or aÁ„o_do_personagem=="Ò„" or aÁ„o_do_personagem=="Òaı" or aÁ„o_do_personagem=="aı"):
+                                        print("VocÍ ignorou o quarto...")
+                                        time.sleep(0.75)
                                         break
                                     else:
-                                        input('ENTRADA INV√ÅLIDA! Digite "sim" ou "n√£o"')
+                                        print('ENTRADA INV¡LIDA! Digite "sim" ou "n„o"')
+                                        time.sleep(0.5)
                     else:
-                        if(a√ß√£o_do_personagem=="21"):
-                            if(situa√ß√£o[3]==7):
-                                input("Voc√™ bate na porta...")
-                                input(" - Ol√°! - diz o av√¥ do garoto - Muito obrigado por treinar o meu neto,")
-                                input("agora ele n√£o precisa se esconder mais dos trombadinhas da escola.")
-                            if(situa√ß√£o[3]==6):
-                                input(" - Obrigado por me treinar, senhor.")
+                        if(aÁ„o_do_personagem=="21"):
+                            if(situaÁ„o[3]==7):
+                                print("VocÍ bate na porta...")
+                                time.sleep(0.5)
+                                print(" - Ol·! - diz o avÙ do garoto - Muito obrigado por treinar o meu neto,")
+                                time.sleep(1)
+                                print("agora ele n„o precisa se esconder mais dos trombadinhas da escola.")
+                                time.sleep(2)
+                            if(situaÁ„o[3]==6):
+                                print(" - Obrigado por me treinar, senhor.")
+                                time.sleep(2)
                                 personagem_inimigo = [ "Garoto, um Homem", 1500, 1000, 50, 50, 20000, 20000]
                                 batalha()
                                 if(personagem_jogador[6]<=0):
                                     personagem_jogador[6]=1
-                                    input(" - Me supere. Estarei te esperando.")
+                                    print(" - Me supere. Estarei te esperando.")
+                                    time.sleep(1)
                                 else:
                                     if(personagem_inimigo[6]>0 and personagem_jogador[6]>1):
                                         while (personagem_inimigo[6]>0):
-                                            input(" - N√£o abandone nossa luta!")
+                                            print(" - N„o abandone nossa luta!")
+                                            time.sleep(1)
                                             batalha()
                                             if(personagem_jogador[6]<=0):
                                                 personagem_jogador[6]=1
-                                                input(" - Me supere. Estarei te esperando.")
+                                                print(" - Me supere. Estarei te esperando.")
+                                                time.sleep(1)
                                             else:
                                                 if(personagem_inimigo[6]<=0):
-                                                    input(" - Obrigado, mesmo!")
-                                                    situa√ß√£o[3]=7
+                                                    print(" - Obrigado, mesmo!")
+                                                    time.sleep(1)
+                                                    situaÁ„o[3]=7
                                     else:
                                         if(personagem_inimigo[6]<=0):
-                                            input(" - Obrigado, mesmo!")
-                                            situa√ß√£o[3]=7
-                            if(situa√ß√£o[3]==5):
-                                input(" - Estou empolgado! N√£o aguentava mais esperar pela nossa luta!")
+                                            print(" - Obrigado, mesmo!")
+                                            time.sleep(1)
+                                            situaÁ„o[3]=7
+                            if(situaÁ„o[3]==5):
+                                print(" - Estou empolgado! N„o aguentava mais esperar pela nossa luta!")
+                                time.sleep(2)
                                 personagem_inimigo = [ "Garoto Forte", 150, 100, 20, 20, 2000, 2000]
                                 batalha()
                                 if(personagem_jogador[6]<=0):
                                     personagem_jogador[6]=1
-                                    input(" - Quando voc√™ estiver pronto para uma revanche, me procure novamente.")
+                                    print(" - Quando vocÍ estiver pronto para uma revanche, me procure novamente.")
+                                    time.sleep(1)
                                 else:
                                     if(personagem_inimigo[6]>0 and personagem_jogador[6]>1):
                                         while (personagem_inimigo[6]>0):
-                                            input(" - A nossa luta n√£o acabou ainda!")
+                                            print(" - A nossa luta n„o acabou ainda!")
+                                            time.sleep(1)
                                             batalha()
                                             if(personagem_jogador[6]<=0):
                                                 personagem_jogador[6]=1
-                                                input(" - Quando voc√™ estiver pronto para uma revanche, me procure novamente.")
+                                                print(" - Quando vocÍ estiver pronto para uma revanche, me procure novamente.")
+                                                time.sleep(1)
                                             else:
                                                 if(personagem_inimigo[6]<=0):
-                                                    input(" - Incr√≠vel, voc√™ sempre me surpreende! Se prepare, da pr√≥xima vez estarei ainda mais forte!")
-                                                    situa√ß√£o[3]=6
+                                                    print(" - IncrÌvel, vocÍ sempre me surpreende! Se prepare, da prÛxima vez estarei ainda mais forte!")
+                                                    time.sleep(1)
+                                                    situaÁ„o[3]=6
                                     else:
                                         if(personagem_inimigo[6]<=0):
-                                            input(" - Incr√≠vel, voc√™ sempre me surpreende! Se prepare, da pr√≥xima vez estarei ainda mais forte!")
-                                            situa√ß√£o[3]=6
-                            if(situa√ß√£o[3]==4):
-                                input(" - Dessa vez n√£o vou perder t√£o f√°cil!")
-                                personagem_inimigo = [ "Garoto S√©rio", 30, 25, 10, 5, 200, 200]
+                                            print(" - IncrÌvel, vocÍ sempre me surpreende! Se prepare, da prÛxima vez estarei ainda mais forte!")
+                                            time.sleep(1)
+                                            situaÁ„o[3]=6
+                            if(situaÁ„o[3]==4):
+                                print(" - Dessa vez n„o vou perder t„o f·cil!")
+                                time.sleep(2)
+                                personagem_inimigo = [ "Garoto SÈrio", 30, 25, 10, 5, 200, 200]
                                 batalha()
                                 if(personagem_jogador[6]<=0):
                                     personagem_jogador[6]=1
-                                    input(" - Estou te levando a s√©rio, n√£o vou perder mais!")
-                                    input(" - Estarei te esperando para uma revanche.")
+                                    print(" - Estou te levando a sÈrio, n„o vou perder mais!")
+                                    time.sleep(0.5)
+                                    print(" - Estarei te esperando para uma revanche.")
+                                    time.sleep(0.5)
                                 else:
                                     if(personagem_inimigo[6]>0 and personagem_jogador[6]>1):
                                         while (personagem_inimigo[6]>0):
-                                            input(" - Honre a nossa luta at√© o fim!")
+                                            print(" - Honre a nossa luta atÈ o fim!")
+                                            time.sleep(1)
                                             batalha()
                                             if(personagem_jogador[6]<=0):
                                                 personagem_jogador[6]=1
-                                                input(" - Estou te levando a s√©rio, n√£o vou perder mais!")
-                                                input(" - Estarei te esperando para uma revanche.")
+                                                print(" - Estou te levando a sÈrio, n„o vou perder mais!")
+                                                time.sleep(0.5)
+                                                print(" - Estarei te esperando para uma revanche.")
+                                                time.sleep(0.5)
                                             else:
                                                 if(personagem_inimigo[6]<=0):
-                                                    input(" - Voc√™ √© mesmo forte! Treinarei mais e estarei te esperando para o nosso pr√≥ximo confronto!")
-                                                    situa√ß√£o[3]=5
+                                                    print(" - VocÍ È mesmo forte! Treinarei mais e estarei te esperando para o nosso prÛximo confronto!")
+                                                    time.sleep(1)
+                                                    situaÁ„o[3]=5
                                     else:
                                         if(personagem_inimigo[6]<=0):
-                                            input(" - Voc√™ √© mesmo forte! Treinarei mais e estarei te esperando para o nosso pr√≥ximo confronto!")
-                                            situa√ß√£o[3]=5
-                            if(situa√ß√£o[3]==3):
-                                input(" - Eu estava te esperando, panaca!")
+                                            print(" - VocÍ È mesmo forte! Treinarei mais e estarei te esperando para o nosso prÛximo confronto!")
+                                            time.sleep(1)
+                                            situaÁ„o[3]=5
+                            if(situaÁ„o[3]==3):
+                                print(" - Eu estava te esperando, panaca!")
+                                time.sleep(2)
                                 personagem_inimigo = [ "Garoto Convencido", 8, 12, 5, 10, 110, 110]
                                 batalha()
                                 if(personagem_jogador[6]<=0):
                                     personagem_jogador[6]=1
-                                    input(" - N√£o aguenta o tranco, n√£o? Hahaha!")
-                                    input(" - Volte qualquer hora para apanhar mais!")
+                                    print(" - N„o aguenta o tranco, n„o? Hahaha!")
+                                    time.sleep(0.5)
+                                    print(" - Volte qualquer hora para apanhar mais!")
+                                    time.sleep(0.5)
                                 else:
                                     if(personagem_inimigo[6]>0 and personagem_jogador[6]>1):
                                         while (personagem_inimigo[6]>0):
-                                            input(" - Volte aqui seu panaca!")
+                                            print(" - Volte aqui seu panaca!")
+                                            time.sleep(1)
                                             batalha()
                                             if(personagem_jogador[6]<=0):
                                                 personagem_jogador[6]=1
-                                                input(" - N√£o aguenta o tranco, n√£o? Hahaha!")
-                                                input(" - Volte qualquer hora para apanhar mais!")
+                                                print(" - N„o aguenta o tranco, n„o? Hahaha!")
+                                                time.sleep(0.5)
+                                                print(" - Volte qualquer hora para apanhar mais!")
+                                                time.sleep(0.5)
                                             else:
                                                 if(personagem_inimigo[6]<=0):
-                                                    input(" - Voc√™ √© mesmo forte! Continuarei treinando e esperarei o nosso pr√≥ximo confronto!")
-                                                    situa√ß√£o[3]=4
+                                                    print(" - VocÍ È mesmo forte! Continuarei treinando e esperarei o nosso prÛximo confronto!")
+                                                    time.sleep(1)
+                                                    situaÁ„o[3]=4
                                     else:
                                         if(personagem_inimigo[6]<=0):
-                                            input(" - Voc√™ √© mesmo forte! Continuarei treinando e esperarei o nosso pr√≥ximo confronto!")
-                                            situa√ß√£o[3]=4
-                            if(situa√ß√£o[3]==2):
-                                input(" - Meu av√¥ disse que voc√™ viria... - disse o garoto baixinho - Vamos logo ao que interessa!")
+                                            print(" - VocÍ È mesmo forte! Continuarei treinando e esperarei o nosso prÛximo confronto!")
+                                            time.sleep(1)
+                                            situaÁ„o[3]=4
+                            if(situaÁ„o[3]==2):
+                                print(" - Meu avÙ disse que vocÍ viria... - disse o garoto baixinho - Vamos logo ao que interessa!")
+                                time.sleep(2)
                                 personagem_inimigo = [ "Garoto Fracote", 3, 10, 2, 2, 100, 100]
                                 batalha()
                                 if(personagem_jogador[6]<=0):
                                     personagem_jogador[6]=1
-                                    input(" - Voc√™ n√£o √© t√£o forte quanto meu av√¥ falou.")
-                                    situa√ß√£o[3]=3
+                                    print(" - VocÍ n„o È t„o forte quanto meu avÙ falou.")
+                                    time.sleep(1)
+                                    situaÁ„o[3]=3
                                 else:
                                     if(personagem_inimigo[6]>0 and personagem_jogador[6]>1):
                                         while (personagem_inimigo[6]>0):
-                                            input(" - Meu av√¥ disse para n√£o parar de lutar at√© eu n√£o aguentar mais!")
+                                            print(" - Meu avÙ disse para n„o parar de lutar atÈ eu n„o aguentar mais!")
+                                            time.sleep(1)
                                             batalha()
                                             if(personagem_jogador[6]<=0):
                                                 personagem_jogador[6]=1
-                                                input(" - Voc√™ n√£o √© t√£o forte quanto meu av√¥ falou.")
-                                                situa√ß√£o[3]=3
+                                                print(" - VocÍ n„o È t„o forte quanto meu avÙ falou.")
+                                                time.sleep(1)
+                                                situaÁ„o[3]=3
                                             else:
                                                 if(personagem_inimigo[6]<=0):
-                                                    input(" - Voc√™ √© muito forte!!! Vou treinar e estarei te esperando para uma pr√≥xima luta!")
-                                                    situa√ß√£o[3]=3
+                                                    print(" - VocÍ È muito forte!!! Vou treinar e estarei te esperando para uma prÛxima luta!")
+                                                    time.sleep(1)
+                                                    situaÁ„o[3]=3
                                     else:
                                         if(personagem_inimigo[6]<=0):
-                                            input(" - Voc√™ √© muito forte!!! Vou treinar e estarei te esperando para uma pr√≥xima luta!")
-                                            situa√ß√£o[3]=3
-                            if(situa√ß√£o[3]==1):
-                                input("A porta est√° trancada.")
-                            if(situa√ß√£o[3]==0):
-                                input("Voc√™ bateu na porta...")
-                                input("Um senhor baixo e fracote abriu a porta... Ele parecia muito com um frango")
-                                input(" - O que que voc√™ quer?!")
-                                input("...")
-                                input(" - Saia daqui ent√£o!")
+                                            print(" - VocÍ È muito forte!!! Vou treinar e estarei te esperando para uma prÛxima luta!")
+                                            time.sleep(1)
+                                            situaÁ„o[3]=3
+                            if(situaÁ„o[3]==1):
+                                print("A porta est· trancada.")
+                                time.sleep(1)
+                            if(situaÁ„o[3]==0):
+                                print("VocÍ bateu na porta...")
+                                time.sleep(0.5)
+                                print("Um senhor baixo e fracote abriu a porta... Ele parecia muito com um frango")
+                                time.sleep(1)
+                                print(" - O que que vocÍ quer?!")
+                                time.sleep(1)
+                                print("...")
+                                time.sleep(0.5)
+                                print(" - Saia daqui ent„o!")
+                                time.sleep(2)
                                 personagem_inimigo = [ "Senhor Doente", 5, 3, -3, 3, 50, 50]
                                 batalha()
                                 if(personagem_jogador[6]<=0):break
                                 if(personagem_inimigo[6]>0):
-                                    input("Depois de se afastar o senhor come√ßou a gritar...")
-                                    input("Com a m√£o no peito, ele come√ßou a tossir...")
-                                    input(" - Ahhhh... - gemiu o senhor que caia lentamente.")
-                                    input(" - O QU√ä VOC√ä FEZ COM MEU AV√î?! - era a voz de um menino vindo l√° de dentro do quarto.")
-                                    input("O menino pegou o senhor nos bra√ßos antes que tombasse e apertou algumas vezes uma bombinha para asma na boca dele...")
-                                    input(" - VOC√ä VAI PAGAR CARO!")
+                                    print("Depois de se afastar o senhor comeÁou a gritar...")
+                                    time.sleep(1)
+                                    print("Com a m„o no peito, ele comeÁou a tossir...")
+                                    time.sleep(1)
+                                    print(" - Ahhhh... - gemiu o senhor que caia lentamente.")
+                                    time.sleep(1)
+                                    print(" - O QU  VOC  FEZ COM MEU AV‘?! - era a voz de um menino vindo l· de dentro do quarto.")
+                                    time.sleep(1)
+                                    print("O menino pegou o senhor nos braÁos antes que tombasse \ne apertou algumas vezes uma bombinha para asma na boca dele...")
+                                    time.sleep(1)
+                                    print(" - VOC  VAI PAGAR CARO!")
+                                    time.sleep(2)
                                     personagem_inimigo = [ "Garoto Perturbado", 2, 10, 1, 1, 100, 100]
                                     batalha()
                                     if(personagem_jogador[6]<=0):break
                                     if(personagem_inimigo[6]>0):
-                                        input(" - SAIA J√Å DAQUI!")
-                                        input("Em seguida ele fechou e trancou a porta.")
-                                        situa√ß√£o[3]==1
+                                        print(" - SAIA J¡ DAQUI!")
+                                        time.sleep(0.5)
+                                        print("Em seguida ele fechou e trancou a porta.")
+                                        time.sleep(0.5)
+                                        situaÁ„o[3]==1
                                     else:
-                                        input("O garoto caiu no ch√£o dentro da casa e come√ßou a chorar.")
-                                        input(" - SAIA DAQUI ANTES QUE EU CHAME A POL√çCIA! - disse o senhor que j√° estava um pouco melhor...")
-                                        input("Em seguida ele fechou e trancou a porta.")
-                                        situa√ß√£o[3]=1
+                                        print("O garoto caiu no ch„o dentro da casa e comeÁou a chorar.")
+                                        time.sleep(1)
+                                        print(" - SAIA DAQUI ANTES QUE EU CHAME A POLÕCIA! - disse o senhor que j· estava um pouco melhor...")
+                                        time.sleep(1)
+                                        print("Em seguida ele fechou e trancou a porta.")
+                                        time.sleep(1)
+                                        situaÁ„o[3]=1
                                 else:
-                                    input("O senhor caiu no ch√£o com uma m√£o no peito...")
-                                    input("Ele tentava gritar algo enquanto estendia a outra m√£o...")
-                                    input("Mas n√£o conseguia dizer nada, estava tendo crise de asma...")
-                                    input("Sua m√£o apontava para um lugar dentro da casa...")
+                                    print("O senhor caiu no ch„o com uma m„o no peito...")
+                                    time.sleep(1)
+                                    print("Ele tentava gritar algo enquanto estendia a outra m„o...")
+                                    time.sleep(1)
+                                    print("Mas n„o conseguia dizer nada, estava tendo crise de asma...")
+                                    time.sleep(1)
+                                    print("Sua m„o apontava para um lugar dentro da casa...")
+                                    time.sleep(1)
                                     print("Vai ajudar o idoso?\n")
+                                    time.sleep(0.5)
                                     while 1:
-                                        a√ß√£o_do_personagem = input("-")
-                                        a√ß√£o_do_personagem = a√ß√£o_do_personagem.lower()
-                                        if(a√ß√£o_do_personagem=="sim" or a√ß√£o_do_personagem=="s" or a√ß√£o_do_personagem=="si" or a√ß√£o_do_personagem=="sm" or a√ß√£o_do_personagem=="im" or a√ß√£o_do_personagem=="ssim"):
-                                            input("Voc√™ entrou na casa, pegou a bombinha em cima da mesa e a apertou na boca no velho...")
-                                            input(" - Ah... Ah... - o senhor tentava recuperar o ar - Voc√™ n√£o √© um mau rapaz no fim das contas...")
-                                            input(" - ...")
-                                            input(" - Voc√™ gosta de lutar, n√£o √© garoto? Eu brigava muito quando era mais jovem...")
-                                            input(" - ...")
-                                            input(" - Nem sempre os punhos s√£o o bastante...")
-                                            input(" - ...")
-                                            input(" - N√£o falo do cora√ß√£o na luta, isso voc√™ j√° tem, falo de armas...")
-                                            input(" - Tome... Eu usava este punhal no meu tempo... Agora √© seu.")
+                                        aÁ„o_do_personagem = input("-")
+                                        aÁ„o_do_personagem = aÁ„o_do_personagem.lower()
+                                        if(aÁ„o_do_personagem=="sim" or aÁ„o_do_personagem=="s" or aÁ„o_do_personagem=="si" or aÁ„o_do_personagem=="sm" or aÁ„o_do_personagem=="im" or aÁ„o_do_personagem=="ssim"):
+                                            print("VocÍ entrou na casa, pegou a bombinha em cima da mesa e a apertou na boca no velho...")
+                                            time.sleep(1)
+                                            print(" - Ah... Ah... - o senhor tentava recuperar o ar - VocÍ n„o È um mau rapaz no fim das contas...")
+                                            time.sleep(1)
+                                            print("...")
+                                            time.sleep(0.5)
+                                            print(" - VocÍ gosta de lutar, n„o È garoto? Eu brigava muito quando era mais jovem...")
+                                            time.sleep(1)
+                                            print("...")
+                                            time.sleep(0.5)
+                                            print(" - Nem sempre os punhos s„o o bastante...")
+                                            time.sleep(1)
+                                            print("...")
+                                            time.sleep(0.5)
+                                            print(" - N„o falo do coraÁ„o na luta, isso vocÍ j· tem, falo de armas...")
+                                            time.sleep(1)
+                                            print(" - Tome... Eu usava este punhal no meu tempo... Agora È seu.")
+                                            time.sleep(1)
                                             item_adicionado=punhal_envelhecido
                                             quantidade_adicionada=1
                                             adicionaItem()
-                                            input("Voc√™ guardou o Punhal Envelhecido na mala!")
-                                            input(" - Se n√£o for pedir demais, venha sempre que puder para treinar o meu neto... Ele ainda √© muito fraco e eu n√£o tenho mais o mesmo vigor de antes...")
-                                            situa√ß√£o[3]=2
+                                            print("VocÍ guardou o Punhal Envelhecido na mala!")
+                                            time.sleep(1)
+                                            print(" - Se n„o for pedir demais, venha sempre que puder para treinar o meu neto... \nEle ainda È muito fraco e eu n„o tenho mais o mesmo vigor de antes...")
+                                            time.sleep(1)
+                                            print(" - N„o me entenda mal, n„o È uma troca de favores... \n… um pedido de um velho que n„o consegue ajudar seu neto.")
+                                            time.sleep(1)
+                                            situaÁ„o[3]=2
                                             break
                                         else:
-                                            if(a√ß√£o_do_personagem == "n√£o" or a√ß√£o_do_personagem=="n" or a√ß√£o_do_personagem=="nao" or a√ß√£o_do_personagem=="no" or a√ß√£o_do_personagem=="na" or a√ß√£o_do_personagem=="n√£" or a√ß√£o_do_personagem=="ao" or a√ß√£o_do_personagem=="√£o" or a√ß√£o_do_personagem=="√±" or a√ß√£o_do_personagem=="√±√£o" or a√ß√£o_do_personagem=="√±o" or a√ß√£o_do_personagem=="√±√µ" or a√ß√£o_do_personagem=="√±√£" or a√ß√£o_do_personagem=="√±a√µ" or a√ß√£o_do_personagem=="a√µ"):
-                                                input(" - O QU√ä VOC√ä FEZ COM MEU AV√î?! - era a voz de um menino vindo l√° de dentro do quarto.")
-                                                input("O menino pegou o senhor nos bra√ßos antes que tombasse e apertou algumas vezes uma bombinha para asma na boca dele...")
-                                                input(" - VOC√ä VAI PAGAR CARO!")
+                                            if(aÁ„o_do_personagem == "n„o" or aÁ„o_do_personagem=="n" or aÁ„o_do_personagem=="nao" or aÁ„o_do_personagem=="no" or aÁ„o_do_personagem=="na" or aÁ„o_do_personagem=="n„" or aÁ„o_do_personagem=="ao" or aÁ„o_do_personagem=="„o" or aÁ„o_do_personagem=="Ò" or aÁ„o_do_personagem=="Ò„o" or aÁ„o_do_personagem=="Òo" or aÁ„o_do_personagem=="Òı" or aÁ„o_do_personagem=="Ò„" or aÁ„o_do_personagem=="Òaı" or aÁ„o_do_personagem=="aı"):
+                                                print(" - O QU  VOC  FEZ COM MEU AV‘?! - era a voz de um menino vindo l· de dentro do quarto.")
+                                                time.sleep(1)
+                                                print("O menino pegou o senhor nos braÁos antes que tombasse e apertou algumas vezes uma bombinha para asma na boca dele...")
+                                                time.sleep(1)
+                                                print(" - VOC  VAI PAGAR CARO!")
+                                                time.sleep(1)
                                                 personagem_inimigo = [ "Garoto Irritado", 10, 10, 10, 10, 100, 100]
                                                 batalha()
                                                 if(personagem_jogador[6]<=0):break
                                                 if(personagem_inimigo[6]>0):
-                                                    input(" - SAIA J√Å DAQUI!")
-                                                    input("Em seguida ele fechou e trancou a porta.")
-                                                    situa√ß√£o[3]=1
+                                                    print(" - SAIA J¡ DAQUI!")
+                                                    time.sleep(1)
+                                                    print("Em seguida ele fechou e trancou a porta.")
+                                                    time.sleep(1)
+                                                    situaÁ„o[3]=1
                                                 else:
-                                                    input("O garoto caiu no ch√£o dentro da casa e come√ßou a chorar.")
-                                                    input(" - SAIA DAQUI ANTES QUE EU CHAME A POL√çCIA! - disse o senhor que j√° estava um pouco melhor...")
-                                                    input("Em seguida ele fechou e trancou a porta.")
-                                                    situa√ß√£o[3]=1
+                                                    print("O garoto caiu no ch„o dentro da casa e comeÁou a chorar.")
+                                                    time.sleep(1)
+                                                    print(" - SAIA DAQUI ANTES QUE EU CHAME A POLÕCIA! - disse o senhor que j· estava um pouco melhor...")
+                                                    time.sleep(1)
+                                                    print("Em seguida ele fechou e trancou a porta.")
+                                                    time.sleep(1)
+                                                    situaÁ„o[3]=1
                                                 break
                                             else:
-                                                input('ENTRADA INV√ÅLIDA! Digite "sim" ou "n√£o"')
+                                                print('ENTRADA INV¡LIDA! Digite "sim" ou "n„o"')
+                                                time.sleep(1)
                         else:
-                            if(a√ß√£o_do_personagem=="22"):
-                                if(situa√ß√£o[4]==4):
-                                    input("Voce bateu na porta...")
-                                    input("Ningu√©m te atendeu.")
-                                if(situa√ß√£o[4]==3):
-                                    input(" - E a√≠, rapaz!")
+                            if(aÁ„o_do_personagem=="22"):
+                                if(situaÁ„o[4]==4):
+                                    print("Voce bateu na porta...")
+                                    time.sleep(0.5)
+                                    print("NinguÈm te atendeu.")
+                                    time.sleep(0.5)
+                                if(situaÁ„o[4]==3):
+                                    print(" - E aÌ, rapaz!")
+                                    time.sleep(1.5)
                                     teste_de_sorte = random.randrange(3)
                                     if(teste_de_sorte==1):
-                                        input(" - Voc√™ chegou em boa hora! Entre e coma um peda√ßo de pizza comigo!")
-                                        input("Voc√™ ganhou um peda√ßo de pizza!")
-                                        item_adicionado=peda√ßo_pizza
+                                        print(" - VocÍ chegou em boa hora! Entre e coma um pedaÁo de pizza comigo!")
+                                        time.sleep(1)
+                                        print("VocÍ ganhou um pedaÁo de pizza!")
+                                        time.sleep(1)
+                                        item_adicionado=pedaÁo_pizza
                                         quantidade_adicionada=1
                                         adicionaItem()
-                                        input(" - At√© outra hora, vizinho!")
+                                        print(" - AtÈ outra hora, vizinho!")
+                                        time.sleep(0.5)
                                     else:
-                                        input(" - Estou sem pizza agora... Talvez mais tarde...")
-                                if(situa√ß√£o[4]==2):
-                                    input(" - O qu√™ voc√™ quer aqui?")
-                                    print("Voc√™ vai dizer a ele que comeu a sua pizza?(sim ou n√£o)")
+                                        print(" - Estou sem pizza agora... Talvez mais tarde...")
+                                        time.sleep(1)
+                                if(situaÁ„o[4]==2):
+                                    print(" - O quÍ vocÍ quer aqui?")
+                                    time.sleep(1)
+                                    print("VocÍ vai dizer a ele que comeu a sua pizza?(sim ou n„o)")
+                                    time.sleep(0.5)
                                     while 1:
-                                        a√ß√£o_do_personagem = input("-")
-                                        a√ß√£o_do_personagem = a√ß√£o_do_personagem.lower()
-                                        if(a√ß√£o_do_personagem=="sim" or a√ß√£o_do_personagem=="s" or a√ß√£o_do_personagem=="si" or a√ß√£o_do_personagem=="sm" or a√ß√£o_do_personagem=="im" or a√ß√£o_do_personagem=="ssim"):
-                                            input(" - ...")
-                                            input(" - VOC√ä...")
-                                            input(" - Voc√™ √© muito cara de pau mesmo, mas adimiro a sua sinceridade.")
-                                            input(" - Eu sempre como pizza, quando voc√™ quiser passe aqui para pegar um peda√ßo.")
-                                            situa√ß√£o[4]=3
+                                        aÁ„o_do_personagem = input("-")
+                                        aÁ„o_do_personagem = aÁ„o_do_personagem.lower()
+                                        if(aÁ„o_do_personagem=="sim" or aÁ„o_do_personagem=="s" or aÁ„o_do_personagem=="si" or aÁ„o_do_personagem=="sm" or aÁ„o_do_personagem=="im" or aÁ„o_do_personagem=="ssim"):
+                                            print(" - ...")
+                                            time.sleep(1.5)
+                                            print(" - VOC ...")
+                                            time.sleep(1.5)
+                                            print(" - VocÍ È muito cara de pau mesmo, mas adimiro a sua sinceridade.")
+                                            time.sleep(1)
+                                            print(" - Eu sempre como pizza, quando vocÍ quiser passe aqui para pegar um pedaÁo.")
+                                            time.sleep(1)
+                                            situaÁ„o[4]=3
                                             break
                                         else:
-                                            if(a√ß√£o_do_personagem == "n√£o" or a√ß√£o_do_personagem=="n" or a√ß√£o_do_personagem=="nao" or a√ß√£o_do_personagem=="no" or a√ß√£o_do_personagem=="na" or a√ß√£o_do_personagem=="n√£" or a√ß√£o_do_personagem=="ao" or a√ß√£o_do_personagem=="√£o" or a√ß√£o_do_personagem=="√±" or a√ß√£o_do_personagem=="√±√£o" or a√ß√£o_do_personagem=="√±o" or a√ß√£o_do_personagem=="√±√µ" or a√ß√£o_do_personagem=="√±√£" or a√ß√£o_do_personagem=="√±a√µ" or a√ß√£o_do_personagem=="a√µ"):
-                                                input(" - ...")
-                                                input(" - Me deixe em paz!")
-                                                situa√ß√£o[4]=4
+                                            if(aÁ„o_do_personagem == "n„o" or aÁ„o_do_personagem=="n" or aÁ„o_do_personagem=="nao" or aÁ„o_do_personagem=="no" or aÁ„o_do_personagem=="na" or aÁ„o_do_personagem=="n„" or aÁ„o_do_personagem=="ao" or aÁ„o_do_personagem=="„o" or aÁ„o_do_personagem=="Ò" or aÁ„o_do_personagem=="Ò„o" or aÁ„o_do_personagem=="Òo" or aÁ„o_do_personagem=="Òı" or aÁ„o_do_personagem=="Ò„" or aÁ„o_do_personagem=="Òaı" or aÁ„o_do_personagem=="aı"):
+                                                print(" - ...")
+                                                time.sleep(1.5)
+                                                print(" - Me deixe em paz!")
+                                                time.sleep(1)
+                                                situaÁ„o[4]=4
                                                 break
                                             else:
-                                                input('Entrada inv√°lida! Digite "sim" ou "n√£o".')
-                                if(situa√ß√£o[4]==1):
-                                    input("Voc√™ bateu na porta do quarto, que agora est√° fechado.")
-                                    input("Voc√™ escuta passos r√°pidos e violentos vindo √† porta")
-                                    input(" - EU TO MUITO PUTO! - diz o estudante que abriu violentamente a porta - ENTRARAM E COMERAM A MINHA PIZZA!")
-                                    input("...")
-                                    input(" - Ah esquece... Nem deve ter sido voc√™...")
-                                    situa√ß√£o[4]=2
-                                if(situa√ß√£o[4]==0):
-                                    input("O quarto est√° aberto, voc√™ entra e v√™ um estudante vagabundo dormindo num sof√° com uma pizza no colo.")
-                                    print("E a√≠, vai pegar essa pizza? (sim ou n√£o)\n")
+                                                print('Entrada inv·lida! Digite "sim" ou "n„o".')
+                                                time.sleep(0.5)
+                                if(situaÁ„o[4]==1):
+                                    print("VocÍ bateu na porta do quarto, que agora est· fechado.")
+                                    time.sleep(1)
+                                    print("VocÍ escuta passos r·pidos e violentos vindo ‡ porta")
+                                    time.sleep(1)
+                                    print(" - EU TO MUITO PUTO! - diz o estudante que abriu violentamente a porta - ENTRARAM E COMERAM A MINHA PIZZA!")
+                                    time.sleep(1)
+                                    print("...")
+                                    time.sleep(1.5)
+                                    print(" - Ah esquece... Nem deve ter sido vocÍ...")
+                                    time.sleep(1)
+                                    situaÁ„o[4]=2
+                                if(situaÁ„o[4]==0):
+                                    print("O quarto est· aberto, vocÍ entra e vÍ um estudante vagabundo dormindo num sof· com uma pizza no colo.")
+                                    time.sleep(1)
+                                    print("E aÌ, vai pegar essa pizza? (sim ou n„o)\n")
+                                    time.sleep(0.5)
                                     while 1:
-                                        a√ß√£o_do_personagem = input("-")
-                                        a√ß√£o_do_personagem = a√ß√£o_do_personagem.lower()
-                                        if(a√ß√£o_do_personagem=="sim" or a√ß√£o_do_personagem=="s" or a√ß√£o_do_personagem=="si" or a√ß√£o_do_personagem=="sm" or a√ß√£o_do_personagem=="im" or a√ß√£o_do_personagem=="ssim"):
-                                            input("Voc√™ guardou a pizza inteira na mochila!")
-                                            item_adicionado=peda√ßo_pizza
+                                        aÁ„o_do_personagem = input("-")
+                                        aÁ„o_do_personagem = aÁ„o_do_personagem.lower()
+                                        if(aÁ„o_do_personagem=="sim" or aÁ„o_do_personagem=="s" or aÁ„o_do_personagem=="si" or aÁ„o_do_personagem=="sm" or aÁ„o_do_personagem=="im" or aÁ„o_do_personagem=="ssim"):
+                                            print("VocÍ guardou a pizza inteira na mochila!")
+                                            time.sleep(1)
+                                            item_adicionado=pedaÁo_pizza
                                             quantidade_adicionada=8
                                             adicionaItem()
-                                            situa√ß√£o[4]=1
+                                            situaÁ„o[4]=1
                                             break
                                         else:
-                                            if(a√ß√£o_do_personagem == "n√£o" or a√ß√£o_do_personagem=="n" or a√ß√£o_do_personagem=="nao" or a√ß√£o_do_personagem=="no" or a√ß√£o_do_personagem=="na" or a√ß√£o_do_personagem=="n√£" or a√ß√£o_do_personagem=="ao" or a√ß√£o_do_personagem=="√£o" or a√ß√£o_do_personagem=="√±" or a√ß√£o_do_personagem=="√±√£o" or a√ß√£o_do_personagem=="√±o" or a√ß√£o_do_personagem=="√±√µ" or a√ß√£o_do_personagem=="√±√£" or a√ß√£o_do_personagem=="√±a√µ" or a√ß√£o_do_personagem=="a√µ"):
-                                                input("Voc√™ deixou a pizza para depois!")
+                                            if(aÁ„o_do_personagem == "n„o" or aÁ„o_do_personagem=="n" or aÁ„o_do_personagem=="nao" or aÁ„o_do_personagem=="no" or aÁ„o_do_personagem=="na" or aÁ„o_do_personagem=="n„" or aÁ„o_do_personagem=="ao" or aÁ„o_do_personagem=="„o" or aÁ„o_do_personagem=="Ò" or aÁ„o_do_personagem=="Ò„o" or aÁ„o_do_personagem=="Òo" or aÁ„o_do_personagem=="Òı" or aÁ„o_do_personagem=="Ò„" or aÁ„o_do_personagem=="Òaı" or aÁ„o_do_personagem=="aı"):
+                                                print("VocÍ deixou a pizza para depois!")
+                                                time.sleep(1)
                                                 break
                                             else:
-                                                input('Entrada inv√°lida! Digite "sim" ou "n√£o".')
+                                                print('Entrada inv·lida! Digite "sim" ou "n„o".')
+                                                time.sleep(0.5)
                             else:
-                                if(a√ß√£o_do_personagem=="23"):
-                                   input("Voc√™ v√™ um quarto aberto, sujo e vazio...")
-                                   input("Parece abandonado por um bom tempo... J√° tem fauna e flora pr√≥ria!")
+                                if(aÁ„o_do_personagem=="23"):
+                                   print("VocÍ vÍ um quarto aberto, sujo e vazio...")
+                                   time.sleep(0.5)
+                                   print("Parece abandonado por um bom tempo... J· tem fauna e flora prÛria!")
+                                   time.sleep(1)
                                 else:
-                                    if(a√ß√£o_do_personagem=="24"):
-                                        if(situa√ß√£o[2]==0):
-                                            input("Voc√™ encara um indiv√≠duo de aparencia extravagante e vulgar encostado no batente da porta...")
-                                            input(" - Qual√© merh-m√£o? T√° querenu tret√°?")
-                                            personagem_inimigo = [ "Man√© de Bon√©", 10, 5, 10, 1, 100, 100]
+                                    if(aÁ„o_do_personagem=="24"):
+                                        if(situaÁ„o[2]==0):
+                                            print("VocÍ encara um indivÌduo de aparencia extravagante e vulgar encostado no batente da porta...")
+                                            time.sleep(1)
+                                            print(" - QualÈ merh-m„o? T· querenu tret·?")
+                                            time.sleep(2)
+                                            personagem_inimigo = [ "ManÈ de BonÈ", 10, 5, 10, 1, 100, 100]
                                             batalha()
                                             if(personagem_jogador[6]<=0):break
                                             if(personagem_inimigo[6]>0):
-                                                input("Ele corre atr√°s de voc√™ e te d√° um chute no joelho!")
-                                                input("!!!")
-                                                input("Voc√™ perdeu 30 pontos de vida!")
-                                                input(" - Fica diboa rap√°h!")
+                                                print("Ele corre atr·s de vocÍ e te d· um chute no joelho!")
+                                                time.sleep(1)
+                                                print("!!!")
+                                                time.sleep(0.5)
+                                                print("VocÍ perdeu 30 pontos de vida!")
+                                                time.sleep(1)
+                                                print(" - Fica diboa rap·h!")
+                                                time.sleep(1)
                                                 personagem_jogador[6]=personagem_jogador[6]-30
-                                                input("Ele voltou ao batente da porta do quarto e agora est√° te encarando...")
-                                                input("Voc√™ me envergonha.")
+                                                if(personagem_jogador[6]<=0):personagem_jogador[6]=1
+                                                print("Ele voltou ao batente da porta do quarto e agora est· te encarando...")
+                                                time.sleep(1)
+                                                print("VocÍ me envergonha.")
+                                                time.sleep(1)
                                             else:
-                                                input(" - Que isso maluco?! Que isso?!")
-                                                input("Ele entrou cambaleando para o quarto dele e se trancou!")
-                                                situa√ß√£o[2]=1
-                                        if(situa√ß√£o[2]==1):
-                                            input("O quarto est√° trancado...")
-                                        if(situa√ß√£o[2]==2):
-                                            input("Voc√™ ve uma porta quebrada ao meio, ca√≠da, mas presa apenas pela dobradi√ßa inferior, ")
-                                            input("a superior segurava apenas um peda√ßo de madeira desprendido da porta.")
-                                            input("Dentro voc√™ v√™ muito sangue pelo quarto, os poucos m√≥veis quebrados, ")
-                                            input("mas nada de valor...")
-                                            matarAlgu√©m()
-                                        if(situa√ß√£o[2]==3):
-                                            input("Voc√™ ve uma porta quebrada ao meio, ca√≠da, mas presa apenas pela dobradi√ßa inferior, ")
-                                            input("a superior segurava apenas um peda√ßo de madeira desprendido da porta.")
-                                            input("Tamb√©m escuta, vindo l√° de dentro, solu√ßos em sussurros e sussurros em solu√ßos...")
-                                            input("Melhor n√£o entrar... N√£o h√° nada de mais l√° dentro.")
+                                                print(" - Que isso maluco?! Que isso?!")
+                                                time.sleep(1)
+                                                print("Ele entrou cambaleando para o quarto dele e se trancou!")
+                                                time.sleep(1)
+                                                situaÁ„o[2]=1
+                                        if(situaÁ„o[2]==1):
+                                            print("O quarto est· trancado...")
+                                            time.sleep(1)
+                                        if(situaÁ„o[2]==2):
+                                            print("VocÍ ve uma porta quebrada ao meio, caÌda, mas presa apenas pela dobradiÁa inferior, ")
+                                            time.sleep(1)
+                                            print("a superior segurava apenas um pedaÁo de madeira desprendido da porta.")
+                                            time.sleep(1)
+                                            print("Dentro vocÍ vÍ muito sangue pelo quarto, os poucos mÛveis quebrados, ")
+                                            time.sleep(1)
+                                            print("mas nada de valor...")
+                                            time.sleep(1)
+                                            matarAlguÈm()
+                                        if(situaÁ„o[2]==3):
+                                            print("VocÍ ve uma porta quebrada ao meio, caÌda, mas presa apenas pela dobradiÁa inferior, ")
+                                            time.sleep(1)
+                                            print("a superior segurava apenas um pedaÁo de madeira desprendido da porta.")
+                                            time.sleep(1)
+                                            print("TambÈm escuta, vindo l· de dentro, soluÁos em sussurros e sussurros em soluÁos...")
+                                            time.sleep(1)
+                                            print("Melhor n„o entrar... N„o h· nada de mais l· dentro.")
+                                            time.sleep(1)
                                     else:
-                                        if(a√ß√£o_do_personagem=="arrombar a porta do quarto 24" or a√ß√£o_do_personagem=="arrombar o quarto 24" or a√ß√£o_do_personagem=="arrombar" or a√ß√£o_do_personagem=="arrombar a porta" or a√ß√£o_do_personagem=="entrar no quarto 24"):
-                                            if(situa√ß√£o[2]==1):
-                                                input("Voc√™ pisoteou a porta e entrou no quarto!")
-                                                input(" - N√£o, por favor nao!...")
+                                        if(aÁ„o_do_personagem=="arrombar a porta do quarto 24" or aÁ„o_do_personagem=="arrombar o quarto 24" or aÁ„o_do_personagem=="arrombar" or aÁ„o_do_personagem=="arrombar a porta" or aÁ„o_do_personagem=="entrar no quarto 24"):
+                                            if(situaÁ„o[2]==1):
+                                                print("VocÍ pisoteou a porta e entrou no quarto!")
+                                                time.sleep(1)
+                                                print(" - N„o, por favor nao!...")
+                                                time.sleep(1)
                                                 while 1:
-                                                    if(situa√ß√£o[2]==2):
+                                                    if(situaÁ„o[2]==2):
                                                         break
-                                                    if(situa√ß√£o[2]==3):
+                                                    if(situaÁ„o[2]==3):
                                                         break
-                                                    print("Melhor n√£o continuar...(sim ou n√£o)\n")
-                                                    a√ß√£o_do_personagem=input("-")
-                                                    a√ß√£o_do_personagem=a√ß√£o_do_personagem.lower()
-                                                    if(a√ß√£o_do_personagem=="sim" or a√ß√£o_do_personagem=="s" or a√ß√£o_do_personagem=="si" or a√ß√£o_do_personagem=="sm" or a√ß√£o_do_personagem=="im" or a√ß√£o_do_personagem=="ssim"):
+                                                    print("Melhor n„o continuar...(sim ou n„o)\n")
+                                                    time.sleep(0.5)
+                                                    aÁ„o_do_personagem=input("-")
+                                                    aÁ„o_do_personagem=aÁ„o_do_personagem.lower()
+                                                    if(aÁ„o_do_personagem=="sim" or aÁ„o_do_personagem=="s" or aÁ„o_do_personagem=="si" or aÁ„o_do_personagem=="sm" or aÁ„o_do_personagem=="im" or aÁ„o_do_personagem=="ssim"):
                                                         while 2:
-                                                            print("Eu insisto... √â melhor parar... Voc√™ est√° de cabe√ßa quente... (sim ou n√£o)\n")
-                                                            a√ß√£o_do_personagem=input("-")
-                                                            a√ß√£o_do_personagem=a√ß√£o_do_personagem.lower()
-                                                            if(a√ß√£o_do_personagem=="sim" or a√ß√£o_do_personagem=="s" or a√ß√£o_do_personagem=="si" or a√ß√£o_do_personagem=="sm" or a√ß√£o_do_personagem=="im" or a√ß√£o_do_personagem=="ssim"):
-                                                                a√ß√£o_do_personagem=input("-")
-                                                                a√ß√£o_do_personagem=a√ß√£o_do_personagem.lower()
+                                                            print("Eu insisto... … melhor parar... VocÍ est· de cabeÁa quente... (sim ou n„o)\n")
+                                                            time.sleep(0.5)
+                                                            aÁ„o_do_personagem=input("-")
+                                                            aÁ„o_do_personagem=aÁ„o_do_personagem.lower()
+                                                            if(aÁ„o_do_personagem=="sim" or aÁ„o_do_personagem=="s" or aÁ„o_do_personagem=="si" or aÁ„o_do_personagem=="sm" or aÁ„o_do_personagem=="im" or aÁ„o_do_personagem=="ssim"):
+                                                                input("(Aperte ENTER)")
                                                                 input("!!!!!!!!!!!!")
-                                                                input(" - N√ÉO, N√ÉO!")
+                                                                input(" - N√O, N√O!")
                                                                 input("!!!!!!!!!!!!")
-                                                                input(" - N-N√Éo..o!")
+                                                                input(" - N-N√o..o!")
                                                                 input("!!!!!!!!....")
                                                                 input("!!!!........")
                                                                 input("....!!!!....")
                                                                 input("........!!!!")
                                                                 input("!!!!....!!!!")
-                                                                input("Seus punhos vermelhos tremem...")
-                                                                input("Voc√™ o espancou at√© a morte...")
-                                                                input("...")
-                                                                matarAlgu√©m()
-                                                                situa√ß√£o[2]=2
+                                                                print("(J· n„o h· mais motivos para golpear...)")
+                                                                time.sleep(1)
+                                                                print("Seus punhos vermelhos tremem...")
+                                                                time.sleep(1)
+                                                                print("VocÍ o espancou atÈ a morte...")
+                                                                time.sleep(1)
+                                                                print("...")
+                                                                time.sleep(1)
+                                                                matarAlguÈm()
+                                                                situaÁ„o[2]=2
                                                                 break
                                                             else:
-                                                                if(a√ß√£o_do_personagem == "n√£o" or a√ß√£o_do_personagem=="n" or a√ß√£o_do_personagem=="nao" or a√ß√£o_do_personagem=="no" or a√ß√£o_do_personagem=="na" or a√ß√£o_do_personagem=="n√£" or a√ß√£o_do_personagem=="ao" or a√ß√£o_do_personagem=="√£o" or a√ß√£o_do_personagem=="√±" or a√ß√£o_do_personagem=="√±√£o" or a√ß√£o_do_personagem=="√±o" or a√ß√£o_do_personagem=="√±√µ" or a√ß√£o_do_personagem=="√±√£" or a√ß√£o_do_personagem=="√±a√µ" or a√ß√£o_do_personagem=="a√µ"):
-                                                                    input("Voc√™ respirou fundo, abaixou os punhos e se retirou do quarto...")
+                                                                if(aÁ„o_do_personagem == "n„o" or aÁ„o_do_personagem=="n" or aÁ„o_do_personagem=="nao" or aÁ„o_do_personagem=="no" or aÁ„o_do_personagem=="na" or aÁ„o_do_personagem=="n„" or aÁ„o_do_personagem=="ao" or aÁ„o_do_personagem=="„o" or aÁ„o_do_personagem=="Ò" or aÁ„o_do_personagem=="Ò„o" or aÁ„o_do_personagem=="Òo" or aÁ„o_do_personagem=="Òı" or aÁ„o_do_personagem=="Ò„" or aÁ„o_do_personagem=="Òaı" or aÁ„o_do_personagem=="aı"):
+                                                                    print("VocÍ respirou fundo, abaixou os punhos e se retirou do quarto...")
+                                                                    time.sleep(1)
+                                                                    print("VocÍ superou seus instintos e respeitou seus princÌpios...")
+                                                                    time.sleep(1)
+                                                                    print("Ao recuperar seu fÙlego, seus pontos de vida aumentaram.")
+                                                                    time.sleep(1)
                                                                     personagem_jogador[5]=personagem_jogador[5]+50
                                                                     personagem_jogador[6]=personagem_jogador[5]
-                                                                    situa√ß√£o[2]=3
+                                                                    situaÁ„o[2]=3
                                                                     break
                                                                 else:
-                                                                    input("Entrada inv√°lida... A situa√ß√£o √© tensa, mantenha a seriedade e responda corretamente.")
+                                                                    print("Entrada inv·lida... A situaÁ„o È tensa, mantenha a seriedade e responda corretamente.")
+                                                                    time.sleep(1)
                                                         break
                                                     else:
-                                                        if(a√ß√£o_do_personagem == "n√£o" or a√ß√£o_do_personagem=="n" or a√ß√£o_do_personagem=="nao" or a√ß√£o_do_personagem=="no" or a√ß√£o_do_personagem=="na" or a√ß√£o_do_personagem=="n√£" or a√ß√£o_do_personagem=="ao" or a√ß√£o_do_personagem=="√£o" or a√ß√£o_do_personagem=="√±" or a√ß√£o_do_personagem=="√±√£o" or a√ß√£o_do_personagem=="√±o" or a√ß√£o_do_personagem=="√±√µ" or a√ß√£o_do_personagem=="√±√£" or a√ß√£o_do_personagem=="√±a√µ" or a√ß√£o_do_personagem=="a√µ"):
-                                                            input("Voc√™ respirou fundo, abaixou os punhos e se retirou do quarto...")
+                                                        if(aÁ„o_do_personagem == "n„o" or aÁ„o_do_personagem=="n" or aÁ„o_do_personagem=="nao" or aÁ„o_do_personagem=="no" or aÁ„o_do_personagem=="na" or aÁ„o_do_personagem=="n„" or aÁ„o_do_personagem=="ao" or aÁ„o_do_personagem=="„o" or aÁ„o_do_personagem=="Ò" or aÁ„o_do_personagem=="Ò„o" or aÁ„o_do_personagem=="Òo" or aÁ„o_do_personagem=="Òı" or aÁ„o_do_personagem=="Ò„" or aÁ„o_do_personagem=="Òaı" or aÁ„o_do_personagem=="aı"):
+                                                            print("VocÍ respirou fundo, abaixou os punhos e se retirou do quarto...")
+                                                            time.sleep(1)
+                                                            print("VocÍ superou seus instintos e respeitou seus princÌpios...")
+                                                            time.sleep(1)
+                                                            print("Ao recuperar seu fÙlego, vocÍ recuperou seus pontos de vida.")
+                                                            time.sleep(1)
                                                             personagem_jogador[6]=personagem_jogador[5]
-                                                            situa√ß√£o[2]=3
+                                                            situaÁ„o[2]=3
                                                             break
                                                         else:
-                                                            input("Entrada inv√°lida... A situa√ß√£o √© tensa, mantenha a seriedade e responda corretamente.")
-                                            if(situa√ß√£o[4]==2):
-                                                matarAlgu√©m()
-                                            if(situa√ß√£o[2]==3):
-                                                input("Voc√™ j√° fez o bastante por aqui... Melhor se afastar.")
+                                                            print("Entrada inv·lida... A situaÁ„o È tensa, mantenha a seriedade e responda corretamente.")
+                                                            time.sleep(1)
+                                            if(situaÁ„o[4]==2):
+                                                matarAlguÈm()
+                                            if(situaÁ„o[2]==3):
+                                                print("VocÍ j· fez o bastante por aqui... Melhor se afastar.")
+                                                time.sleep(0.5)
                                         else:
-                                            if(a√ß√£o_do_personagem == "salvar o jogo" or a√ß√£o_do_personagem=="guardar o jogo" or a√ß√£o_do_personagem == "salvar jogo" or a√ß√£o_do_personagem=="guardar jogo" or a√ß√£o_do_personagem == "salvar" or a√ß√£o_do_personagem == "save" or a√ß√£o_do_personagem == "save game" or a√ß√£o_do_personagem == "salvar o progresso" or a√ß√£o_do_personagem == "salvar progresso" or a√ß√£o_do_personagem == "guardar o progresso" or a√ß√£o_do_personagem == "guardar progresso" or a√ß√£o_do_personagem == "save progress" or a√ß√£o_do_personagem == "salva" or a√ß√£o_do_personagem == "sava" or a√ß√£o_do_personagem == "slvar" or a√ß√£o_do_personagem == "svar" or a√ß√£o_do_personagem == "svr" or a√ß√£o_do_personagem == "slvr" or a√ß√£o_do_personagem == "sav" or a√ß√£o_do_personagem == "sve" or a√ß√£o_do_personagem == "sv" or a√ß√£o_do_personagem == "salvar o game" or a√ß√£o_do_personagem == "guardar o game" or a√ß√£o_do_personagem == "salvar game" or a√ß√£o_do_personagem == "guardar game"):
+                                            if(aÁ„o_do_personagem == "salvar o jogo" or aÁ„o_do_personagem=="guardar o jogo" or aÁ„o_do_personagem == "salvar jogo" or aÁ„o_do_personagem=="guardar jogo" or aÁ„o_do_personagem == "salvar" or aÁ„o_do_personagem == "save" or aÁ„o_do_personagem == "save game" or aÁ„o_do_personagem == "salvar o progresso" or aÁ„o_do_personagem == "salvar progresso" or aÁ„o_do_personagem == "guardar o progresso" or aÁ„o_do_personagem == "guardar progresso" or aÁ„o_do_personagem == "save progress" or aÁ„o_do_personagem == "salva" or aÁ„o_do_personagem == "sava" or aÁ„o_do_personagem == "slvar" or aÁ„o_do_personagem == "svar" or aÁ„o_do_personagem == "svr" or aÁ„o_do_personagem == "slvr" or aÁ„o_do_personagem == "sav" or aÁ„o_do_personagem == "sve" or aÁ„o_do_personagem == "sv" or aÁ„o_do_personagem == "salvar o game" or aÁ„o_do_personagem == "guardar o game" or aÁ„o_do_personagem == "salvar game" or aÁ„o_do_personagem == "guardar game"):
                                                 save()
                                             else:
-                                                if(a√ß√£o_do_personagem=="ver a bolsa" or a√ß√£o_do_personagem=="ver invent√°rio" or a√ß√£o_do_personagem=="ver o invent√°rio" or a√ß√£o_do_personagem=="ver bolsa" or a√ß√£o_do_personagem=="ver mochila" or a√ß√£o_do_personagem=="ver mala" or a√ß√£o_do_personagem=="ver a mochila" or a√ß√£o_do_personagem=="ver a mala" or a√ß√£o_do_personagem=="invent√°rio" or a√ß√£o_do_personagem=="inventario" or a√ß√£o_do_personagem=="iventario" or a√ß√£o_do_personagem=="ivent√°rio" or a√ß√£o_do_personagem=="mochila" or a√ß√£o_do_personagem=="mochla" or a√ß√£o_do_personagem=="mala" or a√ß√£o_do_personagem=="bolsa" or a√ß√£o_do_personagem=="itens" or a√ß√£o_do_personagem=="√≠tens" or a√ß√£o_do_personagem=="item"):
-                                                    invent√°rioPersonagem()
+                                                if(aÁ„o_do_personagem=="ver a bolsa" or aÁ„o_do_personagem=="ver invent·rio" or aÁ„o_do_personagem=="ver o invent·rio" or aÁ„o_do_personagem=="ver bolsa" or aÁ„o_do_personagem=="ver mochila" or aÁ„o_do_personagem=="ver mala" or aÁ„o_do_personagem=="ver a mochila" or aÁ„o_do_personagem=="ver a mala" or aÁ„o_do_personagem=="invent·rio" or aÁ„o_do_personagem=="inventario" or aÁ„o_do_personagem=="iventario" or aÁ„o_do_personagem=="ivent·rio" or aÁ„o_do_personagem=="mochila" or aÁ„o_do_personagem=="mochla" or aÁ„o_do_personagem=="mala" or aÁ„o_do_personagem=="bolsa" or aÁ„o_do_personagem=="itens" or aÁ„o_do_personagem=="Ìtens" or aÁ„o_do_personagem=="item"):
+                                                    invent·rioPersonagem()
                                                 else:
-                                                    print('\nEntrada Inv√°lida!\n')
+                                                    print('\nEntrada Inv·lida!\n')
+                                                    time.sleep(0.5)
 
-#--Seu pr√©dio: Primeiro Andar--#
-def seuPr√©dioPrimeiroAndar():
-    global desequipado_roupa,desequipado_capa,desequipado_luva,desequipado_m√£os,desequipado_cal√ßado,espa√ßo_vazio,peda√ßo_pizza,bolo_chocolate,pijama_inicial,uniforme_estudantil,malha_ninja,l√°pis_apontado,punhal_envelhecido,talheres_prata,jaqueta_imita√ß√£o,jaqueta_couro,agasalho_l√£,suplemento_aliment√≠cio,lata_energ√©tico,luva_l√£,luva_couro,soco_pvc,soco_lat√£o,luva_spikes_alu,soco_alu,luva_spikes_a√ßo,soco_a√ßo,luva_spikes_ag,soco_ag,luva_spikes_au,soco_au,luva_spikes_tit√¢nio,soco_tit√¢nio,anel_for√ßa1,anel_for√ßa2,anel_for√ßa3,anel_resist√™ncia1,anel_resist√™ncia2,anel_resist√™ncia3,anel_consist√™ncia1,anel_consist√™ncia2,anel_consist√™ncia3,anel_da_imortalidade,anel_da_divindade,chinelo_inicial,papetes_masculinas,t√™nis_velho,t√™nis_simpl√≥rio,sapato_simpl√≥rio,t√™nis_comum,t√™nis_trilha,t√™nis_caminhada,t√™nis_corrida,t√™nis_ZX5000,item_adicionado,quantidade_adicionada,equipado_roupa,equipado_capa,equipado_luva,equipado_anel,equipado_m√£os,equipado_cal√ßado,vari√°vel_cen√°rio,objeto,situa√ß√£o,tempor√°rio,vari√°vel_lugar,ponto_de_save,mostrar_save, personagem_jogador,personagem_reserva,personagem_inimigo,eegg,a√ß√£o_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,vari√°vel_para_comparar,contador_de_batalha,contador_de_rodadas,mala,loja_venda
-    if(vari√°vel_lugar == "seu pr√©dio, 2¬∫ andarb" or vari√°vel_lugar == "seu pr√©dio, 3¬∫ andarb" or vari√°vel_lugar == "seu pr√©dio, 4¬∫ andarb"):
-        seuPr√©dioSegundoAndar()
+#--Seu prÈdio: Primeiro Andar--#
+def seuPrÈdioPrimeiroAndar():
+    global desequipado_roupa,desequipado_capa,desequipado_luva,desequipado_maos,desequipado_calcado,espaÁo_vazio,pedaÁo_pizza,bolo_chocolate,pijama_inicial,uniforme_estudantil,malha_ninja,lapis_apontado,punhal_envelhecido,talheres_prata,jaqueta_imitaÁ„o,jaqueta_couro,agasalho_l„,suplemento_alimentÌcio,lata_energÈtico,luva_l„,luva_couro,soco_pvc,soco_lat„o,luva_spikes_alu,soco_alu,luva_spikes_aÁo,soco_aÁo,luva_spikes_ag,soco_ag,luva_spikes_au,soco_au,luva_spikes_tit‚nio,soco_tit‚nio,anel_forÁa1,anel_forÁa2,anel_forÁa3,anel_resistÍncia1,anel_resistÍncia2,anel_resistÍncia3,anel_consistÍncia1,anel_consistÍncia2,anel_consistÍncia3,anel_da_imortalidade,anel_da_divindade,chinelo_inicial,papetes_masculinas,tÍnis_velho,tÍnis_simplÛrio,sapato_simplÛrio,tÍnis_comum,tÍnis_trilha,tÍnis_caminhada,tÍnis_corrida,tÍnis_ZX5000,item_adicionado,quantidade_adicionada,equipado_roupa,equipado_capa,equipado_luva,equipado_anel,equipado_maos,equipado_calcado,vari·vel_cen·rio,objeto,situaÁ„o,tempor·rio,vari·vel_lugar,ponto_de_save,mostrar_save, personagem_jogador,personagem_reserva,personagem_inimigo,eegg,aÁ„o_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,vari·vel_para_comparar,contador_de_batalha,contador_de_rodadas,mala,loja_venda
+    if(vari·vel_lugar == "seu prÈdio, 2∫ andarb" or vari·vel_lugar == "seu prÈdio, 3∫ andarb" or vari·vel_lugar == "seu prÈdio, 4∫ andarb"):
+        seuPrÈdioSegundoAndar()
     if(personagem_jogador[6]>0):
-        vari√°vel_lugar = "seu pr√©dio, 1¬∫ andar"
-        print("Agora voc√™ est√° no corredor do primeiro andar do seu pr√©dio.")
+        vari·vel_lugar = "seu prÈdio, 1∫ andar"
+        print("Agora vocÍ est· no corredor do primeiro andar do seu prÈdio.")
         time.sleep(3)
-        print("\n#", "-"*30,"#\n", "\nLista de A√ß√µes\n\nCen√°rio:", vari√°vel_lugar,"\n\nVoc√™ pode:\nolhar\n")
+        print("\n#", "-"*30,"#\n", "\nLista de AÁıes\n\nCen·rio:", vari·vel_lugar,"\n\nVocÍ pode:\nolhar\n")
         time.sleep(1)
-        if (vari√°vel_cen√°rio[0] == "sim"):
+        if (vari·vel_cen·rio[0] == "sim"):
             print("\ncheirar\nchecar os quartos\n")
             time.sleep(1)
-            if (vari√°vel_cen√°rio[2] == "sim" and objeto[0] == "n√£o"):
-                print("olhar o b√™bado\n")
+            if (vari·vel_cen·rio[2] == "sim" and objeto[0] == "n„o"):
+                print("olhar o bÍbado\n")
                 time.sleep(1)
         if(objeto[1] == "sim"):
             print("\narrombar o quarto 10\n")
             time.sleep(1)
         if (objeto[0] == "1"):
-            print("\nacordar o b√™bado\n")
-            print("\nrevistar o b√™bado\n")
+            print("\nacordar o bÍbado\n")
+            print("\nrevistar o bÍbado\n")
             time.sleep(1)
         if (objeto[0] == "2"):
-            print("\nmover o b√™bado\n")
+            print("\nmover o bÍbado\n")
             time.sleep(1)
         if (objeto[0] == "3"):
-            print("\natacar o b√™bado\n")
+            print("\natacar o bÍbado\n")
             time.sleep(1)
         if (objeto[0] == "sim"):
             print("\nabrir a porta dos fundos\n")
             time.sleep(1)
         print("\nver ficha do personagem\nver mochila\nsubir as escadas\ndescer as escadas\n\nsalvar o jogo\n", "\n#", "-"*30,"#\n")
         time.sleep(2)
-        print("\nO que voc√™ vai fazer, ", personagem_jogador[0], "?\n")
-        a√ß√£o_do_personagem = input("-")
-        a√ß√£o_do_personagem = a√ß√£o_do_personagem.lower()
+        print("\nO que vocÍ vai fazer, ", personagem_jogador[0], "?\n")
+        aÁ„o_do_personagem = ("-")
+        aÁ„o_do_personagem = aÁ„o_do_personagem.lower()
     while 1:
         if(personagem_jogador[6]<=0):break
-        if(a√ß√£o_do_personagem=="checar os quartos" or a√ß√£o_do_personagem=="checar quartos" or a√ß√£o_do_personagem=="checar" or a√ß√£o_do_personagem=="quartos" or a√ß√£o_do_personagem=="checaros quartos" or a√ß√£o_do_personagem=="checar osquartos" or a√ß√£o_do_personagem=="checarosquartos" or a√ß√£o_do_personagem=="checa os quartos" or a√ß√£o_do_personagem=="checa os quarto" or a√ß√£o_do_personagem=="checa o quarto" or a√ß√£o_do_personagem=="checa o quartos" or a√ß√£o_do_personagem=="checar os quarto" or a√ß√£o_do_personagem=="checar o quarto" or a√ß√£o_do_personagem=="bater na porta de um dos quartos" or a√ß√£o_do_personagem=="checar um dos quartos" or a√ß√£o_do_personagem=="bater na porta dos quartos" or a√ß√£o_do_personagem=="bater a porta dos quartos" or a√ß√£o_do_personagem=="bater quartos" or a√ß√£o_do_personagem=="bater"):
+        if(aÁ„o_do_personagem=="checar os quartos" or aÁ„o_do_personagem=="checar quartos" or aÁ„o_do_personagem=="checar" or aÁ„o_do_personagem=="quartos" or aÁ„o_do_personagem=="checaros quartos" or aÁ„o_do_personagem=="checar osquartos" or aÁ„o_do_personagem=="checarosquartos" or aÁ„o_do_personagem=="checa os quartos" or aÁ„o_do_personagem=="checa os quarto" or aÁ„o_do_personagem=="checa o quarto" or aÁ„o_do_personagem=="checa o quartos" or aÁ„o_do_personagem=="checar os quarto" or aÁ„o_do_personagem=="checar o quarto" or aÁ„o_do_personagem=="bater na porta de um dos quartos" or aÁ„o_do_personagem=="checar um dos quartos" or aÁ„o_do_personagem=="bater na porta dos quartos" or aÁ„o_do_personagem=="bater a porta dos quartos" or aÁ„o_do_personagem=="bater quartos" or aÁ„o_do_personagem=="bater"):
             print("Qual dos quartos?(10, 11, 12 ou 14)\n")
-            a√ß√£o_do_personagem = input("-")
-            a√ß√£o_do_personagem = a√ß√£o_do_personagem.lower()
-            if(a√ß√£o_do_personagem!="10" and a√ß√£o_do_personagem!="11" and a√ß√£o_do_personagem!="12" and a√ß√£o_do_personagem!="13" and a√ß√£o_do_personagem!="14"):
-                a√ß√£o_do_personagem="entrada inv√°lida!"
-        if(a√ß√£o_do_personagem == "ver ficha do personagem" or a√ß√£o_do_personagem == "ver a ficha do personagem" or a√ß√£o_do_personagem == "ver a ficha de personagem" or a√ß√£o_do_personagem == "ficha" or a√ß√£o_do_personagem=="ficha do personagem" or a√ß√£o_do_personagem=="ficha de personagem" or a√ß√£o_do_personagem=="ver ficha de personagem" or a√ß√£o_do_personagem=="ver ficha" or a√ß√£o_do_personagem == "olhar ficha do personagem" or a√ß√£o_do_personagem == "ver minha ficha" or a√ß√£o_do_personagem=="minha ficha" or a√ß√£o_do_personagem=="ficha personagem" or a√ß√£o_do_personagem=="olhar ficha de personagem" or a√ß√£o_do_personagem=="olhar ficha"):
+            aÁ„o_do_personagem = input("-")
+            aÁ„o_do_personagem = aÁ„o_do_personagem.lower()
+            if(aÁ„o_do_personagem!="10" and aÁ„o_do_personagem!="11" and aÁ„o_do_personagem!="12" and aÁ„o_do_personagem!="13" and aÁ„o_do_personagem!="14"):
+                aÁ„o_do_personagem="entrada inv·lida!"
+        if(aÁ„o_do_personagem == "ver ficha do personagem" or aÁ„o_do_personagem == "ver a ficha do personagem" or aÁ„o_do_personagem == "ver a ficha de personagem" or aÁ„o_do_personagem == "ficha" or aÁ„o_do_personagem=="ficha do personagem" or aÁ„o_do_personagem=="ficha de personagem" or aÁ„o_do_personagem=="ver ficha de personagem" or aÁ„o_do_personagem=="ver ficha" or aÁ„o_do_personagem == "olhar ficha do personagem" or aÁ„o_do_personagem == "ver minha ficha" or aÁ„o_do_personagem=="minha ficha" or aÁ„o_do_personagem=="ficha personagem" or aÁ„o_do_personagem=="olhar ficha de personagem" or aÁ„o_do_personagem=="olhar ficha"):
             ficha_personagem()
         else:
-            if(a√ß√£o_do_personagem == "olhar" or a√ß√£o_do_personagem == "ver" or a√ß√£o_do_personagem == "olhar o quarto" or a√ß√£o_do_personagem == "olha" or a√ß√£o_do_personagem == "olhar quarto" or a√ß√£o_do_personagem == "olha quarto" or a√ß√£o_do_personagem == "olhar o quarto" or a√ß√£o_do_personagem == "olha o quarto" or a√ß√£o_do_personagem == "ve" or a√ß√£o_do_personagem == "v√™"):
-                if (vari√°vel_cen√°rio[2] == "1" or vari√°vel_cen√°rio[2] == "sim"):
-                    print("Voc√™ v√™ um corredor estreito com 5 portas, o seu e os outros quartos desse andar do pr√©dio.")
+            if(aÁ„o_do_personagem == "olhar" or aÁ„o_do_personagem == "ver" or aÁ„o_do_personagem == "olhar o quarto" or aÁ„o_do_personagem == "olha" or aÁ„o_do_personagem == "olhar quarto" or aÁ„o_do_personagem == "olha quarto" or aÁ„o_do_personagem == "olhar o quarto" or aÁ„o_do_personagem == "olha o quarto" or aÁ„o_do_personagem == "ve" or aÁ„o_do_personagem == "vÍ"):
+                if (vari·vel_cen·rio[2] == "1" or vari·vel_cen·rio[2] == "sim"):
+                    print("VocÍ vÍ um corredor estreito com 5 portas, o seu e os outros quartos desse andar do prÈdio.")
                     time.sleep(3)
-                    print("Num dos lados desse corredor h√° uma janela quebrada,")
+                    print("Num dos lados desse corredor h· uma janela quebrada,")
                     time.sleep(3)
-                    print("mas no outro se encontra um b√™bado caido no ch√£o, imundo e cercado de v√¥mito encostado na porta dos fundos, impedindo o acesso.")
+                    print("mas no outro se encontra um bÍbado caido no ch„o, imundo e cercado de vÙmito encostado na porta dos fundos, impedindo o acesso.")
                     time.sleep(3)
-                    print("E ao longo do corredor, em frente aos quartos h√° um par de escadas azul-pastel um pouco alaranjada ao redor das ferrugens.")
+                    print("E ao longo do corredor, em frente aos quartos h· um par de escadas azul-pastel um pouco alaranjada ao redor das ferrugens.")
                     time.sleep(3)
-                    print("A mais pr√≥xima sobe e a colada √† parede desce.")
+                    print("A mais prÛxima sobe e a colada ‡ parede desce.")
                     time.sleep(3)
                 else:
                     if (objeto[0] == "sim"):
-                        print("Voc√™ v√™ um corredor estreito com 5 portas, o seu e os outros quartos desse andar do pr√©dio.")
+                        print("VocÍ vÍ um corredor estreito com 5 portas, o seu e os outros quartos desse andar do prÈdio.")
                         time.sleep(3)
-                        print("Num dos lados desse corredor h√° uma janela quebrada, mas no outro se encontra a porta dos fundos.")
+                        print("Num dos lados desse corredor h· uma janela quebrada, mas no outro se encontra a porta dos fundos.")
                         time.sleep(3)
-                        print("Ao longo do corredor, em frente aos quartos h√° um par de escadas azul-pastel um pouco alaranjada ao redor das ferrugens.")
+                        print("Ao longo do corredor, em frente aos quartos h· um par de escadas azul-pastel um pouco alaranjada ao redor das ferrugens.")
                         time.sleep(3)
-                        print("A mais pr√≥xima sobe e a colada √† parede desce.")
+                        print("A mais prÛxima sobe e a colada ‡ parede desce.")
                         time.sleep(3)
                     else:
-                        print("Voc√™ v√™ um corredor estreito com 5 portas, o seu e os outros quartos desse andar do pr√©dio.")
+                        print("VocÍ vÍ um corredor estreito com 5 portas, o seu e os outros quartos desse andar do prÈdio.")
                         time.sleep(3)
-                        print("Num dos lados desse corredor h√° uma janela quebrada,")
+                        print("Num dos lados desse corredor h· uma janela quebrada,")
                         time.sleep(3)
-                        print("mas no outro se encontra, encostado na porta dos fundos e ca√≠do no ch√£o coberto por cacos de vidro, um homem sujo, cercado por algum l√≠quido que parece laranja...")
+                        print("mas no outro se encontra, encostado na porta dos fundos e caÌdo no ch„o coberto por cacos de vidro, um homem sujo, cercado por algum lÌquido que parece laranja...")
                         time.sleep(3)
-                        print("E ao longo do corredor, em frente aos quartos h√° um par de escadas azul-pastel um pouco alaranjada ao redor das ferrugens.")
+                        print("E ao longo do corredor, em frente aos quartos h· um par de escadas azul-pastel um pouco alaranjada ao redor das ferrugens.")
                         time.sleep(3)
-                        print("A mais pr√≥xima sobe e a colada √† parede desce.")
+                        print("A mais prÛxima sobe e a colada ‡ parede desce.")
                         time.sleep(3)
-                        vari√°vel_cen√°rio[0] = "sim"
+                        vari·vel_cen·rio[0] = "sim"
             else:
-                if(a√ß√£o_do_personagem=="cheirar" or a√ß√£o_do_personagem=="cherar" or a√ß√£o_do_personagem=="dar um tapa" or a√ß√£o_do_personagem=="cheira" or a√ß√£o_do_personagem=="chera"):
-                    if(vari√°vel_cen√°rio[2]=="n√£o"):
-                        vari√°vel_cen√°rio[2]="sim"
-                    print("Voc√™ sente um cheiro forte de √°lcool e v√¥mito")
+                if(aÁ„o_do_personagem=="cheirar" or aÁ„o_do_personagem=="cherar" or aÁ„o_do_personagem=="dar um tapa" or aÁ„o_do_personagem=="cheira" or aÁ„o_do_personagem=="chera"):
+                    if(vari·vel_cen·rio[2]=="n„o"):
+                        vari·vel_cen·rio[2]="sim"
+                    print("VocÍ sente um cheiro forte de ·lcool e vÙmito")
                     time.sleep(3)
                 else:
-                    if(a√ß√£o_do_personagem=="10"):
+                    if(aÁ„o_do_personagem=="10"):
                         if(objeto[3]=="sim"):
-                            print("Voc√™ v√™ uma porta arrombada... N√£o h√° mais nada de interessante dentro do quarto.")
+                            print("VocÍ vÍ uma porta arrombada... N„o h· mais nada de interessante dentro do quarto.")
                             time.sleep(3)
                         else:
-                            print("Voc√™ bateu na porta, mas ningu√©m atendeu... Ela parece f√°cil de ser arrombada...")
+                            print("VocÍ bateu na porta, mas ninguÈm atendeu... Ela parece f·cil de ser arrombada...")
                             time.sleep(3)
                             objeto[1]="sim"
                     else:
-                        if(a√ß√£o_do_personagem=="11"):
-                            if(situa√ß√£o[1]==0):
-                                print("Quando voc√™ bateu, a porta se abriu no primeiro toque por n√£o ter uma fechadura...")
+                        if(aÁ„o_do_personagem=="11"):
+                            if(situaÁ„o[1]==0):
+                                print("Quando vocÍ bateu, a porta se abriu no primeiro toque por n„o ter uma fechadura...")
                                 time.sleep(4)
-                                print("Voc√™ v√™, dentro da casa, uma mulher alta de ombros largos, BEM LARGOS, musculosa e com o maxilar largo...")
+                                print("VocÍ vÍ, dentro da casa, uma mulher alta de ombros largos, BEM LARGOS, musculosa e com o maxilar largo...")
                                 time.sleep(4)
                                 print("Ela estava apenas de toalha...")
                                 time.sleep(2)
-                                print(" - MAS QUE ATREVIMENTO! SUMA DAQUI! - diz a mulher enquanto te epurra com a porta que √© fechada violentamente.")
+                                print(" - MAS QUE ATREVIMENTO! SUMA DAQUI! - diz a mulher enquanto te epurra com a porta que È fechada violentamente.")
                                 time.sleep(4)
-                                print("Voc√™ perdeu 5 pontos de vida ao cair no corredor...")
+                                print("VocÍ perdeu 5 pontos de vida ao cair no corredor...")
                                 time.sleep(3)
                                 personagem_jogador[6]=personagem_jogador[6]-5
                                 if(personagem_jogador[6]<=0):
                                     personagem_jogador[6]=1
-                                situa√ß√£o[1]=1
+                                situaÁ„o[1]=1
                             else:
-                                if(situa√ß√£o[1]==1):
-                                    print("Voc√™ empurrou a porta sem fechadura, mas moradora que ainda estava te toalha, furiosamente fechou a porta gritando, antes que voc√™ pudesse terminar de abrir!")
+                                if(situaÁ„o[1]==1):
+                                    print("VocÍ empurrou a porta sem fechadura, mas moradora que ainda estava te toalha, furiosamente fechou a porta gritando, antes que vocÍ pudesse terminar de abrir!")
                                     time.sleep(3)
-                                    print("Voc√™ perdeu 5 pontos de vida ao cair no corredor...")
+                                    print("VocÍ perdeu 5 pontos de vida ao cair no corredor...")
                                     time.sleep(3)
                                     personagem_jogador[6]=personagem_jogador[6]-5
                                     if(personagem_jogador[6]<=0):
                                         personagem_jogador[6]=1
-                                    situa√ß√£o[1]=2
+                                    situaÁ„o[1]=2
                                 else:
-                                    if(situa√ß√£o[1]==2):
-                                        print("Voc√™ abriu a porta e levou um soco na cara, caindo em seguida no ch√£o do corredor.")
+                                    if(situaÁ„o[1]==2):
+                                        print("VocÍ abriu a porta e levou um soco na cara, caindo em seguida no ch„o do corredor.")
                                         time.sleep(3)
-                                        print("Voc√™ perdeu 10 pontos de vida...")
+                                        print("VocÍ perdeu 10 pontos de vida...")
                                         time.sleep(3)
                                         personagem_jogador[6]=personagem_jogador[6]-10
                                         if(personagem_jogador[6]<=0):
                                             personagem_jogador[6]=1
-                                        situa√ß√£o[1]=3
+                                        situaÁ„o[1]=3
                                     else:
-                                        if(situa√ß√£o[1]==3):
-                                            print("Voc√™ abriu a porta e viu a mulher de toalha extremamente furiosa com os ombros levemente curvados, deixando √† mostra seus bra√ßos musculosos e gigantescos.")
+                                        if(situaÁ„o[1]==3):
+                                            print("VocÍ abriu a porta e viu a mulher de toalha extremamente furiosa com os ombros levemente curvados, deixando ‡ mostra seus braÁos musculosos e gigantescos.")
                                             time.sleep(3)
-                                            print(" - VOC√ä VAI APANHAR MUITO AGORA!")
+                                            print(" - VOC  VAI APANHAR MUITO AGORA!")
                                             time.sleep(3)
                                             personagem_inimigo = [ "Mulher de Toalha", 20, 20, 5, 5, 800, 800]
                                             batalha()
                                             if(personagem_jogador[6]<=0):break
                                             if(personagem_inimigo[6]>0):
-                                                print(" - E N√ÉO VOLTE MAIS AQUI!")
+                                                print(" - E N√O VOLTE MAIS AQUI!")
                                                 time.sleep(3)
                                             else:
-                                                input("A mulher caiu inconsciente no ch√£o...")
-                                                input("Dentro da casa voc√™ encontrou 100 reais e um suplemento aliment√≠cio")
-                                                input("Voc√™ guardou ambos na mochila!")
+                                                print("A mulher caiu inconsciente no ch„o...")
+                                                time.sleep(1)
+                                                print("Dentro da casa vocÍ encontrou 100 reais e um suplemento alimentÌcio")
+                                                time.sleep(2)
+                                                print("VocÍ guardou ambos na mochila!")
+                                                time.sleep(2)
                                                 personagem_jogador[7]=personagem_jogador[7]+100
                                                 quantidade_adicionada=1
-                                                item_adiconado=suplemento_aliment√≠cio
+                                                item_adiconado=suplemento_alimentÌcio
                                                 adicionaItem()
-                                                situa√ß√£o[1]=4
+                                                situaÁ„o[1]=4
                                         else:
-                                            if(situa√ß√£o[1]==4):
-                                                input("Voc√™ entra no quarto, encontra a mulher que voc√™ derrotou caida no ch√£o e mais nada al√©m dos m√≥veis velhos dela.")
+                                            if(situaÁ„o[1]==4):
+                                                print("VocÍ entra no quarto, encontra a mulher que vocÍ derrotou caida no ch„o e mais nada alÈm dos mÛveis velhos dela.")
                         else:
-                            if(a√ß√£o_do_personagem=="12"):
-                                input("Voc√™ bateu na porta...")
-                                input(" - J√° vai! - exclama uma senhora de dentro da casa.")
-                                input("...")
-                                input(" - Ol√°, meu jovem! Por que voc√™ n√£o entra e prova um pouco do bolo que eu acabei de fazer?")
-                                input("...")
-                                input("Voc√™ recurperou TODOS os seus pontos de vida!")
+                            if(aÁ„o_do_personagem=="12"):
+                                print("VocÍ bateu na porta...")
+                                time.sleep(0.5)
+                                print(" - J· vai! - exclama uma senhora de dentro da casa.")
+                                time.sleep(1)
+                                print("...")
+                                time.sleep(0.5)
+                                print(" - Ol·, meu jovem! Por que vocÍ n„o entra e prova um pouco do bolo que eu acabei de fazer?")
+                                time.sleep(1)
+                                print("...")
+                                time.sleep(0.5)
+                                print("VocÍ recurperou TODOS os seus pontos de vida!")
+                                time.sleep(1)
                                 personagem_jogador[6]=personagem_jogador[5]
                             else:
-                                if(a√ß√£o_do_personagem=="14"):
+                                if(aÁ„o_do_personagem=="14"):
                                     if(objeto[4]=="sim"):
-                                        input("Suma daqui seu idiota... Deixe-a em paz...")
+                                        print("Suma daqui seu idiota... Deixe-a em paz...")
                                     else:
                                         if(objeto[0]=="sim" or objeto[0]=="pegou o dinheiro"):
-                                            input("Voc√™ bateu na porta...")
-                                            input("Voc√™ escuta passos de dentro vindo √† porta...")
-                                            input(" - O que voc√™ quer? - questionou a mulher que abrira a porta aos prantos")
-                                            input("...")
-                                            input("Ela observa o corpo do marido no ch√£o do corredor...")
-                                            input(" - F-Foi voc√™?!...")
-                                            input("...")
-                                            input(" - VOC√ä VAI PAGAR CARO POR MATAR MEU MARIDO!")
+                                            print("VocÍ bateu na porta...")
+                                            time.sleep(1)
+                                            print("VocÍ escuta passos de dentro vindo ‡ porta...")
+                                            time.sleep(1)
+                                            print(" - O que vocÍ quer? - questionou a mulher que abrira a porta aos prantos")
+                                            time.sleep(2)
+                                            print("...")
+                                            time.sleep(0.5)
+                                            print("Ela observa o corpo do marido no ch„o do corredor...")
+                                            time.sleep(1)
+                                            print(" - F-Foi vocÍ?!...")
+                                            time.sleep(1)
+                                            print("...")
+                                            time.sleep(0.75)
+                                            print(" - VOC  VAI PAGAR CARO POR MATAR MEU MARIDO!")
+                                            time.sleep(1)
                                             personagem_inimigo = [ "Mulher aos Prantos", 20, 20, 10, 10, 100, 900]
                                             batalha()
                                             if(personagem_jogador[6]<=0):break
                                             if(personagem_inimigo[6]>0):
                                                 print(" - CHEGA!")
-                                                time.sleep(3)
-                                                print(" - Voc√™ matou meu marido...")
-                                                time.sleep(3)
-                                                print(" - Como voc√™ teve a pachorra de me procurar?!")
-                                                time.sleep(3)
+                                                time.sleep(0.5)
+                                                print(" - VocÍ matou meu marido...")
+                                                time.sleep(1)
+                                                print(" - Como vocÍ teve a pachorra de me procurar?!")
+                                                time.sleep(1)
                                                 print("Ela fechou a porta chorando.")
+                                                time.sleep(1)
                                             else:
-                                                input("A mulher caiu inconsciente no ch√£o...")
-                                                input("Dentro da casa voc√™ encontrou um par de talheres de prata...")
-                                                input("Voc√™ os guardou na mochila...")
-                                                input("...")
-                                                input("Seu idiota...")
+                                                print("A mulher caiu inconsciente no ch„o...")
+                                                time.sleep(2)
+                                                print("Dentro da casa vocÍ encontrou um par de talheres de prata...")
+                                                time.sleep(2)
+                                                print("VocÍ os guardou na mochila...")
+                                                time.sleep(2)
+                                                print("...")
+                                                time.sleep(2)
+                                                print("Seu idiota...")
+                                                time.sleep(3)
                                                 quantidade_adicionada=1
                                                 item_adiconado=talheres_prata
                                                 adicionaItem()
                                                 objeto[4]="sim"
                                         else:
-                                            input("Voc√™ bateu na porta...")
-                                            input(" - J√Å DISSE PARA VOC√ä IR EMBORA SEU B√äBADO! - grita uma mulher de dentro da casa - NINGU√âM TE MERECE COMO MARIDO!")
+                                            print("VocÍ bateu na porta...")
+                                            time.sleep(1)
+                                            print(" - J¡ DISSE PARA VOC  IR EMBORA SEU B BADO! - grita uma mulher de dentro da casa - NINGU…M TE MERECE COMO MARIDO!")
+                                            time.sleep(2)
                                 else:
-                                    if(a√ß√£o_do_personagem=="13"):
-                                        input("Voc√™ √© bobo?")
-                                        input("Esse √© o seu quarto!")
-                                        input("Voc√™ est√° atrasado demais para voltar!")
+                                    if(aÁ„o_do_personagem=="13"):
+                                        print("VocÍ È bobo?")
+                                        time.sleep(0.5)
+                                        print("Esse È o seu quarto!")
+                                        time.sleep(0.5)
+                                        print("VocÍ est· atrasado demais para voltar!")
+                                        time.sleep(1)
                                     else:
-                                        if(a√ß√£o_do_personagem=="arrombar a porta do quarto 10" or a√ß√£o_do_personagem=="arrombar 10" or a√ß√£o_do_personagem=="arrombar quarto 10" or a√ß√£o_do_personagem=="arrombar o quarto 10" or a√ß√£o_do_personagem=="arrombar" or a√ß√£o_do_personagem=="arrombar a porta" or a√ß√£o_do_personagem=="quarto 10" or a√ß√£o_do_personagem=="entrar no quarto 10"):
+                                        if(aÁ„o_do_personagem=="arrombar a porta do quarto 10" or aÁ„o_do_personagem=="arrombar 10" or aÁ„o_do_personagem=="arrombar quarto 10" or aÁ„o_do_personagem=="arrombar o quarto 10" or aÁ„o_do_personagem=="arrombar" or aÁ„o_do_personagem=="arrombar a porta" or aÁ„o_do_personagem=="quarto 10" or aÁ„o_do_personagem=="entrar no quarto 10"):
                                             if(objeto[3]=="sim"):
-                                                input("Voc√™ j√° arrombou essa porta... N√£o h√° mais nada de interessante dentro do quarto.")
+                                                print("VocÍ j· arrombou essa porta... N„o h· mais nada de interessante dentro do quarto.")
+                                                time.sleep(1)
                                             else:
-                                                input("Voc√™ entrou no quarto e encontrou uma Jaqueta de Couro!")
-                                                input("Voc√™ a guardou na mochila!")
-                                                item_adiconado=jaqueta_imita√ß√£o
+                                                print("VocÍ entrou no quarto e encontrou uma Jaqueta de Couro!")
+                                                time.sleep(1.5)
+                                                print("VocÍ a guardou na mochila!")
+                                                time.sleep(1)
+                                                item_adiconado=jaqueta_imitaÁ„o
                                                 quantidade_adicionada=1
                                                 adicionaItem()
                                                 objeto[3]="sim"
                                         else:
-                                            if(a√ß√£o_do_personagem=="subir as escadas" or a√ß√£o_do_personagem=="subir" or a√ß√£o_do_personagem=="subir escadas" or a√ß√£o_do_personagem=="subi" or a√ß√£o_do_personagem=="subi as escadas" or a√ß√£o_do_personagem=="subir escada" or a√ß√£o_do_personagem=="subi escada" or a√ß√£o_do_personagem=="subi a escada" or a√ß√£o_do_personagem=="sobe"):
-                                                input("Voc√™ subiu para o segundo andar, l√° voc√™ encontrou mais cinco quartos e outra escada ascendente.")
-                                                seuPr√©dioSegundoAndar()
+                                            if(aÁ„o_do_personagem=="subir as escadas" or aÁ„o_do_personagem=="subir" or aÁ„o_do_personagem=="subir escadas" or aÁ„o_do_personagem=="subi" or aÁ„o_do_personagem=="subi as escadas" or aÁ„o_do_personagem=="subir escada" or aÁ„o_do_personagem=="subi escada" or aÁ„o_do_personagem=="subi a escada" or aÁ„o_do_personagem=="sobe"):
+                                                print("VocÍ subiu para o segundo andar, l· vocÍ encontrou mais cinco quartos e outra escada ascendente.")
+                                                time.sleep(1)
+                                                seuPrÈdioSegundoAndar()
                                                 if(personagem_jogador[6]<=0):break
                                             else:
-                                                if(a√ß√£o_do_personagem=="olhar o b√™bado" or a√ß√£o_do_personagem=="olhar b√™bado" or a√ß√£o_do_personagem=="olha o b√™bado" or a√ß√£o_do_personagem=="olha b√äbado" or a√ß√£o_do_personagem=="olhar o bebado" or a√ß√£o_do_personagem=="olhar bebado" or a√ß√£o_do_personagem=="olha o bebado" or a√ß√£o_do_personagem=="olha bebado"):
+                                                if(aÁ„o_do_personagem=="olhar o bÍbado" or aÁ„o_do_personagem=="olhar bÍbado" or aÁ„o_do_personagem=="olha o bÍbado" or aÁ„o_do_personagem=="olha b bado" or aÁ„o_do_personagem=="olhar o bebado" or aÁ„o_do_personagem=="olhar bebado" or aÁ„o_do_personagem=="olha o bebado" or aÁ„o_do_personagem=="olha bebado"):
                                                     objeto[0]="1"
-                                                    input("Voc√™ v√™ um homem de 40 anos, coberto por cacos de vidro, bebida e v√¥mito, dormindo no ch√£o.")
+                                                    print("VocÍ vÍ um homem de 40 anos, coberto por cacos de vidro, bebida e vÙmito, dormindo no ch„o.")
+                                                    time.sleep(1)
                                                 else:
-                                                    if(a√ß√£o_do_personagem=="revistar o b√™bado" or a√ß√£o_do_personagem=="revistar b√™bado" or a√ß√£o_do_personagem=="revistar" or a√ß√£o_do_personagem=="revista b√™bado" or a√ß√£o_do_personagem=="revista o b√™bado" or a√ß√£o_do_personagem=="revistar o bebado" or a√ß√£o_do_personagem=="revistar bebado" or a√ß√£o_do_personagem=="revistar" or a√ß√£o_do_personagem=="revista bebado" or a√ß√£o_do_personagem=="revista o bebado"):
-                                                        if(objeto[2]=="n√£o"):
-                                                            input("Voc√™ achou um energ√©tico e o guardou na mochila!")
-                                                            item_adicionado=lata_energ√©tico
+                                                    if(aÁ„o_do_personagem=="revistar o bÍbado" or aÁ„o_do_personagem=="revistar bÍbado" or aÁ„o_do_personagem=="revistar" or aÁ„o_do_personagem=="revista bÍbado" or aÁ„o_do_personagem=="revista o bÍbado" or aÁ„o_do_personagem=="revistar o bebado" or aÁ„o_do_personagem=="revistar bebado" or aÁ„o_do_personagem=="revistar" or aÁ„o_do_personagem=="revista bebado" or aÁ„o_do_personagem=="revista o bebado"):
+                                                        if(objeto[2]=="n„o"):
+                                                            print("VocÍ achou um energÈtico e o guardou na mochila!")
+                                                            time.sleep(1)
+                                                            item_adicionado=lata_energÈtico
                                                             quantidade_adicionada=1
                                                             adicionaItem()
                                                             objeto[2]="sim"
                                                         else:
-                                                            input("Voc√™ n√£o encontrou mais nada...\n")
+                                                            print("VocÍ n„o encontrou mais nada...\n")
+                                                            time.sleep(2)
                                                     else:
-                                                        if(a√ß√£o_do_personagem=="acordar o b√™bado" or a√ß√£o_do_personagem=="acordar b√™bado" or a√ß√£o_do_personagem=="acorda o b√™bado" or a√ß√£o_do_personagem=="acorda b√™bado" or a√ß√£o_do_personagem=="acordar o bebado" or a√ß√£o_do_personagem=="acordar bebado" or a√ß√£o_do_personagem=="acorda o bebado" or a√ß√£o_do_personagem=="acorda bebado"):
+                                                        if(aÁ„o_do_personagem=="acordar o bÍbado" or aÁ„o_do_personagem=="acordar bÍbado" or aÁ„o_do_personagem=="acorda o bÍbado" or aÁ„o_do_personagem=="acorda bÍbado" or aÁ„o_do_personagem=="acordar o bebado" or aÁ„o_do_personagem=="acordar bebado" or aÁ„o_do_personagem=="acorda o bebado" or aÁ„o_do_personagem=="acorda bebado"):
                                                             objeto[0]="2"
-                                                            input("Voc√™ tenta acordar o b√™bado, mas n√£o consegue...")
+                                                            print("VocÍ tenta acordar o bÍbado, mas n„o consegue...")
+                                                            time.sleep(1)
                                                         else:
-                                                            if(a√ß√£o_do_personagem=="mover o b√™bado" or a√ß√£o_do_personagem=="mover b√™bado" or a√ß√£o_do_personagem=="move o b√™bado" or a√ß√£o_do_personagem=="move b√™bado" or a√ß√£o_do_personagem=="mover o bebado" or a√ß√£o_do_personagem=="mover bebado" or a√ß√£o_do_personagem=="move o bebado" or a√ß√£o_do_personagem=="move bebado" or a√ß√£o_do_personagem=="mover" or a√ß√£o_do_personagem=="move"):
+                                                            if(aÁ„o_do_personagem=="mover o bÍbado" or aÁ„o_do_personagem=="mover bÍbado" or aÁ„o_do_personagem=="move o bÍbado" or aÁ„o_do_personagem=="move bÍbado" or aÁ„o_do_personagem=="mover o bebado" or aÁ„o_do_personagem=="mover bebado" or aÁ„o_do_personagem=="move o bebado" or aÁ„o_do_personagem=="move bebado" or aÁ„o_do_personagem=="mover" or aÁ„o_do_personagem=="move"):
                                                                 objeto[0]="3"
-                                                                input("Voc√™ pensa em mover o b√™bado, mas o cheiro e a sujeira fazem voc√™ vomitar em cima dele!")
-                                                                input("...")
-                                                                input("Ele continua dormindo...")
+                                                                print("VocÍ pensa em mover o bÍbado...")
+                                                                time.sleep(1)
+                                                                print("Mas o cheiro e a sujeira fazem vocÍ vomitar em cima dele!")
+                                                                time.sleep(2)
+                                                                print("...")
+                                                                time.sleep(1)
+                                                                print("Ele continua dormindo...")
+                                                                time.sleep(1)
                                                             else:
-                                                                if(a√ß√£o_do_personagem=="atacar o b√™bado" or a√ß√£o_do_personagem=="atacar b√™bado" or a√ß√£o_do_personagem=="ataca o b√™bado" or a√ß√£o_do_personagem=="ataca b√™bado" or a√ß√£o_do_personagem=="atacar o bebado" or a√ß√£o_do_personagem=="atacar bebado" or a√ß√£o_do_personagem=="ataca o bebado" or a√ß√£o_do_personagem=="ataca bebado" or a√ß√£o_do_personagem=="atacar" or a√ß√£o_do_personagem=="ataca"):
+                                                                if(aÁ„o_do_personagem=="atacar o bÍbado" or aÁ„o_do_personagem=="atacar bÍbado" or aÁ„o_do_personagem=="ataca o bÍbado" or aÁ„o_do_personagem=="ataca bÍbado" or aÁ„o_do_personagem=="atacar o bebado" or aÁ„o_do_personagem=="atacar bebado" or aÁ„o_do_personagem=="ataca o bebado" or aÁ„o_do_personagem=="ataca bebado" or aÁ„o_do_personagem=="atacar" or aÁ„o_do_personagem=="ataca"):
                                                                     if(objeto[0]!="sim" or objeto[0]!="pegou o dinheiro"):
-                                                                        input("Voc√™ chuta v√°rias vezes o b√™bado violentamente!")
+                                                                        print("VocÍ chuta v·rias vezes o bÍbado violentamente!")
+                                                                        time.sleep(0.5)
+                                                                        input("(Aperte Enter)")
                                                                         input("!!!")
                                                                         input("!!!")
                                                                         input("!!!")
                                                                         input("!!!")
                                                                         input("!!!")
-                                                                        input(" - P-PARA! PARA! PARA! - berra o b√™bado que acabou de acordar.")
-                                                                        input("Ele se levanta e te empurra ganhando dist√¢ncia.")
-                                                                        input("...")
-                                                                        input(" - Ssseu muleque i-insstrosmestido!... *hic*\n")
-                                                                        personagem_inimigo = [ "B√™bado", 4, 4, -3, -3, 30, 500]
+                                                                        print("(Pronto, vocÍ chutou o suficiente!)")
+                                                                        time.sleep(0.5)
+                                                                        print(" - P-PARA! PARA! PARA! - berra o bÍbado que acabou de acordar.")
+                                                                        time.sleep(1)
+                                                                        print("Ele se levanta e te empurra ganhando dist‚ncia.")
+                                                                        time.sleep(1)
+                                                                        print("...")
+                                                                        time.sleep(1)
+                                                                        print(" - Ssseu muleque i-insstrosmestido!... *hic*\n")
+                                                                        time.sleep(2)
+                                                                        personagem_inimigo = [ "BÍbado", 4, 4, -3, -3, 30, 500]
                                                                         batalha()
                                                                         if(personagem_jogador[6]<=0):break
                                                                         if(personagem_inimigo[6]>0):
-                                                                            input("Voc√™ escapa da briga, mas em seguida o b√™bado tosse sangue e c√°i no ch√£o...")
+                                                                            print("VocÍ escapa da briga, mas em seguida o bÍbado tosse sangue e c·i no ch„o...")
+                                                                            time.sleep(2)
                                                                         else:
-                                                                            input("O b√™bado coberto de bebida, v√¥mito e sangue, c√°i de costas no ch√£o,")
-                                                                            input("sendo empalado pelos diversos cacos de vidro...")
-                                                                            input("O sangue dele escorre pelo corredor at√© os seus p√©s...")
-                                                                            input("Voc√™ vira o rosto fechando os olhos e abaixando os punhos...")
-                                                                            input("Agora, desencostado da porta dos fundos, o b√™bado j√° n√£o √© mais um impec√≠lio...")
+                                                                            print("O bÍbado coberto de bebida, vÙmito e sangue, c·i de costas no ch„o,")
+                                                                            time.sleep(1)
+                                                                            print("sendo empalado pelos diversos cacos de vidro...")
+                                                                            time.sleep(1)
+                                                                            print("O sangue dele escorre pelo corredor atÈ os seus pÈs...")
+                                                                            time.sleep(1.5)
+                                                                            print("VocÍ vira o rosto fechando os olhos e abaixando os punhos...")
+                                                                            time.sleep(2)
+                                                                            print("Agora, desencostado da porta dos fundos, o bÍbado j· n„o È mais um impecÌlio...")
+                                                                            time.sleep(1)
                                                                         objeto[0]="sim"
                                                                 else:
-                                                                    if(a√ß√£o_do_personagem=="abrir a porta dos fundos"):
+                                                                    if(aÁ„o_do_personagem=="abrir a porta dos fundos"):
                                                                         if(objeto[0]=="sim"):
-                                                                            input("Voc√™ abre a porta... ")
-                                                                            input("√â um arm√°rio de limpesa.")
-                                                                            input("Em meio √†s vassouras, rodos e outras coisas, voc√™ encontra uma mala...")
-                                                                            input("Voc√™ abre a mala, encontra entre os materiais de escrit√≥rio e 10 Reais!")
-                                                                            input("...")
-                                                                            input("Voc√™ tamb√©m achou um l√°pis apontado e o guardou na mochila!")
-                                                                            item_adicionado=l√°pis_apontado
+                                                                            print("VocÍ abre a porta... ")
+                                                                            time.sleep(1)
+                                                                            print("… um arm·rio de limpesa.")
+                                                                            time.sleep(1)
+                                                                            print("Em meio ‡s vassouras, rodos e outras coisas, vocÍ encontra uma mala...")
+                                                                            time.sleep(2)
+                                                                            print("VocÍ abre a mala, encontra entre os materiais de escritÛrio e 10 Reais!")
+                                                                            time.sleep(1)
+                                                                            print("...")
+                                                                            time.sleep(2)
+                                                                            print("VocÍ tambÈm achou um l·pis apontado e o guardou na mochila!")
+                                                                            time.sleep(1)
+                                                                            item_adicionado=lapis_apontado
                                                                             quantidade_adicionada=1
                                                                             adicionaItem()
                                                                             personagem_jogador[7]=personagem_jogador[7]+10
                                                                             objeto[0]="pegou o dinheiro"
                                                                         else:
                                                                             if(objeto[0]=="pegou o dinheiro"):
-                                                                                input("Voc√™ v√™ materiais de limpesa e uma maleta aberta.")
+                                                                                print("VocÍ vÍ materiais de limpesa e uma mala aberta.")
+                                                                                time.sleep(0.5)
                                                                             else:
-                                                                                input("N√£o d√° para abrir!")
+                                                                                print("N„o d· para abrir!")
+                                                                                time.sleep(0.5)
                                                                     else:
-                                                                        if(a√ß√£o_do_personagem=="descer as escadas" or a√ß√£o_do_personagem=="descer escadas" or a√ß√£o_do_personagem=="descer escada" or a√ß√£o_do_personagem=="descer a escada" or a√ß√£o_do_personagem=="sair" or a√ß√£o_do_personagem=="descer" or a√ß√£o_do_personagem=="sair do pr√©dio"):
+                                                                        if(aÁ„o_do_personagem=="descer as escadas" or aÁ„o_do_personagem=="descer escadas" or aÁ„o_do_personagem=="descer escada" or aÁ„o_do_personagem=="descer a escada" or aÁ„o_do_personagem=="sair" or aÁ„o_do_personagem=="descer" or aÁ„o_do_personagem=="sair do prÈdio"):
                                                                             if(ponto_de_save==1):
                                                                                 while 1:
-                                                                                    input("Do lado de fora h√° um oponente forte.")
-                                                                                    print("Tem certeza que est√° pronto para sair? (sim ou n√£o)")
-                                                                                    a√ß√£o_do_personagem=input("-")
-                                                                                    a√ß√£o_do_personagem=a√ß√£o_do_personagem.lower()
-                                                                                    if(a√ß√£o_do_personagem=="sim" or a√ß√£o_do_personagem=="s" or a√ß√£o_do_personagem=="si" or a√ß√£o_do_personagem=="sm" or a√ß√£o_do_personagem=="im" or a√ß√£o_do_personagem=="ssim"):
-                                                                                        a√ß√£o_do_personagem="sim"
+                                                                                    print("Do lado de fora h· um oponente MUITO forte.")
+                                                                                    time.sleep(3)
+                                                                                    print("Tem certeza que est· pronto para sair? (sim ou n„o)")
+                                                                                    aÁ„o_do_personagem=input("-")
+                                                                                    aÁ„o_do_personagem=aÁ„o_do_personagem.lower()
+                                                                                    if(aÁ„o_do_personagem=="sim" or aÁ„o_do_personagem=="s" or aÁ„o_do_personagem=="si" or aÁ„o_do_personagem=="sm" or aÁ„o_do_personagem=="im" or aÁ„o_do_personagem=="ssim"):
+                                                                                        aÁ„o_do_personagem="sim"
                                                                                         break
                                                                                     else:
-                                                                                        if(a√ß√£o_do_personagem == "n√£o" or a√ß√£o_do_personagem=="n" or a√ß√£o_do_personagem=="nao" or a√ß√£o_do_personagem=="no" or a√ß√£o_do_personagem=="na" or a√ß√£o_do_personagem=="n√£" or a√ß√£o_do_personagem=="ao" or a√ß√£o_do_personagem=="√£o" or a√ß√£o_do_personagem=="√±" or a√ß√£o_do_personagem=="√±√£o" or a√ß√£o_do_personagem=="√±o" or a√ß√£o_do_personagem=="√±√µ" or a√ß√£o_do_personagem=="√±√£" or a√ß√£o_do_personagem=="√±a√µ" or a√ß√£o_do_personagem=="a√µ"):
-                                                                                            input("Voc√™ decidiu n√£o sair do pr√©dio.")
+                                                                                        if(aÁ„o_do_personagem == "n„o" or aÁ„o_do_personagem=="n" or aÁ„o_do_personagem=="nao" or aÁ„o_do_personagem=="no" or aÁ„o_do_personagem=="na" or aÁ„o_do_personagem=="n„" or aÁ„o_do_personagem=="ao" or aÁ„o_do_personagem=="„o" or aÁ„o_do_personagem=="Ò" or aÁ„o_do_personagem=="Ò„o" or aÁ„o_do_personagem=="Òo" or aÁ„o_do_personagem=="Òı" or aÁ„o_do_personagem=="Ò„" or aÁ„o_do_personagem=="Òaı" or aÁ„o_do_personagem=="aı"):
+                                                                                            print("VocÍ decidiu n„o sair do prÈdio.")
+                                                                                            time.sleep(0.5)
                                                                                             break
                                                                                         else:
-                                                                                            input("Entrada inv√°lida!")
-                                                                                if(a√ß√£o_do_personagem=="sim"):
-                                                                                    input("Voc√™ desceu as escadas e saiu do pr√©dio...")
+                                                                                            print("Entrada inv·lida!")
+                                                                                            time.sleep(0.5)
+                                                                                if(aÁ„o_do_personagem=="sim"):
+                                                                                    print("VocÍ desceu as escadas e saiu do prÈdio...")
+                                                                                    time.sleep(0.5)
                                                                                     break
                                                                             else:
-                                                                                input("Voc√™ desceu as escadas e saiu do pr√©dio...")
+                                                                                print("VocÍ desceu as escadas e saiu do prÈdio...")
+                                                                                time.sleep(0.5)
                                                                                 suaRua()
                                                                                 break
                                                                         else:
-                                                                            if(a√ß√£o_do_personagem == "salvar o jogo" or a√ß√£o_do_personagem=="guardar o jogo" or a√ß√£o_do_personagem == "salvar jogo" or a√ß√£o_do_personagem=="guardar jogo" or a√ß√£o_do_personagem == "salvar" or a√ß√£o_do_personagem == "save" or a√ß√£o_do_personagem == "save game" or a√ß√£o_do_personagem == "salvar o progresso" or a√ß√£o_do_personagem == "salvar progresso" or a√ß√£o_do_personagem == "guardar o progresso" or a√ß√£o_do_personagem == "guardar progresso" or a√ß√£o_do_personagem == "save progress" or a√ß√£o_do_personagem == "salva" or a√ß√£o_do_personagem == "sava" or a√ß√£o_do_personagem == "slvar" or a√ß√£o_do_personagem == "svar" or a√ß√£o_do_personagem == "svr" or a√ß√£o_do_personagem == "slvr" or a√ß√£o_do_personagem == "sav" or a√ß√£o_do_personagem == "sve" or a√ß√£o_do_personagem == "sv" or a√ß√£o_do_personagem == "salvar o game" or a√ß√£o_do_personagem == "guardar o game" or a√ß√£o_do_personagem == "salvar game" or a√ß√£o_do_personagem == "guardar game"):
+                                                                            if(aÁ„o_do_personagem == "salvar o jogo" or aÁ„o_do_personagem=="guardar o jogo" or aÁ„o_do_personagem == "salvar jogo" or aÁ„o_do_personagem=="guardar jogo" or aÁ„o_do_personagem == "salvar" or aÁ„o_do_personagem == "save" or aÁ„o_do_personagem == "save game" or aÁ„o_do_personagem == "salvar o progresso" or aÁ„o_do_personagem == "salvar progresso" or aÁ„o_do_personagem == "guardar o progresso" or aÁ„o_do_personagem == "guardar progresso" or aÁ„o_do_personagem == "save progress" or aÁ„o_do_personagem == "salva" or aÁ„o_do_personagem == "sava" or aÁ„o_do_personagem == "slvar" or aÁ„o_do_personagem == "svar" or aÁ„o_do_personagem == "svr" or aÁ„o_do_personagem == "slvr" or aÁ„o_do_personagem == "sav" or aÁ„o_do_personagem == "sve" or aÁ„o_do_personagem == "sv" or aÁ„o_do_personagem == "salvar o game" or aÁ„o_do_personagem == "guardar o game" or aÁ„o_do_personagem == "salvar game" or aÁ„o_do_personagem == "guardar game"):
                                                                                 save()
                                                                             else:
-                                                                                if(a√ß√£o_do_personagem=="ver a bolsa" or a√ß√£o_do_personagem=="ver invent√°rio" or a√ß√£o_do_personagem=="ver o invent√°rio" or a√ß√£o_do_personagem=="ver bolsa" or a√ß√£o_do_personagem=="ver mochila" or a√ß√£o_do_personagem=="ver mala" or a√ß√£o_do_personagem=="ver a mochila" or a√ß√£o_do_personagem=="ver a mala" or a√ß√£o_do_personagem=="invent√°rio" or a√ß√£o_do_personagem=="inventario" or a√ß√£o_do_personagem=="iventario" or a√ß√£o_do_personagem=="ivent√°rio" or a√ß√£o_do_personagem=="mochila" or a√ß√£o_do_personagem=="mochla" or a√ß√£o_do_personagem=="mala" or a√ß√£o_do_personagem=="bolsa" or a√ß√£o_do_personagem=="itens" or a√ß√£o_do_personagem=="√≠tens" or a√ß√£o_do_personagem=="item"):
-                                                                                    invent√°rioPersonagem()
+                                                                                if(aÁ„o_do_personagem=="ver a bolsa" or aÁ„o_do_personagem=="ver invent·rio" or aÁ„o_do_personagem=="ver o invent·rio" or aÁ„o_do_personagem=="ver bolsa" or aÁ„o_do_personagem=="ver mochila" or aÁ„o_do_personagem=="ver mala" or aÁ„o_do_personagem=="ver a mochila" or aÁ„o_do_personagem=="ver a mala" or aÁ„o_do_personagem=="invent·rio" or aÁ„o_do_personagem=="inventario" or aÁ„o_do_personagem=="iventario" or aÁ„o_do_personagem=="ivent·rio" or aÁ„o_do_personagem=="mochila" or aÁ„o_do_personagem=="mochla" or aÁ„o_do_personagem=="mala" or aÁ„o_do_personagem=="bolsa" or aÁ„o_do_personagem=="itens" or aÁ„o_do_personagem=="Ìtens" or aÁ„o_do_personagem=="item"):
+                                                                                    invent·rioPersonagem()
                                                                                 else:
-                                                                                    print('\nEntrada Inv√°lida!\n')
-        print("\n#", "-"*30,"#\n", "\nLista de A√ß√µes\n\nCen√°rio:", vari√°vel_lugar,"\n\nVoc√™ pode:\nolhar\n")
-        if (vari√°vel_cen√°rio[0] == "sim"):
+                                                                                    print('\nEntrada Inv·lida!\n')
+                                                                                    time.sleep(0.5)
+        print("\n#", "-"*30,"#\n", "\nLista de AÁıes\n\nCen·rio:", vari·vel_lugar,"\n\nVocÍ pode:\nolhar\n")
+        if (vari·vel_cen·rio[0] == "sim"):
             print("\ncheirar\nchecar os quartos\n")
-            if (vari√°vel_cen√°rio[2] == "sim" and objeto[0] == "n√£o"):
-                print("olhar o b√™bado\n")
+            if (vari·vel_cen·rio[2] == "sim" and objeto[0] == "n„o"):
+                print("olhar o bÍbado\n")
         if(objeto[1] == "sim"):
             print("\narrombar o quarto 10\n")
         if (objeto[0] == "1"):
-            print("\nacordar o b√™bado\n")
-            print("\nrevistar o b√™bado\n")
+            print("\nacordar o bÍbado\n")
+            print("\nrevistar o bÍbado\n")
         if (objeto[0] == "2"):
-            print("\nmover o b√™bado\n")
+            print("\nmover o bÍbado\n")
         if (objeto[0] == "3"):
-            print("\natacar o b√™bado\n")
+            print("\natacar o bÍbado\n")
         if (objeto[0] == "sim"):
             print("\nabrir a porta dos fundos\n")
         print("\nver ficha do personagem\nver mochila\nsubir as escadas\ndescer as escadas\n\nsalvar o jogo\n", "\n#", "-"*30,"#\n")
-        print("\nO que voc√™ far√° agora, ", personagem_jogador[0],"?\n")
-        a√ß√£o_do_personagem = input("-")
-        a√ß√£o_do_personagem = a√ß√£o_do_personagem.lower()
+        print("\nO que vocÍ far· agora, ", personagem_jogador[0],"?\n")
+        aÁ„o_do_personagem = input("-")
+        aÁ„o_do_personagem = aÁ„o_do_personagem.lower()
 
 #--Sua Rua--#
 def suaRua():
-    global desequipado_roupa,desequipado_capa,desequipado_luva,desequipado_m√£os,desequipado_cal√ßado,espa√ßo_vazio,peda√ßo_pizza,bolo_chocolate,pijama_inicial,uniforme_estudantil,malha_ninja,l√°pis_apontado,punhal_envelhecido,talheres_prata,jaqueta_imita√ß√£o,jaqueta_couro,agasalho_l√£,suplemento_aliment√≠cio,lata_energ√©tico,luva_l√£,luva_couro,soco_pvc,soco_lat√£o,luva_spikes_alu,soco_alu,luva_spikes_a√ßo,soco_a√ßo,luva_spikes_ag,soco_ag,luva_spikes_au,soco_au,luva_spikes_tit√¢nio,soco_tit√¢nio,anel_for√ßa1,anel_for√ßa2,anel_for√ßa3,anel_resist√™ncia1,anel_resist√™ncia2,anel_resist√™ncia3,anel_consist√™ncia1,anel_consist√™ncia2,anel_consist√™ncia3,anel_da_imortalidade,anel_da_divindade,chinelo_inicial,papetes_masculinas,t√™nis_velho,t√™nis_simpl√≥rio,sapato_simpl√≥rio,t√™nis_comum,t√™nis_trilha,t√™nis_caminhada,t√™nis_corrida,t√™nis_ZX5000,item_adicionado,quantidade_adicionada,equipado_roupa,equipado_capa,equipado_luva,equipado_anel,equipado_m√£os,equipado_cal√ßado,vari√°vel_cen√°rio,objeto,situa√ß√£o,tempor√°rio,vari√°vel_lugar,ponto_de_save,mostrar_save, personagem_jogador,personagem_reserva,personagem_inimigo,eegg,a√ß√£o_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,vari√°vel_para_comparar,contador_de_batalha,contador_de_rodadas,mala,loja_venda
+    global desequipado_roupa,desequipado_capa,desequipado_luva,desequipado_maos,desequipado_calcado,espaÁo_vazio,pedaÁo_pizza,bolo_chocolate,pijama_inicial,uniforme_estudantil,malha_ninja,lapis_apontado,punhal_envelhecido,talheres_prata,jaqueta_imitaÁ„o,jaqueta_couro,agasalho_l„,suplemento_alimentÌcio,lata_energÈtico,luva_l„,luva_couro,soco_pvc,soco_lat„o,luva_spikes_alu,soco_alu,luva_spikes_aÁo,soco_aÁo,luva_spikes_ag,soco_ag,luva_spikes_au,soco_au,luva_spikes_tit‚nio,soco_tit‚nio,anel_forÁa1,anel_forÁa2,anel_forÁa3,anel_resistÍncia1,anel_resistÍncia2,anel_resistÍncia3,anel_consistÍncia1,anel_consistÍncia2,anel_consistÍncia3,anel_da_imortalidade,anel_da_divindade,chinelo_inicial,papetes_masculinas,tÍnis_velho,tÍnis_simplÛrio,sapato_simplÛrio,tÍnis_comum,tÍnis_trilha,tÍnis_caminhada,tÍnis_corrida,tÍnis_ZX5000,item_adicionado,quantidade_adicionada,equipado_roupa,equipado_capa,equipado_luva,equipado_anel,equipado_maos,equipado_calcado,vari·vel_cen·rio,objeto,situaÁ„o,tempor·rio,vari·vel_lugar,ponto_de_save,mostrar_save, personagem_jogador,personagem_reserva,personagem_inimigo,eegg,aÁ„o_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,vari·vel_para_comparar,contador_de_batalha,contador_de_rodadas,mala,loja_venda
 
 
 #####################----------------------------__BRIGA DE ESTUDANTE__----------------------------#####################
@@ -2732,7 +3245,7 @@ while 1:
  | | ==-==-==-==-==-==-= por:Fernando Luiz Neme Chibli =-==-==-==-==-==-== | |
  | | =-==-==-==-==-==-==                               ==-==-==-==-==-==-= | | 
  | | ==============================         ============================== | | 
- | | *=*=*=*=*=*=*=*=*=*=*=*=*=    [come√ßar]    =*=*=*=*=*=*=*=*=*=*=*=*=* | | 
+ | | *=*=*=*=*=*=*=*=*=*=*=*=*=    [comeÁar]    =*=*=*=*=*=*=*=*=*=*=*=*=* | | 
  | | ======================**=**=     ou     =**=**======================= | | 
  | | *=*=*=*=*=*=*=*=*=*=*=*=*=   [continuar]   =*=*=*=*=*=*=*=*=*=*=*=*=* | | 
  | | =============================           ============================= | | 
@@ -2744,410 +3257,344 @@ while 1:
  | |_______________________________________________________________________| | 
  |/_________________________________________________________________________\|
 
- Digite "come√ßar" ou "continuar":''')
+ Digite "comeÁar" ou "continuar":''')
         while 1:
-            a√ß√£o_do_personagem = input("-")
-            a√ß√£o_do_personagem = a√ß√£o_do_personagem.lower()
-            if(a√ß√£o_do_personagem =="come√ßar" or a√ß√£o_do_personagem == "me√ßar" or a√ß√£o_do_personagem == "come" or a√ß√£o_do_personagem =="iniciar" or a√ß√£o_do_personagem =="inicia" or a√ß√£o_do_personagem =="inici" or a√ß√£o_do_personagem =="inicio" or a√ß√£o_do_personagem =="in√≠cio" or a√ß√£o_do_personagem =="new game" or a√ß√£o_do_personagem =="start new game" or a√ß√£o_do_personagem =="start" or a√ß√£o_do_personagem =="start game" or a√ß√£o_do_personagem =="comecar" or a√ß√£o_do_personagem =="comeca" or a√ß√£o_do_personagem =="come√ßa" or a√ß√£o_do_personagem =="com" or a√ß√£o_do_personagem =="cme√ßar" or a√ß√£o_do_personagem =="cmecar" or a√ß√£o_do_personagem =="comcar" or a√ß√£o_do_personagem =="com√ßar" or a√ß√£o_do_personagem =="comear" or a√ß√£o_do_personagem =="comer" or a√ß√£o_do_personagem =="cocar" or a√ß√£o_do_personagem =="ccar" or a√ß√£o_do_personagem =="cmcr" or a√ß√£o_do_personagem =="cmecr" or a√ß√£o_do_personagem =="co√ßar" or a√ß√£o_do_personagem =="c√ßar" or a√ß√£o_do_personagem =="cm√ßr" or a√ß√£o_do_personagem =="cme√ßr" or a√ß√£o_do_personagem =="cumess√°" or a√ß√£o_do_personagem =="comessa" or a√ß√£o_do_personagem =="comessar"):
+            aÁ„o_do_personagem = input("-")
+            aÁ„o_do_personagem = aÁ„o_do_personagem.lower()
+            if(aÁ„o_do_personagem =="comeÁar" or aÁ„o_do_personagem == "meÁar" or aÁ„o_do_personagem == "come" or aÁ„o_do_personagem =="iniciar" or aÁ„o_do_personagem =="inicia" or aÁ„o_do_personagem =="inici" or aÁ„o_do_personagem =="inicio" or aÁ„o_do_personagem =="inÌcio" or aÁ„o_do_personagem =="new game" or aÁ„o_do_personagem =="start new game" or aÁ„o_do_personagem =="start" or aÁ„o_do_personagem =="start game" or aÁ„o_do_personagem =="comecar" or aÁ„o_do_personagem =="comeca" or aÁ„o_do_personagem =="comeÁa" or aÁ„o_do_personagem =="com" or aÁ„o_do_personagem =="cmeÁar" or aÁ„o_do_personagem =="cmecar" or aÁ„o_do_personagem =="comcar" or aÁ„o_do_personagem =="comÁar" or aÁ„o_do_personagem =="comear" or aÁ„o_do_personagem =="comer" or aÁ„o_do_personagem =="cocar" or aÁ„o_do_personagem =="ccar" or aÁ„o_do_personagem =="cmcr" or aÁ„o_do_personagem =="cmecr" or aÁ„o_do_personagem =="coÁar" or aÁ„o_do_personagem =="cÁar" or aÁ„o_do_personagem =="cmÁr" or aÁ„o_do_personagem =="cmeÁr" or aÁ„o_do_personagem =="cumess·" or aÁ„o_do_personagem =="comessa" or aÁ„o_do_personagem =="comessar"):
                 break
             else:
-                if (a√ß√£o_do_personagem == "continuar" or a√ß√£o_do_personagem == "ccontinuar" or a√ß√£o_do_personagem == "continuarr" or a√ß√£o_do_personagem == "conntinuar" or a√ß√£o_do_personagem == "conttinuar" or a√ß√£o_do_personagem == "continnuar" or a√ß√£o_do_personagem == "ccontinuarr" or a√ß√£o_do_personagem == "cconntinuar" or a√ß√£o_do_personagem == "cconttinuar" or a√ß√£o_do_personagem == "ccontinnuar" or a√ß√£o_do_personagem == "cconnttinuar" or a√ß√£o_do_personagem == "cconntinnuar" or a√ß√£o_do_personagem == "cconntinuarr" or a√ß√£o_do_personagem == "continuart" or a√ß√£o_do_personagem == "cconttinnuar" or a√ß√£o_do_personagem == "cconttinuarr" or a√ß√£o_do_personagem == "cconnttinnuarr" or a√ß√£o_do_personagem == "cntnr" or a√ß√£o_do_personagem == "contnr" or a√ß√£o_do_personagem == "continr" or a√ß√£o_do_personagem == "continur" or a√ß√£o_do_personagem == "cntinuar" or a√ß√£o_do_personagem == "cntnuar" or a√ß√£o_do_personagem == "cntnar" or a√ß√£o_do_personagem == "cntinur" or a√ß√£o_do_personagem == "cntinr" or a√ß√£o_do_personagem == "cntinar" or a√ß√£o_do_personagem == "contnur" or a√ß√£o_do_personagem == "ontinuar" or a√ß√£o_do_personagem == "cotinuar" or a√ß√£o_do_personagem == "coninuar" or a√ß√£o_do_personagem == "contiuar" or a√ß√£o_do_personagem == "coinar" or a√ß√£o_do_personagem == "continua" or a√ß√£o_do_personagem == "cntn" or a√ß√£o_do_personagem == "contn" or a√ß√£o_do_personagem == "contin" or a√ß√£o_do_personagem == "continu" or a√ß√£o_do_personagem == "cntinua" or a√ß√£o_do_personagem == "cntnua" or a√ß√£o_do_personagem == "cntna" or a√ß√£o_do_personagem == "cntinu" or a√ß√£o_do_personagem == "cntin" or a√ß√£o_do_personagem == "cntina" or a√ß√£o_do_personagem == "contnu" or a√ß√£o_do_personagem == "ontinua" or a√ß√£o_do_personagem == "cotinua" or a√ß√£o_do_personagem == "coninua" or a√ß√£o_do_personagem == "contiua" or a√ß√£o_do_personagem == "coina" or a√ß√£o_do_personagem == "con" or a√ß√£o_do_personagem == "cont" or a√ß√£o_do_personagem == "conti" or a√ß√£o_do_personagem == "ccontin" or a√ß√£o_do_personagem == "ccontinu"):
-                    print("\nDeseja continuar o jogo guardado em qual espa√ßo?\n")
+                if (aÁ„o_do_personagem == "continuar" or aÁ„o_do_personagem == "ccontinuar" or aÁ„o_do_personagem == "continuarr" or aÁ„o_do_personagem == "conntinuar" or aÁ„o_do_personagem == "conttinuar" or aÁ„o_do_personagem == "continnuar" or aÁ„o_do_personagem == "ccontinuarr" or aÁ„o_do_personagem == "cconntinuar" or aÁ„o_do_personagem == "cconttinuar" or aÁ„o_do_personagem == "ccontinnuar" or aÁ„o_do_personagem == "cconnttinuar" or aÁ„o_do_personagem == "cconntinnuar" or aÁ„o_do_personagem == "cconntinuarr" or aÁ„o_do_personagem == "continuart" or aÁ„o_do_personagem == "cconttinnuar" or aÁ„o_do_personagem == "cconttinuarr" or aÁ„o_do_personagem == "cconnttinnuarr" or aÁ„o_do_personagem == "cntnr" or aÁ„o_do_personagem == "contnr" or aÁ„o_do_personagem == "continr" or aÁ„o_do_personagem == "continur" or aÁ„o_do_personagem == "cntinuar" or aÁ„o_do_personagem == "cntnuar" or aÁ„o_do_personagem == "cntnar" or aÁ„o_do_personagem == "cntinur" or aÁ„o_do_personagem == "cntinr" or aÁ„o_do_personagem == "cntinar" or aÁ„o_do_personagem == "contnur" or aÁ„o_do_personagem == "ontinuar" or aÁ„o_do_personagem == "cotinuar" or aÁ„o_do_personagem == "coninuar" or aÁ„o_do_personagem == "contiuar" or aÁ„o_do_personagem == "coinar" or aÁ„o_do_personagem == "continua" or aÁ„o_do_personagem == "cntn" or aÁ„o_do_personagem == "contn" or aÁ„o_do_personagem == "contin" or aÁ„o_do_personagem == "continu" or aÁ„o_do_personagem == "cntinua" or aÁ„o_do_personagem == "cntnua" or aÁ„o_do_personagem == "cntna" or aÁ„o_do_personagem == "cntinu" or aÁ„o_do_personagem == "cntin" or aÁ„o_do_personagem == "cntina" or aÁ„o_do_personagem == "contnu" or aÁ„o_do_personagem == "ontinua" or aÁ„o_do_personagem == "cotinua" or aÁ„o_do_personagem == "coninua" or aÁ„o_do_personagem == "contiua" or aÁ„o_do_personagem == "coina" or aÁ„o_do_personagem == "con" or aÁ„o_do_personagem == "cont" or aÁ„o_do_personagem == "conti" or aÁ„o_do_personagem == "ccontin" or aÁ„o_do_personagem == "ccontinu"):
+                    print("\nDeseja continuar o jogo guardado em qual espaÁo?\n")
                     time.sleep(1)
-                    arq = open('\espa√ßo_save00.py', 'rb')
+                    arq = open('\espaÁo_save00.py', 'rb')
                     mostrar_save = pickle.load(arq)
-                    print("\nEspa√ßo  0:     Lugar:",mostrar_save[5], "\n          Nome:",mostrar_save[1],"  Vida:", mostrar_save[3],"\n          Ataque:",mostrar_save[7],"  Defesa:",mostrar_save[9],"  Agilidade:",mostrar_save[11])
+                    print("\nEspaÁo  0:     Lugar:",mostrar_save[5], "\n          Nome:",mostrar_save[1],"  Vida:", mostrar_save[3],"\n          Ataque:",mostrar_save[7],"  Defesa:",mostrar_save[9],"  Agilidade:",mostrar_save[11])
                     arq.close
-                    arq = open('\espa√ßo_save01.py', 'rb')
+                    arq = open('\espaÁo_save01.py', 'rb')
                     mostrar_save = pickle.load(arq)
-                    print("\nEspa√ßo  1:     Lugar:",mostrar_save[5], "\n          Nome:",mostrar_save[1],"  Vida:", mostrar_save[3],"\n          Ataque:",mostrar_save[7],"  Defesa:",mostrar_save[9],"  Agilidade:",mostrar_save[11])
+                    print("\nEspaÁo  1:     Lugar:",mostrar_save[5], "\n          Nome:",mostrar_save[1],"  Vida:", mostrar_save[3],"\n          Ataque:",mostrar_save[7],"  Defesa:",mostrar_save[9],"  Agilidade:",mostrar_save[11])
                     arq.close
-                    arq = open('\espa√ßo_save02.py', 'rb')
+                    arq = open('\espaÁo_save02.py', 'rb')
                     mostrar_save = pickle.load(arq)
-                    print("\nEspa√ßo  2:     Lugar:",mostrar_save[5], "\n          Nome:",mostrar_save[1],"  Vida:", mostrar_save[3],"\n          Ataque:",mostrar_save[7],"  Defesa:",mostrar_save[9],"  Agilidade:",mostrar_save[11])
+                    print("\nEspaÁo  2:     Lugar:",mostrar_save[5], "\n          Nome:",mostrar_save[1],"  Vida:", mostrar_save[3],"\n          Ataque:",mostrar_save[7],"  Defesa:",mostrar_save[9],"  Agilidade:",mostrar_save[11])
                     arq.close
-                    arq = open('\espa√ßo_save03.py', 'rb')
+                    arq = open('\espaÁo_save03.py', 'rb')
                     mostrar_save = pickle.load(arq)
-                    print("\nEspa√ßo  3:     Lugar:",mostrar_save[5], "\n          Nome:",mostrar_save[1],"  Vida:", mostrar_save[3],"\n          Ataque:",mostrar_save[7],"  Defesa:",mostrar_save[9],"  Agilidade:",mostrar_save[11])
+                    print("\nEspaÁo  3:     Lugar:",mostrar_save[5], "\n          Nome:",mostrar_save[1],"  Vida:", mostrar_save[3],"\n          Ataque:",mostrar_save[7],"  Defesa:",mostrar_save[9],"  Agilidade:",mostrar_save[11])
                     arq.close
-                    arq = open('\espa√ßo_save04.py', 'rb')
+                    arq = open('\espaÁo_save04.py', 'rb')
                     mostrar_save = pickle.load(arq)
-                    print("\nEspa√ßo  4:     Lugar:",mostrar_save[5], "\n          Nome:",mostrar_save[1],"  Vida:", mostrar_save[3],"\n          Ataque:",mostrar_save[7],"  Defesa:",mostrar_save[9],"  Agilidade:",mostrar_save[11])
+                    print("\nEspaÁo  4:     Lugar:",mostrar_save[5], "\n          Nome:",mostrar_save[1],"  Vida:", mostrar_save[3],"\n          Ataque:",mostrar_save[7],"  Defesa:",mostrar_save[9],"  Agilidade:",mostrar_save[11])
                     arq.close
-                    arq = open('\espa√ßo_save05.py', 'rb')
+                    arq = open('\espaÁo_save05.py', 'rb')
                     mostrar_save = pickle.load(arq)
-                    print("\nEspa√ßo  5:     Lugar:",mostrar_save[5], "\n          Nome:",mostrar_save[1],"  Vida:", mostrar_save[3],"\n          Ataque:",mostrar_save[7],"  Defesa:",mostrar_save[9],"  Agilidade:",mostrar_save[11])
+                    print("\nEspaÁo  5:     Lugar:",mostrar_save[5], "\n          Nome:",mostrar_save[1],"  Vida:", mostrar_save[3],"\n          Ataque:",mostrar_save[7],"  Defesa:",mostrar_save[9],"  Agilidade:",mostrar_save[11])
                     arq.close
-                    arq = open('\espa√ßo_save06.py', 'rb')
+                    arq = open('\espaÁo_save06.py', 'rb')
                     mostrar_save = pickle.load(arq)
-                    print("\nEspa√ßo  6:     Lugar:",mostrar_save[5], "\n          Nome:",mostrar_save[1],"  Vida:", mostrar_save[3],"\n          Ataque:",mostrar_save[7],"  Defesa:",mostrar_save[9],"  Agilidade:",mostrar_save[11])
+                    print("\nEspaÁo  6:     Lugar:",mostrar_save[5], "\n          Nome:",mostrar_save[1],"  Vida:", mostrar_save[3],"\n          Ataque:",mostrar_save[7],"  Defesa:",mostrar_save[9],"  Agilidade:",mostrar_save[11])
                     arq.close
-                    arq = open('\espa√ßo_save07.py', 'rb')
+                    arq = open('\espaÁo_save07.py', 'rb')
                     mostrar_save = pickle.load(arq)
-                    print("\nEspa√ßo  7:     Lugar:",mostrar_save[5], "\n          Nome:",mostrar_save[1],"  Vida:", mostrar_save[3],"\n          Ataque:",mostrar_save[7],"  Defesa:",mostrar_save[9],"  Agilidade:",mostrar_save[11])
+                    print("\nEspaÁo  7:     Lugar:",mostrar_save[5], "\n          Nome:",mostrar_save[1],"  Vida:", mostrar_save[3],"\n          Ataque:",mostrar_save[7],"  Defesa:",mostrar_save[9],"  Agilidade:",mostrar_save[11])
                     arq.close
-                    arq = open('\espa√ßo_save08.py', 'rb')
+                    arq = open('\espaÁo_save08.py', 'rb')
                     mostrar_save = pickle.load(arq)
-                    print("\nEspa√ßo  8:     Lugar:",mostrar_save[5], "\n          Nome:",mostrar_save[1],"  Vida:", mostrar_save[3],"\n          Ataque:",mostrar_save[7],"  Defesa:",mostrar_save[9],"  Agilidade:",mostrar_save[11])
+                    print("\nEspaÁo  8:     Lugar:",mostrar_save[5], "\n          Nome:",mostrar_save[1],"  Vida:", mostrar_save[3],"\n          Ataque:",mostrar_save[7],"  Defesa:",mostrar_save[9],"  Agilidade:",mostrar_save[11])
                     arq.close
-                    arq = open('\espa√ßo_save09.py', 'rb')
+                    arq = open('\espaÁo_save09.py', 'rb')
                     mostrar_save = pickle.load(arq)
-                    print("\nEspa√ßo  9:     Lugar:",mostrar_save[5], "\n          Nome:",mostrar_save[1],"  Vida:", mostrar_save[3],"\n          Ataque:",mostrar_save[7],"  Defesa:",mostrar_save[9],"  Agilidade:",mostrar_save[11])
+                    print("\nEspaÁo  9:     Lugar:",mostrar_save[5], "\n          Nome:",mostrar_save[1],"  Vida:", mostrar_save[3],"\n          Ataque:",mostrar_save[7],"  Defesa:",mostrar_save[9],"  Agilidade:",mostrar_save[11])
                     arq.close
                     while 1:
-                        print("\n(Digite um n√∫mero entre 0 e 9)")
-                        a√ß√£o_do_personagem=input("-")
-                        if(a√ß√£o_do_personagem=="0"):
-                            arq = open('\espa√ßo_save00.py', 'rb')
+                        print("\n(Digite um n˙mero entre 0 e 9)")
+                        aÁ„o_do_personagem=input("-")
+                        if(aÁ„o_do_personagem=="0"):
+                            arq = open('\espaÁo_save00.py', 'rb')
                             break
                         else:
-                            if(a√ß√£o_do_personagem=="1"):
-                                arq = open('\espa√ßo_save01.py', 'rb')
+                            if(aÁ„o_do_personagem=="1"):
+                                arq = open('\espaÁo_save01.py', 'rb')
                                 break
                             else:
-                                if(a√ß√£o_do_personagem=="2"):
-                                    arq = open('\espa√ßo_save02.py', 'rb')
+                                if(aÁ„o_do_personagem=="2"):
+                                    arq = open('\espaÁo_save02.py', 'rb')
                                     break
                                 else:
-                                    if(a√ß√£o_do_personagem=="3"):
-                                        arq = open('\espa√ßo_save03.py', 'rb')
+                                    if(aÁ„o_do_personagem=="3"):
+                                        arq = open('\espaÁo_save03.py', 'rb')
                                         break
                                     else:
-                                        if(a√ß√£o_do_personagem=="4"):
-                                            arq = open('\espa√ßo_save04.py', 'rb')
+                                        if(aÁ„o_do_personagem=="4"):
+                                            arq = open('\espaÁo_save04.py', 'rb')
                                             break
                                         else:
-                                            if(a√ß√£o_do_personagem=="5"):
-                                                arq = open('\espa√ßo_save05.py', 'rb')
+                                            if(aÁ„o_do_personagem=="5"):
+                                                arq = open('\espaÁo_save05.py', 'rb')
                                                 break
                                             else:
-                                                if(a√ß√£o_do_personagem=="6"):
-                                                    arq = open('\espa√ßo_save06.py', 'rb')
+                                                if(aÁ„o_do_personagem=="6"):
+                                                    arq = open('\espaÁo_save06.py', 'rb')
                                                     break
                                                 else:
-                                                    if(a√ß√£o_do_personagem=="7"):
-                                                        arq = open('\espa√ßo_save07.py', 'rb')
+                                                    if(aÁ„o_do_personagem=="7"):
+                                                        arq = open('\espaÁo_save07.py', 'rb')
                                                         break
                                                     else:
-                                                        if(a√ß√£o_do_personagem=="8"):
-                                                            arq = open('\espa√ßo_save08.py', 'rb')
+                                                        if(aÁ„o_do_personagem=="8"):
+                                                            arq = open('\espaÁo_save08.py', 'rb')
                                                             break
                                                         else:
-                                                            if(a√ß√£o_do_personagem=="9"):
-                                                                arq = open('\espa√ßo_save09.py', 'rb')
+                                                            if(aÁ„o_do_personagem=="9"):
+                                                                arq = open('\espaÁo_save09.py', 'rb')
                                                                 break
                                                             else:
-                                                                print("Entrada inv√°lida!\n")
+                                                                print("Entrada inv·lida!\n")
                                                                 time.sleep(0.5)
-                    desequipado_roupa = pickle.load(arq)
-                    desequipado_capa = pickle.load(arq)
-                    desequipado_luva = pickle.load(arq)
-                    desequipado_m√£os = pickle.load(arq)
-                    desequipado_cal√ßado = pickle.load(arq)
-                    espa√ßo_vazio = pickle.load(arq)
-                    peda√ßo_pizza = pickle.load(arq)
-                    bolo_chocolate = pickle.load(arq)
-                    pijama_inicial = pickle.load(arq)
-                    uniforme_estudantil = pickle.load(arq)
-                    malha_ninja = pickle.load(arq)
-                    l√°pis_apontado = pickle.load(arq)
-                    punhal_envelhecido = pickle.load(arq)
-                    talheres_prata = pickle.load(arq)
-                    jaqueta_imita√ß√£o = pickle.load(arq)
-                    jaqueta_couro = pickle.load(arq)
-                    agasalho_l√£ = pickle.load(arq)
-                    suplemento_aliment√≠cio = pickle.load(arq)
-                    lata_energ√©tico = pickle.load(arq)
-                    luva_l√£ = pickle.load(arq)
-                    luva_couro = pickle.load(arq)
-                    soco_pvc = pickle.load(arq)
-                    soco_lat√£o = pickle.load(arq)
-                    luva_spikes_alu = pickle.load(arq)
-                    soco_alu = pickle.load(arq)
-                    luva_spikes_a√ßo = pickle.load(arq)
-                    soco_a√ßo = pickle.load(arq)
-                    luva_spikes_ag = pickle.load(arq)
-                    soco_ag = pickle.load(arq)
-                    luva_spikes_au = pickle.load(arq)
-                    soco_au = pickle.load(arq)
-                    luva_spikes_tit√¢nio = pickle.load(arq)
-                    soco_tit√¢nio = pickle.load(arq)
-                    anel_for√ßa1 = pickle.load(arq)
-                    anel_for√ßa2 = pickle.load(arq)
-                    anel_for√ßa3 = pickle.load(arq)
-                    anel_resist√™ncia1 = pickle.load(arq)
-                    anel_resist√™ncia2 = pickle.load(arq)
-                    anel_resist√™ncia3 = pickle.load(arq)
-                    anel_consist√™ncia1 = pickle.load(arq)
-                    anel_consist√™ncia2 = pickle.load(arq)
-                    anel_consist√™ncia3 = pickle.load(arq)
-                    anel_da_imortalidade = pickle.load(arq)
-                    anel_da_divindade = pickle.load(arq)
-                    chinelo_inicial = pickle.load(arq)
-                    papetes_masculinas = pickle.load(arq)
-                    t√™nis_velho = pickle.load(arq)
-                    t√™nis_simpl√≥rio = pickle.load(arq)
-                    sapato_simpl√≥rio = pickle.load(arq)
-                    t√™nis_comum = pickle.load(arq)
-                    t√™nis_trilha = pickle.load(arq)
-                    t√™nis_caminhada = pickle.load(arq)
-                    t√™nis_corrida = pickle.load(arq)
-                    t√™nis_ZX5000 = pickle.load(arq)
-                    item_adicionado = pickle.load(arq)
-                    quantidade_adicionada = pickle.load(arq)
+                    mostrar_save = pickle.load(arq)
                     equipado_roupa = pickle.load(arq)
                     equipado_capa = pickle.load(arq)
                     equipado_luva = pickle.load(arq)
                     equipado_anel = pickle.load(arq)
-                    equipado_m√£os = pickle.load(arq)
-                    equipado_cal√ßado = pickle.load(arq)
-                    vari√°vel_cen√°rio = pickle.load(arq)
+                    equipado_maos = pickle.load(arq)
+                    equipado_calcado = pickle.load(arq)
+                    vari·vel_cen·rio = pickle.load(arq)
                     objeto = pickle.load(arq)
-                    situa√ß√£o = pickle.load(arq)
-                    tempor√°rio = pickle.load(arq)
-                    vari√°vel_lugar = pickle.load(arq)
+                    situaÁ„o = pickle.load(arq)
+                    tempor·rio = pickle.load(arq)
+                    vari·vel_lugar = pickle.load(arq)
                     ponto_de_save = pickle.load(arq)
-                    mostrar_save = pickle.load(arq)
                     personagem_jogador = pickle.load(arq)
                     personagem_reserva = pickle.load(arq)
                     personagem_inimigo = pickle.load(arq)
-                    eegg = pickle.load(arq)
-                    a√ß√£o_do_personagem = pickle.load(arq)
-                    batalha_escapar = pickle.load(arq)
-                    teste_de_sorte = pickle.load(arq)
-                    calculo_do_dano = pickle.load(arq)
-                    calculo_da_fuga = pickle.load(arq)
-                    vari√°vel_para_comparar = pickle.load(arq)
-                    contador_de_batalha = pickle.load(arq)
-                    contador_de_rodadas = pickle.load(arq)
                     mala = pickle.load(arq)
-                    loja_venda = pickle.load(arq)
                     arq.close
                     if(ponto_de_save>0):
                         print("\nCarregado!\n")
                         time.sleep(0.5)
                         ficha_personagem()
                     else:
-                        print("\nERRO: Voc√™ n√£o possui dados salvos.\n")
+                        print("\nERRO: VocÍ n„o possui dados salvos.\n")
                         time.sleep(0.5)
                     break
                 else:            
-                    print('Entrada inv√°lida!\n')
+                    print('Entrada inv·lida!\n')
         if(ponto_de_save==0):
             print("\nIniciando novo jogo...\n")
             time.sleep(2)
-            print("\n\nVoc√™ √© um homem... Qual √© o seu nome?\n")
+            print("\n\nVocÍ È um homem... Qual È o seu nome?\n")
             personagem_jogador[0] = input("-")
             while 1:
-                print("Seu nome √©", personagem_jogador[0], "?")
+                print("Seu nome È", personagem_jogador[0], "?")
                 while 2:
-                    a√ß√£o_do_personagem = input("-")
-                    a√ß√£o_do_personagem = a√ß√£o_do_personagem.lower()
-                    if(a√ß√£o_do_personagem=="sim" or a√ß√£o_do_personagem=="s" or a√ß√£o_do_personagem=="si" or a√ß√£o_do_personagem=="sm" or a√ß√£o_do_personagem=="im" or a√ß√£o_do_personagem=="ssim"):
+                    aÁ„o_do_personagem = input("-")
+                    aÁ„o_do_personagem = aÁ„o_do_personagem.lower()
+                    if(aÁ„o_do_personagem=="sim" or aÁ„o_do_personagem=="s" or aÁ„o_do_personagem=="si" or aÁ„o_do_personagem=="sm" or aÁ„o_do_personagem=="im" or aÁ„o_do_personagem=="ssim"):
                         break
                     else:
-                        if(a√ß√£o_do_personagem == "n√£o" or a√ß√£o_do_personagem=="n" or a√ß√£o_do_personagem=="nao" or a√ß√£o_do_personagem=="no" or a√ß√£o_do_personagem=="na" or a√ß√£o_do_personagem=="n√£" or a√ß√£o_do_personagem=="ao" or a√ß√£o_do_personagem=="√£o" or a√ß√£o_do_personagem=="√±" or a√ß√£o_do_personagem=="√±√£o" or a√ß√£o_do_personagem=="√±o" or a√ß√£o_do_personagem=="√±√µ" or a√ß√£o_do_personagem=="√±√£" or a√ß√£o_do_personagem=="√±a√µ" or a√ß√£o_do_personagem=="a√µ"):
-                            print("\nEnt√£o qual √© o seu nome?\n")
+                        if(aÁ„o_do_personagem == "n„o" or aÁ„o_do_personagem=="n" or aÁ„o_do_personagem=="nao" or aÁ„o_do_personagem=="no" or aÁ„o_do_personagem=="na" or aÁ„o_do_personagem=="n„" or aÁ„o_do_personagem=="ao" or aÁ„o_do_personagem=="„o" or aÁ„o_do_personagem=="Ò" or aÁ„o_do_personagem=="Ò„o" or aÁ„o_do_personagem=="Òo" or aÁ„o_do_personagem=="Òı" or aÁ„o_do_personagem=="Ò„" or aÁ„o_do_personagem=="Òaı" or aÁ„o_do_personagem=="aı"):
+                            print("\nEnt„o qual È o seu nome?\n")
                             personagem_jogador[0] = input("-")
                             break
                         else:
-                            print('\nEntrada inv√°lida, digite "sim" ou "n√£o".\n')
+                            print('\nEntrada inv·lida, digite "sim" ou "n„o".\n')
                             time.sleep(0.5)
-                if(a√ß√£o_do_personagem=="sim" or a√ß√£o_do_personagem=="s" or a√ß√£o_do_personagem=="si" or a√ß√£o_do_personagem=="sm" or a√ß√£o_do_personagem=="im" or a√ß√£o_do_personagem=="ssim"):
+                if(aÁ„o_do_personagem=="sim" or aÁ„o_do_personagem=="s" or aÁ„o_do_personagem=="si" or aÁ„o_do_personagem=="sm" or aÁ„o_do_personagem=="im" or aÁ„o_do_personagem=="ssim"):
                     break
             print("Muito prazer, ", personagem_jogador[0],'.')
             time.sleep(2)
-            print('N√≥s j√° nos conhecemos?(digite "n√£o" para ver o tutorial)\n')
-            a√ß√£o_do_personagem = input("-")
-            a√ß√£o_do_personagem = a√ß√£o_do_personagem.lower()
+            print('NÛs j· nos conhecemos?(digite "n„o" para ver o tutorial)\n')
+            aÁ„o_do_personagem = input("-")
+            aÁ„o_do_personagem = aÁ„o_do_personagem.lower()
             while 1:
-                if(a√ß√£o_do_personagem=="sim" or a√ß√£o_do_personagem=="s" or a√ß√£o_do_personagem=="si" or a√ß√£o_do_personagem=="sm" or a√ß√£o_do_personagem=="im" or a√ß√£o_do_personagem=="ssim"):
+                if(aÁ„o_do_personagem=="sim" or aÁ„o_do_personagem=="s" or aÁ„o_do_personagem=="si" or aÁ„o_do_personagem=="sm" or aÁ„o_do_personagem=="im" or aÁ„o_do_personagem=="ssim"):
                     print('Tem certeza??')
                     time.sleep(2)
-                    print('N√£o me lembro de voc√™...')
+                    print('N„o me lembro de vocÍ...')
                     time.sleep(1)
-                    print('(eu REALMENTE recomendo que voc√™ digite "n√£o" para ver o tutorial!)')
-                    a√ß√£o_do_personagem = input("-")
-                    a√ß√£o_do_personagem = a√ß√£o_do_personagem.lower()
+                    print('(eu REALMENTE recomendo que vocÍ digite "n„o" para ver o tutorial!)')
+                    aÁ„o_do_personagem = input("-")
+                    aÁ„o_do_personagem = aÁ„o_do_personagem.lower()
                     break
                 else:
-                    if(a√ß√£o_do_personagem == "n√£o" or a√ß√£o_do_personagem=="n" or a√ß√£o_do_personagem=="nao" or a√ß√£o_do_personagem=="no" or a√ß√£o_do_personagem=="na" or a√ß√£o_do_personagem=="n√£" or a√ß√£o_do_personagem=="ao" or a√ß√£o_do_personagem=="√£o" or a√ß√£o_do_personagem=="√±" or a√ß√£o_do_personagem=="√±√£o" or a√ß√£o_do_personagem=="√±o" or a√ß√£o_do_personagem=="√±√µ" or a√ß√£o_do_personagem=="√±√£" or a√ß√£o_do_personagem=="√±a√µ" or a√ß√£o_do_personagem=="a√µ"):
+                    if(aÁ„o_do_personagem == "n„o" or aÁ„o_do_personagem=="n" or aÁ„o_do_personagem=="nao" or aÁ„o_do_personagem=="no" or aÁ„o_do_personagem=="na" or aÁ„o_do_personagem=="n„" or aÁ„o_do_personagem=="ao" or aÁ„o_do_personagem=="„o" or aÁ„o_do_personagem=="Ò" or aÁ„o_do_personagem=="Ò„o" or aÁ„o_do_personagem=="Òo" or aÁ„o_do_personagem=="Òı" or aÁ„o_do_personagem=="Ò„" or aÁ„o_do_personagem=="Òaı" or aÁ„o_do_personagem=="aı"):
                         break
                     else:
-                        print('Entrada inv√°lida! Digite "sim" ou "n√£o".')
+                        print('Entrada inv·lida! Digite "sim" ou "n„o".')
                         time.sleep(0.5)
-                        a√ß√£o_do_personagem = input("-")
-                        a√ß√£o_do_personagem = a√ß√£o_do_personagem.lower()
+                        aÁ„o_do_personagem = input("-")
+                        aÁ„o_do_personagem = aÁ„o_do_personagem.lower()
             while 1:
-                if(a√ß√£o_do_personagem=="sim" or a√ß√£o_do_personagem=="s" or a√ß√£o_do_personagem=="si" or a√ß√£o_do_personagem=="sm" or a√ß√£o_do_personagem=="im" or a√ß√£o_do_personagem=="ssim"):
+                if(aÁ„o_do_personagem=="sim" or aÁ„o_do_personagem=="s" or aÁ„o_do_personagem=="si" or aÁ„o_do_personagem=="sm" or aÁ„o_do_personagem=="im" or aÁ„o_do_personagem=="ssim"):
                     break
                 else:
-                    if(a√ß√£o_do_personagem == "n√£o" or a√ß√£o_do_personagem=="n" or a√ß√£o_do_personagem=="nao" or a√ß√£o_do_personagem=="no" or a√ß√£o_do_personagem=="na" or a√ß√£o_do_personagem=="n√£" or a√ß√£o_do_personagem=="ao" or a√ß√£o_do_personagem=="√£o" or a√ß√£o_do_personagem=="√±" or a√ß√£o_do_personagem=="√±√£o" or a√ß√£o_do_personagem=="√±o" or a√ß√£o_do_personagem=="√±√µ" or a√ß√£o_do_personagem=="√±√£" or a√ß√£o_do_personagem=="√±a√µ" or a√ß√£o_do_personagem=="a√µ"):
-                        print('\nSou o narrador da nossa hist√≥ria, vou apenas te guiar de acordo com as suas decis√µes...')
+                    if(aÁ„o_do_personagem == "n„o" or aÁ„o_do_personagem=="n" or aÁ„o_do_personagem=="nao" or aÁ„o_do_personagem=="no" or aÁ„o_do_personagem=="na" or aÁ„o_do_personagem=="n„" or aÁ„o_do_personagem=="ao" or aÁ„o_do_personagem=="„o" or aÁ„o_do_personagem=="Ò" or aÁ„o_do_personagem=="Ò„o" or aÁ„o_do_personagem=="Òo" or aÁ„o_do_personagem=="Òı" or aÁ„o_do_personagem=="Ò„" or aÁ„o_do_personagem=="Òaı" or aÁ„o_do_personagem=="aı"):
+                        print('\nSou o narrador da nossa histÛria, vou apenas te guiar de acordo com as suas decisıes...')
                         time.sleep(3)
-                        print('Ent√£o saiba que n√£o vou facilitar as coisas para voc√™!')
+                        print('Ent„o saiba que n„o vou facilitar as coisas para vocÍ!')
                         time.sleep(4)
-                        print('Por√©m minha fun√ß√£o √© te guiar, ser os seus olhos, ouvidos, m√£os e nariz,')
+                        print('PorÈm minha funÁ„o È te guiar, ser os seus olhos, ouvidos, m„os e nariz,')
                         time.sleep(4)
-                        print('e al√©m disso voc√™ parece precisar de algumas instru√ß√µes para tornar disso algo mais divertido.')
+                        print('e alÈm disso vocÍ parece precisar de algumas instruÁıes para tornar disso algo mais divertido.')
                         time.sleep(4)
-                        print('\nToda vez antes da sua a√ß√£o te mostrarei uma lista de a√ß√µes poss√≠veis de se realizar.')
+                        print('\nToda vez antes da sua aÁ„o te mostrarei uma lista de aÁıes possÌveis de se realizar.')
                         time.sleep(3)
-                        print('\nE tamb√©m te mostrarei se a sua a√ß√£o for inv√°lida.')
+                        print('\nE tambÈm te mostrarei se a sua aÁ„o for inv·lida.')
                         time.sleep(2)
-                        print('\nMas voc√™ s√≥ receber√° minha aten√ß√£o quando eu pedir,')
+                        print('\nMas vocÍ sÛ receber· minha atenÁ„o quando eu pedir,')
                         time.sleep(5)
-                        print('voc√™ perceber√° isso quando ver um h√≠fen ap√≥s a minha pergunta.')
+                        print('vocÍ perceber· isso quando ver um hÌfen apÛs a minha pergunta.')
                         time.sleep(5)
                         print('Entendeu?')
-                        a√ß√£o_do_personagem = input("-")
-                        a√ß√£o_do_personagem = a√ß√£o_do_personagem.lower()
+                        aÁ„o_do_personagem = input("-")
+                        aÁ„o_do_personagem = aÁ„o_do_personagem.lower()
                         while 1:
-                            if(a√ß√£o_do_personagem=="sim" or a√ß√£o_do_personagem=="s" or a√ß√£o_do_personagem=="si" or a√ß√£o_do_personagem=="sm" or a√ß√£o_do_personagem=="im" or a√ß√£o_do_personagem=="ssim"):
+                            if(aÁ„o_do_personagem=="sim" or aÁ„o_do_personagem=="s" or aÁ„o_do_personagem=="si" or aÁ„o_do_personagem=="sm" or aÁ„o_do_personagem=="im" or aÁ„o_do_personagem=="ssim"):
                                 break
-                            if( a√ß√£o_do_personagem== "n√£o" or a√ß√£o_do_personagem=="n" or a√ß√£o_do_personagem=="nao" or a√ß√£o_do_personagem=="no" or a√ß√£o_do_personagem=="na" or a√ß√£o_do_personagem=="n√£" or a√ß√£o_do_personagem=="ao" or a√ß√£o_do_personagem=="√£o" or a√ß√£o_do_personagem=="√±" or a√ß√£o_do_personagem=="√±√£o" or a√ß√£o_do_personagem=="√±o" or a√ß√£o_do_personagem=="√±√µ" or a√ß√£o_do_personagem=="√±√£" or a√ß√£o_do_personagem=="√±a√µ" or a√ß√£o_do_personagem=="a√µ"):
-                                print('\nVoc√™ √© bobo??')
+                            if( aÁ„o_do_personagem== "n„o" or aÁ„o_do_personagem=="n" or aÁ„o_do_personagem=="nao" or aÁ„o_do_personagem=="no" or aÁ„o_do_personagem=="na" or aÁ„o_do_personagem=="n„" or aÁ„o_do_personagem=="ao" or aÁ„o_do_personagem=="„o" or aÁ„o_do_personagem=="Ò" or aÁ„o_do_personagem=="Ò„o" or aÁ„o_do_personagem=="Òo" or aÁ„o_do_personagem=="Òı" or aÁ„o_do_personagem=="Ò„" or aÁ„o_do_personagem=="Òaı" or aÁ„o_do_personagem=="aı"):
+                                print('\nVocÍ È bobo??')
                             else:
-                                print('\nEntrada inv√°lida!\n\nVoc√™ pode:\nconcordar comigo dizendo "sim"\n')
-                            a√ß√£o_do_personagem = input("-")
-                            a√ß√£o_do_personagem = a√ß√£o_do_personagem.lower()
+                                print('\nEntrada inv·lida!\n\nVocÍ pode:\nconcordar comigo dizendo "sim"\n')
+                            aÁ„o_do_personagem = input("-")
+                            aÁ„o_do_personagem = aÁ„o_do_personagem.lower()
                         print('Bom menino!')
                         time.sleep(2)
-                        print('\nAlguns comandos como "salvar o jogo" e "ver ficha do personagem" estar√£o quase sempre dispon√≠veis.')
+                        print('\nAlguns comandos como "salvar o jogo" e "ver ficha do personagem" estar„o quase sempre disponÌveis.')
                         time.sleep(2)
-                        print('\nToda vez que voc√™ descobre algo novo no cen√°rio, a lista de a√ß√µes muda,')
+                        print('\nToda vez que vocÍ descobre algo novo no cen·rio, a lista de aÁıes muda,')
                         time.sleep(3)
-                        print('mas os resultados dessas a√ß√µes podem mudar de acordo com o que voc√™ faz,')
+                        print('mas os resultados dessas aÁıes podem mudar de acordo com o que vocÍ faz,')
                         time.sleep(4)
-                        print('sendo assim √© altamente recomend√°vel que voc√™ repita algumas a√ß√µes em um mesmo cen√°rio.')
+                        print('sendo assim È altamente recomend·vel que vocÍ repita algumas aÁıes em um mesmo cen·rio.')
                         time.sleep(4)
-                        print('\nAcho que j√° √© o bastante para come√ßarmos, mas posso repetir se voc√™ quiser...')
+                        print('\nAcho que j· È o bastante para comeÁarmos, mas posso repetir se vocÍ quiser...')
                         time.sleep(2)
-                        print('Voc√™ entendeu tudo o que eu disse?')
+                        print('VocÍ entendeu tudo o que eu disse?')
                         objeto[0]="ganha presente"
                     else:
-                        print('N√£o entendi o que voc√™ quis dizer...\nPor favor, digite "sim" ou "n√£o".\n')
-                    a√ß√£o_do_personagem = input("-")
-                    a√ß√£o_do_personagem = a√ß√£o_do_personagem.lower()
-                    if(a√ß√£o_do_personagem=="sim" or a√ß√£o_do_personagem=="s" or a√ß√£o_do_personagem=="si" or a√ß√£o_do_personagem=="sm" or a√ß√£o_do_personagem=="im" or a√ß√£o_do_personagem=="ssim"):
-                        a√ß√£o_do_personagem="sim"
+                        print('N„o entendi o que vocÍ quis dizer...\nPor favor, digite "sim" ou "n„o".\n')
+                    aÁ„o_do_personagem = input("-")
+                    aÁ„o_do_personagem = aÁ„o_do_personagem.lower()
+                    if(aÁ„o_do_personagem=="sim" or aÁ„o_do_personagem=="s" or aÁ„o_do_personagem=="si" or aÁ„o_do_personagem=="sm" or aÁ„o_do_personagem=="im" or aÁ„o_do_personagem=="ssim"):
+                        aÁ„o_do_personagem="sim"
             if(objeto[0]=="ganha presente"):
-                print("\n√ìtimo, ",personagem_jogador[0],".")
+                print("\n”timo, ",personagem_jogador[0],".")
                 time.sleep(1)
-                print("Acho que come√ßamos com o p√© direito! Fico feliz que voc√™ tenha me escutado como um bom garoto!")
+                print("Acho que comeÁamos com o pÈ direito! Fico feliz que vocÍ tenha me escutado como um bom garoto!")
                 time.sleep(2)
-                print("Por isso deixei um presente para voc√™ no seu guarda-roupas, tenho certeza que voc√™ ficar√° feliz.")
+                print("Por isso deixei um presente para vocÍ no seu guarda-roupas, tenho certeza que vocÍ ficar· feliz.")
                 time.sleep(2)
             else:
-                print("Eu n√£o me lembro de voc√™...")
+                print("Eu n„o me lembro de vocÍ...")
                 time.sleep(3)
-                print("Ent√£o voc√™ deve ser mesmo irrelevante!")
+                print("Ent„o vocÍ deve ser mesmo irrelevante!")
                 time.sleep(3)
 
-#####################----------------------------__IN√çCIO DO JOGO__----------------------------#####################
-            print("\nCen√°rio: acabou de amanhecer, seu quarto est√° desarrumado,")
+#####################----------------------------__INÕCIO DO JOGO__----------------------------#####################
+            print("\nCen·rio: acabou de amanhecer, seu quarto est· desarrumado,")
             time.sleep(2)
-            print("voc√™ ainda est√° de pijama e atrasado para a aula - n√£o que voc√™ se importe muito com isso.")
+            print("vocÍ ainda est· de pijama e atrasado para a aula - n„o que vocÍ se importe muito com isso.")
             time.sleep(3)
-            print("\n#", "-"*30,"#\n\nLista de A√ß√µes\n\nCen√°rio:", vari√°vel_lugar)
+            print("\n#", "-"*30,"#\n\nLista de AÁıes\n\nCen·rio:", vari·vel_lugar)
             time.sleep(2)
-            print("\n\nVoc√™ pode:\n\nvestir\narrumar o quarto\nolhar\n")
+            print("\n\nVocÍ pode:\n\nvestir\narrumar o quarto\nolhar\n")
             time.sleep(2)
-            if (vari√°vel_cen√°rio[0] == "sim"):
+            if (vari·vel_cen·rio[0] == "sim"):
                 print("\nolhar as gavetas\nolhar o guarda-roupas\nolhar a estante\n\nolhar pela janela\n")
                 time.sleep(2)
             print("\nver ficha do personagem\nver mochila\nsair do quarto\n")
             time.sleep(1)
             print("\n#", "-"*30,"#\n")
-            print("\nO que voc√™ vai fazer", personagem_jogador[0],"?\n")
-            a√ß√£o_do_personagem = input("-")
-            a√ß√£o_do_personagem = a√ß√£o_do_personagem.lower()
+            print("\nO que vocÍ vai fazer", personagem_jogador[0],"?\n")
+            aÁ„o_do_personagem = input("-")
+            aÁ„o_do_personagem = aÁ„o_do_personagem.lower()
             while 1:
-                if (a√ß√£o_do_personagem == "ver ficha do personagem" or a√ß√£o_do_personagem == "ver a ficha do personagem" or a√ß√£o_do_personagem == "ver a ficha de personagem" or a√ß√£o_do_personagem == "ficha" or a√ß√£o_do_personagem=="ficha do personagem" or a√ß√£o_do_personagem=="ficha de personagem" or a√ß√£o_do_personagem=="ver ficha de personagem" or a√ß√£o_do_personagem=="ver ficha" or a√ß√£o_do_personagem == "olhar ficha do personagem" or a√ß√£o_do_personagem == "ver minha ficha" or a√ß√£o_do_personagem=="minha ficha" or a√ß√£o_do_personagem=="ficha personagem" or a√ß√£o_do_personagem=="olhar ficha de personagem" or a√ß√£o_do_personagem=="olhar ficha"):
+                if (aÁ„o_do_personagem == "ver ficha do personagem" or aÁ„o_do_personagem == "ver a ficha do personagem" or aÁ„o_do_personagem == "ver a ficha de personagem" or aÁ„o_do_personagem == "ficha" or aÁ„o_do_personagem=="ficha do personagem" or aÁ„o_do_personagem=="ficha de personagem" or aÁ„o_do_personagem=="ver ficha de personagem" or aÁ„o_do_personagem=="ver ficha" or aÁ„o_do_personagem == "olhar ficha do personagem" or aÁ„o_do_personagem == "ver minha ficha" or aÁ„o_do_personagem=="minha ficha" or aÁ„o_do_personagem=="ficha personagem" or aÁ„o_do_personagem=="olhar ficha de personagem" or aÁ„o_do_personagem=="olhar ficha"):
                     ficha_personagem()
                 else:
-                    if (a√ß√£o_do_personagem== "vetir" or a√ß√£o_do_personagem=="vest" or a√ß√£o_do_personagem=="vesti" or a√ß√£o_do_personagem=="veti" or a√ß√£o_do_personagem=="estir" or a√ß√£o_do_personagem=="esti" or a√ß√£o_do_personagem=="etir" or a√ß√£o_do_personagem == "vestir" or a√ß√£o_do_personagem == "vesir" or a√ß√£o_do_personagem == "vestir uniforme" or a√ß√£o_do_personagem == "vestir o uniforme" or a√ß√£o_do_personagem == "vestir o uniforme estudantil" or a√ß√£o_do_personagem == "vestir uniforme estudantil" or a√ß√£o_do_personagem == "se vestir" or a√ß√£o_do_personagem == "se vestir para a aula" or a√ß√£o_do_personagem == "se vestir pra aula" or a√ß√£o_do_personagem == "vestir para a aula" or a√ß√£o_do_personagem == "me arrumar" or a√ß√£o_do_personagem == "tomar banho" or a√ß√£o_do_personagem == "ir ao banheiro" or a√ß√£o_do_personagem == "cagar" or a√ß√£o_do_personagem == "mijar" or a√ß√£o_do_personagem == "fazer xixi" or a√ß√£o_do_personagem == "trocar de roupa" or a√ß√£o_do_personagem == "me trocar" or a√ß√£o_do_personagem == "trocar"):
-                        if (tempor√°rio[0] == False):
-                            print("Voc√™ colocou a m√£o embaixo do seu travesseiro e achou seu uniforme.\n")
+                    if (aÁ„o_do_personagem== "vetir" or aÁ„o_do_personagem=="vest" or aÁ„o_do_personagem=="vesti" or aÁ„o_do_personagem=="veti" or aÁ„o_do_personagem=="estir" or aÁ„o_do_personagem=="esti" or aÁ„o_do_personagem=="etir" or aÁ„o_do_personagem == "vestir" or aÁ„o_do_personagem == "vesir" or aÁ„o_do_personagem == "vestir uniforme" or aÁ„o_do_personagem == "vestir o uniforme" or aÁ„o_do_personagem == "vestir o uniforme estudantil" or aÁ„o_do_personagem == "vestir uniforme estudantil" or aÁ„o_do_personagem == "se vestir" or aÁ„o_do_personagem == "se vestir para a aula" or aÁ„o_do_personagem == "se vestir pra aula" or aÁ„o_do_personagem == "vestir para a aula" or aÁ„o_do_personagem == "me arrumar" or aÁ„o_do_personagem == "tomar banho" or aÁ„o_do_personagem == "ir ao banheiro" or aÁ„o_do_personagem == "cagar" or aÁ„o_do_personagem == "mijar" or aÁ„o_do_personagem == "fazer xixi" or aÁ„o_do_personagem == "trocar de roupa" or aÁ„o_do_personagem == "me trocar" or aÁ„o_do_personagem == "trocar"):
+                        if (tempor·rio[0] == False):
+                            print("VocÍ colocou a m„o embaixo do seu travesseiro e achou seu uniforme.\n")
                             time.sleep(1)
-                            print("Voc√™ guardou o Uniforme Estudantil na sua mochila!\n")
+                            print("VocÍ guardou o Uniforme Estudantil na sua mochila!\n")
                             time.sleep(2)
                             item_adicionado=uniforme_estudantil
                             quantidade_adicionada=1
                             adicionaItem()
-                            tempor√°rio[0] = True
+                            tempor·rio[0] = True
                         else:
-                            print("Voc√™ j√° pegou seu uniforme!\n")
+                            print("VocÍ j· pegou seu uniforme!\n")
                             time.sleep(1)
                     else:
-                        if (a√ß√£o_do_personagem == "arrumar o quarto" or a√ß√£o_do_personagem == "arrumar" or a√ß√£o_do_personagem == "arrumar quarto" or a√ß√£o_do_personagem == "arruma" or a√ß√£o_do_personagem == "arruma o quarto" or a√ß√£o_do_personagem == "arruma quarto" or a√ß√£o_do_personagem == "quarto"):
-                            if (vari√°vel_cen√°rio[1] == "n√£o"):
-                                print("Voc√™ achou 15 Reais enquanto arrumava o seu quarto!\n")
+                        if (aÁ„o_do_personagem == "arrumar o quarto" or aÁ„o_do_personagem == "arrumar" or aÁ„o_do_personagem == "arrumar quarto" or aÁ„o_do_personagem == "arruma" or aÁ„o_do_personagem == "arruma o quarto" or aÁ„o_do_personagem == "arruma quarto" or aÁ„o_do_personagem == "quarto"):
+                            if (vari·vel_cen·rio[1] == "n„o"):
+                                print("VocÍ achou 15 Reais enquanto arrumava o seu quarto!\n")
                                 time.sleep(2)
                                 personagem_jogador[7] = +15
-                                vari√°vel_cen√°rio[1] = "sim"
+                                vari·vel_cen·rio[1] = "sim"
                             else:
-                                print("Voc√™ j√° arrumou o seu quarto!\n")
+                                print("VocÍ j· arrumou o seu quarto!\n")
                                 time.sleep(1)
                         else:
-                            if (a√ß√£o_do_personagem == "olhar" or a√ß√£o_do_personagem=="olh" or a√ß√£o_do_personagem == "ver" or a√ß√£o_do_personagem == "olhar o quarto" or a√ß√£o_do_personagem == "olha" or a√ß√£o_do_personagem == "olhar quarto" or a√ß√£o_do_personagem == "olha quarto" or a√ß√£o_do_personagem == "olhar o quarto" or a√ß√£o_do_personagem == "olha o quarto" or a√ß√£o_do_personagem == "ve" or a√ß√£o_do_personagem == "v√™"):
-                                if (vari√°vel_cen√°rio[1] == "n√£o"):
-                                    print("Voc√™ n√£o consegue ver nada al√©m de bagun√ßa, MUITA BAGUN√áA!!!\n")
+                            if (aÁ„o_do_personagem == "olhar" or aÁ„o_do_personagem=="olh" or aÁ„o_do_personagem == "ver" or aÁ„o_do_personagem == "olhar o quarto" or aÁ„o_do_personagem == "olha" or aÁ„o_do_personagem == "olhar quarto" or aÁ„o_do_personagem == "olha quarto" or aÁ„o_do_personagem == "olhar o quarto" or aÁ„o_do_personagem == "olha o quarto" or aÁ„o_do_personagem == "ve" or aÁ„o_do_personagem == "vÍ"):
+                                if (vari·vel_cen·rio[1] == "n„o"):
+                                    print("VocÍ n„o consegue ver nada alÈm de bagunÁa, MUITA BAGUN«A!!!\n")
                                     time.sleep(2)
                                 else:
-                                    print("Voc√™ v√™ um quarto arrumado, com um guarda-roupas, uma estante de livros, uma mesa de escrit√≥rio com gavetas e uma janela.\n")
+                                    print("VocÍ vÍ um quarto arrumado, com um guarda-roupas, uma estante de livros, uma mesa de escritÛrio com gavetas e uma janela.\n")
                                     time.sleep(3)
-                                    vari√°vel_cen√°rio[0] = "sim"
+                                    vari·vel_cen·rio[0] = "sim"
                             else:
-                                if (a√ß√£o_do_personagem == "olhar as gavetas" or a√ß√£o_do_personagem == "olhar gavetas" or a√ß√£o_do_personagem == "olha a gaveta" or a√ß√£o_do_personagem == "olhar a gaveta" or a√ß√£o_do_personagem == "olhar gaveta" or a√ß√£o_do_personagem == "olhar as gaveta" or a√ß√£o_do_personagem == "olha as gavetas" or a√ß√£o_do_personagem == "olha gaveta" or a√ß√£o_do_personagem == "olha as gaveta" or a√ß√£o_do_personagem == "olha a gavetas" or a√ß√£o_do_personagem == "ver as gavetas" or a√ß√£o_do_personagem == "ver a gaveta" or a√ß√£o_do_personagem == "ver as gaveta" or a√ß√£o_do_personagem == "ver a gavetas" or a√ß√£o_do_personagem=="gaveta" or a√ß√£o_do_personagem=="gavetas"):
-                                    if (tempor√°rio[1] == True):
-                                        print("Voc√™ olhou novamente as gavetas, mas n√£o encontrou nada interessante.\n")
+                                if (aÁ„o_do_personagem == "olhar as gavetas" or aÁ„o_do_personagem == "olhar gavetas" or aÁ„o_do_personagem == "olha a gaveta" or aÁ„o_do_personagem == "olhar a gaveta" or aÁ„o_do_personagem == "olhar gaveta" or aÁ„o_do_personagem == "olhar as gaveta" or aÁ„o_do_personagem == "olha as gavetas" or aÁ„o_do_personagem == "olha gaveta" or aÁ„o_do_personagem == "olha as gaveta" or aÁ„o_do_personagem == "olha a gavetas" or aÁ„o_do_personagem == "ver as gavetas" or aÁ„o_do_personagem == "ver a gaveta" or aÁ„o_do_personagem == "ver as gaveta" or aÁ„o_do_personagem == "ver a gavetas" or aÁ„o_do_personagem=="gaveta" or aÁ„o_do_personagem=="gavetas"):
+                                    if (tempor·rio[1] == True):
+                                        print("VocÍ olhou novamente as gavetas, mas n„o encontrou nada interessante.\n")
                                         time.sleep(1)
                                     else:
-                                        print("Voc√™ achou um Soco-Ingl√™s enquanto olhava as gavetas!\n")
+                                        print("VocÍ achou um Soco-InglÍs enquanto olhava as gavetas!\n")
                                         time.sleep(2)
                                         item_adicionado=soco_pvc
                                         quantidade_adicionada=1
                                         adicionaItem()
-                                        print("Voc√™ o guardou na mochila!")
+                                        print("VocÍ o guardou na mochila!")
                                         time.sleep(2)
-                                        tempor√°rio[1]=True
+                                        tempor·rio[1]=True
                                 else:
-                                    if (a√ß√£o_do_personagem == "olhar o guarda-roupas" or a√ß√£o_do_personagem =="olhar o guarda" or a√ß√£o_do_personagem =="olhar o garda" or a√ß√£o_do_personagem == "guarda" or a√ß√£o_do_personagem=="roupa" or a√ß√£o_do_personagem == "olha o guarda-roupas" or a√ß√£o_do_personagem == "olha o guarda-roupa" or a√ß√£o_do_personagem == "olhar o guarda-roupa" or a√ß√£o_do_personagem == "olhar guarda-roupas" or a√ß√£o_do_personagem == "olha guarda-roupas" or a√ß√£o_do_personagem == "olha guarda-roupa" or a√ß√£o_do_personagem == "olhar guarda-roupa" or a√ß√£o_do_personagem == "olhar o guarda roupas" or a√ß√£o_do_personagem == "olha o guarda roupas" or a√ß√£o_do_personagem == "olha o guarda roupa" or a√ß√£o_do_personagem == "olhar o guarda roupa" or a√ß√£o_do_personagem == "olhar guarda roupas" or a√ß√£o_do_personagem == "olha guarda roupas" or a√ß√£o_do_personagem == "olha guarda roupa" or a√ß√£o_do_personagem == "olhar guarda roupa" or a√ß√£o_do_personagem == "olhar o guardaroupas" or a√ß√£o_do_personagem == "olha o guardaroupas" or a√ß√£o_do_personagem == "olha o guardaroupa" or a√ß√£o_do_personagem == "olhar o guardaroupa" or a√ß√£o_do_personagem == "olhar guardaroupas" or a√ß√£o_do_personagem == "olha guardaroupas" or a√ß√£o_do_personagem == "olha guardaroupa" or a√ß√£o_do_personagem == "olhar guardaroupa" or a√ß√£o_do_personagem == "olhar o guardarroupas" or a√ß√£o_do_personagem == "olha o guardarroupas" or a√ß√£o_do_personagem == "olha o guardarroupa" or a√ß√£o_do_personagem == "olhar o guardarroupa" or a√ß√£o_do_personagem == "olhar guardarroupas" or a√ß√£o_do_personagem == "olha guardarroupas" or a√ß√£o_do_personagem == "olha guardarroupa" or a√ß√£o_do_personagem == "olhar guardarroupa" or a√ß√£o_do_personagem == "guarda-roupa" or a√ß√£o_do_personagem == "guarda-roupas" or a√ß√£o_do_personagem == "guarda roupa" or a√ß√£o_do_personagem == "guarda roupas" or a√ß√£o_do_personagem == "guardaroupa" or a√ß√£o_do_personagem == "guardaroupas" or a√ß√£o_do_personagem == "guardarroupa" or a√ß√£o_do_personagem == "guardarroupas" or a√ß√£o_do_personagem == "olhar o arm√°rio" or a√ß√£o_do_personagem == "olhar o armario" or a√ß√£o_do_personagem == "olhar arm√°rio" or a√ß√£o_do_personagem == "olhar armario" or a√ß√£o_do_personagem == "olha o arm√°rio" or a√ß√£o_do_personagem == "olha o armario" or a√ß√£o_do_personagem == "olha arm√°rio" or a√ß√£o_do_personagem == "olha armario" or a√ß√£o_do_personagem == "arm√°rio" or a√ß√£o_do_personagem == "armario" or a√ß√£o_do_personagem == "sair do arm√°rio" or a√ß√£o_do_personagem == "vestir smoking" or a√ß√£o_do_personagem == "ver arm√°rio" or a√ß√£o_do_personagem == "ver o arm√°rio" or a√ß√£o_do_personagem == "ver armario" or a√ß√£o_do_personagem == "ver o armario" or a√ß√£o_do_personagem == "ver o guarda-roupas" or a√ß√£o_do_personagem == "ver o guardarroupas" or a√ß√£o_do_personagem == "ver o guarda roupas" or a√ß√£o_do_personagem == "ver o guardaroupas" or a√ß√£o_do_personagem == "ver o guarda-roupa" or a√ß√£o_do_personagem == "ver o guardarroupa" or a√ß√£o_do_personagem == "ver o guarda roupa" or a√ß√£o_do_personagem == "ver o guardaroupa" or a√ß√£o_do_personagem == "ver guarda-roupas" or a√ß√£o_do_personagem == "ver guardarroupas" or a√ß√£o_do_personagem == "ver guarda roupas" or a√ß√£o_do_personagem == "ver guardaroupas" or a√ß√£o_do_personagem == "ver guarda-roupa" or a√ß√£o_do_personagem == "ver guardarroupa" or a√ß√£o_do_personagem == "ver guarda roupa" or a√ß√£o_do_personagem == "ver guardaroupa"):
+                                    if (aÁ„o_do_personagem == "olhar o guarda-roupas" or aÁ„o_do_personagem =="olhar o guarda" or aÁ„o_do_personagem =="olhar o garda" or aÁ„o_do_personagem == "guarda" or aÁ„o_do_personagem=="roupa" or aÁ„o_do_personagem == "olha o guarda-roupas" or aÁ„o_do_personagem == "olha o guarda-roupa" or aÁ„o_do_personagem == "olhar o guarda-roupa" or aÁ„o_do_personagem == "olhar guarda-roupas" or aÁ„o_do_personagem == "olha guarda-roupas" or aÁ„o_do_personagem == "olha guarda-roupa" or aÁ„o_do_personagem == "olhar guarda-roupa" or aÁ„o_do_personagem == "olhar o guarda roupas" or aÁ„o_do_personagem == "olha o guarda roupas" or aÁ„o_do_personagem == "olha o guarda roupa" or aÁ„o_do_personagem == "olhar o guarda roupa" or aÁ„o_do_personagem == "olhar guarda roupas" or aÁ„o_do_personagem == "olha guarda roupas" or aÁ„o_do_personagem == "olha guarda roupa" or aÁ„o_do_personagem == "olhar guarda roupa" or aÁ„o_do_personagem == "olhar o guardaroupas" or aÁ„o_do_personagem == "olha o guardaroupas" or aÁ„o_do_personagem == "olha o guardaroupa" or aÁ„o_do_personagem == "olhar o guardaroupa" or aÁ„o_do_personagem == "olhar guardaroupas" or aÁ„o_do_personagem == "olha guardaroupas" or aÁ„o_do_personagem == "olha guardaroupa" or aÁ„o_do_personagem == "olhar guardaroupa" or aÁ„o_do_personagem == "olhar o guardarroupas" or aÁ„o_do_personagem == "olha o guardarroupas" or aÁ„o_do_personagem == "olha o guardarroupa" or aÁ„o_do_personagem == "olhar o guardarroupa" or aÁ„o_do_personagem == "olhar guardarroupas" or aÁ„o_do_personagem == "olha guardarroupas" or aÁ„o_do_personagem == "olha guardarroupa" or aÁ„o_do_personagem == "olhar guardarroupa" or aÁ„o_do_personagem == "guarda-roupa" or aÁ„o_do_personagem == "guarda-roupas" or aÁ„o_do_personagem == "guarda roupa" or aÁ„o_do_personagem == "guarda roupas" or aÁ„o_do_personagem == "guardaroupa" or aÁ„o_do_personagem == "guardaroupas" or aÁ„o_do_personagem == "guardarroupa" or aÁ„o_do_personagem == "guardarroupas" or aÁ„o_do_personagem == "olhar o arm·rio" or aÁ„o_do_personagem == "olhar o armario" or aÁ„o_do_personagem == "olhar arm·rio" or aÁ„o_do_personagem == "olhar armario" or aÁ„o_do_personagem == "olha o arm·rio" or aÁ„o_do_personagem == "olha o armario" or aÁ„o_do_personagem == "olha arm·rio" or aÁ„o_do_personagem == "olha armario" or aÁ„o_do_personagem == "arm·rio" or aÁ„o_do_personagem == "armario" or aÁ„o_do_personagem == "sair do arm·rio" or aÁ„o_do_personagem == "vestir smoking" or aÁ„o_do_personagem == "ver arm·rio" or aÁ„o_do_personagem == "ver o arm·rio" or aÁ„o_do_personagem == "ver armario" or aÁ„o_do_personagem == "ver o armario" or aÁ„o_do_personagem == "ver o guarda-roupas" or aÁ„o_do_personagem == "ver o guardarroupas" or aÁ„o_do_personagem == "ver o guarda roupas" or aÁ„o_do_personagem == "ver o guardaroupas" or aÁ„o_do_personagem == "ver o guarda-roupa" or aÁ„o_do_personagem == "ver o guardarroupa" or aÁ„o_do_personagem == "ver o guarda roupa" or aÁ„o_do_personagem == "ver o guardaroupa" or aÁ„o_do_personagem == "ver guarda-roupas" or aÁ„o_do_personagem == "ver guardarroupas" or aÁ„o_do_personagem == "ver guarda roupas" or aÁ„o_do_personagem == "ver guardaroupas" or aÁ„o_do_personagem == "ver guarda-roupa" or aÁ„o_do_personagem == "ver guardarroupa" or aÁ„o_do_personagem == "ver guarda roupa" or aÁ„o_do_personagem == "ver guardaroupa"):
                                         if(objeto[0]=="ganha presente"):
-                                            print("Voc√™ encontrou uma bela caixa de presente.")
+                                            print("VocÍ encontrou uma bela caixa de presente.")
                                             time.sleep(2)
-                                            print("Vai abrir?(sim ou n√£o)")
+                                            print("Vai abrir?(sim ou n„o)")
                                             while 1:
-                                                a√ß√£o_do_personagem = input("-")
-                                                a√ß√£o_do_personagem = a√ß√£o_do_personagem.lower()
-                                                if(a√ß√£o_do_personagem=="sim" or a√ß√£o_do_personagem=="s" or a√ß√£o_do_personagem=="si" or a√ß√£o_do_personagem=="sm" or a√ß√£o_do_personagem=="im" or a√ß√£o_do_personagem=="ssim"):
-                                                    print("Voc√™ desembalou a caixa de presente e...")
+                                                aÁ„o_do_personagem = input("-")
+                                                aÁ„o_do_personagem = aÁ„o_do_personagem.lower()
+                                                if(aÁ„o_do_personagem=="sim" or aÁ„o_do_personagem=="s" or aÁ„o_do_personagem=="si" or aÁ„o_do_personagem=="sm" or aÁ„o_do_personagem=="im" or aÁ„o_do_personagem=="ssim"):
+                                                    print("VocÍ desembalou a caixa de presente e...")
                                                     time.sleep(3)
                                                     print("Encontrou um par de Papetes Masculinas!\n")
                                                     time.sleep(1)
-                                                    print("Voc√™ guardou as Papetes Masculinas na sua mochila!")
+                                                    print("VocÍ guardou as Papetes Masculinas na sua mochila!")
                                                     time.sleep(2)
                                                     item_adicionado=papetes_masculinas
                                                     quantidade_adicionada=1
                                                     adicionaItem()
-                                                    objeto[0] = "n√£o"
+                                                    objeto[0] = "n„o"
                                                     break
                                                 else:
-                                                    if(a√ß√£o_do_personagem == "n√£o" or a√ß√£o_do_personagem=="n" or a√ß√£o_do_personagem=="nao" or a√ß√£o_do_personagem=="no" or a√ß√£o_do_personagem=="na" or a√ß√£o_do_personagem=="n√£" or a√ß√£o_do_personagem=="ao" or a√ß√£o_do_personagem=="√£o" or a√ß√£o_do_personagem=="√±" or a√ß√£o_do_personagem=="√±√£o" or a√ß√£o_do_personagem=="√±o" or a√ß√£o_do_personagem=="√±√µ" or a√ß√£o_do_personagem=="√±√£" or a√ß√£o_do_personagem=="√±a√µ" or a√ß√£o_do_personagem=="a√µ"):
+                                                    if(aÁ„o_do_personagem == "n„o" or aÁ„o_do_personagem=="n" or aÁ„o_do_personagem=="nao" or aÁ„o_do_personagem=="no" or aÁ„o_do_personagem=="na" or aÁ„o_do_personagem=="n„" or aÁ„o_do_personagem=="ao" or aÁ„o_do_personagem=="„o" or aÁ„o_do_personagem=="Ò" or aÁ„o_do_personagem=="Ò„o" or aÁ„o_do_personagem=="Òo" or aÁ„o_do_personagem=="Òı" or aÁ„o_do_personagem=="Ò„" or aÁ„o_do_personagem=="Òaı" or aÁ„o_do_personagem=="aı"):
                                                         break
                                                     else:
-                                                        print('Entrada Inv√°lida! Digite "sim" ou "n√£o".')
+                                                        print('Entrada Inv·lida! Digite "sim" ou "n„o".')
                                                         time.sleep(0.5)
                                         else:
-                                            print("Voc√™ n√£o v√™ muitas roupas... Voc√™ √© muito pobre, arrume um emprego!\n")
+                                            print("VocÍ n„o vÍ muitas roupas... VocÍ È muito pobre, arrume um emprego!\n")
                                             time.sleep(1)
                                     else:
-                                        if (a√ß√£o_do_personagem == "olhar a janela"):###__EASTER-EGG
+                                        if (aÁ„o_do_personagem == "olhar a janela"):###__EASTER-EGG
                                             if (eegg == 1):
-                                                print("Voc√™ v√™...")
+                                                print("VocÍ vÍ...")
                                                 time.sleep(3.5)
-                                                print("Voc√™ v√™ uma janela, sua anta!")
+                                                print("VocÍ vÍ uma janela, sua anta!")
                                                 time.sleep(0.5)
                                                 print("... Hunf...")
                                                 time.sleep(0.5)
@@ -3155,11 +3602,11 @@ while 1:
                                                 time.sleep(0.5)
                                                 print("...")
                                                 time.sleep(2)
-                                                print("O qu√™? Voc√™ acha que eu fui muito grosso?")
+                                                print("O quÍ? VocÍ acha que eu fui muito grosso?")
                                                 time.sleep(1)
-                                                print("Okay, ", personagem_jogador[0],", vamos l√°...")
+                                                print("Okay, ", personagem_jogador[0],", vamos l·...")
                                                 time.sleep(2.5)
-                                                print("H√° uma diferen√ßa muito grande entre olhar A janela e olhar PELA janela!")
+                                                print("H· uma diferenÁa muito grande entre olhar A janela e olhar PELA janela!")
                                                 time.sleep(3)
                                                 print("Tente mais uma vez, sua anta!")
                                                 time.sleep(0.5)
@@ -3168,28 +3615,28 @@ while 1:
                                                 if (eegg == 2):
                                                     print("Digitando errado MAIS UMA VEZ?!")
                                                     time.sleep(0.5)
-                                                    print("Okay, ", personagem_jogador[0],", voc√™ j√° est√° passando dos limites da burrice...")
+                                                    print("Okay, ", personagem_jogador[0],", vocÍ j· est· passando dos limites da burrice...")
                                                     time.sleep(1)
                                                     eegg = 3
                                                 else:
                                                     if (eegg == 3):
-                                                        print("Voc√™ encara a janela...")
+                                                        print("VocÍ encara a janela...")
                                                         time.sleep(1)
-                                                        print("Voc√™ parece um retardado fazendo isso...")
+                                                        print("VocÍ parece um retardado fazendo isso...")
                                                         time.sleep(0.5)
                                                         eegg = 4
                                                     else:
                                                         if (eegg == 4):
-                                                            print('Enquanto voc√™ encarava a janela um pombo pousou nela...')
+                                                            print('Enquanto vocÍ encarava a janela um pombo pousou nela...')
                                                             time.sleep(1)
-                                                            print('Ele olhou bem no fundo dos seus olhos e disse "Voc√™ √© um idiota."...')
+                                                            print('Ele olhou bem no fundo dos seus olhos e disse "VocÍ È um idiota."...')
                                                             time.sleep(1)
-                                                            print('N√£o, ele n√£o disse isso... Na verdade fui eu quem disse isso, seu idiota.')
+                                                            print('N„o, ele n„o disse isso... Na verdade fui eu quem disse isso, seu idiota.')
                                                             time.sleep(1)
                                                             eegg = 5
                                                         else:
                                                             if (eegg == 5):
-                                                                print("J√° chega! Voc√™ esgotou minha paci√™ncia!")
+                                                                print("J· chega! VocÍ esgotou minha paciÍncia!")
                                                                 time.sleep(1.5)
                                                                 personagem_inimigo = [ "Narrador", 13, 8, 10, 10, 100, 100]
                                                                 batalha()
@@ -3200,7 +3647,7 @@ while 1:
                                                                 else:
                                                                     print("Aaaah! Eu deveria ter me feito mais forte para essa luta...")
                                                                     time.sleep(1)
-                                                                    print("Okay, voc√™ venceu... Mas pare de me irritar!")
+                                                                    print("Okay, vocÍ venceu... Mas pare de me irritar!")
                                                                     time.sleep(1)
                                                                     eegg = 6
                                                             else:
@@ -3209,193 +3656,194 @@ while 1:
                                                                     time.sleep(0.5)
                                                                     eegg = 7
                                                                 else:
-                                                                    print("Voc√™ v√™ uma janela que abre horizontalmente para as duas dire√ß√µes,")
+                                                                    print("VocÍ vÍ uma janela que abre horizontalmente para as duas direÁıes,")
                                                                     time.sleep(0.5)
-                                                                    print("sendo que o vidro da janela esquerda est√° rachado por, provavelmente, um apedrejamento.")
+                                                                    print("sendo que o vidro da janela esquerda est· rachado por, provavelmente, um apedrejamento.")
                                                                     time.sleep(1)
-                                                                    print("Os batentes s√£o de madeira antiga, deteriorada pela a√ß√£o de cupins.")
+                                                                    print("Os batentes s„o de madeira antiga, deteriorada pela aÁ„o de cupins.")
                                                                     time.sleep(0.5)
                                         else:
-                                            if (a√ß√£o_do_personagem == "olhar pela janela" or a√ß√£o_do_personagem == "olha pela janela" or a√ß√£o_do_personagem == "janela" or a√ß√£o_do_personagem ==  "olhar janela" or a√ß√£o_do_personagem == "olha janela" or a√ß√£o_do_personagem=="ver janela" or a√ß√£o_do_personagem=="ver a janela"):
-                                                print("Voc√™ v√™ uma rua com pr√©dios de classe baixa,")
+                                            if (aÁ„o_do_personagem == "olhar pela janela" or aÁ„o_do_personagem == "olha pela janela" or aÁ„o_do_personagem == "janela" or aÁ„o_do_personagem ==  "olhar janela" or aÁ„o_do_personagem == "olha janela" or aÁ„o_do_personagem=="ver janela" or aÁ„o_do_personagem=="ver a janela"):
+                                                print("VocÍ vÍ uma rua com prÈdios de classe baixa,")
                                                 time.sleep(3)
                                                 print("poucas pessoas passando com cara de cansadas,")
                                                 time.sleep(3)
-                                                print("mas voc√™ n√£o consegue ver o horizonte,")
+                                                print("mas vocÍ n„o consegue ver o horizonte,")
                                                 time.sleep(3)
-                                                print("j√° que voc√™ mora no primeiro andar e os pr√©dios do outro")
+                                                print("j· que vocÍ mora no primeiro andar e os prÈdios do outro")
                                                 time.sleep(4)
-                                                print("lado da rua s√£o altos e pr√≥ximos demais uns dos outros.")
+                                                print("lado da rua s„o altos e prÛximos demais uns dos outros.")
                                                 time.sleep(4)
-                                                print("Voc√™ percebe um sujeito te encarando do outro lado da rua...")
+                                                print("VocÍ percebe um sujeito te encarando do outro lado da rua...")
                                                 time.sleep(4)
-                                                print("Ele est√° em p√© e encostado na grade cinza, empoeirada e enferrujada")
+                                                print("Ele est· em pÈ e encostado na grade cinza, empoeirada e enferrujada")
                                                 time.sleep(4)
-                                                print("do pr√©dio da frente um pouco √† esquerda da porta dessa grade,")
+                                                print("do prÈdio da frente um pouco ‡ esquerda da porta dessa grade,")
                                                 time.sleep(4)
-                                                print("de modo a ficar de frente para a porta do seu pr√©dio.")
+                                                print("de modo a ficar de frente para a porta do seu prÈdio.")
                                                 time.sleep(3)
-                                                print("Sua face cheia de raiva expressa com rigidez a sua inten√ß√£o,")
+                                                print("Sua face cheia de raiva expressa com rigidez a sua intenÁ„o,")
                                                 time.sleep(3)
-                                                print("sua jeans √© velha, sua camisa √© rasgada de forma a parecer uma regata,")
+                                                print("sua jeans È velha, sua camisa È rasgada de forma a parecer uma regata,")
                                                 time.sleep(3)
-                                                print("enquanto seus bra√ßos cruzados parecem prontos para uma briga!")
+                                                print("enquanto seus braÁos cruzados parecem prontos para uma briga!")
                                                 time.sleep(5)
                                             else:
-                                                if (a√ß√£o_do_personagem == "olhar a estante" or a√ß√£o_do_personagem =="ohar a estante" or a√ß√£o_do_personagem =="ohar estante" or a√ß√£o_do_personagem == "olhar estante" or a√ß√£o_do_personagem == "olha a estante" or a√ß√£o_do_personagem == "olha estante" or a√ß√£o_do_personagem == "estante" or a√ß√£o_do_personagem == "ver a estante" or a√ß√£o_do_personagem == "ver estante" or a√ß√£o_do_personagem == "ver a estante" or a√ß√£o_do_personagem == "ver estante" or a√ß√£o_do_personagem =="olahr a estante"):
-                                                    print("Voc√™ v√™ livros e apostilas rabiscadas na capa e a maioria rasgadas no canto dos furos das espirais.\n...\n Nada muito interessante...\n")
+                                                if (aÁ„o_do_personagem == "olhar a estante" or aÁ„o_do_personagem =="ohar a estante" or aÁ„o_do_personagem =="ohar estante" or aÁ„o_do_personagem == "olhar estante" or aÁ„o_do_personagem == "olha a estante" or aÁ„o_do_personagem == "olha estante" or aÁ„o_do_personagem == "estante" or aÁ„o_do_personagem == "ver a estante" or aÁ„o_do_personagem == "ver estante" or aÁ„o_do_personagem == "ver a estante" or aÁ„o_do_personagem == "ver estante" or aÁ„o_do_personagem =="olahr a estante"):
+                                                    print("VocÍ vÍ livros e apostilas rabiscadas na capa e a maioria rasgadas no canto dos furos das espirais.\n...\n Nada muito interessante...\n")
                                                     time.sleep(1)
-                                                    print("Mas voc√™ v√™ um peda√ßo de papel vermelho colocado entre as p√°ginas de um dos livros...")
+                                                    print("Mas vocÍ vÍ um pedaÁo de papel vermelho colocado entre as p·ginas de um dos livros...")
                                                     time.sleep(1)
                                                     print("Ler o bilhete??\n")
                                                     while 1:
-                                                        a√ß√£o_do_personagem=input("-")
-                                                        a√ß√£o_do_personagem=a√ß√£o_do_personagem.lower()
-                                                        if(a√ß√£o_do_personagem=="sim" or a√ß√£o_do_personagem=="s" or a√ß√£o_do_personagem=="si" or a√ß√£o_do_personagem=="sm" or a√ß√£o_do_personagem=="im" or a√ß√£o_do_personagem=="ssim"):
-                                                            print(' "       Voc√™ pode digitar seus comandos de outras formas, como por exemplo,')
+                                                        aÁ„o_do_personagem=input("-")
+                                                        aÁ„o_do_personagem=aÁ„o_do_personagem.lower()
+                                                        if(aÁ„o_do_personagem=="sim" or aÁ„o_do_personagem=="s" or aÁ„o_do_personagem=="si" or aÁ„o_do_personagem=="sm" or aÁ„o_do_personagem=="im" or aÁ„o_do_personagem=="ssim"):
+                                                            print(' "       VocÍ pode digitar seus comandos de outras formas, como por exemplo,')
                                                             time.sleep(3)
-                                                            print("ao inv√©s de digitar 'ver ficha do personagem' voc√™ pode simplesmente digitar 'ficha'!")
+                                                            print("ao invÈs de digitar 'ver ficha do personagem' vocÍ pode simplesmente digitar 'ficha'!")
                                                             time.sleep(3)
-                                                            print('Tente sempre digitar da forma mais simples, isso facilitar√° muito o seu jogo!')
+                                                            print('Tente sempre digitar da forma mais simples, isso facilitar· muito o seu jogo!')
                                                             time.sleep(3)
-                                                            print('N√£o custa nada tentar! ;)')
+                                                            print('N„o custa nada tentar! ;)')
                                                             time.sleep(3)
                                                             print('                               assinado: Programador "')
                                                             break
                                                         else:
-                                                            if(a√ß√£o_do_personagem == "n√£o" or a√ß√£o_do_personagem=="n" or a√ß√£o_do_personagem=="nao" or a√ß√£o_do_personagem=="no" or a√ß√£o_do_personagem=="na" or a√ß√£o_do_personagem=="n√£" or a√ß√£o_do_personagem=="ao" or a√ß√£o_do_personagem=="√£o" or a√ß√£o_do_personagem=="√±" or a√ß√£o_do_personagem=="√±√£o" or a√ß√£o_do_personagem=="√±o" or a√ß√£o_do_personagem=="√±√µ" or a√ß√£o_do_personagem=="√±√£" or a√ß√£o_do_personagem=="√±a√µ" or a√ß√£o_do_personagem=="a√µ"):
-                                                                print("Voc√™ ignorou o bilhete.")
+                                                            if(aÁ„o_do_personagem == "n„o" or aÁ„o_do_personagem=="n" or aÁ„o_do_personagem=="nao" or aÁ„o_do_personagem=="no" or aÁ„o_do_personagem=="na" or aÁ„o_do_personagem=="n„" or aÁ„o_do_personagem=="ao" or aÁ„o_do_personagem=="„o" or aÁ„o_do_personagem=="Ò" or aÁ„o_do_personagem=="Ò„o" or aÁ„o_do_personagem=="Òo" or aÁ„o_do_personagem=="Òı" or aÁ„o_do_personagem=="Ò„" or aÁ„o_do_personagem=="Òaı" or aÁ„o_do_personagem=="aı"):
+                                                                print("VocÍ ignorou o bilhete.")
                                                                 time.sleep(1)
                                                                 break
                                                             else:
-                                                                print('Entrada inv√°lida! Digite "sim" ou "N√£o"')
+                                                                print('Entrada inv·lida! Digite "sim" ou "N„o"')
                                                 else:
-                                                    if (a√ß√£o_do_personagem == "destruir o universo"): #Easter-Egg para o Yuri
+                                                    if (aÁ„o_do_personagem == "destruir o universo"): #Easter-Egg para o Yuri
                                                         print("Adeus...")
                                                         time.sleep(0.5)
                                                         while 1:
-                                                            a√ß√£o_do_personagem = input("")
-                                                            a√ß√£o_do_personagem = a√ß√£o_do_personagem.lower()
-                                                            if(a√ß√£o_do_personagem=="reconstruir o universo" or a√ß√£o_do_personagem == "construir o universo" or a√ß√£o_do_personagem == "criar um novo universo" or a√ß√£o_do_personagem == "construir um universo" or a√ß√£o_do_personagem == "criar o universo"):
+                                                            aÁ„o_do_personagem = input("")
+                                                            aÁ„o_do_personagem = aÁ„o_do_personagem.lower()
+                                                            if(aÁ„o_do_personagem=="reconstruir o universo" or aÁ„o_do_personagem == "construir o universo" or aÁ„o_do_personagem == "criar um novo universo" or aÁ„o_do_personagem == "construir um universo" or aÁ„o_do_personagem == "criar o universo"):
                                                                 break
-                                                        print("Ol√°!")
+                                                        print("Ol·!")
                                                         time.sleep(1)
                                                     else:
-                                                        if(a√ß√£o_do_personagem=="sair do quarto" or a√ß√£o_do_personagem=="sair" or a√ß√£o_do_personagem=="ir para a aula" or a√ß√£o_do_personagem=="ir pra aula" or a√ß√£o_do_personagem=="ir para aula" or a√ß√£o_do_personagem=="ir √† aula" or a√ß√£o_do_personagem=="ir a aula" or a√ß√£o_do_personagem=="sair quarto"):
+                                                        if(aÁ„o_do_personagem=="sair do quarto" or aÁ„o_do_personagem=="sair" or aÁ„o_do_personagem=="ir para a aula" or aÁ„o_do_personagem=="ir pra aula" or aÁ„o_do_personagem=="ir para aula" or aÁ„o_do_personagem=="ir ‡ aula" or aÁ„o_do_personagem=="ir a aula" or aÁ„o_do_personagem=="sair quarto"):
                                                             while 1:
-                                                                print("Se sair voc√™ nao poder√° voltar.\n")
+                                                                print("Se sair vocÍ nao poder· voltar.\n")
                                                                 time.sleep(3)
-                                                                print("Tem certeza que deseja sair? (sim ou n√£o)")
-                                                                a√ß√£o_do_personagem=input("-")
-                                                                a√ß√£o_do_personagem=a√ß√£o_do_personagem.lower()
-                                                                if(a√ß√£o_do_personagem=="sim" or a√ß√£o_do_personagem=="s" or a√ß√£o_do_personagem=="si" or a√ß√£o_do_personagem=="sm" or a√ß√£o_do_personagem=="im" or a√ß√£o_do_personagem=="ssim"):
-                                                                    a√ß√£o_do_personagem="sim"
+                                                                print("Tem certeza que deseja sair? (sim ou n„o)")
+                                                                aÁ„o_do_personagem=input("-")
+                                                                aÁ„o_do_personagem=aÁ„o_do_personagem.lower()
+                                                                if(aÁ„o_do_personagem=="sim" or aÁ„o_do_personagem=="s" or aÁ„o_do_personagem=="si" or aÁ„o_do_personagem=="sm" or aÁ„o_do_personagem=="im" or aÁ„o_do_personagem=="ssim"):
+                                                                    aÁ„o_do_personagem="sim"
                                                                     break
                                                                 else:
-                                                                    if(a√ß√£o_do_personagem == "n√£o" or a√ß√£o_do_personagem=="n" or a√ß√£o_do_personagem=="nao" or a√ß√£o_do_personagem=="no" or a√ß√£o_do_personagem=="na" or a√ß√£o_do_personagem=="n√£" or a√ß√£o_do_personagem=="ao" or a√ß√£o_do_personagem=="√£o" or a√ß√£o_do_personagem=="√±" or a√ß√£o_do_personagem=="√±√£o" or a√ß√£o_do_personagem=="√±o" or a√ß√£o_do_personagem=="√±√µ" or a√ß√£o_do_personagem=="√±√£" or a√ß√£o_do_personagem=="√±a√µ" or a√ß√£o_do_personagem=="a√µ"):
-                                                                        print("Voc√™ decidiu n√£o sair do quarto.")
+                                                                    if(aÁ„o_do_personagem == "n„o" or aÁ„o_do_personagem=="n" or aÁ„o_do_personagem=="nao" or aÁ„o_do_personagem=="no" or aÁ„o_do_personagem=="na" or aÁ„o_do_personagem=="n„" or aÁ„o_do_personagem=="ao" or aÁ„o_do_personagem=="„o" or aÁ„o_do_personagem=="Ò" or aÁ„o_do_personagem=="Ò„o" or aÁ„o_do_personagem=="Òo" or aÁ„o_do_personagem=="Òı" or aÁ„o_do_personagem=="Ò„" or aÁ„o_do_personagem=="Òaı" or aÁ„o_do_personagem=="aı"):
+                                                                        print("VocÍ decidiu n„o sair do quarto.")
                                                                         time.sleep(1)
                                                                         break
                                                                     else:
-                                                                        print("Entrada inv√°lida!")
+                                                                        print("Entrada inv·lida!")
                                                                         time.sleep(1)
-                                                            if(a√ß√£o_do_personagem=="sim"):
+                                                            if(aÁ„o_do_personagem=="sim"):
                                                                 break
                                                         else:
-                                                            if(a√ß√£o_do_personagem=="ver a bolsa" or a√ß√£o_do_personagem=="ver invent√°rio" or a√ß√£o_do_personagem=="ver o invent√°rio" or a√ß√£o_do_personagem=="ver bolsa" or a√ß√£o_do_personagem=="ver mochila" or a√ß√£o_do_personagem=="ver mala" or a√ß√£o_do_personagem=="ver a mochila" or a√ß√£o_do_personagem=="ver a mala" or a√ß√£o_do_personagem=="invent√°rio" or a√ß√£o_do_personagem=="inventario" or a√ß√£o_do_personagem=="iventario" or a√ß√£o_do_personagem=="ivent√°rio" or a√ß√£o_do_personagem=="mochila" or a√ß√£o_do_personagem=="mochla" or a√ß√£o_do_personagem=="mala" or a√ß√£o_do_personagem=="bolsa" or a√ß√£o_do_personagem=="itens" or a√ß√£o_do_personagem=="√≠tens" or a√ß√£o_do_personagem=="item"):
-                                                                invent√°rioPersonagem()
+                                                            if(aÁ„o_do_personagem=="ver a bolsa" or aÁ„o_do_personagem=="ver invent·rio" or aÁ„o_do_personagem=="ver o invent·rio" or aÁ„o_do_personagem=="ver bolsa" or aÁ„o_do_personagem=="ver mochila" or aÁ„o_do_personagem=="ver mala" or aÁ„o_do_personagem=="ver a mochila" or aÁ„o_do_personagem=="ver a mala" or aÁ„o_do_personagem=="invent·rio" or aÁ„o_do_personagem=="inventario" or aÁ„o_do_personagem=="iventario" or aÁ„o_do_personagem=="ivent·rio" or aÁ„o_do_personagem=="mochila" or aÁ„o_do_personagem=="mochla" or aÁ„o_do_personagem=="mala" or aÁ„o_do_personagem=="bolsa" or aÁ„o_do_personagem=="itens" or aÁ„o_do_personagem=="Ìtens" or aÁ„o_do_personagem=="item"):
+                                                                invent·rioPersonagem()
                                                             else:
-                                                                print('\nEntrada Inv√°lida!\n')
-                print("\n#", "-"*30,"#\n\nLista de A√ß√µes\n\nCen√°rio:", vari√°vel_lugar)
+                                                                print('\nEntrada Inv·lida!\n')
+                print("\n#", "-"*30,"#\n\nLista de AÁıes\n\nCen·rio:", vari·vel_lugar)
                 time.sleep(0.23)
-                print("\n\nVoc√™ pode:\n\nvestir\narrumar o quarto\nolhar\n")
+                print("\n\nVocÍ pode:\n\nvestir\narrumar o quarto\nolhar\n")
                 time.sleep(0.23)
-                if (vari√°vel_cen√°rio[0] == "sim"):
+                if (vari·vel_cen·rio[0] == "sim"):
                     print("\nolhar as gavetas\nolhar o guarda-roupas\nolhar a estante\n\nolhar pela janela\n")
                     time.sleep(0.5)
                 print("\nver ficha do personagem\nver mochila\nsair do quarto\n")
                 time.sleep(0.5)
                 if(eegg > 1 and eegg<6):
-                    print("\nVoc√™ n√£o deve:\nolhar a janela\n")
+                    print("\nVocÍ n„o deve:\nolhar a janela\n")
                     time.sleep(0.23)
                 print("\n#", "-"*30,"#\n")
-                print("\nE agora, ", personagem_jogador[0],", o que voc√™ vai fazer?\n")
-                a√ß√£o_do_personagem = input("-")
-                a√ß√£o_do_personagem = a√ß√£o_do_personagem.lower()
+                print("\nE agora, ", personagem_jogador[0],", o que vocÍ vai fazer?\n")
+                aÁ„o_do_personagem = input("-")
+                aÁ„o_do_personagem = aÁ„o_do_personagem.lower()
             if(personagem_jogador[6]<=0):break
             ponto_de_save = 1
-            vari√°vel_cen√°rio[1] = "n√£o"
-            vari√°vel_cen√°rio[0] = "n√£o"
-            print("Voc√™ saiu do seu quarto.")
+            vari·vel_cen·rio[1] = "n„o"
+            vari·vel_cen·rio[0] = "n„o"
+            print("VocÍ saiu do seu quarto.")
             time.sleep(1)
             save()
 
 ##########--------------------------------------------------FIM DA PRIMEIRA PARTE--------------------------------------------------##########
         if(ponto_de_save==1):
-            if(vari√°vel_lugar == "seu pr√©dio, 1¬∫ andar" or vari√°vel_lugar == "seu pr√©dio, 2¬∫ andar" or vari√°vel_lugar == "seu pr√©dio, 3¬∫ andar" or vari√°vel_lugar == "seu pr√©dio, 4¬∫ andar"):
-                if(vari√°vel_lugar == "seu pr√©dio, 1¬∫ andar"):
-                    vari√°vel_lugar = "seu pr√©dio, 1¬∫ andarb"
-                if(vari√°vel_lugar == "seu pr√©dio, 2¬∫ andar"):
-                    vari√°vel_lugar = "seu pr√©dio, 2¬∫ andarb"
-                if(vari√°vel_lugar == "seu pr√©dio, 3¬∫ andar"):
-                    vari√°vel_lugar = "seu pr√©dio, 3¬∫ andarb"
-                if(vari√°vel_lugar == "seu pr√©dio, 4¬∫ andar"):
-                    vari√°vel_lugar = "seu pr√©dio, 4¬∫ andarb"
-                seuPr√©dioPrimeiroAndar()
+            if(vari·vel_lugar == "seu prÈdio, 1∫ andar" or vari·vel_lugar == "seu prÈdio, 2∫ andar" or vari·vel_lugar == "seu prÈdio, 3∫ andar" or vari·vel_lugar == "seu prÈdio, 4∫ andar"):
+                if(vari·vel_lugar == "seu prÈdio, 1∫ andar"):
+                    vari·vel_lugar = "seu prÈdio, 1∫ andarb"
+                if(vari·vel_lugar == "seu prÈdio, 2∫ andar"):
+                    vari·vel_lugar = "seu prÈdio, 2∫ andarb"
+                if(vari·vel_lugar == "seu prÈdio, 3∫ andar"):
+                    vari·vel_lugar = "seu prÈdio, 3∫ andarb"
+                if(vari·vel_lugar == "seu prÈdio, 4∫ andar"):
+                    vari·vel_lugar = "seu prÈdio, 4∫ andarb"
+                seuPrÈdioPrimeiroAndar()
             else:
-                input("\nCen√°rio: Voc√™ continua atrasado para a aula - n√£o que voc√™ deva se importar muito com isso.")
-                vari√°vel_lugar = "seu pr√©dio, 1¬∫ andar"
-                seuPr√©dioPrimeiroAndar()
+                print("\nCen·rio: VocÍ continua atrasado para a aula - n„o que vocÍ deva se importar muito com isso.")
+                time.sleep(2)
+                vari·vel_lugar = "seu prÈdio, 1∫ andar"
+                seuPrÈdioPrimeiroAndar()
             if(personagem_jogador[6]<=0):break
             ponto_de_save = 2
-            vari√°vel_lugar = "em frente ao seu pr√©dio"
+            vari·vel_lugar = "em frente ao seu prÈdio"
             save()
 
 
 ##########--------------------------------------------------FIM DA SEGUNDA PARTE--------------------------------------------------##########
         if(ponto_de_save==2):
-            print("\nCen√°rio:Agora voc√™ est√° na sua rua.\n\n")
+            print("\nCen·rio:Agora vocÍ est· na sua rua.\n\n")
             time.sleep(2)
-            print("Antes que voc√™ pudesse fazer alguma coisa,")
+            print("Antes que vocÍ pudesse fazer alguma coisa,")
             time.sleep(3)
             print("foi abordado por um homem aparentemente forte vestindo uma jeans velha")
             time.sleep(3)
             print("e uma camisa que foi rasgada de forma a parecer uma regata...\n")
             time.sleep(3)
-            print("Seu rosto era magro, de t√£o afundadas que as bochechas eram, parecia uma caveira,")
+            print("Seu rosto era magro, de t„o afundadas que as bochechas eram, parecia uma caveira,")
             time.sleep(3)
             print("sua pele queimada pelo Sol era cheia de manchas, seu cabelo crespo crescia por cima das ventas,")
             time.sleep(3)
-            print("mas a calvisse da sua fronte se extendia at√© a ponta extrema da sua arredondada e fosca cabe√ßa...\n")
+            print("mas a calvisse da sua fronte se extendia atÈ a ponta extrema da sua arredondada e fosca cabeÁa...\n")
             time.sleep(3)
-            print(" - Cad√™ o dinheiro que voc√™ roubou do meu esquema?\n")
+            print(" - CadÍ o dinheiro que vocÍ roubou do meu esquema?\n")
             time.sleep(2)
-            print("Mas voc√™ REALMENTE n√£o sabia de esquema algum, quanto menos do dinheiro...\n")
+            print("Mas vocÍ REALMENTE n„o sabia de esquema algum, quanto menos do dinheiro...\n")
             time.sleep(3)
-            print("Algo n√£o parece certo...\n")
+            print("Algo n„o parece certo...\n")
             time.sleep(1)
-            print(" - N√£o adianta negar!!! Escolhe, moleque: a grana ou a vida???\n")
+            print(" - N„o adianta negar!!! Escolhe, moleque: a grana ou a vida???\n")
             time.sleep(1)
             print("...")
             time.sleep(3)
-            print("Ele saca uma faca do bolso de tr√°s!\n")
+            print("Ele saca uma faca do bolso de tr·s!\n")
             time.sleep(2)
-            print(" - EU VOU TE QUEBRAR AT√â VOC√ä ME DAR O DINHEIRO!!!\n")
+            print(" - EU VOU TE QUEBRAR AT… VOC  ME DAR O DINHEIRO!!!\n")
             time.sleep(2)
             personagem_inimigo = [ "Bandido", 300, 100, 20, 20, 25000, 25000]
             batalha()
             if(personagem_jogador[6]<=0):
                 personagem_jogador[6]=1
-                print("Voc√™ caiu no ch√£o...")
+                print("VocÍ caiu no ch„o...")
                 time.sleep(3)
-                print("Ajoelhado na sua barriga e com o antebra√ßo apoiado no seu pesco√ßo")
+                print("Ajoelhado na sua barriga e com o antebraÁo apoiado no seu pescoÁo")
                 print("o bandido abriu um largo e amargo sorriso enquanto te fitava com seu olhar insano!")
                 time.sleep(4)
-                print(" - HAHAHAHA! Voc√™ vai morrer!")
+                print(" - HAHAHAHA! VocÍ vai morrer!")
                 time.sleep(3)
-                print("Voc√™ esta rendido...")
+                print("VocÍ esta rendido...")
                 time.sleep(4)
-                print("Com a outra m√£o ergueu a faca apontada para o seu peito!")
+                print("Com a outra m„o ergueu a faca apontada para o seu peito!")
                 time.sleep(3)
                 print("...")
                 time.sleep(5)
@@ -3403,13 +3851,13 @@ while 1:
                 time.sleep(3)
                 print("O bandido foi violentamente atingido por um soco...")
                 time.sleep(4)
-                print("Voc√™ se levantou rapidamente e p√¥de, ent√£o, observar a sitiua√ß√£o...")
+                print("VocÍ se levantou rapidamente e pÙde, ent„o, observar a sitiuaÁ„o...")
                 time.sleep(3)
                 print("Ele vestia uma blusa preta com a capa do The Rules of Hell do Black Sabbath estampada em cinza nela,")
                 time.sleep(5)
-                print("uma cal√ßa preta rasgada nos joelhos e um all-star preto,")
+                print("uma calÁa preta rasgada nos joelhos e um all-star preto,")
                 time.sleep(5)
-                print("al√©m da jaqueta de couro, luvas, pulseiras e cinto, todos esses ultimos com spikes de tit√¢nio.")
+                print("alÈm da jaqueta de couro, luvas, pulseiras e cinto, todos esses ultimos com spikes de tit‚nio.")
                 time.sleep(6)
                 personagem_reserva = personagem_jogador
                 personagem_jogador = [ "Lutador Headbanger", 1200, 800, 50, 50, 100000, 100000,0]
@@ -3419,39 +3867,39 @@ while 1:
                 time.sleep(3)
                 print("...")
                 time.sleep(3)
-                print("Antes que voc√™ e o Headbanger pudessem perceber o som da moto, um comparsa o resgatou...")
+                print("Antes que vocÍ e o Headbanger pudessem perceber o som da moto, um comparsa o resgatou...")
                 time.sleep(3)
-                print("O Headbanger se virou e olhou para voc√™.")
+                print("O Headbanger se virou e olhou para vocÍ.")
                 time.sleep(3)
-                print(" - Voc√™ √© fraco demais, mas tem muito potencial.")
+                print(" - VocÍ È fraco demais, mas tem muito potencial.")
                 time.sleep(3)
-                print(" - N√£o sei o que voc√™ fez para eles, mas voc√™ parece precisar de ajuda.")
+                print(" - N„o sei o que vocÍ fez para eles, mas vocÍ parece precisar de ajuda.")
                 time.sleep(3)
-                print(" - Vou procurar saber o que est√° acontecendo... Fa√ßa o mesmo, voc√™ tamb√©m!")
+                print(" - Vou procurar saber o que est· acontecendo... FaÁa o mesmo, vocÍ tambÈm!")
                 time.sleep(3)
                 print(" - Ele sumiu pelos becos da rua...")
                 time.sleep(3)
                 print("Voce continua sem respostas...")
                 time.sleep(3)
-                print("Ser√° que voc√™ encontrar√° alguma pista na escola?")
+                print("Ser· que vocÍ encontrar· alguma pista na escola?")
                 time.sleep(5)
             else:
                 if(personagem_inimigo[6]>0):
                     while(personagem_inimigo[6]>0):
-                        print("Voc√™ correu um pouco mas ele te alcan√ßou de novo!\n")
+                        print("VocÍ correu um pouco mas ele te alcanÁou de novo!\n")
                         batalha()
                         if(personagem_jogador[6]<=0):
                             personagem_jogador[6]=1
-                            print("Voc√™ caiu no ch√£o...")
+                            print("VocÍ caiu no ch„o...")
                             time.sleep(3)
-                            print("Ajoelhado na sua barriga e com o antebra√ßo apoiado no seu pesco√ßo")
+                            print("Ajoelhado na sua barriga e com o antebraÁo apoiado no seu pescoÁo")
                             print("o bandido abriu um largo e amargo sorriso enquanto te fitava com seu olhar insano!")
                             time.sleep(4)
-                            print(" - HAHAHAHA! Voc√™ vai morrer!")
+                            print(" - HAHAHAHA! VocÍ vai morrer!")
                             time.sleep(3)
-                            print("Voc√™ esta rendido...")
+                            print("VocÍ esta rendido...")
                             time.sleep(4)
-                            print("Com a outra m√£o ergueu a faca apontada para o seu peito!")
+                            print("Com a outra m„o ergueu a faca apontada para o seu peito!")
                             time.sleep(3)
                             print("...")
                             time.sleep(5)
@@ -3459,13 +3907,13 @@ while 1:
                             time.sleep(3)
                             print("O bandido foi violentamente atingido por um soco...")
                             time.sleep(4)
-                            print("Voc√™ se levantou rapidamente e p√¥de, ent√£o, observar a sitiua√ß√£o...")
+                            print("VocÍ se levantou rapidamente e pÙde, ent„o, observar a sitiuaÁ„o...")
                             time.sleep(3)
                             print("Ele vestia uma blusa preta com a capa do The Rules of Hell do Black Sabbath estampada em cinza nela,")
                             time.sleep(5)
-                            print("uma cal√ßa preta rasgada nos joelhos e um all-star preto,")
+                            print("uma calÁa preta rasgada nos joelhos e um all-star preto,")
                             time.sleep(5)
-                            print("al√©m da jaqueta de couro, luvas, pulseiras e cinto, todos esses ultimos com spikes de tit√¢nio.")
+                            print("alÈm da jaqueta de couro, luvas, pulseiras e cinto, todos esses ultimos com spikes de tit‚nio.")
                             time.sleep(6)
                             personagem_reserva = personagem_jogador
                             personagem_jogador = [ "Lutador Headbanger", 1200, 800, 50, 50, 100000, 100000, 0]
@@ -3475,86 +3923,86 @@ while 1:
                             time.sleep(3)
                             print("...")
                             time.sleep(3)
-                            print("Antes que voc√™ e o Headbanger pudessem perceber o som da moto, um comparsa o resgatou...")
+                            print("Antes que vocÍ e o Headbanger pudessem perceber o som da moto, um comparsa o resgatou...")
                             time.sleep(3)
-                            print("O Headbanger se virou e olhou para voc√™.")
+                            print("O Headbanger se virou e olhou para vocÍ.")
                             time.sleep(3)
-                            print(" - Voc√™ √© fraco demais, mas tem muito potencial.")
+                            print(" - VocÍ È fraco demais, mas tem muito potencial.")
                             time.sleep(3)
-                            print(" - N√£o sei o que voc√™ fez para eles, mas voc√™ parece precisar de ajuda.")
+                            print(" - N„o sei o que vocÍ fez para eles, mas vocÍ parece precisar de ajuda.")
                             time.sleep(3)
-                            print(" - Vou procurar saber o que est√° acontecendo... Fa√ßa o mesmo, voc√™ tamb√©m!")
+                            print(" - Vou procurar saber o que est· acontecendo... FaÁa o mesmo, vocÍ tambÈm!")
                             time.sleep(3)
                             print(" - Ele sumiu pelos becos da rua...")
                             time.sleep(3)
                             print("Voce continua sem respostas...")
                             time.sleep(3)
-                            print("Ser√° que voc√™ encontrar√° alguma pista na escola?")
+                            print("Ser· que vocÍ encontrar· alguma pista na escola?")
                             time.sleep(5)
                         else:
                             print(" - Pare! Por favor!\n")
                             time.sleep(3)
                             print("...")
                             time.sleep(3)
-                            print("Antes que voc√™ pudesse perceber o som da moto, um comparsa o resgatou...")
+                            print("Antes que vocÍ pudesse perceber o som da moto, um comparsa o resgatou...")
                             time.sleep(3)
                             print("Voce continua sem respostas...")
                             time.sleep(3)
-                            print("Ser√° que voc√™ encontrar√° alguma pista na escola?")
+                            print("Ser· que vocÍ encontrar· alguma pista na escola?")
                             time.sleep(5)
                 else:
                     print(" - Pare! Por favor!\n")
                     time.sleep(3)
                     print("...")
                     time.sleep(3)
-                    print("Voc√™ escuta um som de moto ao fundo...")
+                    print("VocÍ escuta um som de moto ao fundo...")
                     time.sleep(3)
-                    print("Um comparsa motoqueiro tentou te atropelar, mas voc√™ conseguiu executar uma evas√£o rolando para a cal√ßada!")
+                    print("Um comparsa motoqueiro tentou te atropelar, mas vocÍ conseguiu executar uma evas„o rolando para a calÁada!")
                     time.sleep(3)
-                    print(" - Agora voc√™ vai entregar o dinheiro, ou n√£o vai?! - inqueriu, o motoqueiro montado em sua Twister 250.")
+                    print(" - Agora vocÍ vai entregar o dinheiro, ou n„o vai?! - inqueriu, o motoqueiro montado em sua Twister 250.")
                     time.sleep(3)
                     personagem_inimigo = [ "Motoqueiro Comparsa", 3000, 10, 50, -5, 50, 50]
                     batalha()
                     if(personagem_jogador[6]<=0): break
                     if(personagem_inimigo[6]>0):
-                        print("Correndo entre uns becos da sua rua, voc√™ conseguiu se esconder...")
+                        print("Correndo entre uns becos da sua rua, vocÍ conseguiu se esconder...")
                         time.sleep(2)
                         print("...")
                         time.sleep(2)
                         print("...")
                         time.sleep(2)
-                        print("Voc√™ conseguiu despit√°-los...")
+                        print("VocÍ conseguiu despit·-los...")
                         time.sleep(2)
                     else:
-                        print("Voc√™ derrotou os dois!")
+                        print("VocÍ derrotou os dois!")
                         time.sleep(2)
-                        print("Eles est√£o desmaiados na rua...")
+                        print("Eles est„o desmaiados na rua...")
                         time.sleep(2)
-                        print("Mas antes que voc√™ pudesse pensar em algo, o barrulho de v√°rias sirenes te alertou!")
+                        print("Mas antes que vocÍ pudesse pensar em algo, o barrulho de v·rias sirenes te alertou!")
                         time.sleep(2)
-                        print("Voc√™ se escondeu em um dos becos, mas pode assistir os policiais prendendo os dois bandidos...")
+                        print("VocÍ se escondeu em um dos becos, mas pode assistir os policiais prendendo os dois bandidos...")
                         time.sleep(2)
-                        print("Voc√™ conseguiu se manter escondido at√© a cena esfriar, mas continua sem respostas...")
+                        print("VocÍ conseguiu se manter escondido atÈ a cena esfriar, mas continua sem respostas...")
                         time.sleep(2)
             ponto_de_save = 3
-            vari√°vel_lugar = "sua rua"
+            vari·vel_lugar = "sua rua"
             save()
 
 ##########--------------------------------------------------FIM DA TERCEIRA PARTE--------------------------------------------------##########
         if(ponto_de_save==3):
-            if(vari√°vel_lugar == "seu pr√©dio, 1¬∫ andar" or vari√°vel_lugar == "seu pr√©dio, 2¬∫ andar" or vari√°vel_lugar == "seu pr√©dio, 3¬∫ andar" or vari√°vel_lugar == "seu pr√©dio, 4¬∫ andar"):
-                if(vari√°vel_lugar == "seu pr√©dio, 1¬∫ andar"):
-                    vari√°vel_lugar = "seu pr√©dio, 1¬∫ andarb"
-                if(vari√°vel_lugar == "seu pr√©dio, 2¬∫ andar"):
-                    vari√°vel_lugar = "seu pr√©dio, 2¬∫ andarb"
-                if(vari√°vel_lugar == "seu pr√©dio, 3¬∫ andar"):
-                    vari√°vel_lugar = "seu pr√©dio, 3¬∫ andarb"
-                if(vari√°vel_lugar == "seu pr√©dio, 4¬∫ andar"):
-                    vari√°vel_lugar = "seu pr√©dio, 4¬∫ andarb"
-                seuPr√©dioPrimeiroAndar()
-                vari√°vel_lugar = "sua rua"
+            if(vari·vel_lugar == "seu prÈdio, 1∫ andar" or vari·vel_lugar == "seu prÈdio, 2∫ andar" or vari·vel_lugar == "seu prÈdio, 3∫ andar" or vari·vel_lugar == "seu prÈdio, 4∫ andar"):
+                if(vari·vel_lugar == "seu prÈdio, 1∫ andar"):
+                    vari·vel_lugar = "seu prÈdio, 1∫ andarb"
+                if(vari·vel_lugar == "seu prÈdio, 2∫ andar"):
+                    vari·vel_lugar = "seu prÈdio, 2∫ andarb"
+                if(vari·vel_lugar == "seu prÈdio, 3∫ andar"):
+                    vari·vel_lugar = "seu prÈdio, 3∫ andarb"
+                if(vari·vel_lugar == "seu prÈdio, 4∫ andar"):
+                    vari·vel_lugar = "seu prÈdio, 4∫ andarb"
+                seuPrÈdioPrimeiroAndar()
+                vari·vel_lugar = "sua rua"
             else:
-                input("Cen√°rio:Voc√™ est√° na sua rua, por agora tudo est√° calmo....")
+                print("Cen·rio:VocÍ est· na sua rua, por agora tudo est· calmo....")
                 suaRua()
             if(personagem_jogador[6]<=0):break
             ponto_de_save = 4
@@ -3563,158 +4011,158 @@ while 1:
 ##########--------------------------------------------------FIM DO JOGO--------------------------------------------------##########
         break
     if (personagem_jogador[6] <= 0):
-        print("Voc√™ morreu, ", personagem_jogador[0], "...\nO jogo acabou para voc√™...")
-        #"Nome"[0], atq[1], def[2], agi[3], luk[4], vidam√°xima[5], vidaatual[6], dinheiro[7]
+        print("VocÍ morreu, ", personagem_jogador[0], "...\nO jogo acabou para vocÍ...")
+        #"Nome"[0], atq[1], def[2], agi[3], luk[4], vidam·xima[5], vidaatual[6], dinheiro[7]
         personagem_jogador = [ "Jogador", 10, 8, 1, 1, 100, 100, 0]
         personagem_reserva = [ "Jogador", 10, 8, 1, 1, 100, 100, 0]
         personagem_inimigo = [ "Inimigo", 10, 8, 1, 1, 100, 100]
 
-        #["Nome"[0], atq[1], def[2], agi[3], luk[4], tipo[5], pre√ßo[6], recupera[7]
+        #["Nome"[0], atq[1], def[2], agi[3], luk[4], tipo[5], preÁo[6], recupera[7]
 
         desequipado_roupa = ["Nada", 0, 0, 0, 0, "roupa", 0, 0]
         desequipado_capa = ["Nada", 0, 0, 0, 0, "capa", 0, 0]
         desequipado_luva = ["Nada", 0, 0, 0, 0, "luva", 0, 0]
         desequipado_anel = ["Nada", 0, 0, 0, 0, "anel", 0, 0]
-        desequipado_m√£os = ["Nada", 0, 0, 0, 0, "armamento", 0, 0]
-        desequipado_cal√ßado = ["Nada", 0, 0, 0, 0, "cal√ßados", 0, 0]
-        espa√ßo_vazio = ["Vazio", 0, 0, 0, 0, "invent√°rio", 0, 0]
+        desequipado_maos = ["Nada", 0, 0, 0, 0, "armamento", 0, 0]
+        desequipado_calcado = ["Nada", 0, 0, 0, 0, "calÁados", 0, 0]
+        espaÁo_vazio = ["Vazio", 0, 0, 0, 0, "invent·rio", 0, 0]
 
-        peda√ßo_pizza = ["Peda√ßo de Pizza", 0, 0, 0, 0, "consum√≠vel", 5, 50]
-        bolo_chocolate = ["Bolo de Chocolate", 0, 0, 0, 0, "consum√≠vel", 100, personagem_jogador[5]]
+        pedaÁo_pizza = ["PedaÁo de Pizza", 0, 0, 0, 0, "consumÌvel", 5, 50]
+        bolo_chocolate = ["Bolo de Chocolate", 0, 0, 0, 0, "consumÌvel", 100, personagem_jogador[5]]
 
         pijama_inicial = ["Pijama", 0, 0, 0, 5, "roupa", 5, 0]
         uniforme_estudantil = ["Uniforme Estudantil",0,1,0,0,"roupa",5,0]
         malha_ninja = ["Malha Ninja", 5, 20, 5, 1, "roupa", 5000, 0]
 
-        l√°pis_apontado = ["L√°pis Apontado", 3,0,0,1,"armamento",2,0]
+        lapis_apontado = ["L·pis Apontado", 3,0,0,1,"armamento",2,0]
         punhal_envelhecido = ["Punhal Envelhecido", 10, 0,0,3,"armamento",300,0]
         talheres_prata = ["Talheres de prata(Garfo e Faca)", 8, 0,0,0,"armamento",10,0]
 
-        jaqueta_imita√ß√£o = ["Jaqueta de Imita√ß√£o de Couro", 0, 20, 0, 0,"capa",150,0]
+        jaqueta_imitaÁ„o = ["Jaqueta de ImitaÁ„o de Couro", 0, 20, 0, 0,"capa",150,0]
         jaqueta_couro = ["Jaqueta de Couro", 0, 200, 0, 10,"capa",2000,0]
-        agasalho_l√£ = ["Agasalho de L√£", 0, 6, 0, 0,"capa",100,0]
+        agasalho_l„ = ["Agasalho de L„", 0, 6, 0, 0,"capa",100,0]
 
-        suplemento_aliment√≠cio = ["Suplemento Aliment√≠cio", 10, 0, 0, 0, "consum√≠vel de aprimoramento",5, 0]
-        lata_energ√©tico = ["Energ√©tico", 0, 0, 0, 0, "consum√≠vel de aprimoramento",5, 50]
+        suplemento_alimentÌcio = ["Suplemento AlimentÌcio", 10, 0, 0, 0, "consumÌvel de aprimoramento",5, 0]
+        lata_energÈtico = ["EnergÈtico", 0, 0, 0, 0, "consumÌvel de aprimoramento",5, 50]
 
-        luva_l√£ = ["Luvas de L√£", 0, 3, 0, 0, "luva", 20, 0]
-        luva_imita√ß√£o = ["Luvas de Imita√ß√£o de Couro", 3, 3, 0, 0, "luva", 100, 0]
-        soco_pvc = ["Soco-Ingl√™s de PVC", 3, 0, 0, 0, "luva", 50, 0]
+        luva_l„ = ["Luvas de L„", 0, 3, 0, 0, "luva", 20, 0]
+        luva_imitaÁ„o = ["Luvas de ImitaÁ„o de Couro", 3, 3, 0, 0, "luva", 100, 0]
+        soco_pvc = ["Soco-InglÍs de PVC", 3, 0, 0, 0, "luva", 50, 0]
         luva_couro = ["Luvas de Couro", 8, 8, 0, 0, "luva", 500, 0]
-        soco_lat√£o = ["Soco-Ingl√™s de Lat√£o", 10, 0, 0, 0, "luva", 500, 0]
+        soco_lat„o = ["Soco-InglÍs de Lat„o", 10, 0, 0, 0, "luva", 500, 0]
         luva_spikes_alu = ["Luvas de Couro com Spikes de Aluminio", 15, 15, 0, 0, "luva", 700, 0]
-        soco_alu = ["Soco-Ingl√™s de Alum√≠nio", 25, 0, 0, 0, "luva", 700, 0]
-        luva_spikes_a√ßo = ["Luvas de Couro com Spikes de A√ßo", 25, 25, 0, 0, "luva", 1000, 0]
-        soco_a√ßo = ["Soco-Ingl√™s de Alum√≠nio de A√ßo", 30, 0, 0, 0, "luva", 1000, 0]
+        soco_alu = ["Soco-InglÍs de AlumÌnio", 25, 0, 0, 0, "luva", 700, 0]
+        luva_spikes_aÁo = ["Luvas de Couro com Spikes de AÁo", 25, 25, 0, 0, "luva", 1000, 0]
+        soco_aÁo = ["Soco-InglÍs de AlumÌnio de AÁo", 30, 0, 0, 0, "luva", 1000, 0]
         luva_spikes_ag = ["Luvas de Couro com Spikes de Prata", 25, 25, 0, 5, "luva", 5000, 0]
-        soco_ag = ["Soco-Ingl√™s de Prata", 35, 0, 0, 5, "luva", 5000, 0]
+        soco_ag = ["Soco-InglÍs de Prata", 35, 0, 0, 5, "luva", 5000, 0]
         luva_spikes_au = ["Luvas de Couro com Spikes de Ouro", 250, 250, 0, 10, "luva", 10000, 0]
-        soco_au = ["Soco-Ingl√™s de Ouro", 350, 0, 0, 10, "luva", 10000, 0]
-        luva_spikes_tit√¢nio = ["Luvas de Couro com Spikes de Tit√¢nio", 2500, 2500, 0, 20, "luva", 50000, 0]
-        soco_tit√¢nio = ["Soco-Ingl√™s de Tit√¢nio", 3500, 0, 0, 20, "luva", 50000, 0]
+        soco_au = ["Soco-InglÍs de Ouro", 350, 0, 0, 10, "luva", 10000, 0]
+        luva_spikes_tit‚nio = ["Luvas de Couro com Spikes de Tit‚nio", 2500, 2500, 0, 20, "luva", 50000, 0]
+        soco_tit‚nio = ["Soco-InglÍs de Tit‚nio", 3500, 0, 0, 20, "luva", 50000, 0]
 
-        anel_for√ßa1 = ["Anel da For√ßa 1", 10, -2, -2, -2, "anel", 500, 0]
-        anel_resist√™ncia1 = ["Anel da Resist√™ncia 1", -2, 10, -2, -2, "anel", 500, 0]
-        anel_for√ßa2 = ["Anel da For√ßa 2", 20, -4, -4, -4, "anel", 1000, 0]
-        anel_resist√™ncia2 = ["Anel da Resist√™ncia 2", -4, 20, -4, -4, "anel", 1000, 0]
-        anel_for√ßa3 = ["Anel da For√ßa 2", 40, -8, -8, -8, "anel", 5000, 0]
-        anel_resist√™ncia3 = ["Anel da Resist√™ncia 2", -8, 40, -8, -8, "anel", 5000, 0]
+        anel_forÁa1 = ["Anel da ForÁa 1", 10, -2, -2, -2, "anel", 500, 0]
+        anel_resistÍncia1 = ["Anel da ResistÍncia 1", -2, 10, -2, -2, "anel", 500, 0]
+        anel_forÁa2 = ["Anel da ForÁa 2", 20, -4, -4, -4, "anel", 1000, 0]
+        anel_resistÍncia2 = ["Anel da ResistÍncia 2", -4, 20, -4, -4, "anel", 1000, 0]
+        anel_forÁa3 = ["Anel da ForÁa 2", 40, -8, -8, -8, "anel", 5000, 0]
+        anel_resistÍncia3 = ["Anel da ResistÍncia 2", -8, 40, -8, -8, "anel", 5000, 0]
 
-        anel_consist√™ncia1 = ["Anel da Consist√™ncia 1", -2, -2, -2, -2, "anel", 500, 10]
-        anel_consist√™ncia2 = ["Anel da Consist√™ncia 2", -4, -4, -4, -4, "anel", 1000, 100]
-        anel_consist√™ncia3 = ["Anel da Consist√™ncia 3", -8, -8, -8, -8, "anel", 5000, 1000]
+        anel_consistÍncia1 = ["Anel da ConsistÍncia 1", -2, -2, -2, -2, "anel", 500, 10]
+        anel_consistÍncia2 = ["Anel da ConsistÍncia 2", -4, -4, -4, -4, "anel", 1000, 100]
+        anel_consistÍncia3 = ["Anel da ConsistÍncia 3", -8, -8, -8, -8, "anel", 5000, 1000]
 
         anel_da_imortalidade = ["Anel da Imortalidade", personagem_jogador[1], personagem_jogador[2], personagem_jogador[3], personagem_jogador[4], "anel", 100000, personagem_jogador[5]]
         anel_da_divindade = ["Anel da Divindade", personagem_jogador[1]*2, personagem_jogador[2]*2, personagem_jogador[3]*2, personagem_jogador[4]*2, "anel", 100000000, personagem_jogador[5]*2]
 
-        chinelo_inicial = ["Chinelos", 0, 0, 0, -5, "cal√ßados", 5, 0]
-        papetes_masculinas = ["Papetes Masculinas", 0, 0, 1, 0, "cal√ßados", 15, 0]
-        t√™nis_velho = ["T√™nis Velho", 0, 0, 2, 0, "cal√ßados", 10, 0]
-        t√™nis_simpl√≥rio = ["T√™nis Simpl√≥rio", 0, 1, 2, 0, "cal√ßados", 50, 0]
-        sapato_simpl√≥rio = ["Sapato Simpl√≥rio", 0, 2, 1, 0, "cal√ßados", 50, 0]
-        t√™nis_comum = ["T√™nis Comum", 0, 2, 2, 0, "cal√ßados", 90, 0]
-        t√™nis_trilha = ["T√™nis de Trilha", 2, 8, 3, 0, "cal√ßados", 400, 0]
-        t√™nis_caminhada = ["T√™nis de Caminhada", 0, 3, 5, 0, "cal√ßados", 300, 0]
-        t√™nis_corrida = ["T√™nis de Corrida", 0, 5, 10, 0, "cal√ßados", 500, 0]
-        t√™nis_ZX5000 = ["T√™nis ZX-5000", 10, 10, 11, 5, "cal√ßados", 15000, 0]
+        chinelo_inicial = ["Chinelos", 0, 0, 0, -5, "calÁados", 5, 0]
+        papetes_masculinas = ["Papetes Masculinas", 0, 0, 1, 0, "calÁados", 15, 0]
+        tÍnis_velho = ["TÍnis Velho", 0, 0, 2, 0, "calÁados", 10, 0]
+        tÍnis_simplÛrio = ["TÍnis SimplÛrio", 0, 1, 2, 0, "calÁados", 50, 0]
+        sapato_simplÛrio = ["Sapato SimplÛrio", 0, 2, 1, 0, "calÁados", 50, 0]
+        tÍnis_comum = ["TÍnis Comum", 0, 2, 2, 0, "calÁados", 90, 0]
+        tÍnis_trilha = ["TÍnis de Trilha", 2, 8, 3, 0, "calÁados", 400, 0]
+        tÍnis_caminhada = ["TÍnis de Caminhada", 0, 3, 5, 0, "calÁados", 300, 0]
+        tÍnis_corrida = ["TÍnis de Corrida", 0, 5, 10, 0, "calÁados", 500, 0]
+        tÍnis_ZX5000 = ["TÍnis ZX-5000", 10, 10, 11, 5, "calÁados", 15000, 0]
 
-        item_adicionado=espa√ßo_vazio
+        item_adicionado=espaÁo_vazio
         quantidade_adicionada=1
 
         equipado_roupa = pijama_inicial
         equipado_capa = desequipado_capa
         equipado_luva = desequipado_luva
         equipado_anel = desequipado_anel
-        equipado_m√£os = desequipado_m√£os
-        equipado_cal√ßado = chinelo_inicial
+        equipado_maos = desequipado_maos
+        equipado_calcado = chinelo_inicial
 
-        vari√°vel_cen√°rio = ["n√£o" ,"n√£o" ,"n√£o"]
-        #[0]  olhar cen√°rio primeira vez no seu quarto e reciclada no primeiro andar do seu pr√©dio
-        #[1]  modificar cen√°rio primeira vez no seu quarto
-        #[2]  cheirar cen√°rio no primeiro andar do seu pr√©dio
+        vari·vel_cen·rio = ["n„o" ,"n„o" ,"n„o"]
+        #[0]  olhar cen·rio primeira vez no seu quarto e reciclada no primeiro andar do seu prÈdio
+        #[1]  modificar cen·rio primeira vez no seu quarto
+        #[2]  cheirar cen·rio no primeiro andar do seu prÈdio
 
-        objeto = ["n√£o", "n√£o", "n√£o", "n√£o", "n√£o"]
-        #[0]  presente do tutorial e reciclada no b√™bado do 1¬∫andar
+        objeto = ["n„o", "n„o", "n„o", "n„o", "n„o"]
+        #[0]  presente do tutorial e reciclada no bÍbado do 1∫andar
         #[1]  porta do quarto 10
-        #[2]  energ√©tico do b√™bado (a√ß√£o revistar)
+        #[2]  energÈtico do bÍbado (aÁ„o revistar)
         #[3]  arrombar porta do quarto 10
-        #[4]  mulher do b√™bado - talheres de prata
+        #[4]  mulher do bÍbado - talheres de prata
 
-        situa√ß√£o = [0  ,0,0,0 ,0,0  ,0,0,0 ,0,0]
-        #[0]  dois √∫ltimos andares do seu pr√©dio
-        #[1]  quarto 11 do seu pr√©dio
-        #[2]  quarto 24 do seu pr√©dio
-        #[3]  quarto 21 do seu pr√©dio
-        #[4]  quarto 22 do seu pr√©dio
-        #[5]  quarto 30 do seu pr√©dio
-        #[6]  quarto 31 do seu pr√©dio
-        #[7]  quarto 32 do seu pr√©dio
-        #[8]  quarto 33 do seu pr√©dio
-        #[9]  quarto 34 do seu pr√©dio
-        #[10] quarto 20 do seu pr√©dio
+        situaÁ„o = [0  ,0,0,0 ,0,0  ,0,0,0 ,0,0]
+        #[0]  dois ˙ltimos andares do seu prÈdio
+        #[1]  quarto 11 do seu prÈdio
+        #[2]  quarto 24 do seu prÈdio
+        #[3]  quarto 21 do seu prÈdio
+        #[4]  quarto 22 do seu prÈdio
+        #[5]  quarto 30 do seu prÈdio
+        #[6]  quarto 31 do seu prÈdio
+        #[7]  quarto 32 do seu prÈdio
+        #[8]  quarto 33 do seu prÈdio
+        #[9]  quarto 34 do seu prÈdio
+        #[10] quarto 20 do seu prÈdio
 
-        tempor√°rio = [False, False]
-        #[0]  verifica se pegou o uniforme no seu quarto depois √© reciclada para verificar se j√° venceu o terceiro andar do seu pr√©dio
-        #[1]  verifica se pegou o soco ingl√™s no seu quarto depois √© reciclada para verificar se 
+        tempor·rio = [False, False]
+        #[0]  verifica se pegou o uniforme no seu quarto depois È reciclada para verificar se j· venceu o terceiro andar do seu prÈdio
+        #[1]  verifica se pegou o soco inglÍs no seu quarto depois È reciclada para verificar se 
 
-        vari√°vel_lugar = "seu quarto"
+        vari·vel_lugar = "seu quarto"
         ponto_de_save = 0
 
         mostrar_save = ''
 
         eegg = 1
 
-        a√ß√£o_do_personagem = "" 
+        aÁ„o_do_personagem = "" 
         batalha_escapar = ""
 
         teste_de_sorte = 0
         calculo_do_dano = 0
         calculo_da_fuga = 0
-        vari√°vel_para_comparar = 0
+        vari·vel_para_comparar = 0
         contador_de_batalha= 0
         contador_de_rodadas = 0
 
 
-        #global desequipado_roupa,desequipado_capa,desequipado_luva,desequipado_m√£os,desequipado_cal√ßado,espa√ßo_vazio,peda√ßo_pizza,bolo_chocolate,pijama_inicial,uniforme_estudantil,malha_ninja,l√°pis_apontado,punhal_envelhecido,talheres_prata,jaqueta_imita√ß√£o,jaqueta_couro,agasalho_l√£,suplemento_aliment√≠cio,lata_energ√©tico,luva_l√£,luva_couro,soco_pvc,soco_lat√£o,luva_spikes_alu,soco_alu,luva_spikes_a√ßo,soco_a√ßo,luva_spikes_ag,soco_ag,luva_spikes_au,soco_au,luva_spikes_tit√¢nio,soco_tit√¢nio,anel_for√ßa1,anel_for√ßa2,anel_for√ßa3,anel_resist√™ncia1,anel_resist√™ncia2,anel_resist√™ncia3,anel_consist√™ncia1,anel_consist√™ncia2,anel_consist√™ncia3,anel_da_imortalidade,anel_da_divindade,chinelo_inicial,papetes_masculinas,t√™nis_velho,t√™nis_simpl√≥rio,sapato_simpl√≥rio,t√™nis_comum,t√™nis_trilha,t√™nis_caminhada,t√™nis_corrida,t√™nis_ZX5000,item_adicionado,quantidade_adicionada,equipado_roupa,equipado_capa,equipado_luva,equipado_anel,equipado_m√£os,equipado_cal√ßado,vari√°vel_cen√°rio,objeto,situa√ß√£o,tempor√°rio,vari√°vel_lugar,ponto_de_save,mostrar_save, personagem_jogador,personagem_reserva,personagem_inimigo,eegg,a√ß√£o_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,vari√°vel_para_comparar,contador_de_batalha,contador_de_rodadas,mala,loja_venda
+        #global desequipado_roupa,desequipado_capa,desequipado_luva,desequipado_maos,desequipado_calcado,espaÁo_vazio,pedaÁo_pizza,bolo_chocolate,pijama_inicial,uniforme_estudantil,malha_ninja,lapis_apontado,punhal_envelhecido,talheres_prata,jaqueta_imitaÁ„o,jaqueta_couro,agasalho_l„,suplemento_alimentÌcio,lata_energÈtico,luva_l„,luva_couro,soco_pvc,soco_lat„o,luva_spikes_alu,soco_alu,luva_spikes_aÁo,soco_aÁo,luva_spikes_ag,soco_ag,luva_spikes_au,soco_au,luva_spikes_tit‚nio,soco_tit‚nio,anel_forÁa1,anel_forÁa2,anel_forÁa3,anel_resistÍncia1,anel_resistÍncia2,anel_resistÍncia3,anel_consistÍncia1,anel_consistÍncia2,anel_consistÍncia3,anel_da_imortalidade,anel_da_divindade,chinelo_inicial,papetes_masculinas,tÍnis_velho,tÍnis_simplÛrio,sapato_simplÛrio,tÍnis_comum,tÍnis_trilha,tÍnis_caminhada,tÍnis_corrida,tÍnis_ZX5000,item_adicionado,quantidade_adicionada,equipado_roupa,equipado_capa,equipado_luva,equipado_anel,equipado_maos,equipado_calcado,vari·vel_cen·rio,objeto,situaÁ„o,tempor·rio,vari·vel_lugar,ponto_de_save,mostrar_save, personagem_jogador,personagem_reserva,personagem_inimigo,eegg,aÁ„o_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,vari·vel_para_comparar,contador_de_batalha,contador_de_rodadas,mala,loja_venda
 
-        mala = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30],[espa√ßo_vazio, espa√ßo_vazio, espa√ßo_vazio, espa√ßo_vazio, espa√ßo_vazio,espa√ßo_vazio, espa√ßo_vazio, espa√ßo_vazio, espa√ßo_vazio, espa√ßo_vazio,espa√ßo_vazio, espa√ßo_vazio, espa√ßo_vazio, espa√ßo_vazio, espa√ßo_vazio,espa√ßo_vazio, espa√ßo_vazio, espa√ßo_vazio, espa√ßo_vazio, espa√ßo_vazio,espa√ßo_vazio, espa√ßo_vazio, espa√ßo_vazio, espa√ßo_vazio, espa√ßo_vazio,espa√ßo_vazio, espa√ßo_vazio, espa√ßo_vazio, espa√ßo_vazio, espa√ßo_vazio]
-        loja_venda = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30],[espa√ßo_vazio, espa√ßo_vazio, espa√ßo_vazio, espa√ßo_vazio, espa√ßo_vazio,espa√ßo_vazio, espa√ßo_vazio, espa√ßo_vazio, espa√ßo_vazio, espa√ßo_vazio,espa√ßo_vazio, espa√ßo_vazio, espa√ßo_vazio, espa√ßo_vazio, espa√ßo_vazio,espa√ßo_vazio, espa√ßo_vazio, espa√ßo_vazio, espa√ßo_vazio, espa√ßo_vazio,espa√ßo_vazio, espa√ßo_vazio, espa√ßo_vazio, espa√ßo_vazio, espa√ßo_vazio,espa√ßo_vazio, espa√ßo_vazio, espa√ßo_vazio, espa√ßo_vazio, espa√ßo_vazio]
+        mala = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30],[espaÁo_vazio, espaÁo_vazio, espaÁo_vazio, espaÁo_vazio, espaÁo_vazio,espaÁo_vazio, espaÁo_vazio, espaÁo_vazio, espaÁo_vazio, espaÁo_vazio,espaÁo_vazio, espaÁo_vazio, espaÁo_vazio, espaÁo_vazio, espaÁo_vazio,espaÁo_vazio, espaÁo_vazio, espaÁo_vazio, espaÁo_vazio, espaÁo_vazio,espaÁo_vazio, espaÁo_vazio, espaÁo_vazio, espaÁo_vazio, espaÁo_vazio,espaÁo_vazio, espaÁo_vazio, espaÁo_vazio, espaÁo_vazio, espaÁo_vazio]
+        loja_venda = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30],[espaÁo_vazio, espaÁo_vazio, espaÁo_vazio, espaÁo_vazio, espaÁo_vazio,espaÁo_vazio, espaÁo_vazio, espaÁo_vazio, espaÁo_vazio, espaÁo_vazio,espaÁo_vazio, espaÁo_vazio, espaÁo_vazio, espaÁo_vazio, espaÁo_vazio,espaÁo_vazio, espaÁo_vazio, espaÁo_vazio, espaÁo_vazio, espaÁo_vazio,espaÁo_vazio, espaÁo_vazio, espaÁo_vazio, espaÁo_vazio, espaÁo_vazio,espaÁo_vazio, espaÁo_vazio, espaÁo_vazio, espaÁo_vazio, espaÁo_vazio]
 
     else:
-        print("\nParab√©ns, ", personagem_jogador[0],"!!! Voc√™ terminou o jogo!!!")
-    print("\nVoc√™ deseja jogar novamente, ", personagem_jogador[0],'?("sim" ou "n√£o")\n')
+        print("\nParabÈns, ", personagem_jogador[0],"!!! VocÍ terminou o jogo!!!")
+    print("\nVocÍ deseja jogar novamente, ", personagem_jogador[0],'?("sim" ou "n„o")\n')
     while 1:
-        a√ß√£o_do_personagem = input("-")
-        a√ß√£o_do_personagem = a√ß√£o_do_personagem.lower()
-        if(a√ß√£o_do_personagem=="sim" or a√ß√£o_do_personagem=="s" or a√ß√£o_do_personagem=="si" or a√ß√£o_do_personagem=="sm" or a√ß√£o_do_personagem=="im" or a√ß√£o_do_personagem=="ssim"):
+        aÁ„o_do_personagem = input("-")
+        aÁ„o_do_personagem = aÁ„o_do_personagem.lower()
+        if(aÁ„o_do_personagem=="sim" or aÁ„o_do_personagem=="s" or aÁ„o_do_personagem=="si" or aÁ„o_do_personagem=="sm" or aÁ„o_do_personagem=="im" or aÁ„o_do_personagem=="ssim"):
             input("\nReiniciando...(APERTE ENTER)\n")
             break
         else:
-            if(a√ß√£o_do_personagem == "n√£o" or a√ß√£o_do_personagem=="n" or a√ß√£o_do_personagem=="nao" or a√ß√£o_do_personagem=="no" or a√ß√£o_do_personagem=="na" or a√ß√£o_do_personagem=="n√£" or a√ß√£o_do_personagem=="ao" or a√ß√£o_do_personagem=="√£o" or a√ß√£o_do_personagem=="√±" or a√ß√£o_do_personagem=="√±√£o" or a√ß√£o_do_personagem=="√±o" or a√ß√£o_do_personagem=="√±√µ" or a√ß√£o_do_personagem=="√±√£" or a√ß√£o_do_personagem=="√±a√µ" or a√ß√£o_do_personagem=="a√µ"):
+            if(aÁ„o_do_personagem == "n„o" or aÁ„o_do_personagem=="n" or aÁ„o_do_personagem=="nao" or aÁ„o_do_personagem=="no" or aÁ„o_do_personagem=="na" or aÁ„o_do_personagem=="n„" or aÁ„o_do_personagem=="ao" or aÁ„o_do_personagem=="„o" or aÁ„o_do_personagem=="Ò" or aÁ„o_do_personagem=="Ò„o" or aÁ„o_do_personagem=="Òo" or aÁ„o_do_personagem=="Òı" or aÁ„o_do_personagem=="Ò„" or aÁ„o_do_personagem=="Òaı" or aÁ„o_do_personagem=="aı"):
                 break
             else:
-                input('\nEntrada inv√°lida!(digite "sim" ou "n√£o)\n')
-    if(a√ß√£o_do_personagem == "n√£o" or a√ß√£o_do_personagem=="n" or a√ß√£o_do_personagem=="nao" or a√ß√£o_do_personagem=="no" or a√ß√£o_do_personagem=="na" or a√ß√£o_do_personagem=="n√£" or a√ß√£o_do_personagem=="ao" or a√ß√£o_do_personagem=="√£o" or a√ß√£o_do_personagem=="√±" or a√ß√£o_do_personagem=="√±√£o" or a√ß√£o_do_personagem=="√±o" or a√ß√£o_do_personagem=="√±√µ" or a√ß√£o_do_personagem=="√±√£" or a√ß√£o_do_personagem=="√±a√µ" or a√ß√£o_do_personagem=="a√µ"):
+                print('\nEntrada inv·lida!(digite "sim" ou "n„o)\n')
+    if(aÁ„o_do_personagem == "n„o" or aÁ„o_do_personagem=="n" or aÁ„o_do_personagem=="nao" or aÁ„o_do_personagem=="no" or aÁ„o_do_personagem=="na" or aÁ„o_do_personagem=="n„" or aÁ„o_do_personagem=="ao" or aÁ„o_do_personagem=="„o" or aÁ„o_do_personagem=="Ò" or aÁ„o_do_personagem=="Ò„o" or aÁ„o_do_personagem=="Òo" or aÁ„o_do_personagem=="Òı" or aÁ„o_do_personagem=="Ò„" or aÁ„o_do_personagem=="Òaı" or aÁ„o_do_personagem=="aı"):
         break
     
 exit()
