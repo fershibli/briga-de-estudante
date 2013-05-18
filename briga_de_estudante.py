@@ -222,7 +222,7 @@ def inventarioPersonagem():
                         personagem_jogador[2]=personagem_jogador[2]+mala[1][i][2]
                         personagem_jogador[3]=personagem_jogador[3]+mala[1][i][3]
                         personagem_jogador[4]=personagem_jogador[4]+mala[1][i][4]
-                        print("\nVoce usou", mala[1][i][0],"!\n")
+                        print("\nVoce usou"+str( mala[1][i][0])+"!\n")
                         time.sleep(0.5)
                         mala[1][i]=espaco_vazio
                         break
@@ -340,7 +340,7 @@ def inventarioPersonagem():
                                 personagem_jogador[4] = personagem_jogador[4] - equipado_capa[4]
                                 personagem_jogador[5] = personagem_jogador[5] - equipado_capa[7]
                                 item_adicionado=equipado_capa
-                                print("Voce guardou ", item_adicionado[0]," e equipou ", mala[1][i][0],"!")
+                                print("Voce guardou "+str(item_adicionado[0])+" e equipou "+str( mala[1][i][0])+"!")
                                 time.sleep(1)
                                 equipado_capa=mala[1][i]
                                 mala[1][i]=item_adicionado
@@ -529,21 +529,14 @@ def lojaComprar():
         i=i-1
         if(acao_do_personagem==loja_venda[0][i] and loja_venda[1][i]!=espaco_vazio):
             if(loja_venda[1][i][6]=="consumivel de aprimoramento"):
-
-
-
-            #'''Foi exatamente aqui que eu parei!
-            #    continue trocando virgulas por + nos prints e colocando str(objeto) em todas as variaveis que estiverem dentro dos prints
-           #     por exemplo str(loja_venda[1][i][6])    '''
-
-
-
-                
-                print("\nNome:",loja_venda[1][i][0], "\nTipo:",loja_venda[1][i][5],"\nVida:",loja_venda[1][i][7],"\nAtaque:",loja_venda[1][i][1],"\nDefesa:",loja_venda[1][i][2],"\nAgilidade:",loja_venda[1][i][3],"\nSorte:",loja_venda[1][i][4],"\n")
+#'''Foi exatamente aqui que eu parei!
+#    continue trocando virgulas por + nos prints e colocando str(objeto) em todas as variaveis que estiverem dentro dos prints
+#     por exemplo str(loja_venda[1][i][6])    '''
+                print("\nNome:"+str(loja_venda[1][i][0])+ "\nTipo:"+str(loja_venda[1][i][5])+"\nVida:"+str(loja_venda[1][i][7])+"\nAtaque:"+str(loja_venda[1][i][1])+"\nDefesa:"+str(loja_venda[1][i][2])+"\nAgilidade:"+str(loja_venda[1][i][3])+"\nSorte:"+str(loja_venda[1][i][4])+"\n")
             if(loja_venda[1][i][6]=="consumivel"):
-                print("\nNome:",loja_venda[1][i][0], "\nTipo:",loja_venda[1][i][5],"\nVida:",loja_venda[1][i][7],"\n")
+                print("\nNome:"+str(loja_venda[1][i][0])+"\nTipo:"+str(loja_venda[1][i][5])+"\nVida:"+str(loja_venda[1][i][7])+"\n")
             if(loja_venda[1][i][6]!="consumivel de aprimoramento" and loja_venda[1][i][6]!="consumivel"):
-                print("\nNome:",loja_venda[1][i][0],"\nTipo:",loja_venda[1][i][5],"\nAtaque:",loja_venda[1][i][1],"\nDefesa:",loja_venda[1][i][2],"\nAgilidade:",loja_venda[1][i][3],"\nSorte:",loja_venda[1][i][4],"\n")
+                print("\nNome:"+str(loja_venda[1][i][0])+"\nTipo:"+str(loja_venda[1][i][5])+"\nAtaque:"+str(loja_venda[1][i][1])+"\nDefesa:"+str(loja_venda[1][i][2])+"\nAgilidade:"+str(loja_venda[1][i][3])+"\nSorte:"+str(loja_venda[1][i][4]+)"\n")
             item_adicionado=loja_venda[1][i]
             while 1:
                 print("Deseja comprar quantos?(digite uma quantidade ou voltar)")
@@ -557,7 +550,7 @@ def lojaComprar():
                             variavel_para_comparar+=1
                         i+=1
                     if(acao_do_personagem>variavel_para_comparar):
-                        print("Voce nao pode comprar essa quantidade, pois so tem",variavel_para_comparar,"espacos livres na mochila!")
+                        print("Voce nao pode comprar essa quantidade, pois so tem"+str(variavel_para_comparar)+"espacos livres na mochila!")
                         variavel_para_comparar=0
                     else:
                         quantidade_adicionada=acao_do_personagem
@@ -569,7 +562,7 @@ def lojaComprar():
                     time.sleep(0.5)
             if(acao_do_personagem=="voltar"):break
             while 1:
-                print("Ficou ", item_adicionado[6]*quantidade_adicionada,"Reais.")
+                print("Ficou "+str(item_adicionado[6]*quantidade_adicionada)+"Reais.")
                 print("Vai comprar mesmo?(sim ou nao)")
                 acao_do_personagem=raw_input("-")
                 acao_do_personagem=acao_do_personagem.lower()
@@ -594,19 +587,19 @@ def lojaComprar():
 #--Ficha do Personagem--#
 def ficha_personagem():
     global inventario_reserva,porcentagem_inflacao,bermuda_linho_regata,bermuda_linho_polo,calca_jeans_regata,calca_jeans_polo,desequipado_roupa,desequipado_capa,desequipado_luva,desequipado_maos,desequipado_calcado,espaco_vazio,pedaco_pizza,bolo_chocolate,pijama_inicial,uniforme_estudantil,malha_ninja,lapis_apontado,punhal_envelhecido,talheres_prata,jaqueta_imitacao,jaqueta_couro,agasalho_la,suplemento_alimenticio,lata_energetico,luva_la,luva_couro,soco_pvc,soco_latao,luva_spikes_alu,soco_alu,luva_spikes_aco,soco_aco,luva_spikes_ag,soco_ag,luva_spikes_au,soco_au,luva_spikes_titanio,soco_titanio,anel_forca1,anel_forca2,anel_forca3,anel_resistencia1,anel_resistencia2,anel_resistencia3,anel_consistencia1,anel_consistencia2,anel_consistencia3,anel_da_imortalidade,anel_da_divindade,chinelo_inicial,papetes_masculinas,tenis_velho,tenis_simplorio,sapato_simplorio,tenis_comum,tenis_trilha,tenis_caminhada,tenis_corrida,tenis_ZX5000,item_adicionado,quantidade_adicionada,equipado_roupa,equipado_capa,equipado_luva,equipado_anel,equipado_maos,equipado_calcado,variavel_cenario,objeto,situacao,temporario,variavel_lugar,ponto_de_save,mostrar_save, personagem_jogador,personagem_reserva,personagem_inimigo,eegg,acao_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,variavel_para_comparar,contador_de_batalha,contador_de_rodadas,mala,loja_venda
-    print("\n#", "-"*30,"#\n", "\nNome:", personagem_jogador[0])
+    print("\n#"+"-"*30+"#\n"+"\nNome:"+str(personagem_jogador[0]))
     time.sleep(0.23)
-    print("\nVida:", personagem_jogador[6], "de", personagem_jogador[5])
+    print("\nVida:"+str(personagem_jogador[6])+"de"+str(personagem_jogador[5]))
     time.sleep(0.23)
-    print("\nAtaque:", personagem_jogador[1], "\nDefesa:", personagem_jogador[2], "\nAgilidade:", personagem_jogador[3], "\nSorte:", personagem_jogador[4])
+    print("\nAtaque:"+str(personagem_jogador[1])+"\nDefesa:"+str(personagem_jogador[2])+"\nAgilidade:"+str(personagem_jogador[3])+"\nSorte:"+str(personagem_jogador[4]))
     time.sleep(0.23)
-    print("\nCapa:", equipado_capa[0], "\nRoupa:", equipado_roupa[0], "\nCalcados:", equipado_calcado[0],)
+    print("\nCapa:"+str(equipado_capa[0])+"\nRoupa:"+str(equipado_roupa[0])+"\nCalcados:"+str(equipado_calcado[0]))
     time.sleep(0.23)
-    print("\nLuvas:" ,equipado_luva[0],"\nAnel:" ,equipado_anel[0],"\nArmamento:", equipado_maos[0])
+    print("\nLuvas:"+str(equipado_luva[0])+"\nAnel:"+str(equipado_anel[0])+"\nArmamento:"+str(equipado_maos[0]))
     time.sleep(0.23)
-    print("\nDinheiro:", personagem_jogador[7], "Reais\n")
+    print("\nDinheiro:"+str(personagem_jogador[7])+"Reais\n")
     time.sleep(0.23)
-    print("\n#", "-"*30,"#\n")
+    print("\n#"+"-"*30+"#\n")
     time.sleep(0.23)
 
 #--Save--#
@@ -623,43 +616,43 @@ def save():
             time.sleep(0.5)
             arq = open('\espaco_save00.py', 'rb')
             mostrar_save = pickle.load(arq)
-            print("\nEspaco  0:     Lugar:",mostrar_save[5], "\n          Nome:",mostrar_save[1],"  Vida:", mostrar_save[3],"\n          Ataque:",mostrar_save[7],"  Defesa:",mostrar_save[9],"  Agilidade:",mostrar_save[11])
+            print("\nEspaco  0:     Lugar:"+str(mostrar_save[5])+"\n          Nome:"+str(mostrar_save[1])+"  Vida:"+str(mostrar_save[3])+"\n          Ataque:"+str(mostrar_save[7])+"  Defesa:"+str(mostrar_save[9])+"  Agilidade:"+str(mostrar_save[11]))
             arq.close
             arq = open('\espaco_save01.py', 'rb')
             mostrar_save = pickle.load(arq)
-            print("\nEspaco  1:     Lugar:",mostrar_save[5], "\n          Nome:",mostrar_save[1],"  Vida:", mostrar_save[3],"\n          Ataque:",mostrar_save[7],"  Defesa:",mostrar_save[9],"  Agilidade:",mostrar_save[11])
+            print("\nEspaco  1:     Lugar:"+str(mostrar_save[5])+"\n          Nome:"+str(mostrar_save[1])+"  Vida:"+str(mostrar_save[3])+"\n          Ataque:"+str(mostrar_save[7])+"  Defesa:"+str(mostrar_save[9])+"  Agilidade:"+str(mostrar_save[11]))
             arq.close
             arq = open('\espaco_save02.py', 'rb')
             mostrar_save = pickle.load(arq)
-            print("\nEspaco  2:     Lugar:",mostrar_save[5], "\n          Nome:",mostrar_save[1],"  Vida:", mostrar_save[3],"\n          Ataque:",mostrar_save[7],"  Defesa:",mostrar_save[9],"  Agilidade:",mostrar_save[11])
+            print("\nEspaco  2:     Lugar:"+str(mostrar_save[5])+"\n          Nome:"+str(mostrar_save[1])+"  Vida:"+str( mostrar_save[3])+"\n          Ataque:"+str(mostrar_save[7])+"  Defesa:"+str(mostrar_save[9])+"  Agilidade:"+str(mostrar_save[11]))
             arq.close
             arq = open('\espaco_save03.py', 'rb')
             mostrar_save = pickle.load(arq)
-            print("\nEspaco  3:     Lugar:",mostrar_save[5], "\n          Nome:",mostrar_save[1],"  Vida:", mostrar_save[3],"\n          Ataque:",mostrar_save[7],"  Defesa:",mostrar_save[9],"  Agilidade:",mostrar_save[11])
+            print("\nEspaco  3:     Lugar:"+str(mostrar_save[5])+ "\n          Nome:"+str(mostrar_save[1])+"  Vida:"+str( mostrar_save[3])+"\n          Ataque:"+str(mostrar_save[7])+"  Defesa:"+str(mostrar_save[9])+"  Agilidade:"+str(mostrar_save[11]))
             arq.close
             arq = open('\espaco_save04.py', 'rb')
             mostrar_save = pickle.load(arq)
-            print("\nEspaco  4:     Lugar:",mostrar_save[5], "\n          Nome:",mostrar_save[1],"  Vida:", mostrar_save[3],"\n          Ataque:",mostrar_save[7],"  Defesa:",mostrar_save[9],"  Agilidade:",mostrar_save[11])
+            print("\nEspaco  4:     Lugar:"+str(mostrar_save[5])+ "\n          Nome:"+str(mostrar_save[1])+"  Vida:"+str( mostrar_save[3])+"\n          Ataque:"+str(mostrar_save[7])+"  Defesa:"+str(mostrar_save[9])+"  Agilidade:"+str(mostrar_save[11]))
             arq.close
             arq = open('\espaco_save05.py', 'rb')
             mostrar_save = pickle.load(arq)
-            print("\nEspaco  5:     Lugar:",mostrar_save[5], "\n          Nome:",mostrar_save[1],"  Vida:", mostrar_save[3],"\n          Ataque:",mostrar_save[7],"  Defesa:",mostrar_save[9],"  Agilidade:",mostrar_save[11])
+            print("\nEspaco  5:     Lugar:"+str(mostrar_save[5])+ "\n          Nome:"+str(mostrar_save[1])+"  Vida:"+str( mostrar_save[3])+"\n          Ataque:"+str(mostrar_save[7])+"  Defesa:"+str(mostrar_save[9])+"  Agilidade:"+str(mostrar_save[11]))
             arq.close
             arq = open('\espaco_save06.py', 'rb')
             mostrar_save = pickle.load(arq)
-            print("\nEspaco  6:     Lugar:",mostrar_save[5], "\n          Nome:",mostrar_save[1],"  Vida:", mostrar_save[3],"\n          Ataque:",mostrar_save[7],"  Defesa:",mostrar_save[9],"  Agilidade:",mostrar_save[11])
+            print("\nEspaco  6:     Lugar:"+str(mostrar_save[5])+ "\n          Nome:"+str(mostrar_save[1])+"  Vida:"+str( mostrar_save[3])+"\n          Ataque:"+str(mostrar_save[7])+"  Defesa:"+str(mostrar_save[9])+"  Agilidade:"+str(mostrar_save[11]))
             arq.close
             arq = open('\espaco_save07.py', 'rb')
             mostrar_save = pickle.load(arq)
-            print("\nEspaco  7:     Lugar:",mostrar_save[5], "\n          Nome:",mostrar_save[1],"  Vida:", mostrar_save[3],"\n          Ataque:",mostrar_save[7],"  Defesa:",mostrar_save[9],"  Agilidade:",mostrar_save[11])
+            print("\nEspaco  7:     Lugar:"+str(mostrar_save[5])+ "\n          Nome:"+str(mostrar_save[1])+"  Vida:"+str( mostrar_save[3])+"\n          Ataque:"+str(mostrar_save[7])+"  Defesa:"+str(mostrar_save[9])+"  Agilidade:"+str(mostrar_save[11]))
             arq.close
             arq = open('\espaco_save08.py', 'rb')
             mostrar_save = pickle.load(arq)
-            print("\nEspaco  8:     Lugar:",mostrar_save[5], "\n          Nome:",mostrar_save[1],"  Vida:", mostrar_save[3],"\n          Ataque:",mostrar_save[7],"  Defesa:",mostrar_save[9],"  Agilidade:",mostrar_save[11])
+            print("\nEspaco  8:     Lugar:"+str(mostrar_save[5])+ "\n          Nome:"+str(mostrar_save[1])+"  Vida:"+str( mostrar_save[3])+"\n          Ataque:"+str(mostrar_save[7])+"  Defesa:"+str(mostrar_save[9])+"  Agilidade:"+str(mostrar_save[11]))
             arq.close
             arq = open('\espaco_save09.py', 'rb')
             mostrar_save = pickle.load(arq)
-            print("\nEspaco  9:     Lugar:",mostrar_save[5], "\n          Nome:",mostrar_save[1],"  Vida:", mostrar_save[3],"\n          Ataque:",mostrar_save[7],"  Defesa:",mostrar_save[9],"  Agilidade:",mostrar_save[11])
+            print("\nEspaco  9:     Lugar:"+str(mostrar_save[5])+ "\n          Nome:"+str(mostrar_save[1])+"  Vida:"+str( mostrar_save[3])+"\n          Ataque:"+str(mostrar_save[7])+"  Defesa:"+str(mostrar_save[9])+"  Agilidade:"+str(mostrar_save[11]))
             arq.close
             while 1:
                 print("\n(Digite um número entre 0 e 9)")
@@ -707,7 +700,7 @@ def save():
                                                         print("Entrada invalida!\n")
                                                         time.sleep(0.5)
             #recomendo voce usar um for aqui :) - Lucas Sabiao
-            mostrar_save = ("  Nome:", personagem_jogador[0], "  Vida:", personagem_jogador[5],"  Lugar:", variavel_lugar, "  Ataque:", personagem_jogador[1], "  Defesa:", personagem_jogador[2],"  Agilidade:", personagem_jogador[3])
+            mostrar_save = ("  Nome:"+str( personagem_jogador[0])+ "  Vida:"+str( personagem_jogador[5])+"  Lugar:"+str( variavel_lugar)+ "  Ataque:"+str( personagem_jogador[1])+ "  Defesa:"+str( personagem_jogador[2])+"  Agilidade:"+str( personagem_jogador[3]))
             pickle.dump(mostrar_save, arq)
             pickle.dump(equipado_roupa, arq)
             pickle.dump(equipado_capa, arq)
@@ -744,7 +737,7 @@ def batalha():
     while(personagem_inimigo[6]>0):
         if(personagem_jogador[6]<=0):
             break
-        print("\n]]", "="*30,"[[\n", "    Inicio da rodada número ", contador_de_rodadas, "\n]]", "="*30,"[[\n")
+        print("\n]]"+ "="*30+"[[\n"+"    Inicio da rodada número "+str(contador_de_rodadas)+"\n]]"+"="*30+"[[\n")
         if(personagem_jogador[6]==1):
             if(contador_de_rodadas==1):
                 print("\nVoce entrou na batalha com apenas 1 ponto de vida!")
@@ -773,9 +766,9 @@ def batalha():
                     print("O limite dos seus pontos de vida aumentou!\n")
                     time.sleep(2)
                     personagem_jogador[5]=personagem_jogador[5]+(random.randrange(personagem_jogador[2])+1)
-        print("\n#", "-"*30,"#\n", "\n\n", personagem_jogador[0], ":\n                    ",personagem_jogador[6], "\n                     de", personagem_jogador[5], " Pontos de Vida\n\n", personagem_inimigo[0], ":\n                    ", personagem_inimigo[6], "\n                     de", personagem_inimigo[5], " Pontos de vida\n")
+        print("\n#"+"-"*30+"#\n"+"\n\n"+str(personagem_jogador[0])+":\n                    "+str(personagem_jogador[6])+"\n                     de"+str(personagem_jogador[5])+" Pontos de Vida\n\n"+str(personagem_inimigo[0])+":\n                    "+str(personagem_inimigo[6])+"\n                     de"+str(personagem_inimigo[5])+" Pontos de vida\n")
         time.sleep(0.1)
-        print("\n#", "-"*30,"#\nO que voce fara agora, ", personagem_jogador[0], "?\nAtacar, defender ou fugir?")
+        print("\n#"+"-"*30+"#\nO que voce fara agora, "+str(personagem_jogador[0])+"?\nAtacar, defender ou fugir?")
         time.sleep(0.15)
         acao_do_personagem = raw_input("-")
         acao_do_personagem = acao_do_personagem.lower()
@@ -788,7 +781,7 @@ def batalha():
             else: break
         contador_de_rodadas=contador_de_rodadas+1
         if(acao_do_personagem == "defender" or acao_do_personagem == "d" or acao_do_personagem == "defende" or acao_do_personagem == "defern" or acao_do_personagem == "defenrede" or acao_do_personagem == "ddefender" or acao_do_personagem == "defenrd" or acao_do_personagem == "deffender" or acao_do_personagem == "defendder" or acao_do_personagem == "ddeffender" or acao_do_personagem == "defnder" or acao_do_personagem == "defndr" or acao_do_personagem == "dfnder" or acao_do_personagem == "dfendr" or acao_do_personagem == "defnde" or acao_do_personagem == "defnd" or acao_do_personagem == "dfede" or acao_do_personagem == "def"): #defesa(2personagem_jogador[2]) vs ataque(personagem_inimigo[1])
-            print("\nPostura de Batalha:\n", personagem_jogador[0], "-> defensiva\n", personagem_inimigo[0], "-> ofensiva\n")
+            print("\nPostura de Batalha:\n"+str(personagem_jogador[0])+"\n----------> defensiva\n\n"+str(personagem_inimigo[0])+"\n----------> ofensiva\n\n")
             time.sleep(2)
             teste_de_sorte = random.randrange(50)
             if (teste_de_sorte<=10+personagem_jogador[4]-personagem_inimigo[4]):#S_defesa(3personagem_jogador[2]) vs ataque(personagem_inimigo[1])
@@ -808,7 +801,7 @@ def batalha():
                             calculo_do_dano = (calculo_do_dano/2)*(-1)+((random.randrange(personagem_jogador[1]))/2)*(0.2)
                             print("\nNao importa, sua defesa e incrivel!")
                             time.sleep(2)
-                            print("Alem de defender voce conseguiu contra-atacar, causando ", calculo_do_dano," pontos de dano ao inimigo!\n")
+                            print("Alem de defender voce conseguiu contra-atacar, causando "+str(calculo_do_dano)+" pontos de dano ao inimigo!\n")
                             time.sleep(3)
                             teste_de_sorte = random.randrange(5)#aumento de defesa
                             if(teste_de_sorte<=1):
@@ -853,7 +846,7 @@ def batalha():
                                 print("\nDefesa e ataque se anulam! A tensao aumenta!\n")
                                 time.sleep(2)
                             else:#S_defesa(3personagem_jogador[2]) APANHA DO S_ataque(2personagem_inimigo[1])
-                                print("\nVoce sofreu ", calculo_do_dano, " pontos de dano...\n")
+                                print("\nVoce sofreu "+str(calculo_do_dano)+" pontos de dano...\n")
                                 time.sleep(2)
                                 personagem_jogador[6] = personagem_jogador[6] - calculo_do_dano
                 else:#S_defesa(3personagem_jogador[2]) vs ataque(personagem_inimigo[1])
@@ -865,7 +858,7 @@ def batalha():
                         calculo_do_dano = (personagem_inimigo[1])+(random.randrange(personagem_inimigo[1]))*(0.2)-(3*personagem_jogador[2])-(random.randrange(personagem_jogador[2]))*(0.2)
                         if (calculo_do_dano<0):#S_defesa(3personagem_jogador[2]) CONTRA-ATACA ataque(personagem_inimigo[1])
                             calculo_do_dano = (calculo_do_dano/2)*(-1)+((random.randrange(personagem_jogador[1]))/2)*(0.2)
-                            print("\nSua defesa foi tao grande que, alem de bloquear o ataque, voce conseguiu contra-atacar, causando ", calculo_do_dano," pontos de dano ao inimigo!\n")
+                            print("\nSua defesa foi tao grande que, alem de bloquear o ataque, voce conseguiu contra-atacar, causando "+str(calculo_do_dano)+" pontos de dano ao inimigo!\n")
                             time.sleep(2)
                             personagem_inimigo[6] = personagem_inimigo[6]-calculo_do_dano
                         else:
@@ -873,7 +866,7 @@ def batalha():
                                 print("\nSua defesa foi completa!\n")
                                 time.sleep(2)
                             else:#S_defesa(3personagem_jogador[2]) APANHA DO ataque(personagem_inimigo[1])
-                                print("\nVoce sofreu miseros ", calculo_do_dano, " pontos de dano.\n")
+                                print("\nVoce sofreu miseros "+str(calculo_do_dano)+" pontos de dano.\n")
                                 time.sleep(2)
                                 personagem_jogador[6] = personagem_jogador[6]-calculo_do_dano
             else:
@@ -889,7 +882,7 @@ def batalha():
                             calculo_do_dano = (calculo_do_dano/2)*(-1)+((random.randrange(personagem_jogador[1]))/2)*(0.2)
                             print("\nSua defesa e simplesmente  I M E N S A !")
                             time.sleep(2)
-                            print("O inimigo avancou furiosamente mas voce o lancou para tras e contra-atacou causando ", calculo_do_dano, " pontos de dano ao inimigo!\n")
+                            print("O inimigo avancou furiosamente mas voce o lancou para tras e contra-atacou causando "+str(calculo_do_dano)+" pontos de dano ao inimigo!\n")
                             time.sleep(3)
                             teste_de_sorte = random.randrange(6)#aumento de defesa
                             if(teste_de_sorte<=1):
@@ -957,7 +950,7 @@ def batalha():
                                     personagem_jogador[1]=personagem_jogador[1]+(random.randrange(personagem_jogador[1]))+2
                                     personagem_jogador[2]=personagem_jogador[2]+(random.randrange(personagem_jogador[2]))+1
                             else:
-                                print("\nMesmo se defendendo, o impacto do ataque inimigo te causou ", calculo_do_dano, " pontos de dano!\n")
+                                print("\nMesmo se defendendo, o impacto do ataque inimigo te causou "+str(calculo_do_dano)+" pontos de dano!\n")
                                 time.sleep(2)
                                 personagem_jogador[6] = personagem_jogador[6]-calculo_do_dano
                 else:#defesa(2personagem_jogador[2]) vs ataque(personagem_inimigo[1])
@@ -971,7 +964,7 @@ def batalha():
                             calculo_do_dano = calculo_do_dano*(-1)+((random.randrange(personagem_jogador[1]))/2)
                             print("\nSua defesa É ENORME!")
                             time.sleep(2)
-                            print("Voce barrou o ataque naturalmente e contra-atacou, causando ", calculo_do_dano, " pontos de dano ao inimigo!\n")
+                            print("Voce barrou o ataque naturalmente e contra-atacou, causando "+str(calculo_do_dano)+" pontos de dano ao inimigo!\n")
                             time.sleep(3)
                             teste_de_sorte = random.randrange(5)#aumento de defesa
                             if(teste_de_sorte<=1):
@@ -1016,14 +1009,14 @@ def batalha():
                                 print("\nVoce barrou o ataque do inimigo!\n")
                                 time.sleep(2)
                             else:
-                                print("\nMesmo se defendendo, o impacto do ataque inimigo te causou ", calculo_do_dano, " pontos de dano!\n")
+                                print("\nMesmo se defendendo, o impacto do ataque inimigo te causou "+str(calculo_do_dano)+" pontos de dano!\n")
                                 time.sleep(3)
                                 personagem_jogador[6] = personagem_jogador[6]-calculo_do_dano
         else:
             if (acao_do_personagem=="atacar" or acao_do_personagem=="a" or acao_do_personagem=="at" or acao_do_personagem=="ata" or acao_do_personagem=="atac" or acao_do_personagem=="ataca" or acao_do_personagem=="atcar" or acao_do_personagem=="tacar" or acao_do_personagem=="aacar" or acao_do_personagem=="ataar" or acao_do_personagem=="atacr" or acao_do_personagem=="acar" or acao_do_personagem=="aaar" or acao_do_personagem=="aacr" or acao_do_personagem=="aaca" or acao_do_personagem=="atar" or acao_do_personagem=="atcr" or acao_do_personagem=="atca" or acao_do_personagem=="ata" or acao_do_personagem=="ataa" or acao_do_personagem=="atara" or acao_do_personagem=="stssr" or acao_do_personagem=="atavar" or acao_do_personagem=="atahvea" or acao_do_personagem=="atrex" or acao_do_personagem=="atasfa" or acao_do_personagem=="atacart" or acao_do_personagem=="taacar" or acao_do_personagem=="tacaar" or acao_do_personagem=="tacara" or acao_do_personagem=="aactar" or acao_do_personagem=="aacatr" or acao_do_personagem=="aacart" or acao_do_personagem=="aatcar" or acao_do_personagem=="cataar" or acao_do_personagem=="taaacar" or acao_do_personagem=="catar" or acao_do_personagem=="rataca" or acao_do_personagem=="atraca" or acao_do_personagem=="atracar"):
                 teste_de_sorte=random.randrange(2)
                 if (teste_de_sorte==1):#ataque(personagem_jogador[1]) vs defesa(2personagem_inimigo[2])
-                    print("\nPostura de Batalha:\n", personagem_jogador[0], "-> ofensiva\n", personagem_inimigo[0], "-> defensiva\n")
+                    print("\nPostura de Batalha:\n"+str(personagem_jogador[0])+"\n----------> ofensiva\n\n"+str(personagem_inimigo[0])+"\n----------> defensiva\n\n")
                     time.sleep(2)
                     teste_de_sorte=random.randrange(40)
                     if (teste_de_sorte<=10+personagem_jogador[4]-personagem_inimigo[4]):#S_ataque(2personagem_jogador[1]) vs defesa(2personagem_inimigo[2])
@@ -1043,7 +1036,7 @@ def batalha():
                                     calculo_do_dano = calculo_do_dano*(-1)+((random.randrange(personagem_inimigo[1]))/2)
                                     print("\nPor mais que tente, voce nao consegue atravessar a defesa do seu inimigo!")
                                     time.sleep(2)
-                                    print("Alem de te bloquear, ele te contra-atacou, causando ", calculo_do_dano, " pontos de dano!\n")
+                                    print("Alem de te bloquear, ele te contra-atacou, causando "+str(calculo_do_dano)+" pontos de dano!\n")
                                     time.sleep(2)
                                     personagem_jogador[6] = personagem_jogador[6]-calculo_do_dano
                                     teste_de_sorte=random.randrange(200)
@@ -1062,7 +1055,7 @@ def batalha():
                                         time.sleep(2)
                                         print("Nem o melhor da defesa do seu inimigo foi capaz de conter sua ira!")
                                         time.sleep(2)
-                                        print("Voce causou ", calculo_do_dano, " pontos de dano ao seu inimigo!\n")
+                                        print("Voce causou "+str(calculo_do_dano)+" pontos de dano ao seu inimigo!\n")
                                         time.sleep(2)
                                         personagem_inimigo[6] = personagem_inimigo[6]-calculo_do_dano
                                         teste_de_sorte=random.randrange(100)
@@ -1083,7 +1076,7 @@ def batalha():
                                     calculo_do_dano=calculo_do_dano*(-1)+((random.randrange(personagem_inimigo[1]))/2)
                                     print("\nVoce deu o seu maximo, mas mesmo assim nem se equiparou às habilidades de auto-defesa do seu inimigo!")
                                     time.sleep(3)
-                                    print("Sem fazer muito esforco ele se defendeu e contra-atacou, te causando ", calculo_do_dano," pontos de dano!\n")
+                                    print("Sem fazer muito esforco ele se defendeu e contra-atacou, te causando "+str(calculo_do_dano)+" pontos de dano!\n")
                                     time.sleep(3)
                                     personagem_jogador[6] = personagem_jogador[6] - calculo_do_dano
                                 else:
@@ -1093,7 +1086,7 @@ def batalha():
                                     else:
                                         teste_de_sorte=random.randrange(50)
                                         if(teste_de_sorte<=10+personagem_jogador[4]):#XS_ataque(3personagem_jogador[1]) vs defesa(personagem_inimigo[2])
-                                            print("\nVoce rompeu a defesa do seu inimigo, causando ", calculo_do_dano," pontos de dano!")
+                                            print("\nVoce rompeu a defesa do seu inimigo, causando "+str(calculo_do_dano)+" pontos de dano!")
                                             time.sleep(3)
                                             print("\nSuper Critico!!!\n")
                                             time.sleep(4)
@@ -1105,7 +1098,7 @@ def batalha():
                                                 calculo_do_dano=2*(random.randrange(personagem_jogador[1]))-(random.randrange(personagem_inimigo[2]))
                                                 while(calculo_do_dano<=0):
                                                     calculo_do_dano=2*(random.randrange(personagem_jogador[1]))-(random.randrange(personagem_inimigo[2]))
-                                                print(calculo_do_dano," pontos de dano!\n")
+                                                print(str(calculo_do_dano)+" pontos de dano!\n")
                                                 time.sleep(0.25)
                                                 personagem_inimigo[6]=personagem_inimigo[6]-calculo_do_dano
                                                 teste_de_sorte=teste_de_sorte-1
@@ -1129,7 +1122,7 @@ def batalha():
                                                     time.sleep(2)
                                                     personagem_jogador[1]=personagem_jogador[1]+(random.randrange(personagem_jogador[1]))+3
                                         else:#S_ataque(2personagem_jogador[1]) ATACA defesa(2personagem_inimigo[2])
-                                            print("\nSeu ataque de goes duplos pressionaram a defesa do seu inimigo, causando ",calculo_do_dano," pontos de dano!\n")
+                                            print("\nSeu ataque de goes duplos pressionaram a defesa do seu inimigo, causando "+str(calculo_do_dano)+" pontos de dano!\n")
                                             time.sleep(3)
                                             teste_de_sorte=random.randrange(200)
                                             if(teste_de_sorte<=20+personagem_jogador[4]):
@@ -1154,7 +1147,7 @@ def batalha():
                                     calculo_do_dano=calculo_do_dano*(-1)+((random.randrange(personagem_inimigo[1]))/2)
                                     print("\nÉ muito dificil passar por tamanha defesa, seu ataque foi infimo, alem de ser inutilizado, voce sofreu represalia...")
                                     time.sleep(3)
-                                    print("Seu inimigo contra-atacou, causando ", calculo_do_dano, " pontos de dano.\n")
+                                    print("Seu inimigo contra-atacou, causando "+str(calculo_do_dano)+" pontos de dano.\n")
                                     time.sleep(2)
                                     teste_de_sorte=random.randrange(100)
                                     if(teste_de_sorte<=10+personagem_jogador[4]):
@@ -1171,7 +1164,7 @@ def batalha():
                                         print("Ao mesmo tempo sua forca foi o bastante para evitar um contra-ataque!\n")
                                         time.sleep(2)
                                     else:#ataque(personagem_jogador[1]) ATACA S_defesa(3personagem_inimigo[2])
-                                        print("\nDepois de alguns golpes, voce tornou insignificante a vantagem defensiva do seu inimigo, \ncausando humilhantes, ", calculo_do_dano," pontos de dano a ele!\n")
+                                        print("\nDepois de alguns golpes, voce tornou insignificante a vantagem defensiva do seu inimigo, \ncausando humilhantes, "+str(calculo_do_dano)+" pontos de dano a ele!\n")
                                         time.sleep(4)
                                         teste_de_sorte=random.randrange(200)
                                         if(teste_de_sorte<=10+personagem_jogador[4]):
@@ -1190,7 +1183,7 @@ def batalha():
                                 calculo_do_dano = personagem_jogador[1]+(random.randrange(personagem_jogador[1]))-2*personagem_inimigo[2]-(random.randrange(personagem_inimigo[2]))
                                 if(calculo_do_dano<0):#ataque(personagem_jogador[1]) APANHA DE defesa(2personagem_inimigo[2])
                                     calculo_do_dano=calculo_do_dano*(-1)+((random.randrange(personagem_inimigo[1]))/2)
-                                    print("\nO inimigo se defendeu e contra-atacou, te causando ", calculo_do_dano," pontos de dano!\n")
+                                    print("\nO inimigo se defendeu e contra-atacou, te causando "+str(calculo_do_dano)+" pontos de dano!\n")
                                     time.sleep(2)
                                     teste_de_sorte=random.randrange(100)
                                     if(teste_de_sorte<=10+personagem_jogador[4]):
@@ -1214,11 +1207,11 @@ def batalha():
                                             time.sleep(2)
                                             personagem_jogador[1]=personagem_jogador[1]+(random.randrange(personagem_jogador[1]))+(random.randrange(personagem_jogador[4]))+1
                                     else:#ataque(personagem_jogador[1]) ATACA defesa(2personagem_inimigo[2])
-                                        print("\nVoce acertou o inimigo durante a disputa de forcas, causando ",calculo_do_dano," pontos de dano!\n")
+                                        print("\nVoce acertou o inimigo durante a disputa de forcas, causando "+str(calculo_do_dano)+" pontos de dano!\n")
                                         time.sleep(2)
                                         personagem_inimigo[6]=personagem_inimigo[6]-calculo_do_dano
                 else:#ataque(personagem_jogador[1]) vs ataque(personagem_inimigo[1])
-                    print("\nPostura de Batalha:\n", personagem_jogador[0], "-> ofensiva\n", personagem_inimigo[0], "-> ofensiva\n")
+                    print("\nPostura de Batalha:\n"+str(personagem_jogador[0])+"\n----------> ofensiva\n\n"+str(personagem_inimigo[0])+"\n----------> ofensiva\n\n")
                     time.sleep(2)
                     teste_de_sorte=random.randrange(40)
                     if (teste_de_sorte<=10+personagem_jogador[4]-personagem_inimigo[4]):#S_ataque(2personagem_jogador[1]) vs ataque(personagem_inimigo[1])
@@ -1234,7 +1227,7 @@ def batalha():
                             time.sleep(2)
                             calculo_do_dano=2*personagem_jogador[1]+random.randrange(personagem_jogador[1])-personagem_inimigo[2]-random.randrange(personagem_inimigo[2])
                             if(calculo_do_dano>0):
-                                print("\nVoce causou significativos ", calculo_do_dano," pontos de dano ao inimigo!\n")
+                                print("\nVoce causou significativos "+str(calculo_do_dano)+" pontos de dano ao inimigo!\n")
                                 time.sleep(2)
                                 personagem_inimigo[6]=personagem_inimigo[6]-calculo_do_dano
                                 teste_de_sorte=random.randrange(100)
@@ -1247,7 +1240,7 @@ def batalha():
                                 time.sleep(3)
                             calculo_do_dano=2*personagem_inimigo[1]+random.randrange(personagem_inimigo[1])-personagem_jogador[2]-random.randrange(personagem_jogador[2])
                             if(calculo_do_dano>0):
-                                print("\nEnquanto o oponente te causou ", calculo_do_dano," pontos de dano!\n")
+                                print("\nEnquanto o oponente te causou "+str(calculo_do_dano)+" pontos de dano!\n")
                                 time.sleep(2)
                                 personagem_jogador[6]=personagem_jogador[6]-calculo_do_dano
                             else:
@@ -1260,7 +1253,7 @@ def batalha():
                             time.sleep(3)
                             calculo_do_dano=2*personagem_jogador[1]+random.randrange(personagem_jogador[1])-personagem_inimigo[2]-random.randrange(personagem_inimigo[2])
                             if(calculo_do_dano>0):
-                                print("\nVoce golpeou o inimigo ate lhe causar ", calculo_do_dano," pontos de dano!\n")
+                                print("\nVoce golpeou o inimigo ate lhe causar "+str(calculo_do_dano)+" pontos de dano!\n")
                                 time.sleep(2)
                                 personagem_inimigo[6]=personagem_inimigo[6]-calculo_do_dano
                             else:
@@ -1268,7 +1261,7 @@ def batalha():
                                 time.sleep(3)
                             calculo_do_dano=personagem_inimigo[1]+random.randrange(personagem_inimigo[1])-personagem_jogador[2]-random.randrange(personagem_jogador[2])
                             if(calculo_do_dano>0):
-                                print("\nJa o inimigo causou apenas ", calculo_do_dano," pontos de dano à voce!\n")
+                                print("\nJa o inimigo causou apenas "+str(calculo_do_dano)+" pontos de dano à voce!\n")
                                 time.sleep(2)
                                 personagem_jogador[6]=personagem_jogador[6]-calculo_do_dano
                             else:
@@ -1285,7 +1278,7 @@ def batalha():
                             time.sleep(2)
                             calculo_do_dano=personagem_jogador[1]+random.randrange(personagem_jogador[1])-personagem_inimigo[2]-random.randrange(personagem_inimigo[2])
                             if(calculo_do_dano>0):
-                                print("\nVoce infringiu ", calculo_do_dano," pontos de dano ao inimigo!\n")
+                                print("\nVoce infringiu "+str(calculo_do_dano)+" pontos de dano ao inimigo!\n")
                                 time.sleep(2)
                                 personagem_inimigo[6]=personagem_inimigo[6]-calculo_do_dano
                             else:
@@ -1293,7 +1286,7 @@ def batalha():
                                 time.sleep(3)
                             calculo_do_dano=2*personagem_inimigo[1]+random.randrange(personagem_inimigo[1])-personagem_jogador[2]-random.randrange(personagem_jogador[2])
                             if(calculo_do_dano>0):
-                                print("\nEnquanto o seu inimigo te agrediu violentamente, causando ", calculo_do_dano," pontos de dano à voce!\n")
+                                print("\nEnquanto o seu inimigo te agrediu violentamente, causando "+str(calculo_do_dano)+" pontos de dano à voce!\n")
                                 time.sleep(2)
                                 personagem_jogador[6]=personagem_jogador[6]-calculo_do_dano
                             else:
@@ -1304,7 +1297,7 @@ def batalha():
                             time.sleep(4)
                             calculo_do_dano=personagem_jogador[1]+random.randrange(personagem_jogador[1])-personagem_inimigo[2]-random.randrange(personagem_inimigo[2])
                             if(calculo_do_dano>0):
-                                print("\nVoce feriu seu oponente em ", calculo_do_dano," pontos de dano!\n")
+                                print("\nVoce feriu seu oponente em "+str(calculo_do_dano)+" pontos de dano!\n")
                                 time.sleep(2)
                                 personagem_inimigo[6]=personagem_inimigo[6]-calculo_do_dano
                             else:
@@ -1312,7 +1305,7 @@ def batalha():
                                 time.sleep(3)
                             calculo_do_dano=personagem_inimigo[1]+random.randrange(personagem_inimigo[1])-personagem_jogador[2]-random.randrange(personagem_jogador[2])
                             if(calculo_do_dano>0):
-                                print("\nSeu inimigo te golpeou causando ", calculo_do_dano," pontos de dano!\n")
+                                print("\nSeu inimigo te golpeou causando "+str(calculo_do_dano)+" pontos de dano!\n")
                                 time.sleep(2)
                                 personagem_jogador[6]=personagem_jogador[6]-calculo_do_dano
                             else:
@@ -1320,7 +1313,7 @@ def batalha():
                                 time.sleep(3)
             else:
                 if(acao_do_personagem=="fugir" or acao_do_personagem=="f" or acao_do_personagem=="fugri" or acao_do_personagem=="fguir" or acao_do_personagem=="fugeir" or acao_do_personagem=="furig" or acao_do_personagem=="fuer" or acao_do_personagem=="ffugri" or acao_do_personagem=="gfuir" or acao_do_personagem=="fiur" or acao_do_personagem=="fugi" or acao_do_personagem=="fugr" or acao_do_personagem=="fug" or acao_do_personagem=="fgir" or acao_do_personagem=="fir" or acao_do_personagem=="fgr" or acao_do_personagem=="ugir" or acao_do_personagem=="gir" or acao_do_personagem=="figr" or acao_do_personagem=="fu"):
-                    print("\nPostura de Batalha:\n", personagem_jogador[0], "-> fugitiva\n", personagem_inimigo[0], "-> ofensiva\n")
+                    print("\nPostura de Batalha:\n"+str(personagem_jogador[0])+"\n----------> fugitiva\n\n"+str(personagem_inimigo[0])+"\n-----------> ofensiva\n\n")
                     time.sleep(2)
                     print("\nVoce tenta aumentar o ritmo de esquiva...\n")
                     time.sleep(2)
@@ -1374,7 +1367,7 @@ def batalha():
                                         print("\nVoce barrou o ataque do inimigo!\n")
                                         time.sleep(2)
                                     else:
-                                        print("\nMesmo se defendendo, o impacto do ataque inimigo te causou ", calculo_do_dano, " pontos de dano!\n")
+                                        print("\nMesmo se defendendo, o impacto do ataque inimigo te causou "+str(calculo_do_dano)+" pontos de dano!\n")
                                         time.sleep(3)
                                         personagem_jogador[6] = personagem_jogador[6]-calculo_do_dano
                             else:
@@ -1383,7 +1376,7 @@ def batalha():
                                     time.sleep(2)
                                     calculo_do_dano = personagem_inimigo[1]+(random.randrange(personagem_inimigo[1]))-personagem_jogador[2]-(random.randrange(personagem_jogador[2]))
                                     if (calculo_do_dano>0):
-                                        print("\nVoce foi atacado diretamente, sofrendo ", calculo_do_dano," pontos de dano!\n")
+                                        print("\nVoce foi atacado diretamente, sofrendo "+str(calculo_do_dano)+" pontos de dano!\n")
                                         time.sleep(3)
                                         personagem_jogador[6]=personagem_jogador[6]-calculo_do_dano
                                     else:
@@ -1396,7 +1389,7 @@ def batalha():
                                     time.sleep(2)
                                     calculo_do_dano = 2*personagem_inimigo[1]+(random.randrange(personagem_inimigo[1]))-personagem_jogador[2]-(random.randrange(personagem_jogador[2]))
                                     if (calculo_do_dano>0):
-                                        print("\nO inimigo aproveitou a abertura na sua defesa e te atacou violentamente, causando ", calculo_do_dano," pontos de dano.\n")
+                                        print("\nO inimigo aproveitou a abertura na sua defesa e te atacou violentamente, causando "+str(calculo_do_dano)+" pontos de dano.\n")
                                         time.sleep(3)
                                         personagem_jogador[6]=personagem_jogador[6]-calculo_do_dano
                                         teste_de_sorte=random.randrange(100)
@@ -1419,7 +1412,7 @@ def batalha():
     print("\nFim da Batalha!\n")
     time.sleep(2)
     if(personagem_inimigo[6]<=0):
-        print("\n",personagem_inimigo[0]," foi derrotado!\n")
+        print("\n"+str(personagem_inimigo[0])+" foi derrotado!\n")
         time.sleep(4)
     else:
         if(personagem_jogador[6]<=0):
@@ -1501,10 +1494,10 @@ def seuPredioQuartoAndar():
             print("Agora voce esta no terceiro andar.")
             time.sleep(2)
             break
-        print("\n#", "-"*30,"#\n\nLista de Acões\n\nCenario:", variavel_lugar,"\n\nVoce pode:\n\nchecar os quartos\n")
+        print("\n#"+"-"*30+"#\n\nLista de Acões\n\nCenario:"+str(variavel_lugar)+"\n\nVoce pode:\n\nchecar os quartos\n")
         print("\nver ficha do personagem\nver mochila\ndescer as escadas\n\nsalvar o jogo\n")
-        print("\n#", "-"*30,"#\n")
-        print("\nE agora, ", personagem_jogador[0],", o que voce vai fazer?\n")
+        print("\n#"+ "-"*30+"#\n")
+        print("\nE agora, "+str(personagem_jogador[0])+", o que voce vai fazer?\n")
         acao_do_personagem = raw_input("-")
         acao_do_personagem = acao_do_personagem.lower()
         if(acao_do_personagem=="checar os quartos" or acao_do_personagem=="checar quartos" or acao_do_personagem=="checar" or acao_do_personagem=="quartos" or acao_do_personagem=="checaros quartos" or acao_do_personagem=="checar osquartos" or acao_do_personagem=="checarosquartos" or acao_do_personagem=="checa os quartos" or acao_do_personagem=="checa os quarto" or acao_do_personagem=="checa o quarto" or acao_do_personagem=="checa o quartos" or acao_do_personagem=="checar os quarto" or acao_do_personagem=="checar o quarto" or acao_do_personagem=="bater na porta de um dos quartos" or acao_do_personagem=="checar um dos quartos" or acao_do_personagem=="bater na porta dos quartos" or acao_do_personagem=="bater a porta dos quartos" or acao_do_personagem=="bater quartos" or acao_do_personagem=="bater"):
@@ -1532,10 +1525,10 @@ def seuPredioQuartoAndar():
                         time.sleep(2)
                         print(' - Como nao pegamos leve, nos apresentamos um "cartao de visita" ao oponente, para ele saber se e capaz de sobreviver.')
                         time.sleep(2)
-                        personagem_inimigo = [ "Estudante Briguento \n do Quarto 40", 30, 15, 5, 5, 360, 360]
+                        personagem_inimigo = [ "Estudante Briguento do Quarto 40", 30, 15, 5, 5, 360, 360]
                         print(" - Aqui esta o meu:")
                         time.sleep(1)
-                        print("\n", personagem_inimigo[0],":",personagem_inimigo[5],"pontos de vida.\nAtaque : ",personagem_inimigo[1],".     Defesa : ", personagem_inimigo[2],".\n")
+                        print("\n"+str(personagem_inimigo[0])+":"+str(personagem_inimigo[5])+"pontos de vida.\nAtaque : "+str(personagem_inimigo[1])+".     Defesa : "+str(personagem_inimigo[2])+".\n")
                         time.sleep(2)
                         print('\nDeseja prosseguir com a luta?("sim" ou "nao")\n')
                         time.sleep(1)
@@ -1600,10 +1593,10 @@ def seuPredioQuartoAndar():
                         if(situacao[0]==7):
                             print(' - SERÁ que voce esta PRONTO para brigar comigo, fracote??? Hahahahaha!')
                             time.sleep(2)
-                            personagem_inimigo = [ "Estudante Briguento \n do Quarto 41", 50, 30, 10, 10, 550, 550]
+                            personagem_inimigo = [ "Estudante Briguento do Quarto 41", 50, 30, 10, 10, 550, 550]
                             print(" - Aqui esta o meu cartao:")
                             time.sleep(1)
-                            print("\n", personagem_inimigo[0],":",personagem_inimigo[5],"pontos de vida.\nAtaque : ",personagem_inimigo[1],".     Defesa : ", personagem_inimigo[2],".\n")
+                            print("\n"+str(personagem_inimigo[0])+":"+str(personagem_inimigo[5])+"pontos de vida.\nAtaque : "+str(personagem_inimigo[1])+".     Defesa : "+str(personagem_inimigo[2])+".\n")
                             time.sleep(2)
                             print('\nDeseja prosseguir com a luta?("sim" ou "nao")\n')
                             time.sleep(1)
@@ -1677,10 +1670,10 @@ def seuPredioQuartoAndar():
                             if(situacao[0]==8):
                                 print(' - Humhumhumhum... Voce vai perder...')
                                 time.sleep(2)
-                                personagem_inimigo = [ "Estudante Briguento \n do Quarto 42", 90, 70, 15, 15, 790, 790]
+                                personagem_inimigo = [ "Estudante Briguento do Quarto 42", 90, 70, 15, 15, 790, 790]
                                 print(" - Veja:")
                                 time.sleep(1)
-                                print("\n", personagem_inimigo[0],":",personagem_inimigo[5],"pontos de vida.\nAtaque : ",personagem_inimigo[1],".     Defesa : ", personagem_inimigo[2],".\n")
+                                print("\n"+str(personagem_inimigo[0])+":"+str(personagem_inimigo[5])+"pontos de vida.\nAtaque : "+str(personagem_inimigo[1])+".     Defesa : "+str(personagem_inimigo[2])+".\n")
                                 time.sleep(2)
                                 print('\nDeseja prosseguir com a luta?("sim" ou "nao")\n')
                                 time.sleep(1)
@@ -1752,10 +1745,10 @@ def seuPredioQuartoAndar():
                                 if(situacao[0]==9):
                                     print(' - Sua presenca e insignificante.')
                                     time.sleep(2)
-                                    personagem_inimigo = [ "Estudante Briguento \n do Quarto 43", 180, 100, 20, 20, 1500, 1500]
+                                    personagem_inimigo = [ "Estudante Briguento do Quarto 43", 180, 100, 20, 20, 1500, 1500]
                                     print(" - Mas vou te dar a honra de apreciar o meu cartao:")
                                     time.sleep(1)
-                                    print("\n", personagem_inimigo[0],":",personagem_inimigo[5],"pontos de vida.\nAtaque : ",personagem_inimigo[1],".     Defesa : ", personagem_inimigo[2],".\n")
+                                    print("\n"+str(personagem_inimigo[0])+":"+str(personagem_inimigo[5])+"pontos de vida.\nAtaque : "+str(personagem_inimigo[1])+".     Defesa : "+str(personagem_inimigo[2])+".\n")
                                     time.sleep(2)
                                     print('\nDeseja prosseguir com a luta?("sim" ou "nao")\n')
                                     time.sleep(1)
@@ -1833,10 +1826,10 @@ def seuPredioQuartoAndar():
                                         time.sleep(2)
                                         print(" - Voce e um briguento e tanto!")
                                         time.sleep(2)
-                                        personagem_inimigo = [ "Estudante Briguento \n do Quarto 44", 300, 200, 40, 40, 3200, 3200]
+                                        personagem_inimigo = [ "Estudante Briguento do Quarto 44", 300, 200, 40, 40, 3200, 3200]
                                         print(" - Vamos logo ao que interessa:")
                                         time.sleep(1)
-                                        print("\n", personagem_inimigo[0],":",personagem_inimigo[5],"pontos de vida.\nAtaque : ",personagem_inimigo[1],".     Defesa : ", personagem_inimigo[2],".\n")
+                                        print("\n"+str(personagem_inimigo[0])+":"+str(personagem_inimigo[5])+"pontos de vida.\nAtaque : "+str(personagem_inimigo[1])+".     Defesa : "+str(personagem_inimigo[2])+".\n")
                                         time.sleep(2)
                                         print('\nDeseja prosseguir com a luta?("sim" ou "nao")\n')
                                         time.sleep(1)
@@ -1980,7 +1973,7 @@ def seuPredioTerceiroAndar():
                     time.sleep(1)
                 else:
                     if(situacao[0]>=3 and situacao[0]<6):
-                        print("Voce ja venceu",situacao[0]-1,"lutas do desafio dos estudantes briguentos!")
+                        print("Voce ja venceu"+str(situacao[0]-1)+"lutas do desafio dos estudantes briguentos!")
                         time.sleep(1)
                     else:
                         if(situacao[0]<11):
@@ -2004,10 +1997,10 @@ def seuPredioTerceiroAndar():
                 time.sleep(1)
                 variavel_lugar = "seu predio, 2º andar"
                 break
-        print("\n#", "-"*30,"#\n\nLista de Acões\n\nCenario:", variavel_lugar,"\n\nVoce pode:\n\nchecar os quartos: 30, 31, 32, 33 e 34\n")
+        print("\n#"+"-"*30+"#\n\nLista de Acões\n\nCenario:"+str( variavel_lugar)+"\n\nVoce pode:\n\nchecar os quartos: 30, 31, 32, 33 e 34\n")
         print("\nver ficha do personagem\nver mochila\ndescer as escadas\n\nsalvar o jogo\n")
-        print("\n#", "-"*30,"#\n")
-        print("\nE agora, ", personagem_jogador[0],", o que voce vai fazer?\n")
+        print("\n#"+"-"*30+"#\n")
+        print("\nE agora, "+str(personagem_jogador[0])+", o que voce vai fazer?\n")
         acao_do_personagem = raw_input("-")
         acao_do_personagem = acao_do_personagem.lower()
         if(acao_do_personagem=="checar os quartos" or acao_do_personagem=="checar quartos" or acao_do_personagem=="checar" or acao_do_personagem=="quartos" or acao_do_personagem=="checaros quartos" or acao_do_personagem=="checar osquartos" or acao_do_personagem=="checarosquartos" or acao_do_personagem=="checa os quartos" or acao_do_personagem=="checa os quarto" or acao_do_personagem=="checa o quarto" or acao_do_personagem=="checa o quartos" or acao_do_personagem=="checar os quarto" or acao_do_personagem=="checar o quarto" or acao_do_personagem=="bater na porta de um dos quartos" or acao_do_personagem=="checar um dos quartos" or acao_do_personagem=="bater na porta dos quartos" or acao_do_personagem=="bater a porta dos quartos" or acao_do_personagem=="bater quartos" or acao_do_personagem=="bater"):
@@ -2034,7 +2027,7 @@ def seuPredioTerceiroAndar():
                         if(situacao[5] == 0):
                             print("Eu sou o seu oponente! Venca todos deste andar para subir!")
                             time.sleep(2)
-                            personagem_inimigo = [ "Estudante Briguento \n do Quarto 30", 5, 12, 2, 2, 110, 110]
+                            personagem_inimigo = [ "Estudante Briguento do Quarto 30", 5, 12, 2, 2, 110, 110]
                             batalha()
                             if(personagem_jogador[6]<=0):
                                 personagem_jogador[6]=1
@@ -2068,7 +2061,7 @@ def seuPredioTerceiroAndar():
                                                     time.sleep(2)
                                                 else:
                                                     if(situacao[0]>=3 and situacao[0]<6):
-                                                        print("Voce ja venceu",situacao[0]-1,"lutas do desafio dos estudantes briguentos!")
+                                                        print("Voce ja venceu"+str(situacao[0]-1)+"lutas do desafio dos estudantes briguentos!")
                                                         time.sleep(2)
                                             break
                                 else:
@@ -2084,7 +2077,7 @@ def seuPredioTerceiroAndar():
                                             time.sleep(2)
                                         else:
                                             if(situacao[0]>=3 and situacao[0]<6):
-                                                print("Voce ja venceu",situacao[0]-1,"lutas do desafio dos estudantes briguentos!")
+                                                print("Voce ja venceu"+str(situacao[0]-1)+"lutas do desafio dos estudantes briguentos!")
                                                 time.sleep(2)
                         else:
                             print("Voce ja lutou aqui!")
@@ -2094,7 +2087,7 @@ def seuPredioTerceiroAndar():
                             if(situacao[6] == 0):
                                 print(" - Voce e o desafiante??? Parece um fracote!")
                                 time.sleep(2)
-                                personagem_inimigo = [ "Estudante Briguento \n do Quarto 31", 13, 4, 5, 1, 130, 130]
+                                personagem_inimigo = [ "Estudante Briguento do Quarto 31", 13, 4, 5, 1, 130, 130]
                                 batalha()
                                 if(personagem_jogador[6]<=0):
                                     personagem_jogador[6]=1
@@ -2128,7 +2121,7 @@ def seuPredioTerceiroAndar():
                                                         time.sleep(2)
                                                     else:
                                                         if(situacao[0]>=3 and situacao[0]<6):
-                                                            print("Voce ja venceu",situacao[0]-1,"lutas do desafio dos estudantes briguentos!")
+                                                            print("Voce ja venceu"+str(situacao[0]-1)+"lutas do desafio dos estudantes briguentos!")
                                                             time.sleep(2)
                                                 break
                                     else:
@@ -2144,7 +2137,7 @@ def seuPredioTerceiroAndar():
                                                 time.sleep(2)
                                             else:
                                                 if(situacao[0]>=3 and situacao[0]<6):
-                                                    print("Voce ja venceu",situacao[0]-1,"lutas do desafio dos estudantes briguentos!")
+                                                    print("Voce ja venceu"+str(situacao[0]-1)+"lutas do desafio dos estudantes briguentos!")
                                                     time.sleep(2)
                             else:
                                 print("Voce ja lutou aqui!")
@@ -2154,7 +2147,7 @@ def seuPredioTerceiroAndar():
                                 if(situacao[7]==0):
                                     print(" - Cai dentro, rapa!")
                                     time.sleep(2)
-                                    personagem_inimigo = [ "Estudante Briguento \n do Quarto 32", 8, 8, 2, 1, 100, 100]
+                                    personagem_inimigo = [ "Estudante Briguento do Quarto 32", 8, 8, 2, 1, 100, 100]
                                     batalha()
                                     if(personagem_jogador[6]<=0):
                                         personagem_jogador[6]=1
@@ -2188,7 +2181,7 @@ def seuPredioTerceiroAndar():
                                                             time.sleep(2)
                                                         else:
                                                             if(situacao[0]>=3 and situacao[0]<6):
-                                                                print("Voce ja venceu",situacao[0]-1,"lutas do desafio dos estudantes briguentos!")
+                                                                print("Voce ja venceu"+str(situacao[0]-1)+"lutas do desafio dos estudantes briguentos!")
                                                                 time.sleep(2)
                                                     break
                                         else:
@@ -2204,7 +2197,7 @@ def seuPredioTerceiroAndar():
                                                     time.sleep(2)
                                                 else:
                                                     if(situacao[0]>=3 and situacao[0]<6):
-                                                        print("Voce ja venceu",situacao[0]-1,"lutas do desafio dos estudantes briguentos!")
+                                                        print("Voce ja venceu"+str(situacao[0]-1)+"lutas do desafio dos estudantes briguentos!")
                                                         time.sleep(2)
                                 else:
                                     print("Voce ja lutou aqui!")
@@ -2214,7 +2207,7 @@ def seuPredioTerceiroAndar():
                                     if(situacao[8]==0):
                                         print(" - ÔÔô, CIDADÃO!")
                                         time.sleep(2)
-                                        personagem_inimigo = [ "Estudante Briguento \n do Quarto 33", 10, 8, 5, 5, 120, 120]
+                                        personagem_inimigo = [ "Estudante Briguento do Quarto 33", 10, 8, 5, 5, 120, 120]
                                         batalha()
                                         if(personagem_jogador[6]<=0):
                                             personagem_jogador[6]=1
@@ -2248,7 +2241,7 @@ def seuPredioTerceiroAndar():
                                                                 time.sleep(2)
                                                             else:
                                                                 if(situacao[0]>=3 and situacao[0]<6):
-                                                                    print("Voce ja venceu",situacao[0]-1,"lutas do desafio dos estudantes briguentos!")
+                                                                    print("Voce ja venceu"+str(situacao[0]-1)+"lutas do desafio dos estudantes briguentos!")
                                                                     time.sleep(2)
                                                         break
                                             else:
@@ -2264,7 +2257,7 @@ def seuPredioTerceiroAndar():
                                                         time.sleep(2)
                                                     else:
                                                         if(situacao[0]>=3 and situacao[0]<6):
-                                                            print("Voce ja venceu",situacao[0]-1,"lutas do desafio dos estudantes briguentos!")
+                                                            print("Voce ja venceu"+str(situacao[0]-1)+"lutas do desafio dos estudantes briguentos!")
                                                             time.sleep(2)
                                     else:
                                         print("Voce ja lutou aqui!")
@@ -2274,7 +2267,7 @@ def seuPredioTerceiroAndar():
                                         if(situacao[9]==0):
                                             print(" - Qual e, velho? O negocio e descer o murro de ferro na cara do inimigo!")
                                             time.sleep(2)
-                                            personagem_inimigo = [ "Estudante Briguento \n do Quarto 34", 20, 20, 6, 6, 66.6, 66.6]
+                                            personagem_inimigo = [ "Estudante Briguento do Quarto 34", 20, 20, 6, 6, 66.6, 66.6]
                                             batalha()
                                             if(personagem_jogador[6]<=0):
                                                 personagem_jogador[6]=1
@@ -2308,7 +2301,7 @@ def seuPredioTerceiroAndar():
                                                                     time.sleep(2)
                                                                 else:
                                                                     if(situacao[0]>=3 and situacao[0]<6):
-                                                                        print("Voce ja venceu",situacao[0]-1,"lutas do desafio dos estudantes briguentos!")
+                                                                        print("Voce ja venceu"+str(situacao[0]-1)+"lutas do desafio dos estudantes briguentos!")
                                                                         time.sleep(2)
                                                             break
                                                 else:
@@ -2324,7 +2317,7 @@ def seuPredioTerceiroAndar():
                                                             time.sleep(2)
                                                         else:
                                                             if(situacao[0]>=3 and situacao[0]<6):
-                                                                print("Voce ja venceu",situacao[0]-1,"lutas do desafio dos estudantes briguentos!")
+                                                                print("Voce ja venceu"+str(situacao[0]-1)+"lutas do desafio dos estudantes briguentos!")
                                                                 time.sleep(2)
                                         else:
                                             print("Voce ja lutou aqui!")
@@ -2347,12 +2340,12 @@ def seuPredioSegundoAndar():
     variavel_lugar = "seu predio, 2º andar"
     while 1:
         if(personagem_jogador[6]<=0):break
-        print("\n#", "-"*30,"#\n\nLista de Acões\n\nCenario:", variavel_lugar,"\n\nVoce pode:\n\nchecar os quartos\n")
+        print("\n#"+"-"*30+"#\n\nLista de Acões\n\nCenario:"+str(variavel_lugar)+"\n\nVoce pode:\n\nchecar os quartos\n")
         if(situacao[2]==1):
             print("\narrombar o quarto 24")
         print("\nver ficha do personagem\nver mochila\nsubir as escadas\ndescer as escadas\n\nsalvar o jogo\n")
-        print("\n#", "-"*30,"#\n")
-        print("\nE agora, ", personagem_jogador[0],", o que voce vai fazer?\n")
+        print("\n#"+"-"*30+"#\n")
+        print("\nE agora, "+str(personagem_jogador[0])+", o que voce vai fazer?\n")
         acao_do_personagem = raw_input("-")
         acao_do_personagem = acao_do_personagem.lower()
         if(acao_do_personagem=="checar os quartos" or acao_do_personagem=="checar quartos" or acao_do_personagem=="checar" or acao_do_personagem=="quartos" or acao_do_personagem=="checaros quartos" or acao_do_personagem=="checar osquartos" or acao_do_personagem=="checarosquartos" or acao_do_personagem=="checa os quartos" or acao_do_personagem=="checa os quarto" or acao_do_personagem=="checa o quarto" or acao_do_personagem=="checa o quartos" or acao_do_personagem=="checar os quarto" or acao_do_personagem=="checar o quarto" or acao_do_personagem=="bater na porta de um dos quartos" or acao_do_personagem=="checar um dos quartos" or acao_do_personagem=="bater na porta dos quartos" or acao_do_personagem=="bater a porta dos quartos" or acao_do_personagem=="bater quartos" or acao_do_personagem=="bater"):
@@ -2911,7 +2904,7 @@ def seuPredioSegundoAndar():
                                                         else:
                                                             print("Entrada invalida... A situacao e tensa, mantenha a seriedade e responda corretamente.")
                                                             time.sleep(1)
-                                            if(situacao[4]==2):
+                                            if(situacao[2]==2):
                                                 matarAlguem()
                                             if(situacao[2]==3):
                                                 print("Voce ja fez o bastante por aqui... Melhor se afastar.")
@@ -2935,7 +2928,7 @@ def seuPredioPrimeiroAndar():
         variavel_lugar = "seu predio, 1º andar"
         print("Agora voce esta no corredor do primeiro andar do seu predio.")
         time.sleep(3)
-        print("\n#", "-"*30,"#\n", "\nLista de Acões\n\nCenario:", variavel_lugar,"\n\nVoce pode:\nolhar\n")
+        print("\n#"+"-"*30+"#\n"+"\nLista de Acões\n\nCenario:"+str(variavel_lugar)+"\n\nVoce pode:\nolhar\n")
         time.sleep(1)
         if (variavel_cenario[0] == "sim"):
             print("\ncheirar\nchecar os quartos\n")
@@ -2959,9 +2952,9 @@ def seuPredioPrimeiroAndar():
         if (objeto[0] == "sim"):
             print("\nabrir a porta dos fundos\n")
             time.sleep(1)
-        print("\nver ficha do personagem\nver mochila\nsubir as escadas\ndescer as escadas\n\nsalvar o jogo\n", "\n#", "-"*30,"#\n")
+        print("\nver ficha do personagem\nver mochila\nsubir as escadas\ndescer as escadas\n\nsalvar o jogo\n"+"\n#"+"-"*30+"#\n")
         time.sleep(2)
-        print("\nO que voce vai fazer, ", personagem_jogador[0], "?\n")
+        print("\nO que voce vai fazer, "+str(personagem_jogador[0])+"?\n")
         acao_do_personagem = raw_input("-")
         acao_do_personagem = acao_do_personagem.lower()
     while 1:
@@ -3275,8 +3268,8 @@ def seuPredioPrimeiroAndar():
                                                                             item_adicionado=lapis_apontado
                                                                             quantidade_adicionada=1
                                                                             adicionaItem()
-                                                                            personagem_jogador[7]=personagem_jogador[7]+10
                                                                             objeto[0]="pegou o dinheiro"
+                                                                            personagem_jogador[7]=personagem_jogador[7]+10
                                                                         else:
                                                                             if(objeto[0]=="pegou o dinheiro"):
                                                                                 print("Voce ve materiais de limpesa e uma mala aberta.")
@@ -3323,7 +3316,7 @@ def seuPredioPrimeiroAndar():
                                                                                 else:
                                                                                     print('\nEntrada Invalida!\n')
                                                                                     time.sleep(0.5)
-        print("\n#", "-"*30,"#\n", "\nLista de Acões\n\nCenario:", variavel_lugar,"\n\nVoce pode:\nolhar\n")
+        print("\n#"+"-"*30+"#\n"+"\nLista de Acões\n\nCenario:"+str(variavel_lugar)+"\n\nVoce pode:\nolhar\n")
         if (variavel_cenario[0] == "sim"):
             print("\ncheirar\nchecar os quartos\n")
             if (variavel_cenario[2] == "sim" and objeto[0] == "nao"):
@@ -3339,8 +3332,8 @@ def seuPredioPrimeiroAndar():
             print("\natacar o bebado\n")
         if (objeto[0] == "sim"):
             print("\nabrir a porta dos fundos\n")
-        print("\nver ficha do personagem\nver mochila\nsubir as escadas\ndescer as escadas\n\nsalvar o jogo\n", "\n#", "-"*30,"#\n")
-        print("\nO que voce fara agora, ", personagem_jogador[0],"?\n")
+        print("\nver ficha do personagem\nver mochila\nsubir as escadas\ndescer as escadas\n\nsalvar o jogo\n"+"\n#"+"-"*30+"#\n")
+        print("\nO que voce fara agora, "+str(personagem_jogador[0])+"?\n")
         acao_do_personagem = raw_input("-")
         acao_do_personagem = acao_do_personagem.lower()
 
@@ -3349,10 +3342,10 @@ def suaRua():
     global inventario_reserva,porcentagem_inflacao,bermuda_linho_regata,bermuda_linho_polo,calca_jeans_regata,calca_jeans_polo,desequipado_roupa,desequipado_capa,desequipado_luva,desequipado_maos,desequipado_calcado,espaco_vazio,pedaco_pizza,bolo_chocolate,pijama_inicial,uniforme_estudantil,malha_ninja,lapis_apontado,punhal_envelhecido,talheres_prata,jaqueta_imitacao,jaqueta_couro,agasalho_la,suplemento_alimenticio,lata_energetico,luva_la,luva_couro,soco_pvc,soco_latao,luva_spikes_alu,soco_alu,luva_spikes_aco,soco_aco,luva_spikes_ag,soco_ag,luva_spikes_au,soco_au,luva_spikes_titanio,soco_titanio,anel_forca1,anel_forca2,anel_forca3,anel_resistencia1,anel_resistencia2,anel_resistencia3,anel_consistencia1,anel_consistencia2,anel_consistencia3,anel_da_imortalidade,anel_da_divindade,chinelo_inicial,papetes_masculinas,tenis_velho,tenis_simplorio,sapato_simplorio,tenis_comum,tenis_trilha,tenis_caminhada,tenis_corrida,tenis_ZX5000,item_adicionado,quantidade_adicionada,equipado_roupa,equipado_capa,equipado_luva,equipado_anel,equipado_maos,equipado_calcado,variavel_cenario,objeto,situacao,temporario,variavel_lugar,ponto_de_save,mostrar_save, personagem_jogador,personagem_reserva,personagem_inimigo,eegg,acao_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,variavel_para_comparar,contador_de_batalha,contador_de_rodadas,mala,loja_venda
     while 1:
         if(personagem_jogador[6]<=0):break
-        print("\n#", "-"*30,"#\n", "\nLista de Acões\n\nCenario:", variavel_lugar,"\n\nVoce pode:\nolhar\n")
+        print("\n#", "-"*30,"#\n", "\nLista de Acões\n\nCenario:"+str(variavel_lugar)+"\n\nVoce pode:\nolhar\n")
         print("\nentrar na loja\n\nentrar na pizzaria\n")
-        print("\nentrar no predio\n\nver ficha do personagem\nver mochila\n\npegar ônibus\nir à pe\n\nsalvar o jogo\n", "\n#", "-"*30,"#\n")
-        print("\nQual sera a sua atitude, ", personagem_jogador[0],"?\n")
+        print("\nentrar no predio\n\nver ficha do personagem\nver mochila\n\npegar ônibus\nir à pe\n\nsalvar o jogo\n"+"\n#"+"-"*30+"#\n")
+        print("\nQual sera a sua atitude, "+str(personagem_jogador[0])+"?\n")
         acao_do_personagem = raw_input("-")
         acao_do_personagem = acao_do_personagem.lower()
         if(acao_do_personagem == "ver ficha do personagem" or acao_do_personagem == "ver a ficha do personagem" or acao_do_personagem == "ver a ficha de personagem" or acao_do_personagem == "ficha" or acao_do_personagem=="ficha do personagem" or acao_do_personagem=="ficha de personagem" or acao_do_personagem=="ver ficha de personagem" or acao_do_personagem=="ver ficha" or acao_do_personagem == "olhar ficha do personagem" or acao_do_personagem == "ver minha ficha" or acao_do_personagem=="minha ficha" or acao_do_personagem=="ficha personagem" or acao_do_personagem=="olhar ficha de personagem" or acao_do_personagem=="olhar ficha"):
@@ -3463,43 +3456,43 @@ while 1:
                     time.sleep(1)
                     arq = open('\espaco_save00.py', 'rb')
                     mostrar_save = pickle.load(arq)
-                    print("\nEspaco  0:     Lugar:",mostrar_save[5], "\n          Nome:",mostrar_save[1],"  Vida:", mostrar_save[3],"\n          Ataque:",mostrar_save[7],"  Defesa:",mostrar_save[9],"  Agilidade:",mostrar_save[11])
+                    print("\nEspaco  0:     Lugar:"+str(mostrar_save[5])+"\n          Nome:"+str(mostrar_save[1])+"  Vida:"+str( mostrar_save[3])+"\n          Ataque:"+str(mostrar_save[7])+"  Defesa:"+str(mostrar_save[9])+"  Agilidade:"+str(mostrar_save[11])
                     arq.close
                     arq = open('\espaco_save01.py', 'rb')
                     mostrar_save = pickle.load(arq)
-                    print("\nEspaco  1:     Lugar:",mostrar_save[5], "\n          Nome:",mostrar_save[1],"  Vida:", mostrar_save[3],"\n          Ataque:",mostrar_save[7],"  Defesa:",mostrar_save[9],"  Agilidade:",mostrar_save[11])
+                    print("\nEspaco  1:     Lugar:"+str(mostrar_save[5])+ "\n          Nome:"+str(mostrar_save[1])+"  Vida:"+str( mostrar_save[3])+"\n          Ataque:"+str(mostrar_save[7])+"  Defesa:"+str(mostrar_save[9])+"  Agilidade:"+str(mostrar_save[11])
                     arq.close
                     arq = open('\espaco_save02.py', 'rb')
                     mostrar_save = pickle.load(arq)
-                    print("\nEspaco  2:     Lugar:",mostrar_save[5], "\n          Nome:",mostrar_save[1],"  Vida:", mostrar_save[3],"\n          Ataque:",mostrar_save[7],"  Defesa:",mostrar_save[9],"  Agilidade:",mostrar_save[11])
+                    print("\nEspaco  2:     Lugar:"+str(mostrar_save[5])+ "\n          Nome:"+str(mostrar_save[1])+"  Vida:"+str( mostrar_save[3])+"\n          Ataque:"+str(mostrar_save[7])+"  Defesa:"+str(mostrar_save[9])+"  Agilidade:"+str(mostrar_save[11])
                     arq.close
                     arq = open('\espaco_save03.py', 'rb')
                     mostrar_save = pickle.load(arq)
-                    print("\nEspaco  3:     Lugar:",mostrar_save[5], "\n          Nome:",mostrar_save[1],"  Vida:", mostrar_save[3],"\n          Ataque:",mostrar_save[7],"  Defesa:",mostrar_save[9],"  Agilidade:",mostrar_save[11])
+                    print("\nEspaco  3:     Lugar:"+str(mostrar_save[5])+ "\n          Nome:"+str(mostrar_save[1])+"  Vida:"+str( mostrar_save[3])+"\n          Ataque:"+str(mostrar_save[7])+"  Defesa:"+str(mostrar_save[9])+"  Agilidade:"+str(mostrar_save[11])
                     arq.close
                     arq = open('\espaco_save04.py', 'rb')
                     mostrar_save = pickle.load(arq)
-                    print("\nEspaco  4:     Lugar:",mostrar_save[5], "\n          Nome:",mostrar_save[1],"  Vida:", mostrar_save[3],"\n          Ataque:",mostrar_save[7],"  Defesa:",mostrar_save[9],"  Agilidade:",mostrar_save[11])
+                    print("\nEspaco  4:     Lugar:"+str(mostrar_save[5])+ "\n          Nome:"+str(mostrar_save[1])+"  Vida:"+str( mostrar_save[3])+"\n          Ataque:"+str(mostrar_save[7])+"  Defesa:"+str(mostrar_save[9])+"  Agilidade:"+str(mostrar_save[11])
                     arq.close
                     arq = open('\espaco_save05.py', 'rb')
                     mostrar_save = pickle.load(arq)
-                    print("\nEspaco  5:     Lugar:",mostrar_save[5], "\n          Nome:",mostrar_save[1],"  Vida:", mostrar_save[3],"\n          Ataque:",mostrar_save[7],"  Defesa:",mostrar_save[9],"  Agilidade:",mostrar_save[11])
+                    print("\nEspaco  5:     Lugar:"+str(mostrar_save[5])+ "\n          Nome:"+str(mostrar_save[1])+"  Vida:"+str( mostrar_save[3])+"\n          Ataque:"+str(mostrar_save[7])+"  Defesa:"+str(mostrar_save[9])+"  Agilidade:"+str(mostrar_save[11])
                     arq.close
                     arq = open('\espaco_save06.py', 'rb')
                     mostrar_save = pickle.load(arq)
-                    print("\nEspaco  6:     Lugar:",mostrar_save[5], "\n          Nome:",mostrar_save[1],"  Vida:", mostrar_save[3],"\n          Ataque:",mostrar_save[7],"  Defesa:",mostrar_save[9],"  Agilidade:",mostrar_save[11])
+                    print("\nEspaco  6:     Lugar:"+str(mostrar_save[5])+ "\n          Nome:"+str(mostrar_save[1])+"  Vida:"+str( mostrar_save[3])+"\n          Ataque:"+str(mostrar_save[7])+"  Defesa:"+str(mostrar_save[9])+"  Agilidade:"+str(mostrar_save[11])
                     arq.close
                     arq = open('\espaco_save07.py', 'rb')
                     mostrar_save = pickle.load(arq)
-                    print("\nEspaco  7:     Lugar:",mostrar_save[5], "\n          Nome:",mostrar_save[1],"  Vida:", mostrar_save[3],"\n          Ataque:",mostrar_save[7],"  Defesa:",mostrar_save[9],"  Agilidade:",mostrar_save[11])
+                    print("\nEspaco  7:     Lugar:"+str(mostrar_save[5])+ "\n          Nome:"+str(mostrar_save[1])+"  Vida:"+str( mostrar_save[3])+"\n          Ataque:"+str(mostrar_save[7])+"  Defesa:"+str(mostrar_save[9])+"  Agilidade:"+str(mostrar_save[11])
                     arq.close
                     arq = open('\espaco_save08.py', 'rb')
                     mostrar_save = pickle.load(arq)
-                    print("\nEspaco  8:     Lugar:",mostrar_save[5], "\n          Nome:",mostrar_save[1],"  Vida:", mostrar_save[3],"\n          Ataque:",mostrar_save[7],"  Defesa:",mostrar_save[9],"  Agilidade:",mostrar_save[11])
+                    print("\nEspaco  8:     Lugar:"+str(mostrar_save[5])+ "\n          Nome:"+str(mostrar_save[1])+"  Vida:"+str( mostrar_save[3])+"\n          Ataque:"+str(mostrar_save[7])+"  Defesa:"+str(mostrar_save[9])+"  Agilidade:"+str(mostrar_save[11])
                     arq.close
                     arq = open('\espaco_save09.py', 'rb')
                     mostrar_save = pickle.load(arq)
-                    print("\nEspaco  9:     Lugar:",mostrar_save[5], "\n          Nome:",mostrar_save[1],"  Vida:", mostrar_save[3],"\n          Ataque:",mostrar_save[7],"  Defesa:",mostrar_save[9],"  Agilidade:",mostrar_save[11])
+                    print("\nEspaco  9:     Lugar:"+str(mostrar_save[5])+ "\n          Nome:"+str(mostrar_save[1])+"  Vida:"+str( mostrar_save[3])+"\n          Ataque:"+str(mostrar_save[7])+"  Defesa:"+str(mostrar_save[9])+"  Agilidade:"+str(mostrar_save[11])
                     arq.close
                     while 1:
                         print("\n(Digite um número entre 0 e 9)")
@@ -3574,7 +3567,7 @@ while 1:
                     break
                 else:
                     if(acao_do_personagem=="limpar" or acao_do_personagem=="zerar" or acao_do_personagem=="limpar saves" or acao_do_personagem=="criar saves" or acao_do_personagem=="zerar saves" or acao_do_personagem=="resetar saves" or acao_do_personagem=="resetar" or acao_do_personagem=="criar/zerar saves"):
-                        mostrar_save = ("  Nome:", personagem_jogador[0], "  Vida:", personagem_jogador[5],"  Lugar:", variavel_lugar, "  Ataque:", personagem_jogador[1], "  Defesa:", personagem_jogador[2],"  Agilidade:", personagem_jogador[3])
+                        mostrar_save = ("  Nome:"+str( personagem_jogador[0])+ "  Vida:"+str( personagem_jogador[5])+"  Lugar:"+str( variavel_lugar)+ "  Ataque:"+str( personagem_jogador[1])+ "  Defesa:"+str( personagem_jogador[2])+"  Agilidade:"+str( personagem_jogador[3]))
                         i=0
                         while 1:
                             if(i==0):
@@ -3636,7 +3629,7 @@ while 1:
                             pickle.dump(personagem_inimigo, arq)
                             pickle.dump(mala, arq)
                             arq.close
-                            print("Save", i, "foi criado!")
+                            print("Save"+str(i)+"foi criado!")
                             i=i+1
                         if(i==10):break
                     else:
@@ -3740,7 +3733,7 @@ while 1:
                     if(acao_do_personagem=="sim" or acao_do_personagem=="s" or acao_do_personagem=="si" or acao_do_personagem=="sm" or acao_do_personagem=="im" or acao_do_personagem=="ssim"):
                         acao_do_personagem="sim"
             if(objeto[0]=="ganha presente"):
-                print("\nÓtimo, ",personagem_jogador[0],".")
+                print("\nÓtimo, "+str(personagem_jogador[0])+".")
                 time.sleep(1)
                 print("Acho que comecamos com o pe direito! Fico feliz que voce tenha me escutado como um bom garoto!")
                 time.sleep(2)
@@ -3757,7 +3750,7 @@ while 1:
             time.sleep(2)
             print("voce ainda esta de pijama e atrasado para a aula - nao que voce se importe muito com isso.")
             time.sleep(3)
-            print("\n#"+"-"*30+"#\n\nLista de Acões\n\nCenario:"+ variavel_lugar)
+            print("\n#"+"-"*30+"#\n\nLista de Acões\n\nCenario:"+str(variavel_lugar))
             time.sleep(2)
             print("\n\nVoce pode:\n\nvestir\narrumar o quarto\nolhar\n")
             time.sleep(2)
@@ -3767,7 +3760,7 @@ while 1:
             print("\nver ficha do personagem\nver mochila\nsair do quarto\n")
             time.sleep(1)
             print("\n#"+ "-"*30+"#\n")
-            print("\nO que voce vai fazer "+ personagem_jogador[0]+"?\n")
+            print("\nO que voce vai fazer, "+str(personagem_jogador[0])+"?\n")
             acao_do_personagem = raw_input("-")
             acao_do_personagem = acao_do_personagem.lower()
             while 1:
@@ -3865,7 +3858,7 @@ while 1:
                                                 time.sleep(2)
                                                 print("O que? Voce acha que eu fui muito grosso?")
                                                 time.sleep(1)
-                                                print("Okay, "+ personagem_jogador[0]+", vamos la...")
+                                                print("Okay, "+str(personagem_jogador[0])+", vamos la...")
                                                 time.sleep(2.5)
                                                 print("Ha uma diferenca muito grande entre olhar A janela e olhar PELA janela!")
                                                 time.sleep(3)
@@ -3876,7 +3869,7 @@ while 1:
                                                 if (eegg == 2):
                                                     print("Digitando errado MAIS UMA VEZ?!")
                                                     time.sleep(0.5)
-                                                    print("Okay, "+ personagem_jogador[0]+", voce ja esta passando dos limites da burrice...")
+                                                    print("Okay, "+str(personagem_jogador[0])+", voce ja esta passando dos limites da burrice...")
                                                     time.sleep(1)
                                                     eegg = 3
                                                 else:
@@ -4016,7 +4009,7 @@ while 1:
                                                                 inventarioPersonagem()
                                                             else:
                                                                 print('\nEntrada Invalida!\n')
-                print("\n#"+ "-"*30+"#\n\nLista de Acões\n\nCenario:"+ variavel_lugar)
+                print("\n#"+ "-"*30+"#\n\nLista de Acões\n\nCenario:"+str(variavel_lugar))
                 time.sleep(0.23)
                 print("\n\nVoce pode:\n\nvestir\narrumar o quarto\nolhar\n")
                 time.sleep(0.23)
@@ -4029,7 +4022,7 @@ while 1:
                     print("\nVoce nao deve:\nolhar a janela\n")
                     time.sleep(0.23)
                 print("\n#"+ "-"*30+"#\n")
-                print("\nE agora, "+ personagem_jogador[0]+", o que voce vai fazer?\n")
+                print("\nE agora, "+str(personagem_jogador[0])+", o que voce vai fazer?\n")
                 acao_do_personagem = raw_input("-")
                 acao_do_personagem = acao_do_personagem.lower()
             if(personagem_jogador[6]<=0):break
@@ -4275,7 +4268,7 @@ while 1:
 ##########--------------------------------------------------FIM DO JOGO--------------------------------------------------##########
         break
     if(personagem_jogador[6]>0):
-        print("\nParabens, "+ personagem_jogador[0]+"!!! Voce terminou o jogo!!!")
+        print("\nParabens, "+str(personagem_jogador[0]+"!!! Voce terminou o jogo!!!")
         if(temporario[2]==False):
             item_adicionado=anel_da_imortalidade
             quantidade_adicionada=1
@@ -4290,7 +4283,7 @@ while 1:
             print("Voce ganhou um Anel da Divindade!")
             ponto_de_save=0
             save()
-    print("\nVoce deseja jogar novamente, "+ personagem_jogador[0]+'?("sim" ou "nao")\n')
+    print("\nVoce deseja jogar novamente, "+str(personagem_jogador[0])+'?("sim" ou "nao")\n')
     while 1:
         acao_do_personagem = raw_input("-")
         acao_do_personagem = acao_do_personagem.lower()
