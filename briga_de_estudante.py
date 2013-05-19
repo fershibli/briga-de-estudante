@@ -194,7 +194,7 @@ def inventarioPersonagem():
         while 1:
             print("Para analisar um item digite o número da sua posicao!\nPara voltar ao jogo digite voltar.")
             acao_do_personagem = raw_input('-')
-            if acao_do_personagem.isnumeric():
+            if acao_do_personagem.isdigit():
                 acao_do_personagem=int(acao_do_personagem)
                 break
             else:
@@ -210,7 +210,7 @@ def inventarioPersonagem():
         i=i-1
         if(acao_do_personagem==mala[0][i] and mala[1][i]!=espaco_vazio and mala[1][i][0]!="Nada"):
             if(mala[1][i][5]=="consumivel de aprimoramento"):
-                print("\nNome:"+str(mala[1][i][0])+ "\nTipo:"+str(mala[1][i][5])+"\nVida:"+str(mala[1][i][7])+"\nAtaque:"+str(mala[1][i][1])+"\nDefesa:"+str(mala[1][i][2])+"\nAgilidade:"+str(mala[1][i][3])+"\nSorte:"+str(mala[1][i][4])+"\n")
+                print("\nNome: "+str(mala[1][i][0])+ "\nTipo: "+str(mala[1][i][5])+"\nVida: "+str(mala[1][i][7])+"\nAtaque: "+str(mala[1][i][1])+"\nDefesa: "+str(mala[1][i][2])+"\nAgilidade: "+str(mala[1][i][3])+"\nSorte: "+str(mala[1][i][4])+"\n")
                 while 1:
                     print("O que deseja fazer? (usar, descartar ou voltar)")
                     acao_do_personagem=raw_input("-")
@@ -252,7 +252,7 @@ def inventarioPersonagem():
                                 print("\nENTRADA INVÁLIDA!\n")
                                 time.sleep(0.5)
             if(mala[1][i][5]=="consumivel"):
-                print("\nNome: "+str(mala[1][i][0])+ "\nTipo:"+str(mala[1][i][5])+"\nVida:"+str(mala[1][i][7])+"\n")
+                print("\nNome: "+str(mala[1][i][0])+ "\nTipo: "+str(mala[1][i][5])+"\nVida: "+str(mala[1][i][7])+"\n")
                 while 1:
                     print("O que deseja fazer? (usar, descartar ou voltar)")
                     acao_do_personagem=raw_input("-")
@@ -291,7 +291,7 @@ def inventarioPersonagem():
                                 print("\nENTRADA INVÁLIDA!\n")
                                 time.sleep(0.5)
             if(mala[1][i][5]!="consumivel de aprimoramento" and mala[1][i][5]!="consumivel"):
-                print("\nNome:"+str(mala[1][i][0])+"\nTipo:"+str(mala[1][i][5])+"\nAtaque:"+str(mala[1][i][1])+"\nDefesa:"+str(mala[1][i][2])+"\nAgilidade:"+str(mala[1][i][3])+"\nSorte:"+str(mala[1][i][4])+"\n")
+                print("\nNome: "+str(mala[1][i][0])+"\nTipo: "+str(mala[1][i][5])+"\nAtaque: "+str(mala[1][i][1])+"\nDefesa: "+str(mala[1][i][2])+"\nAgilidade: "+str(mala[1][i][3])+"\nSorte: "+str(mala[1][i][4])+"\n")
                 while 1:
                     print("O que deseja fazer? (equipar, descartar ou voltar)")
                     acao_do_personagem=raw_input("-")
@@ -449,7 +449,7 @@ def lojaVender():
         while 1:
             print("Para analisar um item digite o número da sua posicao!\nPara voltar ao jogo digite voltar.")
             acao_do_personagem = raw_input('-')
-            if acao_do_personagem.isnumeric():
+            if acao_do_personagem.isdigit():
                 acao_do_personagem=int(acao_do_personagem)
                 break
             else:
@@ -466,11 +466,11 @@ def lojaVender():
         i=i-1
         if(acao_do_personagem==mala[0][i] and mala[1][i]!=espaco_vazio and mala[1][i][0]!="Nada"):
             if(mala[1][i][5]=="consumivel de aprimoramento"):
-                print("\nNome:"+str(mala[1][i][0])+ "\nTipo:"+str(mala[1][i][5])+"\nVida:"+str(mala[1][i][7])+"\nAtaque:"+str(mala[1][i][1])+"\nDefesa:"+str(mala[1][i][2])+"\nAgilidade:"+str(mala[1][i][3])+"\nSorte:"+str(mala[1][i][4])+"\n")
+                print("\nNome: "+str(mala[1][i][0])+ "\nTipo: "+str(mala[1][i][5])+"\nVida: "+str(mala[1][i][7])+"\nAtaque: "+str(mala[1][i][1])+"\nDefesa: "+str(mala[1][i][2])+"\nAgilidade: "+str(mala[1][i][3])+"\nSorte: "+str(mala[1][i][4])+"\n")
         if(mala[1][i][5]=="consumivel"):
-            print("\nNome:"+str(mala[1][i][0])+ "\nTipo:"+str(mala[1][i][5])+"\nVida:"+str(mala[1][i][7])+"\n")
+            print("\nNome: "+str(mala[1][i][0])+ "\nTipo: "+str(mala[1][i][5])+"\nVida: "+str(mala[1][i][7])+"\n")
         if(mala[1][i][5]!="consumivel de aprimoramento" and mala[1][i][6]!="consumivel"):
-            print("\nNome:"+str(mala[1][i][0])+"\nTipo:"+str(mala[1][i][5])+"\nAtaque:"+str(mala[1][i][1])+"\nDefesa:"+str(mala[1][i][2])+"\nAgilidade:"+str(mala[1][i][3])+"\nSorte:"+str(mala[1][i][4])+"\n")
+            print("\nNome: "+str(mala[1][i][0])+"\nTipo: "+str(mala[1][i][5])+"\nAtaque: "+str(mala[1][i][1])+"\nDefesa: "+str(mala[1][i][2])+"\nAgilidade: "+str(mala[1][i][3])+"\nSorte: "+str(mala[1][i][4])+"\n")
         while 1:
             print("Posso comprar por "+str(mala[1][i][6]*0.5)+"Reais.")
             time.sleep(0.5)
@@ -512,7 +512,7 @@ def lojaComprar():
         while 1:
             print("Para analisar um item digite o número da sua posicao!\nPara voltar ao jogo digite voltar.")
             acao_do_personagem = raw_input('-')
-            if acao_do_personagem.isnumeric():
+            if acao_do_personagem.isdigit():
                 acao_do_personagem=int(acao_do_personagem)
                 break
             else:
@@ -532,16 +532,16 @@ def lojaComprar():
 #'''Foi exatamente aqui que eu parei!
 #    continue trocando virgulas por + nos prints e colocando str(objeto) em todas as variaveis que estiverem dentro dos prints
 #     por exemplo str(loja_venda[1][i][6])    '''
-                print("\nNome:"+str(loja_venda[1][i][0])+ "\nTipo:"+str(loja_venda[1][i][5])+"\nVida:"+str(loja_venda[1][i][7])+"\nAtaque:"+str(loja_venda[1][i][1])+"\nDefesa:"+str(loja_venda[1][i][2])+"\nAgilidade:"+str(loja_venda[1][i][3])+"\nSorte:"+str(loja_venda[1][i][4])+"\n")
+                print("\nNome: "+str(loja_venda[1][i][0])+ "\nTipo: "+str(loja_venda[1][i][5])+"\nVida: "+str(loja_venda[1][i][7])+"\nAtaque: "+str(loja_venda[1][i][1])+"\nDefesa: "+str(loja_venda[1][i][2])+"\nAgilidade: "+str(loja_venda[1][i][3])+"\nSorte: "+str(loja_venda[1][i][4])+"\n")
             if(loja_venda[1][i][6]=="consumivel"):
-                print("\nNome:"+str(loja_venda[1][i][0])+"\nTipo:"+str(loja_venda[1][i][5])+"\nVida:"+str(loja_venda[1][i][7])+"\n")
+                print("\nNome: "+str(loja_venda[1][i][0])+"\nTipo: "+str(loja_venda[1][i][5])+"\nVida: "+str(loja_venda[1][i][7])+"\n")
             if(loja_venda[1][i][6]!="consumivel de aprimoramento" and loja_venda[1][i][6]!="consumivel"):
-                print("\nNome:"+str(loja_venda[1][i][0])+"\nTipo:"+str(loja_venda[1][i][5])+"\nAtaque:"+str(loja_venda[1][i][1])+"\nDefesa:"+str(loja_venda[1][i][2])+"\nAgilidade:"+str(loja_venda[1][i][3])+"\nSorte:"+str(loja_venda[1][i][4]+)"\n")
+                print("\nNome: "+str(loja_venda[1][i][0])+"\nTipo: "+str(loja_venda[1][i][5])+"\nAtaque: "+str(loja_venda[1][i][1])+"\nDefesa: "+str(loja_venda[1][i][2])+"\nAgilidade: "+str(loja_venda[1][i][3])+"\nSorte: "+str(loja_venda[1][i][4])+"\n")
             item_adicionado=loja_venda[1][i]
             while 1:
                 print("Deseja comprar quantos?(digite uma quantidade ou voltar)")
                 acao_do_personagem = raw_input('-')
-                if acao_do_personagem.isnumeric():
+                if acao_do_personagem.isdigit():
                     acao_do_personagem=int(acao_do_personagem)
                     variavel_para_comparar=0
                     i=0
@@ -587,17 +587,17 @@ def lojaComprar():
 #--Ficha do Personagem--#
 def ficha_personagem():
     global inventario_reserva,porcentagem_inflacao,bermuda_linho_regata,bermuda_linho_polo,calca_jeans_regata,calca_jeans_polo,desequipado_roupa,desequipado_capa,desequipado_luva,desequipado_maos,desequipado_calcado,espaco_vazio,pedaco_pizza,bolo_chocolate,pijama_inicial,uniforme_estudantil,malha_ninja,lapis_apontado,punhal_envelhecido,talheres_prata,jaqueta_imitacao,jaqueta_couro,agasalho_la,suplemento_alimenticio,lata_energetico,luva_la,luva_couro,soco_pvc,soco_latao,luva_spikes_alu,soco_alu,luva_spikes_aco,soco_aco,luva_spikes_ag,soco_ag,luva_spikes_au,soco_au,luva_spikes_titanio,soco_titanio,anel_forca1,anel_forca2,anel_forca3,anel_resistencia1,anel_resistencia2,anel_resistencia3,anel_consistencia1,anel_consistencia2,anel_consistencia3,anel_da_imortalidade,anel_da_divindade,chinelo_inicial,papetes_masculinas,tenis_velho,tenis_simplorio,sapato_simplorio,tenis_comum,tenis_trilha,tenis_caminhada,tenis_corrida,tenis_ZX5000,item_adicionado,quantidade_adicionada,equipado_roupa,equipado_capa,equipado_luva,equipado_anel,equipado_maos,equipado_calcado,variavel_cenario,objeto,situacao,temporario,variavel_lugar,ponto_de_save,mostrar_save, personagem_jogador,personagem_reserva,personagem_inimigo,eegg,acao_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,variavel_para_comparar,contador_de_batalha,contador_de_rodadas,mala,loja_venda
-    print("\n#"+"-"*30+"#\n"+"\nNome:"+str(personagem_jogador[0]))
+    print("\n#"+"-"*30+"#\n"+"\nNome: "+str(personagem_jogador[0]))
     time.sleep(0.23)
-    print("\nVida:"+str(personagem_jogador[6])+"de"+str(personagem_jogador[5]))
+    print("\nVida: "+str(personagem_jogador[6])+"de"+str(personagem_jogador[5]))
     time.sleep(0.23)
-    print("\nAtaque:"+str(personagem_jogador[1])+"\nDefesa:"+str(personagem_jogador[2])+"\nAgilidade:"+str(personagem_jogador[3])+"\nSorte:"+str(personagem_jogador[4]))
+    print("\nAtaque: "+str(personagem_jogador[1])+"\nDefesa: "+str(personagem_jogador[2])+"\nAgilidade: "+str(personagem_jogador[3])+"\nSorte: "+str(personagem_jogador[4]))
     time.sleep(0.23)
-    print("\nCapa:"+str(equipado_capa[0])+"\nRoupa:"+str(equipado_roupa[0])+"\nCalcados:"+str(equipado_calcado[0]))
+    print("\nCapa: "+str(equipado_capa[0])+"\nRoupa: "+str(equipado_roupa[0])+"\nCalcados: "+str(equipado_calcado[0]))
     time.sleep(0.23)
-    print("\nLuvas:"+str(equipado_luva[0])+"\nAnel:"+str(equipado_anel[0])+"\nArmamento:"+str(equipado_maos[0]))
+    print("\nLuvas: "+str(equipado_luva[0])+"\nAnel: "+str(equipado_anel[0])+"\nArmamento: "+str(equipado_maos[0]))
     time.sleep(0.23)
-    print("\nDinheiro:"+str(personagem_jogador[7])+"Reais\n")
+    print("\nDinheiro: "+str(personagem_jogador[7])+" Reais\n")
     time.sleep(0.23)
     print("\n#"+"-"*30+"#\n")
     time.sleep(0.23)
@@ -616,43 +616,43 @@ def save():
             time.sleep(0.5)
             arq = open('\espaco_save00.py', 'rb')
             mostrar_save = pickle.load(arq)
-            print("\nEspaco  0:     Lugar:"+str(mostrar_save[5])+"\n          Nome:"+str(mostrar_save[1])+"  Vida:"+str(mostrar_save[3])+"\n          Ataque:"+str(mostrar_save[7])+"  Defesa:"+str(mostrar_save[9])+"  Agilidade:"+str(mostrar_save[11]))
+            print("\nEspaco  0:     Lugar: "+str(mostrar_save[2])+"\n          Nome: "+str(mostrar_save[0])+"  Vida: "+str(mostrar_save[1])+"\n          Ataque: "+str(mostrar_save[3])+"  Defesa: "+str(mostrar_save[4])+"  Agilidade: "+str(mostrar_save[5])+"  Sorte: "+str(mostrar_save[6]))
             arq.close
             arq = open('\espaco_save01.py', 'rb')
             mostrar_save = pickle.load(arq)
-            print("\nEspaco  1:     Lugar:"+str(mostrar_save[5])+"\n          Nome:"+str(mostrar_save[1])+"  Vida:"+str(mostrar_save[3])+"\n          Ataque:"+str(mostrar_save[7])+"  Defesa:"+str(mostrar_save[9])+"  Agilidade:"+str(mostrar_save[11]))
+            print("\nEspaco  1:     Lugar: "+str(mostrar_save[2])+"\n          Nome: "+str(mostrar_save[0])+"  Vida: "+str(mostrar_save[1])+"\n          Ataque: "+str(mostrar_save[3])+"  Defesa: "+str(mostrar_save[4])+"  Agilidade: "+str(mostrar_save[5])+"  Sorte: "+str(mostrar_save[6]))
             arq.close
             arq = open('\espaco_save02.py', 'rb')
             mostrar_save = pickle.load(arq)
-            print("\nEspaco  2:     Lugar:"+str(mostrar_save[5])+"\n          Nome:"+str(mostrar_save[1])+"  Vida:"+str( mostrar_save[3])+"\n          Ataque:"+str(mostrar_save[7])+"  Defesa:"+str(mostrar_save[9])+"  Agilidade:"+str(mostrar_save[11]))
+            print("\nEspaco  2:     Lugar: "+str(mostrar_save[2])+"\n          Nome: "+str(mostrar_save[0])+"  Vida: "+str(mostrar_save[1])+"\n          Ataque: "+str(mostrar_save[3])+"  Defesa: "+str(mostrar_save[4])+"  Agilidade: "+str(mostrar_save[5])+"  Sorte: "+str(mostrar_save[6]))
             arq.close
             arq = open('\espaco_save03.py', 'rb')
             mostrar_save = pickle.load(arq)
-            print("\nEspaco  3:     Lugar:"+str(mostrar_save[5])+ "\n          Nome:"+str(mostrar_save[1])+"  Vida:"+str( mostrar_save[3])+"\n          Ataque:"+str(mostrar_save[7])+"  Defesa:"+str(mostrar_save[9])+"  Agilidade:"+str(mostrar_save[11]))
+            print("\nEspaco  3:     Lugar: "+str(mostrar_save[2])+"\n          Nome: "+str(mostrar_save[0])+"  Vida: "+str(mostrar_save[1])+"\n          Ataque: "+str(mostrar_save[3])+"  Defesa: "+str(mostrar_save[4])+"  Agilidade: "+str(mostrar_save[5])+"  Sorte: "+str(mostrar_save[6]))
             arq.close
             arq = open('\espaco_save04.py', 'rb')
             mostrar_save = pickle.load(arq)
-            print("\nEspaco  4:     Lugar:"+str(mostrar_save[5])+ "\n          Nome:"+str(mostrar_save[1])+"  Vida:"+str( mostrar_save[3])+"\n          Ataque:"+str(mostrar_save[7])+"  Defesa:"+str(mostrar_save[9])+"  Agilidade:"+str(mostrar_save[11]))
+            print("\nEspaco  4:     Lugar: "+str(mostrar_save[2])+"\n          Nome: "+str(mostrar_save[0])+"  Vida: "+str(mostrar_save[1])+"\n          Ataque: "+str(mostrar_save[3])+"  Defesa: "+str(mostrar_save[4])+"  Agilidade: "+str(mostrar_save[5])+"  Sorte: "+str(mostrar_save[6]))
             arq.close
             arq = open('\espaco_save05.py', 'rb')
             mostrar_save = pickle.load(arq)
-            print("\nEspaco  5:     Lugar:"+str(mostrar_save[5])+ "\n          Nome:"+str(mostrar_save[1])+"  Vida:"+str( mostrar_save[3])+"\n          Ataque:"+str(mostrar_save[7])+"  Defesa:"+str(mostrar_save[9])+"  Agilidade:"+str(mostrar_save[11]))
+            print("\nEspaco  5:     Lugar: "+str(mostrar_save[2])+"\n          Nome: "+str(mostrar_save[0])+"  Vida: "+str(mostrar_save[1])+"\n          Ataque: "+str(mostrar_save[3])+"  Defesa: "+str(mostrar_save[4])+"  Agilidade: "+str(mostrar_save[5])+"  Sorte: "+str(mostrar_save[6]))
             arq.close
             arq = open('\espaco_save06.py', 'rb')
             mostrar_save = pickle.load(arq)
-            print("\nEspaco  6:     Lugar:"+str(mostrar_save[5])+ "\n          Nome:"+str(mostrar_save[1])+"  Vida:"+str( mostrar_save[3])+"\n          Ataque:"+str(mostrar_save[7])+"  Defesa:"+str(mostrar_save[9])+"  Agilidade:"+str(mostrar_save[11]))
+            print("\nEspaco  6:     Lugar: "+str(mostrar_save[2])+"\n          Nome: "+str(mostrar_save[0])+"  Vida: "+str(mostrar_save[1])+"\n          Ataque: "+str(mostrar_save[3])+"  Defesa: "+str(mostrar_save[4])+"  Agilidade: "+str(mostrar_save[5])+"  Sorte: "+str(mostrar_save[6]))
             arq.close
             arq = open('\espaco_save07.py', 'rb')
             mostrar_save = pickle.load(arq)
-            print("\nEspaco  7:     Lugar:"+str(mostrar_save[5])+ "\n          Nome:"+str(mostrar_save[1])+"  Vida:"+str( mostrar_save[3])+"\n          Ataque:"+str(mostrar_save[7])+"  Defesa:"+str(mostrar_save[9])+"  Agilidade:"+str(mostrar_save[11]))
+            print("\nEspaco  7:     Lugar: "+str(mostrar_save[2])+"\n          Nome: "+str(mostrar_save[0])+"  Vida: "+str(mostrar_save[1])+"\n          Ataque: "+str(mostrar_save[3])+"  Defesa: "+str(mostrar_save[4])+"  Agilidade: "+str(mostrar_save[5])+"  Sorte: "+str(mostrar_save[6]))
             arq.close
             arq = open('\espaco_save08.py', 'rb')
             mostrar_save = pickle.load(arq)
-            print("\nEspaco  8:     Lugar:"+str(mostrar_save[5])+ "\n          Nome:"+str(mostrar_save[1])+"  Vida:"+str( mostrar_save[3])+"\n          Ataque:"+str(mostrar_save[7])+"  Defesa:"+str(mostrar_save[9])+"  Agilidade:"+str(mostrar_save[11]))
+            print("\nEspaco  8:     Lugar: "+str(mostrar_save[2])+"\n          Nome: "+str(mostrar_save[0])+"  Vida: "+str(mostrar_save[1])+"\n          Ataque: "+str(mostrar_save[3])+"  Defesa: "+str(mostrar_save[4])+"  Agilidade: "+str(mostrar_save[5])+"  Sorte: "+str(mostrar_save[6]))
             arq.close
             arq = open('\espaco_save09.py', 'rb')
             mostrar_save = pickle.load(arq)
-            print("\nEspaco  9:     Lugar:"+str(mostrar_save[5])+ "\n          Nome:"+str(mostrar_save[1])+"  Vida:"+str( mostrar_save[3])+"\n          Ataque:"+str(mostrar_save[7])+"  Defesa:"+str(mostrar_save[9])+"  Agilidade:"+str(mostrar_save[11]))
+            print("\nEspaco  9:     Lugar: "+str(mostrar_save[2])+"\n          Nome: "+str(mostrar_save[0])+"  Vida: "+str(mostrar_save[1])+"\n          Ataque: "+str(mostrar_save[3])+"  Defesa: "+str(mostrar_save[4])+"  Agilidade: "+str(mostrar_save[5])+"  Sorte: "+str(mostrar_save[6]))
             arq.close
             while 1:
                 print("\n(Digite um número entre 0 e 9)")
@@ -700,7 +700,7 @@ def save():
                                                         print("Entrada invalida!\n")
                                                         time.sleep(0.5)
             #recomendo voce usar um for aqui :) - Lucas Sabiao
-            mostrar_save = ("  Nome:"+str( personagem_jogador[0])+ "  Vida:"+str( personagem_jogador[5])+"  Lugar:"+str( variavel_lugar)+ "  Ataque:"+str( personagem_jogador[1])+ "  Defesa:"+str( personagem_jogador[2])+"  Agilidade:"+str( personagem_jogador[3]))
+            mostrar_save = [personagem_jogador[0],personagem_jogador[5],variavel_lugar,personagem_jogador[1],personagem_jogador[2],personagem_jogador[3],personagem_jogador[4]]
             pickle.dump(mostrar_save, arq)
             pickle.dump(equipado_roupa, arq)
             pickle.dump(equipado_capa, arq)
@@ -1494,7 +1494,7 @@ def seuPredioQuartoAndar():
             print("Agora voce esta no terceiro andar.")
             time.sleep(2)
             break
-        print("\n#"+"-"*30+"#\n\nLista de Acões\n\nCenario:"+str(variavel_lugar)+"\n\nVoce pode:\n\nchecar os quartos\n")
+        print("\n#"+"-"*30+"#\n\nLista de Acões\n\nCenario: "+str(variavel_lugar)+"\n\nVoce pode:\n\nchecar os quartos\n")
         print("\nver ficha do personagem\nver mochila\ndescer as escadas\n\nsalvar o jogo\n")
         print("\n#"+ "-"*30+"#\n")
         print("\nE agora, "+str(personagem_jogador[0])+", o que voce vai fazer?\n")
@@ -1526,9 +1526,9 @@ def seuPredioQuartoAndar():
                         print(' - Como nao pegamos leve, nos apresentamos um "cartao de visita" ao oponente, para ele saber se e capaz de sobreviver.')
                         time.sleep(2)
                         personagem_inimigo = [ "Estudante Briguento do Quarto 40", 30, 15, 5, 5, 360, 360]
-                        print(" - Aqui esta o meu:")
+                        print(" - Aqui esta o meu: ")
                         time.sleep(1)
-                        print("\n"+str(personagem_inimigo[0])+":"+str(personagem_inimigo[5])+"pontos de vida.\nAtaque : "+str(personagem_inimigo[1])+".     Defesa : "+str(personagem_inimigo[2])+".\n")
+                        print("\n"+str(personagem_inimigo[0])+": "+str(personagem_inimigo[5])+"pontos de vida.\nAtaque : "+str(personagem_inimigo[1])+".     Defesa : "+str(personagem_inimigo[2])+".\n")
                         time.sleep(2)
                         print('\nDeseja prosseguir com a luta?("sim" ou "nao")\n')
                         time.sleep(1)
@@ -1594,9 +1594,9 @@ def seuPredioQuartoAndar():
                             print(' - SERÁ que voce esta PRONTO para brigar comigo, fracote??? Hahahahaha!')
                             time.sleep(2)
                             personagem_inimigo = [ "Estudante Briguento do Quarto 41", 50, 30, 10, 10, 550, 550]
-                            print(" - Aqui esta o meu cartao:")
+                            print(" - Aqui esta o meu cartao: ")
                             time.sleep(1)
-                            print("\n"+str(personagem_inimigo[0])+":"+str(personagem_inimigo[5])+"pontos de vida.\nAtaque : "+str(personagem_inimigo[1])+".     Defesa : "+str(personagem_inimigo[2])+".\n")
+                            print("\n"+str(personagem_inimigo[0])+": "+str(personagem_inimigo[5])+"pontos de vida.\nAtaque : "+str(personagem_inimigo[1])+".     Defesa : "+str(personagem_inimigo[2])+".\n")
                             time.sleep(2)
                             print('\nDeseja prosseguir com a luta?("sim" ou "nao")\n')
                             time.sleep(1)
@@ -1671,9 +1671,9 @@ def seuPredioQuartoAndar():
                                 print(' - Humhumhumhum... Voce vai perder...')
                                 time.sleep(2)
                                 personagem_inimigo = [ "Estudante Briguento do Quarto 42", 90, 70, 15, 15, 790, 790]
-                                print(" - Veja:")
+                                print(" - Veja: ")
                                 time.sleep(1)
-                                print("\n"+str(personagem_inimigo[0])+":"+str(personagem_inimigo[5])+"pontos de vida.\nAtaque : "+str(personagem_inimigo[1])+".     Defesa : "+str(personagem_inimigo[2])+".\n")
+                                print("\n"+str(personagem_inimigo[0])+": "+str(personagem_inimigo[5])+"pontos de vida.\nAtaque : "+str(personagem_inimigo[1])+".     Defesa : "+str(personagem_inimigo[2])+".\n")
                                 time.sleep(2)
                                 print('\nDeseja prosseguir com a luta?("sim" ou "nao")\n')
                                 time.sleep(1)
@@ -1746,9 +1746,9 @@ def seuPredioQuartoAndar():
                                     print(' - Sua presenca e insignificante.')
                                     time.sleep(2)
                                     personagem_inimigo = [ "Estudante Briguento do Quarto 43", 180, 100, 20, 20, 1500, 1500]
-                                    print(" - Mas vou te dar a honra de apreciar o meu cartao:")
+                                    print(" - Mas vou te dar a honra de apreciar o meu cartao: ")
                                     time.sleep(1)
-                                    print("\n"+str(personagem_inimigo[0])+":"+str(personagem_inimigo[5])+"pontos de vida.\nAtaque : "+str(personagem_inimigo[1])+".     Defesa : "+str(personagem_inimigo[2])+".\n")
+                                    print("\n"+str(personagem_inimigo[0])+": "+str(personagem_inimigo[5])+"pontos de vida.\nAtaque : "+str(personagem_inimigo[1])+".     Defesa : "+str(personagem_inimigo[2])+".\n")
                                     time.sleep(2)
                                     print('\nDeseja prosseguir com a luta?("sim" ou "nao")\n')
                                     time.sleep(1)
@@ -1827,9 +1827,9 @@ def seuPredioQuartoAndar():
                                         print(" - Voce e um briguento e tanto!")
                                         time.sleep(2)
                                         personagem_inimigo = [ "Estudante Briguento do Quarto 44", 300, 200, 40, 40, 3200, 3200]
-                                        print(" - Vamos logo ao que interessa:")
+                                        print(" - Vamos logo ao que interessa: ")
                                         time.sleep(1)
-                                        print("\n"+str(personagem_inimigo[0])+":"+str(personagem_inimigo[5])+"pontos de vida.\nAtaque : "+str(personagem_inimigo[1])+".     Defesa : "+str(personagem_inimigo[2])+".\n")
+                                        print("\n"+str(personagem_inimigo[0])+": "+str(personagem_inimigo[5])+"pontos de vida.\nAtaque : "+str(personagem_inimigo[1])+".     Defesa : "+str(personagem_inimigo[2])+".\n")
                                         time.sleep(2)
                                         print('\nDeseja prosseguir com a luta?("sim" ou "nao")\n')
                                         time.sleep(1)
@@ -1997,7 +1997,7 @@ def seuPredioTerceiroAndar():
                 time.sleep(1)
                 variavel_lugar = "seu predio, 2º andar"
                 break
-        print("\n#"+"-"*30+"#\n\nLista de Acões\n\nCenario:"+str( variavel_lugar)+"\n\nVoce pode:\n\nchecar os quartos: 30, 31, 32, 33 e 34\n")
+        print("\n#"+"-"*30+"#\n\nLista de Acões\n\nCenario: "+str( variavel_lugar)+"\n\nVoce pode:\n\nchecar os quartos: 30, 31, 32, 33 e 34\n")
         print("\nver ficha do personagem\nver mochila\ndescer as escadas\n\nsalvar o jogo\n")
         print("\n#"+"-"*30+"#\n")
         print("\nE agora, "+str(personagem_jogador[0])+", o que voce vai fazer?\n")
@@ -2340,7 +2340,7 @@ def seuPredioSegundoAndar():
     variavel_lugar = "seu predio, 2º andar"
     while 1:
         if(personagem_jogador[6]<=0):break
-        print("\n#"+"-"*30+"#\n\nLista de Acões\n\nCenario:"+str(variavel_lugar)+"\n\nVoce pode:\n\nchecar os quartos\n")
+        print("\n#"+"-"*30+"#\n\nLista de Acões\n\nCenario: "+str(variavel_lugar)+"\n\nVoce pode:\n\nchecar os quartos\n")
         if(situacao[2]==1):
             print("\narrombar o quarto 24")
         print("\nver ficha do personagem\nver mochila\nsubir as escadas\ndescer as escadas\n\nsalvar o jogo\n")
@@ -2928,7 +2928,7 @@ def seuPredioPrimeiroAndar():
         variavel_lugar = "seu predio, 1º andar"
         print("Agora voce esta no corredor do primeiro andar do seu predio.")
         time.sleep(3)
-        print("\n#"+"-"*30+"#\n"+"\nLista de Acões\n\nCenario:"+str(variavel_lugar)+"\n\nVoce pode:\nolhar\n")
+        print("\n#"+"-"*30+"#\n"+"\nLista de Acões\n\nCenario: "+str(variavel_lugar)+"\n\nVoce pode:\nolhar\n")
         time.sleep(1)
         if (variavel_cenario[0] == "sim"):
             print("\ncheirar\nchecar os quartos\n")
@@ -3316,7 +3316,7 @@ def seuPredioPrimeiroAndar():
                                                                                 else:
                                                                                     print('\nEntrada Invalida!\n')
                                                                                     time.sleep(0.5)
-        print("\n#"+"-"*30+"#\n"+"\nLista de Acões\n\nCenario:"+str(variavel_lugar)+"\n\nVoce pode:\nolhar\n")
+        print("\n#"+"-"*30+"#\n"+"\nLista de Acões\n\nCenario: "+str(variavel_lugar)+"\n\nVoce pode:\nolhar\n")
         if (variavel_cenario[0] == "sim"):
             print("\ncheirar\nchecar os quartos\n")
             if (variavel_cenario[2] == "sim" and objeto[0] == "nao"):
@@ -3342,7 +3342,7 @@ def suaRua():
     global inventario_reserva,porcentagem_inflacao,bermuda_linho_regata,bermuda_linho_polo,calca_jeans_regata,calca_jeans_polo,desequipado_roupa,desequipado_capa,desequipado_luva,desequipado_maos,desequipado_calcado,espaco_vazio,pedaco_pizza,bolo_chocolate,pijama_inicial,uniforme_estudantil,malha_ninja,lapis_apontado,punhal_envelhecido,talheres_prata,jaqueta_imitacao,jaqueta_couro,agasalho_la,suplemento_alimenticio,lata_energetico,luva_la,luva_couro,soco_pvc,soco_latao,luva_spikes_alu,soco_alu,luva_spikes_aco,soco_aco,luva_spikes_ag,soco_ag,luva_spikes_au,soco_au,luva_spikes_titanio,soco_titanio,anel_forca1,anel_forca2,anel_forca3,anel_resistencia1,anel_resistencia2,anel_resistencia3,anel_consistencia1,anel_consistencia2,anel_consistencia3,anel_da_imortalidade,anel_da_divindade,chinelo_inicial,papetes_masculinas,tenis_velho,tenis_simplorio,sapato_simplorio,tenis_comum,tenis_trilha,tenis_caminhada,tenis_corrida,tenis_ZX5000,item_adicionado,quantidade_adicionada,equipado_roupa,equipado_capa,equipado_luva,equipado_anel,equipado_maos,equipado_calcado,variavel_cenario,objeto,situacao,temporario,variavel_lugar,ponto_de_save,mostrar_save, personagem_jogador,personagem_reserva,personagem_inimigo,eegg,acao_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,variavel_para_comparar,contador_de_batalha,contador_de_rodadas,mala,loja_venda
     while 1:
         if(personagem_jogador[6]<=0):break
-        print("\n#", "-"*30,"#\n", "\nLista de Acões\n\nCenario:"+str(variavel_lugar)+"\n\nVoce pode:\nolhar\n")
+        print("\n#", "-"*30,"#\n", "\nLista de Acões\n\nCenario: "+str(variavel_lugar)+"\n\nVoce pode:\nolhar\n")
         print("\nentrar na loja\n\nentrar na pizzaria\n")
         print("\nentrar no predio\n\nver ficha do personagem\nver mochila\n\npegar ônibus\nir à pe\n\nsalvar o jogo\n"+"\n#"+"-"*30+"#\n")
         print("\nQual sera a sua atitude, "+str(personagem_jogador[0])+"?\n")
@@ -3456,43 +3456,43 @@ while 1:
                     time.sleep(1)
                     arq = open('\espaco_save00.py', 'rb')
                     mostrar_save = pickle.load(arq)
-                    print("\nEspaco  0:     Lugar:"+str(mostrar_save[5])+"\n          Nome:"+str(mostrar_save[1])+"  Vida:"+str( mostrar_save[3])+"\n          Ataque:"+str(mostrar_save[7])+"  Defesa:"+str(mostrar_save[9])+"  Agilidade:"+str(mostrar_save[11])
+                    print("\nEspaco  0:     Lugar: "+str(mostrar_save[2])+"\n          Nome: "+str(mostrar_save[0])+"  Vida: "+str(mostrar_save[1])+"\n          Ataque: "+str(mostrar_save[3])+"  Defesa: "+str(mostrar_save[4])+"  Agilidade: "+str(mostrar_save[5])+"  Sorte: "+str(mostrar_save[6]))
                     arq.close
                     arq = open('\espaco_save01.py', 'rb')
                     mostrar_save = pickle.load(arq)
-                    print("\nEspaco  1:     Lugar:"+str(mostrar_save[5])+ "\n          Nome:"+str(mostrar_save[1])+"  Vida:"+str( mostrar_save[3])+"\n          Ataque:"+str(mostrar_save[7])+"  Defesa:"+str(mostrar_save[9])+"  Agilidade:"+str(mostrar_save[11])
+                    print("\nEspaco  1:     Lugar: "+str(mostrar_save[2])+"\n          Nome: "+str(mostrar_save[0])+"  Vida: "+str(mostrar_save[1])+"\n          Ataque: "+str(mostrar_save[3])+"  Defesa: "+str(mostrar_save[4])+"  Agilidade: "+str(mostrar_save[5])+"  Sorte: "+str(mostrar_save[6]))
                     arq.close
                     arq = open('\espaco_save02.py', 'rb')
                     mostrar_save = pickle.load(arq)
-                    print("\nEspaco  2:     Lugar:"+str(mostrar_save[5])+ "\n          Nome:"+str(mostrar_save[1])+"  Vida:"+str( mostrar_save[3])+"\n          Ataque:"+str(mostrar_save[7])+"  Defesa:"+str(mostrar_save[9])+"  Agilidade:"+str(mostrar_save[11])
+                    print("\nEspaco  2:     Lugar: "+str(mostrar_save[2])+"\n          Nome: "+str(mostrar_save[0])+"  Vida: "+str(mostrar_save[1])+"\n          Ataque: "+str(mostrar_save[3])+"  Defesa: "+str(mostrar_save[4])+"  Agilidade: "+str(mostrar_save[5])+"  Sorte: "+str(mostrar_save[6]))
                     arq.close
                     arq = open('\espaco_save03.py', 'rb')
                     mostrar_save = pickle.load(arq)
-                    print("\nEspaco  3:     Lugar:"+str(mostrar_save[5])+ "\n          Nome:"+str(mostrar_save[1])+"  Vida:"+str( mostrar_save[3])+"\n          Ataque:"+str(mostrar_save[7])+"  Defesa:"+str(mostrar_save[9])+"  Agilidade:"+str(mostrar_save[11])
+                    print("\nEspaco  3:     Lugar: "+str(mostrar_save[2])+"\n          Nome: "+str(mostrar_save[0])+"  Vida: "+str(mostrar_save[1])+"\n          Ataque: "+str(mostrar_save[3])+"  Defesa: "+str(mostrar_save[4])+"  Agilidade: "+str(mostrar_save[5])+"  Sorte: "+str(mostrar_save[6]))
                     arq.close
                     arq = open('\espaco_save04.py', 'rb')
                     mostrar_save = pickle.load(arq)
-                    print("\nEspaco  4:     Lugar:"+str(mostrar_save[5])+ "\n          Nome:"+str(mostrar_save[1])+"  Vida:"+str( mostrar_save[3])+"\n          Ataque:"+str(mostrar_save[7])+"  Defesa:"+str(mostrar_save[9])+"  Agilidade:"+str(mostrar_save[11])
+                    print("\nEspaco  4:     Lugar: "+str(mostrar_save[2])+"\n          Nome: "+str(mostrar_save[0])+"  Vida: "+str(mostrar_save[1])+"\n          Ataque: "+str(mostrar_save[3])+"  Defesa: "+str(mostrar_save[4])+"  Agilidade: "+str(mostrar_save[5])+"  Sorte: "+str(mostrar_save[6]))
                     arq.close
                     arq = open('\espaco_save05.py', 'rb')
                     mostrar_save = pickle.load(arq)
-                    print("\nEspaco  5:     Lugar:"+str(mostrar_save[5])+ "\n          Nome:"+str(mostrar_save[1])+"  Vida:"+str( mostrar_save[3])+"\n          Ataque:"+str(mostrar_save[7])+"  Defesa:"+str(mostrar_save[9])+"  Agilidade:"+str(mostrar_save[11])
+                    print("\nEspaco  5:     Lugar: "+str(mostrar_save[2])+"\n          Nome: "+str(mostrar_save[0])+"  Vida: "+str(mostrar_save[1])+"\n          Ataque: "+str(mostrar_save[3])+"  Defesa: "+str(mostrar_save[4])+"  Agilidade: "+str(mostrar_save[5])+"  Sorte: "+str(mostrar_save[6]))
                     arq.close
                     arq = open('\espaco_save06.py', 'rb')
                     mostrar_save = pickle.load(arq)
-                    print("\nEspaco  6:     Lugar:"+str(mostrar_save[5])+ "\n          Nome:"+str(mostrar_save[1])+"  Vida:"+str( mostrar_save[3])+"\n          Ataque:"+str(mostrar_save[7])+"  Defesa:"+str(mostrar_save[9])+"  Agilidade:"+str(mostrar_save[11])
+                    print("\nEspaco  6:     Lugar: "+str(mostrar_save[2])+"\n          Nome: "+str(mostrar_save[0])+"  Vida: "+str(mostrar_save[1])+"\n          Ataque: "+str(mostrar_save[3])+"  Defesa: "+str(mostrar_save[4])+"  Agilidade: "+str(mostrar_save[5])+"  Sorte: "+str(mostrar_save[6]))
                     arq.close
                     arq = open('\espaco_save07.py', 'rb')
                     mostrar_save = pickle.load(arq)
-                    print("\nEspaco  7:     Lugar:"+str(mostrar_save[5])+ "\n          Nome:"+str(mostrar_save[1])+"  Vida:"+str( mostrar_save[3])+"\n          Ataque:"+str(mostrar_save[7])+"  Defesa:"+str(mostrar_save[9])+"  Agilidade:"+str(mostrar_save[11])
+                    print("\nEspaco  7:     Lugar: "+str(mostrar_save[2])+"\n          Nome: "+str(mostrar_save[0])+"  Vida: "+str(mostrar_save[1])+"\n          Ataque: "+str(mostrar_save[3])+"  Defesa: "+str(mostrar_save[4])+"  Agilidade: "+str(mostrar_save[5])+"  Sorte: "+str(mostrar_save[6]))
                     arq.close
                     arq = open('\espaco_save08.py', 'rb')
                     mostrar_save = pickle.load(arq)
-                    print("\nEspaco  8:     Lugar:"+str(mostrar_save[5])+ "\n          Nome:"+str(mostrar_save[1])+"  Vida:"+str( mostrar_save[3])+"\n          Ataque:"+str(mostrar_save[7])+"  Defesa:"+str(mostrar_save[9])+"  Agilidade:"+str(mostrar_save[11])
+                    print("\nEspaco  8:     Lugar: "+str(mostrar_save[2])+"\n          Nome: "+str(mostrar_save[0])+"  Vida: "+str(mostrar_save[1])+"\n          Ataque: "+str(mostrar_save[3])+"  Defesa: "+str(mostrar_save[4])+"  Agilidade: "+str(mostrar_save[5])+"  Sorte: "+str(mostrar_save[6]))
                     arq.close
                     arq = open('\espaco_save09.py', 'rb')
                     mostrar_save = pickle.load(arq)
-                    print("\nEspaco  9:     Lugar:"+str(mostrar_save[5])+ "\n          Nome:"+str(mostrar_save[1])+"  Vida:"+str( mostrar_save[3])+"\n          Ataque:"+str(mostrar_save[7])+"  Defesa:"+str(mostrar_save[9])+"  Agilidade:"+str(mostrar_save[11])
+                    print("\nEspaco  9:     Lugar: "+str(mostrar_save[2])+"\n          Nome: "+str(mostrar_save[0])+"  Vida: "+str(mostrar_save[1])+"\n          Ataque: "+str(mostrar_save[3])+"  Defesa: "+str(mostrar_save[4])+"  Agilidade: "+str(mostrar_save[5])+"  Sorte: "+str(mostrar_save[6]))
                     arq.close
                     while 1:
                         print("\n(Digite um número entre 0 e 9)")
@@ -3567,7 +3567,7 @@ while 1:
                     break
                 else:
                     if(acao_do_personagem=="limpar" or acao_do_personagem=="zerar" or acao_do_personagem=="limpar saves" or acao_do_personagem=="criar saves" or acao_do_personagem=="zerar saves" or acao_do_personagem=="resetar saves" or acao_do_personagem=="resetar" or acao_do_personagem=="criar/zerar saves"):
-                        mostrar_save = ("  Nome:"+str( personagem_jogador[0])+ "  Vida:"+str( personagem_jogador[5])+"  Lugar:"+str( variavel_lugar)+ "  Ataque:"+str( personagem_jogador[1])+ "  Defesa:"+str( personagem_jogador[2])+"  Agilidade:"+str( personagem_jogador[3]))
+                        mostrar_save = [personagem_jogador[0],personagem_jogador[5],variavel_lugar,personagem_jogador[1],personagem_jogador[2],personagem_jogador[3],personagem_jogador[4]]
                         i=0
                         while 1:
                             if(i==0):
@@ -3639,6 +3639,7 @@ while 1:
             time.sleep(2)
             print("\n\nVoce e um homem... Qual e o seu nome?\n")
             personagem_jogador[0] = raw_input("-")
+            personagem_jogador[0] = personagem_jogador[0].capitalize() 
             while 1:
                 print("Seu nome e "+str(personagem_jogador[0])+ "?")
                 while 2:
@@ -3741,16 +3742,16 @@ while 1:
                 time.sleep(2)
             else:
                 print("Eu nao me lembro de voce...")
-                time.sleep(3)
+                time.sleep(1)
                 print("Entao voce deve ser mesmo irrelevante!")
-                time.sleep(3)
+                time.sleep(2)
 
 #####################----------------------------__INÍCIO DO JOGO__----------------------------#####################
             print("\nCenario: acabou de amanhecer, seu quarto esta desarrumado,")
             time.sleep(2)
             print("voce ainda esta de pijama e atrasado para a aula - nao que voce se importe muito com isso.")
             time.sleep(3)
-            print("\n#"+"-"*30+"#\n\nLista de Acões\n\nCenario:"+str(variavel_lugar))
+            print("\n#"+"-"*30+"#\n\nLista de Acões\n\nCenario: "+str(variavel_lugar))
             time.sleep(2)
             print("\n\nVoce pode:\n\nvestir\narrumar o quarto\nolhar\n")
             time.sleep(2)
@@ -4009,7 +4010,7 @@ while 1:
                                                                 inventarioPersonagem()
                                                             else:
                                                                 print('\nEntrada Invalida!\n')
-                print("\n#"+ "-"*30+"#\n\nLista de Acões\n\nCenario:"+str(variavel_lugar))
+                print("\n#"+ "-"*30+"#\n\nLista de Acões\n\nCenario: "+str(variavel_lugar))
                 time.sleep(0.23)
                 print("\n\nVoce pode:\n\nvestir\narrumar o quarto\nolhar\n")
                 time.sleep(0.23)
@@ -4268,7 +4269,7 @@ while 1:
 ##########--------------------------------------------------FIM DO JOGO--------------------------------------------------##########
         break
     if(personagem_jogador[6]>0):
-        print("\nParabens, "+str(personagem_jogador[0]+"!!! Voce terminou o jogo!!!")
+        print("\nParabens, "+str(personagem_jogador[0])+"!!! Voce terminou o jogo!!!")
         if(temporario[2]==False):
             item_adicionado=anel_da_imortalidade
             quantidade_adicionada=1
