@@ -8,9 +8,11 @@ import time
 
 #ASSISTA DEVIL SURVIVOR 2
 
-#"Nome"[0], atq[1], def[2], agi[3], luk[4], vidamaxima[5], vidaatual[6], dinheiro[7]
-personagem_jogador = [ "Jogador", 10, 8, 1, 1, 100, 100, 0]
-personagem_reserva = [ "Jogador", 10, 8, 1, 1, 100, 100, 0]
+#"Nome"[0], atq[1], def[2], agi[3], luk[4], vidamaxima[5], vidaatual[6], dinheiro[7], identificação[8]
+personagem_jogador = [ "Jogador", 10, 8, 1, 1, 100, 100, 0, 1]
+personagem_jogador_reserva = [ "Jogador", 10, 8, 1, 1, 100, 100, 0, 1]
+personagem_headbanger = [ "Lutador Headbanger", 1200, 800, 50, 50, 100000, 100000, 0, 2]
+personagem_garota = [ "Garota", 50, 40, 1, 1, 500, 500, 20, 3]
 personagem_inimigo = [ "Inimigo", 10, 8, 1, 1, 100, 100]
 
 #["Nome"[0], atq[1], def[2], agi[3], luk[4], tipo[5], preco[6], recupera[7]
@@ -26,8 +28,8 @@ espaco_vazio = ["Vazio", 0, 0, 0, 0, "inventario", 0, 0]
 pedaco_pizza = ["Pedaco de Pizza", 0, 0, 0, 0, "consumivel", 5, 50]
 bolo_chocolate = ["Bolo de Chocolate", 0, 0, 0, 0, "consumivel", 100, personagem_jogador[5]]
 
-pijama_inicial = ["Pijama", 0, 0, 0, 5, "roupa", 5, 0]
-uniforme_estudantil = ["Uniforme Estudantil",0,1,0,0,"roupa",5,0]
+pijama_inicial = ["Pijama", 0, 0, 0, 5, "roupa", 5, 20]
+uniforme_estudantil = ["Uniforme Estudantil",0,1,0,0,"roupa",20,0]
 bermuda_linho_regata = ["Bermuda de Linho e Regata ",0,1,4,0,"roupa",100,0]
 bermuda_linho_polo = ["Bermuda de Linho e Polo",0,2,3,2,"roupa",140,0]
 calca_jeans_regata = ["Calca Jeans e Regata",0,4,1,0,"roupa",110,0]
@@ -41,6 +43,7 @@ talheres_prata = ["Talheres de prata(Garfo e Faca)", 8, 0,0,0,"armamento",10,0]
 jaqueta_imitacao = ["Jaqueta de Imitacao de Couro", 0, 20, 0, 0,"capa",150,0]
 jaqueta_couro = ["Jaqueta de Couro", 0, 200, 0, 10,"capa",2000,0]
 agasalho_la = ["Agasalho de La", 0, 6, 0, 0,"capa",100,0]
+cachecol_la = ["Cachecol de La", 0, 1, 0, 0,"capa",100,0]
 
 suplemento_alimenticio = ["Suplemento Alimenticio", 10, 0, 0, 0, "consumivel de aprimoramento",5, 0]
 lata_energetico = ["Energetico", 0, 0, 0, 0, "consumivel de aprimoramento",5, 50]
@@ -90,6 +93,7 @@ item_adicionado=espaco_vazio
 quantidade_adicionada=1
 porcentagem_inflacao=1
 
+#-Equipamento do Personagem Atual-#
 equipado_roupa = pijama_inicial
 equipado_capa = desequipado_capa
 equipado_luva = desequipado_luva
@@ -97,20 +101,44 @@ equipado_anel = desequipado_anel
 equipado_maos = desequipado_maos
 equipado_calcado = chinelo_inicial
 
+#-Reserva do Equipamento do Personagem 1-# Jogador #
+equipado_roupa_1 = pijama_inicial
+equipado_capa_1 = desequipado_capa
+equipado_luva_1 = desequipado_luva
+equipado_anel_1 = desequipado_anel
+equipado_maos_1 = desequipado_maos
+equipado_calcado_1 = chinelo_inicial
+
+#-Equipamento do Personagem 2-# Headbanger #
+equipado_roupa_2 = desequipado_roupa
+equipado_capa_2 = desequipado_capa
+equipado_luva_2 = desequipado_luva
+equipado_anel_2 = desequipado_anel
+equipado_maos_2 = desequipado_maos
+equipado_calcado_2 = desequipado_calcado
+
+#-Equipamento do Personagem 3-# Garota #
+equipado_roupa_3 = uniforme_estudantil
+equipado_capa_3 = desequipado_capa
+equipado_luva_3 = desequipado_luva
+equipado_anel_3 = desequipado_anel
+equipado_maos_3 = lapis_apontado
+equipado_calcado_3 = tenis_simplorio
+
 variavel_cenario = ["nao" ,"nao" ,"nao"]
 #[0]  olhar cenario primeira vez no seu quarto e reciclada no primeiro andar do seu predio
 #[1]  modificar cenario primeira vez no seu quarto
 #[2]  cheirar cenario no primeiro andar do seu predio
 
 objeto = ["nao", "nao", "nao", "nao", "nao"]
-#[0]  presente do tutorial e reciclada no bebado do 1ºandar
+#[0]  presente do tutorial e reciclada no bebado do 1o andar
 #[1]  porta do quarto 10
 #[2]  energetico do bebado (acao revistar)
 #[3]  arrombar porta do quarto 10
 #[4]  mulher do bebado - talheres de prata
 
 situacao = [0  ,0,0,0 ,0,0  ,0,0,0 ,0,0]
-#[0]  dois últimos andares do seu predio
+#[0]  dois ultimos andares do seu predio
 #[1]  quarto 11 do seu predio
 #[2]  quarto 24 do seu predio
 #[3]  quarto 21 do seu predio
@@ -145,17 +173,29 @@ contador_de_batalha= 0
 contador_de_rodadas = 0
 
 
-#global inventario_reserva,porcentagem_inflacao,bermuda_linho_regata,bermuda_linho_polo,calca_jeans_regata,calca_jeans_polo,desequipado_roupa,desequipado_capa,desequipado_luva,desequipado_maos,desequipado_calcado,espaco_vazio,pedaco_pizza,bolo_chocolate,pijama_inicial,uniforme_estudantil,malha_ninja,lapis_apontado,punhal_envelhecido,talheres_prata,jaqueta_imitacao,jaqueta_couro,agasalho_la,suplemento_alimenticio,lata_energetico,luva_la,luva_couro,soco_pvc,soco_latao,luva_spikes_alu,soco_alu,luva_spikes_aco,soco_aco,luva_spikes_ag,soco_ag,luva_spikes_au,soco_au,luva_spikes_titanio,soco_titanio,anel_forca1,anel_forca2,anel_forca3,anel_resistencia1,anel_resistencia2,anel_resistencia3,anel_consistencia1,anel_consistencia2,anel_consistencia3,anel_da_imortalidade,anel_da_divindade,chinelo_inicial,papetes_masculinas,tenis_velho,tenis_simplorio,sapato_simplorio,tenis_comum,tenis_trilha,tenis_caminhada,tenis_corrida,tenis_ZX5000,item_adicionado,quantidade_adicionada,equipado_roupa,equipado_capa,equipado_luva,equipado_anel,equipado_maos,equipado_calcado,variavel_cenario,objeto,situacao,temporario,variavel_lugar,ponto_de_save,mostrar_save, personagem_jogador,personagem_reserva,personagem_inimigo,eegg,acao_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,variavel_para_comparar,contador_de_batalha,contador_de_rodadas,mala,loja_venda
+#global personagem_headbanger,inventario_reserva,porcentagem_inflacao,bermuda_linho_regata,bermuda_linho_polo,calca_jeans_regata,calca_jeans_polo,desequipado_roupa,desequipado_capa,desequipado_luva,desequipado_maos,desequipado_calcado,espaco_vazio,pedaco_pizza,bolo_chocolate,pijama_inicial,uniforme_estudantil,malha_ninja,lapis_apontado,punhal_envelhecido,talheres_prata,jaqueta_imitacao,jaqueta_couro,agasalho_la,suplemento_alimenticio,lata_energetico,luva_la,luva_couro,soco_pvc,soco_latao,luva_spikes_alu,soco_alu,luva_spikes_aco,soco_aco,luva_spikes_ag,soco_ag,luva_spikes_au,soco_au,luva_spikes_titanio,soco_titanio,anel_forca1,anel_forca2,anel_forca3,anel_resistencia1,anel_resistencia2,anel_resistencia3,anel_consistencia1,anel_consistencia2,anel_consistencia3,anel_da_imortalidade,anel_da_divindade,chinelo_inicial,papetes_masculinas,tenis_velho,tenis_simplorio,sapato_simplorio,tenis_comum,tenis_trilha,tenis_caminhada,tenis_corrida,tenis_ZX5000,item_adicionado,quantidade_adicionada,equipado_roupa,equipado_capa,equipado_luva,equipado_anel,equipado_maos,equipado_calcado,variavel_cenario,objeto,situacao,temporario,variavel_lugar,ponto_de_save,mostrar_save, personagem_jogador,personagem_jogador_reserva,personagem_inimigo,eegg,acao_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,variavel_para_comparar,contador_de_batalha,contador_de_rodadas,mala,loja_venda
 
 mala = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30],[espaco_vazio, espaco_vazio, espaco_vazio, espaco_vazio, espaco_vazio,espaco_vazio, espaco_vazio, espaco_vazio, espaco_vazio, espaco_vazio,espaco_vazio, espaco_vazio, espaco_vazio, espaco_vazio, espaco_vazio,espaco_vazio, espaco_vazio, espaco_vazio, espaco_vazio, espaco_vazio,espaco_vazio, espaco_vazio, espaco_vazio, espaco_vazio, espaco_vazio,espaco_vazio, espaco_vazio, espaco_vazio, espaco_vazio, espaco_vazio]
 loja_venda = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30],[espaco_vazio, espaco_vazio, espaco_vazio, espaco_vazio, espaco_vazio,espaco_vazio, espaco_vazio, espaco_vazio, espaco_vazio, espaco_vazio,espaco_vazio, espaco_vazio, espaco_vazio, espaco_vazio, espaco_vazio,espaco_vazio, espaco_vazio, espaco_vazio, espaco_vazio, espaco_vazio,espaco_vazio, espaco_vazio, espaco_vazio, espaco_vazio, espaco_vazio,espaco_vazio, espaco_vazio, espaco_vazio, espaco_vazio, espaco_vazio]
 inventario_reserva = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30],[espaco_vazio, espaco_vazio, espaco_vazio, espaco_vazio, espaco_vazio,espaco_vazio, espaco_vazio, espaco_vazio, espaco_vazio, espaco_vazio,espaco_vazio, espaco_vazio, espaco_vazio, espaco_vazio, espaco_vazio,espaco_vazio, espaco_vazio, espaco_vazio, espaco_vazio, espaco_vazio,espaco_vazio, espaco_vazio, espaco_vazio, espaco_vazio, espaco_vazio,espaco_vazio, espaco_vazio, espaco_vazio, espaco_vazio, espaco_vazio]
 
 #--Sistema de Troca de Personagem--#
+def trocaPersonagem():
+    global personagem_headbanger,inventario_reserva,porcentagem_inflacao,bermuda_linho_regata,bermuda_linho_polo,calca_jeans_regata,calca_jeans_polo,desequipado_roupa,desequipado_capa,desequipado_luva,desequipado_maos,desequipado_calcado,espaco_vazio,pedaco_pizza,bolo_chocolate,pijama_inicial,uniforme_estudantil,malha_ninja,lapis_apontado,punhal_envelhecido,talheres_prata,jaqueta_imitacao,jaqueta_couro,agasalho_la,suplemento_alimenticio,lata_energetico,luva_la,luva_couro,soco_pvc,soco_latao,luva_spikes_alu,soco_alu,luva_spikes_aco,soco_aco,luva_spikes_ag,soco_ag,luva_spikes_au,soco_au,luva_spikes_titanio,soco_titanio,anel_forca1,anel_forca2,anel_forca3,anel_resistencia1,anel_resistencia2,anel_resistencia3,anel_consistencia1,anel_consistencia2,anel_consistencia3,anel_da_imortalidade,anel_da_divindade,chinelo_inicial,papetes_masculinas,tenis_velho,tenis_simplorio,sapato_simplorio,tenis_comum,tenis_trilha,tenis_caminhada,tenis_corrida,tenis_ZX5000,item_adicionado,quantidade_adicionada,equipado_roupa,equipado_capa,equipado_luva,equipado_anel,equipado_maos,equipado_calcado,variavel_cenario,objeto,situacao,temporario,variavel_lugar,ponto_de_save,mostrar_save, personagem_jogador,personagem_jogador_reserva,personagem_inimigo,eegg,acao_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,variavel_para_comparar,contador_de_batalha,contador_de_rodadas,mala,loja_venda
+    print("\n#"+"-"*30+"#\n")
+    print("\n "+str(personagem_jogador[8])+"         Nome: "+str(personagem_jogador[0])+" Vida: "+str(personagem_jogador[5])+" Ataque: "+str(personagem_jogador[1])+" Defesa: "+str(personagem_jogador[2])+"\n           Agilidade: "+str(personagem_jogador[3])+" Sorte: "+str(personagem_jogador[4])+" Dinheiro: "+str(personagem_jogador[7])+" Reais\n")
+    time.sleep(0.5)
+    if(personagem_jogador[8]!=1):
+        print("\n 1         Nome: "+str(personagem_jogador_reserva[0])+" Vida: "+str(personagem_jogador_reserva[5])+" Ataque: "+str(personagem_jogador_reserva[1])+" Defesa: "+str(personagem_jogador_reserva[2])+"\n           Agilidade: "+str(personagem_jogador_reserva[3])+" Sorte: "+str(personagem_jogador_reserva[4])+" Dinheiro: "+str(personagem_jogador_reserva[7])+" Reais\n")
+        time.sleep(0.5)
+    if(personagem_jogador[8]!=2):
+        print("\n 2         Nome: "+str(personagem_headbanger[0])+" Vida: "+str(personagem_headbanger[5])+" Ataque: "+str(personagem_headbanger[1])+" Defesa: "+str(personagem_headbanger[2])+"\n           Agilidade: "+str(personagem_headbanger[3])+" Sorte: "+str(personagem_headbanger[4])+" Dinheiro: "+str(personagem_headbanger[7])+" Reais\n")
+        time.sleep(0.5)
+    print("\n#"+"-"*30+"#\n")
 
 #--Adicionar Item ao Inventario--#
 def adicionaItem():
-    global inventario_reserva,porcentagem_inflacao,bermuda_linho_regata,bermuda_linho_polo,calca_jeans_regata,calca_jeans_polo,desequipado_roupa,desequipado_capa,desequipado_luva,desequipado_maos,desequipado_calcado,espaco_vazio,pedaco_pizza,bolo_chocolate,pijama_inicial,uniforme_estudantil,malha_ninja,lapis_apontado,punhal_envelhecido,talheres_prata,jaqueta_imitacao,jaqueta_couro,agasalho_la,suplemento_alimenticio,lata_energetico,luva_la,luva_couro,soco_pvc,soco_latao,luva_spikes_alu,soco_alu,luva_spikes_aco,soco_aco,luva_spikes_ag,soco_ag,luva_spikes_au,soco_au,luva_spikes_titanio,soco_titanio,anel_forca1,anel_forca2,anel_forca3,anel_resistencia1,anel_resistencia2,anel_resistencia3,anel_consistencia1,anel_consistencia2,anel_consistencia3,anel_da_imortalidade,anel_da_divindade,chinelo_inicial,papetes_masculinas,tenis_velho,tenis_simplorio,sapato_simplorio,tenis_comum,tenis_trilha,tenis_caminhada,tenis_corrida,tenis_ZX5000,item_adicionado,quantidade_adicionada,equipado_roupa,equipado_capa,equipado_luva,equipado_anel,equipado_maos,equipado_calcado,variavel_cenario,objeto,situacao,temporario,variavel_lugar,ponto_de_save,mostrar_save, personagem_jogador,personagem_reserva,personagem_inimigo,eegg,acao_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,variavel_para_comparar,contador_de_batalha,contador_de_rodadas,mala,loja_venda
+    global personagem_headbanger,inventario_reserva,porcentagem_inflacao,bermuda_linho_regata,bermuda_linho_polo,calca_jeans_regata,calca_jeans_polo,desequipado_roupa,desequipado_capa,desequipado_luva,desequipado_maos,desequipado_calcado,espaco_vazio,pedaco_pizza,bolo_chocolate,pijama_inicial,uniforme_estudantil,malha_ninja,lapis_apontado,punhal_envelhecido,talheres_prata,jaqueta_imitacao,jaqueta_couro,agasalho_la,suplemento_alimenticio,lata_energetico,luva_la,luva_couro,soco_pvc,soco_latao,luva_spikes_alu,soco_alu,luva_spikes_aco,soco_aco,luva_spikes_ag,soco_ag,luva_spikes_au,soco_au,luva_spikes_titanio,soco_titanio,anel_forca1,anel_forca2,anel_forca3,anel_resistencia1,anel_resistencia2,anel_resistencia3,anel_consistencia1,anel_consistencia2,anel_consistencia3,anel_da_imortalidade,anel_da_divindade,chinelo_inicial,papetes_masculinas,tenis_velho,tenis_simplorio,sapato_simplorio,tenis_comum,tenis_trilha,tenis_caminhada,tenis_corrida,tenis_ZX5000,item_adicionado,quantidade_adicionada,equipado_roupa,equipado_capa,equipado_luva,equipado_anel,equipado_maos,equipado_calcado,variavel_cenario,objeto,situacao,temporario,variavel_lugar,ponto_de_save,mostrar_save, personagem_jogador,personagem_jogador_reserva,personagem_inimigo,eegg,acao_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,variavel_para_comparar,contador_de_batalha,contador_de_rodadas,mala,loja_venda
     variavel_para_comparar=0
     i=0
     while i<=29:
@@ -175,7 +215,7 @@ def adicionaItem():
 
 #--Inventario--#
 def inventarioPersonagem():
-    global inventario_reserva,porcentagem_inflacao,bermuda_linho_regata,bermuda_linho_polo,calca_jeans_regata,calca_jeans_polo,desequipado_roupa,desequipado_capa,desequipado_luva,desequipado_maos,desequipado_calcado,espaco_vazio,pedaco_pizza,bolo_chocolate,pijama_inicial,uniforme_estudantil,malha_ninja,lapis_apontado,punhal_envelhecido,talheres_prata,jaqueta_imitacao,jaqueta_couro,agasalho_la,suplemento_alimenticio,lata_energetico,luva_la,luva_couro,soco_pvc,soco_latao,luva_spikes_alu,soco_alu,luva_spikes_aco,soco_aco,luva_spikes_ag,soco_ag,luva_spikes_au,soco_au,luva_spikes_titanio,soco_titanio,anel_forca1,anel_forca2,anel_forca3,anel_resistencia1,anel_resistencia2,anel_resistencia3,anel_consistencia1,anel_consistencia2,anel_consistencia3,anel_da_imortalidade,anel_da_divindade,chinelo_inicial,papetes_masculinas,tenis_velho,tenis_simplorio,sapato_simplorio,tenis_comum,tenis_trilha,tenis_caminhada,tenis_corrida,tenis_ZX5000,item_adicionado,quantidade_adicionada,equipado_roupa,equipado_capa,equipado_luva,equipado_anel,equipado_maos,equipado_calcado,variavel_cenario,objeto,situacao,temporario,variavel_lugar,ponto_de_save,mostrar_save, personagem_jogador,personagem_reserva,personagem_inimigo,eegg,acao_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,variavel_para_comparar,contador_de_batalha,contador_de_rodadas,mala,loja_venda
+    global personagem_headbanger,inventario_reserva,porcentagem_inflacao,bermuda_linho_regata,bermuda_linho_polo,calca_jeans_regata,calca_jeans_polo,desequipado_roupa,desequipado_capa,desequipado_luva,desequipado_maos,desequipado_calcado,espaco_vazio,pedaco_pizza,bolo_chocolate,pijama_inicial,uniforme_estudantil,malha_ninja,lapis_apontado,punhal_envelhecido,talheres_prata,jaqueta_imitacao,jaqueta_couro,agasalho_la,suplemento_alimenticio,lata_energetico,luva_la,luva_couro,soco_pvc,soco_latao,luva_spikes_alu,soco_alu,luva_spikes_aco,soco_aco,luva_spikes_ag,soco_ag,luva_spikes_au,soco_au,luva_spikes_titanio,soco_titanio,anel_forca1,anel_forca2,anel_forca3,anel_resistencia1,anel_resistencia2,anel_resistencia3,anel_consistencia1,anel_consistencia2,anel_consistencia3,anel_da_imortalidade,anel_da_divindade,chinelo_inicial,papetes_masculinas,tenis_velho,tenis_simplorio,sapato_simplorio,tenis_comum,tenis_trilha,tenis_caminhada,tenis_corrida,tenis_ZX5000,item_adicionado,quantidade_adicionada,equipado_roupa,equipado_capa,equipado_luva,equipado_anel,equipado_maos,equipado_calcado,variavel_cenario,objeto,situacao,temporario,variavel_lugar,ponto_de_save,mostrar_save, personagem_jogador,personagem_jogador_reserva,personagem_inimigo,eegg,acao_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,variavel_para_comparar,contador_de_batalha,contador_de_rodadas,mala,loja_venda
     while 1:
         variavel_para_comparar=0
         i=0
@@ -192,14 +232,14 @@ def inventarioPersonagem():
                 print(str(mala[0][i])+" : "+str(mala[1][i][0])+"\n     ("+str(mala[1][i][5])+")\n")
             i+=1
         while 1:
-            print("Para analisar um item digite o número da sua posicao!\nPara voltar ao jogo digite voltar.")
+            print("Para analisar um item digite o numero da sua posicao!\nPara voltar ao jogo digite voltar.")
             acao_do_personagem = raw_input('-')
             if acao_do_personagem.isdigit():
                 acao_do_personagem=int(acao_do_personagem)
                 break
             else:
                 if(acao_do_personagem=="voltar"):break
-                print("ENTRADA INVÁLIDA!")
+                print("ENTRADA INVALIDA!")
                 time.sleep(0.5)
         if(acao_do_personagem=="voltar"):break
         i=0
@@ -222,7 +262,7 @@ def inventarioPersonagem():
                         personagem_jogador[2]=personagem_jogador[2]+mala[1][i][2]
                         personagem_jogador[3]=personagem_jogador[3]+mala[1][i][3]
                         personagem_jogador[4]=personagem_jogador[4]+mala[1][i][4]
-                        print("\nVoce usou"+str( mala[1][i][0])+"!\n")
+                        print("\nVoce usou  "+str( mala[1][i][0])+"!\n")
                         time.sleep(0.5)
                         mala[1][i]=espaco_vazio
                         break
@@ -238,7 +278,7 @@ def inventarioPersonagem():
                                     if(acao_do_personagem=="sim" or acao_do_personagem=="s" or acao_do_personagem=="si" or acao_do_personagem=="sm" or acao_do_personagem=="im" or acao_do_personagem=="ssim"):
                                         break
                                     else:
-                                        print("\nENTRADA INVÁLIDA!\n")
+                                        print("\nENTRADA INVALIDA!\n")
                                         time.sleep(0.5)
                             if(acao_do_personagem=="sim" or acao_do_personagem=="s" or acao_do_personagem=="si" or acao_do_personagem=="sm" or acao_do_personagem=="im" or acao_do_personagem=="ssim"):
                                 print("\nVoce descartou"+str(mala[1][i][0])+"!\n")
@@ -249,7 +289,7 @@ def inventarioPersonagem():
                             if(acao_do_personagem=="voltar"):
                                 break
                             else:
-                                print("\nENTRADA INVÁLIDA!\n")
+                                print("\nENTRADA INVALIDA!\n")
                                 time.sleep(0.5)
             if(mala[1][i][5]=="consumivel"):
                 print("\nNome: "+str(mala[1][i][0])+ "\nTipo: "+str(mala[1][i][5])+"\nVida: "+str(mala[1][i][7])+"\n")
@@ -261,7 +301,7 @@ def inventarioPersonagem():
                         personagem_jogador[6]=personagem_jogador[6]+mala[1][i][7]
                         if (personagem_jogador[6]>=(personagem_jogador[5]+0.1*personagem_jogador[6])):
                             personagem_jogador[6]=personagem_jogador[5]+0.1
-                        print("\nVoce usou"+ str(mala[1][i][0])+"!\n")
+                        print("\nVoce usou "+ str(mala[1][i][0])+"!\n")
                         time.sleep(0.5)
                         mala[1][i]=espaco_vazio
                         break
@@ -277,7 +317,7 @@ def inventarioPersonagem():
                                     if(acao_do_personagem=="sim" or acao_do_personagem=="s" or acao_do_personagem=="si" or acao_do_personagem=="sm" or acao_do_personagem=="im" or acao_do_personagem=="ssim"):
                                         break
                                     else:
-                                        print("\nENTRADA INVÁLIDA!\n")
+                                        print("\nENTRADA INVALIDA!\n")
                                         time.sleep(0.5)
                             if(acao_do_personagem=="sim" or acao_do_personagem=="s" or acao_do_personagem=="si" or acao_do_personagem=="sm" or acao_do_personagem=="im" or acao_do_personagem=="ssim"):
                                 print("\nVoce descartou"+str(mala[1][i][0])+"!\n")
@@ -288,10 +328,10 @@ def inventarioPersonagem():
                             if(acao_do_personagem=="voltar"):
                                 break
                             else:
-                                print("\nENTRADA INVÁLIDA!\n")
+                                print("\nENTRADA INVALIDA!\n")
                                 time.sleep(0.5)
-            if(mala[1][i][5]!="consumivel de aprimoramento" and mala[1][i][5]!="consumivel"):
-                print("\nNome: "+str(mala[1][i][0])+"\nTipo: "+str(mala[1][i][5])+"\nAtaque: "+str(mala[1][i][1])+"\nDefesa: "+str(mala[1][i][2])+"\nAgilidade: "+str(mala[1][i][3])+"\nSorte: "+str(mala[1][i][4])+"\n")
+            if(mala[1][i][5]!="consumivel de aprimoramento" and mala[1][i][5]!="consumivel" and mala[1][i][5]!="inventario"):
+                print("\nNome: "+str(mala[1][i][0])+"\nTipo: "+str(mala[1][i][5])+"\nAtaque: "+str(mala[1][i][1])+"\nDefesa: "+str(mala[1][i][2])+"\nAgilidade: "+str(mala[1][i][3])+"\nSorte: "+str(mala[1][i][4])+"\nVida: "+str(mala[1][i][7])+"\n")
                 while 1:
                     print("O que deseja fazer? (equipar, descartar ou voltar)")
                     acao_do_personagem=raw_input("-")
@@ -307,7 +347,7 @@ def inventarioPersonagem():
                                 if(acao_do_personagem=="sim" or acao_do_personagem=="s" or acao_do_personagem=="si" or acao_do_personagem=="sm" or acao_do_personagem=="im" or acao_do_personagem=="ssim"):
                                     break
                                 else:
-                                    print("\nENTRADA INVÁLIDA!\n")
+                                    print("\nENTRADA INVALIDA!\n")
                                     time.sleep(0.5)
                         if(acao_do_personagem=="sim" or acao_do_personagem=="s" or acao_do_personagem=="si" or acao_do_personagem=="sm" or acao_do_personagem=="im" or acao_do_personagem=="ssim"):
                             print("\nVoce descartou"+str(mala[1][i][0])+"!\n")
@@ -408,7 +448,7 @@ def inventarioPersonagem():
                                 personagem_jogador[4] = personagem_jogador[4] - equipado_calcado[4]
                                 personagem_jogador[5] = personagem_jogador[5] - equipado_calcado[7]
                                 item_adicionado=equipado_calcado
-                                print("Voce guardou "+str(tem_adicionado[0])+" e equipou "+str(mala[1][i][0])+"!")
+                                print("Voce guardou "+str(item_adicionado[0])+" e equipou "+str(mala[1][i][0])+"!")
                                 time.sleep(1)
                                 equipado_calcado=mala[1][i]
                                 mala[1][i]=item_adicionado
@@ -430,7 +470,7 @@ def inventarioPersonagem():
 
 #--Loja: Vender--#
 def lojaVender():
-    global inventario_reserva,porcentagem_inflacao,bermuda_linho_regata,bermuda_linho_polo,calca_jeans_regata,calca_jeans_polo,desequipado_roupa,desequipado_capa,desequipado_luva,desequipado_maos,desequipado_calcado,espaco_vazio,pedaco_pizza,bolo_chocolate,pijama_inicial,uniforme_estudantil,malha_ninja,lapis_apontado,punhal_envelhecido,talheres_prata,jaqueta_imitacao,jaqueta_couro,agasalho_la,suplemento_alimenticio,lata_energetico,luva_la,luva_couro,soco_pvc,soco_latao,luva_spikes_alu,soco_alu,luva_spikes_aco,soco_aco,luva_spikes_ag,soco_ag,luva_spikes_au,soco_au,luva_spikes_titanio,soco_titanio,anel_forca1,anel_forca2,anel_forca3,anel_resistencia1,anel_resistencia2,anel_resistencia3,anel_consistencia1,anel_consistencia2,anel_consistencia3,anel_da_imortalidade,anel_da_divindade,chinelo_inicial,papetes_masculinas,tenis_velho,tenis_simplorio,sapato_simplorio,tenis_comum,tenis_trilha,tenis_caminhada,tenis_corrida,tenis_ZX5000,item_adicionado,quantidade_adicionada,equipado_roupa,equipado_capa,equipado_luva,equipado_anel,equipado_maos,equipado_calcado,variavel_cenario,objeto,situacao,temporario,variavel_lugar,ponto_de_save,mostrar_save, personagem_jogador,personagem_reserva,personagem_inimigo,eegg,acao_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,variavel_para_comparar,contador_de_batalha,contador_de_rodadas,mala,loja_venda
+    global personagem_headbanger,inventario_reserva,porcentagem_inflacao,bermuda_linho_regata,bermuda_linho_polo,calca_jeans_regata,calca_jeans_polo,desequipado_roupa,desequipado_capa,desequipado_luva,desequipado_maos,desequipado_calcado,espaco_vazio,pedaco_pizza,bolo_chocolate,pijama_inicial,uniforme_estudantil,malha_ninja,lapis_apontado,punhal_envelhecido,talheres_prata,jaqueta_imitacao,jaqueta_couro,agasalho_la,suplemento_alimenticio,lata_energetico,luva_la,luva_couro,soco_pvc,soco_latao,luva_spikes_alu,soco_alu,luva_spikes_aco,soco_aco,luva_spikes_ag,soco_ag,luva_spikes_au,soco_au,luva_spikes_titanio,soco_titanio,anel_forca1,anel_forca2,anel_forca3,anel_resistencia1,anel_resistencia2,anel_resistencia3,anel_consistencia1,anel_consistencia2,anel_consistencia3,anel_da_imortalidade,anel_da_divindade,chinelo_inicial,papetes_masculinas,tenis_velho,tenis_simplorio,sapato_simplorio,tenis_comum,tenis_trilha,tenis_caminhada,tenis_corrida,tenis_ZX5000,item_adicionado,quantidade_adicionada,equipado_roupa,equipado_capa,equipado_luva,equipado_anel,equipado_maos,equipado_calcado,variavel_cenario,objeto,situacao,temporario,variavel_lugar,ponto_de_save,mostrar_save, personagem_jogador,personagem_jogador_reserva,personagem_inimigo,eegg,acao_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,variavel_para_comparar,contador_de_batalha,contador_de_rodadas,mala,loja_venda
     while 1:
         variavel_para_comparar=0
         i=0
@@ -447,7 +487,7 @@ def lojaVender():
                 print(str(mala[0][i])+" : "+str(mala[1][i][0])+"\n     ("+str(mala[1][i][5])+")\n")
             i+=1
         while 1:
-            print("Para analisar um item digite o número da sua posicao!\nPara voltar ao jogo digite voltar.")
+            print("Para analisar um item digite o numero da sua posicao!\nPara voltar ao jogo digite voltar.")
             acao_do_personagem = raw_input('-')
             if acao_do_personagem.isdigit():
                 acao_do_personagem=int(acao_do_personagem)
@@ -455,7 +495,7 @@ def lojaVender():
             else:
                 acao_do_personagem=acao_do_personagem.lower()
                 if(acao_do_personagem=="voltar"):break
-                print("ENTRADA INVÁLIDA!")
+                print("ENTRADA INVALIDA!")
                 time.sleep(0.5)
         if(acao_do_personagem=="voltar"):break
         i=0
@@ -487,12 +527,12 @@ def lojaVender():
                     time.sleep(0.5)
                     break
                 else:
-                    print("ENTRADA INVÁLIDA!")
+                    print("ENTRADA INVALIDA!")
                     time.sleep(0.5)
 
 #--Loja: Comprar--#
 def lojaComprar():
-    global inventario_reserva,porcentagem_inflacao,bermuda_linho_regata,bermuda_linho_polo,calca_jeans_regata,calca_jeans_polo,desequipado_roupa,desequipado_capa,desequipado_luva,desequipado_maos,desequipado_calcado,espaco_vazio,pedaco_pizza,bolo_chocolate,pijama_inicial,uniforme_estudantil,malha_ninja,lapis_apontado,punhal_envelhecido,talheres_prata,jaqueta_imitacao,jaqueta_couro,agasalho_la,suplemento_alimenticio,lata_energetico,luva_la,luva_couro,soco_pvc,soco_latao,luva_spikes_alu,soco_alu,luva_spikes_aco,soco_aco,luva_spikes_ag,soco_ag,luva_spikes_au,soco_au,luva_spikes_titanio,soco_titanio,anel_forca1,anel_forca2,anel_forca3,anel_resistencia1,anel_resistencia2,anel_resistencia3,anel_consistencia1,anel_consistencia2,anel_consistencia3,anel_da_imortalidade,anel_da_divindade,chinelo_inicial,papetes_masculinas,tenis_velho,tenis_simplorio,sapato_simplorio,tenis_comum,tenis_trilha,tenis_caminhada,tenis_corrida,tenis_ZX5000,item_adicionado,quantidade_adicionada,equipado_roupa,equipado_capa,equipado_luva,equipado_anel,equipado_maos,equipado_calcado,variavel_cenario,objeto,situacao,temporario,variavel_lugar,ponto_de_save,mostrar_save, personagem_jogador,personagem_reserva,personagem_inimigo,eegg,acao_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,variavel_para_comparar,contador_de_batalha,contador_de_rodadas,mala,loja_venda
+    global personagem_headbanger,inventario_reserva,porcentagem_inflacao,bermuda_linho_regata,bermuda_linho_polo,calca_jeans_regata,calca_jeans_polo,desequipado_roupa,desequipado_capa,desequipado_luva,desequipado_maos,desequipado_calcado,espaco_vazio,pedaco_pizza,bolo_chocolate,pijama_inicial,uniforme_estudantil,malha_ninja,lapis_apontado,punhal_envelhecido,talheres_prata,jaqueta_imitacao,jaqueta_couro,agasalho_la,suplemento_alimenticio,lata_energetico,luva_la,luva_couro,soco_pvc,soco_latao,luva_spikes_alu,soco_alu,luva_spikes_aco,soco_aco,luva_spikes_ag,soco_ag,luva_spikes_au,soco_au,luva_spikes_titanio,soco_titanio,anel_forca1,anel_forca2,anel_forca3,anel_resistencia1,anel_resistencia2,anel_resistencia3,anel_consistencia1,anel_consistencia2,anel_consistencia3,anel_da_imortalidade,anel_da_divindade,chinelo_inicial,papetes_masculinas,tenis_velho,tenis_simplorio,sapato_simplorio,tenis_comum,tenis_trilha,tenis_caminhada,tenis_corrida,tenis_ZX5000,item_adicionado,quantidade_adicionada,equipado_roupa,equipado_capa,equipado_luva,equipado_anel,equipado_maos,equipado_calcado,variavel_cenario,objeto,situacao,temporario,variavel_lugar,ponto_de_save,mostrar_save, personagem_jogador,personagem_jogador_reserva,personagem_inimigo,eegg,acao_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,variavel_para_comparar,contador_de_batalha,contador_de_rodadas,mala,loja_venda
     while 1:
         variavel_para_comparar=0
         i=0
@@ -510,7 +550,7 @@ def lojaComprar():
                 print(str(loja_venda[0][i])+" : "+str(loja_venda[1][i][0])+"\n     ("+str(loja_venda[1][i][5])+")\n")
             i+=1
         while 1:
-            print("Para analisar um item digite o número da sua posicao!\nPara voltar ao jogo digite voltar.")
+            print("Para analisar um item digite o numero da sua posicao!\nPara voltar ao jogo digite voltar.")
             acao_do_personagem = raw_input('-')
             if acao_do_personagem.isdigit():
                 acao_do_personagem=int(acao_do_personagem)
@@ -518,7 +558,7 @@ def lojaComprar():
             else:
                 acao_do_personagem=acao_do_personagem.lower()
                 if(acao_do_personagem=="voltar"):break
-                print("ENTRADA INVÁLIDA!")
+                print("ENTRADA INVALIDA!")
                 time.sleep(0.5)
         if(acao_do_personagem=="voltar"):break
         i=0
@@ -558,7 +598,7 @@ def lojaComprar():
                 else:
                     acao_do_personagem=acao_do_personagem.lower()
                     if(acao_do_personagem=="voltar"):break
-                    print("ENTRADA INVÁLIDA!")
+                    print("ENTRADA INVALIDA!")
                     time.sleep(0.5)
             if(acao_do_personagem=="voltar"):break
             while 1:
@@ -581,30 +621,30 @@ def lojaComprar():
                             time.sleep(0.5)
                             break
                     else:
-                        print("ENTRADA INVÁLIDA!")
+                        print("ENTRADA INVALIDA!")
                         time.sleep(0.5)
 
 #--Ficha do Personagem--#
 def ficha_personagem():
-    global inventario_reserva,porcentagem_inflacao,bermuda_linho_regata,bermuda_linho_polo,calca_jeans_regata,calca_jeans_polo,desequipado_roupa,desequipado_capa,desequipado_luva,desequipado_maos,desequipado_calcado,espaco_vazio,pedaco_pizza,bolo_chocolate,pijama_inicial,uniforme_estudantil,malha_ninja,lapis_apontado,punhal_envelhecido,talheres_prata,jaqueta_imitacao,jaqueta_couro,agasalho_la,suplemento_alimenticio,lata_energetico,luva_la,luva_couro,soco_pvc,soco_latao,luva_spikes_alu,soco_alu,luva_spikes_aco,soco_aco,luva_spikes_ag,soco_ag,luva_spikes_au,soco_au,luva_spikes_titanio,soco_titanio,anel_forca1,anel_forca2,anel_forca3,anel_resistencia1,anel_resistencia2,anel_resistencia3,anel_consistencia1,anel_consistencia2,anel_consistencia3,anel_da_imortalidade,anel_da_divindade,chinelo_inicial,papetes_masculinas,tenis_velho,tenis_simplorio,sapato_simplorio,tenis_comum,tenis_trilha,tenis_caminhada,tenis_corrida,tenis_ZX5000,item_adicionado,quantidade_adicionada,equipado_roupa,equipado_capa,equipado_luva,equipado_anel,equipado_maos,equipado_calcado,variavel_cenario,objeto,situacao,temporario,variavel_lugar,ponto_de_save,mostrar_save, personagem_jogador,personagem_reserva,personagem_inimigo,eegg,acao_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,variavel_para_comparar,contador_de_batalha,contador_de_rodadas,mala,loja_venda
-    print("\n#"+"-"*30+"#\n"+"\nNome: "+str(personagem_jogador[0]))
+    global personagem_headbanger,inventario_reserva,porcentagem_inflacao,bermuda_linho_regata,bermuda_linho_polo,calca_jeans_regata,calca_jeans_polo,desequipado_roupa,desequipado_capa,desequipado_luva,desequipado_maos,desequipado_calcado,espaco_vazio,pedaco_pizza,bolo_chocolate,pijama_inicial,uniforme_estudantil,malha_ninja,lapis_apontado,punhal_envelhecido,talheres_prata,jaqueta_imitacao,jaqueta_couro,agasalho_la,suplemento_alimenticio,lata_energetico,luva_la,luva_couro,soco_pvc,soco_latao,luva_spikes_alu,soco_alu,luva_spikes_aco,soco_aco,luva_spikes_ag,soco_ag,luva_spikes_au,soco_au,luva_spikes_titanio,soco_titanio,anel_forca1,anel_forca2,anel_forca3,anel_resistencia1,anel_resistencia2,anel_resistencia3,anel_consistencia1,anel_consistencia2,anel_consistencia3,anel_da_imortalidade,anel_da_divindade,chinelo_inicial,papetes_masculinas,tenis_velho,tenis_simplorio,sapato_simplorio,tenis_comum,tenis_trilha,tenis_caminhada,tenis_corrida,tenis_ZX5000,item_adicionado,quantidade_adicionada,equipado_roupa,equipado_capa,equipado_luva,equipado_anel,equipado_maos,equipado_calcado,variavel_cenario,objeto,situacao,temporario,variavel_lugar,ponto_de_save,mostrar_save, personagem_jogador,personagem_jogador_reserva,personagem_inimigo,eegg,acao_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,variavel_para_comparar,contador_de_batalha,contador_de_rodadas,mala,loja_venda
+    print("\n#"+"-"*30+"#\n"+"\n Nome: "+str(personagem_jogador[0]))
     time.sleep(0.23)
-    print("\nVida: "+str(personagem_jogador[6])+"de"+str(personagem_jogador[5]))
+    print("\n Vida: "+str(personagem_jogador[6])+" de "+str(personagem_jogador[5]))
     time.sleep(0.23)
-    print("\nAtaque: "+str(personagem_jogador[1])+"\nDefesa: "+str(personagem_jogador[2])+"\nAgilidade: "+str(personagem_jogador[3])+"\nSorte: "+str(personagem_jogador[4]))
+    print("\n Ataque: "+str(personagem_jogador[1])+"\n Defesa: "+str(personagem_jogador[2])+"\n Agilidade: "+str(personagem_jogador[3])+"\n Sorte: "+str(personagem_jogador[4]))
     time.sleep(0.23)
-    print("\nCapa: "+str(equipado_capa[0])+"\nRoupa: "+str(equipado_roupa[0])+"\nCalcados: "+str(equipado_calcado[0]))
+    print("\n Capa: "+str(equipado_capa[0])+"\n Roupa: "+str(equipado_roupa[0])+"\n Calcados: "+str(equipado_calcado[0]))
     time.sleep(0.23)
-    print("\nLuvas: "+str(equipado_luva[0])+"\nAnel: "+str(equipado_anel[0])+"\nArmamento: "+str(equipado_maos[0]))
+    print("\n Luvas: "+str(equipado_luva[0])+"\n Anel: "+str(equipado_anel[0])+"\n Armamento: "+str(equipado_maos[0]))
     time.sleep(0.23)
-    print("\nDinheiro: "+str(personagem_jogador[7])+" Reais\n")
+    print("\n Dinheiro: "+str(personagem_jogador[7])+" Reais\n")
     time.sleep(0.23)
     print("\n#"+"-"*30+"#\n")
     time.sleep(0.23)
 
 #--Save--#
 def save():
-    global inventario_reserva,porcentagem_inflacao,bermuda_linho_regata,bermuda_linho_polo,calca_jeans_regata,calca_jeans_polo,desequipado_roupa,desequipado_capa,desequipado_luva,desequipado_maos,desequipado_calcado,espaco_vazio,pedaco_pizza,bolo_chocolate,pijama_inicial,uniforme_estudantil,malha_ninja,lapis_apontado,punhal_envelhecido,talheres_prata,jaqueta_imitacao,jaqueta_couro,agasalho_la,suplemento_alimenticio,lata_energetico,luva_la,luva_couro,soco_pvc,soco_latao,luva_spikes_alu,soco_alu,luva_spikes_aco,soco_aco,luva_spikes_ag,soco_ag,luva_spikes_au,soco_au,luva_spikes_titanio,soco_titanio,anel_forca1,anel_forca2,anel_forca3,anel_resistencia1,anel_resistencia2,anel_resistencia3,anel_consistencia1,anel_consistencia2,anel_consistencia3,anel_da_imortalidade,anel_da_divindade,chinelo_inicial,papetes_masculinas,tenis_velho,tenis_simplorio,sapato_simplorio,tenis_comum,tenis_trilha,tenis_caminhada,tenis_corrida,tenis_ZX5000,item_adicionado,quantidade_adicionada,equipado_roupa,equipado_capa,equipado_luva,equipado_anel,equipado_maos,equipado_calcado,variavel_cenario,objeto,situacao,temporario,variavel_lugar,ponto_de_save,mostrar_save, personagem_jogador,personagem_reserva,personagem_inimigo,eegg,acao_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,variavel_para_comparar,contador_de_batalha,contador_de_rodadas,mala,loja_venda
+    global personagem_headbanger,inventario_reserva,porcentagem_inflacao,bermuda_linho_regata,bermuda_linho_polo,calca_jeans_regata,calca_jeans_polo,desequipado_roupa,desequipado_capa,desequipado_luva,desequipado_maos,desequipado_calcado,espaco_vazio,pedaco_pizza,bolo_chocolate,pijama_inicial,uniforme_estudantil,malha_ninja,lapis_apontado,punhal_envelhecido,talheres_prata,jaqueta_imitacao,jaqueta_couro,agasalho_la,suplemento_alimenticio,lata_energetico,luva_la,luva_couro,soco_pvc,soco_latao,luva_spikes_alu,soco_alu,luva_spikes_aco,soco_aco,luva_spikes_ag,soco_ag,luva_spikes_au,soco_au,luva_spikes_titanio,soco_titanio,anel_forca1,anel_forca2,anel_forca3,anel_resistencia1,anel_resistencia2,anel_resistencia3,anel_consistencia1,anel_consistencia2,anel_consistencia3,anel_da_imortalidade,anel_da_divindade,chinelo_inicial,papetes_masculinas,tenis_velho,tenis_simplorio,sapato_simplorio,tenis_comum,tenis_trilha,tenis_caminhada,tenis_corrida,tenis_ZX5000,item_adicionado,quantidade_adicionada,equipado_roupa,equipado_capa,equipado_luva,equipado_anel,equipado_maos,equipado_calcado,variavel_cenario,objeto,situacao,temporario,variavel_lugar,ponto_de_save,mostrar_save, personagem_jogador,personagem_jogador_reserva,personagem_inimigo,eegg,acao_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,variavel_para_comparar,contador_de_batalha,contador_de_rodadas,mala,loja_venda
     ficha_personagem()
     print('\nDeseja salvar seu progresso?("sim" ou "nao")\n')
     time.sleep(0.5)
@@ -655,7 +695,7 @@ def save():
             print("\nEspaco  9:     Lugar: "+str(mostrar_save[2])+"\n          Nome: "+str(mostrar_save[0])+"  Vida: "+str(mostrar_save[1])+"\n          Ataque: "+str(mostrar_save[3])+"  Defesa: "+str(mostrar_save[4])+"  Agilidade: "+str(mostrar_save[5])+"  Sorte: "+str(mostrar_save[6]))
             arq.close
             while 1:
-                print("\n(Digite um número entre 0 e 9)")
+                print("\n(Digite um numero entre 0 e 9)")
                 acao_do_personagem=raw_input("-")
                 if(acao_do_personagem=="0"):
                     arq = open('\espaco_save00.py', 'wb')
@@ -720,40 +760,41 @@ def save():
             pickle.dump(mala, arq)
             arq.close
             print("\nPronto!\n")
+            time.sleep(1)
             break
         else:
             if(acao_do_personagem == "nao" or acao_do_personagem=="n" or acao_do_personagem=="nao" or acao_do_personagem=="no" or acao_do_personagem=="na" or acao_do_personagem=="na" or acao_do_personagem=="ao" or acao_do_personagem=="ao" or acao_do_personagem=="ñ" or acao_do_personagem=="ñao" or acao_do_personagem=="ño" or acao_do_personagem=="ñõ" or acao_do_personagem=="ña" or acao_do_personagem=="ñaõ" or acao_do_personagem=="aõ"):
                 break
             else:
-                print('ENTRADA INVÁLIDA! Digite "sim" ou "nao".\n')
+                print('ENTRADA INVALIDA! Digite "sim" ou "nao".\n')
                 time.sleep(0.5)
 
 #--Sistema de batalha--#
 def batalha():
-    global inventario_reserva,porcentagem_inflacao,bermuda_linho_regata,bermuda_linho_polo,calca_jeans_regata,calca_jeans_polo,desequipado_roupa,desequipado_capa,desequipado_luva,desequipado_maos,desequipado_calcado,espaco_vazio,pedaco_pizza,bolo_chocolate,pijama_inicial,uniforme_estudantil,malha_ninja,lapis_apontado,punhal_envelhecido,talheres_prata,jaqueta_imitacao,jaqueta_couro,agasalho_la,suplemento_alimenticio,lata_energetico,luva_la,luva_couro,soco_pvc,soco_latao,luva_spikes_alu,soco_alu,luva_spikes_aco,soco_aco,luva_spikes_ag,soco_ag,luva_spikes_au,soco_au,luva_spikes_titanio,soco_titanio,anel_forca1,anel_forca2,anel_forca3,anel_resistencia1,anel_resistencia2,anel_resistencia3,anel_consistencia1,anel_consistencia2,anel_consistencia3,anel_da_imortalidade,anel_da_divindade,chinelo_inicial,papetes_masculinas,tenis_velho,tenis_simplorio,sapato_simplorio,tenis_comum,tenis_trilha,tenis_caminhada,tenis_corrida,tenis_ZX5000,item_adicionado,quantidade_adicionada,equipado_roupa,equipado_capa,equipado_luva,equipado_anel,equipado_maos,equipado_calcado,variavel_cenario,objeto,situacao,temporario,variavel_lugar,ponto_de_save,mostrar_save, personagem_jogador,personagem_reserva,personagem_inimigo,eegg,acao_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,variavel_para_comparar,contador_de_batalha,contador_de_rodadas,mala,loja_venda
-    print("\nBatalha!!!\nÉ hora da briga!!!\n")
+    global personagem_headbanger,inventario_reserva,porcentagem_inflacao,bermuda_linho_regata,bermuda_linho_polo,calca_jeans_regata,calca_jeans_polo,desequipado_roupa,desequipado_capa,desequipado_luva,desequipado_maos,desequipado_calcado,espaco_vazio,pedaco_pizza,bolo_chocolate,pijama_inicial,uniforme_estudantil,malha_ninja,lapis_apontado,punhal_envelhecido,talheres_prata,jaqueta_imitacao,jaqueta_couro,agasalho_la,suplemento_alimenticio,lata_energetico,luva_la,luva_couro,soco_pvc,soco_latao,luva_spikes_alu,soco_alu,luva_spikes_aco,soco_aco,luva_spikes_ag,soco_ag,luva_spikes_au,soco_au,luva_spikes_titanio,soco_titanio,anel_forca1,anel_forca2,anel_forca3,anel_resistencia1,anel_resistencia2,anel_resistencia3,anel_consistencia1,anel_consistencia2,anel_consistencia3,anel_da_imortalidade,anel_da_divindade,chinelo_inicial,papetes_masculinas,tenis_velho,tenis_simplorio,sapato_simplorio,tenis_comum,tenis_trilha,tenis_caminhada,tenis_corrida,tenis_ZX5000,item_adicionado,quantidade_adicionada,equipado_roupa,equipado_capa,equipado_luva,equipado_anel,equipado_maos,equipado_calcado,variavel_cenario,objeto,situacao,temporario,variavel_lugar,ponto_de_save,mostrar_save, personagem_jogador,personagem_jogador_reserva,personagem_inimigo,eegg,acao_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,variavel_para_comparar,contador_de_batalha,contador_de_rodadas,mala,loja_venda
+    print("\nBatalha!!!\nE hora da briga!!!\n")
     time.sleep(4)
     contador_de_rodadas=1
     while(personagem_inimigo[6]>0):
         if(personagem_jogador[6]<=0):
             break
-        print("\n]]"+ "="*30+"[[\n"+"    Inicio da rodada número "+str(contador_de_rodadas)+"\n]]"+"="*30+"[[\n")
+        print("\n]]"+ "="*30+"[[\n"+"    Inicio da rodada numero "+str(contador_de_rodadas)+"\n]]"+"="*30+"[[\n")
         if(personagem_jogador[6]==1):
             if(contador_de_rodadas==1):
                 print("\nVoce entrou na batalha com apenas 1 ponto de vida!")
                 time.sleep(1)
-                print("Seu último recurso e a tensao!\n")
+                print("Seu ultimo recurso e a tensao!\n")
                 time.sleep(1)
             else:
                 if(contador_de_batalha==0):
                     print("\nVoce esta com apenas 1 ponto de vida!")
                     time.sleep(1)
-                    print("Seu último recurso e a tensao!\n")
+                    print("Seu ultimo recurso e a tensao!\n")
                     time.sleep(1)
             if(contador_de_batalha>0):       
                 print("\nVoce aguentou mais uma rodada com apenas 1 ponto de vida!")
                 time.sleep(1)
-                print("Voce extendeu o limite do seu fôlego e agora o limite dos seus pontos de vida subiu!\n")
+                print("Voce extendeu o limite do seu folego e agora o limite dos seus pontos de vida subiu!\n")
                 time.sleep(2)
                 personagem_jogador[5]=personagem_jogador[5]+((contador_de_batalha)+(random.randrange(personagem_jogador[2])))
             contador_de_batalha=contador_de_batalha+1
@@ -761,7 +802,7 @@ def batalha():
             if(personagem_jogador[6]<=personagem_jogador[5]*0.05):
                 teste_de_sorte=random.randrange(150)
                 if(teste_de_sorte<=10+personagem_jogador[4]):
-                    print("\nVoce esta dando o seu melhor para aguentar, isso esta melhorando o seu fôlego!")
+                    print("\nVoce esta dando o seu melhor para aguentar, isso esta melhorando o seu folego!")
                     time.sleep(1)
                     print("O limite dos seus pontos de vida aumentou!\n")
                     time.sleep(2)
@@ -801,7 +842,7 @@ def batalha():
                             calculo_do_dano = (calculo_do_dano/2)*(-1)+((random.randrange(personagem_jogador[1]))/2)*(0.2)
                             print("\nNao importa, sua defesa e incrivel!")
                             time.sleep(2)
-                            print("Alem de defender voce conseguiu contra-atacar, causando "+str(calculo_do_dano)+" pontos de dano ao inimigo!\n")
+                            print("Alem de defender voce conseguiu contra-atacar, \ncausando "+str(calculo_do_dano)+" pontos de dano ao inimigo!\n")
                             time.sleep(3)
                             teste_de_sorte = random.randrange(5)#aumento de defesa
                             if(teste_de_sorte<=1):
@@ -882,7 +923,7 @@ def batalha():
                             calculo_do_dano = (calculo_do_dano/2)*(-1)+((random.randrange(personagem_jogador[1]))/2)*(0.2)
                             print("\nSua defesa e simplesmente  I M E N S A !")
                             time.sleep(2)
-                            print("O inimigo avancou furiosamente mas voce o lancou para tras e contra-atacou causando "+str(calculo_do_dano)+" pontos de dano ao inimigo!\n")
+                            print("O inimigo avancou furiosamente mas voce o lancou para tras \ne contra-atacou causando "+str(calculo_do_dano)+" pontos de dano ao inimigo!\n")
                             time.sleep(3)
                             teste_de_sorte = random.randrange(6)#aumento de defesa
                             if(teste_de_sorte<=1):
@@ -962,9 +1003,9 @@ def batalha():
                         calculo_do_dano = personagem_inimigo[1]+(random.randrange(personagem_inimigo[1]))-2*personagem_jogador[2]-(random.randrange(personagem_jogador[2]))
                         if (calculo_do_dano<0):
                             calculo_do_dano = calculo_do_dano*(-1)+((random.randrange(personagem_jogador[1]))/2)
-                            print("\nSua defesa É ENORME!")
+                            print("\nSua defesa E ENORME!")
                             time.sleep(2)
-                            print("Voce barrou o ataque naturalmente e contra-atacou, causando "+str(calculo_do_dano)+" pontos de dano ao inimigo!\n")
+                            print("Voce barrou o ataque naturalmente e contra-atacou, \ncausando "+str(calculo_do_dano)+" pontos de dano ao inimigo!\n")
                             time.sleep(3)
                             teste_de_sorte = random.randrange(5)#aumento de defesa
                             if(teste_de_sorte<=1):
@@ -1028,7 +1069,7 @@ def batalha():
                             time.sleep(3)
                             teste_de_sorte = random.randrange(300)
                             if(teste_de_sorte<=30-personagem_jogador[3]-personagem_jogador[4]+personagem_inimigo[3]+personagem_inimigo[4]):
-                                print("\nSeu oponente conseguiu esquivar de todos os seus ataques, voce nem pôde tocar no inimigo!")
+                                print("\nSeu oponente conseguiu esquivar de todos os seus ataques, voce nem pode tocar no inimigo!")
                                 time.sleep(2)
                             else:
                                 calculo_do_dano=2*personagem_jogador[1]+(random.randrange(personagem_jogador[1]))-3*personagem_inimigo[2]-(random.randrange(personagem_inimigo[2]))
@@ -1041,14 +1082,14 @@ def batalha():
                                     personagem_jogador[6] = personagem_jogador[6]-calculo_do_dano
                                     teste_de_sorte=random.randrange(200)
                                     if(teste_de_sorte<=20+personagem_jogador[4]):
-                                        print("\nVoce tentou ao maximo ultrapassar a defesa do seu inimigo, exigiu muito dos seus músculos que se fortaleceram!\n")
+                                        print("\nVoce tentou ao maximo ultrapassar a defesa do seu inimigo, exigiu muito dos seus musculos que se fortaleceram!\n")
                                         time.sleep(3)
                                         print("\nSeus pontos de ataque subiram!\n")
                                         time.sleep(2)
                                         personagem_jogador[1]=personagem_jogador[1]+(random.randrange(personagem_jogador[1]))+3
                                 else:
                                     if (calculo_do_dano==0):#S_ataque(2personagem_jogador[1]) ANULA S_defesa(3personagem_inimigo[2])
-                                        print("\nA disputa de forcas e intensa, voce e seu inimigo deram o melhor de si, mas nenhum dos dois se sobrepôs!\n")
+                                        print("\nA disputa de forcas e intensa, voce e seu inimigo deram o melhor de si, mas nenhum dos dois se sobrepos!\n")
                                         time.sleep(3)
                                     else:#S_ataque(2personagem_jogador[1]) ATACA S_defesa(3personagem_inimigo[2])
                                         print("\nSeu ataque foi explosivo!")
@@ -1060,7 +1101,7 @@ def batalha():
                                         personagem_inimigo[6] = personagem_inimigo[6]-calculo_do_dano
                                         teste_de_sorte=random.randrange(100)
                                         if(teste_de_sorte==10+personagem_jogador[4]):
-                                            print("\nA explosao de energia dos seus músculos os expandiu definitivamente!\n")
+                                            print("\nA explosao de energia dos seus musculos os expandiu definitivamente!\n")
                                             time.sleep(2)
                                             print("\nSeus pontos de ataque subiram!\n")
                                             time.sleep(2)
@@ -1068,13 +1109,13 @@ def batalha():
                         else:#S_ataque(2personagem_jogador[1]) vs defesa(2personagem_inimigo[2])
                             teste_de_sorte = random.randrange(300)
                             if(teste_de_sorte<=30-personagem_jogador[3]-personagem_jogador[4]+personagem_inimigo[3]+personagem_inimigo[4]):
-                                print("\nSeu oponente conseguiu esquivar de todos os seus ataques, voce nem pôde tocar no inimigo!")
+                                print("\nSeu oponente conseguiu esquivar de todos os seus ataques, voce nem pode tocar no inimigo!")
                                 time.sleep(2)
                             else:
                                 calculo_do_dano = 2*personagem_jogador[1]+(random.randrange(personagem_jogador[1]))-2*personagem_inimigo[2]-(random.randrange(personagem_inimigo[2]))
                                 if(calculo_do_dano<0):#S_ataque(2personagem_jogador[1]) APANHA DE defesa(2personagem_inimigo[2])
                                     calculo_do_dano=calculo_do_dano*(-1)+((random.randrange(personagem_inimigo[1]))/2)
-                                    print("\nVoce deu o seu maximo, mas mesmo assim nem se equiparou às habilidades de auto-defesa do seu inimigo!")
+                                    print("\nVoce deu o seu maximo, mas mesmo assim nem se equiparou as habilidades de auto-defesa do seu inimigo!")
                                     time.sleep(3)
                                     print("Sem fazer muito esforco ele se defendeu e contra-atacou, te causando "+str(calculo_do_dano)+" pontos de dano!\n")
                                     time.sleep(3)
@@ -1102,7 +1143,7 @@ def batalha():
                                                 time.sleep(0.25)
                                                 personagem_inimigo[6]=personagem_inimigo[6]-calculo_do_dano
                                                 teste_de_sorte=teste_de_sorte-1
-                                            print("\nVoce desferiu toda sua fúria no inimigo!\n")
+                                            print("\nVoce desferiu toda sua furia no inimigo!\n")
                                             time.sleep(2)
                                             teste_de_sorte=random.randrange(3)
                                             if(teste_de_sorte<=1):
@@ -1122,7 +1163,7 @@ def batalha():
                                                     time.sleep(2)
                                                     personagem_jogador[1]=personagem_jogador[1]+(random.randrange(personagem_jogador[1]))+3
                                         else:#S_ataque(2personagem_jogador[1]) ATACA defesa(2personagem_inimigo[2])
-                                            print("\nSeu ataque de goes duplos pressionaram a defesa do seu inimigo, causando "+str(calculo_do_dano)+" pontos de dano!\n")
+                                            print("\nSeu ataque de gopes duplos pressionaram a defesa do seu inimigo, \ncausando "+str(calculo_do_dano)+" pontos de dano!\n")
                                             time.sleep(3)
                                             teste_de_sorte=random.randrange(200)
                                             if(teste_de_sorte<=20+personagem_jogador[4]):
@@ -1139,13 +1180,13 @@ def batalha():
                             time.sleep(2)
                             teste_de_sorte = random.randrange(300)
                             if(teste_de_sorte<=30-personagem_jogador[3]-personagem_jogador[4]+personagem_inimigo[3]+personagem_inimigo[4]):
-                                print("\nSeu oponente conseguiu esquivar de todos os seus ataques, voce nem pôde tocar no inimigo!")
+                                print("\nSeu oponente conseguiu esquivar de todos os seus ataques, voce nem pode tocar no inimigo!")
                                 time.sleep(2)
                             else:
                                 calculo_do_dano=personagem_jogador[1]+random.randrange(personagem_jogador[1])-3*personagem_inimigo[2]-random.randrange(personagem_inimigo[2])
                                 if(calculo_do_dano<0):#ataque(personagem_jogador[1]) APANHA DE S_defesa(3personagem_inimigo[2])
                                     calculo_do_dano=calculo_do_dano*(-1)+((random.randrange(personagem_inimigo[1]))/2)
-                                    print("\nÉ muito dificil passar por tamanha defesa, seu ataque foi infimo, alem de ser inutilizado, voce sofreu represalia...")
+                                    print("\nE muito dificil passar por tamanha defesa, seu ataque foi infimo, \nalem de ser inutilizado, voce sofreu represalia...")
                                     time.sleep(3)
                                     print("Seu inimigo contra-atacou, causando "+str(calculo_do_dano)+" pontos de dano.\n")
                                     time.sleep(2)
@@ -1177,7 +1218,7 @@ def batalha():
                         else:#ataque(personagem_jogador[1]) vs defesa(2personagem_inimigo[2])
                             teste_de_sorte = random.randrange(300)
                             if(teste_de_sorte<=30-personagem_jogador[3]-personagem_jogador[4]+personagem_inimigo[3]+personagem_inimigo[4]):
-                                print("\nSeu oponente conseguiu esquivar de todos os seus ataques, voce nem pôde tocar no inimigo!")
+                                print("\nSeu oponente conseguiu esquivar de todos os seus ataques, voce nem pode tocar no inimigo!")
                                 time.sleep(2)
                             else:
                                 calculo_do_dano = personagem_jogador[1]+(random.randrange(personagem_jogador[1]))-2*personagem_inimigo[2]-(random.randrange(personagem_inimigo[2]))
@@ -1232,11 +1273,11 @@ def batalha():
                                 personagem_inimigo[6]=personagem_inimigo[6]-calculo_do_dano
                                 teste_de_sorte=random.randrange(100)
                                 if(teste_de_sorte<=10+personagem_jogador[4]):
-                                    print("\nSeus pontos de ataque subiram enquanto voce forcava os seus músculos!\n")
+                                    print("\nSeus pontos de ataque subiram enquanto voce forcava os seus musculos!\n")
                                     time.sleep(2)
                                     personagem_jogador[1]=personagem_jogador[1]+(random.randrange(personagem_jogador[1]))+2
                             else:
-                                print("\nMesmo sem se defender, a constituicao do inimigo foi alta o suficiente para resistir ao seu ataque.\n")
+                                print("\nMesmo sem se defender, a constituicao do inimigo foi alta o suficiente para resistir \nao seu ataque.\n")
                                 time.sleep(3)
                             calculo_do_dano=2*personagem_inimigo[1]+random.randrange(personagem_inimigo[1])-personagem_jogador[2]-random.randrange(personagem_jogador[2])
                             if(calculo_do_dano>0):
@@ -1244,12 +1285,12 @@ def batalha():
                                 time.sleep(2)
                                 personagem_jogador[6]=personagem_jogador[6]-calculo_do_dano
                             else:
-                                print("\nMesmo sem se defender, sua constituicao foi alta o suficiente para resistir ao ataque do oponente.\n")
+                                print("\nMesmo sem se defender, sua constituicao foi alta o suficiente para resistir \nao ataque do oponente.\n")
                                 time.sleep(3)
                         else:#S_ataque(2personagem_jogador[1]) vs ataque(personagem_inimigo[1])
                             print("\nVoce avancou violentamente sobre o inimigo, pressionando-o sem compaixao!")
                             time.sleep(3)
-                            print("Apesar de forcar um leve recuo do inimigo, voce nao deixou de levar uns bons golpes!\n")
+                            print("Apesar de forcar um leve recuo do inimigo, voce nao deixou de levar uns bons \ngolpes!\n")
                             time.sleep(3)
                             calculo_do_dano=2*personagem_jogador[1]+random.randrange(personagem_jogador[1])-personagem_inimigo[2]-random.randrange(personagem_inimigo[2])
                             if(calculo_do_dano>0):
@@ -1257,15 +1298,15 @@ def batalha():
                                 time.sleep(2)
                                 personagem_inimigo[6]=personagem_inimigo[6]-calculo_do_dano
                             else:
-                                print("\nMesmo sem se defender, a constituicao do inimigo foi alta o suficiente para resistir ao seu ataque.\n")
+                                print("\nMesmo sem se defender, a constituicao do inimigo foi alta o suficiente para resistir \nao seu ataque.\n")
                                 time.sleep(3)
                             calculo_do_dano=personagem_inimigo[1]+random.randrange(personagem_inimigo[1])-personagem_jogador[2]-random.randrange(personagem_jogador[2])
                             if(calculo_do_dano>0):
-                                print("\nJa o inimigo causou apenas "+str(calculo_do_dano)+" pontos de dano à voce!\n")
+                                print("\nJa o inimigo causou apenas "+str(calculo_do_dano)+" pontos de dano a voce!\n")
                                 time.sleep(2)
                                 personagem_jogador[6]=personagem_jogador[6]-calculo_do_dano
                             else:
-                                print("\nMesmo sem se defender, sua constituicao foi alta o suficiente para resistir ao ataque do oponente.\n")
+                                print("\nMesmo sem se defender, sua constituicao foi alta o suficiente para resistir \nao ataque do oponente.\n")
                                 time.sleep(3)
                     else:#ataque(personagem_jogador[1]) vs ataque(personagem_inimigo[1])
                         teste_de_sorte=random.randrange(40)
@@ -1282,15 +1323,15 @@ def batalha():
                                 time.sleep(2)
                                 personagem_inimigo[6]=personagem_inimigo[6]-calculo_do_dano
                             else:
-                                print("\nMesmo sem se defender, a constituicao do inimigo foi alta o suficiente para resistir ao seu ataque.\n")
+                                print("\nMesmo sem se defender, a constituicao do inimigo foi alta o suficiente para resistir \nao seu ataque.\n")
                                 time.sleep(3)
                             calculo_do_dano=2*personagem_inimigo[1]+random.randrange(personagem_inimigo[1])-personagem_jogador[2]-random.randrange(personagem_jogador[2])
                             if(calculo_do_dano>0):
-                                print("\nEnquanto o seu inimigo te agrediu violentamente, causando "+str(calculo_do_dano)+" pontos de dano à voce!\n")
+                                print("\nEnquanto o seu inimigo te agrediu violentamente, causando "+str(calculo_do_dano)+" pontos de dano a voce!\n")
                                 time.sleep(2)
                                 personagem_jogador[6]=personagem_jogador[6]-calculo_do_dano
                             else:
-                                print("\nMesmo sem se defender, sua constituicao foi alta o suficiente para resistir ao ataque do oponente.\n")
+                                print("\nMesmo sem se defender, sua constituicao foi alta o suficiente para resistir \nao ataque do oponente.\n")
                                 time.sleep(3)
                         else:#ataque(personagem_jogador[1]) vs ataque(personagem_inimigo[1])
                             print("\nVoces se atacaram num ritmo leve, parecem estar testando um ao outro,\n ficou claro que nenhum dos dois mostrou tudo o que e capaz.\n")
@@ -1301,7 +1342,7 @@ def batalha():
                                 time.sleep(2)
                                 personagem_inimigo[6]=personagem_inimigo[6]-calculo_do_dano
                             else:
-                                print("\nMesmo sem se defender, a constituicao do inimigo foi alta o suficiente para resistir ao seu ataque.\n")
+                                print("\nMesmo sem se defender, a constituicao do inimigo foi alta o suficiente para resistir \nao seu ataque.\n")
                                 time.sleep(3)
                             calculo_do_dano=personagem_inimigo[1]+random.randrange(personagem_inimigo[1])-personagem_jogador[2]-random.randrange(personagem_jogador[2])
                             if(calculo_do_dano>0):
@@ -1309,7 +1350,7 @@ def batalha():
                                 time.sleep(2)
                                 personagem_jogador[6]=personagem_jogador[6]-calculo_do_dano
                             else:
-                                print("\nMesmo sem se defender, sua constituicao foi alta o suficiente para resistir ao ataque do oponente.\n")
+                                print("\nMesmo sem se defender, sua constituicao foi alta o suficiente para resistir \nao ataque do oponente.\n")
                                 time.sleep(3)
             else:
                 if(acao_do_personagem=="fugir" or acao_do_personagem=="f" or acao_do_personagem=="fugri" or acao_do_personagem=="fguir" or acao_do_personagem=="fugeir" or acao_do_personagem=="furig" or acao_do_personagem=="fuer" or acao_do_personagem=="ffugri" or acao_do_personagem=="gfuir" or acao_do_personagem=="fiur" or acao_do_personagem=="fugi" or acao_do_personagem=="fugr" or acao_do_personagem=="fug" or acao_do_personagem=="fgir" or acao_do_personagem=="fir" or acao_do_personagem=="fgr" or acao_do_personagem=="ugir" or acao_do_personagem=="gir" or acao_do_personagem=="figr" or acao_do_personagem=="fu"):
@@ -1344,7 +1385,7 @@ def batalha():
                                 time.sleep(3)
                                 calculo_do_dano = personagem_inimigo[1]+(random.randrange(personagem_inimigo[1]))-2*personagem_jogador[2]-(random.randrange(personagem_jogador[2]))
                                 if (calculo_do_dano<0):
-                                    print('\nSua defesa É ENORME!')
+                                    print('\nSua defesa E ENORME!')
                                     time.sleep(2)
                                     print('Voce barrou o ataque naturalmente e conseguiu afastar o inimigo, criando uma brecha para fugir!\n')
                                     time.sleep(3)
@@ -1380,7 +1421,7 @@ def batalha():
                                         time.sleep(3)
                                         personagem_jogador[6]=personagem_jogador[6]-calculo_do_dano
                                     else:
-                                        print("\nMesmo sem se defender, sua constituicao foi alta o suficiente para resistir ao ataque do oponente.\n")
+                                        print("\nMesmo sem se defender, sua constituicao foi alta o suficiente para resistir \nao ataque do oponente.\n")
                                         time.sleep(3)
                                 else:
                                     print('\nVoce tropecou ao tentar fugir!\n')
@@ -1389,7 +1430,7 @@ def batalha():
                                     time.sleep(2)
                                     calculo_do_dano = 2*personagem_inimigo[1]+(random.randrange(personagem_inimigo[1]))-personagem_jogador[2]-(random.randrange(personagem_jogador[2]))
                                     if (calculo_do_dano>0):
-                                        print("\nO inimigo aproveitou a abertura na sua defesa e te atacou violentamente, causando "+str(calculo_do_dano)+" pontos de dano.\n")
+                                        print("\nO inimigo aproveitou a abertura na sua defesa e te atacou violentamente, \ncausando "+str(calculo_do_dano)+" pontos de dano.\n")
                                         time.sleep(3)
                                         personagem_jogador[6]=personagem_jogador[6]-calculo_do_dano
                                         teste_de_sorte=random.randrange(100)
@@ -1400,7 +1441,7 @@ def batalha():
                                             time.sleep(2)
                                             personagem_jogador[5]=personagem_jogador[5]+(random.randrange(personagem_jogador[5]))+1
                                     else:
-                                        print("\nMesmo sem se defender, sua constituicao foi alta o suficiente para resistir ao ataque do oponente.\n")
+                                        print("\nMesmo sem se defender, sua constituicao foi alta o suficiente para resistir \nao ataque do oponente.\n")
                                         time.sleep(3)
                     calculo_da_fuga=calculo_da_fuga+((personagem_jogador[3]-personagem_inimigo[3])*0.10)+((personagem_jogador[4]-personagem_inimigo[4])*0.10)
                     if(batalha_escapar =="sim"):
@@ -1476,13 +1517,13 @@ def matarAlguem():
 
 #--Seu predio: Quarto Andar--#
 def seuPredioQuartoAndar():
-    global inventario_reserva,porcentagem_inflacao,bermuda_linho_regata,bermuda_linho_polo,calca_jeans_regata,calca_jeans_polo,desequipado_roupa,desequipado_capa,desequipado_luva,desequipado_maos,desequipado_calcado,espaco_vazio,pedaco_pizza,bolo_chocolate,pijama_inicial,uniforme_estudantil,malha_ninja,lapis_apontado,punhal_envelhecido,talheres_prata,jaqueta_imitacao,jaqueta_couro,agasalho_la,suplemento_alimenticio,lata_energetico,luva_la,luva_couro,soco_pvc,soco_latao,luva_spikes_alu,soco_alu,luva_spikes_aco,soco_aco,luva_spikes_ag,soco_ag,luva_spikes_au,soco_au,luva_spikes_titanio,soco_titanio,anel_forca1,anel_forca2,anel_forca3,anel_resistencia1,anel_resistencia2,anel_resistencia3,anel_consistencia1,anel_consistencia2,anel_consistencia3,anel_da_imortalidade,anel_da_divindade,chinelo_inicial,papetes_masculinas,tenis_velho,tenis_simplorio,sapato_simplorio,tenis_comum,tenis_trilha,tenis_caminhada,tenis_corrida,tenis_ZX5000,item_adicionado,quantidade_adicionada,equipado_roupa,equipado_capa,equipado_luva,equipado_anel,equipado_maos,equipado_calcado,variavel_cenario,objeto,situacao,temporario,variavel_lugar,ponto_de_save,mostrar_save, personagem_jogador,personagem_reserva,personagem_inimigo,eegg,acao_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,variavel_para_comparar,contador_de_batalha,contador_de_rodadas,mala,loja_venda
-    variavel_lugar = "seu predio, 4º andar"
+    global personagem_headbanger,inventario_reserva,porcentagem_inflacao,bermuda_linho_regata,bermuda_linho_polo,calca_jeans_regata,calca_jeans_polo,desequipado_roupa,desequipado_capa,desequipado_luva,desequipado_maos,desequipado_calcado,espaco_vazio,pedaco_pizza,bolo_chocolate,pijama_inicial,uniforme_estudantil,malha_ninja,lapis_apontado,punhal_envelhecido,talheres_prata,jaqueta_imitacao,jaqueta_couro,agasalho_la,suplemento_alimenticio,lata_energetico,luva_la,luva_couro,soco_pvc,soco_latao,luva_spikes_alu,soco_alu,luva_spikes_aco,soco_aco,luva_spikes_ag,soco_ag,luva_spikes_au,soco_au,luva_spikes_titanio,soco_titanio,anel_forca1,anel_forca2,anel_forca3,anel_resistencia1,anel_resistencia2,anel_resistencia3,anel_consistencia1,anel_consistencia2,anel_consistencia3,anel_da_imortalidade,anel_da_divindade,chinelo_inicial,papetes_masculinas,tenis_velho,tenis_simplorio,sapato_simplorio,tenis_comum,tenis_trilha,tenis_caminhada,tenis_corrida,tenis_ZX5000,item_adicionado,quantidade_adicionada,equipado_roupa,equipado_capa,equipado_luva,equipado_anel,equipado_maos,equipado_calcado,variavel_cenario,objeto,situacao,temporario,variavel_lugar,ponto_de_save,mostrar_save, personagem_jogador,personagem_jogador_reserva,personagem_inimigo,eegg,acao_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,variavel_para_comparar,contador_de_batalha,contador_de_rodadas,mala,loja_venda
+    variavel_lugar = "seu predio, 4o andar"
     temporario[0]= False
     if(situacao[0]<5):
         print("Voce foi abordado novamente pelo morador do quarto 44...")
         time.sleep(2)
-        print(" - Nos sabemos que voce nao venceu nem do 3º andar, se nao e capaz disso,\nnao e capaz de nos vencer!")
+        print(" - Nos sabemos que voce nao venceu nem do 3o andar, se nao e capaz disso,\nnao e capaz de nos vencer!")
         time.sleep(2)
         print("Ele te empurrou escada abaixo... Voce perdeu 5 pontos de vida durante a queda!")
         time.sleep(2)
@@ -1494,7 +1535,7 @@ def seuPredioQuartoAndar():
             print("Agora voce esta no terceiro andar.")
             time.sleep(2)
             break
-        print("\n#"+"-"*30+"#\n\nLista de Acões\n\nCenario: "+str(variavel_lugar)+"\n\nVoce pode:\n\nchecar os quartos\n")
+        print("\n#"+"-"*30+"#\n\nLista de Acoes\n\nCenario: "+str(variavel_lugar)+"\n\nVoce pode:\n\nchecar os quartos\n")
         print("\nver ficha do personagem\nver mochila\ndescer as escadas\n\nsalvar o jogo\n")
         print("\n#"+ "-"*30+"#\n")
         print("\nE agora, "+str(personagem_jogador[0])+", o que voce vai fazer?\n")
@@ -1519,7 +1560,7 @@ def seuPredioQuartoAndar():
                         print("Voce ja lutou aqui!")
                         time.sleep(2)
                     else:
-                        print(' - Aqui no 4º andar moram os mais fortes, mas ha muita diferenca entre nos!')
+                        print(' - Aqui no 4o andar moram os mais fortes, mas ha muita diferenca entre nos!')
                         time.sleep(2)
                         print(' - Por isso ha uma ordem para nos enfrentar, comecando por mim!')
                         time.sleep(2)
@@ -1569,10 +1610,10 @@ def seuPredioQuartoAndar():
                                                                 time.sleep(2)
                                                                 batalha()
                                                             else:
-                                                                print('ENTRADA INVÁLIDA! Digite "sim" ou "nao".\n')
+                                                                print('ENTRADA INVALIDA! Digite "sim" ou "nao".\n')
                                                                 time.sleep(1)
                                                     else:
-                                                        print('ENTRADA INVÁLIDA! Digite "sim" ou "nao".\n')
+                                                        print('ENTRADA INVALIDA! Digite "sim" ou "nao".\n')
                                                         time.sleep(1)
                                         if(personagem_jogador[6]<=0):break
                                         else:
@@ -1586,12 +1627,12 @@ def seuPredioQuartoAndar():
                                         situacao[0]=situacao[0]+1
                                         break
                                 else:
-                                    print('ENTRADA INVÁLIDA! Digite "sim" ou "nao".\n')
+                                    print('ENTRADA INVALIDA! Digite "sim" ou "nao".\n')
                                     time.sleep(1)
                 else:
                     if(acao_do_personagem=="41"):
                         if(situacao[0]==7):
-                            print(' - SERÁ que voce esta PRONTO para brigar comigo, fracote??? Hahahahaha!')
+                            print(' - SERA que voce esta PRONTO para brigar comigo, fracote??? Hahahahaha!')
                             time.sleep(2)
                             personagem_inimigo = [ "Estudante Briguento do Quarto 41", 50, 30, 10, 10, 550, 550]
                             print(" - Aqui esta o meu cartao: ")
@@ -1622,7 +1663,7 @@ def seuPredioQuartoAndar():
                                                         batalha()
                                                     else:
                                                         if(acao_do_personagem=="sim" or acao_do_personagem=="s" or acao_do_personagem=="si" or acao_do_personagem=="sm" or acao_do_personagem=="im" or acao_do_personagem=="ssim"):
-                                                            print(" - É serio?(sim ou nao) ... Se voce fugir, deixara METADE DE TODO O SEU DINHEIRO conosco!")
+                                                            print(" - E serio?(sim ou nao) ... Se voce fugir, deixara METADE DE TODO O SEU DINHEIRO conosco!")
                                                             time.sleep(1)
                                                             acao_do_personagem=raw_input("-")
                                                             acao_do_personagem=acao_do_personagem.lower()
@@ -1639,24 +1680,24 @@ def seuPredioQuartoAndar():
                                                                     time.sleep(2)
                                                                     batalha()
                                                                 else:
-                                                                    print('ENTRADA INVÁLIDA! Digite "sim" ou "nao".\n')
+                                                                    print('ENTRADA INVALIDA! Digite "sim" ou "nao".\n')
                                                                     time.sleep(1)
                                                         else:
-                                                            print('ENTRADA INVÁLIDA! Digite "sim" ou "nao".\n')
+                                                            print('ENTRADA INVALIDA! Digite "sim" ou "nao".\n')
                                                             time.sleep(1)
                                             if(personagem_jogador[6]<=0):break
                                             else:
-                                                print(" - CARAMBA! E nao e que voce estava pronto mesmo?! Hahahaha... Tudo bem perder às vezes...")
+                                                print(" - CARAMBA! E nao e que voce estava pronto mesmo?! Hahahaha... Tudo bem perder as vezes...")
                                                 time.sleep(2)
                                                 situacao[0]=situacao[0]+1
                                                 break
                                         else:
-                                            print(" - CARAMBA! E nao e que voce estava pronto mesmo?! Hahahaha... Tudo bem perder às vezes...")
+                                            print(" - CARAMBA! E nao e que voce estava pronto mesmo?! Hahahaha... Tudo bem perder as vezes...")
                                             time.sleep(2)
                                             situacao[0]=situacao[0]+1
                                             break
                                     else:
-                                        print('ENTRADA INVÁLIDA! Digite "sim" ou "nao".\n')
+                                        print('ENTRADA INVALIDA! Digite "sim" ou "nao".\n')
                                         time.sleep(1)
                         else:
                             if(situacao[0]>7):
@@ -1716,10 +1757,10 @@ def seuPredioQuartoAndar():
                                                                         time.sleep(2)
                                                                         batalha()
                                                                     else:
-                                                                        print('ENTRADA INVÁLIDA! Digite "sim" ou "nao".\n')
+                                                                        print('ENTRADA INVALIDA! Digite "sim" ou "nao".\n')
                                                                         time.sleep(1)
                                                             else:
-                                                                print('ENTRADA INVÁLIDA! Digite "sim" ou "nao".\n')
+                                                                print('ENTRADA INVALIDA! Digite "sim" ou "nao".\n')
                                                                 time.sleep(1)
                                                 if(personagem_jogador[6]<=0):break
                                                 else:
@@ -1731,7 +1772,7 @@ def seuPredioQuartoAndar():
                                                 situacao[0]=situacao[0]+1
                                                 break
                                         else:
-                                            print('ENTRADA INVÁLIDA! Digite "sim" ou "nao".\n')
+                                            print('ENTRADA INVALIDA! Digite "sim" ou "nao".\n')
                                             time.sleep(1)
                             else:
                                 if(situacao[0]>8):
@@ -1779,7 +1820,7 @@ def seuPredioQuartoAndar():
                                                                     acao_do_personagem=raw_input("-")
                                                                     acao_do_personagem=acao_do_personagem.lower()
                                                                     if(acao_do_personagem=="sim" or acao_do_personagem=="s" or acao_do_personagem=="si" or acao_do_personagem=="sm" or acao_do_personagem=="im" or acao_do_personagem=="ssim"):
-                                                                        print(" - Sao os lixos como voce que pagaram o premio que NUNCA SERÁ SEU!")
+                                                                        print(" - Sao os lixos como voce que pagaram o premio que NUNCA SERA SEU!")
                                                                         time.sleep(1)
                                                                         print(" - Volte quando quiser apanhar mais!")
                                                                         time.sleep(1)
@@ -1791,10 +1832,10 @@ def seuPredioQuartoAndar():
                                                                             time.sleep(2)
                                                                             batalha()
                                                                         else:
-                                                                            print('ENTRADA INVÁLIDA! Digite "sim" ou "nao".\n')
+                                                                            print('ENTRADA INVALIDA! Digite "sim" ou "nao".\n')
                                                                             time.sleep(1)
                                                                 else:
-                                                                    print('ENTRADA INVÁLIDA! Digite "sim" ou "nao".\n')
+                                                                    print('ENTRADA INVALIDA! Digite "sim" ou "nao".\n')
                                                                     time.sleep(1)
                                                     if(personagem_jogador[6]<=0):break
                                                     else:
@@ -1808,7 +1849,7 @@ def seuPredioQuartoAndar():
                                                     situacao[0]=situacao[0]+1
                                                     break
                                             else:
-                                                print('ENTRADA INVÁLIDA! Digite "sim" ou "nao".\n')
+                                                print('ENTRADA INVALIDA! Digite "sim" ou "nao".\n')
                                                 time.sleep(1)
                                 else:
                                     if(situacao[0]>9):
@@ -1820,7 +1861,7 @@ def seuPredioQuartoAndar():
                             else:
                                 if(acao_do_personagem=="44"):
                                     if(situacao[0]==10):
-                                        print(' - Me perdôe pelo comportamento daqueles dois... Nenhum deles tem a cabeca no lugar.')
+                                        print(' - Me perdoe pelo comportamento daqueles dois... Nenhum deles tem a cabeca no lugar.')
                                         time.sleep(2)
                                         print(" - Mesmo assim, e raro alguem passar do quarto 40, e rarissimo alguem chegar ate mim.")
                                         time.sleep(2)
@@ -1855,7 +1896,7 @@ def seuPredioQuartoAndar():
                                                                     batalha()
                                                                 else:
                                                                     if(acao_do_personagem=="sim" or acao_do_personagem=="s" or acao_do_personagem=="si" or acao_do_personagem=="sm" or acao_do_personagem=="im" or acao_do_personagem=="ssim"):
-                                                                        print(" - Certeza, vai abandonar a última luta?(sim ou nao) ... Se voce fugir, deixara METADE DE TODO O SEU DINHEIRO conosco!")
+                                                                        print(" - Certeza, vai abandonar a ultima luta?(sim ou nao) ... Se voce fugir, deixara METADE DE TODO O SEU DINHEIRO conosco!")
                                                                         time.sleep(1)
                                                                         acao_do_personagem=raw_input("-")
                                                                         acao_do_personagem=acao_do_personagem.lower()
@@ -1872,14 +1913,14 @@ def seuPredioQuartoAndar():
                                                                                 time.sleep(2)
                                                                                 batalha()
                                                                             else:
-                                                                                print('ENTRADA INVÁLIDA! Digite "sim" ou "nao".\n')
+                                                                                print('ENTRADA INVALIDA! Digite "sim" ou "nao".\n')
                                                                                 time.sleep(1)
                                                                     else:
-                                                                        print('ENTRADA INVÁLIDA! Digite "sim" ou "nao".\n')
+                                                                        print('ENTRADA INVALIDA! Digite "sim" ou "nao".\n')
                                                                         time.sleep(1)
                                                         if(personagem_jogador[6]<=0):break
                                                         else:
-                                                            print(" - Incrivel... Voce e um genio das batalhas! É realmente digno do premio!")
+                                                            print(" - Incrivel... Voce e um genio das batalhas! E realmente digno do premio!")
                                                             time.sleep(2)
                                                             print(" - Aqui esta: uma Malha Ninja!")
                                                             time.sleep(1)
@@ -1891,7 +1932,7 @@ def seuPredioQuartoAndar():
                                                             situacao[0]=situacao[0]+1
                                                             break
                                                     else:
-                                                        print(" - Incrivel... Voce e um genio das batalhas! É realmente digno do premio!")
+                                                        print(" - Incrivel... Voce e um genio das batalhas! E realmente digno do premio!")
                                                         time.sleep(2)
                                                         print(" - Aqui esta: uma Malha Ninja!")
                                                         time.sleep(1)
@@ -1903,7 +1944,7 @@ def seuPredioQuartoAndar():
                                                         situacao[0]=situacao[0]+1
                                                         break
                                                 else:
-                                                    print('ENTRADA INVÁLIDA! Digite "sim" ou "nao".\n')
+                                                    print('ENTRADA INVALIDA! Digite "sim" ou "nao".\n')
                                     else:
                                         if(situacao[0]>10):
                                             print("Voce ja lutou aqui!")
@@ -1924,15 +1965,15 @@ def seuPredioQuartoAndar():
 
 #--Seu predio: Terceiro Andar--#
 def seuPredioTerceiroAndar():
-    global inventario_reserva,porcentagem_inflacao,bermuda_linho_regata,bermuda_linho_polo,calca_jeans_regata,calca_jeans_polo,desequipado_roupa,desequipado_capa,desequipado_luva,desequipado_maos,desequipado_calcado,espaco_vazio,pedaco_pizza,bolo_chocolate,pijama_inicial,uniforme_estudantil,malha_ninja,lapis_apontado,punhal_envelhecido,talheres_prata,jaqueta_imitacao,jaqueta_couro,agasalho_la,suplemento_alimenticio,lata_energetico,luva_la,luva_couro,soco_pvc,soco_latao,luva_spikes_alu,soco_alu,luva_spikes_aco,soco_aco,luva_spikes_ag,soco_ag,luva_spikes_au,soco_au,luva_spikes_titanio,soco_titanio,anel_forca1,anel_forca2,anel_forca3,anel_resistencia1,anel_resistencia2,anel_resistencia3,anel_consistencia1,anel_consistencia2,anel_consistencia3,anel_da_imortalidade,anel_da_divindade,chinelo_inicial,papetes_masculinas,tenis_velho,tenis_simplorio,sapato_simplorio,tenis_comum,tenis_trilha,tenis_caminhada,tenis_corrida,tenis_ZX5000,item_adicionado,quantidade_adicionada,equipado_roupa,equipado_capa,equipado_luva,equipado_anel,equipado_maos,equipado_calcado,variavel_cenario,objeto,situacao,temporario,variavel_lugar,ponto_de_save,mostrar_save, personagem_jogador,personagem_reserva,personagem_inimigo,eegg,acao_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,variavel_para_comparar,contador_de_batalha,contador_de_rodadas,mala,loja_venda
+    global personagem_headbanger,inventario_reserva,porcentagem_inflacao,bermuda_linho_regata,bermuda_linho_polo,calca_jeans_regata,calca_jeans_polo,desequipado_roupa,desequipado_capa,desequipado_luva,desequipado_maos,desequipado_calcado,espaco_vazio,pedaco_pizza,bolo_chocolate,pijama_inicial,uniforme_estudantil,malha_ninja,lapis_apontado,punhal_envelhecido,talheres_prata,jaqueta_imitacao,jaqueta_couro,agasalho_la,suplemento_alimenticio,lata_energetico,luva_la,luva_couro,soco_pvc,soco_latao,luva_spikes_alu,soco_alu,luva_spikes_aco,soco_aco,luva_spikes_ag,soco_ag,luva_spikes_au,soco_au,luva_spikes_titanio,soco_titanio,anel_forca1,anel_forca2,anel_forca3,anel_resistencia1,anel_resistencia2,anel_resistencia3,anel_consistencia1,anel_consistencia2,anel_consistencia3,anel_da_imortalidade,anel_da_divindade,chinelo_inicial,papetes_masculinas,tenis_velho,tenis_simplorio,sapato_simplorio,tenis_comum,tenis_trilha,tenis_caminhada,tenis_corrida,tenis_ZX5000,item_adicionado,quantidade_adicionada,equipado_roupa,equipado_capa,equipado_luva,equipado_anel,equipado_maos,equipado_calcado,variavel_cenario,objeto,situacao,temporario,variavel_lugar,ponto_de_save,mostrar_save, personagem_jogador,personagem_jogador_reserva,personagem_inimigo,eegg,acao_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,variavel_para_comparar,contador_de_batalha,contador_de_rodadas,mala,loja_venda
     if temporario[0]==True:
-        print("Agora que voce venceu todos os lutadores do 3º andar voce subiu ao 4º.")
+        print("Agora que voce venceu todos os lutadores do 3o andar voce subiu ao 4o.")
         time.sleep(2)
         seuPredioQuartoAndar()
-    if(variavel_lugar == "seu predio, 4º andarb"):
+    if(variavel_lugar == "seu predio, 4o andarb"):
         seuPredioQuartoAndar()
     if(personagem_jogador[6]>0):
-        variavel_lugar = "seu predio, 3º andar"
+        variavel_lugar = "seu predio, 3o andar"
         if(situacao[0]==0):
             print("Voce e abordado pelo morador do quarto 44...")
             time.sleep(2)
@@ -1946,7 +1987,7 @@ def seuPredioTerceiroAndar():
             time.sleep(1)
             print(" - Okay, vou te explicar...")
             time.sleep(2)
-            print(" - Voce sabe que nos dois últimos andares desse predio, o terceiro e o quarto,")
+            print(" - Voce sabe que nos dois ultimos andares desse predio, o terceiro e o quarto,")
             time.sleep(2)
             print("so tem quartos de estudantes briguentos, e nos estamos desafiando outros\n arruaceiros a lutarem conosco!")
             time.sleep(2)
@@ -1977,17 +2018,17 @@ def seuPredioTerceiroAndar():
                         time.sleep(1)
                     else:
                         if(situacao[0]<11):
-                            print("Voce ja venceu todas as lutas do terceiro andar, \nentao voce continuou subindo para o 4º andar.")
+                            print("Voce ja venceu todas as lutas do terceiro andar, \nentao voce continuou subindo para o 4o andar.")
                             time.sleep(1)
                             seuPredioQuartoAndar()
-                            variavel_lugar = "seu predio, 3º andar"
+                            variavel_lugar = "seu predio, 3o andar"
                         else:
                             print("Voce ja venceu o desafio dos estudantes briguentos do seu predio!")
                             time.sleep(2)
     while 1:
         if(personagem_jogador[6]<=0):break
         if(situacao[0]>=11):
-            variavel_lugar = "seu predio, 2º andar"
+            variavel_lugar = "seu predio, 2o andar"
             break
         else:
             if(situacao[0]>6):
@@ -1995,9 +2036,9 @@ def seuPredioTerceiroAndar():
                 time.sleep(1)
                 print("Voce desceu para o segundo andar.")
                 time.sleep(1)
-                variavel_lugar = "seu predio, 2º andar"
+                variavel_lugar = "seu predio, 2o andar"
                 break
-        print("\n#"+"-"*30+"#\n\nLista de Acões\n\nCenario: "+str( variavel_lugar)+"\n\nVoce pode:\n\nchecar os quartos: 30, 31, 32, 33 e 34\n")
+        print("\n#"+"-"*30+"#\n\nLista de Acoes\n\nCenario: "+str( variavel_lugar)+"\n\nVoce pode:\n\nchecar os quartos: 30, 31, 32, 33 e 34\n")
         print("\nver ficha do personagem\nver mochila\ndescer as escadas\n\nsalvar o jogo\n")
         print("\n#"+"-"*30+"#\n")
         print("\nE agora, "+str(personagem_jogador[0])+", o que voce vai fazer?\n")
@@ -2205,7 +2246,7 @@ def seuPredioTerceiroAndar():
                             else:
                                 if(acao_do_personagem=="33"):
                                     if(situacao[8]==0):
-                                        print(" - ÔÔô, CIDADÃO!")
+                                        print(" - OOo, CIDADAO!")
                                         time.sleep(2)
                                         personagem_inimigo = [ "Estudante Briguento do Quarto 33", 10, 8, 5, 5, 120, 120]
                                         batalha()
@@ -2334,13 +2375,13 @@ def seuPredioTerceiroAndar():
 
 #--Seu predio: Segundo Andar--#
 def seuPredioSegundoAndar():
-    global inventario_reserva,porcentagem_inflacao,bermuda_linho_regata,bermuda_linho_polo,calca_jeans_regata,calca_jeans_polo,desequipado_roupa,desequipado_capa,desequipado_luva,desequipado_maos,desequipado_calcado,espaco_vazio,pedaco_pizza,bolo_chocolate,pijama_inicial,uniforme_estudantil,malha_ninja,lapis_apontado,punhal_envelhecido,talheres_prata,jaqueta_imitacao,jaqueta_couro,agasalho_la,suplemento_alimenticio,lata_energetico,luva_la,luva_couro,soco_pvc,soco_latao,luva_spikes_alu,soco_alu,luva_spikes_aco,soco_aco,luva_spikes_ag,soco_ag,luva_spikes_au,soco_au,luva_spikes_titanio,soco_titanio,anel_forca1,anel_forca2,anel_forca3,anel_resistencia1,anel_resistencia2,anel_resistencia3,anel_consistencia1,anel_consistencia2,anel_consistencia3,anel_da_imortalidade,anel_da_divindade,chinelo_inicial,papetes_masculinas,tenis_velho,tenis_simplorio,sapato_simplorio,tenis_comum,tenis_trilha,tenis_caminhada,tenis_corrida,tenis_ZX5000,item_adicionado,quantidade_adicionada,equipado_roupa,equipado_capa,equipado_luva,equipado_anel,equipado_maos,equipado_calcado,variavel_cenario,objeto,situacao,temporario,variavel_lugar,ponto_de_save,mostrar_save, personagem_jogador,personagem_reserva,personagem_inimigo,eegg,acao_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,variavel_para_comparar,contador_de_batalha,contador_de_rodadas,mala,loja_venda
-    if(variavel_lugar == "seu predio, 3º andarb" or variavel_lugar == "seu predio, 4º andarb"):
+    global personagem_headbanger,inventario_reserva,porcentagem_inflacao,bermuda_linho_regata,bermuda_linho_polo,calca_jeans_regata,calca_jeans_polo,desequipado_roupa,desequipado_capa,desequipado_luva,desequipado_maos,desequipado_calcado,espaco_vazio,pedaco_pizza,bolo_chocolate,pijama_inicial,uniforme_estudantil,malha_ninja,lapis_apontado,punhal_envelhecido,talheres_prata,jaqueta_imitacao,jaqueta_couro,agasalho_la,suplemento_alimenticio,lata_energetico,luva_la,luva_couro,soco_pvc,soco_latao,luva_spikes_alu,soco_alu,luva_spikes_aco,soco_aco,luva_spikes_ag,soco_ag,luva_spikes_au,soco_au,luva_spikes_titanio,soco_titanio,anel_forca1,anel_forca2,anel_forca3,anel_resistencia1,anel_resistencia2,anel_resistencia3,anel_consistencia1,anel_consistencia2,anel_consistencia3,anel_da_imortalidade,anel_da_divindade,chinelo_inicial,papetes_masculinas,tenis_velho,tenis_simplorio,sapato_simplorio,tenis_comum,tenis_trilha,tenis_caminhada,tenis_corrida,tenis_ZX5000,item_adicionado,quantidade_adicionada,equipado_roupa,equipado_capa,equipado_luva,equipado_anel,equipado_maos,equipado_calcado,variavel_cenario,objeto,situacao,temporario,variavel_lugar,ponto_de_save,mostrar_save, personagem_jogador,personagem_jogador_reserva,personagem_inimigo,eegg,acao_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,variavel_para_comparar,contador_de_batalha,contador_de_rodadas,mala,loja_venda
+    if(variavel_lugar == "seu predio, 3o andarb" or variavel_lugar == "seu predio, 4o andarb"):
         seuPredioTerceiroAndar()
-    variavel_lugar = "seu predio, 2º andar"
+    variavel_lugar = "seu predio, 2o andar"
     while 1:
         if(personagem_jogador[6]<=0):break
-        print("\n#"+"-"*30+"#\n\nLista de Acões\n\nCenario: "+str(variavel_lugar)+"\n\nVoce pode:\n\nchecar os quartos\n")
+        print("\n#"+"-"*30+"#\n\nLista de Acoes\n\nCenario: "+str(variavel_lugar)+"\n\nVoce pode:\n\nchecar os quartos\n")
         if(situacao[2]==1):
             print("\narrombar o quarto 24")
         print("\nver ficha do personagem\nver mochila\nsubir as escadas\ndescer as escadas\n\nsalvar o jogo\n")
@@ -2395,14 +2436,14 @@ def seuPredioSegundoAndar():
                                         time.sleep(0.75)
                                         break
                                     else:
-                                        print('ENTRADA INVÁLIDA! Digite "sim" ou "nao"')
+                                        print('ENTRADA INVALIDA! Digite "sim" ou "nao"')
                                         time.sleep(0.5)
                     else:
                         if(acao_do_personagem=="21"):
                             if(situacao[3]==7):
                                 print("Voce bate na porta...")
                                 time.sleep(0.5)
-                                print(" - Ola! - diz o avô do garoto - Muito obrigado por treinar o meu neto,")
+                                print(" - Ola! - diz o avo do garoto - Muito obrigado por treinar o meu neto,")
                                 time.sleep(1)
                                 print("agora ele nao precisa se esconder mais dos trombadinhas da escola.")
                                 time.sleep(2)
@@ -2489,13 +2530,13 @@ def seuPredioSegundoAndar():
                                                 time.sleep(0.5)
                                             else:
                                                 if(personagem_inimigo[6]<=0):
-                                                    print(" - Voce e mesmo forte! Treinarei mais e estarei te esperando para o nosso proximo confronto!")
-                                                    time.sleep(1)
+                                                    print(" - Voce e mesmo forte! \nTreinarei mais e estarei te esperando para o nosso proximo confronto!")
+                                                    time.sleep(3)
                                                     situacao[3]=5
                                     else:
                                         if(personagem_inimigo[6]<=0):
-                                            print(" - Voce e mesmo forte! Treinarei mais e estarei te esperando para o nosso proximo confronto!")
-                                            time.sleep(1)
+                                            print(" - Voce e mesmo forte! \nTreinarei mais e estarei te esperando para o nosso proximo confronto!")
+                                            time.sleep(3)
                                             situacao[3]=5
                             if(situacao[3]==3):
                                 print(" - Eu estava te esperando, panaca!")
@@ -2531,35 +2572,35 @@ def seuPredioSegundoAndar():
                                             time.sleep(1)
                                             situacao[3]=4
                             if(situacao[3]==2):
-                                print(" - Meu avô disse que voce viria... - disse o garoto baixinho - Vamos logo ao que interessa!")
+                                print(" - Meu avo disse que voce viria... - disse o garoto baixinho - Vamos logo ao que interessa!")
                                 time.sleep(2)
                                 personagem_inimigo = [ "Garoto Fracote", 3, 10, 2, 2, 100, 100]
                                 batalha()
                                 if(personagem_jogador[6]<=0):
                                     personagem_jogador[6]=1
-                                    print(" - Voce nao e tao forte quanto meu avô falou.")
+                                    print(" - Voce nao e tao forte quanto meu avo falou.")
                                     time.sleep(1)
                                     situacao[3]=3
                                 else:
                                     if(personagem_inimigo[6]>0 and personagem_jogador[6]>1):
                                         while (personagem_inimigo[6]>0):
-                                            print(" - Meu avô disse para nao parar de lutar ate eu nao aguentar mais!")
+                                            print(" - Meu avo disse para nao parar de lutar ate eu nao aguentar mais!")
                                             time.sleep(1)
                                             batalha()
                                             if(personagem_jogador[6]<=0):
                                                 personagem_jogador[6]=1
-                                                print(" - Voce nao e tao forte quanto meu avô falou.")
+                                                print(" - Voce nao e tao forte quanto meu avo falou.")
                                                 time.sleep(1)
                                                 situacao[3]=3
                                             else:
                                                 if(personagem_inimigo[6]<=0):
-                                                    print(" - Voce e muito forte!!! Vou treinar e estarei te esperando para uma proxima luta!")
-                                                    time.sleep(1)
+                                                    print(" - Voce e muito forte!!! \nVou treinar e estarei te esperando para uma proxima luta!")
+                                                    time.sleep(3)
                                                     situacao[3]=3
                                     else:
                                         if(personagem_inimigo[6]<=0):
-                                            print(" - Voce e muito forte!!! Vou treinar e estarei te esperando para uma proxima luta!")
-                                            time.sleep(1)
+                                            print(" - Voce e muito forte!!! \nVou treinar e estarei te esperando para uma proxima luta!")
+                                            time.sleep(3)
                                             situacao[3]=3
                             if(situacao[3]==1):
                                 print("A porta esta trancada.")
@@ -2585,17 +2626,17 @@ def seuPredioSegundoAndar():
                                     time.sleep(1)
                                     print(" - Ahhhh... - gemiu o senhor que caia lentamente.")
                                     time.sleep(1)
-                                    print(" - O QUÊ VOCÊ FEZ COM MEU AVÔ?! - era a voz de um menino vindo la de dentro do quarto.")
+                                    print(" - O QUE VOCE FEZ COM MEU AVO?! - era a voz de um menino vindo la de dentro do quarto.")
                                     time.sleep(1)
                                     print("O menino pegou o senhor nos bracos antes que tombasse \ne apertou algumas vezes uma bombinha para asma na boca dele...")
                                     time.sleep(1)
-                                    print(" - VOCÊ VAI PAGAR CARO!")
+                                    print(" - VOCE VAI PAGAR CARO!")
                                     time.sleep(2)
                                     personagem_inimigo = [ "Garoto Perturbado", 2, 10, 1, 1, 100, 100]
                                     batalha()
                                     if(personagem_jogador[6]<=0):break
                                     if(personagem_inimigo[6]>0):
-                                        print(" - SAIA JÁ DAQUI!")
+                                        print(" - SAIA JA DAQUI!")
                                         time.sleep(0.5)
                                         print("Em seguida ele fechou e trancou a porta.")
                                         time.sleep(0.5)
@@ -2603,7 +2644,7 @@ def seuPredioSegundoAndar():
                                     else:
                                         print("O garoto caiu no chao dentro da casa e comecou a chorar.")
                                         time.sleep(1)
-                                        print(" - SAIA DAQUI ANTES QUE EU CHAME A POLÍCIA! - disse o senhor que ja estava um pouco melhor...")
+                                        print(" - SAIA DAQUI ANTES QUE EU CHAME A POLICIA! - disse o senhor que ja estava um pouco melhor...")
                                         time.sleep(1)
                                         print("Em seguida ele fechou e trancou a porta.")
                                         time.sleep(1)
@@ -2623,9 +2664,9 @@ def seuPredioSegundoAndar():
                                         acao_do_personagem = raw_input("-")
                                         acao_do_personagem = acao_do_personagem.lower()
                                         if(acao_do_personagem=="sim" or acao_do_personagem=="s" or acao_do_personagem=="si" or acao_do_personagem=="sm" or acao_do_personagem=="im" or acao_do_personagem=="ssim"):
-                                            print("Voce entrou na casa, pegou a bombinha em cima da mesa e a apertou na boca no velho...")
+                                            print("Voce entrou na casa, pegou a bombinha em cima da mesa \ne a apertou na boca no velho...")
                                             time.sleep(1)
-                                            print(" - Ah... Ah... - o senhor tentava recuperar o ar - Voce nao e um mau rapaz no fim das contas...")
+                                            print(" - Ah... Ah... - o senhor tentava recuperar o ar - Voce nao e um mau rapaz \nno fim das contas...")
                                             time.sleep(1)
                                             print("...")
                                             time.sleep(0.5)
@@ -2648,23 +2689,23 @@ def seuPredioSegundoAndar():
                                             time.sleep(1)
                                             print(" - Se nao for pedir demais, venha sempre que puder para treinar o meu neto... \nEle ainda e muito fraco e eu nao tenho mais o mesmo vigor de antes...")
                                             time.sleep(1)
-                                            print(" - Nao me entenda mal, nao e uma troca de favores... \nÉ um pedido de um velho que nao consegue ajudar seu neto.")
+                                            print(" - Nao me entenda mal, nao e uma troca de favores... \nE um pedido de um velho que nao consegue ajudar seu neto.")
                                             time.sleep(1)
                                             situacao[3]=2
                                             break
                                         else:
                                             if(acao_do_personagem == "nao" or acao_do_personagem=="n" or acao_do_personagem=="nao" or acao_do_personagem=="no" or acao_do_personagem=="na" or acao_do_personagem=="na" or acao_do_personagem=="ao" or acao_do_personagem=="ao" or acao_do_personagem=="ñ" or acao_do_personagem=="ñao" or acao_do_personagem=="ño" or acao_do_personagem=="ñõ" or acao_do_personagem=="ña" or acao_do_personagem=="ñaõ" or acao_do_personagem=="aõ"):
-                                                print(" - O QUÊ VOCÊ FEZ COM MEU AVÔ?! - era a voz de um menino vindo la de dentro do quarto.")
+                                                print(" - O QUE VOCE FEZ COM MEU AVO?! - era a voz de um menino vindo la de dentro do quarto.")
                                                 time.sleep(1)
                                                 print("O menino pegou o senhor nos bracos antes que tombasse e apertou algumas vezes uma bombinha para asma na boca dele...")
                                                 time.sleep(1)
-                                                print(" - VOCÊ VAI PAGAR CARO!")
+                                                print(" - VOCE VAI PAGAR CARO!")
                                                 time.sleep(1)
                                                 personagem_inimigo = [ "Garoto Irritado", 10, 10, 10, 10, 100, 100]
                                                 batalha()
                                                 if(personagem_jogador[6]<=0):break
                                                 if(personagem_inimigo[6]>0):
-                                                    print(" - SAIA JÁ DAQUI!")
+                                                    print(" - SAIA JA DAQUI!")
                                                     time.sleep(1)
                                                     print("Em seguida ele fechou e trancou a porta.")
                                                     time.sleep(1)
@@ -2672,14 +2713,14 @@ def seuPredioSegundoAndar():
                                                 else:
                                                     print("O garoto caiu no chao dentro da casa e comecou a chorar.")
                                                     time.sleep(1)
-                                                    print(" - SAIA DAQUI ANTES QUE EU CHAME A POLÍCIA! - disse o senhor que ja estava um pouco melhor...")
+                                                    print(" - SAIA DAQUI ANTES QUE EU CHAME A POLICIA! - disse o senhor que ja estava um pouco melhor...")
                                                     time.sleep(1)
                                                     print("Em seguida ele fechou e trancou a porta.")
                                                     time.sleep(1)
                                                     situacao[3]=1
                                                 break
                                             else:
-                                                print('ENTRADA INVÁLIDA! Digite "sim" ou "nao"')
+                                                print('ENTRADA INVALIDA! Digite "sim" ou "nao"')
                                                 time.sleep(1)
                         else:
                             if(acao_do_personagem=="22"):
@@ -2716,7 +2757,7 @@ def seuPredioSegundoAndar():
                                         if(acao_do_personagem=="sim" or acao_do_personagem=="s" or acao_do_personagem=="si" or acao_do_personagem=="sm" or acao_do_personagem=="im" or acao_do_personagem=="ssim"):
                                             print(" - ...")
                                             time.sleep(1.5)
-                                            print(" - VOCÊ...")
+                                            print(" - VOCE...")
                                             time.sleep(1.5)
                                             print(" - Voce e muito cara de pau mesmo, mas adimiro a sua sinceridade.")
                                             time.sleep(1)
@@ -2738,7 +2779,7 @@ def seuPredioSegundoAndar():
                                 if(situacao[4]==1):
                                     print("Voce bateu na porta do quarto, que agora esta fechado.")
                                     time.sleep(1)
-                                    print("Voce escuta passos rapidos e violentos vindo à porta")
+                                    print("Voce escuta passos rapidos e violentos vindo a porta")
                                     time.sleep(1)
                                     print(" - EU TO MUITO PUTO! - diz o estudante que abriu violentamente a porta - ENTRARAM E COMERAM A MINHA PIZZA!")
                                     time.sleep(1)
@@ -2848,16 +2889,16 @@ def seuPredioSegundoAndar():
                                                     acao_do_personagem=acao_do_personagem.lower()
                                                     if(acao_do_personagem=="sim" or acao_do_personagem=="s" or acao_do_personagem=="si" or acao_do_personagem=="sm" or acao_do_personagem=="im" or acao_do_personagem=="ssim"):
                                                         while 2:
-                                                            print("Eu insisto... É melhor parar... Voce esta de cabeca quente... (sim ou nao)\n")
+                                                            print("Eu insisto... E melhor parar... Voce esta de cabeca quente... (sim ou nao)\n")
                                                             time.sleep(0.5)
                                                             acao_do_personagem=raw_input("-")
                                                             acao_do_personagem=acao_do_personagem.lower()
                                                             if(acao_do_personagem=="sim" or acao_do_personagem=="s" or acao_do_personagem=="si" or acao_do_personagem=="sm" or acao_do_personagem=="im" or acao_do_personagem=="ssim"):
                                                                 raw_input("(Aperte ENTER)")
                                                                 raw_input("!!!!!!!!!!!!")
-                                                                raw_input(" - NÃO, NÃO!")
+                                                                raw_input(" - NAO, NAO!")
                                                                 raw_input("!!!!!!!!!!!!")
-                                                                raw_input(" - N-NÃo..o!")
+                                                                raw_input(" - N-NAo..o!")
                                                                 raw_input("!!!!!!!!....")
                                                                 raw_input("!!!!........")
                                                                 raw_input("....!!!!....")
@@ -2880,7 +2921,7 @@ def seuPredioSegundoAndar():
                                                                     time.sleep(1)
                                                                     print("Voce superou seus instintos e respeitou seus principios...")
                                                                     time.sleep(1)
-                                                                    print("Ao recuperar seu fôlego, seus pontos de vida aumentaram.")
+                                                                    print("Ao recuperar seu folego, seus pontos de vida aumentaram.")
                                                                     time.sleep(1)
                                                                     personagem_jogador[5]=personagem_jogador[5]+50
                                                                     personagem_jogador[6]=personagem_jogador[5]
@@ -2896,7 +2937,7 @@ def seuPredioSegundoAndar():
                                                             time.sleep(1)
                                                             print("Voce superou seus instintos e respeitou seus principios...")
                                                             time.sleep(1)
-                                                            print("Ao recuperar seu fôlego, voce recuperou seus pontos de vida.")
+                                                            print("Ao recuperar seu folego, voce recuperou seus pontos de vida.")
                                                             time.sleep(1)
                                                             personagem_jogador[6]=personagem_jogador[5]
                                                             situacao[2]=3
@@ -2921,38 +2962,38 @@ def seuPredioSegundoAndar():
 
 #--Seu predio: Primeiro Andar--#
 def seuPredioPrimeiroAndar():
-    global inventario_reserva,porcentagem_inflacao,bermuda_linho_regata,bermuda_linho_polo,calca_jeans_regata,calca_jeans_polo,desequipado_roupa,desequipado_capa,desequipado_luva,desequipado_maos,desequipado_calcado,espaco_vazio,pedaco_pizza,bolo_chocolate,pijama_inicial,uniforme_estudantil,malha_ninja,lapis_apontado,punhal_envelhecido,talheres_prata,jaqueta_imitacao,jaqueta_couro,agasalho_la,suplemento_alimenticio,lata_energetico,luva_la,luva_couro,soco_pvc,soco_latao,luva_spikes_alu,soco_alu,luva_spikes_aco,soco_aco,luva_spikes_ag,soco_ag,luva_spikes_au,soco_au,luva_spikes_titanio,soco_titanio,anel_forca1,anel_forca2,anel_forca3,anel_resistencia1,anel_resistencia2,anel_resistencia3,anel_consistencia1,anel_consistencia2,anel_consistencia3,anel_da_imortalidade,anel_da_divindade,chinelo_inicial,papetes_masculinas,tenis_velho,tenis_simplorio,sapato_simplorio,tenis_comum,tenis_trilha,tenis_caminhada,tenis_corrida,tenis_ZX5000,item_adicionado,quantidade_adicionada,equipado_roupa,equipado_capa,equipado_luva,equipado_anel,equipado_maos,equipado_calcado,variavel_cenario,objeto,situacao,temporario,variavel_lugar,ponto_de_save,mostrar_save, personagem_jogador,personagem_reserva,personagem_inimigo,eegg,acao_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,variavel_para_comparar,contador_de_batalha,contador_de_rodadas,mala,loja_venda
-    if(variavel_lugar == "seu predio, 2º andarb" or variavel_lugar == "seu predio, 3º andarb" or variavel_lugar == "seu predio, 4º andarb"):
+    global personagem_headbanger,inventario_reserva,porcentagem_inflacao,bermuda_linho_regata,bermuda_linho_polo,calca_jeans_regata,calca_jeans_polo,desequipado_roupa,desequipado_capa,desequipado_luva,desequipado_maos,desequipado_calcado,espaco_vazio,pedaco_pizza,bolo_chocolate,pijama_inicial,uniforme_estudantil,malha_ninja,lapis_apontado,punhal_envelhecido,talheres_prata,jaqueta_imitacao,jaqueta_couro,agasalho_la,suplemento_alimenticio,lata_energetico,luva_la,luva_couro,soco_pvc,soco_latao,luva_spikes_alu,soco_alu,luva_spikes_aco,soco_aco,luva_spikes_ag,soco_ag,luva_spikes_au,soco_au,luva_spikes_titanio,soco_titanio,anel_forca1,anel_forca2,anel_forca3,anel_resistencia1,anel_resistencia2,anel_resistencia3,anel_consistencia1,anel_consistencia2,anel_consistencia3,anel_da_imortalidade,anel_da_divindade,chinelo_inicial,papetes_masculinas,tenis_velho,tenis_simplorio,sapato_simplorio,tenis_comum,tenis_trilha,tenis_caminhada,tenis_corrida,tenis_ZX5000,item_adicionado,quantidade_adicionada,equipado_roupa,equipado_capa,equipado_luva,equipado_anel,equipado_maos,equipado_calcado,variavel_cenario,objeto,situacao,temporario,variavel_lugar,ponto_de_save,mostrar_save, personagem_jogador,personagem_jogador_reserva,personagem_inimigo,eegg,acao_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,variavel_para_comparar,contador_de_batalha,contador_de_rodadas,mala,loja_venda
+    if(variavel_lugar == "seu predio, 2o andarb" or variavel_lugar == "seu predio, 3o andarb" or variavel_lugar == "seu predio, 4o andarb"):
         seuPredioSegundoAndar()
     if(personagem_jogador[6]>0):
-        variavel_lugar = "seu predio, 1º andar"
+        variavel_lugar = "seu predio, 1o andar"
         print("Agora voce esta no corredor do primeiro andar do seu predio.")
         time.sleep(3)
-        print("\n#"+"-"*30+"#\n"+"\nLista de Acões\n\nCenario: "+str(variavel_lugar)+"\n\nVoce pode:\nolhar\n")
+        print("\n#"+"-"*30+"#\n"+"\n Lista de Acoes\n\n Cenario: "+str(variavel_lugar)+"\n\n Voce pode:\n olhar\n")
         time.sleep(1)
         if (variavel_cenario[0] == "sim"):
-            print("\ncheirar\nchecar os quartos\n")
+            print("\n cheirar\n checar os quartos\n")
             time.sleep(1)
             if (variavel_cenario[2] == "sim" and objeto[0] == "nao"):
-                print("olhar o bebado\n")
+                print(" olhar o bebado\n")
                 time.sleep(1)
         if(objeto[1] == "sim"):
-            print("\narrombar o quarto 10\n")
+            print("\n arrombar o quarto 10\n")
             time.sleep(1)
         if (objeto[0] == "1"):
-            print("\nacordar o bebado\n")
-            print("\nrevistar o bebado\n")
+            print("\n acordar o bebado\n")
+            print("\n revistar o bebado\n")
             time.sleep(1)
         if (objeto[0] == "2"):
-            print("\nmover o bebado\n")
+            print("\n mover o bebado\n")
             time.sleep(1)
         if (objeto[0] == "3"):
-            print("\natacar o bebado\n")
+            print("\n atacar o bebado\n")
             time.sleep(1)
         if (objeto[0] == "sim"):
-            print("\nabrir a porta dos fundos\n")
+            print("\n abrir a porta dos fundos\n")
             time.sleep(1)
-        print("\nver ficha do personagem\nver mochila\nsubir as escadas\ndescer as escadas\n\nsalvar o jogo\n"+"\n#"+"-"*30+"#\n")
+        print("\n ver ficha do personagem\n ver mochila\n subir as escadas\n descer as escadas\n\n salvar o jogo\n"+"\n#"+"-"*30+"#\n")
         time.sleep(2)
         print("\nO que voce vai fazer, "+str(personagem_jogador[0])+"?\n")
         acao_do_personagem = raw_input("-")
@@ -2970,43 +3011,43 @@ def seuPredioPrimeiroAndar():
         else:
             if(acao_do_personagem == "olhar" or acao_do_personagem == "ver" or acao_do_personagem == "olhar o quarto" or acao_do_personagem == "olha" or acao_do_personagem == "olhar quarto" or acao_do_personagem == "olha quarto" or acao_do_personagem == "olhar o quarto" or acao_do_personagem == "olha o quarto" or acao_do_personagem == "ve" or acao_do_personagem == "ve"):
                 if (variavel_cenario[2] == "1" or variavel_cenario[2] == "sim"):
-                    print("Voce ve um corredor estreito com 5 portas, o seu e os outros quartos desse andar do predio.")
+                    print("Voce ve um corredor estreito com 5 portas, o seu e os outros quartos desse \nandar do predio.")
                     time.sleep(3)
                     print("Num dos lados desse corredor ha uma janela quebrada,")
                     time.sleep(3)
-                    print("mas no outro se encontra um bebado caido no chao, imundo e cercado de vômito encostado na porta dos fundos, impedindo o acesso.")
+                    print("mas no outro se encontra um bebado caido no chao, imundo e cercado de vomito, \nencostado na porta dos fundos, impedindo o acesso.")
                     time.sleep(3)
-                    print("E ao longo do corredor, em frente aos quartos ha um par de escadas azul-pastel um pouco alaranjada ao redor das ferrugens.")
+                    print("E ao longo do corredor, em frente aos quartos ha um par de escadas azul-pastel \num pouco alaranjada ao redor das ferrugens.")
                     time.sleep(3)
-                    print("A mais proxima sobe e a colada à parede desce.")
+                    print("A mais proxima sobe e a colada a parede desce.")
                     time.sleep(3)
                 else:
                     if (objeto[0]=="sim" or objeto[0]=="pegou o dinheiro"):
-                        print("Voce ve um corredor estreito com 5 portas, o seu e os outros quartos desse andar do predio.")
+                        print("Voce ve um corredor estreito com 5 portas, o seu e os outros quartos desse \nandar do predio.")
                         time.sleep(3)
                         print("Num dos lados desse corredor ha uma janela quebrada, mas no outro se encontra a porta dos fundos.")
                         time.sleep(3)
-                        print("Ao longo do corredor, em frente aos quartos ha um par de escadas azul-pastel um pouco alaranjada ao redor das ferrugens.")
+                        print("Ao longo do corredor, em frente aos quartos ha um par de escadas azul-pastel \num pouco alaranjada ao redor das ferrugens.")
                         time.sleep(3)
-                        print("A mais proxima sobe e a colada à parede desce.")
+                        print("A mais proxima sobe e a colada a parede desce.")
                         time.sleep(3)
                     else:
-                        print("Voce ve um corredor estreito com 5 portas, o seu e os outros quartos desse andar do predio.")
+                        print("Voce ve um corredor estreito com 5 portas, o seu e os outros quartos desse \nandar do predio.")
                         time.sleep(3)
                         print("Num dos lados desse corredor ha uma janela quebrada,")
                         time.sleep(3)
-                        print("mas no outro se encontra, encostado na porta dos fundos e caido no chao coberto por cacos de vidro, um homem sujo, \ncercado por algum liquido que parece laranja...")
+                        print("mas no outro se encontra, encostado na porta dos fundos e caido no chao coberto \npor cacos de vidro, um homem sujo, cercado por algum liquido que parece laranja...")
                         time.sleep(3)
-                        print("E ao longo do corredor, em frente aos quartos ha um par de escadas azul-pastel um pouco alaranjada ao redor das ferrugens.")
+                        print("E ao longo do corredor, em frente aos quartos ha um par de escadas azul-pastel \num pouco alaranjada ao redor das ferrugens.")
                         time.sleep(3)
-                        print("A mais proxima sobe e a colada à parede desce.")
+                        print("A mais proxima sobe e a colada a parede desce.")
                         time.sleep(3)
                         variavel_cenario[0] = "sim"
             else:
                 if(acao_do_personagem=="cheirar" or acao_do_personagem=="cherar" or acao_do_personagem=="dar um tapa" or acao_do_personagem=="cheira" or acao_do_personagem=="chera"):
                     if(variavel_cenario[2]=="nao"):
                         variavel_cenario[2]="sim"
-                    print("Voce sente um cheiro forte de alcool e vômito")
+                    print("Voce sente um cheiro forte de alcool e vomito")
                     time.sleep(3)
                 else:
                     if(acao_do_personagem=="10"):
@@ -3020,13 +3061,13 @@ def seuPredioPrimeiroAndar():
                     else:
                         if(acao_do_personagem=="11"):
                             if(situacao[1]==0):
-                                print("Quando voce bateu, a porta se abriu no primeiro toque por nao ter uma fechadura...")
+                                print("Quando voce bateu, a porta se abriu no primeiro toque \npor nao ter uma fechadura...")
                                 time.sleep(4)
-                                print("Voce ve, dentro da casa, uma mulher alta de ombros largos, BEM LARGOS, musculosa e com o maxilar largo...")
+                                print("Voce ve, dentro da casa, uma mulher alta de ombros largos, BEM LARGOS, \nmusculosa e com o maxilar largo...")
                                 time.sleep(4)
                                 print("Ela estava apenas de toalha...")
                                 time.sleep(2)
-                                print(" - MAS QUE ATREVIMENTO! SUMA DAQUI! - diz a mulher enquanto te epurra com a porta que e fechada violentamente.")
+                                print(" - MAS QUE ATREVIMENTO! SUMA DAQUI! - diz a mulher enquanto te epurra com a \nporta que e fechada violentamente.")
                                 time.sleep(4)
                                 print("Voce perdeu 5 pontos de vida ao cair no corredor...")
                                 time.sleep(3)
@@ -3046,7 +3087,7 @@ def seuPredioPrimeiroAndar():
                                     situacao[1]=2
                                 else:
                                     if(situacao[1]==2):
-                                        print("Voce abriu a porta e levou um soco na cara, caindo em seguida no chao do corredor.")
+                                        print("Voce abriu a porta e levou um soco na cara, \ncaindo em seguida no chao do corredor.")
                                         time.sleep(3)
                                         print("Voce perdeu 10 pontos de vida...")
                                         time.sleep(3)
@@ -3056,15 +3097,15 @@ def seuPredioPrimeiroAndar():
                                         situacao[1]=3
                                     else:
                                         if(situacao[1]==3):
-                                            print("Voce abriu a porta e viu a mulher de toalha extremamente furiosa com os ombros levemente curvados, \ndeixando à mostra seus bracos musculosos e gigantescos.")
+                                            print("Voce abriu a porta e viu a mulher de toalha extremamente furiosa \ncom os ombros levemente curvados, deixando a mostra seus bracos musculosos e gigantescos.")
                                             time.sleep(3)
-                                            print(" - VOCÊ VAI APANHAR MUITO AGORA!")
+                                            print(" - VOCE VAI APANHAR MUITO AGORA!")
                                             time.sleep(3)
                                             personagem_inimigo = [ "Mulher de Toalha", 20, 20, 5, 5, 800, 800]
                                             batalha()
                                             if(personagem_jogador[6]<=0):break
                                             if(personagem_inimigo[6]>0):
-                                                print(" - E NÃO VOLTE MAIS AQUI!")
+                                                print(" - E NAO VOLTE MAIS AQUI!")
                                                 time.sleep(3)
                                             else:
                                                 print("A mulher caiu inconsciente no chao...")
@@ -3080,7 +3121,7 @@ def seuPredioPrimeiroAndar():
                                                 situacao[1]=4
                                         else:
                                             if(situacao[1]==4):
-                                                print("Voce entra no quarto, encontra a mulher que voce derrotou caida no chao e mais nada alem dos moveis velhos dela.")
+                                                print("Voce entra no quarto, encontra a mulher que voce derrotou caida no chao \ne mais nada alem dos moveis velhos dela.")
                         else:
                             if(acao_do_personagem=="12"):
                                 print("Voce bateu na porta...")
@@ -3094,7 +3135,7 @@ def seuPredioPrimeiroAndar():
                                 print("...")
                                 time.sleep(0.5)
                                 print("Voce recurperou TODOS os seus pontos de vida!")
-                                time.sleep(1)
+                                time.sleep(2)
                                 personagem_jogador[6]=personagem_jogador[5]
                             else:
                                 if(acao_do_personagem=="14"):
@@ -3104,7 +3145,7 @@ def seuPredioPrimeiroAndar():
                                         if(objeto[0]=="sim" or objeto[0]=="pegou o dinheiro"):
                                             print("Voce bateu na porta...")
                                             time.sleep(1)
-                                            print("Voce escuta passos de dentro vindo à porta...")
+                                            print("Voce escuta passos de dentro vindo a porta...")
                                             time.sleep(1)
                                             print(" - O que voce quer? - questionou a mulher que abrira a porta aos prantos")
                                             time.sleep(2)
@@ -3116,7 +3157,7 @@ def seuPredioPrimeiroAndar():
                                             time.sleep(1)
                                             print("...")
                                             time.sleep(0.75)
-                                            print(" - VOCÊ VAI PAGAR CARO POR MATAR MEU MARIDO!")
+                                            print(" - VOCE VAI PAGAR CARO POR MATAR MEU MARIDO!")
                                             time.sleep(1)
                                             personagem_inimigo = [ "Mulher aos Prantos", 20, 20, 10, 10, 900, 200]
                                             batalha()
@@ -3148,7 +3189,7 @@ def seuPredioPrimeiroAndar():
                                         else:
                                             print("Voce bateu na porta...")
                                             time.sleep(1)
-                                            print(" - JÁ DISSE PARA VOCÊ IR EMBORA SEU BÊBADO! - grita uma mulher de dentro da casa - NINGUÉM TE MERECE COMO MARIDO!")
+                                            print(" - JA DISSE PARA VOCE IR EMBORA SEU BEBADO! - grita uma mulher de dentro.\n - NINGUEM TE MERECE COMO MARIDO!")
                                             time.sleep(2)
                                 else:
                                     if(acao_do_personagem=="13"):
@@ -3161,7 +3202,7 @@ def seuPredioPrimeiroAndar():
                                     else:
                                         if(acao_do_personagem=="arrombar a porta do quarto 10" or acao_do_personagem=="arrombar 10" or acao_do_personagem=="arrombar quarto 10" or acao_do_personagem=="arrombar o quarto 10" or acao_do_personagem=="arrombar" or acao_do_personagem=="arrombar a porta" or acao_do_personagem=="quarto 10" or acao_do_personagem=="entrar no quarto 10"):
                                             if(objeto[3]=="sim"):
-                                                print("Voce ja arrombou essa porta... Nao ha mais nada de interessante dentro do quarto.")
+                                                print("Voce ja arrombou essa porta... \nNao ha mais nada de interessante dentro do quarto.")
                                                 time.sleep(1)
                                             else:
                                                 print("Voce entrou no quarto e encontrou uma Jaqueta de Couro!")
@@ -3174,14 +3215,14 @@ def seuPredioPrimeiroAndar():
                                                 objeto[3]="sim"
                                         else:
                                             if(acao_do_personagem=="subir as escadas" or acao_do_personagem=="subir" or acao_do_personagem=="subir escadas" or acao_do_personagem=="subi" or acao_do_personagem=="subi as escadas" or acao_do_personagem=="subir escada" or acao_do_personagem=="subi escada" or acao_do_personagem=="subi a escada" or acao_do_personagem=="sobe"):
-                                                print("Voce subiu para o segundo andar, la voce encontrou mais cinco quartos e outra escada ascendente.")
+                                                print("Voce subiu para o segundo andar, \nla voce encontrou mais cinco quartos e outra escada ascendente.")
                                                 time.sleep(1)
                                                 seuPredioSegundoAndar()
                                                 if(personagem_jogador[6]<=0):break
                                             else:
-                                                if(acao_do_personagem=="olhar o bebado"  or acao_do_personagem=="bebado"  or acao_do_personagem=="bebado" or acao_do_personagem=="olhar bebado" or acao_do_personagem=="olha o bebado" or acao_do_personagem=="olha bÊbado" or acao_do_personagem=="olhar o bebado" or acao_do_personagem=="olhar bebado" or acao_do_personagem=="olha o bebado" or acao_do_personagem=="olha bebado"):
+                                                if(acao_do_personagem=="olhar o bebado"  or acao_do_personagem=="bebado"  or acao_do_personagem=="bebado" or acao_do_personagem=="olhar bebado" or acao_do_personagem=="olha o bebado" or acao_do_personagem=="olha bebado" or acao_do_personagem=="olhar o bebado" or acao_do_personagem=="olhar bebado" or acao_do_personagem=="olha o bebado" or acao_do_personagem=="olha bebado"):
                                                     objeto[0]="1"
-                                                    print("Voce ve um homem de 40 anos, coberto por cacos de vidro, bebida e vômito, dormindo no chao.")
+                                                    print("Voce ve um homem de 40 anos, coberto por cacos de vidro, bebida e vomito, \ndormindo no chao.")
                                                     time.sleep(1)
                                                 else:
                                                     if(acao_do_personagem=="revistar o bebado" or acao_do_personagem=="revistar bebado" or acao_do_personagem=="revistar" or acao_do_personagem=="revista bebado" or acao_do_personagem=="revista o bebado" or acao_do_personagem=="revistar o bebado" or acao_do_personagem=="revistar bebado" or acao_do_personagem=="revistar" or acao_do_personagem=="revista bebado" or acao_do_personagem=="revista o bebado"):
@@ -3239,7 +3280,7 @@ def seuPredioPrimeiroAndar():
                                                                             print("Voce escapa da briga, mas em seguida o bebado tosse sangue e cai no chao...")
                                                                             time.sleep(2)
                                                                         else:
-                                                                            print("O bebado coberto de bebida, vômito e sangue, cai de costas no chao,")
+                                                                            print("O bebado coberto de bebida, vomito e sangue, cai de costas no chao,")
                                                                             time.sleep(1)
                                                                             print("sendo empalado pelos diversos cacos de vidro...")
                                                                             time.sleep(1)
@@ -3255,9 +3296,9 @@ def seuPredioPrimeiroAndar():
                                                                         if(objeto[0]=="sim"):
                                                                             print("Voce abre a porta... ")
                                                                             time.sleep(1)
-                                                                            print("É um armario de limpeza.")
+                                                                            print("E um armario de limpeza.")
                                                                             time.sleep(1)
-                                                                            print("Em meio às vassouras, rodos e outras coisas, voce encontra uma mala...")
+                                                                            print("Em meio as vassouras, rodos e outras coisas, voce encontra uma mala...")
                                                                             time.sleep(2)
                                                                             print("Voce abre a mala, encontra entre os materiais de escritorio e 10 Reais!")
                                                                             time.sleep(1)
@@ -3316,35 +3357,35 @@ def seuPredioPrimeiroAndar():
                                                                                 else:
                                                                                     print('\nEntrada Invalida!\n')
                                                                                     time.sleep(0.5)
-        print("\n#"+"-"*30+"#\n"+"\nLista de Acões\n\nCenario: "+str(variavel_lugar)+"\n\nVoce pode:\nolhar\n")
+        print("\n#"+"-"*30+"#\n"+"\n Lista de Acoes\n\n Cenario: "+str(variavel_lugar)+"\n\n Voce pode:\n olhar\n")
         if (variavel_cenario[0] == "sim"):
-            print("\ncheirar\nchecar os quartos\n")
+            print("\n cheirar\n checar os quartos\n")
             if (variavel_cenario[2] == "sim" and objeto[0] == "nao"):
-                print("olhar o bebado\n")
+                print(" olhar o bebado\n")
         if(objeto[1] == "sim"):
-            print("\narrombar o quarto 10\n")
+            print("\n arrombar o quarto 10\n")
         if (objeto[0] == "1"):
-            print("\nacordar o bebado\n")
-            print("\nrevistar o bebado\n")
+            print("\n acordar o bebado\n")
+            print("\n revistar o bebado\n")
         if (objeto[0] == "2"):
-            print("\nmover o bebado\n")
+            print("\n mover o bebado\n")
         if (objeto[0] == "3"):
-            print("\natacar o bebado\n")
+            print("\n atacar o bebado\n")
         if (objeto[0] == "sim"):
-            print("\nabrir a porta dos fundos\n")
-        print("\nver ficha do personagem\nver mochila\nsubir as escadas\ndescer as escadas\n\nsalvar o jogo\n"+"\n#"+"-"*30+"#\n")
+            print("\n abrir a porta dos fundos\n")
+        print("\n ver ficha do personagem\n ver mochila\n subir as escadas\n descer as escadas\n\n salvar o jogo\n"+"\n#"+"-"*30+"#\n")
         print("\nO que voce fara agora, "+str(personagem_jogador[0])+"?\n")
         acao_do_personagem = raw_input("-")
         acao_do_personagem = acao_do_personagem.lower()
 
 #--Sua Rua--#
 def suaRua():
-    global inventario_reserva,porcentagem_inflacao,bermuda_linho_regata,bermuda_linho_polo,calca_jeans_regata,calca_jeans_polo,desequipado_roupa,desequipado_capa,desequipado_luva,desequipado_maos,desequipado_calcado,espaco_vazio,pedaco_pizza,bolo_chocolate,pijama_inicial,uniforme_estudantil,malha_ninja,lapis_apontado,punhal_envelhecido,talheres_prata,jaqueta_imitacao,jaqueta_couro,agasalho_la,suplemento_alimenticio,lata_energetico,luva_la,luva_couro,soco_pvc,soco_latao,luva_spikes_alu,soco_alu,luva_spikes_aco,soco_aco,luva_spikes_ag,soco_ag,luva_spikes_au,soco_au,luva_spikes_titanio,soco_titanio,anel_forca1,anel_forca2,anel_forca3,anel_resistencia1,anel_resistencia2,anel_resistencia3,anel_consistencia1,anel_consistencia2,anel_consistencia3,anel_da_imortalidade,anel_da_divindade,chinelo_inicial,papetes_masculinas,tenis_velho,tenis_simplorio,sapato_simplorio,tenis_comum,tenis_trilha,tenis_caminhada,tenis_corrida,tenis_ZX5000,item_adicionado,quantidade_adicionada,equipado_roupa,equipado_capa,equipado_luva,equipado_anel,equipado_maos,equipado_calcado,variavel_cenario,objeto,situacao,temporario,variavel_lugar,ponto_de_save,mostrar_save, personagem_jogador,personagem_reserva,personagem_inimigo,eegg,acao_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,variavel_para_comparar,contador_de_batalha,contador_de_rodadas,mala,loja_venda
+    global personagem_headbanger,inventario_reserva,porcentagem_inflacao,bermuda_linho_regata,bermuda_linho_polo,calca_jeans_regata,calca_jeans_polo,desequipado_roupa,desequipado_capa,desequipado_luva,desequipado_maos,desequipado_calcado,espaco_vazio,pedaco_pizza,bolo_chocolate,pijama_inicial,uniforme_estudantil,malha_ninja,lapis_apontado,punhal_envelhecido,talheres_prata,jaqueta_imitacao,jaqueta_couro,agasalho_la,suplemento_alimenticio,lata_energetico,luva_la,luva_couro,soco_pvc,soco_latao,luva_spikes_alu,soco_alu,luva_spikes_aco,soco_aco,luva_spikes_ag,soco_ag,luva_spikes_au,soco_au,luva_spikes_titanio,soco_titanio,anel_forca1,anel_forca2,anel_forca3,anel_resistencia1,anel_resistencia2,anel_resistencia3,anel_consistencia1,anel_consistencia2,anel_consistencia3,anel_da_imortalidade,anel_da_divindade,chinelo_inicial,papetes_masculinas,tenis_velho,tenis_simplorio,sapato_simplorio,tenis_comum,tenis_trilha,tenis_caminhada,tenis_corrida,tenis_ZX5000,item_adicionado,quantidade_adicionada,equipado_roupa,equipado_capa,equipado_luva,equipado_anel,equipado_maos,equipado_calcado,variavel_cenario,objeto,situacao,temporario,variavel_lugar,ponto_de_save,mostrar_save, personagem_jogador,personagem_jogador_reserva,personagem_inimigo,eegg,acao_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,variavel_para_comparar,contador_de_batalha,contador_de_rodadas,mala,loja_venda
     while 1:
         if(personagem_jogador[6]<=0):break
-        print("\n#", "-"*30,"#\n", "\nLista de Acões\n\nCenario: "+str(variavel_lugar)+"\n\nVoce pode:\nolhar\n")
+        print("\n#", "-"*30,"#\n", "\nLista de Acoes\n\nCenario: "+str(variavel_lugar)+"\n\nVoce pode:\nolhar\n")
         print("\nentrar na loja\n\nentrar na pizzaria\n")
-        print("\nentrar no predio\n\nver ficha do personagem\nver mochila\n\npegar ônibus\nir à pe\n\nsalvar o jogo\n"+"\n#"+"-"*30+"#\n")
+        print("\nentrar no predio\n\nver ficha do personagem\nver mochila\n\npegar onibus\nir a pe\n\nsalvar o jogo\n"+"\n#"+"-"*30+"#\n")
         print("\nQual sera a sua atitude, "+str(personagem_jogador[0])+"?\n")
         acao_do_personagem = raw_input("-")
         acao_do_personagem = acao_do_personagem.lower()
@@ -3402,7 +3443,7 @@ def suaRua():
                             break
                         else:
                             if(acao_do_personagem=="entrar no predio" or acao_do_personagem=="predio" or acao_do_personagem=="entrar predio" or acao_do_personagem=="entrar o predio" or acao_do_personagem=="entra no predio" or acao_do_personagem=="ppredio" or acao_do_personagem=="entra predio" or acao_do_personagem=="entra o predio" or acao_do_personagem=="etrar no predio" or acao_do_personagem=="predio" or acao_do_personagem=="etrar predio" or acao_do_personagem=="etrar o predio" or acao_do_personagem=="etra no predio" or acao_do_personagem=="entrar no predio" or acao_do_personagem=="etra predio" or acao_do_personagem=="etra o predio"):
-                                variavel_lugar = "seu predio, 1º andar"
+                                variavel_lugar = "seu predio, 1o andar"
                                 seuPredioPrimeiroAndar()
                             else:
                                 print('\nEntrada Invalida!\n')
@@ -3415,32 +3456,26 @@ def suaRua():
 #####################----------------------------__BRIGA DE ESTUDANTE__----------------------------#####################
 while 1:
     while (personagem_jogador[6]>0):
-        print('''
-   _________________________________________________________________________  
- |\ _______________________________________________________________________ /| 
+        print('''   _________________________________________________________________________  
+ |\ _______________________________________________________________________ /|
  | |                                                                       | | 
- | | * =* =* =* =* =* =* = : --------------------- : = *= *= *= *= *= *= * | | 
- | | ===================== : - - - - - - - - - - - : ===================== | | 
- | | ===================== : ===================== : ===================== | | 
- | | ===================== : ===================== : ===================== | | 
- | | ===================== : ===================== : ===================== | | 
- | | ===================================================================== | |
- | | ==-==-==-==-==-==-=                               =-==-==-==-==-==-== | | 
- | | =-==-==-==-==-==-==      Briga de Estudante       ==-==-==-==-==-==-= | | 
- | | ==-==-==-==-==-==-= por:Fernando Luiz Neme Chibli =-==-==-==-==-==-== | |
- | | =-==-==-==-==-==-==                               ==-==-==-==-==-==-= | | 
- | | ==============================         ============================== | | 
- | | *=*=*=*=*=*=*=*=*=*=*=*=*=    [comecar]    =*=*=*=*=*=*=*=*=*=*=*=*=* | | 
- | | ======================**=**=            =**=**======================= | | 
- | | *=*=*=*=*=*=*=*=*=*=*=*=*=   [continuar]   =*=*=*=*=*=*=*=*=*=*=*=*=* | |
- | | ======================**=**=            =**=**======================= | | 
- | | *=*=*=*=*=*=*=*=*=*=*=   [criar/zerar saves]   =*=*=*=*=*=*=*=*=*=*=* | | 
- | | =============================           ============================= | | 
- | | ===================== : ===================== : ===================== | | 
- | | ===================== : ===================== : ===================== | | 
- | | ===================== : ===================== : ===================== | |
- | | ===================== : - - - - - - - - - - - : ===================== | | 
- | | * =* =* =* =* =* =* = : --------------------- : = *= *= *= *= *= *= * | |
+ | |  ===================================================================  | |
+ | |  = * = * = * = * = * = * = * = * *=* * = * = * = * = * = * = * = * =  | |
+ | |  = = =================== : --------------- : =================== = =  | | 
+ | |  = * - - - - - - - - - - : =============== : - - - - - - - - - - * =  | | 
+ | |  = = = - === - ======================================= - === - = = =  | |
+ | |  = * ==== - ================== ** = ** ================== - ==== * =  | | 
+ | |  = = -==-==-==-==-==-===                     ===-==-==-==-==-==- = =  | | 
+ | |  = * ==-==-==-==-==-===       B R I G A       ===-==-==-==-==-== * =  | | 
+ | |  = = -==-==-==-==-==-=           D E           =-==-==-==-==-==- = =  | | 
+ | |  = * ==-==-==-==-==-===   E S T U D A N T E   ===-==-==-==-==-== * =  | |
+ | |  = = -==-==-==-==-==-===                     ===-==-==-==-==-==- = =  | | 
+ | |  = * ==== - ================== ** = ** ================== - ==== * =  | | 
+ | |  = = = - === - ======================================= - === - = = =  | |
+ | |  = * - - - - - - - - - - : =============== : - - - - - - - - - - * =  | | 
+ | |  = = =================== : --------------- : =================== = =  | | 
+ | |  = * = * = * = * = * = * = * = * =*= * = * = * = * = * = * = * = * =  | |
+ | |  ================================ por: Fernando Luiz Neme Chibli ===  | | 
  | |_______________________________________________________________________| | 
  |/_________________________________________________________________________\|
 
@@ -3495,7 +3530,7 @@ while 1:
                     print("\nEspaco  9:     Lugar: "+str(mostrar_save[2])+"\n          Nome: "+str(mostrar_save[0])+"  Vida: "+str(mostrar_save[1])+"\n          Ataque: "+str(mostrar_save[3])+"  Defesa: "+str(mostrar_save[4])+"  Agilidade: "+str(mostrar_save[5])+"  Sorte: "+str(mostrar_save[6]))
                     arq.close
                     while 1:
-                        print("\n(Digite um número entre 0 e 9)")
+                        print("\n(Digite um numero entre 0 e 9)")
                         acao_do_personagem=raw_input("-")
                         if(acao_do_personagem=="0"):
                             arq = open('\espaco_save00.py', 'rb')
@@ -3559,7 +3594,7 @@ while 1:
                     arq.close
                     if(ponto_de_save>0):
                         print("\nCarregado!\n")
-                        time.sleep(0.5)
+                        time.sleep(1)
                         ficha_personagem()
                     else:
                         print("\nERRO: Voce nao possui dados salvos.\n")
@@ -3631,6 +3666,7 @@ while 1:
                             arq.close
                             print("Save"+str(i)+"foi criado!")
                             i=i+1
+                            time.sleep(0.5)
                         if(i==10):break
                     else:
                         print('Entrada invalida!\n')
@@ -3648,7 +3684,7 @@ while 1:
                     if(acao_do_personagem=="sim" or acao_do_personagem=="s" or acao_do_personagem=="si" or acao_do_personagem=="sm" or acao_do_personagem=="im" or acao_do_personagem=="ssim"):
                         break
                     else:
-                        if(acao_do_personagem == "nao" or acao_do_personagem=="n" or acao_do_personagem=="nao" or acao_do_personagem=="no" or acao_do_personagem=="na" or acao_do_personagem=="na" or acao_do_personagem=="ao" or acao_do_personagem=="ao" or acao_do_personagem=="ñ" or acao_do_personagem=="ñao" or acao_do_personagem=="ño" or acao_do_personagem=="ñõ" or acao_do_personagem=="ña" or acao_do_personagem=="ñaõ" or acao_do_personagem=="aõ"):
+                        if(acao_do_personagem == "na" or acao_do_personagem=="n" or acao_do_personagem=="nao" or acao_do_personagem=="no" or acao_do_personagem=="na" or acao_do_personagem=="na" or acao_do_personagem=="ao" or acao_do_personagem=="ao" or acao_do_personagem=="ñ" or acao_do_personagem=="ñao" or acao_do_personagem=="ño" or acao_do_personagem=="ñõ" or acao_do_personagem=="ña" or acao_do_personagem=="ñaõ" or acao_do_personagem=="aõ"):
                             print("\nEntao qual e o seu nome?\n")
                             personagem_jogador[0] = raw_input("-")
                             break
@@ -3685,15 +3721,15 @@ while 1:
                     break
                 else:
                     if(acao_do_personagem == "nao" or acao_do_personagem=="n" or acao_do_personagem=="nao" or acao_do_personagem=="no" or acao_do_personagem=="na" or acao_do_personagem=="na" or acao_do_personagem=="ao" or acao_do_personagem=="ao" or acao_do_personagem=="ñ" or acao_do_personagem=="ñao" or acao_do_personagem=="ño" or acao_do_personagem=="ñõ" or acao_do_personagem=="ña" or acao_do_personagem=="ñaõ" or acao_do_personagem=="aõ"):
-                        print('\nSou o narrador da nossa historia, vou apenas te guiar de acordo com as suas decisões...')
+                        print('\nSou o narrador da nossa historia, vou apenas te guiar de acordo com as suas \ndecisoes...')
                         time.sleep(3)
                         print('Entao saiba que nao vou facilitar as coisas para voce!')
                         time.sleep(4)
                         print('Porem minha funcao e te guiar, ser os seus olhos, ouvidos, maos e nariz,')
                         time.sleep(4)
-                        print('e alem disso voce parece precisar de algumas instrucões para tornar disso algo mais divertido.')
+                        print('e alem disso voce parece precisar de algumas instrucoes para tornar disso algo \nmais divertido.')
                         time.sleep(4)
-                        print('\nToda vez antes da sua acao te mostrarei uma lista de acões possiveis de se realizar.')
+                        print('\nToda vez antes da sua acao te mostrarei uma lista de acoes possiveis de se \nrealizar.')
                         time.sleep(3)
                         print('\nE tambem te mostrarei se a sua acao for invalida.')
                         time.sleep(2)
@@ -3715,13 +3751,13 @@ while 1:
                             acao_do_personagem = acao_do_personagem.lower()
                         print('Bom menino!')
                         time.sleep(2)
-                        print('\nAlguns comandos como "salvar o jogo" e "ver ficha do personagem" estarao quase sempre disponiveis.')
+                        print('\nAlguns comandos como "salvar o jogo" e "ver ficha do personagem" estarao quase \nsempre disponiveis.')
                         time.sleep(2)
-                        print('\nToda vez que voce descobre algo novo no cenario, a lista de acões muda,')
+                        print('\nToda vez que voce descobre algo novo no cenario, a lista de acoes muda,')
                         time.sleep(3)
-                        print('mas os resultados dessas acões podem mudar de acordo com o que voce faz,')
+                        print('mas os resultados dessas acoes podem mudar de acordo com o que voce faz,')
                         time.sleep(4)
-                        print('sendo assim e altamente recomendavel que voce repita algumas acões em um mesmo cenario.')
+                        print('sendo assim e altamente recomendavel que voce repita algumas acoes em um mesmo \ncenario.')
                         time.sleep(4)
                         print('\nAcho que ja e o bastante para comecarmos, mas posso repetir se voce quiser...')
                         time.sleep(2)
@@ -3734,11 +3770,11 @@ while 1:
                     if(acao_do_personagem=="sim" or acao_do_personagem=="s" or acao_do_personagem=="si" or acao_do_personagem=="sm" or acao_do_personagem=="im" or acao_do_personagem=="ssim"):
                         acao_do_personagem="sim"
             if(objeto[0]=="ganha presente"):
-                print("\nÓtimo, "+str(personagem_jogador[0])+".")
+                print("\nOtimo, "+str(personagem_jogador[0])+".")
                 time.sleep(1)
-                print("Acho que comecamos com o pe direito! Fico feliz que voce tenha me escutado como um bom garoto!")
+                print("Acho que comecamos com o pe direito! Fico feliz que voce tenha me escutado como \num bom garoto!")
                 time.sleep(2)
-                print("Por isso deixei um presente para voce no seu guarda-roupas, tenho certeza que voce ficara feliz.")
+                print("Por isso deixei um presente para voce no seu guarda-roupas, tenho certeza que \nvoce ficara feliz.")
                 time.sleep(2)
             else:
                 print("Eu nao me lembro de voce...")
@@ -3746,19 +3782,19 @@ while 1:
                 print("Entao voce deve ser mesmo irrelevante!")
                 time.sleep(2)
 
-#####################----------------------------__INÍCIO DO JOGO__----------------------------#####################
+#####################----------------------------__INICIO DO JOGO__----------------------------#####################
             print("\nCenario: acabou de amanhecer, seu quarto esta desarrumado,")
             time.sleep(2)
-            print("voce ainda esta de pijama e atrasado para a aula - nao que voce se importe muito com isso.")
+            print("voce ainda esta de pijama e atrasado para a aula - nao que voce se importe \nmuito com isso.")
             time.sleep(3)
-            print("\n#"+"-"*30+"#\n\nLista de Acões\n\nCenario: "+str(variavel_lugar))
+            print("\n#"+"-"*30+"#\n\n Lista de Acoes\n\n Cenario: "+str(variavel_lugar))
             time.sleep(2)
-            print("\n\nVoce pode:\n\nvestir\narrumar o quarto\nolhar\n")
+            print("\n\n Voce pode:\n\n vestir\n arrumar o quarto\n olhar\n")
             time.sleep(2)
             if (variavel_cenario[0] == "sim"):
-                print("\nolhar as gavetas\nolhar o guarda-roupas\nolhar a estante\n\nolhar pela janela\n")
+                print("\n olhar as gavetas\n olhar o guarda-roupas\n olhar a estante\n\n olhar pela janela\n")
                 time.sleep(2)
-            print("\nver ficha do personagem\nver mochila\nsair do quarto\n")
+            print("\n ver ficha do personagem\n ver mochila\n sair do quarto\n")
             time.sleep(1)
             print("\n#"+ "-"*30+"#\n")
             print("\nO que voce vai fazer, "+str(personagem_jogador[0])+"?\n")
@@ -3797,7 +3833,7 @@ while 1:
                                     print("Voce nao consegue ver nada alem de bagunca, MUITA BAGUNÇA!!!\n")
                                     time.sleep(2)
                                 else:
-                                    print("Voce ve um quarto arrumado, com um guarda-roupas, uma estante de livros, uma mesa de escritorio com gavetas e uma janela.\n")
+                                    print("Voce ve um quarto arrumado, com um guarda-roupas, uma estante de livros, uma \nmesa de escritorio com gavetas e uma janela.\n")
                                     time.sleep(3)
                                     variavel_cenario[0] = "sim"
                             else:
@@ -3911,9 +3947,9 @@ while 1:
                                                                     time.sleep(0.5)
                                                                     eegg = 7
                                                                 else:
-                                                                    print("Voce ve uma janela que abre horizontalmente para as duas direcões,")
+                                                                    print("Voce ve uma janela que abre horizontalmente para as duas direcoes,")
                                                                     time.sleep(0.5)
-                                                                    print("sendo que o vidro da janela esquerda esta rachado por, provavelmente, um apedrejamento.")
+                                                                    print("sendo que o vidro da janela esquerda esta rachado por, \nprovavelmente, um apedrejamento.")
                                                                     time.sleep(1)
                                                                     print("Os batentes sao de madeira antiga, deteriorada pela acao de cupins.")
                                                                     time.sleep(0.5)
@@ -3933,7 +3969,7 @@ while 1:
                                                 time.sleep(4)
                                                 print("Ele esta em pe e encostado na grade cinza, empoeirada e enferrujada")
                                                 time.sleep(4)
-                                                print("do predio da frente um pouco à esquerda da porta dessa grade,")
+                                                print("do predio da frente um pouco a esquerda da porta dessa grade,")
                                                 time.sleep(4)
                                                 print("de modo a ficar de frente para a porta do seu predio.")
                                                 time.sleep(3)
@@ -3945,9 +3981,9 @@ while 1:
                                                 time.sleep(5)
                                             else:
                                                 if (acao_do_personagem == "olhar a estante" or acao_do_personagem =="ohar a estante" or acao_do_personagem =="ohar estante" or acao_do_personagem == "olhar estante" or acao_do_personagem == "olha a estante" or acao_do_personagem == "olha estante" or acao_do_personagem == "estante" or acao_do_personagem == "ver a estante" or acao_do_personagem == "ver estante" or acao_do_personagem == "ver a estante" or acao_do_personagem == "ver estante" or acao_do_personagem =="olahr a estante"):
-                                                    print("Voce ve livros e apostilas rabiscadas na capa e a maioria rasgadas no canto dos furos das espirais.\n...\n Nada muito interessante...\n")
+                                                    print("Voce ve livros e apostilas rabiscadas na capa e a maioria rasgadas no canto dos \nfuros das espirais... Nada muito interessante...\n")
                                                     time.sleep(1)
-                                                    print("Mas voce ve um pedaco de papel vermelho colocado entre as paginas de um dos livros...")
+                                                    print("Mas voce ve um pedaco de papel vermelho colocado entre as paginas de um \ndos livros...")
                                                     time.sleep(1)
                                                     print("Ler o bilhete?? (sim ou nao)\n")
                                                     while 1:
@@ -3956,7 +3992,7 @@ while 1:
                                                         if(acao_do_personagem=="sim" or acao_do_personagem=="s" or acao_do_personagem=="si" or acao_do_personagem=="sm" or acao_do_personagem=="im" or acao_do_personagem=="ssim"):
                                                             print(' "       Voce pode digitar seus comandos de outras formas, como por exemplo,')
                                                             time.sleep(3)
-                                                            print("ao inves de digitar 'ver ficha do personagem' voce pode simplesmente digitar 'ficha'!")
+                                                            print("ao inves de digitar 'ver mochila' voce pode simplesmente digitar 'mala'!")
                                                             time.sleep(3)
                                                             print('Tente sempre digitar da forma mais simples, isso facilitara muito o seu jogo!')
                                                             time.sleep(3)
@@ -3985,7 +4021,7 @@ while 1:
                                                         print("Ola!")
                                                         time.sleep(1)
                                                     else:
-                                                        if(acao_do_personagem=="sair do quarto" or acao_do_personagem=="sair" or acao_do_personagem=="ir para a aula" or acao_do_personagem=="ir pra aula" or acao_do_personagem=="ir para aula" or acao_do_personagem=="ir à aula" or acao_do_personagem=="ir a aula" or acao_do_personagem=="sair quarto"):
+                                                        if(acao_do_personagem=="sair do quarto" or acao_do_personagem=="sair" or acao_do_personagem=="ir para a aula" or acao_do_personagem=="ir pra aula" or acao_do_personagem=="ir para aula" or acao_do_personagem=="ir a aula" or acao_do_personagem=="ir a aula" or acao_do_personagem=="sair quarto"):
                                                             while 1:
                                                                 print("Se sair voce nao podera voltar.\n")
                                                                 time.sleep(3)
@@ -4010,17 +4046,17 @@ while 1:
                                                                 inventarioPersonagem()
                                                             else:
                                                                 print('\nEntrada Invalida!\n')
-                print("\n#"+ "-"*30+"#\n\nLista de Acões\n\nCenario: "+str(variavel_lugar))
+                print("\n#"+ "-"*30+"#\n\n Lista de Acoes\n\n Cenario: "+str(variavel_lugar))
                 time.sleep(0.23)
-                print("\n\nVoce pode:\n\nvestir\narrumar o quarto\nolhar\n")
+                print("\n\n Voce pode:\n\n vestir\n arrumar o quarto\n olhar\n")
                 time.sleep(0.23)
                 if (variavel_cenario[0] == "sim"):
-                    print("\nolhar as gavetas\nolhar o guarda-roupas\nolhar a estante\n\nolhar pela janela\n")
+                    print("\n olhar as gavetas\n olhar o guarda-roupas\n olhar a estante\n\n olhar pela janela\n")
                     time.sleep(0.5)
-                print("\nver ficha do personagem\nver mochila\nsair do quarto\n")
+                print("\n ver ficha do personagem\n ver mochila\n sair do quarto\n")
                 time.sleep(0.5)
                 if(eegg > 1 and eegg<6):
-                    print("\nVoce nao deve:\nolhar a janela\n")
+                    print("\n Voce nao deve:\n olhar a janela\n")
                     time.sleep(0.23)
                 print("\n#"+ "-"*30+"#\n")
                 print("\nE agora, "+str(personagem_jogador[0])+", o que voce vai fazer?\n")
@@ -4037,20 +4073,20 @@ while 1:
 
 ##########--------------------------------------------------FIM DA PRIMEIRA PARTE--------------------------------------------------##########
         if(ponto_de_save==1):
-            if(variavel_lugar == "seu predio, 1º andar" or variavel_lugar == "seu predio, 2º andar" or variavel_lugar == "seu predio, 3º andar" or variavel_lugar == "seu predio, 4º andar"):
-                if(variavel_lugar == "seu predio, 1º andar"):
-                    variavel_lugar = "seu predio, 1º andarb"
-                if(variavel_lugar == "seu predio, 2º andar"):
-                    variavel_lugar = "seu predio, 2º andarb"
-                if(variavel_lugar == "seu predio, 3º andar"):
-                    variavel_lugar = "seu predio, 3º andarb"
-                if(variavel_lugar == "seu predio, 4º andar"):
-                    variavel_lugar = "seu predio, 4º andarb"
+            if(variavel_lugar == "seu predio, 1o andar" or variavel_lugar == "seu predio, 2o andar" or variavel_lugar == "seu predio, 3o andar" or variavel_lugar == "seu predio, 4o andar"):
+                if(variavel_lugar == "seu predio, 1o andar"):
+                    variavel_lugar = "seu predio, 1o andarb"
+                if(variavel_lugar == "seu predio, 2o andar"):
+                    variavel_lugar = "seu predio, 2o andarb"
+                if(variavel_lugar == "seu predio, 3o andar"):
+                    variavel_lugar = "seu predio, 3o andarb"
+                if(variavel_lugar == "seu predio, 4o andar"):
+                    variavel_lugar = "seu predio, 4o andarb"
                 seuPredioPrimeiroAndar()
             else:
-                print("\nCenario: Voce continua atrasado para a aula - nao que voce deva se importar muito com isso.")
+                print("\nCenario: Voce continua atrasado para a aula - nao que voce deva se importar \nmuito com isso.")
                 time.sleep(2)
-                variavel_lugar = "seu predio, 1º andar"
+                variavel_lugar = "seu predio, 1o andar"
                 seuPredioPrimeiroAndar()
             if(personagem_jogador[6]<=0):break
             ponto_de_save = 2
@@ -4086,7 +4122,7 @@ while 1:
             time.sleep(3)
             print("Ele saca uma faca do bolso de tras!\n")
             time.sleep(2)
-            print(" - EU VOU TE QUEBRAR ATÉ VOCÊ ME DAR O DINHEIRO!!!\n")
+            print(" - EU VOU TE QUEBRAR ATE VOCE ME DAR O DINHEIRO!!!\n")
             time.sleep(2)
             personagem_inimigo = [ "Bandido", 300, 100, 20, 20, 25000, 25000]
             batalha()
@@ -4109,7 +4145,7 @@ while 1:
                 time.sleep(3)
                 print("O bandido foi violentamente atingido por um soco...")
                 time.sleep(4)
-                print("Voce se levantou rapidamente e pôde, entao, observar a sitiuacao...")
+                print("Voce se levantou rapidamente e pode, entao, observar a sitiuacao...")
                 time.sleep(3)
                 print("Ele vestia uma blusa preta com a capa do The Rules of Hell do Black Sabbath estampada em cinza nela,")
                 time.sleep(5)
@@ -4165,7 +4201,7 @@ while 1:
                             time.sleep(3)
                             print("O bandido foi violentamente atingido por um soco...")
                             time.sleep(4)
-                            print("Voce se levantou rapidamente e pôde, entao, observar a sitiuacao...")
+                            print("Voce se levantou rapidamente e pode, entao, observar a sitiuacao...")
                             time.sleep(3)
                             print("Ele vestia uma blusa preta com a capa do The Rules of Hell do Black Sabbath estampada em cinza nela,")
                             time.sleep(5)
@@ -4173,10 +4209,11 @@ while 1:
                             time.sleep(5)
                             print("alem da jaqueta de couro, luvas, pulseiras e cinto, todos esses ultimos com spikes de titanio.")
                             time.sleep(6)
-                            personagem_reserva = personagem_jogador
-                            personagem_jogador = [ "Lutador Headbanger", 1200, 800, 50, 50, 100000, 100000, 0]
+                            personagem_jogador_reserva = personagem_jogador
+                            personagem_jogador = personagem_headbanger
                             batalha()
-                            personagem_jogador = personagem_reserva
+                            personagem_headbanger = personagem jogador
+                            personagem_jogador = personagem_jogador_reserva
                             print(" - Pare! Por favor!\n")
                             time.sleep(3)
                             print("...")
@@ -4248,15 +4285,15 @@ while 1:
 
 ##########--------------------------------------------------FIM DA TERCEIRA PARTE--------------------------------------------------##########
         if(ponto_de_save==3):
-            if(variavel_lugar == "seu predio, 1º andar" or variavel_lugar == "seu predio, 2º andar" or variavel_lugar == "seu predio, 3º andar" or variavel_lugar == "seu predio, 4º andar"):
-                if(variavel_lugar == "seu predio, 1º andar"):
-                    variavel_lugar = "seu predio, 1º andarb"
-                if(variavel_lugar == "seu predio, 2º andar"):
-                    variavel_lugar = "seu predio, 2º andarb"
-                if(variavel_lugar == "seu predio, 3º andar"):
-                    variavel_lugar = "seu predio, 3º andarb"
-                if(variavel_lugar == "seu predio, 4º andar"):
-                    variavel_lugar = "seu predio, 4º andarb"
+            if(variavel_lugar == "seu predio, 1o andar" or variavel_lugar == "seu predio, 2o andar" or variavel_lugar == "seu predio, 3o andar" or variavel_lugar == "seu predio, 4o andar"):
+                if(variavel_lugar == "seu predio, 1o andar"):
+                    variavel_lugar = "seu predio, 1o andarb"
+                if(variavel_lugar == "seu predio, 2o andar"):
+                    variavel_lugar = "seu predio, 2o andarb"
+                if(variavel_lugar == "seu predio, 3o andar"):
+                    variavel_lugar = "seu predio, 3o andarb"
+                if(variavel_lugar == "seu predio, 4o andar"):
+                    variavel_lugar = "seu predio, 4o andarb"
                 seuPredioPrimeiroAndar()
                 variavel_lugar = "sua rua"
             else:
@@ -4382,14 +4419,14 @@ while 1:
                 #[2]  cheirar cenario no primeiro andar do seu predio
 
                 objeto = ["nao", "nao", "nao", "nao", "nao"]
-                #[0]  presente do tutorial e reciclada no bebado do 1ºandar
+                #[0]  presente do tutorial e reciclada no bebado do 1o andar
                 #[1]  porta do quarto 10
                 #[2]  energetico do bebado (acao revistar)
                 #[3]  arrombar porta do quarto 10
                 #[4]  mulher do bebado - talheres de prata
 
                 situacao = [0  ,0,0,0 ,0,0  ,0,0,0 ,0,0]
-                #[0]  dois últimos andares do seu predio
+                #[0]  dois ultimos andares do seu predio
                 #[1]  quarto 11 do seu predio
                 #[2]  quarto 24 do seu predio
                 #[3]  quarto 21 do seu predio
