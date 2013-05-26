@@ -8,122 +8,178 @@ import time
 
 #ASSISTA DEVIL SURVIVOR 2
 
-#"Nome"[0], atq[1], def[2], agi[3], luk[4], vidamaxima[5], vidaatual[6], dinheiro[7], identificação[8]
-personagem_jogador = [ "Jogador", 10, 8, 1, 1, 100, 100, 0, 1]
-personagem_jogador_reserva = [ "Jogador", 10, 8, 1, 1, 100, 100, 0, 1]
-personagem_headbanger = [ "Lutador Headbanger", 1200, 800, 50, 50, 100000, 100000, 0, 2]
-personagem_garota = [ "Garota", 50, 40, 1, 1, 500, 500, 20, 3]
-personagem_inimigo = [ "Inimigo", 10, 8, 1, 1, 100, 100]
+class Item():
+    nome = ""
+    status = [] #atq[0], def[1], agi[2], luk[3], taxarecuperacao[4], vidamaxima[5], vidaatual[6]
+    preco = 0
+    tipo = ""
+    def __init__(self, nome, ataque, defesa, agilidade, sorte, taxarecuperacao, vidamaxima, vidaatual, preco, tipo):
+        self.nome = nome
+        self.status.append(ataque)
+        self.status.append(defesa)
+        self.status.append(agilidade)
+        self.status.append(sorte)
+        self.status.append(taxarecuperacao)
+        self.status.append(vidamaxima)
+        self.status.append(vidaatual)
+        self.preco = preco
+        self.tipo = tipo
 
-#["Nome"[0], atq[1], def[2], agi[3], luk[4], tipo[5], preco[6], recupera[7]
+#nome, ataque, defesa, agilidade, sorte, taxarecuperacao, vidamaxima, vidaatual, preco, tipo #####: nulo
+desequipado_roupa = Item("Nada", 0,0,0,0, 0,0,0, 0, "roupa")
+desequipado_capa = Item("Nada", 0,0,0,0, 0,0,0, 0, "capa")
+desequipado_luva = Item("Nada", 0,0,0,0, 0,0,0, 0, "luva")
+desequipado_anel = Item("Nada", 0,0,0,0, 0,0,0, 0, "anel")
+desequipado_maos = Item("Nada", 0,0,0,0, 0,0,0, 0, "armamento")
+desequipado_calcado = Item("Nada", 0,0,0,0, 0,0,0, 0, "calcados")
+espaco_vazio = Item("Vazio", 0,0,0,0, 0,0,0, 0, "inventario")
+#nome, ataque, defesa, agilidade, sorte, taxarecuperacao, vidamaxima, vidaatual, preco, tipo ######: consumivel
+pedaco_pizza = Item("Pedaco de Pizza", 0,0,0,0, 0,0,50, 5, "consumivel")
+super_tudo = Item("Super X-Tudo", 0,0,0,0, 0,0,Jogador.status[5], 100 "consumivel")
+#nome, ataque, defesa, agilidade, sorte, taxarecuperacao, vidamaxima, vidaatual, preco, tipo ######: consumivel de aprimoramento
+suplemento_alimenticio = Item("Suplemento Alimenticio", 10,0,0,0, 0,0,0, 5, "consumivel de aprimoramento")
+lata_energetico = Item("Energetico", 0,0,0,0, 1,50,0, 5, "consumivel de aprimoramento")
+#nome, ataque, defesa, agilidade, sorte, taxarecuperacao, vidamaxima, vidaatual, preco, tipo ######: roupa
+pijama_inicial = Item("Pijama", 0,0,0,5, 5,0,0, 5, "roupa")
+uniforme_estudantil = Item("Uniforme Estudantil", 0,1,0,0, 0,0,0, 20, "roupa")
+bermuda_linho_regata = Item("Bermuda de Linho e Regata ", 0,1,4,0, 0,0,0, 100, "roupa")
+bermuda_linho_polo = Item("Bermuda de Linho e Polo", 0,2,3,2, 0,0,0, 140, "roupa")
+calca_jeans_regata = Item("Calca Jeans e Regata", 0,4,1,0, 0,0,0, 110, "roupa")
+calca_jeans_polo = Item("Calca Jeans e Polo",0,6,0,2, 0,0,0, 150, "roupa")
+malha_ninja = Item("Malha Ninja", 5,20,5,1, 0,0,0, 5000, "roupa")
+#nome, ataque, defesa, agilidade, sorte, taxarecuperacao, vidamaxima, vidaatual, preco, tipo ######: capa
+jaqueta_imitacao = Item("Jaqueta de Imitacao de Couro", 0,20,0,0, 0,0,0, 150, "capa")
+jaqueta_couro = Item("Jaqueta de Couro", 0,200,0,10, 0,0,0, 2000, "capa")
+agasalho_la = Item("Agasalho de La", 0,6,0,0, 0,0,0, 100, "capa")
+cachecol_la = Item("Cachecol de La", 0,1,0,0, 0,0,0, 30, "capa")
+#nome, ataque, defesa, agilidade, sorte, taxarecuperacao, vidamaxima, vidaatual, preco, tipo ######: luva
+luva_la = Item("Luvas de La", 0,3,0,0, 0,0,0, 20, "luva")
+luva_imitacao = Item("Luvas de Imitacao de Couro", 3,3,0,0, 0,0,0, 100, "luva")
+soco_pvc = Item("Soco-Ingles de PVC", 3,0,0,0, 0,0,0, 50, "luva")
+luva_couro = Item("Luvas de Couro", 8,8,0,0, 0,0,0, 500, "luva")
+soco_latao = Item("Soco-Ingles de Latao", 10,0,0,0, 0,0,0, 500, "luva")
+luva_spikes_alu = Item("Luvas de Couro com Spikes de Aluminio", 15,15,0,0, 0,0,0, 700, "luva")
+soco_alu = Item("Soco-Ingles de Aluminio", 25,0,0,0, 0,0,0, 700, "luva")
+luva_spikes_aco = Item("Luvas de Couro com Spikes de Aco", 25,25,0,0, 0,0,0, 1000, "luva")
+soco_aco = Item("Soco-Ingles de Aluminio de Aco", 30,0,0,0, 0,0,0, 1000, "luva")
+luva_spikes_ag = Item("Luvas de Couro com Spikes de Prata", 25,25,0,5, 0,0,0, 5000, "luva")
+soco_ag = Item("Soco-Ingles de Prata", 35,0,0,5, 0,0,0, 5000, "luva")
+luva_spikes_au = Item("Luvas de Couro com Spikes de Ouro", 250,250,0,10, 0,0,0, 10000, "luva")
+soco_au = Item("Soco-Ingles de Ouro", 350,0,0,10, 0,0,0, 10000, "luva")
+luva_spikes_titanio = Item("Luvas de Couro com Spikes de Titanio", 2500,2500,0,20, 0,0,0, 50000, "luva")
+soco_titanio = Item("Soco-Ingles de Titanio", 3500,0,0,20, 0,0,0, 50000, "luva")
+#nome, ataque, defesa, agilidade, sorte, taxarecuperacao, vidamaxima, vidaatual, preco, tipo ######: anel
+anel_forca1 = Item("Anel da Forca 1", 10,-2,-2,-2, 0,0,0, 500, "anel")
+anel_forca2 = Item("Anel da Forca 2", 20,-4,-4,-4, 0,0,0, 1000, "anel")
+anel_forca3 = Item("Anel da Forca 2", 40,-8,-8,-8, 0,0,0, 5000, "anel")
+anel_resistencia1 = Item("Anel da Resistencia 1", -2,10,-2,-2, 0,0,0, 500, "anel")
+anel_resistencia2 = Item("Anel da Resistencia 2", -4,20,-4,-4, 0,0,0, 1000, "anel")
+anel_resistencia3 = Item("Anel da Resistencia 2", -8,40,-8,-8, 0,0,0, 5000, "anel")
+anel_consistencia1 = Item("Anel da Consistencia 1", -2,-2,-2,-2, 0,10,10, 500, "anel")
+anel_consistencia2 = Item("Anel da Consistencia 2", -4,-4,-4,-4, 0,100,100, 1000, "anel")
+anel_consistencia3 = Item("Anel da Consistencia 3", -8,-8,-8,-8, 0,1000,1000, 5000, "anel")
+anel_da_imortalidade = Item("Anel da Imortalidade", Jogador.status[0],Jogador.status[1],Jogador.status[2],Jogador.status[3], Jogador.status[4],Jogador.status[5],Jogador.status[6], 100000, "anel")
+anel_da_divindade = Item("Anel da Divindade", Jogador.status[0]*2,Jogador.status[1]*2,Jogador.status[2]*2,Jogador.status[3]*2, Jogador.status[4]*2,Jogador.status[5]*2,Jogador.status[6]*2, 100000000, "anel")
+#nome, ataque, defesa, agilidade, sorte, taxarecuperacao, vidamaxima, vidaatual, preco, tipo ######: armamento - maos
+lapis_apontado = Item("Lapis Apontado", 3,0,0,1, 0,0,0, 2, "armamento")
+punhal_envelhecido = Item("Punhal Envelhecido", 10,0,0,3, 0,0,0, 300, "armamento")
+talheres_prata = Item("Talheres de prata(Garfo e Faca)", 8,0,0,0, 0,0,0, 10, "armamento")
+#nome, ataque, defesa, agilidade, sorte, taxarecuperacao, vidamaxima, vidaatual, preco, tipo ######: calcados
+chinelo_inicial = Item("Chinelos", 0,0,0,-5, 0,0,0, 5,"calcados")
+papetes_masculinas = Item("Papetes Masculinas", 0,0,1,0, 0,0,0, 15, "calcados")
+tenis_velho = Item("Tenis Velho", 0,0,2,0, 0,0,0, 10, "calcados")
+tenis_simplorio = Item("Tenis Simplorio", 0,1,2,0, 0,0,0, 50, "calcados")
+sapato_simplorio = Item("Sapato Simplorio", 0,2,1,0, 0,0,0, 50, "calcados")
+tenis_comum = Item("Tenis Comum", 0,2,2,0, 0,0,0, 90, "calcados")
+tenis_trilha = Item("Tenis de Trilha", 2,8,3,0, 0,0,0, 400, "calcados")
+tenis_caminhada = Item("Tenis de Caminhada", 0,3,5,0, 0,0,0, 300, "calcados")
+tenis_corrida = Item("Tenis de Corrida", 0,5,10,0, 0,0,0, 500, "calcados")
+tenis_ZX5000 = Item("Tenis ZX-5000", 10,10,11,5, 0,0,0, 15000, "calcados")
 
-desequipado_roupa = ["Nada", 0, 0, 0, 0, "roupa", 0, 0]
-desequipado_capa = ["Nada", 0, 0, 0, 0, "capa", 0, 0]
-desequipado_luva = ["Nada", 0, 0, 0, 0, "luva", 0, 0]
-desequipado_anel = ["Nada", 0, 0, 0, 0, "anel", 0, 0]
-desequipado_maos = ["Nada", 0, 0, 0, 0, "armamento", 0, 0]
-desequipado_calcado = ["Nada", 0, 0, 0, 0, "calcados", 0, 0]
-espaco_vazio = ["Vazio", 0, 0, 0, 0, "inventario", 0, 0]
+class Personagem():
+    nome = ""
+    status = [] #atq[0], def[1], agi[2], luk[3], taxarecuperacao[4], vidamaxima[5], vidaatual[6]
+    dinheiro = 0
+    identificacao = 0
+    inventario = [],[]
+    equipamento = [] #roupa[0], capa[1], luva[2], anel[3], maos[4], calcado[5]
+    def __init__(self, nome, ataque, defesa, agilidade, sorte, taxarecuperacao, vidamaxima, vidaatual, dinheiro, identificacao, roupa, capa, luva, anel, maos, calcado):
+        self.nome = nome
+        self.status.append(ataque)
+        self.status.append(defesa)
+        self.status.append(agilidade)
+        self.status.append(sorte)
+        self.status.append(taxarecuperacao)
+        self.status.append(vidamaxima)
+        self.status.append(vidaatual)
+        self.identificacao = identificacao
+        if (identificacao!="inimigo"):
+            self.dinheiro = dinheiro
+            numero=1
+            while numero<31:
+                self.inventario[0].append(numero)
+                self.inventario[1].append(espaco_vazio)
+                numero+=1
+            self.equipamento.append(roupa)
+            self.equipamento.append(capa)
+            self.equipamento.append(luva)
+            self.equipamento.append(anel)
+            self.equipamento.append(maos)
+            self.equipamento.append(calcado)
+            self.status+=roupa.status
+            self.status+=capa.status
+            self.status+=luva.status
+            self.status+=anel.status
+            self.status+=maos.status
+            self.status+=calcado.status
 
-pedaco_pizza = ["Pedaco de Pizza", 0, 0, 0, 0, "consumivel", 5, 50]
-bolo_chocolate = ["Bolo de Chocolate", 0, 0, 0, 0, "consumivel", 100, personagem_jogador[5]]
+#nome, ataque, defesa, agilidade, sorte, taxarecuperacao, vidamaxima, vidaatual, dinheiro, identificacao, roupa, capa, luva, anel, maos, calcado
+Jogador = Personagem("Jogador", 10,8,1,1, 0,100,100, 0, 1, pijama_inicial, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, chinelo_inicial)
+Reserva = Jogador
+Headbanger = Personagem("Lutador Headbanger", 1200,800,50,50, 100,100000,100000, 0, 3, desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
+Garota = Personagem("Garota", 25,20,1,1, 0,300,300, 25, 2, uniforme_estudantil, desequipado_capa, desequipado_luva, desequipado_anel, lapis_apontado, tenis_simplorio)
+#nome, ataque, defesa, agilidade, sorte, taxarecuperacao, vidamaxima, vidaatual, dinheiro, identificacao, roupa, capa, luva, anel, maos, calcado
+Inimigo = Personagem("Inimigo", 10,8,1,1, 0,100,100, 0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
+Narrador = Personagem("Narrador", 10,7,5,5, 1,100,100, 0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
+Bebado = Personagem("Bebado", 4,4,-3,-3, -10,500,100, 0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
+Mulher_Prantos = Personagem("Mulher aos Prantos", 15,15,-10,10, -5,300,300, 0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
+Mulher_Toalha = Personagem("Mulher de Toalha", 20,20,5,5, 0,800,800, 0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
+Mane_Bone = Personagem("Mane de Bone", 10,5,10,1, 0,100,100, 0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
+Senhor_Doente = Personagem("Senhor Doente", 5,3,-3,3, -1,110,110, 0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
+Garoto_Irritado = Personagem("Garoto Irritado", 10,10,10,10, 10,100,100, 0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
+Garoto_Fracote = Personagem("Garoto Fracote", 3,10,2,2, 0,100,100, 0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
+Garoto_Convencido = Personagem("Garoto Convencido", 8,12,5,10, 0,110,110, 0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
+Garoto_Serio = Personagem("Garoto Serio", 30,25,10,5, 0,200,200, 0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
+Garoto_Forte = Personagem("Garoto Forte", 150,100,20,20, 0,2000,2000, 0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
+Garoto_Homem = Personagem("Garoto, um Homem", 1500,1000,50,50, 0,20000,20000, 0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
+Bandido_Comparsa = Personagem("Bandido", 300,100,20,20, 0,2500,2500, 0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
+Motoqueiro_Comparsa = Personagem("Motoqueiro Comparsa", 3000,10,10,-5, 0,50,50, 0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
+Estudante_30 = Personagem("Estudante Briguento do Quarto 30", 5,12,2,2, 0,110,110, 0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
+Estudante_31 = Personagem("Estudante Briguento do Quarto 31", 13,4,5,1, 0,130,130, 0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
+Estudante_32 = Personagem("Estudante Briguento do Quarto 32", 8,8,2,1, 0,100,100, 0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
+Estudante_33 = Personagem("Estudante Briguento do Quarto 33", 10,8,5,5, 0,120,120, 0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
+Estudante_34 = Personagem("Estudante Briguento do Quarto 34", 20,20,6,6, 6,66.6,66.6, 0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
+Estudante_40 = Personagem("Estudante Briguento do Quarto 40", 30,15,5,5, 5,360,360, 0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
+Estudante_41 = Personagem("Estudante Briguento do Quarto 41", 50,30,10,10, 10,550,550, 0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
+Estudante_42 = Personagem("Estudante Briguento do Quarto 42", 90,70,15,15, 15,790,790, 0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
+Estudante_43 = Personagem("Estudante Briguento do Quarto 43", 180,100,20,20, 20,1500,1500, 0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
+Estudante_44 = Personagem("Estudante Briguento do Quarto 44", 300,200,40,40, 40,320,3200, 0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
 
-pijama_inicial = ["Pijama", 0, 0, 0, 5, "roupa", 5, 20]
-uniforme_estudantil = ["Uniforme Estudantil",0,1,0,0,"roupa",20,0]
-bermuda_linho_regata = ["Bermuda de Linho e Regata ",0,1,4,0,"roupa",100,0]
-bermuda_linho_polo = ["Bermuda de Linho e Polo",0,2,3,2,"roupa",140,0]
-calca_jeans_regata = ["Calca Jeans e Regata",0,4,1,0,"roupa",110,0]
-calca_jeans_polo = ["Calca Jeans e Polo",0,6,0,2,"roupa",150,0]
-malha_ninja = ["Malha Ninja", 5, 20, 5, 1, "roupa", 5000, 0]
+class Loja():
+    inventario = [],[]
+    def __init__(self):
+        numero=1
+        while numero<31:
+            self.inventario[0].append(numero)
+            self.inventario[1].append(espaco_vazio)
+            numero+=1
 
-lapis_apontado = ["Lapis Apontado", 3,0,0,1,"armamento",2,0]
-punhal_envelhecido = ["Punhal Envelhecido", 10, 0,0,3,"armamento",300,0]
-talheres_prata = ["Talheres de prata(Garfo e Faca)", 8, 0,0,0,"armamento",10,0]
-
-jaqueta_imitacao = ["Jaqueta de Imitacao de Couro", 0, 20, 0, 0,"capa",150,0]
-jaqueta_couro = ["Jaqueta de Couro", 0, 200, 0, 10,"capa",2000,0]
-agasalho_la = ["Agasalho de La", 0, 6, 0, 0,"capa",100,0]
-cachecol_la = ["Cachecol de La", 0, 1, 0, 0,"capa",100,0]
-
-suplemento_alimenticio = ["Suplemento Alimenticio", 10, 0, 0, 0, "consumivel de aprimoramento",5, 0]
-lata_energetico = ["Energetico", 0, 0, 0, 0, "consumivel de aprimoramento",5, 50]
-
-luva_la = ["Luvas de La", 0, 3, 0, 0, "luva", 20, 0]
-luva_imitacao = ["Luvas de Imitacao de Couro", 3, 3, 0, 0, "luva", 100, 0]
-soco_pvc = ["Soco-Ingles de PVC", 3, 0, 0, 0, "luva", 50, 0]
-luva_couro = ["Luvas de Couro", 8, 8, 0, 0, "luva", 500, 0]
-soco_latao = ["Soco-Ingles de Latao", 10, 0, 0, 0, "luva", 500, 0]
-luva_spikes_alu = ["Luvas de Couro com Spikes de Aluminio", 15, 15, 0, 0, "luva", 700, 0]
-soco_alu = ["Soco-Ingles de Aluminio", 25, 0, 0, 0, "luva", 700, 0]
-luva_spikes_aco = ["Luvas de Couro com Spikes de Aco", 25, 25, 0, 0, "luva", 1000, 0]
-soco_aco = ["Soco-Ingles de Aluminio de Aco", 30, 0, 0, 0, "luva", 1000, 0]
-luva_spikes_ag = ["Luvas de Couro com Spikes de Prata", 25, 25, 0, 5, "luva", 5000, 0]
-soco_ag = ["Soco-Ingles de Prata", 35, 0, 0, 5, "luva", 5000, 0]
-luva_spikes_au = ["Luvas de Couro com Spikes de Ouro", 250, 250, 0, 10, "luva", 10000, 0]
-soco_au = ["Soco-Ingles de Ouro", 350, 0, 0, 10, "luva", 10000, 0]
-luva_spikes_titanio = ["Luvas de Couro com Spikes de Titanio", 2500, 2500, 0, 20, "luva", 50000, 0]
-soco_titanio = ["Soco-Ingles de Titanio", 3500, 0, 0, 20, "luva", 50000, 0]
-
-anel_forca1 = ["Anel da Forca 1", 10, -2, -2, -2, "anel", 500, 0]
-anel_resistencia1 = ["Anel da Resistencia 1", -2, 10, -2, -2, "anel", 500, 0]
-anel_forca2 = ["Anel da Forca 2", 20, -4, -4, -4, "anel", 1000, 0]
-anel_resistencia2 = ["Anel da Resistencia 2", -4, 20, -4, -4, "anel", 1000, 0]
-anel_forca3 = ["Anel da Forca 2", 40, -8, -8, -8, "anel", 5000, 0]
-anel_resistencia3 = ["Anel da Resistencia 2", -8, 40, -8, -8, "anel", 5000, 0]
-
-anel_consistencia1 = ["Anel da Consistencia 1", -2, -2, -2, -2, "anel", 500, 10]
-anel_consistencia2 = ["Anel da Consistencia 2", -4, -4, -4, -4, "anel", 1000, 100]
-anel_consistencia3 = ["Anel da Consistencia 3", -8, -8, -8, -8, "anel", 5000, 1000]
-
-anel_da_imortalidade = ["Anel da Imortalidade", personagem_jogador[1], personagem_jogador[2], personagem_jogador[3], personagem_jogador[4], "anel", 100000, personagem_jogador[5]]
-anel_da_divindade = ["Anel da Divindade", personagem_jogador[1]*2, personagem_jogador[2]*2, personagem_jogador[3]*2, personagem_jogador[4]*2, "anel", 100000000, personagem_jogador[5]*2]
-
-chinelo_inicial = ["Chinelos", 0, 0, 0, -5, "calcados", 5, 0]
-papetes_masculinas = ["Papetes Masculinas", 0, 0, 1, 0, "calcados", 15, 0]
-tenis_velho = ["Tenis Velho", 0, 0, 2, 0, "calcados", 10, 0]
-tenis_simplorio = ["Tenis Simplorio", 0, 1, 2, 0, "calcados", 50, 0]
-sapato_simplorio = ["Sapato Simplorio", 0, 2, 1, 0, "calcados", 50, 0]
-tenis_comum = ["Tenis Comum", 0, 2, 2, 0, "calcados", 90, 0]
-tenis_trilha = ["Tenis de Trilha", 2, 8, 3, 0, "calcados", 400, 0]
-tenis_caminhada = ["Tenis de Caminhada", 0, 3, 5, 0, "calcados", 300, 0]
-tenis_corrida = ["Tenis de Corrida", 0, 5, 10, 0, "calcados", 500, 0]
-tenis_ZX5000 = ["Tenis ZX-5000", 10, 10, 11, 5, "calcados", 15000, 0]
+Venda = Loja()
+Reserva_Venda = Loja()
 
 item_adicionado=espaco_vazio
 quantidade_adicionada=1
 porcentagem_inflacao=1
-
-#-Equipamento do Personagem Atual-#
-equipado_roupa = pijama_inicial
-equipado_capa = desequipado_capa
-equipado_luva = desequipado_luva
-equipado_anel = desequipado_anel
-equipado_maos = desequipado_maos
-equipado_calcado = chinelo_inicial
-
-#-Reserva do Equipamento do Personagem 1-# Jogador #
-equipado_roupa_1 = pijama_inicial
-equipado_capa_1 = desequipado_capa
-equipado_luva_1 = desequipado_luva
-equipado_anel_1 = desequipado_anel
-equipado_maos_1 = desequipado_maos
-equipado_calcado_1 = chinelo_inicial
-
-#-Equipamento do Personagem 2-# Headbanger #
-equipado_roupa_2 = desequipado_roupa
-equipado_capa_2 = desequipado_capa
-equipado_luva_2 = desequipado_luva
-equipado_anel_2 = desequipado_anel
-equipado_maos_2 = desequipado_maos
-equipado_calcado_2 = desequipado_calcado
-
-#-Equipamento do Personagem 3-# Garota #
-equipado_roupa_3 = uniforme_estudantil
-equipado_capa_3 = desequipado_capa
-equipado_luva_3 = desequipado_luva
-equipado_anel_3 = desequipado_anel
-equipado_maos_3 = lapis_apontado
-equipado_calcado_3 = tenis_simplorio
 
 variavel_cenario = ["nao" ,"nao" ,"nao"]
 #[0]  olhar cenario primeira vez no seu quarto e reciclada no primeiro andar do seu predio
@@ -175,31 +231,13 @@ contador_de_rodadas = 0
 
 #global personagem_headbanger,inventario_reserva,porcentagem_inflacao,bermuda_linho_regata,bermuda_linho_polo,calca_jeans_regata,calca_jeans_polo,desequipado_roupa,desequipado_capa,desequipado_luva,desequipado_maos,desequipado_calcado,espaco_vazio,pedaco_pizza,bolo_chocolate,pijama_inicial,uniforme_estudantil,malha_ninja,lapis_apontado,punhal_envelhecido,talheres_prata,jaqueta_imitacao,jaqueta_couro,agasalho_la,suplemento_alimenticio,lata_energetico,luva_la,luva_couro,soco_pvc,soco_latao,luva_spikes_alu,soco_alu,luva_spikes_aco,soco_aco,luva_spikes_ag,soco_ag,luva_spikes_au,soco_au,luva_spikes_titanio,soco_titanio,anel_forca1,anel_forca2,anel_forca3,anel_resistencia1,anel_resistencia2,anel_resistencia3,anel_consistencia1,anel_consistencia2,anel_consistencia3,anel_da_imortalidade,anel_da_divindade,chinelo_inicial,papetes_masculinas,tenis_velho,tenis_simplorio,sapato_simplorio,tenis_comum,tenis_trilha,tenis_caminhada,tenis_corrida,tenis_ZX5000,item_adicionado,quantidade_adicionada,equipado_roupa,equipado_capa,equipado_luva,equipado_anel,equipado_maos,equipado_calcado,variavel_cenario,objeto,situacao,temporario,variavel_lugar,ponto_de_save,mostrar_save, personagem_jogador,personagem_jogador_reserva,personagem_inimigo,eegg,acao_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,variavel_para_comparar,contador_de_batalha,contador_de_rodadas,mala,loja_venda
 
-mala = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30],[espaco_vazio, espaco_vazio, espaco_vazio, espaco_vazio, espaco_vazio,espaco_vazio, espaco_vazio, espaco_vazio, espaco_vazio, espaco_vazio,espaco_vazio, espaco_vazio, espaco_vazio, espaco_vazio, espaco_vazio,espaco_vazio, espaco_vazio, espaco_vazio, espaco_vazio, espaco_vazio,espaco_vazio, espaco_vazio, espaco_vazio, espaco_vazio, espaco_vazio,espaco_vazio, espaco_vazio, espaco_vazio, espaco_vazio, espaco_vazio]
-loja_venda = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30],[espaco_vazio, espaco_vazio, espaco_vazio, espaco_vazio, espaco_vazio,espaco_vazio, espaco_vazio, espaco_vazio, espaco_vazio, espaco_vazio,espaco_vazio, espaco_vazio, espaco_vazio, espaco_vazio, espaco_vazio,espaco_vazio, espaco_vazio, espaco_vazio, espaco_vazio, espaco_vazio,espaco_vazio, espaco_vazio, espaco_vazio, espaco_vazio, espaco_vazio,espaco_vazio, espaco_vazio, espaco_vazio, espaco_vazio, espaco_vazio]
-inventario_reserva = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30],[espaco_vazio, espaco_vazio, espaco_vazio, espaco_vazio, espaco_vazio,espaco_vazio, espaco_vazio, espaco_vazio, espaco_vazio, espaco_vazio,espaco_vazio, espaco_vazio, espaco_vazio, espaco_vazio, espaco_vazio,espaco_vazio, espaco_vazio, espaco_vazio, espaco_vazio, espaco_vazio,espaco_vazio, espaco_vazio, espaco_vazio, espaco_vazio, espaco_vazio,espaco_vazio, espaco_vazio, espaco_vazio, espaco_vazio, espaco_vazio]
-
-#--Sistema de Troca de Personagem--#
-def trocaPersonagem():
-    global personagem_headbanger,inventario_reserva,porcentagem_inflacao,bermuda_linho_regata,bermuda_linho_polo,calca_jeans_regata,calca_jeans_polo,desequipado_roupa,desequipado_capa,desequipado_luva,desequipado_maos,desequipado_calcado,espaco_vazio,pedaco_pizza,bolo_chocolate,pijama_inicial,uniforme_estudantil,malha_ninja,lapis_apontado,punhal_envelhecido,talheres_prata,jaqueta_imitacao,jaqueta_couro,agasalho_la,suplemento_alimenticio,lata_energetico,luva_la,luva_couro,soco_pvc,soco_latao,luva_spikes_alu,soco_alu,luva_spikes_aco,soco_aco,luva_spikes_ag,soco_ag,luva_spikes_au,soco_au,luva_spikes_titanio,soco_titanio,anel_forca1,anel_forca2,anel_forca3,anel_resistencia1,anel_resistencia2,anel_resistencia3,anel_consistencia1,anel_consistencia2,anel_consistencia3,anel_da_imortalidade,anel_da_divindade,chinelo_inicial,papetes_masculinas,tenis_velho,tenis_simplorio,sapato_simplorio,tenis_comum,tenis_trilha,tenis_caminhada,tenis_corrida,tenis_ZX5000,item_adicionado,quantidade_adicionada,equipado_roupa,equipado_capa,equipado_luva,equipado_anel,equipado_maos,equipado_calcado,variavel_cenario,objeto,situacao,temporario,variavel_lugar,ponto_de_save,mostrar_save, personagem_jogador,personagem_jogador_reserva,personagem_inimigo,eegg,acao_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,variavel_para_comparar,contador_de_batalha,contador_de_rodadas,mala,loja_venda
-    print("\n#"+"-"*30+"#\n")
-    print("\n "+str(personagem_jogador[8])+"         Nome: "+str(personagem_jogador[0])+" Vida: "+str(personagem_jogador[5])+" Ataque: "+str(personagem_jogador[1])+" Defesa: "+str(personagem_jogador[2])+"\n           Agilidade: "+str(personagem_jogador[3])+" Sorte: "+str(personagem_jogador[4])+" Dinheiro: "+str(personagem_jogador[7])+" Reais\n")
-    time.sleep(0.5)
-    if(personagem_jogador[8]!=1):
-        print("\n 1         Nome: "+str(personagem_jogador_reserva[0])+" Vida: "+str(personagem_jogador_reserva[5])+" Ataque: "+str(personagem_jogador_reserva[1])+" Defesa: "+str(personagem_jogador_reserva[2])+"\n           Agilidade: "+str(personagem_jogador_reserva[3])+" Sorte: "+str(personagem_jogador_reserva[4])+" Dinheiro: "+str(personagem_jogador_reserva[7])+" Reais\n")
-        time.sleep(0.5)
-    if(personagem_jogador[8]!=2):
-        print("\n 2         Nome: "+str(personagem_headbanger[0])+" Vida: "+str(personagem_headbanger[5])+" Ataque: "+str(personagem_headbanger[1])+" Defesa: "+str(personagem_headbanger[2])+"\n           Agilidade: "+str(personagem_headbanger[3])+" Sorte: "+str(personagem_headbanger[4])+" Dinheiro: "+str(personagem_headbanger[7])+" Reais\n")
-        time.sleep(0.5)
-    print("\n#"+"-"*30+"#\n")
 
 #--Adicionar Item ao Inventario--#
-def adicionaItem():
-    global personagem_headbanger,inventario_reserva,porcentagem_inflacao,bermuda_linho_regata,bermuda_linho_polo,calca_jeans_regata,calca_jeans_polo,desequipado_roupa,desequipado_capa,desequipado_luva,desequipado_maos,desequipado_calcado,espaco_vazio,pedaco_pizza,bolo_chocolate,pijama_inicial,uniforme_estudantil,malha_ninja,lapis_apontado,punhal_envelhecido,talheres_prata,jaqueta_imitacao,jaqueta_couro,agasalho_la,suplemento_alimenticio,lata_energetico,luva_la,luva_couro,soco_pvc,soco_latao,luva_spikes_alu,soco_alu,luva_spikes_aco,soco_aco,luva_spikes_ag,soco_ag,luva_spikes_au,soco_au,luva_spikes_titanio,soco_titanio,anel_forca1,anel_forca2,anel_forca3,anel_resistencia1,anel_resistencia2,anel_resistencia3,anel_consistencia1,anel_consistencia2,anel_consistencia3,anel_da_imortalidade,anel_da_divindade,chinelo_inicial,papetes_masculinas,tenis_velho,tenis_simplorio,sapato_simplorio,tenis_comum,tenis_trilha,tenis_caminhada,tenis_corrida,tenis_ZX5000,item_adicionado,quantidade_adicionada,equipado_roupa,equipado_capa,equipado_luva,equipado_anel,equipado_maos,equipado_calcado,variavel_cenario,objeto,situacao,temporario,variavel_lugar,ponto_de_save,mostrar_save, personagem_jogador,personagem_jogador_reserva,personagem_inimigo,eegg,acao_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,variavel_para_comparar,contador_de_batalha,contador_de_rodadas,mala,loja_venda
+def adicionaItem(self, Personagem.inventario, item_adicionado, quantidade_adicionada):
     variavel_para_comparar=0
     i=0
     while i<=29:
-        if(mala[1][i]==espaco_vazio or mala[1][i][0]=="Nada"):
+        if(Jogador.inventario[1][i]==espaco_vazio or Jogador.inventario[1][i].nome=="Nada"):
             variavel_para_comparar+=1
         i+=1
     if(variavel_para_comparar<quantidade_adicionada):
@@ -207,29 +245,28 @@ def adicionaItem():
     while (quantidade_adicionada>0):
         i=0
         while i<=29:
-            if(mala[1][i]==espaco_vazio or mala[1][i][0]=="Nada"):
-                mala[1][i]=item_adicionado
+            if(Jogador.inventario[1][i]==espaco_vazio or Jogador.inventario[1][i].nome=="Nada"):
+                Jogador.inventario[1][i]=item_adicionado
                 break
             i+=1
         quantidade_adicionada-=1
 
 #--Inventario--#
-def inventarioPersonagem():
-    global personagem_headbanger,inventario_reserva,porcentagem_inflacao,bermuda_linho_regata,bermuda_linho_polo,calca_jeans_regata,calca_jeans_polo,desequipado_roupa,desequipado_capa,desequipado_luva,desequipado_maos,desequipado_calcado,espaco_vazio,pedaco_pizza,bolo_chocolate,pijama_inicial,uniforme_estudantil,malha_ninja,lapis_apontado,punhal_envelhecido,talheres_prata,jaqueta_imitacao,jaqueta_couro,agasalho_la,suplemento_alimenticio,lata_energetico,luva_la,luva_couro,soco_pvc,soco_latao,luva_spikes_alu,soco_alu,luva_spikes_aco,soco_aco,luva_spikes_ag,soco_ag,luva_spikes_au,soco_au,luva_spikes_titanio,soco_titanio,anel_forca1,anel_forca2,anel_forca3,anel_resistencia1,anel_resistencia2,anel_resistencia3,anel_consistencia1,anel_consistencia2,anel_consistencia3,anel_da_imortalidade,anel_da_divindade,chinelo_inicial,papetes_masculinas,tenis_velho,tenis_simplorio,sapato_simplorio,tenis_comum,tenis_trilha,tenis_caminhada,tenis_corrida,tenis_ZX5000,item_adicionado,quantidade_adicionada,equipado_roupa,equipado_capa,equipado_luva,equipado_anel,equipado_maos,equipado_calcado,variavel_cenario,objeto,situacao,temporario,variavel_lugar,ponto_de_save,mostrar_save, personagem_jogador,personagem_jogador_reserva,personagem_inimigo,eegg,acao_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,variavel_para_comparar,contador_de_batalha,contador_de_rodadas,mala,loja_venda
+def inventarioPersonagem(self):
     while 1:
         variavel_para_comparar=0
         i=0
         while i<=29:
-            if(mala[1][i]==espaco_vazio or mala[1][i][0]=="Nada"):
+            if(Jogador.inventario[1][i]==espaco_vazio or Jogador.inventario[1][i].nome=="Nada"):
                 variavel_para_comparar+=1
             i+=1
-        print("Mochila:        "+str(variavel_para_comparar)+" espacos livres.\n")
+        print("Mochila:        "+str(variavel_para_comparar)+" espaco(s) livre(s) de 30.\n")
         variavel_para_comparar=0
         time.sleep(0.5)
         i=0
         while i<=29:
-            if (mala[1][i]!=espaco_vazio and mala[1][i][0]!="Nada"):
-                print(str(mala[0][i])+" : "+str(mala[1][i][0])+"\n     ("+str(mala[1][i][5])+")\n")
+            if (Jogador.inventario[1][i]!=espaco_vazio and Jogador.inventario[1][i].nome!="Nada"):
+                print(str(Jogador.inventario[0][i])+" : "+str(Jogador.inventario[1][i].nome)+"\n     ("+str(Jogador.inventario[1][i].tipo)+")\n")
             i+=1
         while 1:
             print("Para analisar um item digite o numero da sua posicao!\nPara voltar ao jogo digite voltar.")
@@ -248,23 +285,57 @@ def inventarioPersonagem():
                 break
             i+=1
         i=i-1
-        if(acao_do_personagem==mala[0][i] and mala[1][i]!=espaco_vazio and mala[1][i][0]!="Nada"):
-            if(mala[1][i][5]=="consumivel de aprimoramento"):
-                print("\nNome: "+str(mala[1][i][0])+ "\nTipo: "+str(mala[1][i][5])+"\nVida: "+str(mala[1][i][7])+"\nAtaque: "+str(mala[1][i][1])+"\nDefesa: "+str(mala[1][i][2])+"\nAgilidade: "+str(mala[1][i][3])+"\nSorte: "+str(mala[1][i][4])+"\n")
+        if(acao_do_personagem==Jogador.inventario[0][i] and Jogador.inventario[1][i]!=espaco_vazio and Jogador.inventario[1][i].nome!="Nada"):
+            if(Jogador.inventario[1][i].tipo=="consumivel de aprimoramento"):
+                print("\nNome: "+str(Jogador.inventario[1][i].nome)+ "\nTipo: "+str(Jogador.inventario[1][i].tipo)+"\nVida: "+str(Jogador.inventario[1][i][7])+"\nAtaque: "+str(Jogador.inventario[1][i][0])+"\nDefesa: "+str(Jogador.inventario[1][i][1])+"\nAgilidade: "+str(Jogador.inventario[1][i][2])+"\nSorte: "+str(Jogador.inventario[1][i][3])+"\n")
+                while Jogador.inventario[1][i].tipo!="inventario":
+                    print("O que deseja fazer? (usar, descartar ou voltar)")
+                    acao_do_personagem=raw_input("-")
+                    acao_do_personagem=acao_do_personagem.lower()
+                    if(acao_do_personagem=="usar"):
+                        Jogador.status += Jogador.inventario[1][i].status
+                        print("\nVoce usou  "+str( Jogador.inventario[1][i].nome)+"!\n")
+                        time.sleep(0.5)
+                        Jogador.inventario[1][i]=espaco_vazio
+                        break
+                    else:
+                        if(acao_do_personagem=="descartar"):
+                            while Jogador.inventario[1][i].tipo!="inventario":
+                                print("\nTem certeza que deseja descartar? (sim ou nao)\n")
+                                acao_do_personagem=raw_input("-")
+                                acao_do_personagem=acao_do_personagem.lower()
+                                if(acao_do_personagem == "nao" or acao_do_personagem=="n" or acao_do_personagem=="nao" or acao_do_personagem=="no" or acao_do_personagem=="na" or acao_do_personagem=="na" or acao_do_personagem=="ao" or acao_do_personagem=="ao" or acao_do_personagem=="ñ" or acao_do_personagem=="ñao" or acao_do_personagem=="ño" or acao_do_personagem=="ñõ" or acao_do_personagem=="ña" or acao_do_personagem=="ñaõ" or acao_do_personagem=="aõ"):
+                                    break
+                                else:
+                                    if(acao_do_personagem=="sim" or acao_do_personagem=="s" or acao_do_personagem=="si" or acao_do_personagem=="sm" or acao_do_personagem=="im" or acao_do_personagem=="ssim"):
+                                        break
+                                    else:
+                                        print("\nENTRADA INVALIDA!\n")
+                                        time.sleep(0.5)
+                            if(acao_do_personagem=="sim" or acao_do_personagem=="s" or acao_do_personagem=="si" or acao_do_personagem=="sm" or acao_do_personagem=="im" or acao_do_personagem=="ssim"):
+                                print("\nVoce descartou"+str(Jogador.inventario[1][i].nome)+"!\n")
+                                time.sleep(0.5)
+                                Jogador.inventario[1][i]=espaco_vazio
+                                break
+                        else:
+                            if(acao_do_personagem=="voltar"):
+                                break
+                            else:
+                                print("\nENTRADA INVALIDA!\n")
+                                time.sleep(0.5)
+            if(Jogador.inventario[1][i].tipo=="consumivel"):
+                print("\nNome: "+str(Jogador.inventario[1][i].nome)+ "\nTipo: "+str(Jogador.inventario[1][i].tipo)+"\nVida: "+str(inventario[1][i].status[6])+"\n")
                 while 1:
                     print("O que deseja fazer? (usar, descartar ou voltar)")
                     acao_do_personagem=raw_input("-")
                     acao_do_personagem=acao_do_personagem.lower()
                     if(acao_do_personagem=="usar"):
-                        personagem_jogador[5]=personagem_jogador[5]+mala[1][i][7]
-                        personagem_jogador[6]=personagem_jogador[5]
-                        personagem_jogador[1]=personagem_jogador[1]+mala[1][i][1]
-                        personagem_jogador[2]=personagem_jogador[2]+mala[1][i][2]
-                        personagem_jogador[3]=personagem_jogador[3]+mala[1][i][3]
-                        personagem_jogador[4]=personagem_jogador[4]+mala[1][i][4]
-                        print("\nVoce usou  "+str( mala[1][i][0])+"!\n")
+                        Jogador.status[6]+=inventario[1][i].status[6]
+                        if (Jogador.status[6]>=1.1*Jogador.status[5]):
+                            Jogador.status[6]=Jogador.status[5]*1.1
+                        print("\nVoce usou "+ str(Jogador.inventario[1][i].nome)+"!\n")
                         time.sleep(0.5)
-                        mala[1][i]=espaco_vazio
+                        Jogador.inventario[1][i]=espaco_vazio
                         break
                     else:
                         if(acao_do_personagem=="descartar"):
@@ -281,9 +352,9 @@ def inventarioPersonagem():
                                         print("\nENTRADA INVALIDA!\n")
                                         time.sleep(0.5)
                             if(acao_do_personagem=="sim" or acao_do_personagem=="s" or acao_do_personagem=="si" or acao_do_personagem=="sm" or acao_do_personagem=="im" or acao_do_personagem=="ssim"):
-                                print("\nVoce descartou"+str(mala[1][i][0])+"!\n")
+                                print("\nVoce descartou"+str(Jogador.inventario[1][i].nome)+"!\n")
                                 time.sleep(0.5)
-                                mala[1][i]=espaco_vazio
+                                Jogador.inventario[1][i]=espaco_vazio
                                 break
                         else:
                             if(acao_do_personagem=="voltar"):
@@ -291,48 +362,9 @@ def inventarioPersonagem():
                             else:
                                 print("\nENTRADA INVALIDA!\n")
                                 time.sleep(0.5)
-            if(mala[1][i][5]=="consumivel"):
-                print("\nNome: "+str(mala[1][i][0])+ "\nTipo: "+str(mala[1][i][5])+"\nVida: "+str(mala[1][i][7])+"\n")
-                while 1:
-                    print("O que deseja fazer? (usar, descartar ou voltar)")
-                    acao_do_personagem=raw_input("-")
-                    acao_do_personagem=acao_do_personagem.lower()
-                    if(acao_do_personagem=="usar"):
-                        personagem_jogador[6]=personagem_jogador[6]+mala[1][i][7]
-                        if (personagem_jogador[6]>=(personagem_jogador[5]+0.1*personagem_jogador[6])):
-                            personagem_jogador[6]=personagem_jogador[5]+0.1
-                        print("\nVoce usou "+ str(mala[1][i][0])+"!\n")
-                        time.sleep(0.5)
-                        mala[1][i]=espaco_vazio
-                        break
-                    else:
-                        if(acao_do_personagem=="descartar"):
-                            while 1:
-                                print("\nTem certeza que deseja descartar? (sim ou nao)\n")
-                                acao_do_personagem=raw_input("-")
-                                acao_do_personagem=acao_do_personagem.lower()
-                                if(acao_do_personagem == "nao" or acao_do_personagem=="n" or acao_do_personagem=="nao" or acao_do_personagem=="no" or acao_do_personagem=="na" or acao_do_personagem=="na" or acao_do_personagem=="ao" or acao_do_personagem=="ao" or acao_do_personagem=="ñ" or acao_do_personagem=="ñao" or acao_do_personagem=="ño" or acao_do_personagem=="ñõ" or acao_do_personagem=="ña" or acao_do_personagem=="ñaõ" or acao_do_personagem=="aõ"):
-                                    break
-                                else:
-                                    if(acao_do_personagem=="sim" or acao_do_personagem=="s" or acao_do_personagem=="si" or acao_do_personagem=="sm" or acao_do_personagem=="im" or acao_do_personagem=="ssim"):
-                                        break
-                                    else:
-                                        print("\nENTRADA INVALIDA!\n")
-                                        time.sleep(0.5)
-                            if(acao_do_personagem=="sim" or acao_do_personagem=="s" or acao_do_personagem=="si" or acao_do_personagem=="sm" or acao_do_personagem=="im" or acao_do_personagem=="ssim"):
-                                print("\nVoce descartou"+str(mala[1][i][0])+"!\n")
-                                time.sleep(0.5)
-                                mala[1][i]=espaco_vazio
-                                break
-                        else:
-                            if(acao_do_personagem=="voltar"):
-                                break
-                            else:
-                                print("\nENTRADA INVALIDA!\n")
-                                time.sleep(0.5)
-            if(mala[1][i][5]!="consumivel de aprimoramento" and mala[1][i][5]!="consumivel" and mala[1][i][5]!="inventario"):
-                print("\nNome: "+str(mala[1][i][0])+"\nTipo: "+str(mala[1][i][5])+"\nAtaque: "+str(mala[1][i][1])+"\nDefesa: "+str(mala[1][i][2])+"\nAgilidade: "+str(mala[1][i][3])+"\nSorte: "+str(mala[1][i][4])+"\nVida: "+str(mala[1][i][7])+"\n")
-                while 1:
+            if(Jogador.inventario[1][i].tipo!="consumivel de aprimoramento" and Jogador.inventario[1][i].tipo!="consumivel" and Jogador.inventario[1][i].tipo!="inventario"):
+                print("\nNome: "+str(Jogador.inventario[1][i].nome)+"\nTipo: "+str(Jogador.inventario[1][i].tipo)+"\nAtaque: "+str(Jogador.inventario[1][i][0])+"\nDefesa: "+str(Jogador.inventario[1][i][1])+"\nAgilidade: "+str(Jogador.inventario[1][i][2])+"\nSorte: "+str(Jogador.inventario[1][i][3])+"\nVida: "+str(Jogador.inventario[1][i][5])+"\nReconstituicao: "+str(Jogador.inventario[1][i][4])+"\n")
+                while Jogador.inventario[1][i].tipo!="inventario":
                     print("O que deseja fazer? (equipar, descartar ou voltar)")
                     acao_do_personagem=raw_input("-")
                     acao_do_personagem=acao_do_personagem.lower()
@@ -350,115 +382,67 @@ def inventarioPersonagem():
                                     print("\nENTRADA INVALIDA!\n")
                                     time.sleep(0.5)
                         if(acao_do_personagem=="sim" or acao_do_personagem=="s" or acao_do_personagem=="si" or acao_do_personagem=="sm" or acao_do_personagem=="im" or acao_do_personagem=="ssim"):
-                            print("\nVoce descartou"+str(mala[1][i][0])+"!\n")
+                            print("\nVoce descartou"+str(Jogador.inventario[1][i].nome)+"!\n")
                             time.sleep(0.5)
-                            mala[1][i]=espaco_vazio
+                            Jogador.inventario[1][i]=espaco_vazio
                             break
                     else:
-                        if(acao_do_personagem=="equipar"):
-                            if(mala[1][i][5]=="roupa"):
-                                personagem_jogador[1] = personagem_jogador[1] - equipado_roupa[1]
-                                personagem_jogador[2] = personagem_jogador[2] - equipado_roupa[2]
-                                personagem_jogador[3] = personagem_jogador[3] - equipado_roupa[3]
-                                personagem_jogador[4] = personagem_jogador[4] - equipado_roupa[4]
-                                personagem_jogador[5] = personagem_jogador[5] - equipado_roupa[7]
-                                item_adicionado=equipado_roupa
-                                print("Voce guardou "+str(item_adicionado[0])+" e equipou "+str(mala[1][i][0])+"!")
+                        if(acao_do_personagem=="equipar"):#roupa[0], capa[1], luva[2], anel[3], maos[4], calcado[5]
+                            if(Jogador.inventario[1][i].tipo=="roupa"):
+                                Jogador.status-=Jogador.equipamento[0].status
+                                item_adicionado=Jogador.equipamento[0]#reserva roupa anterior em item_adicionado
+                                print("Voce guardou "+str(item_adicionado.nome)+" e equipou "+str(Jogador.inventario[1][i].nome)+"!")
                                 time.sleep(1)
-                                equipado_roupa=mala[1][i]
-                                mala[1][i]=item_adicionado
-                                personagem_jogador[1] = personagem_jogador[1] + equipado_roupa[1]
-                                personagem_jogador[2] = personagem_jogador[2] + equipado_roupa[2]
-                                personagem_jogador[3] = personagem_jogador[3] + equipado_roupa[3]
-                                personagem_jogador[4] = personagem_jogador[4] + equipado_roupa[4]
-                                personagem_jogador[5] = personagem_jogador[5] + equipado_roupa[7]
+                                Jogador.equipamento[0]=Jogador.inventario[1][i]#veste a roupa do inventario
+                                Jogador.inventario[1][i]=item_adicionado#guarda a roupa anterior no mesmo lugar do iventario
+                                Jogador.status+=Jogador.equipamento[0].status
                                 break
-                            if(mala[1][i][5]=="capa"):                            
-                                personagem_jogador[1] = personagem_jogador[1] - equipado_capa[1]
-                                personagem_jogador[2] = personagem_jogador[2] - equipado_capa[2]
-                                personagem_jogador[3] = personagem_jogador[3] - equipado_capa[3]
-                                personagem_jogador[4] = personagem_jogador[4] - equipado_capa[4]
-                                personagem_jogador[5] = personagem_jogador[5] - equipado_capa[7]
-                                item_adicionado=equipado_capa
-                                print("Voce guardou "+str(item_adicionado[0])+" e equipou "+str( mala[1][i][0])+"!")
+                            if(Jogador.inventario[1][i].tipo=="capa"):
+                                Jogador.status-=Jogador.equipamento[1].status
+                                item_adicionado=Jogador.equipamento[1]
+                                print("Voce guardou "+str(item_adicionado.nome)+" e equipou "+str( Jogador.inventario[1][i].nome)+"!")
                                 time.sleep(1)
-                                equipado_capa=mala[1][i]
-                                mala[1][i]=item_adicionado
-                                personagem_jogador[1] = personagem_jogador[1] + equipado_capa[1]
-                                personagem_jogador[2] = personagem_jogador[2] + equipado_capa[2]
-                                personagem_jogador[3] = personagem_jogador[3] + equipado_capa[3]
-                                personagem_jogador[4] = personagem_jogador[4] + equipado_capa[4]
-                                personagem_jogador[5] = personagem_jogador[5] + equipado_capa[7]
+                                Jogador.equipamento[1]=Jogador.inventario[1][i]
+                                Jogador.inventario[1][i]=item_adicionado
+                                Jogador.status+=Jogador.equipamento[1].status
                                 break
-                            if(mala[1][i][5]=="luva"):
-                                personagem_jogador[1] = personagem_jogador[1] - equipado_luva[1]
-                                personagem_jogador[2] = personagem_jogador[2] - equipado_luva[2]
-                                personagem_jogador[3] = personagem_jogador[3] - equipado_luva[3]
-                                personagem_jogador[4] = personagem_jogador[4] - equipado_luva[4]
-                                personagem_jogador[5] = personagem_jogador[5] - equipado_luva[7]
-                                item_adicionado=equipado_luva
-                                print("Voce guardou "+str(item_adicionado[0])+" e equipou "+str(mala[1][i][0])+"!")
+                            if(Jogador.inventario[1][i].tipo=="luva"):
+                                Jogador.status-=Jogador.equipamento[2].status
+                                item_adicionado=Jogador.equipamento[2]
+                                print("Voce guardou "+str(item_adicionado.nome)+" e equipou "+str(Jogador.inventario[1][i].nome)+"!")
                                 time.sleep(1)
-                                equipado_luva=mala[1][i]
-                                mala[1][i]=item_adicionado
-                                personagem_jogador[1] = personagem_jogador[1] + equipado_luva[1]
-                                personagem_jogador[2] = personagem_jogador[2] + equipado_luva[2]
-                                personagem_jogador[3] = personagem_jogador[3] + equipado_luva[3]
-                                personagem_jogador[4] = personagem_jogador[4] + equipado_luva[4]
-                                personagem_jogador[5] = personagem_jogador[5] + equipado_luva[7]
+                                Jogador.equipamento[2]=Jogador.inventario[1][i]
+                                Jogador.inventario[1][i]=item_adicionado
+                                Jogador.status+=Jogador.equipamento[2].status
                                 break
-                            if(mala[1][i][5]=="anel"):
-                                personagem_jogador[1] = personagem_jogador[1] - equipado_anel[1]
-                                personagem_jogador[2] = personagem_jogador[2] - equipado_anel[2]
-                                personagem_jogador[3] = personagem_jogador[3] - equipado_anel[3]
-                                personagem_jogador[4] = personagem_jogador[4] - equipado_anel[4]
-                                personagem_jogador[5] = personagem_jogador[5] - equipado_anel[7]
-                                item_adicionado=equipado_anel
-                                print("Voce guardou "+str(item_adicionado[0])+" e equipou "+str(mala[1][i][0])+"!")
+                            if(Jogador.inventario[1][i].tipo=="anel"):
+                                Jogador.status-=Jogador.equipamento[3].status
+                                item_adicionado=Jogador.equipamento[3]
+                                print("Voce guardou "+str(item_adicionado.nome)+" e equipou "+str(Jogador.inventario[1][i].nome)+"!")
                                 time.sleep(1)
-                                equipado_anel=mala[1][i]
-                                mala[1][i]=item_adicionado
-                                personagem_jogador[1] = personagem_jogador[1] + equipado_anel[1]
-                                personagem_jogador[2] = personagem_jogador[2] + equipado_anel[2]
-                                personagem_jogador[3] = personagem_jogador[3] + equipado_anel[3]
-                                personagem_jogador[4] = personagem_jogador[4] + equipado_anel[4]
-                                personagem_jogador[5] = personagem_jogador[5] + equipado_anel[7]
+                                Jogador.equipamento[3]=Jogador.inventario[1][i]
+                                Jogador.inventario[1][i]=item_adicionado
+                                Jogador.status+=Jogador.equipamento[3].status
                                 break
-                            if(mala[1][i][5]=="armamento"):
-                                personagem_jogador[1] = personagem_jogador[1] - equipado_maos[1]
-                                personagem_jogador[2] = personagem_jogador[2] - equipado_maos[2]
-                                personagem_jogador[3] = personagem_jogador[3] - equipado_maos[3]
-                                personagem_jogador[4] = personagem_jogador[4] - equipado_maos[4]
-                                personagem_jogador[5] = personagem_jogador[5] - equipado_maos[7]
-                                item_adicionado=equipado_maos
-                                print("Voce guardou "+str(item_adicionado[0])+" e equipou "+str(mala[1][i][0])+"!")
+                            if(Jogador.inventario[1][i].tipo=="armamento"):
+                                Jogador.status-=Jogador.equipamento[4].status
+                                item_adicionado=Jogador.equipamento[4]
+                                print("Voce guardou "+str(item_adicionado.nome)+" e equipou "+str(Jogador.inventario[1][i].nome)+"!")
                                 time.sleep(1)
-                                equipado_maos=mala[1][i]
-                                mala[1][i]=item_adicionado
-                                personagem_jogador[1] = personagem_jogador[1] + equipado_maos[1]
-                                personagem_jogador[2] = personagem_jogador[2] + equipado_maos[2]
-                                personagem_jogador[3] = personagem_jogador[3] + equipado_maos[3]
-                                personagem_jogador[4] = personagem_jogador[4] + equipado_maos[4]
-                                personagem_jogador[5] = personagem_jogador[5] + equipado_maos[7]
+                                Jogador.equipamento[4]=Jogador.inventario[1][i]
+                                Jogador.inventario[1][i]=item_adicionado
+                                Jogador.status+=Jogador.equipamento[4].status
                                 break
-                            if(mala[1][i][5]=="calcados"):
-                                personagem_jogador[1] = personagem_jogador[1] - equipado_calcado[1]
-                                personagem_jogador[2] = personagem_jogador[2] - equipado_calcado[2]
-                                personagem_jogador[3] = personagem_jogador[3] - equipado_calcado[3]
-                                personagem_jogador[4] = personagem_jogador[4] - equipado_calcado[4]
-                                personagem_jogador[5] = personagem_jogador[5] - equipado_calcado[7]
-                                item_adicionado=equipado_calcado
-                                print("Voce guardou "+str(item_adicionado[0])+" e equipou "+str(mala[1][i][0])+"!")
+                            if(Jogador.inventario[1][i].tipo=="calcados"):
+                                Jogador.status-=Jogador.equipamento[5].status
+                                item_adicionado=Jogador.equipamento[5]
+                                print("Voce guardou "+str(item_adicionado.nome)+" e equipou "+str(Jogador.inventario[1][i].nome)+"!")
                                 time.sleep(1)
-                                equipado_calcado=mala[1][i]
-                                mala[1][i]=item_adicionado
-                                personagem_jogador[1] = personagem_jogador[1] + equipado_calcado[1]
-                                personagem_jogador[2] = personagem_jogador[2] + equipado_calcado[2]
-                                personagem_jogador[3] = personagem_jogador[3] + equipado_calcado[3]
-                                personagem_jogador[4] = personagem_jogador[4] + equipado_calcado[4]
-                                personagem_jogador[5] = personagem_jogador[5] + equipado_calcado[7]
+                                Jogador.equipamento[5]=Jogador.inventario[1][i]
+                                Jogador.inventario[1][i]=item_adicionado
+                                Jogador.status+=Jogador.equipamento[5].status
                                 break
-                            if(mala[1][i][5]=="consumivel" or mala[1][i][5]=="consumivel de aprimoramento"):
+                            if(Jogador.inventario[1][i].tipo=="consumivel" or Jogador.inventario[1][i].tipo=="consumivel de aprimoramento"):
                                 print("voce nao pode equipar!")
                                 time.sleep(0.5)
                         else:
@@ -468,6 +452,899 @@ def inventarioPersonagem():
                                 print("\nENTRADA INVLIDA!\n")
                                 time.sleep(0.5)
 
+
+#--Sistema de Troca de Personagem--#
+def trocaPersonagem():
+    global personagem_headbanger,inventario_reserva,porcentagem_inflacao,bermuda_linho_regata,bermuda_linho_polo,calca_jeans_regata,calca_jeans_polo,desequipado_roupa,desequipado_capa,desequipado_luva,desequipado_maos,desequipado_calcado,espaco_vazio,pedaco_pizza,bolo_chocolate,pijama_inicial,uniforme_estudantil,malha_ninja,lapis_apontado,punhal_envelhecido,talheres_prata,jaqueta_imitacao,jaqueta_couro,agasalho_la,suplemento_alimenticio,lata_energetico,luva_la,luva_couro,soco_pvc,soco_latao,luva_spikes_alu,soco_alu,luva_spikes_aco,soco_aco,luva_spikes_ag,soco_ag,luva_spikes_au,soco_au,luva_spikes_titanio,soco_titanio,anel_forca1,anel_forca2,anel_forca3,anel_resistencia1,anel_resistencia2,anel_resistencia3,anel_consistencia1,anel_consistencia2,anel_consistencia3,anel_da_imortalidade,anel_da_divindade,chinelo_inicial,papetes_masculinas,tenis_velho,tenis_simplorio,sapato_simplorio,tenis_comum,tenis_trilha,tenis_caminhada,tenis_corrida,tenis_ZX5000,item_adicionado,quantidade_adicionada,equipado_roupa,equipado_capa,equipado_luva,equipado_anel,equipado_maos,equipado_calcado,variavel_cenario,objeto,situacao,temporario,variavel_lugar,ponto_de_save,mostrar_save, personagem_jogador,personagem_jogador_reserva,personagem_inimigo,eegg,acao_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,variavel_para_comparar,contador_de_batalha,contador_de_rodadas,mala,loja_venda
+    while 1:
+        print("\n#"+"-"*30+"#\n")
+        print("\n "+str(Jogador.identificacao)+" (atual) Nome: "+str(Jogador.Nome)+" Vida: "+str(Jogador.status[5])+" Ataque: "+str(Jogador.status[0])+" Defesa: "+str(Jogador.status[1])+"\n           Agilidade: "+str(Jogador.status[2])+" Sorte: "+str(Jogador.status[3])+" Reconstituicao: "+str(Jogador.status[4])+" Dinheiro: "+str(Jogador.dinheiro)+" Reais\n")
+        time.sleep(0.5)
+        if(Jogador.identificacao!=1):
+            print("\n "+str(Reserva.identificacao)+"         Nome: "+str(Reserva.Nome)+" Vida: "+str(Reserva.status[5])+" Ataque: "+str(Reserva.status[0])+" Defesa: "+str(Reserva.status[1])+"\n           Agilidade: "+str(Reserva.status[2])+" Sorte: "+str(Reserva.status[3])+" Reconstituicao: "+str(Reserva.status[4])+" Dinheiro: "+str(Reserva.dinheiro)+" Reais\n")
+            time.sleep(0.5)
+        if(Jogador.identificacao!=2):
+            print("\n "+str(Garota.identificacao)+"         Nome: "+str(Garota.Nome)+" Vida: "+str(Garota.status[5])+" Ataque: "+str(Garota.status[0])+" Defesa: "+str(Garota.status[1])+"\n           Agilidade: "+str(Garota.status[2])+" Sorte: "+str(Garota.status[3])+" Reconstituicao: "+str(Garota.status[4])+" Dinheiro: "+str(Garota.dinheiro)+" Reais\n")
+            time.sleep(0.5)
+        if(Jogador.identificacao!=3):
+            print("\n "+str(Headbanger.identificacao)+"         Nome: "+str(Headbanger.Nome)+" Vida: "+str(Headbanger.status[5])+" Ataque: "+str(Headbanger.status[0])+" Defesa: "+str(Headbanger.status[1])+"\n           Agilidade: "+str(Headbanger.status[2])+" Sorte: "+str(Headbanger.status[3])+" Reconstituicao: "+str(Headbanger.status[4])+" Dinheiro: "+str(Headbanger.dinheiro)+" Reais\n")
+            time.sleep(0.5)
+        print("\n#"+"-"*30+"#\n")
+        while 1:
+            print("Para analisar um personagem digite o numero da sua posicao!\nPara voltar ao jogo digite voltar.")
+            acao_do_personagem = raw_input('-')
+            if acao_do_personagem.isdigit():
+                acao_do_personagem=int(acao_do_personagem)
+                break
+            else:
+                if(acao_do_personagem=="voltar"):break
+                print("ENTRADA INVALIDA!")
+                time.sleep(0.5)
+        if(acao_do_personagem=="voltar"):break
+        if acao_do_personagem==Jogador.identificacao:
+            print "O que deseja fazer? (substituir, transferir dinheiro ou transferir item)"
+            if acao_do_personagem=="substituir":
+                if(Jogador.identificacao!=1):
+                    print("\n "+str(Reserva.identificacao)+"         Nome: "+str(Reserva.Nome)+" Vida: "+str(Reserva.status[5])+" Ataque: "+str(Reserva.status[0])+" Defesa: "+str(Reserva.status[1])+"\n           Agilidade: "+str(Reserva.status[2])+" Sorte: "+str(Reserva.status[3])+" Reconstituicao: "+str(Reserva.status[4])+" Dinheiro: "+str(Reserva.dinheiro)+" Reais\n")
+                    time.sleep(0.5)
+                if(Jogador.identificacao!=2):
+                    print("\n "+str(Garota.identificacao)+"         Nome: "+str(Garota.Nome)+" Vida: "+str(Garota.status[5])+" Ataque: "+str(Garota.status[0])+" Defesa: "+str(Garota.status[1])+"\n           Agilidade: "+str(Garota.status[2])+" Sorte: "+str(Garota.status[3])+" Reconstituicao: "+str(Garota.status[4])+" Dinheiro: "+str(Garota.dinheiro)+" Reais\n")
+                    time.sleep(0.5)
+                if(Jogador.identificacao!=3):
+                    print("\n "+str(Headbanger.identificacao)+"         Nome: "+str(Headbanger.Nome)+" Vida: "+str(Headbanger.status[5])+" Ataque: "+str(Headbanger.status[0])+" Defesa: "+str(Headbanger.status[1])+"\n           Agilidade: "+str(Headbanger.status[2])+" Sorte: "+str(Headbanger.status[3])+" Reconstituicao: "+str(Headbanger.status[4])+" Dinheiro: "+str(Headbanger.dinheiro)+" Reais\n")
+                    time.sleep(0.5)
+                while 1:
+                    print 'Com quem quer jogar? (digite o numero da posicao ou "voltar")'
+                    acao_do_personagem = raw_input('-')
+                    if acao_do_personagem.isdigit():
+                        acao_do_personagem=int(acao_do_personagem)
+                        break
+                    else:
+                        if(acao_do_personagem=="voltar"):break
+                        print("ENTRADA INVALIDA!")
+                        time.sleep(0.5)
+                if(acao_do_personagem=="voltar"):break
+                if acao_do_personagem==Reserva.identificacao:
+                    if Jogador.identificacao==2:
+                        Garota=Jogador
+                        Jogador=Reserva
+                        print 'Agora você está jogando como '+str(Jogador.nome)+'!'
+                    if Jogador.identificacao==3:
+                        Headbanger=Jogador
+                        Jogador=Reserva
+                        print 'Agora você está jogando como '+str(Jogador.nome)+'!'
+                elif acao_do_personagem==Garota.identificacao:
+                    if Jogador.identificacao==1:
+                        Reserva=Jogador
+                        Jogador=Garota
+                        print 'Agora você está jogando como '+str(Jogador.nome)+'!'
+                    if Jogador.identificacao==3:
+                        Headbanger=Jogador
+                        Jogador=Garota
+                        print 'Agora você está jogando como '+str(Jogador.nome)+'!'
+                elif acao_do_personagem==Headbanger.identificacao:
+                    if Jogador.identificacao==1:
+                        Reserva=Jogador
+                        Jogador=Headbanger
+                        print 'Agora você está jogando como '+str(Jogador.nome)+'!'
+                    if Jogador.identificacao==2:
+                        Garota=Jogador
+                        Jogador=Headbanger
+                        print 'Agora você está jogando como '+str(Jogador.nome)+'!'
+                else:print 'Entrada invalida!'
+            elif acao_do_personagem=="transferir dinheiro":
+                if(Jogador.identificacao!=1):
+                    print("\n "+str(Reserva.identificacao)+"         Nome: "+str(Reserva.Nome)+" Vida: "+str(Reserva.status[5])+" Ataque: "+str(Reserva.status[0])+" Defesa: "+str(Reserva.status[1])+"\n           Agilidade: "+str(Reserva.status[2])+" Sorte: "+str(Reserva.status[3])+" Reconstituicao: "+str(Reserva.status[4])+" Dinheiro: "+str(Reserva.dinheiro)+" Reais\n")
+                    time.sleep(0.5)
+                if(Jogador.identificacao!=2):
+                    print("\n "+str(Garota.identificacao)+"         Nome: "+str(Garota.Nome)+" Vida: "+str(Garota.status[5])+" Ataque: "+str(Garota.status[0])+" Defesa: "+str(Garota.status[1])+"\n           Agilidade: "+str(Garota.status[2])+" Sorte: "+str(Garota.status[3])+" Reconstituicao: "+str(Garota.status[4])+" Dinheiro: "+str(Garota.dinheiro)+" Reais\n")
+                    time.sleep(0.5)
+                if(Jogador.identificacao!=3):
+                    print("\n "+str(Headbanger.identificacao)+"         Nome: "+str(Headbanger.Nome)+" Vida: "+str(Headbanger.status[5])+" Ataque: "+str(Headbanger.status[0])+" Defesa: "+str(Headbanger.status[1])+"\n           Agilidade: "+str(Headbanger.status[2])+" Sorte: "+str(Headbanger.status[3])+" Reconstituicao: "+str(Headbanger.status[4])+" Dinheiro: "+str(Headbanger.dinheiro)+" Reais\n")
+                    time.sleep(0.5)
+                while 1:
+                    print 'Para quem vai entregar? (digite o numero da posicao ou "voltar")'
+                    acao_do_personagem = raw_input('-')
+                    if acao_do_personagem.isdigit():
+                        acao_do_personagem=int(acao_do_personagem)
+                        break
+                    else:
+                        if(acao_do_personagem=="voltar"):break
+                        print("ENTRADA INVALIDA!")
+                        time.sleep(0.5)
+                if(acao_do_personagem=="voltar"):break
+                if acao_do_personagem==Reserva.identificacao:
+                    while 1:
+                        print 'Quanto? (digite um valor ou "voltar")'
+                        acao_do_personagem = raw_input('-')
+                        if acao_do_personagem.isdigit():
+                            acao_do_personagem=int(acao_do_personagem)
+                            if acao_do_personagem>Jogador.dinheiro:
+                                print 'Voce nao tem todo esse dinheiro!'
+                            elif acao_do_personagem<=0:
+                                print 'Voce so pode entregar valores acima de zero.'
+                            else:
+                                break
+                        else:
+                            if(acao_do_personagem=="voltar"):break
+                            print("ENTRADA INVALIDA!")
+                            time.sleep(0.5)
+                    if(acao_do_personagem=="voltar"):break
+                    Jogador.dinheiro-=acao_do_personagem
+                    Reserva.dinheiro+=acao_do_personagem
+                    print str(Jogador.nome)+' transferiu '+acao_do_personagem+' Reais para '+str(Reserva.nome)+'.'
+                elif acao_do_personagem==Garota.identificacao:
+                    while 1:
+                        print 'Quanto? (digite um valor ou "voltar")'
+                        acao_do_personagem = raw_input('-')
+                        if acao_do_personagem.isdigit():
+                            acao_do_personagem=int(acao_do_personagem)
+                            if acao_do_personagem>Jogador.dinheiro:
+                                print 'Voce nao tem todo esse dinheiro!'
+                            elif acao_do_personagem<=0:
+                                print 'Voce so pode entregar valores acima de zero.'
+                            else:
+                                break
+                        else:
+                            if(acao_do_personagem=="voltar"):break
+                            print("ENTRADA INVALIDA!")
+                            time.sleep(0.5)
+                    if(acao_do_personagem=="voltar"):break
+                    Jogador.dinheiro-=acao_do_personagem
+                    Garota.dinheiro+=acao_do_personagem
+                    print str(Jogador.nome)+' transferiu '+acao_do_personagem+' Reais para '+str(Garota.nome)+'.'
+                elif acao_do_personagem==Headbanger.identificacao:
+                    while 1:
+                        print 'Quanto? (digite um valor ou "voltar")'
+                        acao_do_personagem = raw_input('-')
+                        if acao_do_personagem.isdigit():
+                            acao_do_personagem=int(acao_do_personagem)
+                            if acao_do_personagem>Jogador.dinheiro:
+                                print 'Voce nao tem todo esse dinheiro!'
+                            elif acao_do_personagem<=0:
+                                print 'Voce so pode entregar valores acima de zero.'
+                            else:
+                                break
+                        else:
+                            if(acao_do_personagem=="voltar"):break
+                            print("ENTRADA INVALIDA!")
+                            time.sleep(0.5)
+                    if(acao_do_personagem=="voltar"):break
+                    Jogador.dinheiro-=acao_do_personagem
+                    Headbanger.dinheiro+=acao_do_personagem
+                    print str(Jogador.nome)+' transferiu '+acao_do_personagem+' Reais para '+str(Headbanger.nome)+'.'
+            elif acao_do_personagem=="transferir item":
+                while 1:
+                    variavel_para_comparar=0
+                    i=0
+                    while i<=29:
+                        if(Jogador.inventario[1][i]==espaco_vazio or Jogador.inventario[1][i].nome=="Nada"):
+                            variavel_para_comparar+=1
+                        i+=1
+                    print("Mochila:        "+str(variavel_para_comparar)+" espaco(s) livre(s) de 30.\n")
+                    variavel_para_comparar=0
+                    time.sleep(0.5)
+                    i=0
+                    while i<=29:
+                        if (Jogador.inventario[1][i]!=espaco_vazio and Jogador.inventario[1][i].nome!="Nada"):
+                            print(str(Jogador.inventario[0][i])+" : "+str(Jogador.inventario[1][i].nome)+"\n     ("+str(Jogador.inventario[1][i].tipo)+")\n")
+                        i+=1
+                    while 1:
+                        print("Para analisar um item digite o numero da sua posicao!\nPara voltar ao jogo digite voltar.")
+                        acao_do_personagem = raw_input('-')
+                        if acao_do_personagem.isdigit():
+                            acao_do_personagem=int(acao_do_personagem)
+                            break
+                        else:
+                            if(acao_do_personagem=="voltar"):break
+                            print("ENTRADA INVALIDA!")
+                            time.sleep(0.5)
+                    if(acao_do_personagem=="voltar"):break
+                    i=0
+                    while i<=29:
+                        if(i==acao_do_personagem):
+                            break
+                        i+=1
+                    i=i-1
+                    if(acao_do_personagem==Jogador.inventario[0][i] and Jogador.inventario[1][i]!=espaco_vazio and Jogador.inventario[1][i].nome!="Nada"):
+                        if(Jogador.identificacao!=1):
+                            print("\n "+str(Reserva.identificacao)+"         Nome: "+str(Reserva.Nome)+" Vida: "+str(Reserva.status[5])+" Ataque: "+str(Reserva.status[0])+" Defesa: "+str(Reserva.status[1])+"\n           Agilidade: "+str(Reserva.status[2])+" Sorte: "+str(Reserva.status[3])+" Reconstituicao: "+str(Reserva.status[4])+" Dinheiro: "+str(Reserva.dinheiro)+" Reais\n")
+                            time.sleep(0.5)
+                        if(Jogador.identificacao!=2):
+                            print("\n "+str(Garota.identificacao)+"         Nome: "+str(Garota.Nome)+" Vida: "+str(Garota.status[5])+" Ataque: "+str(Garota.status[0])+" Defesa: "+str(Garota.status[1])+"\n           Agilidade: "+str(Garota.status[2])+" Sorte: "+str(Garota.status[3])+" Reconstituicao: "+str(Garota.status[4])+" Dinheiro: "+str(Garota.dinheiro)+" Reais\n")
+                            time.sleep(0.5)
+                        if(Jogador.identificacao!=3):
+                            print("\n "+str(Headbanger.identificacao)+"         Nome: "+str(Headbanger.Nome)+" Vida: "+str(Headbanger.status[5])+" Ataque: "+str(Headbanger.status[0])+" Defesa: "+str(Headbanger.status[1])+"\n           Agilidade: "+str(Headbanger.status[2])+" Sorte: "+str(Headbanger.status[3])+" Reconstituicao: "+str(Headbanger.status[4])+" Dinheiro: "+str(Headbanger.dinheiro)+" Reais\n")
+                            time.sleep(0.5)
+                        while 1:
+                            print 'Para quem vai entregar? (digite o numero da posicao ou "voltar")'
+                            acao_do_personagem = raw_input('-')
+                            if acao_do_personagem.isdigit():
+                                acao_do_personagem=int(acao_do_personagem)
+                                break
+                            else:
+                                if(acao_do_personagem=="voltar"):break
+                                print("ENTRADA INVALIDA!")
+                                time.sleep(0.5)
+                        if(acao_do_personagem=="voltar"):break
+                        if acao_do_personagem==Reserva.identificacao:
+                            item_adicionado=Jogador.inventario[1][i]
+                            variavel_para_comparar=0
+                            e=0
+                            while e<=29:
+                                if(Reserva.inventario[1][e]==espaco_vazio or Reserva.inventario[1][e].nome=="Nada"):
+                                    variavel_para_comparar+=1
+                                e+=1
+                            if(variavel_para_comparar<1):
+                                print 'Inventario LOTADO!'
+                                time.sleep(1)
+                            else:
+                                e=0
+                                while e<=29:
+                                    if(Reserva.inventario[1][e]==espaco_vazio or Reserva.inventario[1][e].nome=="Nada"):
+                                        Reserva.inventario[1][e]=item_adicionado
+                                        Jogador.inventario[1][i]=espaco_vazio
+                                        print str(Jogador.nome)+' transferiu '+item_adicionado+' para '+str(Reserva.nome)+'.'
+                                        break
+                                    e+=1
+                        elif acao_do_personagem==Garota.identificacao:
+                            item_adicionado=Jogador.inventario[1][i]
+                            variavel_para_comparar=0
+                            e=0
+                            while e<=29:
+                                if(Garota.inventario[1][e]==espaco_vazio or Garota.inventario[1][e].nome=="Nada"):
+                                    variavel_para_comparar+=1
+                                e+=1
+                            if(variavel_para_comparar<1):
+                                print 'Inventario LOTADO!'
+                                time.sleep(1)
+                            else:
+                                e=0
+                                while e<=29:
+                                    if(Garota.inventario[1][e]==espaco_vazio or Garota.inventario[1][e].nome=="Nada"):
+                                        Garota.inventario[1][e]=item_adicionado
+                                        Jogador.inventario[1][i]=espaco_vazio
+                                        print str(Jogador.nome)+' transferiu '+item_adicionado+' para '+str(Garota.nome)+'.'
+                                        break
+                                    e+=1
+                        elif acao_do_personagem==Headbanger.identificacao:
+                            item_adicionado=Jogador.inventario[1][i]
+                            variavel_para_comparar=0
+                            e=0
+                            while e<=29:
+                                if(Headbanger.inventario[1][e]==espaco_vazio or Headbanger.inventario[1][e].nome=="Nada"):
+                                    variavel_para_comparar+=1
+                                e+=1
+                            if(variavel_para_comparar<1):
+                                print 'Inventario LOTADO!'
+                                time.sleep(1)
+                            else:
+                                e=0
+                                while e<=29:
+                                    if(Headbanger.inventario[1][e]==espaco_vazio or Headbanger.inventario[1][e].nome=="Nada"):
+                                        Headbanger.inventario[1][e]=item_adicionado
+                                        Jogador.inventario[1][i]=espaco_vazio
+                                        print str(Jogador.nome)+' transferiu '+item_adicionado+' para '+str(Headbanger.nome)+'.'
+                                        break
+                                    e+=1
+                        else: print 'Entrada invalida!'
+        elif acao_do_personagem==Reserva.identificacao:
+            print "O que deseja fazer? (substituir, transferir dinheiro ou transferir item)"
+            if acao_do_personagem=="substituir":
+                if Jogador.identificacao==2:
+                    Garota=Jogador
+                    Jogador=Reserva
+                    print 'Agora você está jogando como '+str(Jogador.nome)+'!'
+                if Jogador.identificacao==3:
+                    Headbanger=Jogador
+                    Jogador=Reserva
+                    print 'Agora você está jogando como '+str(Jogador.nome)+'!'
+            elif acao_do_personagem=="transferir dinheiro":
+                print("\n "+str(Jogador.identificacao)+" (atual) Nome: "+str(Jogador.Nome)+" Vida: "+str(Jogador.status[5])+" Ataque: "+str(Jogador.status[0])+" Defesa: "+str(Jogador.status[1])+"\n           Agilidade: "+str(Jogador.status[2])+" Sorte: "+str(Jogador.status[3])+" Reconstituicao: "+str(Jogador.status[4])+" Dinheiro: "+str(Jogador.dinheiro)+" Reais\n")
+                time.sleep(0.5)
+                if(Jogador.identificacao!=2):
+                    print("\n "+str(Garota.identificacao)+"         Nome: "+str(Garota.Nome)+" Vida: "+str(Garota.status[5])+" Ataque: "+str(Garota.status[0])+" Defesa: "+str(Garota.status[1])+"\n           Agilidade: "+str(Garota.status[2])+" Sorte: "+str(Garota.status[3])+" Reconstituicao: "+str(Garota.status[4])+" Dinheiro: "+str(Garota.dinheiro)+" Reais\n")
+                    time.sleep(0.5)
+                if(Jogador.identificacao!=3):
+                    print("\n "+str(Headbanger.identificacao)+"         Nome: "+str(Headbanger.Nome)+" Vida: "+str(Headbanger.status[5])+" Ataque: "+str(Headbanger.status[0])+" Defesa: "+str(Headbanger.status[1])+"\n           Agilidade: "+str(Headbanger.status[2])+" Sorte: "+str(Headbanger.status[3])+" Reconstituicao: "+str(Headbanger.status[4])+" Dinheiro: "+str(Headbanger.dinheiro)+" Reais\n")
+                    time.sleep(0.5)
+                while 1:
+                    print 'Para quem vai entregar? (digite o numero da posicao ou "voltar")'
+                    acao_do_personagem = raw_input('-')
+                    if acao_do_personagem.isdigit():
+                        acao_do_personagem=int(acao_do_personagem)
+                        break
+                    else:
+                        if(acao_do_personagem=="voltar"):break
+                        print("ENTRADA INVALIDA!")
+                        time.sleep(0.5)
+                if(acao_do_personagem=="voltar"):break
+                if acao_do_personagem==Jogador.identificacao:
+                    while 1:
+                        print 'Quanto? (digite um valor ou "voltar")'
+                        acao_do_personagem = raw_input('-')
+                        if acao_do_personagem.isdigit():
+                            acao_do_personagem=int(acao_do_personagem)
+                            if acao_do_personagem>Reserva.dinheiro:
+                                print 'Voce nao tem todo esse dinheiro!'
+                            elif acao_do_personagem<=0:
+                                print 'Voce so pode entregar valores acima de zero.'
+                            else:
+                                break
+                        else:
+                            if(acao_do_personagem=="voltar"):break
+                            print("ENTRADA INVALIDA!")
+                            time.sleep(0.5)
+                    if(acao_do_personagem=="voltar"):break
+                    Reserva.dinheiro-=acao_do_personagem
+                    Jogador.dinheiro+=acao_do_personagem
+                    print str(Reserva.nome)+' transferiu '+acao_do_personagem+' Reais para '+str(Jogador.nome)+'.'
+                elif acao_do_personagem==Garota.identificacao:
+                    while 1:
+                        print 'Quanto? (digite um valor ou "voltar")'
+                        acao_do_personagem = raw_input('-')
+                        if acao_do_personagem.isdigit():
+                            acao_do_personagem=int(acao_do_personagem)
+                            if acao_do_personagem>Reserva.dinheiro:
+                                print 'Voce nao tem todo esse dinheiro!'
+                            elif acao_do_personagem<=0:
+                                print 'Voce so pode entregar valores acima de zero.'
+                            else:
+                                break
+                        else:
+                            if(acao_do_personagem=="voltar"):break
+                            print("ENTRADA INVALIDA!")
+                            time.sleep(0.5)
+                    if(acao_do_personagem=="voltar"):break
+                    Reserva.dinheiro-=acao_do_personagem
+                    Garota.dinheiro+=acao_do_personagem
+                    print str(Reserva.nome)+' transferiu '+acao_do_personagem+' Reais para '+str(Garota.nome)+'.'
+                elif acao_do_personagem==Headbanger.identificacao:
+                    while 1:
+                        print 'Quanto? (digite um valor ou "voltar")'
+                        acao_do_personagem = raw_input('-')
+                        if acao_do_personagem.isdigit():
+                            acao_do_personagem=int(acao_do_personagem)
+                            if acao_do_personagem>Reserva.dinheiro:
+                                print 'Voce nao tem todo esse dinheiro!'
+                            elif acao_do_personagem<=0:
+                                print 'Voce so pode entregar valores acima de zero.'
+                            else:
+                                break
+                        else:
+                            if(acao_do_personagem=="voltar"):break
+                            print("ENTRADA INVALIDA!")
+                            time.sleep(0.5)
+                    if(acao_do_personagem=="voltar"):break
+                    Reserva.dinheiro-=acao_do_personagem
+                    Headbanger.dinheiro+=acao_do_personagem
+                    print str(Reserva.nome)+' transferiu '+acao_do_personagem+' Reais para '+str(Headbanger.nome)+'.'
+            elif acao_do_personagem=="transferir item":
+                while 1:
+                    variavel_para_comparar=0
+                    i=0
+                    while i<=29:
+                        if(Reserva.inventario[1][i]==espaco_vazio or Reserva.inventario[1][i].nome=="Nada"):
+                            variavel_para_comparar+=1
+                        i+=1
+                    print("Mochila:        "+str(variavel_para_comparar)+" espaco(s) livre(s) de 30.\n")
+                    variavel_para_comparar=0
+                    time.sleep(0.5)
+                    i=0
+                    while i<=29:
+                        if (Reserva.inventario[1][i]!=espaco_vazio and Reserva.inventario[1][i].nome!="Nada"):
+                            print(str(Reserva.inventario[0][i])+" : "+str(Reserva.inventario[1][i].nome)+"\n     ("+str(Reserva.inventario[1][i].tipo)+")\n")
+                        i+=1
+                    while 1:
+                        print("Para analisar um item digite o numero da sua posicao!\nPara voltar ao jogo digite voltar.")
+                        acao_do_personagem = raw_input('-')
+                        if acao_do_personagem.isdigit():
+                            acao_do_personagem=int(acao_do_personagem)
+                            break
+                        else:
+                            if(acao_do_personagem=="voltar"):break
+                            print("ENTRADA INVALIDA!")
+                            time.sleep(0.5)
+                    if(acao_do_personagem=="voltar"):break
+                    i=0
+                    while i<=29:
+                        if(i==acao_do_personagem):
+                            break
+                        i+=1
+                    i=i-1
+                    if(acao_do_personagem==Reserva.inventario[0][i] and Reserva.inventario[1][i]!=espaco_vazio and Reserva.inventario[1][i].nome!="Nada"):
+                        print("\n "+str(Jogador.identificacao)+" (atual) Nome: "+str(Jogador.Nome)+" Vida: "+str(Jogador.status[5])+" Ataque: "+str(Jogador.status[0])+" Defesa: "+str(Jogador.status[1])+"\n           Agilidade: "+str(Jogador.status[2])+" Sorte: "+str(Jogador.status[3])+" Reconstituicao: "+str(Jogador.status[4])+" Dinheiro: "+str(Jogador.dinheiro)+" Reais\n")
+                        time.sleep(0.5)
+                        if(Jogador.identificacao!=2):
+                            print("\n "+str(Garota.identificacao)+"         Nome: "+str(Garota.Nome)+" Vida: "+str(Garota.status[5])+" Ataque: "+str(Garota.status[0])+" Defesa: "+str(Garota.status[1])+"\n           Agilidade: "+str(Garota.status[2])+" Sorte: "+str(Garota.status[3])+" Reconstituicao: "+str(Garota.status[4])+" Dinheiro: "+str(Garota.dinheiro)+" Reais\n")
+                            time.sleep(0.5)
+                        if(Jogador.identificacao!=3):
+                            print("\n "+str(Headbanger.identificacao)+"         Nome: "+str(Headbanger.Nome)+" Vida: "+str(Headbanger.status[5])+" Ataque: "+str(Headbanger.status[0])+" Defesa: "+str(Headbanger.status[1])+"\n           Agilidade: "+str(Headbanger.status[2])+" Sorte: "+str(Headbanger.status[3])+" Reconstituicao: "+str(Headbanger.status[4])+" Dinheiro: "+str(Headbanger.dinheiro)+" Reais\n")
+                            time.sleep(0.5)
+                        while 1:
+                            print 'Para quem vai entregar? (digite o numero da posicao ou "voltar")'
+                            acao_do_personagem = raw_input('-')
+                            if acao_do_personagem.isdigit():
+                                acao_do_personagem=int(acao_do_personagem)
+                                break
+                            else:
+                                if(acao_do_personagem=="voltar"):break
+                                print("ENTRADA INVALIDA!")
+                                time.sleep(0.5)
+                        if(acao_do_personagem=="voltar"):break
+                        if acao_do_personagem==Jogador.identificacao:
+                            item_adicionado=Reserva.inventario[1][i]
+                            variavel_para_comparar=0
+                            e=0
+                            while e<=29:
+                                if(Jogador.inventario[1][e]==espaco_vazio or Jogador.inventario[1][e].nome=="Nada"):
+                                    variavel_para_comparar+=1
+                                e+=1
+                            if(variavel_para_comparar<1):
+                                print 'Inventario LOTADO!'
+                                time.sleep(1)
+                            else:
+                                e=0
+                                while e<=29:
+                                    if(Jogador.inventario[1][e]==espaco_vazio or Jogador.inventario[1][e].nome=="Nada"):
+                                        Jogador.inventario[1][e]=item_adicionado
+                                        Reserva.inventario[1][i]=espaco_vazio
+                                        print str(Reserva.nome)+' transferiu '+item_adicionado+' para '+str(Jogador.nome)+'.'
+                                        break
+                                    e+=1
+                        elif acao_do_personagem==Garota.identificacao:
+                            item_adicionado=Reserva.inventario[1][i]
+                            variavel_para_comparar=0
+                            e=0
+                            while e<=29:
+                                if(Garota.inventario[1][e]==espaco_vazio or Garota.inventario[1][e].nome=="Nada"):
+                                    variavel_para_comparar+=1
+                                e+=1
+                            if(variavel_para_comparar<1):
+                                print 'Inventario LOTADO!'
+                                time.sleep(1)
+                            else:
+                                e=0
+                                while e<=29:
+                                    if(Garota.inventario[1][e]==espaco_vazio or Garota.inventario[1][e].nome=="Nada"):
+                                        Garota.inventario[1][e]=item_adicionado
+                                        Reserva.inventario[1][i]=espaco_vazio
+                                        print str(Reserva.nome)+' transferiu '+item_adicionado+' para '+str(Garota.nome)+'.'
+                                        break
+                                    e+=1
+                        elif acao_do_personagem==Headbanger.identificacao:
+                            item_adicionado=Reserva.inventario[1][i]
+                            variavel_para_comparar=0
+                            e=0
+                            while e<=29:
+                                if(Headbanger.inventario[1][e]==espaco_vazio or Headbanger.inventario[1][e].nome=="Nada"):
+                                    variavel_para_comparar+=1
+                                e+=1
+                            if(variavel_para_comparar<1):
+                                print 'Inventario LOTADO!'
+                                time.sleep(1)
+                            else:
+                                e=0
+                                while e<=29:
+                                    if(Headbanger.inventario[1][e]==espaco_vazio or Headbanger.inventario[1][e].nome=="Nada"):
+                                        Headbanger.inventario[1][e]=item_adicionado
+                                        Reserva.inventario[1][i]=espaco_vazio
+                                        print str(Reserva.nome)+' transferiu '+item_adicionado+' para '+str(Headbanger.nome)+'.'
+                                        break
+                                    e+=1
+                        else: print 'Entrada invalida!'
+        elif acao_do_personagem==Garota.identificacao:
+            print "O que deseja fazer? (substituir, transferir dinheiro ou transferir item)"
+            if acao_do_personagem=="substituir":
+                if Jogador.identificacao==1:
+                    Reserva=Jogador
+                    Jogador=Garota
+                    print 'Agora você está jogando como '+str(Jogador.nome)+'!'
+                if Jogador.identificacao==3:
+                    Headbanger=Jogador
+                    Jogador=Garota
+                    print 'Agora você está jogando como '+str(Jogador.nome)+'!'
+            elif acao_do_personagem=="transferir dinheiro":
+                print("\n "+str(Jogador.identificacao)+" (atual) Nome: "+str(Jogador.Nome)+" Vida: "+str(Jogador.status[5])+" Ataque: "+str(Jogador.status[0])+" Defesa: "+str(Jogador.status[1])+"\n           Agilidade: "+str(Jogador.status[2])+" Sorte: "+str(Jogador.status[3])+" Reconstituicao: "+str(Jogador.status[4])+" Dinheiro: "+str(Jogador.dinheiro)+" Reais\n")
+                time.sleep(0.5)
+                if(Jogador.identificacao!=1):
+                    print("\n "+str(Reserva.identificacao)+"         Nome: "+str(Reserva.Nome)+" Vida: "+str(Reserva.status[5])+" Ataque: "+str(Reserva.status[0])+" Defesa: "+str(Reserva.status[1])+"\n           Agilidade: "+str(Reserva.status[2])+" Sorte: "+str(Reserva.status[3])+" Reconstituicao: "+str(Reserva.status[4])+" Dinheiro: "+str(Reserva.dinheiro)+" Reais\n")
+                    time.sleep(0.5)
+                if(Jogador.identificacao!=3):
+                    print("\n "+str(Headbanger.identificacao)+"         Nome: "+str(Headbanger.Nome)+" Vida: "+str(Headbanger.status[5])+" Ataque: "+str(Headbanger.status[0])+" Defesa: "+str(Headbanger.status[1])+"\n           Agilidade: "+str(Headbanger.status[2])+" Sorte: "+str(Headbanger.status[3])+" Reconstituicao: "+str(Headbanger.status[4])+" Dinheiro: "+str(Headbanger.dinheiro)+" Reais\n")
+                    time.sleep(0.5)
+                while 1:
+                    print 'Para quem vai entregar? (digite o numero da posicao ou "voltar")'
+                    acao_do_personagem = raw_input('-')
+                    if acao_do_personagem.isdigit():
+                        acao_do_personagem=int(acao_do_personagem)
+                        break
+                    else:
+                        if(acao_do_personagem=="voltar"):break
+                        print("ENTRADA INVALIDA!")
+                        time.sleep(0.5)
+                if(acao_do_personagem=="voltar"):break
+                if acao_do_personagem==Jogador.identificacao:
+                    while 1:
+                        print 'Quanto? (digite um valor ou "voltar")'
+                        acao_do_personagem = raw_input('-')
+                        if acao_do_personagem.isdigit():
+                            acao_do_personagem=int(acao_do_personagem)
+                            if acao_do_personagem>Garota.dinheiro:
+                                print 'Voce nao tem todo esse dinheiro!'
+                            elif acao_do_personagem<=0:
+                                print 'Voce so pode entregar valores acima de zero.'
+                            else:
+                                break
+                        else:
+                            if(acao_do_personagem=="voltar"):break
+                            print("ENTRADA INVALIDA!")
+                            time.sleep(0.5)
+                    if(acao_do_personagem=="voltar"):break
+                    Garota.dinheiro-=acao_do_personagem
+                    Jogador.dinheiro+=acao_do_personagem
+                    print str(Garota.nome)+' transferiu '+acao_do_personagem+' Reais para '+str(Jogador.nome)+'.'
+                elif acao_do_personagem==Reserva.identificacao:
+                    while 1:
+                        print 'Quanto? (digite um valor ou "voltar")'
+                        acao_do_personagem = raw_input('-')
+                        if acao_do_personagem.isdigit():
+                            acao_do_personagem=int(acao_do_personagem)
+                            if acao_do_personagem>Garota.dinheiro:
+                                print 'Voce nao tem todo esse dinheiro!'
+                            elif acao_do_personagem<=0:
+                                print 'Voce so pode entregar valores acima de zero.'
+                            else:
+                                break
+                        else:
+                            if(acao_do_personagem=="voltar"):break
+                            print("ENTRADA INVALIDA!")
+                            time.sleep(0.5)
+                    if(acao_do_personagem=="voltar"):break
+                    Garota.dinheiro-=acao_do_personagem
+                    Reserva.dinheiro+=acao_do_personagem
+                    print str(Garota.nome)+' transferiu '+acao_do_personagem+' Reais para '+str(Reserva.nome)+'.'
+                elif acao_do_personagem==Headbanger.identificacao:
+                    while 1:
+                        print 'Quanto? (digite um valor ou "voltar")'
+                        acao_do_personagem = raw_input('-')
+                        if acao_do_personagem.isdigit():
+                            acao_do_personagem=int(acao_do_personagem)
+                            if acao_do_personagem>Garota.dinheiro:
+                                print 'Voce nao tem todo esse dinheiro!'
+                            elif acao_do_personagem<=0:
+                                print 'Voce so pode entregar valores acima de zero.'
+                            else:
+                                break
+                        else:
+                            if(acao_do_personagem=="voltar"):break
+                            print("ENTRADA INVALIDA!")
+                            time.sleep(0.5)
+                    if(acao_do_personagem=="voltar"):break
+                    Garota.dinheiro-=acao_do_personagem
+                    Headbanger.dinheiro+=acao_do_personagem
+                    print str(Garota.nome)+' transferiu '+acao_do_personagem+' Reais para '+str(Headbanger.nome)+'.'
+            elif acao_do_personagem=="transferir item":
+                while 1:
+                    variavel_para_comparar=0
+                    i=0
+                    while i<=29:
+                        if(Garota.inventario[1][i]==espaco_vazio or Garota.inventario[1][i].nome=="Nada"):
+                            variavel_para_comparar+=1
+                        i+=1
+                    print("Mochila:        "+str(variavel_para_comparar)+" espaco(s) livre(s) de 30.\n")
+                    variavel_para_comparar=0
+                    time.sleep(0.5)
+                    i=0
+                    while i<=29:
+                        if (Garota.inventario[1][i]!=espaco_vazio and Garota.inventario[1][i].nome!="Nada"):
+                            print(str(Garota.inventario[0][i])+" : "+str(Garota.inventario[1][i].nome)+"\n     ("+str(Garota.inventario[1][i].tipo)+")\n")
+                        i+=1
+                    while 1:
+                        print("Para analisar um item digite o numero da sua posicao!\nPara voltar ao jogo digite voltar.")
+                        acao_do_personagem = raw_input('-')
+                        if acao_do_personagem.isdigit():
+                            acao_do_personagem=int(acao_do_personagem)
+                            break
+                        else:
+                            if(acao_do_personagem=="voltar"):break
+                            print("ENTRADA INVALIDA!")
+                            time.sleep(0.5)
+                    if(acao_do_personagem=="voltar"):break
+                    i=0
+                    while i<=29:
+                        if(i==acao_do_personagem):
+                            break
+                        i+=1
+                    i=i-1
+                    if(acao_do_personagem==Garota.inventario[0][i] and Garota.inventario[1][i]!=espaco_vazio and Garota.inventario[1][i].nome!="Nada"):
+                        print("\n "+str(Jogador.identificacao)+" (atual) Nome: "+str(Jogador.Nome)+" Vida: "+str(Jogador.status[5])+" Ataque: "+str(Jogador.status[0])+" Defesa: "+str(Jogador.status[1])+"\n           Agilidade: "+str(Jogador.status[2])+" Sorte: "+str(Jogador.status[3])+" Reconstituicao: "+str(Jogador.status[4])+" Dinheiro: "+str(Jogador.dinheiro)+" Reais\n")
+                        time.sleep(0.5)
+                        if(Jogador.identificacao!=1):
+                            print("\n "+str(Reserva.identificacao)+"         Nome: "+str(Reserva.Nome)+" Vida: "+str(Reserva.status[5])+" Ataque: "+str(Reserva.status[0])+" Defesa: "+str(Reserva.status[1])+"\n           Agilidade: "+str(Reserva.status[2])+" Sorte: "+str(Reserva.status[3])+" Reconstituicao: "+str(Reserva.status[4])+" Dinheiro: "+str(Reserva.dinheiro)+" Reais\n")
+                            time.sleep(0.5)
+                        if(Jogador.identificacao!=3):
+                            print("\n "+str(Headbanger.identificacao)+"         Nome: "+str(Headbanger.Nome)+" Vida: "+str(Headbanger.status[5])+" Ataque: "+str(Headbanger.status[0])+" Defesa: "+str(Headbanger.status[1])+"\n           Agilidade: "+str(Headbanger.status[2])+" Sorte: "+str(Headbanger.status[3])+" Reconstituicao: "+str(Headbanger.status[4])+" Dinheiro: "+str(Headbanger.dinheiro)+" Reais\n")
+                            time.sleep(0.5)
+                        while 1:
+                            print 'Para quem vai entregar? (digite o numero da posicao ou "voltar")'
+                            acao_do_personagem = raw_input('-')
+                            if acao_do_personagem.isdigit():
+                                acao_do_personagem=int(acao_do_personagem)
+                                break
+                            else:
+                                if(acao_do_personagem=="voltar"):break
+                                print("ENTRADA INVALIDA!")
+                                time.sleep(0.5)
+                        if(acao_do_personagem=="voltar"):break
+                        if acao_do_personagem==Jogador.identificacao:
+                            item_adicionado=Garota.inventario[1][i]
+                            variavel_para_comparar=0
+                            e=0
+                            while e<=29:
+                                if(Jogador.inventario[1][e]==espaco_vazio or Jogador.inventario[1][e].nome=="Nada"):
+                                    variavel_para_comparar+=1
+                                e+=1
+                            if(variavel_para_comparar<1):
+                                print 'Inventario LOTADO!'
+                                time.sleep(1)
+                            else:
+                                e=0
+                                while e<=29:
+                                    if(Jogador.inventario[1][e]==espaco_vazio or Jogador.inventario[1][e].nome=="Nada"):
+                                        Jogador.inventario[1][e]=item_adicionado
+                                        Garota.inventario[1][i]=espaco_vazio
+                                        print str(Garota.nome)+' transferiu '+item_adicionado+' para '+str(Jogador.nome)+'.'
+                                        break
+                                    e+=1
+                        elif acao_do_personagem==Reserva.identificacao:
+                            item_adicionado=Garota.inventario[1][i]
+                            variavel_para_comparar=0
+                            e=0
+                            while e<=29:
+                                if(Reserva.inventario[1][e]==espaco_vazio or Reserva.inventario[1][e].nome=="Nada"):
+                                    variavel_para_comparar+=1
+                                e+=1
+                            if(variavel_para_comparar<1):
+                                print 'Inventario LOTADO!'
+                                time.sleep(1)
+                            else:
+                                e=0
+                                while e<=29:
+                                    if(Reserva.inventario[1][e]==espaco_vazio or Reserva.inventario[1][e].nome=="Nada"):
+                                        Reserva.inventario[1][e]=item_adicionado
+                                        Garota.inventario[1][i]=espaco_vazio
+                                        print str(Garota.nome)+' transferiu '+item_adicionado+' para '+str(Reserva.nome)+'.'
+                                        break
+                                    e+=1
+                        elif acao_do_personagem==Headbanger.identificacao:
+                            item_adicionado=Garota.inventario[1][i]
+                            variavel_para_comparar=0
+                            e=0
+                            while e<=29:
+                                if(Headbanger.inventario[1][e]==espaco_vazio or Headbanger.inventario[1][e].nome=="Nada"):
+                                    variavel_para_comparar+=1
+                                e+=1
+                            if(variavel_para_comparar<1):
+                                print 'Inventario LOTADO!'
+                                time.sleep(1)
+                            else:
+                                e=0
+                                while e<=29:
+                                    if(Headbanger.inventario[1][e]==espaco_vazio or Headbanger.inventario[1][e].nome=="Nada"):
+                                        Headbanger.inventario[1][e]=item_adicionado
+                                        Garota.inventario[1][i]=espaco_vazio
+                                        print str(Garota.nome)+' transferiu '+item_adicionado+' para '+str(Headbanger.nome)+'.'
+                                        break
+                                    e+=1
+                        else: print 'Entrada invalida!'
+        elif acao_do_personagem==Headbanger.identificacao:
+            print "O que deseja fazer? (substituir, transferir dinheiro ou transferir item)"
+            if acao_do_personagem=="substituir":
+                if Jogador.identificacao==1:
+                    Reserva=Jogador
+                    Jogador=Headbanger
+                    print 'Agora você está jogando como '+str(Jogador.nome)+'!'
+                if Jogador.identificacao==2:
+                    Garota=Jogador
+                    Jogador=Headbanger
+                    print 'Agora você está jogando como '+str(Jogador.nome)+'!'
+            elif acao_do_personagem=="transferir dinheiro":
+                print("\n "+str(Jogador.identificacao)+" (atual) Nome: "+str(Jogador.Nome)+" Vida: "+str(Jogador.status[5])+" Ataque: "+str(Jogador.status[0])+" Defesa: "+str(Jogador.status[1])+"\n           Agilidade: "+str(Jogador.status[2])+" Sorte: "+str(Jogador.status[3])+" Reconstituicao: "+str(Jogador.status[4])+" Dinheiro: "+str(Jogador.dinheiro)+" Reais\n")
+                time.sleep(0.5)
+                if(Jogador.identificacao!=1):
+                    print("\n "+str(Reserva.identificacao)+"         Nome: "+str(Reserva.Nome)+" Vida: "+str(Reserva.status[5])+" Ataque: "+str(Reserva.status[0])+" Defesa: "+str(Reserva.status[1])+"\n           Agilidade: "+str(Reserva.status[2])+" Sorte: "+str(Reserva.status[3])+" Reconstituicao: "+str(Reserva.status[4])+" Dinheiro: "+str(Reserva.dinheiro)+" Reais\n")
+                    time.sleep(0.5)
+                if(Jogador.identificacao!=2):
+                    print("\n "+str(Garota.identificacao)+"         Nome: "+str(Garota.Nome)+" Vida: "+str(Garota.status[5])+" Ataque: "+str(Garota.status[0])+" Defesa: "+str(Garota.status[1])+"\n           Agilidade: "+str(Garota.status[2])+" Sorte: "+str(Garota.status[3])+" Reconstituicao: "+str(Garota.status[4])+" Dinheiro: "+str(Garota.dinheiro)+" Reais\n")
+                    time.sleep(0.5)
+                while 1:
+                    print 'Para quem vai entregar? (digite o numero da posicao ou "voltar")'
+                    acao_do_personagem = raw_input('-')
+                    if acao_do_personagem.isdigit():
+                        acao_do_personagem=int(acao_do_personagem)
+                        break
+                    else:
+                        if(acao_do_personagem=="voltar"):break
+                        print("ENTRADA INVALIDA!")
+                        time.sleep(0.5)
+                if(acao_do_personagem=="voltar"):break
+                if acao_do_personagem==Jogador.identificacao:
+                    while 1:
+                        print 'Quanto? (digite um valor ou "voltar")'
+                        acao_do_personagem = raw_input('-')
+                        if acao_do_personagem.isdigit():
+                            acao_do_personagem=int(acao_do_personagem)
+                            if acao_do_personagem>Headbanger.dinheiro:
+                                print 'Voce nao tem todo esse dinheiro!'
+                            elif acao_do_personagem<=0:
+                                print 'Voce so pode entregar valores acima de zero.'
+                            else:
+                                break
+                        else:
+                            if(acao_do_personagem=="voltar"):break
+                            print("ENTRADA INVALIDA!")
+                            time.sleep(0.5)
+                    if(acao_do_personagem=="voltar"):break
+                    Headbanger.dinheiro-=acao_do_personagem
+                    Jogador.dinheiro+=acao_do_personagem
+                    print str(Headbanger.nome)+' transferiu '+acao_do_personagem+' Reais para '+str(Jogador.nome)+'.'
+                elif acao_do_personagem==Reserva.identificacao:
+                    while 1:
+                        print 'Quanto? (digite um valor ou "voltar")'
+                        acao_do_personagem = raw_input('-')
+                        if acao_do_personagem.isdigit():
+                            acao_do_personagem=int(acao_do_personagem)
+                            if acao_do_personagem>Headbanger.dinheiro:
+                                print 'Voce nao tem todo esse dinheiro!'
+                            elif acao_do_personagem<=0:
+                                print 'Voce so pode entregar valores acima de zero.'
+                            else:
+                                break
+                        else:
+                            if(acao_do_personagem=="voltar"):break
+                            print("ENTRADA INVALIDA!")
+                            time.sleep(0.5)
+                    if(acao_do_personagem=="voltar"):break
+                    Headbanger.dinheiro-=acao_do_personagem
+                    Reserva.dinheiro+=acao_do_personagem
+                    print str(Headbanger.nome)+' transferiu '+acao_do_personagem+' Reais para '+str(Reserva.nome)+'.'
+                elif acao_do_personagem==Garota.identificacao:
+                    while 1:
+                        print 'Quanto? (digite um valor ou "voltar")'
+                        acao_do_personagem = raw_input('-')
+                        if acao_do_personagem.isdigit():
+                            acao_do_personagem=int(acao_do_personagem)
+                            if acao_do_personagem>Headbanger.dinheiro:
+                                print 'Voce nao tem todo esse dinheiro!'
+                            elif acao_do_personagem<=0:
+                                print 'Voce so pode entregar valores acima de zero.'
+                            else:
+                                break
+                        else:
+                            if(acao_do_personagem=="voltar"):break
+                            print("ENTRADA INVALIDA!")
+                            time.sleep(0.5)
+                    if(acao_do_personagem=="voltar"):break
+                    Headbanger.dinheiro-=acao_do_personagem
+                    Garota.dinheiro+=acao_do_personagem
+                    print str(Headbanger.nome)+' transferiu '+acao_do_personagem+' Reais para '+str(Garota.nome)+'.'
+            elif acao_do_personagem=="transferir item":
+                while 1:
+                    variavel_para_comparar=0
+                    i=0
+                    while i<=29:
+                        if(Headbanger.inventario[1][i]==espaco_vazio or Headbanger.inventario[1][i].nome=="Nada"):
+                            variavel_para_comparar+=1
+                        i+=1
+                    print("Mochila:        "+str(variavel_para_comparar)+" espaco(s) livre(s) de 30.\n")
+                    variavel_para_comparar=0
+                    time.sleep(0.5)
+                    i=0
+                    while i<=29:
+                        if (Headbanger.inventario[1][i]!=espaco_vazio and Headbanger.inventario[1][i].nome!="Nada"):
+                            print(str(Headbanger.inventario[0][i])+" : "+str(Headbanger.inventario[1][i].nome)+"\n     ("+str(Headbanger.inventario[1][i].tipo)+")\n")
+                        i+=1
+                    while 1:
+                        print("Para analisar um item digite o numero da sua posicao!\nPara voltar ao jogo digite voltar.")
+                        acao_do_personagem = raw_input('-')
+                        if acao_do_personagem.isdigit():
+                            acao_do_personagem=int(acao_do_personagem)
+                            break
+                        else:
+                            if(acao_do_personagem=="voltar"):break
+                            print("ENTRADA INVALIDA!")
+                            time.sleep(0.5)
+                    if(acao_do_personagem=="voltar"):break
+                    i=0
+                    while i<=29:
+                        if(i==acao_do_personagem):
+                            break
+                        i+=1
+                    i=i-1
+                    if(acao_do_personagem==Headbanger.inventario[0][i] and Headbanger.inventario[1][i]!=espaco_vazio and Headbanger.inventario[1][i].nome!="Nada"):
+                        print("\n "+str(Jogador.identificacao)+" (atual) Nome: "+str(Jogador.Nome)+" Vida: "+str(Jogador.status[5])+" Ataque: "+str(Jogador.status[0])+" Defesa: "+str(Jogador.status[1])+"\n           Agilidade: "+str(Jogador.status[2])+" Sorte: "+str(Jogador.status[3])+" Reconstituicao: "+str(Jogador.status[4])+" Dinheiro: "+str(Jogador.dinheiro)+" Reais\n")
+                        time.sleep(0.5)
+                        if(Jogador.identificacao!=1):
+                            print("\n "+str(Reserva.identificacao)+"         Nome: "+str(Reserva.Nome)+" Vida: "+str(Reserva.status[5])+" Ataque: "+str(Reserva.status[0])+" Defesa: "+str(Reserva.status[1])+"\n           Agilidade: "+str(Reserva.status[2])+" Sorte: "+str(Reserva.status[3])+" Reconstituicao: "+str(Reserva.status[4])+" Dinheiro: "+str(Reserva.dinheiro)+" Reais\n")
+                            time.sleep(0.5)
+                        if(Jogador.identificacao!=2):
+                            print("\n "+str(Garota.identificacao)+"         Nome: "+str(Garota.Nome)+" Vida: "+str(Garota.status[5])+" Ataque: "+str(Garota.status[0])+" Defesa: "+str(Garota.status[1])+"\n           Agilidade: "+str(Garota.status[2])+" Sorte: "+str(Garota.status[3])+" Reconstituicao: "+str(Garota.status[4])+" Dinheiro: "+str(Garota.dinheiro)+" Reais\n")
+                            time.sleep(0.5)
+                        while 1:
+                            print 'Para quem vai entregar? (digite o numero da posicao ou "voltar")'
+                            acao_do_personagem = raw_input('-')
+                            if acao_do_personagem.isdigit():
+                                acao_do_personagem=int(acao_do_personagem)
+                                break
+                            else:
+                                if(acao_do_personagem=="voltar"):break
+                                print("ENTRADA INVALIDA!")
+                                time.sleep(0.5)
+                        if(acao_do_personagem=="voltar"):break
+                        if acao_do_personagem==Jogador.identificacao:
+                            item_adicionado=headbanger.inventario[1][i]
+                            variavel_para_comparar=0
+                            e=0
+                            while e<=29:
+                                if(Jogador.inventario[1][e]==espaco_vazio or Jogador.inventario[1][e].nome=="Nada"):
+                                    variavel_para_comparar+=1
+                                e+=1
+                            if(variavel_para_comparar<1):
+                                print 'Inventario LOTADO!'
+                                time.sleep(1)
+                            else:
+                                e=0
+                                while e<=29:
+                                    if(Jogador.inventario[1][e]==espaco_vazio or Jogador.inventario[1][e].nome=="Nada"):
+                                        Jogador.inventario[1][e]=item_adicionado
+                                        Headbanger.inventario[1][i]=espaco_vazio
+                                        print str(Headbanger.nome)+' transferiu '+item_adicionado+' para '+str(Jogador.nome)+'.'
+                                        break
+                                    e+=1
+                        elif acao_do_personagem==Reserva.identificacao:
+                            item_adicionado=Headbanger.inventario[1][i]
+                            variavel_para_comparar=0
+                            e=0
+                            while e<=29:
+                                if(Reserva.inventario[1][e]==espaco_vazio or Reserva.inventario[1][e].nome=="Nada"):
+                                    variavel_para_comparar+=1
+                                e+=1
+                            if(variavel_para_comparar<1):
+                                print 'Inventario LOTADO!'
+                                time.sleep(1)
+                            else:
+                                e=0
+                                while e<=29:
+                                    if(Reserva.inventario[1][e]==espaco_vazio or Reserva.inventario[1][e].nome=="Nada"):
+                                        Reserva.inventario[1][e]=item_adicionado
+                                        Headbanger.inventario[1][i]=espaco_vazio
+                                        print str(Headbanger.nome)+' transferiu '+item_adicionado+' para '+str(Reserva.nome)+'.'
+                                        break
+                                    e+=1
+                        elif acao_do_personagem==Garota.identificacao:
+                            item_adicionado=Headbanger.inventario[1][i]
+                            variavel_para_comparar=0
+                            e=0
+                            while e<=29:
+                                if(Garota.inventario[1][e]==espaco_vazio or Garota.inventario[1][e].nome=="Nada"):
+                                    variavel_para_comparar+=1
+                                e+=1
+                            if(variavel_para_comparar<1):
+                                print 'Inventario LOTADO!'
+                                time.sleep(1)
+                            else:
+                                e=0
+                                while e<=29:
+                                    if(Garota.inventario[1][e]==espaco_vazio or Garota.inventario[1][e].nome=="Nada"):
+                                        Garota.inventario[1][e]=item_adicionado
+                                        Headbanger.inventario[1][i]=espaco_vazio
+                                        print str(Headbanger.nome)+' transferiu '+item_adicionado+' para '+str(Garota.nome)+'.'
+                                        break
+                                    e+=1
+                        else: print 'Entrada invalida!'
+        else: print 'Entrada invalida!'
+
 #--Loja: Vender--#
 def lojaVender():
     global personagem_headbanger,inventario_reserva,porcentagem_inflacao,bermuda_linho_regata,bermuda_linho_polo,calca_jeans_regata,calca_jeans_polo,desequipado_roupa,desequipado_capa,desequipado_luva,desequipado_maos,desequipado_calcado,espaco_vazio,pedaco_pizza,bolo_chocolate,pijama_inicial,uniforme_estudantil,malha_ninja,lapis_apontado,punhal_envelhecido,talheres_prata,jaqueta_imitacao,jaqueta_couro,agasalho_la,suplemento_alimenticio,lata_energetico,luva_la,luva_couro,soco_pvc,soco_latao,luva_spikes_alu,soco_alu,luva_spikes_aco,soco_aco,luva_spikes_ag,soco_ag,luva_spikes_au,soco_au,luva_spikes_titanio,soco_titanio,anel_forca1,anel_forca2,anel_forca3,anel_resistencia1,anel_resistencia2,anel_resistencia3,anel_consistencia1,anel_consistencia2,anel_consistencia3,anel_da_imortalidade,anel_da_divindade,chinelo_inicial,papetes_masculinas,tenis_velho,tenis_simplorio,sapato_simplorio,tenis_comum,tenis_trilha,tenis_caminhada,tenis_corrida,tenis_ZX5000,item_adicionado,quantidade_adicionada,equipado_roupa,equipado_capa,equipado_luva,equipado_anel,equipado_maos,equipado_calcado,variavel_cenario,objeto,situacao,temporario,variavel_lugar,ponto_de_save,mostrar_save, personagem_jogador,personagem_jogador_reserva,personagem_inimigo,eegg,acao_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,variavel_para_comparar,contador_de_batalha,contador_de_rodadas,mala,loja_venda
@@ -475,7 +1352,7 @@ def lojaVender():
         variavel_para_comparar=0
         i=0
         while i<=29:
-            if(mala[1][i]==espaco_vazio or mala[1][i][0]=="Nada"):
+            if(Jogador.inventario[1][i]==espaco_vazio or Jogador.inventario[1][i].nome=="Nada"):
                 variavel_para_comparar+=1
             i+=1
         print("Mochila:        "+str(variavel_para_comparar)+" espacos livres.\n")
@@ -483,8 +1360,8 @@ def lojaVender():
         time.sleep(0.5)
         i=0
         while i<=29:
-            if (mala[1][i]!=espaco_vazio and mala[1][i][0]!="Nada"):
-                print(str(mala[0][i])+" : "+str(mala[1][i][0])+"\n     ("+str(mala[1][i][5])+")\n")
+            if (Jogador.inventario[1][i]!=espaco_vazio and Jogador.inventario[1][i].nome!="Nada"):
+                print(str(Jogador.inventario[0][i])+" : "+str(Jogador.inventario[1][i].nome)+"\n     ("+str(Jogador.inventario[1][i].tipo)+")\n")
             i+=1
         while 1:
             print("Para analisar um item digite o numero da sua posicao!\nPara voltar ao jogo digite voltar.")
@@ -504,15 +1381,15 @@ def lojaVender():
                 break
             i+=1
         i=i-1
-        if(acao_do_personagem==mala[0][i] and mala[1][i]!=espaco_vazio and mala[1][i][0]!="Nada"):
-            if(mala[1][i][5]=="consumivel de aprimoramento"):
-                print("\nNome: "+str(mala[1][i][0])+ "\nTipo: "+str(mala[1][i][5])+"\nVida: "+str(mala[1][i][7])+"\nAtaque: "+str(mala[1][i][1])+"\nDefesa: "+str(mala[1][i][2])+"\nAgilidade: "+str(mala[1][i][3])+"\nSorte: "+str(mala[1][i][4])+"\n")
-        if(mala[1][i][5]=="consumivel"):
-            print("\nNome: "+str(mala[1][i][0])+ "\nTipo: "+str(mala[1][i][5])+"\nVida: "+str(mala[1][i][7])+"\n")
-        if(mala[1][i][5]!="consumivel de aprimoramento" and mala[1][i][6]!="consumivel"):
-            print("\nNome: "+str(mala[1][i][0])+"\nTipo: "+str(mala[1][i][5])+"\nAtaque: "+str(mala[1][i][1])+"\nDefesa: "+str(mala[1][i][2])+"\nAgilidade: "+str(mala[1][i][3])+"\nSorte: "+str(mala[1][i][4])+"\n")
+        if(acao_do_personagem==Jogador.inventario[0][i] and Jogador.inventario[1][i]!=espaco_vazio and Jogador.inventario[1][i].nome!="Nada"):
+            if(Jogador.inventario[1][i][5]=="consumivel de aprimoramento"):
+                print("\nNome: "+str(Jogador.inventario[1][i].nome)+ "\nTipo: "+str(Jogador.inventario[1][i].tipo)+"\nVida: "+str(Jogador.inventario[1][i].status[5])+"\nAtaque: "+str(Jogador.inventario[1][i].status[0])+"\nDefesa: "+str(Jogador.inventario[1][i].status[1])+"\nAgilidade: "+str(Jogador.inventario[1][i].status[2])+"\nSorte: "+str(Jogador.inventario[1][i].status[3])+"\n")
+            if(Jogador.inventario[1][i][5]=="consumivel"):
+                print("\nNome: "+str(Jogador.inventario[1][i].nome)+ "\nTipo: "+str(Jogador.inventario[1][i].tipo)+"\nVida: "+str(Jogador.inventario[1][i].status[6])+"\n")
+            if(Jogador.inventario[1][i].tipo!="consumivel de aprimoramento" and Jogador.inventario[1][i].tipo!="consumivel" and Jogador.inventario[1][i].tipo!="inventario"):
+                print("\nNome: "+str(Jogador.inventario[1][i].nome)+"\nTipo: "+str(Jogador.inventario[1][i].tipo)+"\nAtaque: "+str(Jogador.inventario[1][i][0])+"\nDefesa: "+str(Jogador.inventario[1][i][1])+"\nAgilidade: "+str(Jogador.inventario[1][i][2])+"\nSorte: "+str(Jogador.inventario[1][i][3])+"\nVida: "+str(Jogador.inventario[1][i][5])+"\nReconstituicao: "+str(Jogador.inventario[1][i][4])+"\n")
         while 1:
-            print("Posso comprar por "+str(mala[1][i][6]*0.5)+"Reais.")
+            print("Posso comprar por "+str(Jogador.inventario[1][i].preco*porcentagem_inflacao)+"Reais.")
             time.sleep(0.5)
             print("Vai querer vender?(sim ou nao)")
             acao_do_personagem=raw_input("-")
@@ -521,8 +1398,8 @@ def lojaVender():
                 break
             else:
                 if(acao_do_personagem=="sim" or acao_do_personagem=="s" or acao_do_personagem=="si" or acao_do_personagem=="sm" or acao_do_personagem=="im" or acao_do_personagem=="ssim"):
-                    personagem_jogador[7] = personagem_jogador[7] + mala[1][i][6]*porcentagem_inflacao
-                    mala[1][i]=espaco_vazio
+                    Jogador.dinheiro += Jogador.inventario[1][i].preco*porcentagem_inflacao
+                    Jogador.inventario[1][i]=espaco_vazio
                     print("Obrigado!")
                     time.sleep(0.5)
                     break
@@ -537,17 +1414,17 @@ def lojaComprar():
         variavel_para_comparar=0
         i=0
         while i<=29:
-            if(mala[1][i]==espaco_vazio or mala[1][i][0]=="Nada"):
+            if(Jogador.inventario[1][i]==espaco_vazio or Jogador.inventario[1][i].nome=="Nada"):
                 variavel_para_comparar+=1
             i+=1
-        print("                      "+str(variavel_para_comparar)+" espacos livres na mochila.\n")
+        print("                      "+str(variavel_para_comparar)+" espaco(s) livre(s) de 30.\n")
         variavel_para_comparar=0
         print("Produtos a venda:\n")
         time.sleep(0.5)
         i=0
         while i<=29:
-            if (loja_venda[1][i]!=espaco_vazio):
-                print(str(loja_venda[0][i])+" : "+str(loja_venda[1][i][0])+"\n     ("+str(loja_venda[1][i][5])+")\n")
+            if (Venda.inventario[1][i]!=espaco_vazio):
+                print(str(Venda.inventario[0][i])+" : "+str(Venda.inventario[1][i].nome)+"\n     ("+str(Venda.inventario[1][i].tipo)+")\n")
             i+=1
         while 1:
             print("Para analisar um item digite o numero da sua posicao!\nPara voltar ao jogo digite voltar.")
@@ -567,17 +1444,14 @@ def lojaComprar():
                 break
             i+=1
         i=i-1
-        if(acao_do_personagem==loja_venda[0][i] and loja_venda[1][i]!=espaco_vazio):
-            if(loja_venda[1][i][6]=="consumivel de aprimoramento"):
-#'''Foi exatamente aqui que eu parei!
-#    continue trocando virgulas por + nos prints e colocando str(objeto) em todas as variaveis que estiverem dentro dos prints
-#     por exemplo str(loja_venda[1][i][6])    '''
-                print("\nNome: "+str(loja_venda[1][i][0])+ "\nTipo: "+str(loja_venda[1][i][5])+"\nVida: "+str(loja_venda[1][i][7])+"\nAtaque: "+str(loja_venda[1][i][1])+"\nDefesa: "+str(loja_venda[1][i][2])+"\nAgilidade: "+str(loja_venda[1][i][3])+"\nSorte: "+str(loja_venda[1][i][4])+"\n")
-            if(loja_venda[1][i][6]=="consumivel"):
-                print("\nNome: "+str(loja_venda[1][i][0])+"\nTipo: "+str(loja_venda[1][i][5])+"\nVida: "+str(loja_venda[1][i][7])+"\n")
-            if(loja_venda[1][i][6]!="consumivel de aprimoramento" and loja_venda[1][i][6]!="consumivel"):
-                print("\nNome: "+str(loja_venda[1][i][0])+"\nTipo: "+str(loja_venda[1][i][5])+"\nAtaque: "+str(loja_venda[1][i][1])+"\nDefesa: "+str(loja_venda[1][i][2])+"\nAgilidade: "+str(loja_venda[1][i][3])+"\nSorte: "+str(loja_venda[1][i][4])+"\n")
-            item_adicionado=loja_venda[1][i]
+        if(acao_do_personagem==Venda.inventario[0][i] and Venda.inventario[1][i]!=espaco_vazio):
+            if(Venda.inventario[1][i][5]=="consumivel de aprimoramento"):
+                print("\nNome: "+str(Venda.inventario[1][i].nome)+ "\nTipo: "+str(Venda.inventario[1][i].tipo)+"\nVida: "+str(Venda.inventario[1][i].status[5])+"\nAtaque: "+str(Venda.inventario[1][i].status[0])+"\nDefesa: "+str(Venda.inventario[1][i].status[1])+"\nAgilidade: "+str(Venda.inventario[1][i].status[2])+"\nSorte: "+str(Venda.inventario[1][i].status[3])+"\n")
+            if(Venda.inventario[1][i][5]=="consumivel"):
+                print("\nNome: "+str(Venda.inventario[1][i].nome)+ "\nTipo: "+str(Venda.inventario[1][i].tipo)+"\nVida: "+str(Venda.inventario[1][i].status[6])+"\n")
+            if(Venda.inventario[1][i].tipo!="consumivel de aprimoramento" and Venda.inventario[1][i].tipo!="consumivel" and Venda.inventario[1][i].tipo!="inventario"):
+                print("\nNome: "+str(Venda.inventario[1][i].nome)+"\nTipo: "+str(Venda.inventario[1][i].tipo)+"\nAtaque: "+str(Venda.inventario[1][i][0])+"\nDefesa: "+str(Venda.inventario[1][i][1])+"\nAgilidade: "+str(Venda.inventario[1][i][2])+"\nSorte: "+str(Venda.inventario[1][i][3])+"\nVida: "+str(Venda.inventario[1][i][5])+"\nReconstituicao: "+str(Venda.inventario[1][i][4])+"\n")
+            item_adicionado=Venda.inventario[1][i]
             while 1:
                 print("Deseja comprar quantos?(digite uma quantidade ou voltar)")
                 acao_do_personagem = raw_input('-')
@@ -586,7 +1460,7 @@ def lojaComprar():
                     variavel_para_comparar=0
                     i=0
                     while i<=29:
-                        if(mala[1][i]==espaco_vazio or mala[1][i][0]=="Nada"):
+                        if(Jogador.inventario[1][i]==espaco_vazio or Jogador.inventario[1][i].nome=="Nada"):
                             variavel_para_comparar+=1
                         i+=1
                     if(acao_do_personagem>variavel_para_comparar):
@@ -602,7 +1476,7 @@ def lojaComprar():
                     time.sleep(0.5)
             if(acao_do_personagem=="voltar"):break
             while 1:
-                print("Ficou "+str(item_adicionado[6]*quantidade_adicionada)+"Reais.")
+                print("Ficou "+str(item_adicionado.preco*quantidade_adicionada*porcentagem_inflacao)+" Reais.")
                 print("Vai comprar mesmo?(sim ou nao)")
                 acao_do_personagem=raw_input("-")
                 acao_do_personagem=acao_do_personagem.lower()
@@ -610,8 +1484,8 @@ def lojaComprar():
                     break
                 else:
                     if(acao_do_personagem=="sim" or acao_do_personagem=="s" or acao_do_personagem=="si" or acao_do_personagem=="sm" or acao_do_personagem=="im" or acao_do_personagem=="ssim"):
-                        if(personagem_jogador[7] >= item_adicionado[6]*quantidade_adicionada*porcentagem_inflacao):
-                            personagem_jogador[7] = personagem_jogador[7] - item_adicionado[6]*quantidade_adicionada*porcentagem_inflacao
+                        if(Jogador.dinheiro >= item_adicionado.preco*quantidade_adicionada*porcentagem_inflacao):
+                            Jogador.dinheiro -= item_adicionado.preco*quantidade_adicionada*porcentagem_inflacao
                             adicionaItem()
                             print("Obrigado!")
                             time.sleep(0.5)
@@ -627,17 +1501,19 @@ def lojaComprar():
 #--Ficha do Personagem--#
 def ficha_personagem():
     global personagem_headbanger,inventario_reserva,porcentagem_inflacao,bermuda_linho_regata,bermuda_linho_polo,calca_jeans_regata,calca_jeans_polo,desequipado_roupa,desequipado_capa,desequipado_luva,desequipado_maos,desequipado_calcado,espaco_vazio,pedaco_pizza,bolo_chocolate,pijama_inicial,uniforme_estudantil,malha_ninja,lapis_apontado,punhal_envelhecido,talheres_prata,jaqueta_imitacao,jaqueta_couro,agasalho_la,suplemento_alimenticio,lata_energetico,luva_la,luva_couro,soco_pvc,soco_latao,luva_spikes_alu,soco_alu,luva_spikes_aco,soco_aco,luva_spikes_ag,soco_ag,luva_spikes_au,soco_au,luva_spikes_titanio,soco_titanio,anel_forca1,anel_forca2,anel_forca3,anel_resistencia1,anel_resistencia2,anel_resistencia3,anel_consistencia1,anel_consistencia2,anel_consistencia3,anel_da_imortalidade,anel_da_divindade,chinelo_inicial,papetes_masculinas,tenis_velho,tenis_simplorio,sapato_simplorio,tenis_comum,tenis_trilha,tenis_caminhada,tenis_corrida,tenis_ZX5000,item_adicionado,quantidade_adicionada,equipado_roupa,equipado_capa,equipado_luva,equipado_anel,equipado_maos,equipado_calcado,variavel_cenario,objeto,situacao,temporario,variavel_lugar,ponto_de_save,mostrar_save, personagem_jogador,personagem_jogador_reserva,personagem_inimigo,eegg,acao_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,variavel_para_comparar,contador_de_batalha,contador_de_rodadas,mala,loja_venda
-    print("\n#"+"-"*30+"#\n"+"\n Nome: "+str(personagem_jogador[0]))
+    print("\n#"+"-"*30+"#\n"+"\n Nome: "+str(Jogador.nome))
     time.sleep(0.23)
-    print("\n Vida: "+str(personagem_jogador[6])+" de "+str(personagem_jogador[5]))
+    print("\n Vida: "+str(Jogador.status[6])+" de "+str(Jogador.status[5]))
     time.sleep(0.23)
-    print("\n Ataque: "+str(personagem_jogador[1])+"\n Defesa: "+str(personagem_jogador[2])+"\n Agilidade: "+str(personagem_jogador[3])+"\n Sorte: "+str(personagem_jogador[4]))
+    print("\n Reconstituicao: "+str(Jogador.status[4]))
     time.sleep(0.23)
-    print("\n Capa: "+str(equipado_capa[0])+"\n Roupa: "+str(equipado_roupa[0])+"\n Calcados: "+str(equipado_calcado[0]))
+    print("\n Ataque: "+str(Jogador.status[0])+"\n Defesa: "+str(Jogador.status[1])+"\n Agilidade: "+str(Jogador.status[2])+"\n Sorte: "+str(Jogador.status[3]))
     time.sleep(0.23)
-    print("\n Luvas: "+str(equipado_luva[0])+"\n Anel: "+str(equipado_anel[0])+"\n Armamento: "+str(equipado_maos[0]))
+    print("\n Capa: "+str(Jogador.equipamento[1].nome)+"\n Roupa: "+str(Jogador.equipamento[0].nome)+"\n Calcados: "+str(Jogador.equipamento[5].nome))
     time.sleep(0.23)
-    print("\n Dinheiro: "+str(personagem_jogador[7])+" Reais\n")
+    print("\n Luvas: "+str(Jogador.equipamento[2].nome)+"\n Anel: "+str(Jogador.equipamento[3].nome)+"\n Armamento: "+str(Jogador.equipamento[4].nome))
+    time.sleep(0.23)
+    print("\n Dinheiro: "+str(Jogador.dinheiro)+" Reais\n")
     time.sleep(0.23)
     print("\n#"+"-"*30+"#\n")
     time.sleep(0.23)
@@ -1566,7 +2442,7 @@ def seuPredioQuartoAndar():
                         time.sleep(2)
                         print(' - Como nao pegamos leve, nos apresentamos um "cartao de visita" ao oponente, para ele saber se e capaz de sobreviver.')
                         time.sleep(2)
-                        personagem_inimigo = [ "Estudante Briguento do Quarto 40", 30, 15, 5, 5, 360, 360]
+                        Inimigo = Estudante_40
                         print(" - Aqui esta o meu: ")
                         time.sleep(1)
                         print("\n"+str(personagem_inimigo[0])+": "+str(personagem_inimigo[5])+"pontos de vida.\nAtaque : "+str(personagem_inimigo[1])+".     Defesa : "+str(personagem_inimigo[2])+".\n")
@@ -1634,7 +2510,7 @@ def seuPredioQuartoAndar():
                         if(situacao[0]==7):
                             print(' - SERA que voce esta PRONTO para brigar comigo, fracote??? Hahahahaha!')
                             time.sleep(2)
-                            personagem_inimigo = [ "Estudante Briguento do Quarto 41", 50, 30, 10, 10, 550, 550]
+                            Inimigo = Estudante_41
                             print(" - Aqui esta o meu cartao: ")
                             time.sleep(1)
                             print("\n"+str(personagem_inimigo[0])+": "+str(personagem_inimigo[5])+"pontos de vida.\nAtaque : "+str(personagem_inimigo[1])+".     Defesa : "+str(personagem_inimigo[2])+".\n")
@@ -1711,7 +2587,7 @@ def seuPredioQuartoAndar():
                             if(situacao[0]==8):
                                 print(' - Humhumhumhum... Voce vai perder...')
                                 time.sleep(2)
-                                personagem_inimigo = [ "Estudante Briguento do Quarto 42", 90, 70, 15, 15, 790, 790]
+                                Inimigo = Estudante_42
                                 print(" - Veja: ")
                                 time.sleep(1)
                                 print("\n"+str(personagem_inimigo[0])+": "+str(personagem_inimigo[5])+"pontos de vida.\nAtaque : "+str(personagem_inimigo[1])+".     Defesa : "+str(personagem_inimigo[2])+".\n")
@@ -1786,7 +2662,7 @@ def seuPredioQuartoAndar():
                                 if(situacao[0]==9):
                                     print(' - Sua presenca e insignificante.')
                                     time.sleep(2)
-                                    personagem_inimigo = [ "Estudante Briguento do Quarto 43", 180, 100, 20, 20, 1500, 1500]
+                                    Inimigo = Estudante_43
                                     print(" - Mas vou te dar a honra de apreciar o meu cartao: ")
                                     time.sleep(1)
                                     print("\n"+str(personagem_inimigo[0])+": "+str(personagem_inimigo[5])+"pontos de vida.\nAtaque : "+str(personagem_inimigo[1])+".     Defesa : "+str(personagem_inimigo[2])+".\n")
@@ -1867,7 +2743,7 @@ def seuPredioQuartoAndar():
                                         time.sleep(2)
                                         print(" - Voce e um briguento e tanto!")
                                         time.sleep(2)
-                                        personagem_inimigo = [ "Estudante Briguento do Quarto 44", 300, 200, 40, 40, 3200, 3200]
+                                        Inimigo = Estudante_44
                                         print(" - Vamos logo ao que interessa: ")
                                         time.sleep(1)
                                         print("\n"+str(personagem_inimigo[0])+": "+str(personagem_inimigo[5])+"pontos de vida.\nAtaque : "+str(personagem_inimigo[1])+".     Defesa : "+str(personagem_inimigo[2])+".\n")
@@ -2068,7 +2944,7 @@ def seuPredioTerceiroAndar():
                         if(situacao[5] == 0):
                             print("Eu sou o seu oponente! Venca todos deste andar para subir!")
                             time.sleep(2)
-                            personagem_inimigo = [ "Estudante Briguento do Quarto 30", 5, 12, 2, 2, 110, 110]
+                            Inimigo = Estudante_30
                             batalha()
                             if(personagem_jogador[6]<=0):
                                 personagem_jogador[6]=1
@@ -2128,7 +3004,7 @@ def seuPredioTerceiroAndar():
                             if(situacao[6] == 0):
                                 print(" - Voce e o desafiante??? Parece um fracote!")
                                 time.sleep(2)
-                                personagem_inimigo = [ "Estudante Briguento do Quarto 31", 13, 4, 5, 1, 130, 130]
+                                Inimigo = Estudante_31
                                 batalha()
                                 if(personagem_jogador[6]<=0):
                                     personagem_jogador[6]=1
@@ -2188,7 +3064,7 @@ def seuPredioTerceiroAndar():
                                 if(situacao[7]==0):
                                     print(" - Cai dentro, rapa!")
                                     time.sleep(2)
-                                    personagem_inimigo = [ "Estudante Briguento do Quarto 32", 8, 8, 2, 1, 100, 100]
+                                    Inimigo = Estudante_32
                                     batalha()
                                     if(personagem_jogador[6]<=0):
                                         personagem_jogador[6]=1
@@ -2248,7 +3124,7 @@ def seuPredioTerceiroAndar():
                                     if(situacao[8]==0):
                                         print(" - OOo, CIDADAO!")
                                         time.sleep(2)
-                                        personagem_inimigo = [ "Estudante Briguento do Quarto 33", 10, 8, 5, 5, 120, 120]
+                                        Inimigo = Estudante_33
                                         batalha()
                                         if(personagem_jogador[6]<=0):
                                             personagem_jogador[6]=1
@@ -2308,7 +3184,7 @@ def seuPredioTerceiroAndar():
                                         if(situacao[9]==0):
                                             print(" - Qual e, velho? O negocio e descer o murro de ferro na cara do inimigo!")
                                             time.sleep(2)
-                                            personagem_inimigo = [ "Estudante Briguento do Quarto 34", 20, 20, 6, 6, 66.6, 66.6]
+                                            Inimigo = Estudante_34
                                             batalha()
                                             if(personagem_jogador[6]<=0):
                                                 personagem_jogador[6]=1
@@ -2450,7 +3326,7 @@ def seuPredioSegundoAndar():
                             if(situacao[3]==6):
                                 print(" - Obrigado por me treinar, senhor.")
                                 time.sleep(2)
-                                personagem_inimigo = [ "Garoto, um Homem", 1500, 1000, 50, 50, 20000, 20000]
+                                Inimigo = Garoto_Homem
                                 batalha()
                                 if(personagem_jogador[6]<=0):
                                     personagem_jogador[6]=1
@@ -2479,7 +3355,7 @@ def seuPredioSegundoAndar():
                             if(situacao[3]==5):
                                 print(" - Estou empolgado! Nao aguentava mais esperar pela nossa luta!")
                                 time.sleep(2)
-                                personagem_inimigo = [ "Garoto Forte", 150, 100, 20, 20, 2000, 2000]
+                                Inimigo = Garoto_Forte
                                 batalha()
                                 if(personagem_jogador[6]<=0):
                                     personagem_jogador[6]=1
@@ -2508,7 +3384,7 @@ def seuPredioSegundoAndar():
                             if(situacao[3]==4):
                                 print(" - Dessa vez nao vou perder tao facil!")
                                 time.sleep(2)
-                                personagem_inimigo = [ "Garoto Serio", 30, 25, 10, 5, 200, 200]
+                                Inimigo = Garoto_Serio
                                 batalha()
                                 if(personagem_jogador[6]<=0):
                                     personagem_jogador[6]=1
@@ -2541,7 +3417,7 @@ def seuPredioSegundoAndar():
                             if(situacao[3]==3):
                                 print(" - Eu estava te esperando, panaca!")
                                 time.sleep(2)
-                                personagem_inimigo = [ "Garoto Convencido", 8, 12, 5, 10, 110, 110]
+                                Inimigo = Garoto_Convencido
                                 batalha()
                                 if(personagem_jogador[6]<=0):
                                     personagem_jogador[6]=1
@@ -2574,7 +3450,7 @@ def seuPredioSegundoAndar():
                             if(situacao[3]==2):
                                 print(" - Meu avo disse que voce viria... - disse o garoto baixinho - Vamos logo ao que interessa!")
                                 time.sleep(2)
-                                personagem_inimigo = [ "Garoto Fracote", 3, 10, 2, 2, 100, 100]
+                                Inimigo = Garoto_Fracote
                                 batalha()
                                 if(personagem_jogador[6]<=0):
                                     personagem_jogador[6]=1
@@ -2616,7 +3492,7 @@ def seuPredioSegundoAndar():
                                 time.sleep(0.5)
                                 print(" - Saia daqui entao!")
                                 time.sleep(2)
-                                personagem_inimigo = [ "Senhor Doente", 5, 3, -3, 3, 50, 50]
+                                Inimigo = Senhor_Doente
                                 batalha()
                                 if(personagem_jogador[6]<=0):break
                                 if(personagem_inimigo[6]>0):
@@ -2701,7 +3577,7 @@ def seuPredioSegundoAndar():
                                                 time.sleep(1)
                                                 print(" - VOCE VAI PAGAR CARO!")
                                                 time.sleep(1)
-                                                personagem_inimigo = [ "Garoto Irritado", 10, 10, 10, 10, 100, 100]
+                                                Inimigo = Garoto_Irritado
                                                 batalha()
                                                 if(personagem_jogador[6]<=0):break
                                                 if(personagem_inimigo[6]>0):
@@ -2825,7 +3701,7 @@ def seuPredioSegundoAndar():
                                             time.sleep(1)
                                             print(" - Quale merh-mao? Ta querenu treta?")
                                             time.sleep(2)
-                                            personagem_inimigo = [ "Mane de Bone", 10, 5, 10, 1, 100, 100]
+                                            Inimigo = Mane_Bone
                                             batalha()
                                             if(personagem_jogador[6]<=0):break
                                             if(personagem_inimigo[6]>0):
@@ -3101,7 +3977,7 @@ def seuPredioPrimeiroAndar():
                                             time.sleep(3)
                                             print(" - VOCE VAI APANHAR MUITO AGORA!")
                                             time.sleep(3)
-                                            personagem_inimigo = [ "Mulher de Toalha", 20, 20, 5, 5, 800, 800]
+                                            Inimigo = Mulher_Toalha
                                             batalha()
                                             if(personagem_jogador[6]<=0):break
                                             if(personagem_inimigo[6]>0):
@@ -3159,7 +4035,7 @@ def seuPredioPrimeiroAndar():
                                             time.sleep(0.75)
                                             print(" - VOCE VAI PAGAR CARO POR MATAR MEU MARIDO!")
                                             time.sleep(1)
-                                            personagem_inimigo = [ "Mulher aos Prantos", 20, 20, 10, 10, 900, 200]
+                                            Inimigo = Mulher_Prantos
                                             batalha()
                                             if(personagem_jogador[6]<=0):break
                                             if(personagem_inimigo[6]>0):
@@ -3273,7 +4149,7 @@ def seuPredioPrimeiroAndar():
                                                                         time.sleep(1)
                                                                         print(" - Ssseu muleque i-insstrosmestido!... *hic*\n")
                                                                         time.sleep(2)
-                                                                        personagem_inimigo = [ "Bebado", 4, 4, -3, -3, 500, 30]
+                                                                        Inimigo = Bebado
                                                                         batalha()
                                                                         if(personagem_jogador[6]<=0):break
                                                                         if(personagem_inimigo[6]>0):
@@ -3405,19 +4281,19 @@ def suaRua():
                             acao_do_personagem=acao_do_personagem.lower()
                             if(acao_do_personagem=="comprar"):
                                 porcentagem_inflacao=1
-                                loja_venda[1][0]=bermuda_linho_regata
-                                loja_venda[1][1]=bermuda_linho_polo
-                                loja_venda[1][2]=calca_jeans_regata
-                                loja_venda[1][3]=calca_jeans_polo
-                                loja_venda[1][4]=luva_la
-                                loja_venda[1][5]=luva_imitacao
-                                loja_venda[1][6]=papetes_masculinas
-                                loja_venda[1][7]=tenis_velho
-                                loja_venda[1][8]=tenis_simplorio
-                                loja_venda[1][9]=sapato_simplorio
-                                loja_venda[1][10]=tenis_comum
+                                Venda.inventario[1][0]=bermuda_linho_regata
+                                Venda.inventario[1][1]=bermuda_linho_polo
+                                Venda.inventario[1][2]=calca_jeans_regata
+                                Venda.inventario[1][3]=calca_jeans_polo
+                                Venda.inventario[1][4]=luva_la
+                                Venda.inventario[1][5]=luva_imitacao
+                                Venda.inventario[1][6]=papetes_masculinas
+                                Venda.inventario[1][7]=tenis_velho
+                                Venda.inventario[1][8]=tenis_simplorio
+                                Venda.inventario[1][9]=sapato_simplorio
+                                Venda.inventario[1][10]=tenis_comum
                                 lojaComprar()
-                                loja_venda=inventario_reserva
+                                Venda=Reserva_Venda
                             else:
                                 if(acao_do_personagem=="vender"):
                                     porcentagem_inflacao=0.5
@@ -3433,11 +4309,10 @@ def suaRua():
                     else:
                         if(acao_do_personagem=="entrar na pizzaria" or acao_do_personagem=="pizzaria" or acao_do_personagem=="entrar pizzaria" or acao_do_personagem=="entrar a pizzaria" or acao_do_personagem=="entrar na pizaria" or acao_do_personagem=="pizaria" or acao_do_personagem=="entrar pizaria" or acao_do_personagem=="entrar a pizaria" or acao_do_personagem=="entrar na pizza" or acao_do_personagem=="pizza" or acao_do_personagem=="entrar pizza" or acao_do_personagem=="entrar a pizza" or acao_do_personagem=="entrar na piza" or acao_do_personagem=="piza" or acao_do_personagem=="entrar piza" or acao_do_personagem=="entrar a piza" or acao_do_personagem=="entra na pizzaria" or acao_do_personagem=="comer pizzaria" or acao_do_personagem=="entra pizzaria" or acao_do_personagem=="entra a pizzaria" or acao_do_personagem=="entra na pizaria" or acao_do_personagem=="comer pizaria" or acao_do_personagem=="entra pizaria" or acao_do_personagem=="entra a pizaria" or acao_do_personagem=="entra na pizza" or acao_do_personagem=="comer pizza" or acao_do_personagem=="entra pizza" or acao_do_personagem=="entra a pizza" or acao_do_personagem=="entra na piza" or acao_do_personagem=="comer piza" or acao_do_personagem=="entra piza" or acao_do_personagem=="entra a piza" or acao_do_personagem=="etrar na pizzaria" or acao_do_personagem=="ppizzaria" or acao_do_personagem=="etrar pizzaria" or acao_do_personagem=="etrar a pizzaria" or acao_do_personagem=="etrar na pizaria" or acao_do_personagem=="ppizaria" or acao_do_personagem=="etrar pizaria" or acao_do_personagem=="etrar a pizaria" or acao_do_personagem=="etrar na pizza" or acao_do_personagem=="ppizza" or acao_do_personagem=="etrar pizza" or acao_do_personagem=="etrar a pizza" or acao_do_personagem=="etrar na piza" or acao_do_personagem=="ppiza" or acao_do_personagem=="etrar piza" or acao_do_personagem=="etrar a piza" or acao_do_personagem=="etra na pizzaria" or acao_do_personagem=="come pizzaria" or acao_do_personagem=="etra pizzaria" or acao_do_personagem=="etra a pizzaria" or acao_do_personagem=="etra na pizaria" or acao_do_personagem=="come pizaria" or acao_do_personagem=="etra pizaria" or acao_do_personagem=="etra a pizaria" or acao_do_personagem=="etra na pizza" or acao_do_personagem=="come pizza" or acao_do_personagem=="etra pizza" or acao_do_personagem=="etra a pizza" or acao_do_personagem=="etra na piza" or acao_do_personagem=="come piza" or acao_do_personagem=="etra piza" or acao_do_personagem=="etra a piza"):
                             porcentagem_inflacao=1.5
-                            inventario_reserva=loja_venda
-                            loja_venda[1][1]=pedaco_pizza
-                            loja_venda[1][0]=talheres_prata
+                            Venda.inventario[1][1]=pedaco_pizza
+                            Venda.inventario[1][0]=talheres_prata
                             lojaComprar()
-                            loja_venda=inventario_reserva
+                            Venda=Reserva_Venda
                             print("\nVoce saiu da pizzaria.\n")
                             time.sleep(1)
                             break
@@ -3929,7 +4804,7 @@ while 1:
                                                             if (eegg == 5):
                                                                 print("Ja chega! Voce esgotou minha paciencia!")
                                                                 time.sleep(1.5)
-                                                                personagem_inimigo = [ "Narrador", 13, 8, 10, 10, 100, 100]
+                                                                Inimigo = Narrador
                                                                 batalha()
                                                                 if(personagem_jogador[6]<=0):break
                                                                 if(personagem_inimigo[6]>0):
@@ -4124,7 +4999,7 @@ while 1:
             time.sleep(2)
             print(" - EU VOU TE QUEBRAR ATE VOCE ME DAR O DINHEIRO!!!\n")
             time.sleep(2)
-            personagem_inimigo = [ "Bandido", 300, 100, 20, 20, 25000, 25000]
+            Inimigo = Bandido_Comparsa
             batalha()
             if(personagem_jogador[6]<=0):
                 personagem_jogador[6]=1
@@ -4153,8 +5028,8 @@ while 1:
                 time.sleep(5)
                 print("alem da jaqueta de couro, luvas, pulseiras e cinto, todos esses ultimos com spikes de titanio.")
                 time.sleep(6)
-                personagem_reserva = personagem_jogador
-                personagem_jogador = [ "Lutador Headbanger", 1200, 800, 50, 50, 100000, 100000,0]
+                Reserva = Jogador
+                Jogador = Headbanger
                 batalha()
                 personagem_jogador = personagem_reserva
                 print(" - Pare! Por favor!\n")
@@ -4256,7 +5131,7 @@ while 1:
                     time.sleep(3)
                     print(" - Agora voce vai entregar o dinheiro, ou nao vai?! - inqueriu, o motoqueiro montado em sua Twister 250.")
                     time.sleep(3)
-                    personagem_inimigo = [ "Motoqueiro Comparsa", 3000, 10, 50, -5, 50, 50]
+                    Inimigo = Motoqueiro_Comparsa
                     batalha()
                     if(personagem_jogador[6]<=0): break
                     if(personagem_inimigo[6]>0):
