@@ -9,10 +9,9 @@ import time
 #ASSISTA DEVIL SURVIVOR 2
 
 class Item(object):
-    status = [] #atq[0], def[1], agi[2], luk[3], taxarecuperacao[4], vidamaxima[5], vidaatual[6]
-
     def __init__(self, nome, ataque, defesa, agilidade, sorte, taxarecuperacao, vidamaxima, vidaatual, preco, tipo):
         self.nome = nome
+        self.status=[]#atq[0], def[1], agi[2], luk[3], taxarecuperacao[4], vidamaxima[5], vidaatual[6]
         self.status.append(ataque)
         self.status.append(defesa)
         self.status.append(agilidade)
@@ -28,20 +27,18 @@ desequipado_roupa = Item("Nada", 0,0,0,0, 0,0,0, 0, "roupa")
 desequipado_capa = Item("Nada", 0,0,0,0, 0,0,0, 0, "capa")
 desequipado_luva = Item("Nada", 0,0,0,0, 0,0,0, 0, "luva")
 desequipado_anel = Item("Nada", 0,0,0,0, 0,0,0, 0, "anel")
-desequipado_maos = Item("Nada", 0,0,0,0, 0,0,0, 0, "armamento")
-desequipado_calcado = Item("Nada", 0,0,0,0, 0,0,0, 0, "calcados")
+desequipado_maos = Item("Nada", 0,0,0,0, 0,0,0, 0, "arma")
+desequipado_calcado = Item("Nada", 0,0,0,0, 0,0,0, 0, "pes")
 espaco_vazio = Item("Vazio", 0,0,0,0, 0,0,0, 0, "inventario")
 pijama_inicial = Item("Pijama", 0,0,0,5, 5,0,0, 5, "roupa")
 uniforme_estudantil = Item("Uniforme Estudantil", 0,1,0,0, 0,0,0, 20, "roupa")
-lapis_apontado = Item("Lapis Apontado", 3,0,0,1, 0,0,0, 2, "armamento")
-chinelo_inicial = Item("Chinelos", 0,0,0,-5, 0,0,0, 5,"calcados")
-tenis_simplorio = Item("Tenis Simplorio", 0,1,2,0, 0,0,0, 50, "calcados")
+lapis_apontado = Item("Lapis Apontado", 3,0,0,1, 0,0,0, 2, "arma")
+chinelo_inicial = Item("Chinelos", 0,0,0,-5, 0,0,0, 5,"pes")
+tenis_simplorio = Item("Tenis Simplorio", 0,1,2,0, 0,0,0, 50, "pes")
 
 class Personagem(object):
-    status = [] #atq[0], def[1], agi[2], luk[3], taxarecuperacao[4], vidamaxima[5], vidaatual[6]
-    inventario = [],[]
-    equipamento = [] #roupa[0], capa[1], luva[2], anel[3], maos[4], calcado[5]
-    def __init__(self, nome, ataque, defesa, agilidade, sorte, taxarecuperacao, vidamaxima, vidaatual, dinheiro, identificacao, roupa, capa, luva, anel, maos, calcado):
+    def __init__(self, nome, ataque, defesa, agilidade, sorte, taxarecuperacao, vidamaxima, vidaatual, dinheiro, furtar, identificacao, roupa, capa, luva, anel, maos, calcado):
+        self.status = [] #atq[0], def[1], agi[2], luk[3], taxarecuperacao[4], vidamaxima[5], vidaatual[6]
         self.nome = nome
         self.status.append(ataque)
         self.status.append(defesa)
@@ -51,8 +48,11 @@ class Personagem(object):
         self.status.append(vidamaxima)
         self.status.append(vidaatual)
         self.identificacao = identificacao
+        self.dinheiro = dinheiro
+        self.furtar = furtar
         if (self.identificacao!="inimigo"):
-            self.dinheiro = dinheiro
+            self.inventario = [],[]
+            self.equipamento = [] #roupa[0], capa[1], luva[2], anel[3], maos[4], calcado[5]
             numero=1
             while numero<31:
                 self.inventario[0].append(numero)
@@ -71,57 +71,80 @@ class Personagem(object):
             self.status+=maos.status
             self.status+=calcado.status
 
-#nome, ataque, defesa, agilidade, sorte, taxarecuperacao, vidamaxima, vidaatual, dinheiro, identificacao, roupa, capa, luva, anel, maos, calcado
-aliado_jogador = Personagem("NULO", 10,8,1,1, 0,100,100, 0, 1, pijama_inicial, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, chinelo_inicial)
+#-- _aliados_ --#
+aliado_jogador = Personagem("NULO", 10,8,1,1, 0,100,100, 0,0, 1, pijama_inicial, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, chinelo_inicial)
 aliado_reserva = aliado_jogador
-aliado_headbanger = Personagem("Lutador Headbanger", 1200,800,50,50, 100,100000,100000, 0, 3, desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
-aliado_garota = Personagem("Garota", 25,20,1,1, 0,300,300, 25, 2, uniforme_estudantil, desequipado_capa, desequipado_luva, desequipado_anel, lapis_apontado, tenis_simplorio)
+aliado_headbanger = Personagem("Lutador Headbanger", 1200,800,50,50, 100,100000,100000, 0,0, 3, desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
+aliado_garota = Personagem("Garota", 25,20,1,1, 0,300,300, 25,0, 2, uniforme_estudantil, desequipado_capa, desequipado_luva, desequipado_anel, lapis_apontado, tenis_simplorio)
 #nome, ataque, defesa, agilidade, sorte, taxarecuperacao, vidamaxima, vidaatual, dinheiro, identificacao, roupa, capa, luva, anel, maos, calcado
-adversario_inimigo = Personagem("Inimigo", 10,8,1,1, 0,100,100, 0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
-narrador_inimigo = Personagem("Narrador", 10,7,5,5, 1,100,100, 0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
-bebado_inimigo = Personagem("Bebado", 4,4,-3,-3, -10,500,100, 0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
-mulher_prantos = Personagem("Mulher aos Prantos", 15,15,-10,10, -5,300,300, 0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
-mulher_toalha = Personagem("Mulher de Toalha", 20,20,5,5, 0,800,800, 0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
-mane_bone = Personagem("Mane de Bone", 10,5,10,1, 0,100,100, 0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
-senhor_doente = Personagem("Senhor Doente", 5,3,-3,3, -1,110,110, 0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
-garoto_irritado = Personagem("Garoto Irritado", 10,10,10,10, 10,100,100, 0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
-garoto_fracote = Personagem("Garoto Fracote", 3,10,2,2, 0,100,100, 0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
-garoto_convencido = Personagem("Garoto Convencido", 8,12,5,10, 0,110,110, 0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
-garoto_serio = Personagem("Garoto Serio", 30,25,10,5, 0,200,200, 0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
-garoto_forte = Personagem("Garoto Forte", 150,100,20,20, 0,2000,2000, 0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
-garoto_homem = Personagem("Garoto, um Homem", 1500,1000,50,50, 0,20000,20000, 0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
-bandido_comparsa = Personagem("Bandido", 300,100,20,20, 0,2500,2500, 0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
-motoqueiro_comparsa = Personagem("Motoqueiro Comparsa", 3000,10,10,-5, 0,50,50, 0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
-estudante_30 = Personagem("Estudante Briguento do Quarto 30", 5,12,2,2, 0,110,110, 0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
-estudante_31 = Personagem("Estudante Briguento do Quarto 31", 13,4,5,1, 0,130,130, 0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
-estudante_32 = Personagem("Estudante Briguento do Quarto 32", 8,8,2,1, 0,100,100, 0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
-estudante_33 = Personagem("Estudante Briguento do Quarto 33", 10,8,5,5, 0,120,120, 0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
-estudante_34 = Personagem("Estudante Briguento do Quarto 34", 20,20,6,6, 6,66.6,66.6, 0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
-estudante_40 = Personagem("Estudante Briguento do Quarto 40", 30,15,5,5, 5,360,360, 0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
-estudante_41 = Personagem("Estudante Briguento do Quarto 41", 50,30,10,10, 10,550,550, 0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
-estudante_42 = Personagem("Estudante Briguento do Quarto 42", 90,70,15,15, 15,790,790, 0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
-estudante_43 = Personagem("Estudante Briguento do Quarto 43", 180,100,20,20, 20,1500,1500, 0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
-estudante_44 = Personagem("Estudante Briguento do Quarto 44", 300,200,40,40, 40,320,3200, 0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
+#-- _inimigos_ --#
+adversario_inimigo = Personagem("Inimigo", 10,8,1,1, 0,100,100, 0,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
+narrador_inimigo = Personagem("Narrador", 10,8,5,5, 2,100,100, 0,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
+bebado_inimigo = Personagem("Bebado", 4,4,-3,-3, -10,500,100, 0,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
+mulher_prantos = Personagem("Mulher aos Prantos", 15,15,-10,10, -5,300,300, 0,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
+mulher_toalha = Personagem("Mulher de Toalha", 20,20,5,5, 0,800,800, 0,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
+mane_bone = Personagem("Mane de Bone", 10,5,10,1, 0,100,100, 0,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
+senhor_doente = Personagem("Senhor Doente", 5,3,-3,3, -1,110,110, 0,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
+garoto_irritado = Personagem("Garoto Irritado", 10,10,10,10, 10,100,100, 0,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
+garoto_fracote = Personagem("Garoto Fracote", 3,10,2,2, 0,100,100, 0,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
+garoto_convencido = Personagem("Garoto Convencido", 8,12,5,10, 0,110,110, 0,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
+garoto_serio = Personagem("Garoto Serio", 30,25,10,5, 0,200,200, 0,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
+garoto_forte = Personagem("Garoto Forte", 150,100,20,20, 0,2000,2000, 0,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
+garoto_homem = Personagem("Garoto, um Homem", 1500,1000,50,50, 0,20000,20000, 0,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
+bandido_comparsa = Personagem("Bandido", 300,100,20,20, 0,2500,2500, 0,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
+motoqueiro_comparsa = Personagem("Motoqueiro Comparsa", 3000,10,10,-5, 0,50,50, 0,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
+estudante_30 = Personagem("Estudante Briguento", 5,12,2,2, 0,110,110, 2,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
+estudante_31 = Personagem("Estudante Briguento", 13,4,5,1, 0,130,130, 2,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
+estudante_32 = Personagem("Estudante Briguento", 8,8,2,1, 0,100,100, 2,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
+estudante_33 = Personagem("Estudante Briguento", 10,8,5,5, 0,120,120, 2,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
+estudante_34 = Personagem("Estudante Briguento", 20,2,6,6, 6,666,666, 2,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
+estudante_40 = Personagem("Estudante Briguento", 30,15,5,5, 5,360,360, 3,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
+estudante_41 = Personagem("Estudante Briguento", 50,30,10,10, 10,550,550, 3,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
+estudante_42 = Personagem("Estudante Briguento", 90,70,15,15, 15,790,790, 3,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
+estudante_43 = Personagem("Estudante Briguento", 180,100,20,20, 20,1500,1500, 3,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
+estudante_44 = Personagem("Estudante Briguento", 300,200,40,40, 40,320,3200, 3,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
+arruaceiro_00 = Personagem("Arruaceiro", 5,12,2,3, 2,200,200, 2,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
+arruaceiro_01 = Personagem("Arruaceiro", 12,5,3,2, 2,200,200, 2,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
+arruaceiro_02 = Personagem("Arruaceiro", 12,12,2,2, 2,200,200, 3,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
+arruaceiro_03 = Personagem("Arruaceiro", 5,5,2,12, 2,200,200, 3,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
+arruaceiro_03 = Personagem("Arruaceiro", 5,5,12,2, 2,200,200, 3,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
+arruaceiro_04 = Personagem("Arruaceiro", 10,24,2,2, 4,200,200, 4,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
+arruaceiro_05 = Personagem("Arruaceiro", 24,10,4,2, 4,200,200, 4,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
+arruaceiro_06 = Personagem("Arruaceiro", 24,24,2,2, 4,200,200, 4,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
+arruaceiro_07 = Personagem("Arruaceiro", 10,10,5,5, 50,200,200, 4,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
+arruaceiro_08 = Personagem("Arruaceiro", 25,25,5,5, 4,200,200, 4,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
+arruaceiro_09 = Personagem("Arruaceiro", 15,36,4,6, 4,400,400, 10,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
+arruaceiro_10 = Personagem("Arruaceiro", 36,15,6,4, 4,400,400, 10,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
+arruaceiro_11 = Personagem("Arruaceiro", 36,36,4,4, 4,400,400, 10,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
+arruaceiro_12 = Personagem("Arruaceiro", 15,15,4,12, 4,400,400, 10,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
+arruaceiro_13 = Personagem("Arruaceiro", 15,15,12,4, 4,400,400, 10,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
+arruaceiro_14 = Personagem("Arruaceiro", 20,48,8,8, 8,400,400, 40,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
+arruaceiro_15 = Personagem("Arruaceiro", 48,20,8,4, 8,400,400, 40,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
+arruaceiro_16 = Personagem("Arruaceiro", 48,48,4,4, 8,400,400, 40,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
+arruaceiro_17 = Personagem("Arruaceiro", 20,20,10,10, 50,400,400, 40,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
+arruaceiro_18 = Personagem("Arruaceiro", 50,50,10,10, 8,400,400, 40,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
 #narrador_inimigo, bebado_inimigo, mulher_prantos, mulher_toalha, mane_bone, senhor_doente, garoto_irritado, garoto_fracote, garoto_convencido, garoto_serio, garoto_forte, garoto_homem, motoqueiro_comparsa, bandido_comparsa, estudante_30, estudante_31, estudante_32, estudante_33, estudante_34, estudante_40, estudante_41, estudante_42, estudante_43, estudante_44
 
-#nome, ataque, defesa, agilidade, sorte, taxarecuperacao, vidamaxima, vidaatual, preco, tipo ######: consumivel
-pedaco_pizza = Item("Pedaco de Pizza", 0,0,0,0, 0,0,50, 5, "consumivel")
-super_tudo = Item("Super X-Tudo", 0,0,0,0, 0,0,aliado_jogador.status[5], 100, "consumivel")
-#nome, ataque, defesa, agilidade, sorte, taxarecuperacao, vidamaxima, vidaatual, preco, tipo ######: consumivel de aprimoramento
-suplemento_alimenticio = Item("Suplemento Alimenticio", 10,0,0,0, 0,0,0, 5, "consumivel de aprimoramento")
-lata_energetico = Item("Energetico", 0,0,0,0, 1,50,0, 5, "consumivel de aprimoramento")
-#nome, ataque, defesa, agilidade, sorte, taxarecuperacao, vidamaxima, vidaatual, preco, tipo ######: roupa
+#-- _itens_ --#
+#nome, ataque, defesa, agilidade, sorte, taxarecuperacao, vidamaxima, vidaatual, preco, tipo
+#-- _comida_ --#
+pedaco_pizza = Item("Pedaco de Pizza", 0,0,0,0, 0,0,50, 5, "comida")
+super_tudo = Item("Super X-Tudo", 0,0,0,0, 0,0,aliado_jogador.status[5], 100, "comida")
+#-- _aprimoramento_ --#
+suplemento_alimenticio = Item("Suplemento Alimenticio", 10,0,0,0, 0,0,0, 5, "pocao")
+lata_energetico = Item("Energetico", 0,0,0,0, 1,50,0, 5, "pocao")
+#-- _roupa_ --#
 bermuda_linho_regata = Item("Bermuda de Linho e Regata ", 0,1,4,0, 0,0,0, 100, "roupa")
 bermuda_linho_polo = Item("Bermuda de Linho e Polo", 0,2,3,2, 0,0,0, 140, "roupa")
 calca_jeans_regata = Item("Calca Jeans e Regata", 0,4,1,0, 0,0,0, 110, "roupa")
 calca_jeans_polo = Item("Calca Jeans e Polo",0,6,0,2, 0,0,0, 150, "roupa")
 malha_ninja = Item("Malha Ninja", 5,20,5,1, 0,0,0, 5000, "roupa")
-#nome, ataque, defesa, agilidade, sorte, taxarecuperacao, vidamaxima, vidaatual, preco, tipo ######: capa
+#-- _capa_ --#
 jaqueta_imitacao = Item("Jaqueta de Imitacao de Couro", 0,20,0,0, 0,0,0, 150, "capa")
 jaqueta_couro = Item("Jaqueta de Couro", 0,200,0,10, 0,0,0, 2000, "capa")
 agasalho_la = Item("Agasalho de La", 0,6,0,0, 0,0,0, 100, "capa")
 cachecol_la = Item("Cachecol de La", 0,1,0,0, 0,0,0, 30, "capa")
-#nome, ataque, defesa, agilidade, sorte, taxarecuperacao, vidamaxima, vidaatual, preco, tipo ######: luva
+#-- _luva_ --#
 luva_la = Item("Luvas de La", 0,3,0,0, 0,0,0, 20, "luva")
 luva_imitacao = Item("Luvas de Imitacao de Couro", 3,3,0,0, 0,0,0, 100, "luva")
 soco_pvc = Item("Soco-Ingles de PVC", 3,0,0,0, 0,0,0, 50, "luva")
@@ -137,7 +160,8 @@ luva_spikes_au = Item("Luvas de Couro com Spikes de Ouro", 250,250,0,10, 0,0,0, 
 soco_au = Item("Soco-Ingles de Ouro", 350,0,0,10, 0,0,0, 10000, "luva")
 luva_spikes_titanio = Item("Luvas de Couro com Spikes de Titanio", 2500,2500,0,20, 0,0,0, 50000, "luva")
 soco_titanio = Item("Soco-Ingles de Titanio", 3500,0,0,20, 0,0,0, 50000, "luva")
-#nome, ataque, defesa, agilidade, sorte, taxarecuperacao, vidamaxima, vidaatual, preco, tipo ######: anel
+#-- _anel_ --#
+#nome, ataque, defesa, agilidade, sorte, taxarecuperacao, vidamaxima, vidaatual, preco, tipo
 anel_forca1 = Item("Anel da Forca 1", 10,-2,-2,-2, 0,0,0, 500, "anel")
 anel_forca2 = Item("Anel da Forca 2", 20,-4,-4,-4, 0,0,0, 1000, "anel")
 anel_forca3 = Item("Anel da Forca 2", 40,-8,-8,-8, 0,0,0, 5000, "anel")
@@ -149,22 +173,22 @@ anel_consistencia2 = Item("Anel da Consistencia 2", -4,-4,-4,-4, 0,100,100, 1000
 anel_consistencia3 = Item("Anel da Consistencia 3", -8,-8,-8,-8, 0,1000,1000, 5000, "anel")
 anel_da_imortalidade = Item("Anel da Imortalidade", aliado_jogador.status[0],aliado_jogador.status[1],aliado_jogador.status[2],aliado_jogador.status[3], aliado_jogador.status[4],aliado_jogador.status[5],aliado_jogador.status[6], 100000, "anel")
 anel_da_divindade = Item("Anel da Divindade", aliado_jogador.status[0]*2,aliado_jogador.status[1]*2,aliado_jogador.status[2]*2,aliado_jogador.status[3]*2, aliado_jogador.status[4]*2,aliado_jogador.status[5]*2,aliado_jogador.status[6]*2, 100000000, "anel")
-#nome, ataque, defesa, agilidade, sorte, taxarecuperacao, vidamaxima, vidaatual, preco, tipo ######: armamento - maos
-punhal_envelhecido = Item("Punhal Envelhecido", 10,0,0,3, 0,0,0, 300, "armamento")
-talheres_prata = Item("Talheres de prata(Garfo e Faca)", 8,0,0,0, 0,0,0, 10, "armamento")
-#nome, ataque, defesa, agilidade, sorte, taxarecuperacao, vidamaxima, vidaatual, preco, tipo ######: calcados
-papetes_masculinas = Item("Papetes Masculinas", 0,0,1,0, 0,0,0, 15, "calcados")
-tenis_velho = Item("Tenis Velho", 0,0,2,0, 0,0,0, 10, "calcados")
-sapato_simplorio = Item("Sapato Simplorio", 0,2,1,0, 0,0,0, 50, "calcados")
-tenis_comum = Item("Tenis Comum", 0,2,2,0, 0,0,0, 90, "calcados")
-tenis_trilha = Item("Tenis de Trilha", 2,8,3,0, 0,0,0, 400, "calcados")
-tenis_caminhada = Item("Tenis de Caminhada", 0,3,5,0, 0,0,0, 300, "calcados")
-tenis_corrida = Item("Tenis de Corrida", 0,5,10,0, 0,0,0, 500, "calcados")
-tenis_ZX5000 = Item("Tenis ZX-5000", 10,10,11,5, 0,0,0, 15000, "calcados")
+#-- _arma_ --#
+punhal_envelhecido = Item("Punhal Envelhecido", 10,0,0,3, 0,0,0, 300, "arma")
+talheres_prata = Item("Talheres de prata(Garfo e Faca)", 8,0,0,0, 0,0,0, 10, "arma")
+#-- _pes_ --#
+papetes_masculinas = Item("Papetes Masculinas", 0,0,1,0, 0,0,0, 15, "pes")
+tenis_velho = Item("Tenis Velho", 0,0,2,0, 0,0,0, 10, "pes")
+sapato_simplorio = Item("Sapato Simplorio", 0,2,1,0, 0,0,0, 50, "pes")
+tenis_comum = Item("Tenis Comum", 0,2,2,0, 0,0,0, 90, "pes")
+tenis_trilha = Item("Tenis de Trilha", 2,8,3,0, 0,0,0, 400, "pes")
+tenis_caminhada = Item("Tenis de Caminhada", 0,3,5,0, 0,0,0, 300, "pes")
+tenis_corrida = Item("Tenis de Corrida", 0,5,10,0, 0,0,0, 500, "pes")
+tenis_ZX5000 = Item("Tenis ZX-5000", 10,10,11,5, 0,0,0, 15000, "pes")
 
 class Loja(object):
-    inventario = [],[]
     def __init__(self):
+        self.inventario = [],[]
         numero=1
         while numero<31:
             self.inventario[0].append(numero)
@@ -259,11 +283,11 @@ def inventarioPersonagem():
             if(aliado_jogador.inventario[1][i]==espaco_vazio or aliado_jogador.inventario[1][i].nome=="Nada"):
                 variavel_para_comparar+=1
             i+=1
-        print("Inventario:        "+str(variavel_para_comparar)+" espaco(s) livre(s) de 30.\n")
+        print "\n#"+"-"*77+"#\n"+'|'.center(79)+"Inventario:"+str(variavel_para_comparar)+" espaco(s) livre(s) de 30.\n"
         variavel_para_comparar=0
         time.sleep(0.5)
         i=0
-        print 'Mochila\t\t\t\t\tEquipamentos'
+        print 'Mochila'+'Equipamentos'.rjust(72)
         while i<=29:
             if i<6:
                 if i==0: letra='a'
@@ -273,7 +297,7 @@ def inventarioPersonagem():
                 if i==4: letra='e'
                 if i==5: letra='f'
                 if (aliado_jogador.inventario[1][i]!=espaco_vazio and aliado_jogador.inventario[1][i].nome!="Nada"):
-                    print(str(aliado_jogador.inventario[0][i])+" : "+str(aliado_jogador.inventario[1][i].nome)+"\t\t\t"+str(letra)+" : "+str(aliado_jogador.equipamento[i].nome)+"\n     ("+str(aliado_jogador.inventario[1][i].tipo)+")\t\t\t\t("+str(aliado_jogador.equipamento[i].tipo)+")\n")
+                    print str(aliado_jogador.inventario[0][i])+" : "+str(aliado_jogador.inventario[1][i].nome)+"\t\t\t"+str(letra)+" : "+str(aliado_jogador.equipamento[i].nome)+"\n     ("+str(aliado_jogador.inventario[1][i].tipo)+")\t\t\t\t("+str(aliado_jogador.equipamento[i].tipo)+")\n"
                 else:
                     print("\t\t\t\t\t"+str(letra)+" : "+str(aliado_jogador.equipamento[i].nome)+"\n\t\t\t\t\t("+str(aliado_jogador.equipamento[i].tipo)+")\n")
             if (i>5 and aliado_jogador.inventario[1][i]!=espaco_vazio and aliado_jogador.inventario[1][i].nome!="Nada"):
@@ -474,7 +498,7 @@ def inventarioPersonagem():
                 i+=1
             i=i-1
             if(acao_do_personagem==aliado_jogador.inventario[0][i] and aliado_jogador.inventario[1][i]!=espaco_vazio and aliado_jogador.inventario[1][i].nome!="Nada"):
-                if(aliado_jogador.inventario[1][i].tipo=="consumivel de aprimoramento"):
+                if(aliado_jogador.inventario[1][i].tipo=="pocao"):
                     print("\nNome: "+str(aliado_jogador.inventario[1][i].nome)+ "\nTipo: "+str(aliado_jogador.inventario[1][i].tipo)+"\nVida: "+str(aliado_jogador.inventario[1][i].status[5])+"\nAtaque: "+str(aliado_jogador.inventario[1][i].status[0])+"\nDefesa: "+str(aliado_jogador.inventario[1][i].status[1])+"\nAgilidade: "+str(aliado_jogador.inventario[1][i].status[2])+"\nSorte: "+str(aliado_jogador.inventario[1][i].status[3])+"\n")
                     while aliado_jogador.inventario[1][i].tipo!="inventario":
                         print("O que deseja fazer? (usar, descartar ou voltar)")
@@ -511,7 +535,7 @@ def inventarioPersonagem():
                                 else:
                                     print("\nENTRADA INVALIDA!\n")
                                     time.sleep(0.5)
-                if(aliado_jogador.inventario[1][i].tipo=="consumivel"):
+                if(aliado_jogador.inventario[1][i].tipo=="comida"):
                     print("\nNome: "+str(aliado_jogador.inventario[1][i].nome)+ "\nTipo: "+str(aliado_jogador.inventario[1][i].tipo)+"\nVida: "+str(inventario[1][i].status[6])+"\n")
                     while 1:
                         print("O que deseja fazer? (usar, descartar ou voltar)")
@@ -550,7 +574,7 @@ def inventarioPersonagem():
                                 else:
                                     print("\nENTRADA INVALIDA!\n")
                                     time.sleep(0.5)
-                if(aliado_jogador.inventario[1][i].tipo!="consumivel de aprimoramento" and aliado_jogador.inventario[1][i].tipo!="consumivel" and aliado_jogador.inventario[1][i].tipo!="inventario"):
+                if(aliado_jogador.inventario[1][i].tipo!="pocao" and aliado_jogador.inventario[1][i].tipo!="comida" and aliado_jogador.inventario[1][i].tipo!="inventario"):
                     print("\nNome: "+str(aliado_jogador.inventario[1][i].nome)+"\nTipo: "+str(aliado_jogador.inventario[1][i].tipo)+"\nAtaque: "+str(aliado_jogador.inventario[1][i].status[0])+"\nDefesa: "+str(aliado_jogador.inventario[1][i].status[1])+"\nAgilidade: "+str(aliado_jogador.inventario[1][i].status[2])+"\nSorte: "+str(aliado_jogador.inventario[1][i].status[3])+"\nVida: "+str(aliado_jogador.inventario[1][i].status[5])+"\nReconstituicao: "+str(aliado_jogador.inventario[1][i].status[4])+"\n")
                     while aliado_jogador.inventario[1][i].tipo!="inventario":
                         print("O que deseja fazer? (equipar, descartar ou voltar)")
@@ -612,7 +636,7 @@ def inventarioPersonagem():
                                     aliado_jogador.inventario[1][i]=item_adicionado
                                     aliado_jogador.status+=aliado_jogador.equipamento[3].status
                                     break
-                                if(aliado_jogador.inventario[1][i].tipo=="armamento"):
+                                if(aliado_jogador.inventario[1][i].tipo=="arma"):
                                     aliado_jogador.status-=aliado_jogador.equipamento[4].status
                                     item_adicionado=aliado_jogador.equipamento[4]
                                     print("Voce guardou "+str(item_adicionado.nome)+" e equipou "+str(aliado_jogador.inventario[1][i].nome)+"!")
@@ -621,7 +645,7 @@ def inventarioPersonagem():
                                     aliado_jogador.inventario[1][i]=item_adicionado
                                     aliado_jogador.status+=aliado_jogador.equipamento[4].status
                                     break
-                                if(aliado_jogador.inventario[1][i].tipo=="calcados"):
+                                if(aliado_jogador.inventario[1][i].tipo=="pes"):
                                     aliado_jogador.status-=aliado_jogador.equipamento[5].status
                                     item_adicionado=aliado_jogador.equipamento[5]
                                     print("Voce guardou "+str(item_adicionado.nome)+" e equipou "+str(aliado_jogador.inventario[1][i].nome)+"!")
@@ -630,7 +654,7 @@ def inventarioPersonagem():
                                     aliado_jogador.inventario[1][i]=item_adicionado
                                     aliado_jogador.status+=aliado_jogador.equipamento[5].status
                                     break
-                                if(aliado_jogador.inventario[1][i].tipo=="consumivel" or aliado_jogador.inventario[1][i].tipo=="consumivel de aprimoramento"):
+                                if(aliado_jogador.inventario[1][i].tipo=="comida" or aliado_jogador.inventario[1][i].tipo=="pocao"):
                                     print("voce nao pode equipar!")
                                     time.sleep(0.5)
                             else:
@@ -1570,11 +1594,11 @@ def lojaVender():
             i+=1
         i=i-1
         if(acao_do_personagem==aliado_jogador.inventario[0][i] and aliado_jogador.inventario[1][i]!=espaco_vazio and aliado_jogador.inventario[1][i].nome!="Nada"):
-            if(aliado_jogador.inventario[1][i][5]=="consumivel de aprimoramento"):
+            if(aliado_jogador.inventario[1][i][5]=="pocao"):
                 print("\nNome: "+str(aliado_jogador.inventario[1][i].nome)+ "\nTipo: "+str(aliado_jogador.inventario[1][i].tipo)+"\nVida: "+str(aliado_jogador.inventario[1][i].status[5])+"\nAtaque: "+str(aliado_jogador.inventario[1][i].status[0])+"\nDefesa: "+str(aliado_jogador.inventario[1][i].status[1])+"\nAgilidade: "+str(aliado_jogador.inventario[1][i].status[2])+"\nSorte: "+str(aliado_jogador.inventario[1][i].status[3])+"\n")
-            if(aliado_jogador.inventario[1][i][5]=="consumivel"):
+            if(aliado_jogador.inventario[1][i][5]=="comida"):
                 print("\nNome: "+str(aliado_jogador.inventario[1][i].nome)+ "\nTipo: "+str(aliado_jogador.inventario[1][i].tipo)+"\nVida: "+str(aliado_jogador.inventario[1][i].status[6])+"\n")
-            if(aliado_jogador.inventario[1][i].tipo!="consumivel de aprimoramento" and aliado_jogador.inventario[1][i].tipo!="consumivel" and aliado_jogador.inventario[1][i].tipo!="inventario"):
+            if(aliado_jogador.inventario[1][i].tipo!="pocao" and aliado_jogador.inventario[1][i].tipo!="comida" and aliado_jogador.inventario[1][i].tipo!="inventario"):
                 print("\nNome: "+str(aliado_jogador.inventario[1][i].nome)+"\nTipo: "+str(aliado_jogador.inventario[1][i].tipo)+"\nAtaque: "+str(aliado_jogador.inventario[1][i].status[0])+"\nDefesa: "+str(aliado_jogador.inventario[1][i].status[1])+"\nAgilidade: "+str(aliado_jogador.inventario[1][i].status[2])+"\nSorte: "+str(aliado_jogador.inventario[1][i].status[3])+"\nVida: "+str(aliado_jogador.inventario[1][i].status[5])+"\nReconstituicao: "+str(aliado_jogador.inventario[1][i].status[4])+"\n")
         while 1:
             print("Posso comprar por "+str(aliado_jogador.inventario[1][i].preco*porcentagem_inflacao)+"Reais.")
@@ -1633,11 +1657,11 @@ def lojaComprar():
             i+=1
         i=i-1
         if(acao_do_personagem==Venda.inventario[0][i] and Venda.inventario[1][i]!=espaco_vazio):
-            if(Venda.inventario[1][i][5]=="consumivel de aprimoramento"):
+            if(Venda.inventario[1][i][5]=="pocao"):
                 print("\nNome: "+str(Venda.inventario[1][i].nome)+ "\nTipo: "+str(Venda.inventario[1][i].tipo)+"\nVida: "+str(Venda.inventario[1][i].status[5])+"\nAtaque: "+str(Venda.inventario[1][i].status[0])+"\nDefesa: "+str(Venda.inventario[1][i].status[1])+"\nAgilidade: "+str(Venda.inventario[1][i].status[2])+"\nSorte: "+str(Venda.inventario[1][i].status[3])+"\n")
-            if(Venda.inventario[1][i][5]=="consumivel"):
+            if(Venda.inventario[1][i][5]=="comida"):
                 print("\nNome: "+str(Venda.inventario[1][i].nome)+ "\nTipo: "+str(Venda.inventario[1][i].tipo)+"\nVida: "+str(Venda.inventario[1][i].status[6])+"\n")
-            if(Venda.inventario[1][i].tipo!="consumivel de aprimoramento" and Venda.inventario[1][i].tipo!="consumivel" and Venda.inventario[1][i].tipo!="inventario"):
+            if(Venda.inventario[1][i].tipo!="pocao" and Venda.inventario[1][i].tipo!="comida" and Venda.inventario[1][i].tipo!="inventario"):
                 print("\nNome: "+str(Venda.inventario[1][i].nome)+"\nTipo: "+str(Venda.inventario[1][i].tipo)+"\nAtaque: "+str(Venda.inventario[1][i].status[0])+"\nDefesa: "+str(Venda.inventario[1][i].status[1])+"\nAgilidade: "+str(Venda.inventario[1][i].status[2])+"\nSorte: "+str(Venda.inventario[1][i].status[3])+"\nVida: "+str(Venda.inventario[1][i].status[5])+"\nReconstituicao: "+str(Venda.inventario[1][i].status[4])+"\n")
             item_adicionado=Venda.inventario[1][i]
             while 1:
@@ -1697,9 +1721,9 @@ def ficha_personagem():
     time.sleep(0.23)
     print("\n Ataque: "+str(aliado_jogador.status[0])+"\n Defesa: "+str(aliado_jogador.status[1])+"\n Agilidade: "+str(aliado_jogador.status[2])+"\n Sorte: "+str(aliado_jogador.status[3]))
     time.sleep(0.23)
-    print("\n Capa: "+str(aliado_jogador.equipamento[1].nome)+"\n Roupa: "+str(aliado_jogador.equipamento[0].nome)+"\n Calcados: "+str(aliado_jogador.equipamento[5].nome))
+    print("\n Capa: "+str(aliado_jogador.equipamento[1].nome)+"\n Roupa: "+str(aliado_jogador.equipamento[0].nome)+"\n Pes: "+str(aliado_jogador.equipamento[5].nome))
     time.sleep(0.23)
-    print("\n Luvas: "+str(aliado_jogador.equipamento[2].nome)+"\n Anel: "+str(aliado_jogador.equipamento[3].nome)+"\n Armamento: "+str(aliado_jogador.equipamento[4].nome))
+    print("\n Luvas: "+str(aliado_jogador.equipamento[2].nome)+"\n Anel: "+str(aliado_jogador.equipamento[3].nome)+"\n Arma: "+str(aliado_jogador.equipamento[4].nome))
     time.sleep(0.23)
     print("\n Dinheiro: "+str(aliado_jogador.dinheiro)+" Reais\n")
     time.sleep(0.23)
@@ -1828,10 +1852,12 @@ def save():
                 time.sleep(0.5)
 
 #--Sistema de batalha--#
-def batalha():
+def batalha(entrada_inimigo_batalha):
     global narrador_inimigo, bebado_inimigo, mulher_prantos, mulher_toalha, mane_bone, senhor_doente, garoto_irritado, garoto_fracote, garoto_convencido, garoto_serio, garoto_forte, garoto_homem, motoqueiro_comparsa, bandido_comparsa, estudante_30, estudante_31, estudante_32, estudante_33, estudante_34, estudante_40, estudante_41, estudante_42, estudante_43, estudante_44, aliado_headbanger,Venda, Reserva_Venda,porcentagem_inflacao,bermuda_linho_regata,bermuda_linho_polo,calca_jeans_regata,calca_jeans_polo,desequipado_roupa,desequipado_capa,desequipado_luva,desequipado_anel,desequipado_maos,desequipado_calcado,espaco_vazio,pedaco_pizza,bolo_chocolate,pijama_inicial,uniforme_estudantil,malha_ninja,lapis_apontado,punhal_envelhecido,talheres_prata,jaqueta_imitacao,jaqueta_couro,agasalho_la,suplemento_alimenticio,lata_energetico,luva_la,luva_couro,soco_pvc,soco_latao,luva_spikes_alu,soco_alu,luva_spikes_aco,soco_aco,luva_spikes_ag,soco_ag,luva_spikes_au,soco_au,luva_spikes_titanio,soco_titanio,anel_forca1,anel_forca2,anel_forca3,anel_resistencia1,anel_resistencia2,anel_resistencia3,anel_consistencia1,anel_consistencia2,anel_consistencia3,anel_da_imortalidade,anel_da_divindade,chinelo_inicial,papetes_masculinas,tenis_velho,tenis_simplorio,sapato_simplorio,tenis_comum,tenis_trilha,tenis_caminhada,tenis_corrida,tenis_ZX5000,item_adicionado,quantidade_adicionada,variavel_cenario,objeto,situacao,temporario,variavel_lugar,ponto_de_save,mostrar_save, aliado_jogador,aliado_reserva, aliado_garota,adversario_inimigo,eegg,acao_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,variavel_para_comparar,contador_de_batalha,contador_de_rodadas
-    print("\nBatalha!!!\nE hora da briga!!!\n")
-    time.sleep(4)
+    adversario_inimigo=entrada_inimigo_batalha
+    adversario_inimigo.status=entrada_inimigo_batalha.status
+    print("\nBatalha!!!\nE hora da briga, estudante!!!\n")
+    time.sleep(2)
     contador_de_rodadas=1
     while(adversario_inimigo.status[6]>0):
         if(aliado_jogador.status[6]<=0):break
@@ -1839,21 +1865,21 @@ def batalha():
         if aliado_jogador.status[6] > aliado_jogador.status[5]: aliado_jogador.status[6]=aliado_jogador.status[5]
         adversario_inimigo.status[6]+=adversario_inimigo.status[4]
         if adversario_inimigo.status[6] > adversario_inimigo.status[5]: adversario_inimigo.status[6]=adversario_inimigo.status[5]
-        print("\n]]"+ "="*30+"[[\n"+"    Inicio da rodada numero "+str(contador_de_rodadas)+"\n]]"+"="*30+"[[\n")
-        if(aliado_jogador.status[6]==1):
+        print("\n]]"+ "="*75+"[[\n"+"\t\t\t   Inicio da rodada numero "+str(contador_de_rodadas)+"\n]]"+"="*75+"[[\n")
+        if(aliado_jogador.status[6]<10):
             if(contador_de_rodadas==1):
-                print("\nVoce entrou na batalha com apenas 1 ponto de vida!")
+                print("\nVoce entrou na batalha quase sem forcas vitais!")
                 time.sleep(1)
                 print("Seu ultimo recurso e a tensao!\n")
                 time.sleep(1)
             else:
                 if(contador_de_batalha==0):
-                    print("\nVoce esta com apenas 1 ponto de vida!")
+                    print("\nVoce esta com a vida muito proxima a zero!")
                     time.sleep(1)
                     print("Seu ultimo recurso e a tensao!\n")
                     time.sleep(1)
             if(contador_de_batalha>0):       
-                print("\nVoce aguentou mais uma rodada com apenas 1 ponto de vida!")
+                print("\nVoce aguentou mais uma rodada com a vida proxima a zero!")
                 time.sleep(1)
                 print("Voce extendeu o limite do seu folego e agora o limite dos seus pontos de vida subiu!\n")
                 time.sleep(2)
@@ -1867,10 +1893,8 @@ def batalha():
                     time.sleep(1)
                     print("O limite dos seus pontos de vida aumentou!\n")
                     time.sleep(2)
-                    aliado_jogador.status[5]=aliado_jogador.status[5]+1
-        print("\n#"+"-"*30+"#\n"+"\n\n"+str(aliado_jogador.nome)+":\n                    "+str(aliado_jogador.status[6])+"\n                     de"+str(aliado_jogador.status[5])+" Pontos de Vida\n\n"+str(adversario_inimigo.nome)+":\n                    "+str(adversario_inimigo.status[6])+"\n                     de"+str(adversario_inimigo.status[5])+" Pontos de vida\n")
-        time.sleep(0.1)
-        print("\n#"+"-"*30+"#\nO que voce fara agora, "+str(aliado_jogador.nome)+"?\nAtacar, defender ou fugir?")
+                    aliado_jogador.status[5]=aliado_jogador.status[5]+int((random.randrange(aliado_jogador.status[5]))/20)+1
+        print "\n#"+"-"*77+"#\n"+'|'.center(79)+'\n'+str(aliado_jogador.nome)+' '*(39-len(str(aliado_jogador.nome)))+'|'+str(adversario_inimigo.nome).rjust(78-len(aliado_jogador.nome)-(39-len(str(aliado_jogador.nome))))+"\n"+str(aliado_jogador.status[5])+'\ '+str(aliado_jogador.status[6])+' '*(37-len(str(aliado_jogador.status[6]))-len(str(aliado_jogador.status[5])))+'|'+str(adversario_inimigo.status[6]).rjust(79-(39+len(str(adversario_inimigo.status[5]))+len(str(aliado_jogador.status[5]))))+' /'+str(adversario_inimigo.status[5])+"\n"+'|'.center(79)+"\n#"+"-"*77+"#\nO que voce fara agora, "+str(aliado_jogador.nome)+"?\nAtacar, defender ou fugir?"
         time.sleep(0.15)
         acao_do_personagem = raw_input("-")
         acao_do_personagem = acao_do_personagem.lower()
@@ -1883,233 +1907,236 @@ def batalha():
             else: break
         contador_de_rodadas=contador_de_rodadas+1
         if(acao_do_personagem == "defender" or acao_do_personagem == "d" or acao_do_personagem == "defende" or acao_do_personagem == "defern" or acao_do_personagem == "defenrede" or acao_do_personagem == "ddefender" or acao_do_personagem == "defenrd" or acao_do_personagem == "deffender" or acao_do_personagem == "defendder" or acao_do_personagem == "ddeffender" or acao_do_personagem == "defnder" or acao_do_personagem == "defndr" or acao_do_personagem == "dfnder" or acao_do_personagem == "dfendr" or acao_do_personagem == "defnde" or acao_do_personagem == "defnd" or acao_do_personagem == "dfede" or acao_do_personagem == "def"): #defesa(2personagem_jogador[2]) vs ataque(adversario_inimigo.status[0])
-            print("\nPostura de Batalha:\n"+str(aliado_jogador.nome)+"\n----------> defensiva\n\n"+str(adversario_inimigo.nome)+"\n----------> ofensiva\n\n")
+            print "\n"+"Postura de Batalha:".center(79)+"\n\n"+str(aliado_jogador.nome)+str(adversario_inimigo.nome).rjust(79-len(aliado_jogador.nome))+"\n\n(defensiva)"+"(ofensiva)".rjust(69)
             time.sleep(2)
             teste_de_sorte = random.randrange(50)
             if (teste_de_sorte<=10+aliado_jogador.status[3]-adversario_inimigo.status[3]):#S_defesa(3personagem_jogador[2]) vs ataque(adversario_inimigo.status[0])
                 print("\nSua postura de defesa te favoreceu!\n")
                 time.sleep(2)
                 teste_de_sorte = random.randrange(40)
-                if (teste_de_sorte<=10+adversario_inimigo[3]-aliado_jogador.status[3]):#S_defesa(3personagem_jogador[2]) vs S_ataque(2adversario_inimigo.status[0])
+                if (teste_de_sorte<=10+adversario_inimigo.status[3]-aliado_jogador.status[3]):#S_defesa(3personagem_jogador[2]) vs S_ataque(2adversario_inimigo.status[0])
                     print("\n... Mas o ataque do inimigo foi critico!\n")
-                    time.sleep(2)
-                    teste_de_sorte = random.randrange(300)
-                    if(teste_de_sorte<=30+aliado_jogador.status[2]+aliado_jogador.status[3]-adversario_inimigo[2]-adversario_inimigo[4]):
-                        print("\nVoce conseguiu esquivar de todos os ataques, o inimigo nem pode tocar em voce!")
+                    calculo_do_dano = (2*adversario_inimigo.status[0])+int((random.randrange(adversario_inimigo.status[0]))*0.35)-(3*aliado_jogador.status[1])-int((random.randrange(aliado_jogador.status[1]))*0.35)
+                    if (calculo_do_dano < 0):#S_defesa(3aliado_jogador.status[1]) CONTRA-ATACA S_ataque(2adversario_inimigo.status[0])
+                        calculo_do_dano = (calculo_do_dano/2)*(-1)+int(((random.randrange(aliado_jogador.status[0]))/2)*0.35)
+                        print("\nNao importa, sua defesa e incrivel!")
                         time.sleep(2)
-                    else:
-                        calculo_do_dano = (2*adversario_inimigo.status[0])+(random.randrange(adversario_inimigo.status[0]))*(0.2)-(3*aliado_jogador.status[1])-(random.randrange(aliado_jogador.status[1]))*(0.2)
-                        if (calculo_do_dano < 0):#S_defesa(3aliado_jogador.status[1]) CONTRA-ATACA S_ataque(2adversario_inimigo.status[0])
-                            calculo_do_dano = (calculo_do_dano/2)*(-1)+((random.randrange(aliado_jogador.status[0]))/2)*(0.2)
-                            print("\nNao importa, sua defesa e incrivel!")
-                            time.sleep(2)
-                            print("Alem de defender voce conseguiu contra-atacar, \ncausando "+str(calculo_do_dano)+" pontos de dano ao inimigo!\n")
-                            time.sleep(3)
-                            teste_de_sorte = random.randrange(5)#aumento de defesa
-                            if(teste_de_sorte<=1):
-                                teste_de_sorte = random.randrange(100)
-                                if (teste_de_sorte<=30+aliado_jogador.status[3]):
-                                    variavel_para_comparar=aliado_jogador.status[1]
-                                    aliado_jogador.status[1]=aliado_jogador.status[1]+(random.randrange(aliado_jogador.status[1]))
-                                    if (variavel_para_comparar < aliado_jogador.status[1]):
-                                        print("\nVoce testou o seu limite e agora esta mais forte!")
-                                        time.sleep(2)
-                                        print("Seus pontos de defesa subiram!\n")
-                                        time.sleep(2)
-                                    if (variavel_para_comparar > aliado_jogador.status[1]):
-                                        aliado_jogador.status[1]=variavel_para_comparar
-                            if(teste_de_sorte>=4):
-                                teste_de_sorte = random.randrange(100)
-                                if (teste_de_sorte<=20+aliado_jogador.status[3]):
+                        print("Alem de defender voce conseguiu contra-atacar, \ncausando "+str(calculo_do_dano)+" pontos de dano ao inimigo!\n")
+                        time.sleep(3)
+                        teste_de_sorte = random.randrange(5)#aumento de defesa
+                        if(teste_de_sorte<=1):
+                            teste_de_sorte = random.randrange(100)
+                            if (teste_de_sorte<=30+aliado_jogador.status[3]):
+                                variavel_para_comparar=aliado_jogador.status[1]
+                                aliado_jogador.status[1]=aliado_jogador.status[1]+int((random.randrange(aliado_jogador.status[1]))/6)+1
+                                if (variavel_para_comparar < aliado_jogador.status[1]):
                                     print("\nVoce testou o seu limite e agora esta mais forte!")
                                     time.sleep(2)
                                     print("Seus pontos de defesa subiram!\n")
                                     time.sleep(2)
-                                    aliado_jogador.status[1]=aliado_jogador.status[1]+(random.randrange(aliado_jogador.status[1]))+1
-                            if(teste_de_sorte==3):
-                                teste_de_sorte = random.randrange(100)
-                                if (teste_de_sorte<=10+aliado_jogador.status[3]):
-                                    print("\nVoce testou o seu limite e agora esta mais forte!")
-                                    time.sleep(2)
-                                    print("Seus pontos de defesa subiram!\n")
-                                    time.sleep(2)
-                                    aliado_jogador.status[1]=aliado_jogador.status[1]+(random.randrange(aliado_jogador.status[1]))+2
-                            if(teste_de_sorte==2):
-                                teste_de_sorte = random.randrange(100)
-                                if (teste_de_sorte==10+aliado_jogador.status[3]):
-                                    print("\nVoce testou o seu limite e agora esta mais forte!")
-                                    time.sleep(2)
-                                    print("Seus pontos de defesa subiram!\n")
-                                    time.sleep(2)
-                                    aliado_jogador.status[1]=aliado_jogador.status[1]+(random.randrange(aliado_jogador.status[1]))+3
-                            adversario_inimigo.status[6] = adversario_inimigo.status[6]-calculo_do_dano
-                        else:
-                            if (calculo_do_dano == 0):#S_defesa(3aliado_jogador.status[1]) ANULA S_ataque(2adversario_inimigo.status[0])
-                                print("\nDefesa e ataque se anulam! A tensao aumenta!\n")
+                                if (variavel_para_comparar > aliado_jogador.status[1]):
+                                    aliado_jogador.status[1]=variavel_para_comparar
+                        elif(teste_de_sorte>=4):
+                            teste_de_sorte = random.randrange(100)
+                            if (teste_de_sorte<=20+aliado_jogador.status[3]):
+                                print("\nVoce testou o seu limite e agora esta mais forte!")
                                 time.sleep(2)
+                                print("Seus pontos de defesa subiram!\n")
+                                time.sleep(2)
+                                aliado_jogador.status[1]=aliado_jogador.status[1]+int((random.randrange(aliado_jogador.status[1]))/6)+2
+                        elif(teste_de_sorte==3):
+                            teste_de_sorte = random.randrange(100)
+                            if (teste_de_sorte<=10+aliado_jogador.status[3]):
+                                print("\nVoce testou o seu limite e agora esta mais forte!")
+                                time.sleep(2)
+                                print("Seus pontos de defesa subiram!\n")
+                                time.sleep(2)
+                                aliado_jogador.status[1]=aliado_jogador.status[1]+int((random.randrange(aliado_jogador.status[1]))/6)+3
+                        elif(teste_de_sorte==2):
+                            teste_de_sorte = random.randrange(100)
+                            if (teste_de_sorte==10+aliado_jogador.status[3]):
+                                print("\nVoce testou o seu limite e agora esta mais forte!")
+                                time.sleep(2)
+                                print("Seus pontos de defesa subiram!\n")
+                                time.sleep(2)
+                                aliado_jogador.status[1]=aliado_jogador.status[1]+int((random.randrange(aliado_jogador.status[1]))/6)+4
+                        adversario_inimigo.status[6]-=calculo_do_dano
+                    else:
+                        if (calculo_do_dano == 0):#S_defesa(3aliado_jogador.status[1]) ANULA S_ataque(2adversario_inimigo.status[0])
+                            print("\nDefesa e ataque se anulam! A tensao aumenta!\n")
+                            time.sleep(2)
+                        else:
+                            time.sleep(2)
+                            teste_de_sorte = random.randrange(300)
+                            if(teste_de_sorte<=30+aliado_jogador.status[2]+aliado_jogador.status[3]-adversario_inimigo.status[2]-adversario_inimigo.status[4]):
+                                print "\nApesar de vantajosa, a sua defesa nao pareceu ser o suficiente,"
+                                time.sleep(0.5)
+                                print 'mas voce conseguiu esquivar de todos os ataques,'
+                                time.sleep(0.5)
+                                print 'o inimigo nem pode tocar em voce!'
+                                time.sleep(0.5)
                             else:#S_defesa(3personagem_jogador[2]) APANHA DO S_ataque(2adversario_inimigo.status[0])
                                 print("\nVoce sofreu "+str(calculo_do_dano)+" pontos de dano...\n")
                                 time.sleep(2)
                                 aliado_jogador.status[6] = aliado_jogador.status[6] - calculo_do_dano
                 else:#S_defesa(3aliado_jogador.status[1]) vs ataque(adversario_inimigo.status[0])
-                    teste_de_sorte = random.randrange(300)
-                    if(teste_de_sorte<=30+aliado_jogador.status[2]+aliado_jogador.status[3]-adversario_inimigo.status[2]-adversario_inimigo.status[3]):
-                        print("\nVoce conseguiu esquivar de todos os ataques, o inimigo nem pode tocar em voce!")
+                    calculo_do_dano = (adversario_inimigo.status[0])+int((random.randrange(adversario_inimigo.status[0]))*0.35)-(3*aliado_jogador.status[1])-int((random.randrange(aliado_jogador.status[1]))*0.35)
+                    if (calculo_do_dano<0):#S_defesa(3personagem_jogador[2]) CONTRA-ATACA ataque(adversario_inimigo.status[0])
+                        calculo_do_dano = (calculo_do_dano/2)*(-1)+int(((random.randrange(aliado_jogador.status[0]))/2)*0.35)
+                        print("\nSua defesa foi tao grande que, alem de bloquear o ataque, voce conseguiu contra-atacar, causando "+str(calculo_do_dano)+" pontos de dano ao inimigo!\n")
                         time.sleep(2)
+                        adversario_inimigo.status[6]-=calculo_do_dano
                     else:
-                        calculo_do_dano = (adversario_inimigo.status[0])+(random.randrange(adversario_inimigo.status[0]))*(0.2)-(3*aliado_jogador.status[1])-(random.randrange(aliado_jogador.status[1]))*(0.2)
-                        if (calculo_do_dano<0):#S_defesa(3personagem_jogador[2]) CONTRA-ATACA ataque(adversario_inimigo.status[0])
-                            calculo_do_dano = (calculo_do_dano/2)*(-1)+((random.randrange(aliado_jogador.status[0]))/2)*(0.2)
-                            print("\nSua defesa foi tao grande que, alem de bloquear o ataque, voce conseguiu contra-atacar, causando "+str(calculo_do_dano)+" pontos de dano ao inimigo!\n")
+                        if (calculo_do_dano ==0):#S_defesa(3personagem_jogador[2]) ANULA ataque(adversario_inimigo.status[0])
+                            print("\nSua defesa foi completa!\n")
                             time.sleep(2)
-                            adversario_inimigo.status[6] = adversario_inimigo.status[6]-calculo_do_dano
-                        else:
-                            if (calculo_do_dano ==0):#S_defesa(3personagem_jogador[2]) ANULA ataque(adversario_inimigo.status[0])
-                                print("\nSua defesa foi completa!\n")
-                                time.sleep(2)
-                            else:#S_defesa(3personagem_jogador[2]) APANHA DO ataque(adversario_inimigo.status[0])
-                                print("\nVoce sofreu miseros "+str(calculo_do_dano)+" pontos de dano.\n")
-                                time.sleep(2)
-                                aliado_jogador.status[6] = aliado_jogador.status[6]-calculo_do_dano
+                        else:#S_defesa(3personagem_jogador[2]) APANHA DO ataque(adversario_inimigo.status[0])
+                            print("\nVoce sofreu miseros "+str(calculo_do_dano)+" pontos de dano.\n")
+                            time.sleep(2)
+                            aliado_jogador.status[6] = aliado_jogador.status[6]-calculo_do_dano
             else:
                 teste_de_sorte = random.randrange(40)
                 if(teste_de_sorte<=10-aliado_jogador.status[3]+adversario_inimigo.status[3]):#defesa(2personagem_jogador[2]) vs S_ataque(2adversario_inimigo.status[0])
-                    teste_de_sorte = random.randrange(300)
-                    if(teste_de_sorte<=30+aliado_jogador.status[2]+aliado_jogador.status[3]-adversario_inimigo.status[2]-adversario_inimigo.status[3]):
-                        print("\nVoce conseguiu esquivar de todos os ataques, o inimigo nem pode tocar em voce!")
+                    calculo_do_dano = 2*adversario_inimigo.status[0]+int((random.randrange(adversario_inimigo.status[0]))*0.35)-int((1.5)*aliado_jogador.status[1])-int((random.randrange(aliado_jogador.status[1]))*0.35)
+                    if (calculo_do_dano<0):
+                        calculo_do_dano = (calculo_do_dano/2)*(-1)+int(((random.randrange(aliado_jogador.status[0]))/2)*0.35)
+                        print("\nSua defesa e simplesmente  I M E N S A !")
                         time.sleep(2)
+                        print("O inimigo avancou furiosamente mas voce o lancou para tras \ne contra-atacou causando "+str(calculo_do_dano)+" pontos de dano ao inimigo!\n")
+                        time.sleep(3)
+                        teste_de_sorte = random.randrange(6)#aumento de defesa
+                        if(teste_de_sorte<=1):
+                            teste_de_sorte = random.randrange(100)
+                            if (teste_de_sorte<=30+aliado_jogador.status[3]):
+                                variavel_para_comparar=aliado_jogador.status[1]
+                                aliado_jogador.status[1]=aliado_jogador.status[1]+int((random.randrange(aliado_jogador.status[1]))/6)+1
+                                if (variavel_para_comparar < aliado_jogador.status[1]):
+                                    print("\nVoce testou o seu limite e agora esta mais forte!")
+                                    time.sleep(2)
+                                    print("Seus pontos de defesa subiram!\n")
+                                    time.sleep(2)
+                                if (variavel_para_comparar > aliado_jogador.status[1]):
+                                    aliado_jogador.status[1]=variavel_para_comparar
+                        if(teste_de_sorte==2):
+                            teste_de_sorte = random.randrange(200)
+                            if (teste_de_sorte<=40+aliado_jogador.status[3]):
+                                print("\nVoce testou o seu limite e agora esta mais forte!")
+                                time.sleep(2)
+                                print("Seus pontos de defesa subiram!\n")
+                                time.sleep(2)
+                                aliado_jogador.status[1]=aliado_jogador.status[1]+int((random.randrange(aliado_jogador.status[1]))/6)+2
+                        if(teste_de_sorte==3):
+                            teste_de_sorte = random.randrange(200)
+                            if (teste_de_sorte<=20+aliado_jogador.status[3]):
+                                print("\nVoce testou o seu limite e agora esta mais forte!")
+                                time.sleep(2)
+                                print("Seus pontos de defesa subiram!\n")
+                                time.sleep(2)
+                                aliado_jogador.status[1]=aliado_jogador.status[1]+int((random.randrange(aliado_jogador.status[1]))/6)+3
+                        if(teste_de_sorte==4):
+                            teste_de_sorte = random.randrange(300)
+                            if (teste_de_sorte<=30+aliado_jogador.status[3]):
+                                print("\nVoce testou o seu limite e agora esta mais forte!")
+                                time.sleep(2)
+                                print("Seus pontos de defesa subiram!\n")
+                                time.sleep(2)
+                                aliado_jogador.status[1]=aliado_jogador.status[1]+int((random.randrange(aliado_jogador.status[1]))/6)+4
+                        if(teste_de_sorte>=5):
+                            teste_de_sorte = random.randrange(100)
+                            if (teste_de_sorte<=10+aliado_jogador.status[3]):
+                                variavel_para_comparar=aliado_jogador.status[1]
+                                aliado_jogador.status[1]=aliado_jogador.status[1]+int((random.randrange(aliado_jogador.status[1]))/6)+int((random.randrange(aliado_jogador.status[0]))/6)+1
+                                if (variavel_para_comparar < aliado_jogador.status[1]):
+                                    print("\nVoce testou o seu limite e agora esta mais forte!")
+                                    time.sleep(2)
+                                    print("Seus pontos de defesa subiram!\n")
+                                    time.sleep(2)
+                                if (variavel_para_comparar > aliado_jogador.status[1]):
+                                    aliado_jogador.status[1]=variavel_para_comparar
+                        adversario_inimigo.status[6]-=calculo_do_dano
                     else:
-                        calculo_do_dano = 2*adversario_inimigo.status[0]+(random.randrange(adversario_inimigo.status[0]))*(0.2)-(1.5)*aliado_jogador.status[1]-(random.randrange(aliado_jogador.status[1]))*(0.2)
-                        if (calculo_do_dano<0):
-                            calculo_do_dano = (calculo_do_dano/2)*(-1)+((random.randrange(aliado_jogador.status[0]))/2)*(0.2)
-                            print("\nSua defesa e simplesmente  I M E N S A !")
+                        if(calculo_do_dano==0):
+                            print("\nVoce surpreendeu o inimigo que estava confiante,")
                             time.sleep(2)
-                            print("O inimigo avancou furiosamente mas voce o lancou para tras \ne contra-atacou causando "+str(calculo_do_dano)+" pontos de dano ao inimigo!\n")
-                            time.sleep(3)
-                            teste_de_sorte = random.randrange(6)#aumento de defesa
-                            if(teste_de_sorte<=1):
-                                teste_de_sorte = random.randrange(100)
-                                if (teste_de_sorte<=30+aliado_jogador.status[3]):
-                                    variavel_para_comparar=aliado_jogador.status[1]
-                                    aliado_jogador.status[1]=aliado_jogador.status[1]+(random.randrange(aliado_jogador.status[1]))
-                                    if (variavel_para_comparar < aliado_jogador.status[1]):
-                                        print("\nVoce testou o seu limite e agora esta mais forte!")
-                                        time.sleep(2)
-                                        print("Seus pontos de defesa subiram!\n")
-                                        time.sleep(2)
-                                    if (variavel_para_comparar > aliado_jogador.status[1]):
-                                        aliado_jogador.status[1]=variavel_para_comparar
-                            if(teste_de_sorte==2):
-                                teste_de_sorte = random.randrange(200)
-                                if (teste_de_sorte<=40+aliado_jogador.status[3]):
-                                    print("\nVoce testou o seu limite e agora esta mais forte!")
-                                    time.sleep(2)
-                                    print("Seus pontos de defesa subiram!\n")
-                                    time.sleep(2)
-                                    aliado_jogador.status[1]=aliado_jogador.status[1]+(random.randrange(aliado_jogador.status[1]))+1
-                            if(teste_de_sorte==3):
-                                teste_de_sorte = random.randrange(200)
-                                if (teste_de_sorte<=20+aliado_jogador.status[3]):
-                                    print("\nVoce testou o seu limite e agora esta mais forte!")
-                                    time.sleep(2)
-                                    print("Seus pontos de defesa subiram!\n")
-                                    time.sleep(2)
-                                    aliado_jogador.status[1]=aliado_jogador.status[1]+(random.randrange(aliado_jogador.status[1]))+2
-                            if(teste_de_sorte==4):
-                                teste_de_sorte = random.randrange(300)
-                                if (teste_de_sorte<=30+aliado_jogador.status[3]):
-                                    print("\nVoce testou o seu limite e agora esta mais forte!")
-                                    time.sleep(2)
-                                    print("Seus pontos de defesa subiram!\n")
-                                    time.sleep(2)
-                                    aliado_jogador.status[1]=aliado_jogador.status[1]+(random.randrange(aliado_jogador.status[1]))+3
-                            if(teste_de_sorte>=5):
-                                teste_de_sorte = random.randrange(100)
-                                if (teste_de_sorte<=10+aliado_jogador.status[3]):
-                                    variavel_para_comparar=aliado_jogador.status[1]
-                                    aliado_jogador.status[1]=aliado_jogador.status[1]+(random.randrange(aliado_jogador.status[1]))+(random.randrange(aliado_jogador.status[0]))
-                                    if (variavel_para_comparar < aliado_jogador.status[1]):
-                                        print("\nVoce testou o seu limite e agora esta mais forte!")
-                                        time.sleep(2)
-                                        print("Seus pontos de defesa subiram!\n")
-                                        time.sleep(2)
-                                    if (variavel_para_comparar > aliado_jogador.status[1]):
-                                        aliado_jogador.status[1]=variavel_para_comparar
-                            adversario_inimigo.status[6] = adversario_inimigo.status[6]-calculo_do_dano
+                            print("suas forcas se anularam numa estrondosa colisao!\n")
+                            time.sleep(2)
+                            teste_de_sorte=random.randrange(300)
+                            if(teste_de_sorte<=10+aliado_jogador.status[3]):
+                                print("\nA liberacao de energia durante a colisao despertou novos limites para sua forca e agora esta mais forte!")
+                                time.sleep(3)
+                                print("TODOS os seus pontos subiram!\n")
+                                time.sleep(3)
+                                aliado_jogador.status[5]=aliado_jogador.status[5]+int((random.randrange(aliado_jogador.status[5]))/6)+4
+                                aliado_jogador.status[0]=aliado_jogador.status[0]+int((random.randrange(aliado_jogador.status[0]))/6)+3
+                                aliado_jogador.status[1]=aliado_jogador.status[1]+int((random.randrange(aliado_jogador.status[1]))/6)+2
                         else:
-                            if(calculo_do_dano==0):
-                                print("\nVoce surpreendeu o inimigo que estava confiante,")
-                                time.sleep(2)
-                                print("suas forcas se anularam numa estrondosa colisao!\n")
-                                time.sleep(2)
-                                teste_de_sorte=random.randrange(300)
-                                if(teste_de_sorte<=10+aliado_jogador.status[3]):
-                                    print("\nA liberacao de energia durante a colisao despertou novos limites para sua forca e agora esta mais forte!")
-                                    time.sleep(3)
-                                    print("TODOS os seus pontos subiram!\n")
-                                    time.sleep(3)
-                                    aliado_jogador.status[5]=aliado_jogador.status[5]+(random.randrange(aliado_jogador.status[5]))+3
-                                    aliado_jogador.status[0]=aliado_jogador.status[0]+(random.randrange(aliado_jogador.status[0]))+2
-                                    aliado_jogador.status[1]=aliado_jogador.status[1]+(random.randrange(aliado_jogador.status[1]))+1
+                            teste_de_sorte = random.randrange(300)
+                            if(teste_de_sorte<=30+aliado_jogador.status[2]+aliado_jogador.status[3]-adversario_inimigo.status[2]-adversario_inimigo.status[3]):
+                                print "\nApesar da pressao do ataque inimigo,"
+                                time.sleep(0.5)
+                                print 'voce conseguiu esquivar de todos os ataques,'
+                                time.sleep(0.5)
+                                print 'o inimigo nem pode tocar em voce!'
+                                time.sleep(0.5)
                             else:
                                 print("\nMesmo se defendendo, o impacto do ataque inimigo te causou "+str(calculo_do_dano)+" pontos de dano!\n")
                                 time.sleep(2)
                                 aliado_jogador.status[6] = aliado_jogador.status[6]-calculo_do_dano
                 else:#defesa(2aliado_jogador.status[1]) vs ataque(adversario_inimigo.status[0])
-                    teste_de_sorte = random.randrange(300)
-                    if(teste_de_sorte<=30+aliado_jogador.status[2]+aliado_jogador.status[3]-adversario_inimigo.status[2]-adversario_inimigo.status[3]):
-                        print("\nVoce conseguiu esquivar de todos os ataques, o inimigo nem pode tocar em voce!")
+                    calculo_do_dano = adversario_inimigo.status[0]+int((random.randrange(adversario_inimigo.status[0]))*0.35)-2*aliado_jogador.status[1]-int((random.randrange(aliado_jogador.status[1]))*0.35)
+                    if (calculo_do_dano<0):
+                        calculo_do_dano = calculo_do_dano*(-1)+int(((random.randrange(aliado_jogador.status[0]))/2)*0.35)
+                        print("\nSua defesa E ENORME!")
                         time.sleep(2)
-                    else:
-                        calculo_do_dano = adversario_inimigo.status[0]+(random.randrange(adversario_inimigo.status[0]))-2*aliado_jogador.status[1]-(random.randrange(aliado_jogador.status[1]))
-                        if (calculo_do_dano<0):
-                            calculo_do_dano = calculo_do_dano*(-1)+((random.randrange(aliado_jogador.status[0]))/2)
-                            print("\nSua defesa E ENORME!")
-                            time.sleep(2)
-                            print("Voce barrou o ataque naturalmente e contra-atacou, \ncausando "+str(calculo_do_dano)+" pontos de dano ao inimigo!\n")
-                            time.sleep(3)
-                            teste_de_sorte = random.randrange(5)#aumento de defesa
-                            if(teste_de_sorte<=1):
-                                teste_de_sorte = random.randrange(100)
-                                if (teste_de_sorte<=30+aliado_jogador.status[3]):
-                                    variavel_para_comparar=aliado_jogador.status[1]
-                                    aliado_jogador.status[1]=aliado_jogador.status[1]+(random.randrange(aliado_jogador.status[1]))
-                                    if (variavel_para_comparar < aliado_jogador.status[1]):
-                                        print("\nVoce testou o seu limite e agora esta mais forte!")
-                                        time.sleep(2)
-                                        print("Seus pontos de defesa subiram!\n")
-                                        time.sleep(2)
-                                    if (variavel_para_comparar > aliado_jogador.status[1]):
-                                        aliado_jogador.status[1]=variavel_para_comparar
-                            elif(teste_de_sorte>=4):
-                                teste_de_sorte = random.randrange(200)
-                                if (teste_de_sorte<=40+aliado_jogador.status[3]):
+                        print("Voce barrou o ataque naturalmente e contra-atacou, \ncausando "+str(calculo_do_dano)+" pontos de dano ao inimigo!\n")
+                        time.sleep(3)
+                        teste_de_sorte = random.randrange(5)#aumento de defesa
+                        if(teste_de_sorte<=1):
+                            teste_de_sorte = random.randrange(100)
+                            if (teste_de_sorte<=30+aliado_jogador.status[3]):
+                                variavel_para_comparar=aliado_jogador.status[1]
+                                aliado_jogador.status[1]=aliado_jogador.status[1]+int((random.randrange(aliado_jogador.status[1]))/6)+1
+                                if (variavel_para_comparar < aliado_jogador.status[1]):
                                     print("\nVoce testou o seu limite e agora esta mais forte!")
                                     time.sleep(2)
                                     print("Seus pontos de defesa subiram!\n")
                                     time.sleep(2)
-                                    aliado_jogador.status[1]=aliado_jogador.status[1]+(random.randrange(aliado_jogador.status[1]))+1
-                            elif(teste_de_sorte==3):
-                                teste_de_sorte = random.randrange(200)
-                                if (teste_de_sorte<=20+aliado_jogador.status[3]):
-                                    print("\nVoce testou o seu limite e agora esta mais forte!")
-                                    time.sleep(2)
-                                    print("Seus pontos de defesa subiram!\n")
-                                    time.sleep(2)
-                                    aliado_jogador.status[1]=aliado_jogador.status[1]+(random.randrange(aliado_jogador.status[1]))+2
-                            elif(teste_de_sorte==2):
-                                teste_de_sorte = random.randrange(300)
-                                if (teste_de_sorte<=30+aliado_jogador.status[3]):
-                                    print("\nVoce testou o seu limite e agora esta mais forte!")
-                                    time.sleep(2)
-                                    print("Seus pontos de defesa subiram!\n")
-                                    time.sleep(2)
-                                    aliado_jogador.status[1]=aliado_jogador.status[1]+(random.randrange(aliado_jogador.status[1]))+3
-                            adversario_inimigo.status[6] = adversario_inimigo.status[6]-calculo_do_dano
-                        else:
-                            if(calculo_do_dano==0):
-                                print("\nVoce barrou o ataque do inimigo!\n")
+                                if (variavel_para_comparar > aliado_jogador.status[1]):
+                                    aliado_jogador.status[1]=variavel_para_comparar
+                        elif(teste_de_sorte>=4):
+                            teste_de_sorte = random.randrange(200)
+                            if (teste_de_sorte<=40+aliado_jogador.status[3]):
+                                print("\nVoce testou o seu limite e agora esta mais forte!")
                                 time.sleep(2)
+                                print("Seus pontos de defesa subiram!\n")
+                                time.sleep(2)
+                                aliado_jogador.status[1]=aliado_jogador.status[1]+int((random.randrange(aliado_jogador.status[1]))/6)+2
+                        elif(teste_de_sorte==3):
+                            teste_de_sorte = random.randrange(200)
+                            if (teste_de_sorte<=20+aliado_jogador.status[3]):
+                                print("\nVoce testou o seu limite e agora esta mais forte!")
+                                time.sleep(2)
+                                print("Seus pontos de defesa subiram!\n")
+                                time.sleep(2)
+                                aliado_jogador.status[1]=aliado_jogador.status[1]+int((random.randrange(aliado_jogador.status[1]))/6)+3
+                        elif(teste_de_sorte==2):
+                            teste_de_sorte = random.randrange(300)
+                            if (teste_de_sorte<=30+aliado_jogador.status[3]):
+                                print("\nVoce testou o seu limite e agora esta mais forte!")
+                                time.sleep(2)
+                                print("Seus pontos de defesa subiram!\n")
+                                time.sleep(2)
+                                aliado_jogador.status[1]=aliado_jogador.status[1]+int((random.randrange(aliado_jogador.status[1]))/6)+4
+                        adversario_inimigo.status[6]-=calculo_do_dano
+                    else:
+                        if(calculo_do_dano==0):
+                            print("\nVoce barrou o ataque do inimigo!\n")
+                            time.sleep(2)
+                        else:
+                            teste_de_sorte = random.randrange(300)
+                            if(teste_de_sorte<=30+aliado_jogador.status[2]+aliado_jogador.status[3]-adversario_inimigo.status[2]-adversario_inimigo.status[3]):
+                                print("\nVoce conseguiu esquivar de todos os ataques, o inimigo nem pode tocar em voce!")
+                                time.sleep(1.5)
                             else:
                                 print("\nMesmo se defendendo, o impacto do ataque inimigo te causou "+str(calculo_do_dano)+" pontos de dano!\n")
                                 time.sleep(3)
@@ -2118,7 +2145,7 @@ def batalha():
             if (acao_do_personagem=="atacar" or acao_do_personagem=="a" or acao_do_personagem=="at" or acao_do_personagem=="ata" or acao_do_personagem=="atac" or acao_do_personagem=="ataca" or acao_do_personagem=="atcar" or acao_do_personagem=="tacar" or acao_do_personagem=="aacar" or acao_do_personagem=="ataar" or acao_do_personagem=="atacr" or acao_do_personagem=="acar" or acao_do_personagem=="aaar" or acao_do_personagem=="aacr" or acao_do_personagem=="aaca" or acao_do_personagem=="atar" or acao_do_personagem=="atcr" or acao_do_personagem=="atca" or acao_do_personagem=="ata" or acao_do_personagem=="ataa" or acao_do_personagem=="atara" or acao_do_personagem=="stssr" or acao_do_personagem=="atavar" or acao_do_personagem=="atahvea" or acao_do_personagem=="atrex" or acao_do_personagem=="atasfa" or acao_do_personagem=="atacart" or acao_do_personagem=="taacar" or acao_do_personagem=="tacaar" or acao_do_personagem=="tacara" or acao_do_personagem=="aactar" or acao_do_personagem=="aacatr" or acao_do_personagem=="aacart" or acao_do_personagem=="aatcar" or acao_do_personagem=="cataar" or acao_do_personagem=="taaacar" or acao_do_personagem=="catar" or acao_do_personagem=="rataca" or acao_do_personagem=="atraca" or acao_do_personagem=="atracar"):
                 teste_de_sorte=random.randrange(2)
                 if (teste_de_sorte==1):#ataque(aliado_jogador.status[0]) vs defesa(2adversario_inimigo.status[1])
-                    print("\nPostura de Batalha:\n"+str(aliado_jogador.nome)+"\n----------> ofensiva\n\n"+str(adversario_inimigo.nome)+"\n----------> defensiva\n\n")
+                    print "\n"+"Postura de Batalha:".center(79)+"\n\n"+str(aliado_jogador.nome)+str(adversario_inimigo.nome).rjust(79-len(aliado_jogador.nome))+"\n\n(ofensiva)"+"(defensiva)".rjust(69)
                     time.sleep(2)
                     teste_de_sorte=random.randrange(40)
                     if (teste_de_sorte<=10+aliado_jogador.status[3]-adversario_inimigo.status[3]):#S_ataque(2aliado_jogador.status[0]) vs defesa(2adversario_inimigo.status[1])
@@ -2128,102 +2155,110 @@ def batalha():
                         if (teste_de_sorte<=10+adversario_inimigo.status[3]-aliado_jogador.status[3]):#S_ataque(2aliado_jogador.status[0]) vs S_defesa(3adversario_inimigo.status[1])
                             print("\nApesar do seu critico, voce e pressionado pela postura de defesa do seu inimigo!\n")
                             time.sleep(3)
-                            teste_de_sorte = random.randrange(300)
-                            if(teste_de_sorte<=30-aliado_jogador.status[2]-aliado_jogador.status[3]+adversario_inimigo.status[2]+adversario_inimigo.status[3]):
-                                print("\nSeu oponente conseguiu esquivar de todos os seus ataques, voce nem pode tocar no inimigo!")
+                            calculo_do_dano=2*aliado_jogador.status[0]+int((random.randrange(aliado_jogador.status[0]))*0.35)-3*adversario_inimigo.status[1]-int((random.randrange(adversario_inimigo.status[1]))*0.35)
+                            if (calculo_do_dano<0):#S_ataque(2aliado_jogador.status[0]) APANHA DE S_defesa(3adversario_inimigo.status[1])
+                                calculo_do_dano = calculo_do_dano*(-1)+int((random.randrange(adversario_inimigo.status[0]))*0.35)
+                                print("\nPor mais que tente, voce nao consegue atravessar a defesa do seu inimigo!")
                                 time.sleep(2)
+                                print("Alem de te bloquear, ele te contra-atacou, causando "+str(calculo_do_dano)+" pontos de dano!\n")
+                                time.sleep(2)
+                                aliado_jogador.status[6] = aliado_jogador.status[6]-calculo_do_dano
+                                teste_de_sorte=random.randrange(200)
+                                if(teste_de_sorte<=20+aliado_jogador.status[3]):
+                                    print("\nVoce tentou ao maximo ultrapassar a defesa do seu inimigo, exigiu muito dos seus musculos que se fortaleceram!\n")
+                                    time.sleep(3)
+                                    print("\nSeus pontos de ataque subiram!\n")
+                                    time.sleep(2)
+                                    aliado_jogador.status[0]=aliado_jogador.status[0]+int((random.randrange(aliado_jogador.status[0]))/6)+4
                             else:
-                                calculo_do_dano=2*aliado_jogador.status[0]+(random.randrange(aliado_jogador.status[0]))-3*adversario_inimigo.status[1]-(random.randrange(adversario_inimigo.status[1]))
-                                if (calculo_do_dano<0):#S_ataque(2aliado_jogador.status[0]) APANHA DE S_defesa(3adversario_inimigo.status[1])
-                                    calculo_do_dano = calculo_do_dano*(-1)+((random.randrange(adversario_inimigo.status[0]))/2)
-                                    print("\nPor mais que tente, voce nao consegue atravessar a defesa do seu inimigo!")
-                                    time.sleep(2)
-                                    print("Alem de te bloquear, ele te contra-atacou, causando "+str(calculo_do_dano)+" pontos de dano!\n")
-                                    time.sleep(2)
-                                    aliado_jogador.status[6] = aliado_jogador.status[6]-calculo_do_dano
-                                    teste_de_sorte=random.randrange(200)
-                                    if(teste_de_sorte<=20+aliado_jogador.status[3]):
-                                        print("\nVoce tentou ao maximo ultrapassar a defesa do seu inimigo, exigiu muito dos seus musculos que se fortaleceram!\n")
-                                        time.sleep(3)
-                                        print("\nSeus pontos de ataque subiram!\n")
-                                        time.sleep(2)
-                                        aliado_jogador.status[0]=aliado_jogador.status[0]+(random.randrange(aliado_jogador.status[0]))+3
-                                else:
-                                    if (calculo_do_dano==0):#S_ataque(2aliado_jogador.status[0]) ANULA S_defesa(3adversario_inimigo.status[1])
-                                        print("\nA disputa de forcas e intensa, voce e seu inimigo deram o melhor de si, mas nenhum dos dois se sobrepos!\n")
-                                        time.sleep(3)
-                                    else:#S_ataque(2aliado_jogador.status[0]) ATACA S_defesa(3adversario_inimigo.status[1])
+                                if (calculo_do_dano==0):#S_ataque(2aliado_jogador.status[0]) ANULA S_defesa(3adversario_inimigo.status[1])
+                                    print("\nA disputa de forcas e intensa, voce e seu inimigo deram o melhor de si, mas nenhum dos dois se sobrepos!\n")
+                                    time.sleep(3)
+                                else:#S_ataque(2aliado_jogador.status[0]) ATACA S_defesa(3adversario_inimigo.status[1])
+                                    teste_de_sorte = random.randrange(300)
+                                    if(teste_de_sorte<=30-aliado_jogador.status[2]-aliado_jogador.status[3]+adversario_inimigo.status[2]+adversario_inimigo.status[3]):
+                                        print '\nSua forca parece ser mais do que o bastante, mas foi irrelevante,'
+                                        time.sleep(0.5)
+                                        print 'seu oponente conseguiu esquivar de todos os seus ataques...'
+                                        time.sleep(0.5)
+                                        print 'Voce nem pode tocar no inimigo!'
+                                        time.sleep(0.5)
+                                    else:
                                         print("\nSeu ataque foi explosivo!")
                                         time.sleep(2)
                                         print("Nem o melhor da defesa do seu inimigo foi capaz de conter sua ira!")
                                         time.sleep(2)
                                         print("Voce causou "+str(calculo_do_dano)+" pontos de dano ao seu inimigo!\n")
                                         time.sleep(2)
-                                        adversario_inimigo.status[6] = adversario_inimigo.status[6]-calculo_do_dano
+                                        adversario_inimigo.status[6]-=calculo_do_dano
                                         teste_de_sorte=random.randrange(100)
                                         if(teste_de_sorte==10+aliado_jogador.status[3]):
                                             print("\nA explosao de energia dos seus musculos os expandiu definitivamente!\n")
                                             time.sleep(2)
                                             print("\nSeus pontos de ataque subiram!\n")
                                             time.sleep(2)
-                                            aliado_jogador.status[0]=aliado_jogador.status[0]+(random.randrange(aliado_jogador.status[0]))+2
+                                            aliado_jogador.status[0]=aliado_jogador.status[0]+(random.randrange(aliado_jogador.status[0]))+3
                         else:#S_ataque(2aliado_jogador.status[0]) vs defesa(2adversario_inimigo.status[1])
-                            teste_de_sorte = random.randrange(300)
-                            if(teste_de_sorte<=30-aliado_jogador.status[2]-aliado_jogador.status[3]+adversario_inimigo.status[2]+adversario_inimigo.status[3]):
-                                print("\nSeu oponente conseguiu esquivar de todos os seus ataques, voce nem pode tocar no inimigo!")
-                                time.sleep(2)
+                            calculo_do_dano = 2*aliado_jogador.status[0]+int((random.randrange(aliado_jogador.status[0]))*0.35)-2*adversario_inimigo.status[1]-int((random.randrange(adversario_inimigo.status[1]))*0.35)
+                            if(calculo_do_dano<0):#S_ataque(2aliado_jogador.status[0]) APANHA DE defesa(2adversario_inimigo.status[1])
+                                calculo_do_dano=calculo_do_dano*(-1)+int((random.randrange(adversario_inimigo.status[0]))*0.35)
+                                print("\nVoce deu o seu maximo, mas mesmo assim nem se equiparou as habilidades de auto-defesa do seu inimigo!")
+                                time.sleep(3)
+                                print("Sem fazer muito esforco ele se defendeu e contra-atacou, te causando "+str(calculo_do_dano)+" pontos de dano!\n")
+                                time.sleep(3)
+                                aliado_jogador.status[6] = aliado_jogador.status[6] - calculo_do_dano
                             else:
-                                calculo_do_dano = 2*aliado_jogador.status[0]+(random.randrange(aliado_jogador.status[0]))-2*adversario_inimigo.status[1]-(random.randrange(adversario_inimigo.status[1]))
-                                if(calculo_do_dano<0):#S_ataque(2aliado_jogador.status[0]) APANHA DE defesa(2adversario_inimigo.status[1])
-                                    calculo_do_dano=calculo_do_dano*(-1)+((random.randrange(adversario_inimigo.status[0]))/2)
-                                    print("\nVoce deu o seu maximo, mas mesmo assim nem se equiparou as habilidades de auto-defesa do seu inimigo!")
+                                if(calculo_do_dano==0):#S_ataque(2aliado_jogador.status[0]) ANULA defesa(2adversario_inimigo.status[1])
+                                    print("\nVoce assustou o inimigo por um instante, mas - por muito pouco - ele conseguiu barrar todos os seus movimentos ofensivos...\n")
                                     time.sleep(3)
-                                    print("Sem fazer muito esforco ele se defendeu e contra-atacou, te causando "+str(calculo_do_dano)+" pontos de dano!\n")
-                                    time.sleep(3)
-                                    aliado_jogador.status[6] = aliado_jogador.status[6] - calculo_do_dano
                                 else:
-                                    if(calculo_do_dano==0):#S_ataque(2aliado_jogador.status[0]) ANULA defesa(2adversario_inimigo.status[1])
-                                        print("\nVoce assustou o inimigo por um instante, mas - por muito pouco - ele conseguiu barrar todos os seus movimentos ofensivos...\n")
+                                    teste_de_sorte=random.randrange(50)
+                                    if(teste_de_sorte<=10+aliado_jogador.status[3]):#XS_ataque(3aliado_jogador.status[0]) vs defesa(adversario_inimigo.status[1])
+                                        print("\nVoce rompeu a defesa do seu inimigo, causando "+str(calculo_do_dano)+" pontos de dano!")
                                         time.sleep(3)
-                                    else:
-                                        teste_de_sorte=random.randrange(50)
-                                        if(teste_de_sorte<=10+aliado_jogador.status[3]):#XS_ataque(3aliado_jogador.status[0]) vs defesa(adversario_inimigo.status[1])
-                                            print("\nVoce rompeu a defesa do seu inimigo, causando "+str(calculo_do_dano)+" pontos de dano!")
-                                            time.sleep(3)
-                                            print("\nSuper Critico!!!\n")
-                                            time.sleep(4)
-                                            print("Voce iniciou um ataque em frenesi!!!\n")
-                                            time.sleep(2)
-                                            adversario_inimigo.status[6]=adversario_inimigo.status[6]-calculo_do_dano
-                                            teste_de_sorte=random.randrange(9)+1
-                                            while(teste_de_sorte>0):#XS_ataque(3aliado_jogador.status[0]) ATACA defesa(adversario_inimigo.status[1])
-                                                calculo_do_dano=2*(random.randrange(aliado_jogador.status[0]))-(random.randrange(adversario_inimigo.status[1]))
-                                                while(calculo_do_dano<=0):
-                                                    calculo_do_dano=2*(random.randrange(aliado_jogador.status[0]))-(random.randrange(adversario_inimigo.status[1]))
-                                                print(str(calculo_do_dano)+" pontos de dano!\n")
-                                                time.sleep(0.25)
-                                                adversario_inimigo.status[6]=adversario_inimigo.status[6]-calculo_do_dano
-                                                teste_de_sorte=teste_de_sorte-1
-                                            print("\nVoce desferiu toda sua furia no inimigo!\n")
-                                            time.sleep(2)
-                                            teste_de_sorte=random.randrange(3)
-                                            if(teste_de_sorte<=1):
-                                                teste_de_sorte=random.randrange(100)
-                                                if(teste_de_sorte<=10+aliado_jogador.status[3]):
-                                                    print("\nVoce testou o seu limite e agora esta mais forte!")
-                                                    time.sleep(2)
-                                                    print("Seus pontos de ataque subiram!\n")
-                                                    time.sleep(2)
-                                                    aliado_jogador.status[0]=aliado_jogador.status[0]+(random.randrange(aliado_jogador.status[0]))+2
-                                            if(teste_de_sorte>=2):
-                                                teste_de_sorte=random.randrange(100)
-                                                if(teste_de_sorte<=10+aliado_jogador.status[3]):
-                                                    print("\nVoce ultrapassou o seu limite e agora esta mais forte!")
-                                                    time.sleep(2)
-                                                    print("Seus pontos de ataque subiram!\n")
-                                                    time.sleep(2)
-                                                    aliado_jogador.status[0]=aliado_jogador.status[0]+(random.randrange(aliado_jogador.status[0]))+3
-                                        else:#S_ataque(2aliado_jogador.status[0]) ATACA defesa(2adversario_inimigo.status[1])
+                                        print("\nSuper Critico!!!\n")
+                                        time.sleep(4)
+                                        print("Voce iniciou um ataque em frenesi!!!\n")
+                                        time.sleep(2)
+                                        adversario_inimigo.status[6]-=calculo_do_dano
+                                        teste_de_sorte=random.randrange(9)+1
+                                        while(teste_de_sorte>0):#XS_ataque(3aliado_jogador.status[0]) ATACA defesa(adversario_inimigo.status[1])
+                                            calculo_do_dano=2*(random.randrange(aliado_jogador.status[0]))-(random.randrange(adversario_inimigo.status[1]))
+                                            while(calculo_do_dano<=0):
+                                                calculo_do_dano=2*(random.randrange(aliado_jogador.status[0])+3)-(random.randrange(adversario_inimigo.status[1])+1)
+                                            print(str(calculo_do_dano)+" pontos de dano!\n")
+                                            time.sleep(0.25)
+                                            adversario_inimigo.status[6]-=calculo_do_dano
+                                            teste_de_sorte=teste_de_sorte-1
+                                        print("\nVoce desferiu toda sua furia no inimigo!\n")
+                                        time.sleep(2)
+                                        teste_de_sorte=random.randrange(3)
+                                        if(teste_de_sorte<=1):
+                                            teste_de_sorte=random.randrange(100)
+                                            if(teste_de_sorte<=10+aliado_jogador.status[3]):
+                                                print("\nVoce testou o seu limite e agora esta mais forte!")
+                                                time.sleep(2)
+                                                print("Seus pontos de ataque subiram!\n")
+                                                time.sleep(2)
+                                                aliado_jogador.status[0]=aliado_jogador.status[0]+int((random.randrange(aliado_jogador.status[0]))/6)+3
+                                        if(teste_de_sorte>=2):
+                                            teste_de_sorte=random.randrange(100)
+                                            if(teste_de_sorte<=10+aliado_jogador.status[3]):
+                                                print("\nVoce ultrapassou o seu limite e agora esta mais forte!")
+                                                time.sleep(2)
+                                                print("Seus pontos de ataque subiram!\n")
+                                                time.sleep(2)
+                                                aliado_jogador.status[0]=aliado_jogador.status[0]++int((random.randrange(aliado_jogador.status[0]))/3)+4
+                                    else:#S_ataque(2aliado_jogador.status[0]) ATACA defesa(2adversario_inimigo.status[1])
+                                        teste_de_sorte = random.randrange(300)
+                                        if(teste_de_sorte<=30-aliado_jogador.status[2]-aliado_jogador.status[3]+adversario_inimigo.status[2]+adversario_inimigo.status[3]):
+                                            print '\nMas seu surto de poder foi irrelevante,'
+                                            time.sleep(0.5)
+                                            print 'seu oponente conseguiu esquivar de todos os seus ataques...'
+                                            time.sleep(0.5)
+                                            print 'Voce nem pode tocar no inimigo!'
+                                            time.sleep(0.5)
+                                        else:
                                             print("\nSeu ataque de gopes duplos pressionaram a defesa do seu inimigo, \ncausando "+str(calculo_do_dano)+" pontos de dano!\n")
                                             time.sleep(3)
                                             teste_de_sorte=random.randrange(200)
@@ -2232,40 +2267,44 @@ def batalha():
                                                 time.sleep(2)
                                                 print("Seus pontos de ataque subiram!\n")
                                                 time.sleep(2)
-                                                aliado_jogador.status[0]=aliado_jogador.status[0]+(random.randrange(aliado_jogador.status[0]))+1
-                                            adversario_inimigo.status[6]=adversario_inimigo.status[6]-calculo_do_dano
+                                                aliado_jogador.status[0]=aliado_jogador.status[0]+int((random.randrange(aliado_jogador.status[0]))/6)+2
+                                            adversario_inimigo.status[6]-=calculo_do_dano
                     else:#ataque(aliado_jogador.status[0])
                         teste_de_sorte=random.randrange(50)
                         if(teste_de_sorte<=10+adversario_inimigo.status[3]-aliado_jogador.status[3]):#ataque(aliado_jogador.status[0]) vs S_defesa(3adversario_inimigo.status[1])
                             print("\nA postura de defesa do seu inimigo te colocou numa situacao dificil!\n")
                             time.sleep(2)
-                            teste_de_sorte = random.randrange(300)
-                            if(teste_de_sorte<=30-aliado_jogador.status[2]-aliado_jogador.status[3]+adversario_inimigo.status[2]+adversario_inimigo.status[3]):
-                                print("\nSeu oponente conseguiu esquivar de todos os seus ataques, voce nem pode tocar no inimigo!")
+                            calculo_do_dano=aliado_jogador.status[0]+int(random.randrange(aliado_jogador.status[0])*0.35)-3*adversario_inimigo.status[1]-int(random.randrange(adversario_inimigo.status[1])*0.35)
+                            if(calculo_do_dano<0):#ataque(aliado_jogador.status[0]) APANHA DE S_defesa(3adversario_inimigo.status[1])
+                                calculo_do_dano=calculo_do_dano*(-1)+int((random.randrange(adversario_inimigo.status[0]))*0.35)
+                                print("\nE muito dificil passar por tamanha defesa, seu ataque foi infimo, \nalem de ser inutilizado, voce sofreu represalia...")
+                                time.sleep(3)
+                                print("Seu inimigo contra-atacou, causando "+str(calculo_do_dano)+" pontos de dano.\n")
                                 time.sleep(2)
-                            else:
-                                calculo_do_dano=aliado_jogador.status[0]+random.randrange(aliado_jogador.status[0])-3*adversario_inimigo.status[1]-random.randrange(adversario_inimigo.status[1])
-                                if(calculo_do_dano<0):#ataque(aliado_jogador.status[0]) APANHA DE S_defesa(3adversario_inimigo.status[1])
-                                    calculo_do_dano=calculo_do_dano*(-1)+((random.randrange(adversario_inimigo.status[0]))/2)
-                                    print("\nE muito dificil passar por tamanha defesa, seu ataque foi infimo, \nalem de ser inutilizado, voce sofreu represalia...")
-                                    time.sleep(3)
-                                    print("Seu inimigo contra-atacou, causando "+str(calculo_do_dano)+" pontos de dano.\n")
+                                teste_de_sorte=random.randrange(100)
+                                if(teste_de_sorte<=10+aliado_jogador.status[3]):
+                                    print("\nVoce testou o seu limite e agora esta mais forte!")
                                     time.sleep(2)
-                                    teste_de_sorte=random.randrange(100)
-                                    if(teste_de_sorte<=10+aliado_jogador.status[3]):
-                                        print("\nVoce testou o seu limite e agora esta mais forte!")
-                                        time.sleep(2)
-                                        print("Seus pontos de ataque subiram!\n")
-                                        time.sleep(2)
-                                        aliado_jogador.status[0]=aliado_jogador.status[0]+(random.randrange(aliado_jogador.status[0]))+1
-                                    aliado_jogador.status[6]=aliado_jogador.status[6]-calculo_do_dano
-                                else:
-                                    if(calculo_do_dano==0):#ataque(aliado_jogador.status[0]) ANULA S_defesa(3adversario_inimigo.status[1])
-                                        print("\nO inimigo mal consegue reter seus golpes, mas o suficiente para para-lo.")
-                                        time.sleep(2)
-                                        print("Ao mesmo tempo sua forca foi o bastante para evitar um contra-ataque!\n")
-                                        time.sleep(2)
-                                    else:#ataque(aliado_jogador.status[0]) ATACA S_defesa(3adversario_inimigo.status[1])
+                                    print("Seus pontos de ataque subiram!\n")
+                                    time.sleep(2)
+                                    aliado_jogador.status[0]=aliado_jogador.status[0]+int((random.randrange(aliado_jogador.status[0]))/6)+3
+                                aliado_jogador.status[6]=aliado_jogador.status[6]-calculo_do_dano
+                            else:
+                                if(calculo_do_dano==0):#ataque(aliado_jogador.status[0]) ANULA S_defesa(3adversario_inimigo.status[1])
+                                    print("\nO inimigo mal consegue reter seus golpes, mas o suficiente para para-lo.")
+                                    time.sleep(2)
+                                    print("Ao mesmo tempo sua forca foi o bastante para evitar um contra-ataque!\n")
+                                    time.sleep(2)
+                                else:#ataque(aliado_jogador.status[0]) ATACA S_defesa(3adversario_inimigo.status[1])
+                                    teste_de_sorte = random.randrange(300)
+                                    if(teste_de_sorte<=30-aliado_jogador.status[2]-aliado_jogador.status[3]+adversario_inimigo.status[2]+adversario_inimigo.status[3]):
+                                        print '\nMesmo assim voce pressionou o seu oponente,'
+                                        time.sleep(0.5)
+                                        print 'que foi obrigado a esquivar de todos os seus ataques...'
+                                        time.sleep(0.5)
+                                        print 'Voce nem pode tocar no inimigo!'
+                                        time.sleep(0.5)
+                                    else:                                    
                                         print("\nDepois de alguns golpes, voce tornou insignificante a vantagem defensiva do seu inimigo, \ncausando humilhantes, "+str(calculo_do_dano)+" pontos de dano a ele!\n")
                                         time.sleep(4)
                                         teste_de_sorte=random.randrange(200)
@@ -2274,46 +2313,46 @@ def batalha():
                                             time.sleep(2)
                                             print("Seus pontos de ataque subiram!\n")
                                             time.sleep(2)
-                                            aliado_jogador.status[0]=aliado_jogador.status[0]+(random.randrange(aliado_jogador.status[0]))+2
-                                        adversario_inimigo.status[6]=adversario_inimigo.status[6]-calculo_do_dano
+                                            aliado_jogador.status[0]=aliado_jogador.status[0]+int((random.randrange(aliado_jogador.status[0]))/6)+3
+                                        adversario_inimigo.status[6]-=calculo_do_dano
                         else:#ataque(aliado_jogador.status[0]) vs defesa(2adversario_inimigo.status[1])
-                            teste_de_sorte = random.randrange(300)
-                            if(teste_de_sorte<=30-aliado_jogador.status[2]-aliado_jogador.status[3]+adversario_inimigo.status[2]+adversario_inimigo.status[3]):
-                                print("\nSeu oponente conseguiu esquivar de todos os seus ataques, voce nem pode tocar no inimigo!")
+                            calculo_do_dano = aliado_jogador.status[0]+int(random.randrange(aliado_jogador.status[0])*0.35)-2*adversario_inimigo.status[1]-int(random.randrange(adversario_inimigo.status[1])*0.35)
+                            if(calculo_do_dano<0):#ataque(aliado_jogador.status[0]) APANHA DE defesa(2adversario_inimigo.status[1])
+                                calculo_do_dano=calculo_do_dano*(-1)+int((random.randrange(adversario_inimigo.status[0]))*0.35)
+                                print("\nO inimigo se defendeu e contra-atacou, te causando "+str(calculo_do_dano)+" pontos de dano!\n")
                                 time.sleep(2)
-                            else:
-                                calculo_do_dano = aliado_jogador.status[0]+(random.randrange(aliado_jogador.status[0]))-2*adversario_inimigo.status[1]-(random.randrange(adversario_inimigo.status[1]))
-                                if(calculo_do_dano<0):#ataque(aliado_jogador.status[0]) APANHA DE defesa(2adversario_inimigo.status[1])
-                                    calculo_do_dano=calculo_do_dano*(-1)+((random.randrange(adversario_inimigo.status[0]))/2)
-                                    print("\nO inimigo se defendeu e contra-atacou, te causando "+str(calculo_do_dano)+" pontos de dano!\n")
+                                teste_de_sorte=random.randrange(100)
+                                if(teste_de_sorte<=10+aliado_jogador.status[3]):
+                                    print("\nVoce descobriu mais sobre a sua forca durante a disputa e agora esta mais forte!")
                                     time.sleep(2)
-                                    teste_de_sorte=random.randrange(100)
+                                    print("Seus pontos de ataque subiram\n!")
+                                    time.sleep(2)
+                                    aliado_jogador.status[0]=aliado_jogador.status[0]+int((random.randrange(aliado_jogador.status[0]))/6)+3
+                                aliado_jogador.status[6] = aliado_jogador.status[6] - calculo_do_dano
+                            else:
+                                if(calculo_do_dano==0):#ataque(aliado_jogador.status[0]) ANULA defesa(2adversario_inimigo.status[1])
+                                    print("\nSeu oponente defendeu todos os seus golpes, mas voce nao deu brecha para que ele avancasse!\n")
+                                    time.sleep(2)
+                                    teste_de_sorte=random.randrange(200)
                                     if(teste_de_sorte<=10+aliado_jogador.status[3]):
-                                        print("\nVoce descobriu mais sobre a sua forca durante a disputa e agora esta mais forte!")
+                                        print("\nO trabalho que seu inimigo te deu rendeu frutos!")
                                         time.sleep(2)
-                                        print("Seus pontos de ataque subiram\n!")
+                                        print("Voce descobriu mais sobre as taticas de luta dele e esta mais forte!")
                                         time.sleep(2)
-                                        aliado_jogador.status[0]=aliado_jogador.status[0]+(random.randrange(aliado_jogador.status[0]))+1
-                                    aliado_jogador.status[6] = aliado_jogador.status[6] - calculo_do_dano
-                                else:
-                                    if(calculo_do_dano==0):#ataque(aliado_jogador.status[0]) ANULA defesa(2adversario_inimigo.status[1])
-                                        print("\nSeu oponente defendeu todos os seus golpes, mas voce nao deu brecha para que ele avancasse!\n")
+                                        print("Seus pontos de ataque subiram!\n")
                                         time.sleep(2)
-                                        teste_de_sorte=random.randrange(200)
-                                        if(teste_de_sorte<=10+aliado_jogador.status[3]):
-                                            print("\nO trabalho que seu inimigo te deu rendeu frutos!")
-                                            time.sleep(2)
-                                            print("Voce descobriu mais sobre as taticas de luta dele e esta mais forte!")
-                                            time.sleep(2)
-                                            print("Seus pontos de ataque subiram!\n")
-                                            time.sleep(2)
-                                            aliado_jogador.status[0]=aliado_jogador.status[0]+(random.randrange(aliado_jogador.status[0]))+(random.randrange(aliado_jogador.status[3]))+1
-                                    else:#ataque(aliado_jogador.status[0]) ATACA defesa(2adversario_inimigo.status[1])
+                                        aliado_jogador.status[0]=aliado_jogador.status[0]+(random.randrange(aliado_jogador.status[0]))+(random.randrange(aliado_jogador.status[3]))+2
+                                else:#ataque(aliado_jogador.status[0]) ATACA defesa(2adversario_inimigo.status[1])
+                                    teste_de_sorte = random.randrange(300)
+                                    if(teste_de_sorte<=30-aliado_jogador.status[2]-aliado_jogador.status[3]+adversario_inimigo.status[2]+adversario_inimigo.status[3]):
+                                        print("\nSeu oponente conseguiu esquivar de todos os seus ataques, voce nem pode tocar no inimigo!")
+                                        time.sleep(1.5)
+                                    else:
                                         print("\nVoce acertou o inimigo durante a disputa de forcas, causando "+str(calculo_do_dano)+" pontos de dano!\n")
                                         time.sleep(2)
-                                        adversario_inimigo.status[6]=adversario_inimigo.status[6]-calculo_do_dano
+                                        adversario_inimigo.status[6]-=calculo_do_dano
                 else:#ataque(aliado_jogador.status[0]) vs ataque(adversario_inimigo.status[0])
-                    print("\nPostura de Batalha:\n"+str(aliado_jogador.nome)+"\n----------> ofensiva\n\n"+str(adversario_inimigo.nome)+"\n----------> ofensiva\n\n")
+                    print "\n"+"Postura de Batalha:".center(79)+"\n\n"+str(aliado_jogador.nome)+str(adversario_inimigo.nome).rjust(79-len(aliado_jogador.nome))+"\n\n(ofensiva)"+"(ofensiva)".rjust(69)
                     time.sleep(2)
                     teste_de_sorte=random.randrange(40)
                     if (teste_de_sorte<=10+aliado_jogador.status[3]-adversario_inimigo.status[3]):#S_ataque(2aliado_jogador.status[0]) vs ataque(adversario_inimigo.status[0])
@@ -2329,24 +2368,34 @@ def batalha():
                             time.sleep(2)
                             calculo_do_dano=2*aliado_jogador.status[0]+random.randrange(aliado_jogador.status[0])-adversario_inimigo.status[1]-random.randrange(adversario_inimigo.status[1])
                             if(calculo_do_dano>0):
-                                print("\nVoce causou significativos "+str(calculo_do_dano)+" pontos de dano ao inimigo!\n")
-                                time.sleep(2)
-                                adversario_inimigo.status[6]=adversario_inimigo.status[6]-calculo_do_dano
-                                teste_de_sorte=random.randrange(100)
-                                if(teste_de_sorte<=10+aliado_jogador.status[3]):
-                                    print("\nSeus pontos de ataque subiram enquanto voce forcava os seus musculos!\n")
+                                teste_de_sorte = random.randrange(300)
+                                if(teste_de_sorte<=30-aliado_jogador.status[2]-aliado_jogador.status[3]+adversario_inimigo.status[2]+adversario_inimigo.status[3]):
+                                    print("\nSeu oponente desviou dos seus golpes!")
+                                    time.sleep(1)
+                                else:
+                                    print("\nVoce causou significativos "+str(calculo_do_dano)+" pontos de dano ao inimigo!\n")
                                     time.sleep(2)
-                                    aliado_jogador.status[0]=aliado_jogador.status[0]+(random.randrange(aliado_jogador.status[0]))+2
+                                    adversario_inimigo.status[6]-=calculo_do_dano
+                                    teste_de_sorte=random.randrange(100)
+                                    if(teste_de_sorte<=10+aliado_jogador.status[3]):
+                                        print("\nSeus pontos de ataque subiram enquanto voce forcava os seus musculos!\n")
+                                        time.sleep(2)
+                                        aliado_jogador.status[0]=aliado_jogador.status[0]+int((random.randrange(aliado_jogador.status[0]))/6)+3
                             else:
-                                print("\nMesmo sem se defender, a constituicao do inimigo foi alta o suficiente para resistir \nao seu ataque.\n")
+                                print("\nMesmo sem se defender, a constituicao do inimigo\n foi alta o suficiente para resistir ao seu ataque.\n")
                                 time.sleep(3)
                             calculo_do_dano=2*adversario_inimigo.status[0]+random.randrange(adversario_inimigo.status[0])-aliado_jogador.status[1]-random.randrange(aliado_jogador.status[1])
                             if(calculo_do_dano>0):
-                                print("\nEnquanto o oponente te causou "+str(calculo_do_dano)+" pontos de dano!\n")
-                                time.sleep(2)
-                                aliado_jogador.status[6]=aliado_jogador.status[6]-calculo_do_dano
+                                teste_de_sorte = random.randrange(300)
+                                if(teste_de_sorte<=30-aliado_jogador.status[2]-aliado_jogador.status[3]+adversario_inimigo.status[2]+adversario_inimigo.status[3]):
+                                    print("\nE voce esquivou dos ataques dele!")
+                                    time.sleep(1)
+                                else:
+                                    print("\nEnquanto o oponente te causou "+str(calculo_do_dano)+" pontos de dano!\n")
+                                    time.sleep(2)
+                                    aliado_jogador.status[6]=aliado_jogador.status[6]-calculo_do_dano
                             else:
-                                print("\nMesmo sem se defender, sua constituicao foi alta o suficiente para resistir \nao ataque do oponente.\n")
+                                print("\nMesmo sem se defender, sua constituicao\n foi alta o suficiente para resistir ao ataque do oponente.\n")
                                 time.sleep(3)
                         else:#S_ataque(2aliado_jogador.status[0]) vs ataque(adversario_inimigo.status[0])
                             print("\nVoce avancou violentamente sobre o inimigo, pressionando-o sem compaixao!")
@@ -2355,19 +2404,29 @@ def batalha():
                             time.sleep(3)
                             calculo_do_dano=2*aliado_jogador.status[0]+random.randrange(aliado_jogador.status[0])-adversario_inimigo.status[1]-random.randrange(adversario_inimigo.status[1])
                             if(calculo_do_dano>0):
-                                print("\nVoce golpeou o inimigo ate lhe causar "+str(calculo_do_dano)+" pontos de dano!\n")
-                                time.sleep(2)
-                                adversario_inimigo.status[6]=adversario_inimigo.status[6]-calculo_do_dano
+                                teste_de_sorte = random.randrange(300)
+                                if(teste_de_sorte<=30-aliado_jogador.status[2]-aliado_jogador.status[3]+adversario_inimigo.status[2]+adversario_inimigo.status[3]):
+                                    print("\nSeu oponente desviou dos seus golpes!")
+                                    time.sleep(1)
+                                else:
+                                    print("\nVoce golpeou o inimigo ate lhe causar "+str(calculo_do_dano)+" pontos de dano!\n")
+                                    time.sleep(2)
+                                    adversario_inimigo.status[6]-=calculo_do_dano
                             else:
-                                print("\nMesmo sem se defender, a constituicao do inimigo foi alta o suficiente para resistir \nao seu ataque.\n")
+                                print("\nMesmo sem se defender, a constituicao do inimigo \nfoi alta o suficiente para resistir ao seu ataque.\n")
                                 time.sleep(3)
                             calculo_do_dano=adversario_inimigo.status[0]+random.randrange(adversario_inimigo.status[0])-aliado_jogador.status[1]-random.randrange(aliado_jogador.status[1])
                             if(calculo_do_dano>0):
-                                print("\nJa o inimigo causou apenas "+str(calculo_do_dano)+" pontos de dano a voce!\n")
-                                time.sleep(2)
-                                aliado_jogador.status[6]=aliado_jogador.status[6]-calculo_do_dano
+                                teste_de_sorte = random.randrange(300)
+                                if(teste_de_sorte<=30-aliado_jogador.status[2]-aliado_jogador.status[3]+adversario_inimigo.status[2]+adversario_inimigo.status[3]):
+                                    print("\nE voce esquivou dos ataques dele!")
+                                    time.sleep(1)
+                                else:
+                                    print("\nJa o inimigo causou apenas "+str(calculo_do_dano)+" pontos de dano a voce!\n")
+                                    time.sleep(2)
+                                    aliado_jogador.status[6]=aliado_jogador.status[6]-calculo_do_dano
                             else:
-                                print("\nMesmo sem se defender, sua constituicao foi alta o suficiente para resistir \nao ataque do oponente.\n")
+                                print("\nMesmo sem se defender, sua constituicao \nfoi alta o suficiente para resistir nao ataque do oponente.\n")
                                 time.sleep(3)
                     else:#ataque(aliado_jogador.status[0]) vs ataque(adversario_inimigo.status[0])
                         teste_de_sorte=random.randrange(40)
@@ -2380,42 +2439,62 @@ def batalha():
                             time.sleep(2)
                             calculo_do_dano=aliado_jogador.status[0]+random.randrange(aliado_jogador.status[0])-adversario_inimigo.status[1]-random.randrange(adversario_inimigo.status[1])
                             if(calculo_do_dano>0):
-                                print("\nVoce infringiu "+str(calculo_do_dano)+" pontos de dano ao inimigo!\n")
-                                time.sleep(2)
-                                adversario_inimigo.status[6]=adversario_inimigo.status[6]-calculo_do_dano
+                                teste_de_sorte = random.randrange(300)
+                                if(teste_de_sorte<=30-aliado_jogador.status[2]-aliado_jogador.status[3]+adversario_inimigo.status[2]+adversario_inimigo.status[3]):
+                                    print("\nSeu oponente desviou dos seus golpes!")
+                                    time.sleep(1)
+                                else:
+                                    print("\nVoce infringiu "+str(calculo_do_dano)+" pontos de dano ao inimigo!\n")
+                                    time.sleep(2)
+                                    adversario_inimigo.status[6]-=calculo_do_dano
                             else:
-                                print("\nMesmo sem se defender, a constituicao do inimigo foi alta o suficiente para resistir \nao seu ataque.\n")
+                                print("\nMesmo sem se defender, a constituicao do inimigo \nfoi alta o suficiente para resistir ao seu ataque.\n")
                                 time.sleep(3)
                             calculo_do_dano=2*adversario_inimigo.status[0]+random.randrange(adversario_inimigo.status[0])-aliado_jogador.status[1]-random.randrange(aliado_jogador.status[1])
                             if(calculo_do_dano>0):
-                                print("\nEnquanto o seu inimigo te agrediu violentamente, causando "+str(calculo_do_dano)+" pontos de dano a voce!\n")
-                                time.sleep(2)
-                                aliado_jogador.status[6]=aliado_jogador.status[6]-calculo_do_dano
+                                teste_de_sorte = random.randrange(300)
+                                if(teste_de_sorte<=30-aliado_jogador.status[2]-aliado_jogador.status[3]+adversario_inimigo.status[2]+adversario_inimigo.status[3]):
+                                    print("\nE voce esquivou dos ataques dele!")
+                                    time.sleep(1)
+                                else:
+                                    print("\nEnquanto o seu inimigo te agrediu violentamente, causando "+str(calculo_do_dano)+" pontos de dano a voce!\n")
+                                    time.sleep(2)
+                                    aliado_jogador.status[6]=aliado_jogador.status[6]-calculo_do_dano
                             else:
-                                print("\nMesmo sem se defender, sua constituicao foi alta o suficiente para resistir \nao ataque do oponente.\n")
+                                print("\nMesmo sem se defender, sua constituicao \nfoi alta o suficiente para resistir ao ataque do oponente.\n")
                                 time.sleep(3)
                         else:#ataque(aliado_jogador.status[0]) vs ataque(adversario_inimigo.status[0])
                             print("\nVoces se atacaram num ritmo leve, parecem estar testando um ao outro,\n ficou claro que nenhum dos dois mostrou tudo o que e capaz.\n")
                             time.sleep(4)
                             calculo_do_dano=aliado_jogador.status[0]+random.randrange(aliado_jogador.status[0])-adversario_inimigo.status[1]-random.randrange(adversario_inimigo.status[1])
                             if(calculo_do_dano>0):
-                                print("\nVoce feriu seu oponente em "+str(calculo_do_dano)+" pontos de dano!\n")
-                                time.sleep(2)
-                                adversario_inimigo.status[6]=adversario_inimigo.status[6]-calculo_do_dano
+                                teste_de_sorte = random.randrange(300)
+                                if(teste_de_sorte<=30-aliado_jogador.status[2]-aliado_jogador.status[3]+adversario_inimigo.status[2]+adversario_inimigo.status[3]):
+                                    print("\nSeu oponente desviou dos seus golpes!")
+                                    time.sleep(1)
+                                else:
+                                    print("\nVoce feriu seu oponente em "+str(calculo_do_dano)+" pontos de dano!\n")
+                                    time.sleep(2)
+                                    adversario_inimigo.status[6]-=calculo_do_dano
                             else:
-                                print("\nMesmo sem se defender, a constituicao do inimigo foi alta o suficiente para resistir \nao seu ataque.\n")
+                                print("\nMesmo sem se defender, a constituicao do inimigo \nfoi alta o suficiente para resistir ao seu ataque.\n")
                                 time.sleep(3)
                             calculo_do_dano=adversario_inimigo.status[0]+random.randrange(adversario_inimigo.status[0])-aliado_jogador.status[1]-random.randrange(aliado_jogador.status[1])
                             if(calculo_do_dano>0):
-                                print("\nSeu inimigo te golpeou causando "+str(calculo_do_dano)+" pontos de dano!\n")
-                                time.sleep(2)
-                                aliado_jogador.status[6]=aliado_jogador.status[6]-calculo_do_dano
+                                teste_de_sorte = random.randrange(300)
+                                if(teste_de_sorte<=30-aliado_jogador.status[2]-aliado_jogador.status[3]+adversario_inimigo.status[2]+adversario_inimigo.status[3]):
+                                    print("\nE voce esquivou dos ataques dele!")
+                                    time.sleep(1)
+                                else:
+                                    print("\nSeu inimigo te golpeou causando "+str(calculo_do_dano)+" pontos de dano!\n")
+                                    time.sleep(2)
+                                    aliado_jogador.status[6]=aliado_jogador.status[6]-calculo_do_dano
                             else:
-                                print("\nMesmo sem se defender, sua constituicao foi alta o suficiente para resistir \nao ataque do oponente.\n")
+                                print("\nMesmo sem se defender, sua constituicao \nfoi alta o suficiente para resistir ao ataque do oponente.\n")
                                 time.sleep(3)
             else:
                 if(acao_do_personagem=="fugir" or acao_do_personagem=="f" or acao_do_personagem=="fugri" or acao_do_personagem=="fguir" or acao_do_personagem=="fugeir" or acao_do_personagem=="furig" or acao_do_personagem=="fuer" or acao_do_personagem=="ffugri" or acao_do_personagem=="gfuir" or acao_do_personagem=="fiur" or acao_do_personagem=="fugi" or acao_do_personagem=="fugr" or acao_do_personagem=="fug" or acao_do_personagem=="fgir" or acao_do_personagem=="fir" or acao_do_personagem=="fgr" or acao_do_personagem=="ugir" or acao_do_personagem=="gir" or acao_do_personagem=="figr" or acao_do_personagem=="fu"):
-                    print("\nPostura de Batalha:\n"+str(aliado_jogador.nome)+"\n----------> fugitiva\n\n"+str(adversario_inimigo.nome)+"\n-----------> ofensiva\n\n")
+                    print "\n"+"Postura de Batalha:".center(79)+"\n\n"+str(aliado_jogador.nome)+str(adversario_inimigo.nome).rjust(79-len(aliado_jogador.nome))+"\n\n(fugitiva)"+"(ofensiva)".rjust(69)
                     time.sleep(2)
                     print("\nVoce tenta aumentar o ritmo de esquiva...\n")
                     time.sleep(2)
@@ -2442,13 +2521,13 @@ def batalha():
                             time.sleep(3)
                         else:
                             if(teste_de_sorte>5):
-                                print('\nVoce nao conseguiu uma brecha para fugir, nem pode se esquivar, mas pode se defender!\n')
+                                print('\nVoce nao conseguiu uma brecha para fugir, nem pode se esquivar, \nmas pode se defender!\n')
                                 time.sleep(3)
                                 calculo_do_dano = adversario_inimigo.status[0]+(random.randrange(adversario_inimigo.status[0]))-2*aliado_jogador.status[1]-(random.randrange(aliado_jogador.status[1]))
                                 if (calculo_do_dano<0):
                                     print('\nSua defesa E ENORME!')
                                     time.sleep(2)
-                                    print('Voce barrou o ataque naturalmente e conseguiu afastar o inimigo, criando uma brecha para fugir!\n')
+                                    print('Voce barrou o ataque naturalmente e conseguiu afastar o inimigo, \ncriando uma brecha para fugir!\n')
                                     time.sleep(3)
                                     print('\nDeseja fugir da luta?("sim" ou "nao")\n')
                                     time.sleep(1)
@@ -2482,7 +2561,7 @@ def batalha():
                                         time.sleep(3)
                                         aliado_jogador.status[6]=aliado_jogador.status[6]-calculo_do_dano
                                     else:
-                                        print("\nMesmo sem se defender, sua constituicao foi alta o suficiente para resistir \nao ataque do oponente.\n")
+                                        print("\nMesmo sem se defender, sua constituicao \nfoi alta o suficiente para resistir ao ataque do oponente.\n")
                                         time.sleep(3)
                                 else:
                                     print('\nVoce tropecou ao tentar fugir!\n')
@@ -2500,9 +2579,9 @@ def batalha():
                                             time.sleep(2)
                                             print("O limite dos seus pontos de vida cresceu!")
                                             time.sleep(2)
-                                            aliado_jogador.status[5]=aliado_jogador.status[5]+(random.randrange(aliado_jogador.status[5]))+1
+                                            aliado_jogador.status[5]=aliado_jogador.status[5]+int((random.randrange(aliado_jogador.status[5]))/6)+3
                                     else:
-                                        print("\nMesmo sem se defender, sua constituicao foi alta o suficiente para resistir \nao ataque do oponente.\n")
+                                        print("\nMesmo sem se defender, sua constituicao \nfoi alta o suficiente para resistir ao ataque do oponente.\n")
                                         time.sleep(3)
                     calculo_da_fuga=calculo_da_fuga+((aliado_jogador.status[2]-adversario_inimigo.status[2])*0.10)+((aliado_jogador.status[3]-adversario_inimigo.status[3])*0.10)
                     if(batalha_escapar =="sim"):
@@ -2525,6 +2604,72 @@ def batalha():
                 print("\nVoce conseguiu escapar!\n")
                 time.sleep(3)
                 batalha_escapar="escapou"
+
+#--Ruas Perigosas--#
+def ruasPerigosas(distancia_restante,periculosidade_ruas):
+#    distancia_restante=10
+#    periculosidade_ruas=1
+    caminhada_perigosa=0
+    if(ponto_de_save==3):
+        print 'Sao 10 ruas perigosas de distancia ate a escola'
+        time.sleep(3)
+    while caminhada_perigosa<distancia_restante:
+        teste_de_sorte=random.randrange(100)
+        if(distancia_restante<=2):periculosidade_ruas-=2
+        if(periculosidade_ruas<3):
+            if(teste_de_sorte<10): batalha(estudante_30)
+            elif(teste_de_sorte<20): batalha(arruaceiro_00)
+            elif(teste_de_sorte<30): batalha(estudante_31)
+            elif(teste_de_sorte<40): batalha(arruaceiro_01)
+            elif(teste_de_sorte<50): batalha(estuadante_32)
+            elif(teste_de_sorte<60): batalha(arruaceiro_02)
+            elif(teste_de_sorte<70): batalha(estudante_33)
+            elif(teste_de_sorte<80): batalha(arruaceiro_03)
+            elif(teste_de_sorte<90): batalha(estudante_34)
+            elif(teste_de_sorte<100): batalha(arruaceiro_04)
+        elif(periculosidade_ruas<5):
+            if(teste_de_sorte<10): batalha(arruaceiro_00)
+            elif(teste_de_sorte<20): batalha(arruaceiro_01)
+            elif(teste_de_sorte<30): batalha(arruaceiro_02)
+            elif(teste_de_sorte<40): batalha(arruaceiro_03)
+            elif(teste_de_sorte<50): batalha(arruaceiro_03)
+            elif(teste_de_sorte<60): batalha(arruaceiro_04)
+            elif(teste_de_sorte<70): batalha(arruaceiro_04)
+            elif(teste_de_sorte<80): batalha(estudante_31)
+            elif(teste_de_sorte<90): batalha(estudante_32)
+            elif(teste_de_sorte<100): batalha(estudante_33)
+        elif(periculosidade_ruas<7):
+            if(teste_de_sorte<10): batalha(arruaceiro_01)
+            elif(teste_de_sorte<20): batalha(arruaceiro_02)
+            elif(teste_de_sorte<30): batalha(arruaceiro_03)
+            elif(teste_de_sorte<40): batalha(arruaceiro_04)
+            elif(teste_de_sorte<50): batalha(arruaceiro_04)
+            elif(teste_de_sorte<60): batalha(arruaceiro_05)
+            elif(teste_de_sorte<70): batalha(arruaceiro_05)
+            elif(teste_de_sorte<80): batalha(arruaceiro_06)
+            elif(teste_de_sorte<90): batalha(arruaceiro_06)
+            elif(teste_de_sorte<100): batalha(arruaceiro_07)
+        elif(periculosidade_ruas<9):
+            if(teste_de_sorte<10): batalha(arruaceiro_04)
+            elif(teste_de_sorte<20): batalha(arruaceiro_05)
+            elif(teste_de_sorte<30): batalha(arruaceiro_05)
+            elif(teste_de_sorte<40): batalha(arruaceiro_06)
+            elif(teste_de_sorte<50): batalha(arruaceiro_06)
+            elif(teste_de_sorte<60): batalha(arruaceiro_07)
+            elif(teste_de_sorte<70): batalha(arruaceiro_07)
+            elif(teste_de_sorte<80): batalha(arruaceiro_08)
+            elif(teste_de_sorte<90): batalha(arruaceiro_08)
+            elif(teste_de_sorte<100): batalha(estudante_40)
+        teste_de_sorte=random.randrange(100)
+        if(teste_de_sorte<50):
+            print 'O seu oponente deixou cair dinheiro no chao durante a luta!'
+            time.sleep(2)
+            aliado_jogador.dinheiro+=adversario_inimigo.dinheiro*0.15
+            print 'Voce juntou '+adversario_inimigo.dinheiro*0.10+' Reais do chao!'
+        if(aliado_jogador.furtar>0): aliado_jogador.dinheiro += adversario_inimigo.dinheiro*0.05*aliado_jogador.furtar*aliado_jogador.status[3]
+        distancia_restante-=1
+        periculosidade_ruas+=1
+    
 
 #--Matar alguem--#
 def matarAlguem():
@@ -2627,7 +2772,6 @@ def seuPredioQuartoAndar():
                         time.sleep(2)
                         print(' - Como nao pegamos leve, nos apresentamos um "cartao de visita" ao oponente, para ele saber se e capaz de sobreviver.')
                         time.sleep(2)
-                        adversario_inimigo = estudante_40
                         print(" - Aqui esta o meu: ")
                         time.sleep(1)
                         print("\n"+str(adversario_inimigo.nome)+": "+str(adversario_inimigo.status[5])+"pontos de vida.\nAtaque : "+str(adversario_inimigo.status[0])+".     Defesa : "+str(adversario_inimigo.status[1])+".\n")
@@ -2641,7 +2785,7 @@ def seuPredioQuartoAndar():
                                 break
                             else:
                                 if(acao_do_personagem=="sim" or acao_do_personagem=="s" or acao_do_personagem=="si" or acao_do_personagem=="sm" or acao_do_personagem=="im" or acao_do_personagem=="ssim"):
-                                    batalha()
+                                    batalha(estudante_40)
                                     if(aliado_jogador.status[6]<=0):break
                                     if(adversario_inimigo.status[6]>0):
                                         while (adversario_inimigo.status[6]>0):
@@ -2653,7 +2797,7 @@ def seuPredioQuartoAndar():
                                                 if(acao_do_personagem == "nao" or acao_do_personagem=="n" or acao_do_personagem=="nao" or acao_do_personagem=="no" or acao_do_personagem=="na" or acao_do_personagem=="na" or acao_do_personagem=="ao" or acao_do_personagem=="ao" or acao_do_personagem=="ñ" or acao_do_personagem=="ñao" or acao_do_personagem=="ño" or acao_do_personagem=="ñõ" or acao_do_personagem=="ña" or acao_do_personagem=="ñaõ" or acao_do_personagem=="aõ"):
                                                     print(" - Entao vamos voltar a lutar!")
                                                     time.sleep(2)
-                                                    batalha()
+                                                    batalha(estudante_40)
                                                 else:
                                                     if(acao_do_personagem=="sim" or acao_do_personagem=="s" or acao_do_personagem=="si" or acao_do_personagem=="sm" or acao_do_personagem=="im" or acao_do_personagem=="ssim"):
                                                         print(" - Tem certeza?(sim ou nao) ... Se voce fugir, deixara METADE DE TODO O SEU DINHEIRO conosco!")
@@ -2669,7 +2813,7 @@ def seuPredioQuartoAndar():
                                                             if(acao_do_personagem == "nao" or acao_do_personagem=="n" or acao_do_personagem=="nao" or acao_do_personagem=="no" or acao_do_personagem=="na" or acao_do_personagem=="na" or acao_do_personagem=="ao" or acao_do_personagem=="ao" or acao_do_personagem=="ñ" or acao_do_personagem=="ñao" or acao_do_personagem=="ño" or acao_do_personagem=="ñõ" or acao_do_personagem=="ña" or acao_do_personagem=="ñaõ" or acao_do_personagem=="aõ"):
                                                                 print(" - Entao vamos voltar a lutar!")
                                                                 time.sleep(2)
-                                                                batalha()
+                                                                batalha(estudante_40)
                                                             else:
                                                                 print('ENTRADA INVALIDA! Digite "sim" ou "nao".\n')
                                                                 time.sleep(1)
@@ -2695,7 +2839,6 @@ def seuPredioQuartoAndar():
                         if(situacao[0]==7):
                             print(' - SERA que voce esta PRONTO para brigar comigo, fracote??? Hahahahaha!')
                             time.sleep(2)
-                            adversario_inimigo = estudante_41
                             print(" - Aqui esta o meu cartao: ")
                             time.sleep(1)
                             print("\n"+str(adversario_inimigo.nome)+": "+str(adversario_inimigo.status[5])+"pontos de vida.\nAtaque : "+str(adversario_inimigo.status[0])+".     Defesa : "+str(adversario_inimigo.status[1])+".\n")
@@ -2709,7 +2852,7 @@ def seuPredioQuartoAndar():
                                     break
                                 else:
                                     if(acao_do_personagem=="sim" or acao_do_personagem=="s" or acao_do_personagem=="si" or acao_do_personagem=="sm" or acao_do_personagem=="im" or acao_do_personagem=="ssim"):
-                                        batalha()
+                                        batalha(estudante_41)
                                         if(aliado_jogador.status[6]<=0):break
                                         if(adversario_inimigo.status[6]>0):
                                             while (adversario_inimigo.status[6]>0):
@@ -2721,7 +2864,7 @@ def seuPredioQuartoAndar():
                                                     if(acao_do_personagem == "nao" or acao_do_personagem=="n" or acao_do_personagem=="nao" or acao_do_personagem=="no" or acao_do_personagem=="na" or acao_do_personagem=="na" or acao_do_personagem=="ao" or acao_do_personagem=="ao" or acao_do_personagem=="ñ" or acao_do_personagem=="ñao" or acao_do_personagem=="ño" or acao_do_personagem=="ñõ" or acao_do_personagem=="ña" or acao_do_personagem=="ñaõ" or acao_do_personagem=="aõ"):
                                                         print(" - Entao cai dentro!!!")
                                                         time.sleep(2)
-                                                        batalha()
+                                                        batalha(estudante_41)
                                                     else:
                                                         if(acao_do_personagem=="sim" or acao_do_personagem=="s" or acao_do_personagem=="si" or acao_do_personagem=="sm" or acao_do_personagem=="im" or acao_do_personagem=="ssim"):
                                                             print(" - E serio?(sim ou nao) ... Se voce fugir, deixara METADE DE TODO O SEU DINHEIRO conosco!")
@@ -2739,7 +2882,7 @@ def seuPredioQuartoAndar():
                                                                 if(acao_do_personagem == "nao" or acao_do_personagem=="n" or acao_do_personagem=="nao" or acao_do_personagem=="no" or acao_do_personagem=="na" or acao_do_personagem=="na" or acao_do_personagem=="ao" or acao_do_personagem=="ao" or acao_do_personagem=="ñ" or acao_do_personagem=="ñao" or acao_do_personagem=="ño" or acao_do_personagem=="ñõ" or acao_do_personagem=="ña" or acao_do_personagem=="ñaõ" or acao_do_personagem=="aõ"):
                                                                     print(" - Entao cai dentro!!!")
                                                                     time.sleep(2)
-                                                                    batalha()
+                                                                    batalha(estudante_41)
                                                                 else:
                                                                     print('ENTRADA INVALIDA! Digite "sim" ou "nao".\n')
                                                                     time.sleep(1)
@@ -2772,7 +2915,6 @@ def seuPredioQuartoAndar():
                             if(situacao[0]==8):
                                 print(' - Humhumhumhum... Voce vai perder...')
                                 time.sleep(2)
-                                adversario_inimigo = estudante_42
                                 print(" - Veja: ")
                                 time.sleep(1)
                                 print("\n"+str(adversario_inimigo.nome)+": "+str(adversario_inimigo.status[5])+"pontos de vida.\nAtaque : "+str(adversario_inimigo.status[0])+".     Defesa : "+str(adversario_inimigo.status[1])+".\n")
@@ -2786,7 +2928,7 @@ def seuPredioQuartoAndar():
                                         break
                                     else:
                                         if(acao_do_personagem=="sim" or acao_do_personagem=="s" or acao_do_personagem=="si" or acao_do_personagem=="sm" or acao_do_personagem=="im" or acao_do_personagem=="ssim"):
-                                            batalha()
+                                            batalha(estudante_42)
                                             if(aliado_jogador.status[6]<=0):break
                                             if(adversario_inimigo.status[6]>0):
                                                 while (adversario_inimigo.status[6]>0):
@@ -2798,7 +2940,7 @@ def seuPredioQuartoAndar():
                                                         if(acao_do_personagem == "nao" or acao_do_personagem=="n" or acao_do_personagem=="nao" or acao_do_personagem=="no" or acao_do_personagem=="na" or acao_do_personagem=="na" or acao_do_personagem=="ao" or acao_do_personagem=="ao" or acao_do_personagem=="ñ" or acao_do_personagem=="ñao" or acao_do_personagem=="ño" or acao_do_personagem=="ñõ" or acao_do_personagem=="ña" or acao_do_personagem=="ñaõ" or acao_do_personagem=="aõ"):
                                                             print(" - Venha!!!")
                                                             time.sleep(2)
-                                                            batalha()
+                                                            batalha(estudante_42)
                                                         else:
                                                             if(acao_do_personagem=="sim" or acao_do_personagem=="s" or acao_do_personagem=="si" or acao_do_personagem=="sm" or acao_do_personagem=="im" or acao_do_personagem=="ssim"):
                                                                 print(" - Voce vai mesmo?(sim ou nao) ... Se voce fugir, deixara METADE DE TODO O SEU DINHEIRO conosco!")
@@ -2816,7 +2958,7 @@ def seuPredioQuartoAndar():
                                                                     if(acao_do_personagem == "nao" or acao_do_personagem=="n" or acao_do_personagem=="nao" or acao_do_personagem=="no" or acao_do_personagem=="na" or acao_do_personagem=="na" or acao_do_personagem=="ao" or acao_do_personagem=="ao" or acao_do_personagem=="ñ" or acao_do_personagem=="ñao" or acao_do_personagem=="ño" or acao_do_personagem=="ñõ" or acao_do_personagem=="ña" or acao_do_personagem=="ñaõ" or acao_do_personagem=="aõ"):
                                                                         print(" - Venha!!!")
                                                                         time.sleep(2)
-                                                                        batalha()
+                                                                        batalha(estudante_42)
                                                                     else:
                                                                         print('ENTRADA INVALIDA! Digite "sim" ou "nao".\n')
                                                                         time.sleep(1)
@@ -2847,7 +2989,6 @@ def seuPredioQuartoAndar():
                                 if(situacao[0]==9):
                                     print(' - Sua presenca e insignificante.')
                                     time.sleep(2)
-                                    adversario_inimigo = estudante_43
                                     print(" - Mas vou te dar a honra de apreciar o meu cartao: ")
                                     time.sleep(1)
                                     print("\n"+str(adversario_inimigo.nome)+": "+str(adversario_inimigo.status[5])+"pontos de vida.\nAtaque : "+str(adversario_inimigo.status[0])+".     Defesa : "+str(adversario_inimigo.status[1])+".\n")
@@ -2861,7 +3002,7 @@ def seuPredioQuartoAndar():
                                             break
                                         else:
                                             if(acao_do_personagem=="sim" or acao_do_personagem=="s" or acao_do_personagem=="si" or acao_do_personagem=="sm" or acao_do_personagem=="im" or acao_do_personagem=="ssim"):
-                                                batalha()
+                                                batalha(estudante_43)
                                                 if(aliado_jogador.status[6]<=0):break
                                                 if(adversario_inimigo.status[6]>0):
                                                     while (adversario_inimigo.status[6]>0):
@@ -2873,7 +3014,7 @@ def seuPredioQuartoAndar():
                                                             if(acao_do_personagem == "nao" or acao_do_personagem=="n" or acao_do_personagem=="nao" or acao_do_personagem=="no" or acao_do_personagem=="na" or acao_do_personagem=="na" or acao_do_personagem=="ao" or acao_do_personagem=="ao" or acao_do_personagem=="ñ" or acao_do_personagem=="ñao" or acao_do_personagem=="ño" or acao_do_personagem=="ñõ" or acao_do_personagem=="ña" or acao_do_personagem=="ñaõ" or acao_do_personagem=="aõ"):
                                                                 print(" - Voce vai MORRER!!!")
                                                                 time.sleep(2)
-                                                                batalha()
+                                                                batalha(estudante_43)
                                                             else:
                                                                 if(acao_do_personagem=="sim" or acao_do_personagem=="s" or acao_do_personagem=="si" or acao_do_personagem=="sm" or acao_do_personagem=="im" or acao_do_personagem=="ssim"):
                                                                     print(" - Vai fugir mesmo, lixo?(sim ou nao) ... Se voce fugir, deixara METADE DE TODO O SEU DINHEIRO conosco!")
@@ -2891,7 +3032,7 @@ def seuPredioQuartoAndar():
                                                                         if(acao_do_personagem == "nao" or acao_do_personagem=="n" or acao_do_personagem=="nao" or acao_do_personagem=="no" or acao_do_personagem=="na" or acao_do_personagem=="na" or acao_do_personagem=="ao" or acao_do_personagem=="ao" or acao_do_personagem=="ñ" or acao_do_personagem=="ñao" or acao_do_personagem=="ño" or acao_do_personagem=="ñõ" or acao_do_personagem=="ña" or acao_do_personagem=="ñaõ" or acao_do_personagem=="aõ"):
                                                                             print(" - Voce vai MORRER!!!")
                                                                             time.sleep(2)
-                                                                            batalha()
+                                                                            batalha(estudante_43)
                                                                         else:
                                                                             print('ENTRADA INVALIDA! Digite "sim" ou "nao".\n')
                                                                             time.sleep(1)
@@ -2928,7 +3069,6 @@ def seuPredioQuartoAndar():
                                         time.sleep(2)
                                         print(" - Voce e um briguento e tanto!")
                                         time.sleep(2)
-                                        adversario_inimigo = estudante_44
                                         print(" - Vamos logo ao que interessa: ")
                                         time.sleep(1)
                                         print("\n"+str(adversario_inimigo.nome)+": "+str(adversario_inimigo.status[5])+"pontos de vida.\nAtaque : "+str(adversario_inimigo.status[0])+".     Defesa : "+str(adversario_inimigo.status[1])+".\n")
@@ -2942,7 +3082,7 @@ def seuPredioQuartoAndar():
                                                 break
                                             else:
                                                 if(acao_do_personagem=="sim" or acao_do_personagem=="s" or acao_do_personagem=="si" or acao_do_personagem=="sm" or acao_do_personagem=="im" or acao_do_personagem=="ssim"):
-                                                    batalha()
+                                                    batalha(estudante_44)
                                                     if(aliado_jogador.status[6]<=0):break
                                                     if(adversario_inimigo.status[6]>0):
                                                         while (adversario_inimigo.status[6]>0):
@@ -2954,7 +3094,7 @@ def seuPredioQuartoAndar():
                                                                 if(acao_do_personagem == "nao" or acao_do_personagem=="n" or acao_do_personagem=="nao" or acao_do_personagem=="no" or acao_do_personagem=="na" or acao_do_personagem=="na" or acao_do_personagem=="ao" or acao_do_personagem=="ao" or acao_do_personagem=="ñ" or acao_do_personagem=="ñao" or acao_do_personagem=="ño" or acao_do_personagem=="ñõ" or acao_do_personagem=="ña" or acao_do_personagem=="ñaõ" or acao_do_personagem=="aõ"):
                                                                     print(" - Desde o inicio, eu sabia que voce nao era qualquer um!")
                                                                     time.sleep(2)
-                                                                    batalha()
+                                                                    batalha(estudante_44)
                                                                 else:
                                                                     if(acao_do_personagem=="sim" or acao_do_personagem=="s" or acao_do_personagem=="si" or acao_do_personagem=="sm" or acao_do_personagem=="im" or acao_do_personagem=="ssim"):
                                                                         print(" - Certeza, vai abandonar a ultima luta?(sim ou nao) ... Se voce fugir, deixara METADE DE TODO O SEU DINHEIRO conosco!")
@@ -2972,7 +3112,7 @@ def seuPredioQuartoAndar():
                                                                             if(acao_do_personagem == "nao" or acao_do_personagem=="n" or acao_do_personagem=="nao" or acao_do_personagem=="no" or acao_do_personagem=="na" or acao_do_personagem=="na" or acao_do_personagem=="ao" or acao_do_personagem=="ao" or acao_do_personagem=="ñ" or acao_do_personagem=="ñao" or acao_do_personagem=="ño" or acao_do_personagem=="ñõ" or acao_do_personagem=="ña" or acao_do_personagem=="ñaõ" or acao_do_personagem=="aõ"):
                                                                                 print(" - Ainda bem, nao quero deixar a nossa luta para depois!!!")
                                                                                 time.sleep(2)
-                                                                                batalha()
+                                                                                batalha(estudante_44)
                                                                             else:
                                                                                 print('ENTRADA INVALIDA! Digite "sim" ou "nao".\n')
                                                                                 time.sleep(1)
@@ -3129,8 +3269,7 @@ def seuPredioTerceiroAndar():
                         if(situacao[5] == 0):
                             print("Eu sou o seu oponente! Venca todos deste andar para subir!")
                             time.sleep(2)
-                            adversario_inimigo = estudante_30
-                            batalha()
+                            batalha(estudante_30)
                             if(aliado_jogador.status[6]<=0):
                                 aliado_jogador.status[6]=1
                                 print(" - Voce e fraco, se fosse uma luta no andar de cima voce teria morrido!")
@@ -3142,7 +3281,7 @@ def seuPredioTerceiroAndar():
                                     while (adversario_inimigo.status[6]>0):
                                         print(" - Voce nao pode fugir das lutas, e uma regra para continuar no desafio e ganhar o premio!")
                                         time.sleep(2)
-                                        batalha()
+                                        batalha(estudante_30)
                                         if(aliado_jogador.status[6]<=0):
                                             aliado_jogador.status[6]=1
                                             print(" - Voce e fraco, se fosse uma luta no andar de cima voce teria morrido!")
@@ -3189,8 +3328,7 @@ def seuPredioTerceiroAndar():
                             if(situacao[6] == 0):
                                 print(" - Voce e o desafiante??? Parece um fracote!")
                                 time.sleep(2)
-                                adversario_inimigo = estudante_31
-                                batalha()
+                                batalha(estudante_31)
                                 if(aliado_jogador.status[6]<=0):
                                     aliado_jogador.status[6]=1
                                     print(" - Voce e mesmo um fracote!")
@@ -3202,7 +3340,7 @@ def seuPredioTerceiroAndar():
                                         while (adversario_inimigo.status[6]>0):
                                             print(" - Volte aqui seu fracote! Nao seja um covarde! Voce nao pode fugir de TODAS as lutas!")
                                             time.sleep(2)
-                                            batalha()
+                                            batalha(estudante_31)
                                             if(aliado_jogador.status[6]<=0):
                                                 aliado_jogador.status[6]=1
                                                 print(" - Voce e mesmo um fracote!")
@@ -3249,8 +3387,7 @@ def seuPredioTerceiroAndar():
                                 if(situacao[7]==0):
                                     print(" - Cai dentro, rapa!")
                                     time.sleep(2)
-                                    adversario_inimigo = estudante_32
-                                    batalha()
+                                    batalha(estudante_32)
                                     if(aliado_jogador.status[6]<=0):
                                         aliado_jogador.status[6]=1
                                         print(" - Moleque criado a leite com pera!")
@@ -3262,7 +3399,7 @@ def seuPredioTerceiroAndar():
                                             while (adversario_inimigo.status[6]>0):
                                                 print(" - Ramelao, nao foge da luta, nao!")
                                                 time.sleep(2)
-                                                batalha()
+                                                batalha(estudante_32)
                                                 if(aliado_jogador.status[6]<=0):
                                                     aliado_jogador.status[6]=1
                                                     print(" - Moleque criado a leite com pera!")
@@ -3309,8 +3446,7 @@ def seuPredioTerceiroAndar():
                                     if(situacao[8]==0):
                                         print(" - OOo, CIDADAO!")
                                         time.sleep(2)
-                                        adversario_inimigo = estudante_33
-                                        batalha()
+                                        batalha(estudante_33)
                                         if(aliado_jogador.status[6]<=0):
                                             aliado_jogador.status[6]=1
                                             print(" - Olha la, o cara nao aguenta e depois vai chorando pra casa!")
@@ -3322,7 +3458,7 @@ def seuPredioTerceiroAndar():
                                                 while (adversario_inimigo.status[6]>0):
                                                     print(" - Ta na hora de acordar pra vida, cidadao!")
                                                     time.sleep(2)
-                                                    batalha()
+                                                    batalha(estudante_33)
                                                     if(aliado_jogador.status[6]<=0):
                                                         aliado_jogador.status[6]=1
                                                         print(" - Olha la, o cara nao aguenta e depois vai chorando pra casa!")
@@ -3369,8 +3505,7 @@ def seuPredioTerceiroAndar():
                                         if(situacao[9]==0):
                                             print(" - Qual e, velho? O negocio e descer o murro de ferro na cara do inimigo!")
                                             time.sleep(2)
-                                            adversario_inimigo = estudante_34
-                                            batalha()
+                                            batalha(estudante_34)
                                             if(aliado_jogador.status[6]<=0):
                                                 aliado_jogador.status[6]=1
                                                 print(" - Voce nao tem um sangue fervente o suficiente para derreter o metal!")
@@ -3382,7 +3517,7 @@ def seuPredioTerceiroAndar():
                                                     while (adversario_inimigo.status[6]>0):
                                                         print(" - As mentiras ja sao antigas demais, mas voce nao quer saber!\nCorrer e uma futilidade!")
                                                         time.sleep(2)
-                                                        batalha()
+                                                        batalha(estudante_34)
                                                         if(aliado_jogador.status[6]<=0):
                                                             aliado_jogador.status[6]=1
                                                             print(" - Voce nao tem um sangue fervente o suficiente para derreter o metal!")
@@ -3511,8 +3646,7 @@ def seuPredioSegundoAndar():
                             if(situacao[3]==6):
                                 print(" - Obrigado por me treinar, senhor.")
                                 time.sleep(2)
-                                adversario_inimigo = garoto_homem
-                                batalha()
+                                batalha(garoto_homem)
                                 if(aliado_jogador.status[6]<=0):
                                     aliado_jogador.status[6]=1
                                     print(" - Me supere. Estarei te esperando.")
@@ -3522,7 +3656,7 @@ def seuPredioSegundoAndar():
                                         while (adversario_inimigo.status[6]>0):
                                             print(" - Nao abandone nossa luta!")
                                             time.sleep(1)
-                                            batalha()
+                                            batalha(garoto_homem)
                                             if(aliado_jogador.status[6]<=0):
                                                 aliado_jogador.status[6]=1
                                                 print(" - Me supere. Estarei te esperando.")
@@ -3540,8 +3674,7 @@ def seuPredioSegundoAndar():
                             if(situacao[3]==5):
                                 print(" - Estou empolgado! Nao aguentava mais esperar pela nossa luta!")
                                 time.sleep(2)
-                                adversario_inimigo = garoto_forte
-                                batalha()
+                                batalha(garoto_forte)
                                 if(aliado_jogador.status[6]<=0):
                                     aliado_jogador.status[6]=1
                                     print(" - Quando voce estiver pronto para uma revanche, me procure novamente.")
@@ -3551,7 +3684,7 @@ def seuPredioSegundoAndar():
                                         while (adversario_inimigo.status[6]>0):
                                             print(" - A nossa luta nao acabou ainda!")
                                             time.sleep(1)
-                                            batalha()
+                                            batalha(garoto_forte)
                                             if(aliado_jogador.status[6]<=0):
                                                 aliado_jogador.status[6]=1
                                                 print(" - Quando voce estiver pronto para uma revanche, me procure novamente.")
@@ -3569,8 +3702,7 @@ def seuPredioSegundoAndar():
                             if(situacao[3]==4):
                                 print(" - Dessa vez nao vou perder tao facil!")
                                 time.sleep(2)
-                                adversario_inimigo = garoto_serio
-                                batalha()
+                                batalha(garoto_serio)
                                 if(aliado_jogador.status[6]<=0):
                                     aliado_jogador.status[6]=1
                                     print(" - Estou te levando a serio, nao vou perder mais!")
@@ -3582,7 +3714,7 @@ def seuPredioSegundoAndar():
                                         while (adversario_inimigo.status[6]>0):
                                             print(" - Honre a nossa luta ate o fim!")
                                             time.sleep(1)
-                                            batalha()
+                                            batalha(garoto_serio)
                                             if(aliado_jogador.status[6]<=0):
                                                 aliado_jogador.status[6]=1
                                                 print(" - Estou te levando a serio, nao vou perder mais!")
@@ -3602,8 +3734,7 @@ def seuPredioSegundoAndar():
                             if(situacao[3]==3):
                                 print(" - Eu estava te esperando, panaca!")
                                 time.sleep(2)
-                                adversario_inimigo = garoto_convencido
-                                batalha()
+                                batalha(garoto_convencido)
                                 if(aliado_jogador.status[6]<=0):
                                     aliado_jogador.status[6]=1
                                     print(" - Nao aguenta o tranco, nao? Hahaha!")
@@ -3615,7 +3746,7 @@ def seuPredioSegundoAndar():
                                         while (adversario_inimigo.status[6]>0):
                                             print(" - Volte aqui seu panaca!")
                                             time.sleep(1)
-                                            batalha()
+                                            batalha(garoto_convencido)
                                             if(aliado_jogador.status[6]<=0):
                                                 aliado_jogador.status[6]=1
                                                 print(" - Nao aguenta o tranco, nao? Hahaha!")
@@ -3635,8 +3766,7 @@ def seuPredioSegundoAndar():
                             if(situacao[3]==2):
                                 print(" - Meu avo disse que voce viria... - disse o garoto baixinho - Vamos logo ao que interessa!")
                                 time.sleep(2)
-                                adversario_inimigo = garoto_fracote
-                                batalha()
+                                batalha(garoto_fracote)
                                 if(aliado_jogador.status[6]<=0):
                                     aliado_jogador.status[6]=1
                                     print(" - Voce nao e tao forte quanto meu avo falou.")
@@ -3647,7 +3777,7 @@ def seuPredioSegundoAndar():
                                         while (adversario_inimigo.status[6]>0):
                                             print(" - Meu avo disse para nao parar de lutar ate eu nao aguentar mais!")
                                             time.sleep(1)
-                                            batalha()
+                                            batalha(garoto_fracote)
                                             if(aliado_jogador.status[6]<=0):
                                                 aliado_jogador.status[6]=1
                                                 print(" - Voce nao e tao forte quanto meu avo falou.")
@@ -3677,8 +3807,7 @@ def seuPredioSegundoAndar():
                                 time.sleep(0.5)
                                 print(" - Saia daqui entao!")
                                 time.sleep(2)
-                                adversario_inimigo = senhor_doente
-                                batalha()
+                                batalha(senhor_doente)
                                 if(aliado_jogador.status[6]<=0):break
                                 if(adversario_inimigo.status[6]>0):
                                     print("Depois de se afastar o senhor comecou a gritar...")
@@ -3693,10 +3822,7 @@ def seuPredioSegundoAndar():
                                     time.sleep(1)
                                     print(" - VOCE VAI PAGAR CARO!")
                                     time.sleep(2)
-                                    adversario_inimigo = garoto_irritado
-                                    inimigo.nome = "Garoto Perturbado"
-                                    inimigo.status = (2,10,1,1, 0,100,100)
-                                    batalha()
+                                    batalha(garoto_irritado)
                                     if(aliado_jogador.status[6]<=0):break
                                     if(adversario_inimigo.status[6]>0):
                                         print(" - SAIA JA DAQUI!")
@@ -3764,8 +3890,7 @@ def seuPredioSegundoAndar():
                                                 time.sleep(1)
                                                 print(" - VOCE VAI PAGAR CARO!")
                                                 time.sleep(1)
-                                                adversario_inimigo = garoto_irritado
-                                                batalha()
+                                                batalha(garoto_irritado)
                                                 if(aliado_jogador.status[6]<=0):break
                                                 if(adversario_inimigo.status[6]>0):
                                                     print(" - SAIA JA DAQUI!")
@@ -3888,8 +4013,7 @@ def seuPredioSegundoAndar():
                                             time.sleep(1)
                                             print(" - Quale merh-mao? Ta querenu treta?")
                                             time.sleep(2)
-                                            adversario_inimigo = mane_bone
-                                            batalha()
+                                            batalha(mane_bone)
                                             if(aliado_jogador.status[6]<=0):break
                                             if(adversario_inimigo.status[6]>0):
                                                 print("Ele corre atras de voce e te da um chute no joelho!")
@@ -4164,8 +4288,7 @@ def seuPredioPrimeiroAndar():
                                             time.sleep(3)
                                             print(" - VOCE VAI APANHAR MUITO AGORA!")
                                             time.sleep(3)
-                                            adversario_inimigo = mulher_toalha
-                                            batalha()
+                                            batalha(mulher_toalha)
                                             if(aliado_jogador.status[6]<=0):break
                                             if(adversario_inimigo.status[6]>0):
                                                 print(" - E NAO VOLTE MAIS AQUI!")
@@ -4222,8 +4345,7 @@ def seuPredioPrimeiroAndar():
                                             time.sleep(0.75)
                                             print(" - VOCE VAI PAGAR CARO POR MATAR MEU MARIDO!")
                                             time.sleep(1)
-                                            adversario_inimigo = mulher_prantos
-                                            batalha()
+                                            batalha(mulher_prantos)
                                             if(aliado_jogador.status[6]<=0):break
                                             if(adversario_inimigo.status[6]>0):
                                                 print(" - CHEGA!")
@@ -4336,8 +4458,7 @@ def seuPredioPrimeiroAndar():
                                                                         time.sleep(1)
                                                                         print(" - Ssseu muleque i-insstrosmestido!... *hic*\n")
                                                                         time.sleep(2)
-                                                                        adversario_inimigo = bebado_inimigo
-                                                                        batalha()
+                                                                        batalha(bebado_inimigo)
                                                                         if(aliado_jogador.status[6]<=0):break
                                                                         if(adversario_inimigo.status[6]>0):
                                                                             print("Voce escapa da briga, mas em seguida o bebado tosse sangue e cai no chao...")
@@ -4508,8 +4629,65 @@ def suaRua():
                                 variavel_lugar = "seu predio, 1o andar"
                                 seuPredioPrimeiroAndar()
                             else:
-                                print('\nEntrada Invalida!\n')
-                                time.sleep(0.5)
+                                if acao_do_personagem == "olhar" or acao_do_personagem=="olh" or acao_do_personagem == "ver" or acao_do_personagem == "olhar o quarto" or acao_do_personagem == "olha" or acao_do_personagem == "olhar quarto" or acao_do_personagem == "olha quarto" or acao_do_personagem == "olhar o quarto" or acao_do_personagem == "olha o quarto" or acao_do_personagem == "ve" or acao_do_personagem == "ve" :
+                                    print("Voce ve uma rua com predios de classe baixa,")
+                                    time.sleep(2)
+                                    print("poucas pessoas passando com cara de cansadas,")
+                                    time.sleep(2)
+                                    print("mas voce nao consegue ver o horizonte,")
+                                    time.sleep(2)
+                                    print("ja que os predios da rua sao altos e proximos demais uns dos outros.")
+                                    time.sleep(2)
+                                    print("Numa das duas esquinas ha um ponto de onibus, mas ambas terminam \ndobrando, limitando mais ainda o horizonte. ")
+                                    time.sleep(3)
+                                    print "..."
+                                    time.sleep(1.5)
+                                    print "Da a sensacao de morar numa caixa de sapatos suja!"
+                                    time.sleep(2)
+                                else:
+                                    if acao_do_personagem=="pegar onibus" or acao_do_personagem=="onibus" or acao_do_personagem=="ir onibus" or acao_do_personagem=="ir de onibus" :
+                                        print 'A passagem custa 5 Reais.'
+                                        time.sleep(1.5)
+                                        if aliado_jogador.dinheiro>=5:
+                                            while 5:
+                                                print 'Voce ira de onibus? (sim ou nao)'
+                                                acao_do_personagem=raw_input("-")
+                                                acao_do_personagem=acao_do_personagem.lower()
+                                                if(acao_do_personagem=="sim" or acao_do_personagem=="s" or acao_do_personagem=="si" or acao_do_personagem=="sm" or acao_do_personagem=="im" or acao_do_personagem=="ssim"):
+                                                    if(ponto_de_save==3):
+                                                        print '.'
+                                                        time.sleep(2)
+                                                        print '.'
+                                                        time.sleep(2)
+                                                        print '.'
+                                                        time.sleep(2)
+                                                        print 'O onibus chegou!!!'
+                                                        time.sleep(2)
+                                                        break
+                                                else:
+                                                    if(acao_do_personagem == "nao" or acao_do_personagem=="n" or acao_do_personagem=="nao" or acao_do_personagem=="no" or acao_do_personagem=="na" or acao_do_personagem=="na" or acao_do_personagem=="ao" or acao_do_personagem=="ao" or acao_do_personagem=="ñ" or acao_do_personagem=="ñao" or acao_do_personagem=="ño" or acao_do_personagem=="ñõ" or acao_do_personagem=="ña" or acao_do_personagem=="ñaõ" or acao_do_personagem=="aõ"):
+                                                        break
+                                                    else:
+                                                        print 'Nao entendi...'
+                                            if(acao_do_personagem=="sim" or acao_do_personagem=="s" or acao_do_personagem=="si" or acao_do_personagem=="sm" or acao_do_personagem=="im" or acao_do_personagem=="ssim"): break
+                                    else:
+                                        if acao_do_personagem=='ir a pe' or acao_do_personagem=='ir pe' or acao_do_personagem=='ir andando' or acao_do_personagem=='sair' or acao_do_personagem=='ir pra escola' or acao_do_personagem=='ir a escola' or acao_do_personagem=='ir para a escola' or acao_do_personagem=='ir a aula' or acao_do_personagem=='ir para a aula' or acao_do_personagem=='ir pra aula' or acao_do_personagem=='ir pra fatec' or acao_do_personagem=='ir para a fatec' or acao_do_personagem=='ir a fatec' or acao_do_personagem=='fatec' or acao_do_personagem=='ir pra facul' or acao_do_personagem=='ir para a faculdade' or acao_do_personagem=='ir pra faculdade' or acao_do_personagem=='ir a faculdade' or acao_do_personagem=='ir para faculdade' or acao_do_personagem=='pe' or acao_do_personagem=='ir para a proxima rua' or acao_do_personagem=='andando' or acao_do_personagem=='ir caminhando' or acao_do_personagem=='caminhando':
+                                            while 9:
+                                                print 'Voce ira a pe? (sim ou nao)'
+                                                acao_do_personagem=raw_input("-")
+                                                acao_do_personagem=acao_do_personagem.lower()
+                                                if(acao_do_personagem=="sim" or acao_do_personagem=="s" or acao_do_personagem=="si" or acao_do_personagem=="sm" or acao_do_personagem=="im" or acao_do_personagem=="ssim"):
+                                                    if(ponto_de_save==3):
+                                                        ruasPerigosas(10,1)
+                                                        break
+                                                else:
+                                                    if(acao_do_personagem == "nao" or acao_do_personagem=="n" or acao_do_personagem=="nao" or acao_do_personagem=="no" or acao_do_personagem=="na" or acao_do_personagem=="na" or acao_do_personagem=="ao" or acao_do_personagem=="ao" or acao_do_personagem=="ñ" or acao_do_personagem=="ñao" or acao_do_personagem=="ño" or acao_do_personagem=="ñõ" or acao_do_personagem=="ña" or acao_do_personagem=="ñaõ" or acao_do_personagem=="aõ"):
+                                                        break
+                                                    else:
+                                                        print 'Nao entendi...'
+                                        else:
+                                            print('\nEntrada Invalida!\n')
+                                            time.sleep(0.5)
         
 
         
@@ -4716,10 +4894,14 @@ while 1:
                         print('Entrada invalida!\n')
         if(ponto_de_save==0):
             print("\nIniciando novo jogo...\n")
+            inventarioPersonagem()
             time.sleep(2)
-            print("\n\nVoce e um homem... Qual e o seu nome?\n")
-            aliado_jogador.nome = raw_input("-")
-            aliado_jogador.nome = aliado_jogador.nome.capitalize() 
+            print("\n\nVoce e um homem... Qual e o seu nome? (maximo 25 caracteres)\n")
+            while 1:
+                aliado_jogador.nome = raw_input("-")
+                aliado_jogador.nome = aliado_jogador.nome.capitalize()
+                if len(str(aliado_jogador.nome))>25: print 'Entrada invalida: digite um nome com 25 caracteres ou menos!'
+                else: break
             while 1:
                 print("Seu nome e "+str(aliado_jogador.nome)+ "?")
                 while 2:
@@ -4729,8 +4911,11 @@ while 1:
                         break
                     else:
                         if(acao_do_personagem == "na" or acao_do_personagem=="n" or acao_do_personagem=="nao" or acao_do_personagem=="no" or acao_do_personagem=="na" or acao_do_personagem=="na" or acao_do_personagem=="ao" or acao_do_personagem=="ao" or acao_do_personagem=="ñ" or acao_do_personagem=="ñao" or acao_do_personagem=="ño" or acao_do_personagem=="ñõ" or acao_do_personagem=="ña" or acao_do_personagem=="ñaõ" or acao_do_personagem=="aõ"):
-                            print("\nEntao qual e o seu nome?\n")
-                            aliado_jogador.nome = raw_input("-")
+                            print("\nEntao qual e o seu nome?")
+                            while 1:
+                                aliado_jogador.nome = raw_input("-")
+                                if len(str(aliado_jogador.nome))>25: print 'Entrada invalida: digite um nome com 25 caracteres ou menos!'
+                                else: break
                             break
                         else:
                             print('\nEntrada invalida, digite "sim" ou "nao".\n')
@@ -4739,15 +4924,15 @@ while 1:
                     break
             print("Muito prazer, "+str(aliado_jogador.nome)+'.')
             time.sleep(2)
-            print('Nos ja nos conhecemos?(digite "nao" para ver o tutorial)\n')
+            print 'Nos ja nos conhecemos?'
+            time.sleep(0.5)
+            print '(digite "nao" para ver o tutorial)'
             acao_do_personagem = raw_input("-")
             acao_do_personagem = acao_do_personagem.lower()
             while 1:
                 if(acao_do_personagem=="sim" or acao_do_personagem=="s" or acao_do_personagem=="si" or acao_do_personagem=="sm" or acao_do_personagem=="im" or acao_do_personagem=="ssim"):
-                    print('Tem certeza??')
-                    time.sleep(2)
-                    print('Nao me lembro de voce...')
-                    time.sleep(1)
+                    print('Nao me lembro de voce... Tem certeza de que nos conhecemos???')
+                    time.sleep(0.5)
                     print('(eu REALMENTE recomendo que voce digite "nao" para ver o tutorial!)')
                     acao_do_personagem = raw_input("-")
                     acao_do_personagem = acao_do_personagem.lower()
@@ -4768,19 +4953,19 @@ while 1:
                         print('\nSou o narrador da nossa historia, vou apenas te guiar de acordo com as suas \ndecisoes...')
                         time.sleep(3)
                         print('Entao saiba que nao vou facilitar as coisas para voce!')
-                        time.sleep(4)
+                        time.sleep(3)
                         print('Porem minha funcao e te guiar, ser os seus olhos, ouvidos, maos e nariz,')
-                        time.sleep(4)
+                        time.sleep(3)
                         print('e alem disso voce parece precisar de algumas instrucoes para tornar disso algo \nmais divertido.')
-                        time.sleep(4)
+                        time.sleep(3)
                         print('\nToda vez antes da sua acao te mostrarei uma lista de acoes possiveis de se \nrealizar.')
                         time.sleep(3)
                         print('\nE tambem te mostrarei se a sua acao for invalida.')
                         time.sleep(2)
                         print('\nMas voce so recebera minha atencao quando eu pedir,')
-                        time.sleep(5)
+                        time.sleep(3)
                         print('voce percebera isso quando ver um hifen apos a minha pergunta.')
-                        time.sleep(5)
+                        time.sleep(3)
                         print('Entendeu?')
                         acao_do_personagem = raw_input("-")
                         acao_do_personagem = acao_do_personagem.lower()
@@ -4800,9 +4985,9 @@ while 1:
                         print('\nToda vez que voce descobre algo novo no cenario, a lista de acoes muda,')
                         time.sleep(3)
                         print('mas os resultados dessas acoes podem mudar de acordo com o que voce faz,')
-                        time.sleep(4)
+                        time.sleep(3)
                         print('sendo assim e altamente recomendavel que voce repita algumas acoes em um mesmo \ncenario.')
-                        time.sleep(4)
+                        time.sleep(3)
                         print('\nAcho que ja e o bastante para comecarmos, mas posso repetir se voce quiser...')
                         time.sleep(2)
                         print('Voce entendeu tudo o que eu disse?')
@@ -4824,7 +5009,7 @@ while 1:
                 print("Eu nao me lembro de voce...")
                 time.sleep(1)
                 print("Entao voce deve ser mesmo irrelevante!")
-                time.sleep(2)
+                time.sleep(1)
 
 #####################----------------------------__INICIO DO JOGO__----------------------------#####################
             print("\nCenario: acabou de amanhecer, seu quarto esta desarrumado,")
@@ -4967,14 +5152,13 @@ while 1:
                                                             print('Ele olhou bem no fundo dos seus olhos e disse "Voce e um idiota."...')
                                                             time.sleep(1)
                                                             print('Nao, ele nao disse isso... Na verdade fui eu quem disse isso, seu idiota.')
-                                                            time.sleep(1)
+                                                            time.sleep(3)
                                                             eegg = 5
                                                         else:
                                                             if (eegg == 5):
                                                                 print("Ja chega! Voce esgotou minha paciencia!")
                                                                 time.sleep(1.5)
-                                                                adversario_inimigo = narrador_inimigo
-                                                                batalha()
+                                                                batalha(narrador_inimigo)
                                                                 if(aliado_jogador.status[6]<=0):break
                                                                 if(adversario_inimigo.status[6]>0):
                                                                     print("Vou te deixar em paz por agora, mas tente voltar a me irritar para ver o que te acontece!")
@@ -5168,8 +5352,7 @@ while 1:
             time.sleep(2)
             print(" - EU VOU TE QUEBRAR ATE VOCE ME DAR O DINHEIRO!!!\n")
             time.sleep(2)
-            adversario_inimigo = bandido_comparsa
-            batalha()
+            batalha(bandido_comparsa)
             if(aliado_jogador.status[6]<=0):
                 aliado_jogador.status[6]=1
                 print("Voce caiu no chao...")
@@ -5199,7 +5382,7 @@ while 1:
                 time.sleep(6)
                 aliado_reserva = aliado_jogador
                 aliado_jogador = aliado_headbanger
-                batalha()
+                batalha(bandido_comparsa)
                 aliado_jogador = aliado_reserva
                 print(" - Pare! Por favor!\n")
                 time.sleep(3)
@@ -5225,7 +5408,7 @@ while 1:
                 if(adversario_inimigo.status[6]>0):
                     while(adversario_inimigo.status[6]>0):
                         print("Voce correu um pouco mas ele te alcancou de novo!\n")
-                        batalha()
+                        batalha(bandido_comparsa)
                         if(aliado_jogador.status[6]<=0):
                             aliado_jogador.status[6]=1
                             print("Voce caiu no chao...")
@@ -5255,7 +5438,7 @@ while 1:
                             time.sleep(6)
                             aliado_reserva = aliado_jogador
                             aliado_jogador = aliado_headbanger
-                            batalha()
+                            batalha(bandido_comparsa)
                             aliado_headbanger = aliado_jogador
                             aliado_jogador = aliado_reserva
                             print(" - Pare! Por favor!\n")
@@ -5300,8 +5483,7 @@ while 1:
                     time.sleep(3)
                     print(" - Agora voce vai entregar o dinheiro, ou nao vai?! - inqueriu, o motoqueiro montado em sua Twister 250.")
                     time.sleep(3)
-                    adversario_inimigo = motoqueiro_comparsa
-                    batalha()
+                    batalha(motoqueiro_comparsa)
                     if(aliado_jogador.status[6]<=0): break
                     if(adversario_inimigo.status[6]>0):
                         print("Correndo entre uns becos da sua rua, voce conseguiu se esconder...")
