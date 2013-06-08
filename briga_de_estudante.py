@@ -28,13 +28,13 @@ desequipado_capa = Item("Nada", 0,0,0,0, 0,0,0, 0, "capa")
 desequipado_luva = Item("Nada", 0,0,0,0, 0,0,0, 0, "luva")
 desequipado_anel = Item("Nada", 0,0,0,0, 0,0,0, 0, "anel")
 desequipado_maos = Item("Nada", 0,0,0,0, 0,0,0, 0, "arma")
-desequipado_calcado = Item("Nada", 0,0,0,0, 0,0,0, 0, "pes")
+desequipado_calcado = Item("Nada", 0,0,0,0, 0,0,0, 0, "calcado")
 espaco_vazio = Item("Vazio", 0,0,0,0, 0,0,0, 0, "inventario")
 pijama_inicial = Item("Pijama", 0,0,0,5, 5,0,0, 5, "roupa")
 uniforme_estudantil = Item("Uniforme Estudantil", 0,1,0,0, 0,0,0, 20, "roupa")
 lapis_apontado = Item("Lapis Apontado", 3,0,0,1, 0,0,0, 2, "arma")
-chinelo_inicial = Item("Chinelos", 0,0,0,-5, 0,0,0, 5,"pes")
-tenis_simplorio = Item("Tenis Simplorio", 0,1,2,0, 0,0,0, 50, "pes")
+chinelo_inicial = Item("Chinelos", 0,0,0,-5, 0,0,0, 5,"calcado")
+tenis_simplorio = Item("Tenis Simplorio", 0,1,2,0, 0,0,0, 50, "calcado")
 
 class Personagem(object):
     def __init__(self, nome, ataque, defesa, agilidade, sorte, taxarecuperacao, vidamaxima, vidaatual, dinheiro, furtar, identificacao, roupa, capa, luva, anel, maos, calcado):
@@ -127,12 +127,12 @@ arruaceiro_18 = Personagem("Arruaceiro", 50,50,10,10, 8,400,400, 40,0, "inimigo"
 
 #-- _itens_ --#
 #nome, ataque, defesa, agilidade, sorte, taxarecuperacao, vidamaxima, vidaatual, preco, tipo
-#-- _comida_ --#
-pedaco_pizza = Item("Pedaco de Pizza", 0,0,0,0, 0,0,50, 5, "comida")
-super_tudo = Item("Super X-Tudo", 0,0,0,0, 0,0,aliado_jogador.status[5], 100, "comida")
+#-- _consumivel_ --#
+pedaco_pizza = Item("Pedaco de Pizza", 0,0,0,0, 0,0,50, 5, "consumivel")
+super_tudo = Item("Super X-Tudo", 0,0,0,0, 0,0,aliado_jogador.status[5], 100, "consumivel")
 #-- _aprimoramento_ --#
-suplemento_alimenticio = Item("Suplemento Alimenticio", 10,0,0,0, 0,0,0, 5, "pocao")
-lata_energetico = Item("Energetico", 0,0,0,0, 1,50,0, 5, "pocao")
+suplemento_alimenticio = Item("Suplemento Alimenticio", 10,0,0,0, 0,0,0, 5, "consumivel de aprimoramento")
+lata_energetico = Item("Energetico", 0,0,0,0, 1,50,0, 5, "consumivel de aprimoramento")
 #-- _roupa_ --#
 bermuda_linho_regata = Item("Bermuda de Linho e Regata ", 0,1,4,0, 0,0,0, 100, "roupa")
 bermuda_linho_polo = Item("Bermuda de Linho e Polo", 0,2,3,2, 0,0,0, 140, "roupa")
@@ -176,15 +176,15 @@ anel_da_divindade = Item("Anel da Divindade", aliado_jogador.status[0]*2,aliado_
 #-- _arma_ --#
 punhal_envelhecido = Item("Punhal Envelhecido", 10,0,0,3, 0,0,0, 300, "arma")
 talheres_prata = Item("Talheres de prata(Garfo e Faca)", 8,0,0,0, 0,0,0, 10, "arma")
-#-- _pes_ --#
-papetes_masculinas = Item("Papetes Masculinas", 0,0,1,0, 0,0,0, 15, "pes")
-tenis_velho = Item("Tenis Velho", 0,0,2,0, 0,0,0, 10, "pes")
-sapato_simplorio = Item("Sapato Simplorio", 0,2,1,0, 0,0,0, 50, "pes")
-tenis_comum = Item("Tenis Comum", 0,2,2,0, 0,0,0, 90, "pes")
-tenis_trilha = Item("Tenis de Trilha", 2,8,3,0, 0,0,0, 400, "pes")
-tenis_caminhada = Item("Tenis de Caminhada", 0,3,5,0, 0,0,0, 300, "pes")
-tenis_corrida = Item("Tenis de Corrida", 0,5,10,0, 0,0,0, 500, "pes")
-tenis_ZX5000 = Item("Tenis ZX-5000", 10,10,11,5, 0,0,0, 15000, "pes")
+#-- _calcado_ --#
+papetes_masculinas = Item("Papetes Masculinas", 0,0,1,0, 0,0,0, 15, "calcado")
+tenis_velho = Item("Tenis Velho", 0,0,2,0, 0,0,0, 10, "calcado")
+sapato_simplorio = Item("Sapato Simplorio", 0,2,1,0, 0,0,0, 50, "calcado")
+tenis_comum = Item("Tenis Comum", 0,2,2,0, 0,0,0, 90, "calcado")
+tenis_trilha = Item("Tenis de Trilha", 2,8,3,0, 0,0,0, 400, "calcado")
+tenis_caminhada = Item("Tenis de Caminhada", 0,3,5,0, 0,0,0, 300, "calcado")
+tenis_corrida = Item("Tenis de Corrida", 0,5,10,0, 0,0,0, 500, "calcado")
+tenis_ZX5000 = Item("Tenis ZX-5000", 10,10,11,5, 0,0,0, 15000, "calcado")
 
 class Loja(object):
     def __init__(self):
@@ -283,28 +283,35 @@ def inventarioPersonagem():
             if(aliado_jogador.inventario[1][i]==espaco_vazio or aliado_jogador.inventario[1][i].nome=="Nada"):
                 variavel_para_comparar+=1
             i+=1
-        print "\n#"+"-"*77+"#\n"+'|'.center(79)+"Inventario:"+str(variavel_para_comparar)+" espaco(s) livre(s) de 30.\n"
+        print "\n#"+"-"*77+"#\n Inventario:"+str(variavel_para_comparar).rjust(42-len(str(variavel_para_comparar)))+" espaco(s) livre(s) de 30.\n#"+"-"*77+"#\n"+']]Mochila[[                  |             ]]Equipamentos[['.center(79)+"\n"+'|'.center(79)
         variavel_para_comparar=0
         time.sleep(0.5)
         i=0
-        print 'Mochila'+'Equipamentos'.rjust(72)
         while i<=29:
             if i<6:
-                if i==0: letra='a'
-                if i==1: letra='b'
-                if i==2: letra='c'
-                if i==3: letra='d'
-                if i==4: letra='e'
-                if i==5: letra='f'
+                if i==0: letra='A'
+                if i==1: letra='B'
+                if i==2: letra='C'
+                if i==3: letra='D'
+                if i==4: letra='E'
+                if i==5: letra='F'
                 if (aliado_jogador.inventario[1][i]!=espaco_vazio and aliado_jogador.inventario[1][i].nome!="Nada"):
-                    print str(aliado_jogador.inventario[0][i])+" : "+str(aliado_jogador.inventario[1][i].nome)+"\t\t\t"+str(letra)+" : "+str(aliado_jogador.equipamento[i].nome)+"\n     ("+str(aliado_jogador.inventario[1][i].tipo)+")\t\t\t\t("+str(aliado_jogador.equipamento[i].tipo)+")\n"
+                    print str(aliado_jogador.inventario[0][i])+" : "+str(aliado_jogador.inventario[1][i].nome)+' '*(36-len(str(aliado_jogador.inventario[1][i].nome))-len(str(aliado_jogador.inventario[0][i])))+'|'+str(aliado_jogador.equipamento[i].nome).rjust(35)+" : "+str(letra)+"\n    ("+str(aliado_jogador.inventario[1][i].tipo)+")"+' '*(33-len(str(aliado_jogador.inventario[1][i].tipo)))+'|'+"(".rjust(34-len(str(aliado_jogador.equipamento[i].tipo)))+str(aliado_jogador.equipamento[i].tipo)+")"
                 else:
-                    print("\t\t\t\t\t"+str(letra)+" : "+str(aliado_jogador.equipamento[i].nome)+"\n\t\t\t\t\t("+str(aliado_jogador.equipamento[i].tipo)+")\n")
+                    print ' '*(45-len(str(aliado_jogador.inventario[1][i].nome))-len(str(aliado_jogador.inventario[0][i])))+'|'+str(aliado_jogador.equipamento[i].nome).rjust(41-len(str(aliado_jogador.inventario[1][i].nome))-len(str(aliado_jogador.inventario[0][i])))+" : "+str(letra)+"\n"+' '*(49-len(str(aliado_jogador.inventario[1][i].tipo)))+'|'+"(".rjust(34-len(str(aliado_jogador.equipamento[i].tipo)))+str(aliado_jogador.equipamento[i].tipo)+")"
+            if i==6:print ' '*39+'|'+'-'*39
+            elif i==5: i=5
+            elif i<6: print '|'.center(79)
             if (i>5 and aliado_jogador.inventario[1][i]!=espaco_vazio and aliado_jogador.inventario[1][i].nome!="Nada"):
-                print(str(aliado_jogador.inventario[0][i])+" : "+str(aliado_jogador.inventario[1][i].nome)+"\n     ("+str(aliado_jogador.inventario[1][i].tipo)+")\n")
-            i+=1
+                if aliado_jogador.inventario[1][i+1]!=espaco_vazio and aliado_jogador.inventario[1][i+1].nome!="Nada":
+                    print str(aliado_jogador.inventario[0][i])+" : "+str(aliado_jogador.inventario[1][i].nome)+' '*(36-len(str(aliado_jogador.inventario[1][i].nome))-len(str(aliado_jogador.inventario[0][i])))+'|'+str(aliado_jogador.inventario[1][i+1].nome).rjust(36-len(str(aliado_jogador.inventario[0][i+1])))+" : "+str(aliado_jogador.inventario[0][i+1])+"\n    ("+str(aliado_jogador.inventario[1][i].tipo)+")"+' '*(33-len(str(aliado_jogador.inventario[1][i].tipo)))+'|'+"(".rjust(34-len(str(aliado_jogador.inventario[1][i+1].tipo)))+str(aliado_jogador.inventario[1][i+1].tipo)+")"
+                else: print str(aliado_jogador.inventario[0][i])+" : "+str(aliado_jogador.inventario[1][i].nome)+' '*(36-len(str(aliado_jogador.inventario[1][i].nome))-len(str(aliado_jogador.inventario[0][i])))+'|'+"\n    ("+str(aliado_jogador.inventario[1][i].tipo)+")"+' '*(33-len(str(aliado_jogador.inventario[1][i].tipo)))+'|'
+                if i/2!=0: print '|'.center(79)
+            if i>5: i+=2
+            if i<6: i+=1
+        print "#"+"-"*77+"#\n"
         while 1:
-            print("Para analisar um item digite o numero da sua posicao!\nPara voltar ao jogo digite voltar.")
+            print("Para analisar um item digite a sua posicao!\nPara voltar ao jogo digite voltar.")
             acao_do_personagem = raw_input('-')
             if acao_do_personagem.isdigit():
                 acao_do_personagem=int(acao_do_personagem)
@@ -498,7 +505,7 @@ def inventarioPersonagem():
                 i+=1
             i=i-1
             if(acao_do_personagem==aliado_jogador.inventario[0][i] and aliado_jogador.inventario[1][i]!=espaco_vazio and aliado_jogador.inventario[1][i].nome!="Nada"):
-                if(aliado_jogador.inventario[1][i].tipo=="pocao"):
+                if(aliado_jogador.inventario[1][i].tipo=="consumivel de aprimoramento"):
                     print("\nNome: "+str(aliado_jogador.inventario[1][i].nome)+ "\nTipo: "+str(aliado_jogador.inventario[1][i].tipo)+"\nVida: "+str(aliado_jogador.inventario[1][i].status[5])+"\nAtaque: "+str(aliado_jogador.inventario[1][i].status[0])+"\nDefesa: "+str(aliado_jogador.inventario[1][i].status[1])+"\nAgilidade: "+str(aliado_jogador.inventario[1][i].status[2])+"\nSorte: "+str(aliado_jogador.inventario[1][i].status[3])+"\n")
                     while aliado_jogador.inventario[1][i].tipo!="inventario":
                         print("O que deseja fazer? (usar, descartar ou voltar)")
@@ -535,7 +542,7 @@ def inventarioPersonagem():
                                 else:
                                     print("\nENTRADA INVALIDA!\n")
                                     time.sleep(0.5)
-                if(aliado_jogador.inventario[1][i].tipo=="comida"):
+                if(aliado_jogador.inventario[1][i].tipo=="consumivel"):
                     print("\nNome: "+str(aliado_jogador.inventario[1][i].nome)+ "\nTipo: "+str(aliado_jogador.inventario[1][i].tipo)+"\nVida: "+str(inventario[1][i].status[6])+"\n")
                     while 1:
                         print("O que deseja fazer? (usar, descartar ou voltar)")
@@ -574,7 +581,7 @@ def inventarioPersonagem():
                                 else:
                                     print("\nENTRADA INVALIDA!\n")
                                     time.sleep(0.5)
-                if(aliado_jogador.inventario[1][i].tipo!="pocao" and aliado_jogador.inventario[1][i].tipo!="comida" and aliado_jogador.inventario[1][i].tipo!="inventario"):
+                if(aliado_jogador.inventario[1][i].tipo!="consumivel de aprimoramento" and aliado_jogador.inventario[1][i].tipo!="consumivel" and aliado_jogador.inventario[1][i].tipo!="inventario"):
                     print("\nNome: "+str(aliado_jogador.inventario[1][i].nome)+"\nTipo: "+str(aliado_jogador.inventario[1][i].tipo)+"\nAtaque: "+str(aliado_jogador.inventario[1][i].status[0])+"\nDefesa: "+str(aliado_jogador.inventario[1][i].status[1])+"\nAgilidade: "+str(aliado_jogador.inventario[1][i].status[2])+"\nSorte: "+str(aliado_jogador.inventario[1][i].status[3])+"\nVida: "+str(aliado_jogador.inventario[1][i].status[5])+"\nReconstituicao: "+str(aliado_jogador.inventario[1][i].status[4])+"\n")
                     while aliado_jogador.inventario[1][i].tipo!="inventario":
                         print("O que deseja fazer? (equipar, descartar ou voltar)")
@@ -645,7 +652,7 @@ def inventarioPersonagem():
                                     aliado_jogador.inventario[1][i]=item_adicionado
                                     aliado_jogador.status+=aliado_jogador.equipamento[4].status
                                     break
-                                if(aliado_jogador.inventario[1][i].tipo=="pes"):
+                                if(aliado_jogador.inventario[1][i].tipo=="calcado"):
                                     aliado_jogador.status-=aliado_jogador.equipamento[5].status
                                     item_adicionado=aliado_jogador.equipamento[5]
                                     print("Voce guardou "+str(item_adicionado.nome)+" e equipou "+str(aliado_jogador.inventario[1][i].nome)+"!")
@@ -654,7 +661,7 @@ def inventarioPersonagem():
                                     aliado_jogador.inventario[1][i]=item_adicionado
                                     aliado_jogador.status+=aliado_jogador.equipamento[5].status
                                     break
-                                if(aliado_jogador.inventario[1][i].tipo=="comida" or aliado_jogador.inventario[1][i].tipo=="pocao"):
+                                if(aliado_jogador.inventario[1][i].tipo=="consumivel" or aliado_jogador.inventario[1][i].tipo=="consumivel de aprimoramento"):
                                     print("voce nao pode equipar!")
                                     time.sleep(0.5)
                             else:
@@ -1594,11 +1601,11 @@ def lojaVender():
             i+=1
         i=i-1
         if(acao_do_personagem==aliado_jogador.inventario[0][i] and aliado_jogador.inventario[1][i]!=espaco_vazio and aliado_jogador.inventario[1][i].nome!="Nada"):
-            if(aliado_jogador.inventario[1][i][5]=="pocao"):
+            if(aliado_jogador.inventario[1][i][5]=="consumivel de aprimoramento"):
                 print("\nNome: "+str(aliado_jogador.inventario[1][i].nome)+ "\nTipo: "+str(aliado_jogador.inventario[1][i].tipo)+"\nVida: "+str(aliado_jogador.inventario[1][i].status[5])+"\nAtaque: "+str(aliado_jogador.inventario[1][i].status[0])+"\nDefesa: "+str(aliado_jogador.inventario[1][i].status[1])+"\nAgilidade: "+str(aliado_jogador.inventario[1][i].status[2])+"\nSorte: "+str(aliado_jogador.inventario[1][i].status[3])+"\n")
-            if(aliado_jogador.inventario[1][i][5]=="comida"):
+            if(aliado_jogador.inventario[1][i][5]=="consumivel"):
                 print("\nNome: "+str(aliado_jogador.inventario[1][i].nome)+ "\nTipo: "+str(aliado_jogador.inventario[1][i].tipo)+"\nVida: "+str(aliado_jogador.inventario[1][i].status[6])+"\n")
-            if(aliado_jogador.inventario[1][i].tipo!="pocao" and aliado_jogador.inventario[1][i].tipo!="comida" and aliado_jogador.inventario[1][i].tipo!="inventario"):
+            if(aliado_jogador.inventario[1][i].tipo!="consumivel de aprimoramento" and aliado_jogador.inventario[1][i].tipo!="consumivel" and aliado_jogador.inventario[1][i].tipo!="inventario"):
                 print("\nNome: "+str(aliado_jogador.inventario[1][i].nome)+"\nTipo: "+str(aliado_jogador.inventario[1][i].tipo)+"\nAtaque: "+str(aliado_jogador.inventario[1][i].status[0])+"\nDefesa: "+str(aliado_jogador.inventario[1][i].status[1])+"\nAgilidade: "+str(aliado_jogador.inventario[1][i].status[2])+"\nSorte: "+str(aliado_jogador.inventario[1][i].status[3])+"\nVida: "+str(aliado_jogador.inventario[1][i].status[5])+"\nReconstituicao: "+str(aliado_jogador.inventario[1][i].status[4])+"\n")
         while 1:
             print("Posso comprar por "+str(aliado_jogador.inventario[1][i].preco*porcentagem_inflacao)+"Reais.")
@@ -1657,11 +1664,11 @@ def lojaComprar():
             i+=1
         i=i-1
         if(acao_do_personagem==Venda.inventario[0][i] and Venda.inventario[1][i]!=espaco_vazio):
-            if(Venda.inventario[1][i][5]=="pocao"):
+            if(Venda.inventario[1][i][5]=="consumivel de aprimoramento"):
                 print("\nNome: "+str(Venda.inventario[1][i].nome)+ "\nTipo: "+str(Venda.inventario[1][i].tipo)+"\nVida: "+str(Venda.inventario[1][i].status[5])+"\nAtaque: "+str(Venda.inventario[1][i].status[0])+"\nDefesa: "+str(Venda.inventario[1][i].status[1])+"\nAgilidade: "+str(Venda.inventario[1][i].status[2])+"\nSorte: "+str(Venda.inventario[1][i].status[3])+"\n")
-            if(Venda.inventario[1][i][5]=="comida"):
+            if(Venda.inventario[1][i][5]=="consumivel"):
                 print("\nNome: "+str(Venda.inventario[1][i].nome)+ "\nTipo: "+str(Venda.inventario[1][i].tipo)+"\nVida: "+str(Venda.inventario[1][i].status[6])+"\n")
-            if(Venda.inventario[1][i].tipo!="pocao" and Venda.inventario[1][i].tipo!="comida" and Venda.inventario[1][i].tipo!="inventario"):
+            if(Venda.inventario[1][i].tipo!="consumivel de aprimoramento" and Venda.inventario[1][i].tipo!="consumivel" and Venda.inventario[1][i].tipo!="inventario"):
                 print("\nNome: "+str(Venda.inventario[1][i].nome)+"\nTipo: "+str(Venda.inventario[1][i].tipo)+"\nAtaque: "+str(Venda.inventario[1][i].status[0])+"\nDefesa: "+str(Venda.inventario[1][i].status[1])+"\nAgilidade: "+str(Venda.inventario[1][i].status[2])+"\nSorte: "+str(Venda.inventario[1][i].status[3])+"\nVida: "+str(Venda.inventario[1][i].status[5])+"\nReconstituicao: "+str(Venda.inventario[1][i].status[4])+"\n")
             item_adicionado=Venda.inventario[1][i]
             while 1:
@@ -1721,7 +1728,7 @@ def ficha_personagem():
     time.sleep(0.23)
     print("\n Ataque: "+str(aliado_jogador.status[0])+"\n Defesa: "+str(aliado_jogador.status[1])+"\n Agilidade: "+str(aliado_jogador.status[2])+"\n Sorte: "+str(aliado_jogador.status[3]))
     time.sleep(0.23)
-    print("\n Capa: "+str(aliado_jogador.equipamento[1].nome)+"\n Roupa: "+str(aliado_jogador.equipamento[0].nome)+"\n Pes: "+str(aliado_jogador.equipamento[5].nome))
+    print("\n Capa: "+str(aliado_jogador.equipamento[1].nome)+"\n Roupa: "+str(aliado_jogador.equipamento[0].nome)+"\n calcado: "+str(aliado_jogador.equipamento[5].nome))
     time.sleep(0.23)
     print("\n Luvas: "+str(aliado_jogador.equipamento[2].nome)+"\n Anel: "+str(aliado_jogador.equipamento[3].nome)+"\n Arma: "+str(aliado_jogador.equipamento[4].nome))
     time.sleep(0.23)
@@ -4894,8 +4901,7 @@ while 1:
                         print('Entrada invalida!\n')
         if(ponto_de_save==0):
             print("\nIniciando novo jogo...\n")
-            inventarioPersonagem()
-            time.sleep(2)
+            time.sleep(1.5)
             print("\n\nVoce e um homem... Qual e o seu nome? (maximo 25 caracteres)\n")
             while 1:
                 aliado_jogador.nome = raw_input("-")
