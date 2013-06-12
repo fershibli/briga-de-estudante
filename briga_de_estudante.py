@@ -85,45 +85,11 @@ mulher_prantos = Personagem("Mulher aos Prantos", 15,15,-10,10, -5,300,300, 0,0,
 mulher_toalha = Personagem("Mulher de Toalha", 20,20,5,5, 0,800,800, 0,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
 mane_bone = Personagem("Mane de Bone", 10,5,10,1, 0,100,100, 0,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
 senhor_doente = Personagem("Senhor Doente", 5,3,-3,3, -1,110,110, 0,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
-garoto_irritado = Personagem("Garoto Irritado", 10,10,10,10, 10,100,100, 0,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
-garoto_fracote = Personagem("Garoto Fracote", 3,10,2,2, 0,100,100, 0,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
-garoto_convencido = Personagem("Garoto Convencido", 8,12,5,10, 0,110,110, 0,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
-garoto_serio = Personagem("Garoto Serio", 30,25,10,5, 0,200,200, 0,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
-garoto_forte = Personagem("Garoto Forte", 150,100,20,20, 0,2000,2000, 0,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
-garoto_homem = Personagem("Garoto, um Homem", 1500,1000,50,50, 0,20000,20000, 0,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
-bandido_comparsa = Personagem("Bandido", 300,100,20,20, 0,2500,2500, 0,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
-motoqueiro_comparsa = Personagem("Motoqueiro Comparsa", 3000,10,10,-5, 0,50,50, 0,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
-estudante_30 = Personagem("Estudante Briguento", 5,12,2,2, 0,110,110, 2,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
-estudante_31 = Personagem("Estudante Briguento", 13,4,5,1, 0,130,130, 2,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
-estudante_32 = Personagem("Estudante Briguento", 8,8,2,1, 0,100,100, 2,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
-estudante_33 = Personagem("Estudante Briguento", 10,8,5,5, 0,120,120, 2,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
-estudante_34 = Personagem("Estudante Briguento", 20,2,6,6, 6,666,666, 2,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
-estudante_40 = Personagem("Estudante Briguento", 30,15,5,5, 5,360,360, 3,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
-estudante_41 = Personagem("Estudante Briguento", 50,30,10,10, 10,550,550, 3,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
-estudante_42 = Personagem("Estudante Briguento", 90,70,15,15, 15,790,790, 3,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
-estudante_43 = Personagem("Estudante Briguento", 180,100,20,20, 20,1500,1500, 3,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
-estudante_44 = Personagem("Estudante Briguento", 300,200,40,40, 40,320,3200, 3,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
-arruaceiro_00 = Personagem("Arruaceiro", 5,12,2,3, 2,200,200, 2,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
-arruaceiro_01 = Personagem("Arruaceiro", 12,5,3,2, 2,200,200, 2,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
-arruaceiro_02 = Personagem("Arruaceiro", 12,12,2,2, 2,200,200, 3,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
-arruaceiro_03 = Personagem("Arruaceiro", 5,5,2,12, 2,200,200, 3,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
-arruaceiro_03 = Personagem("Arruaceiro", 5,5,12,2, 2,200,200, 3,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
-arruaceiro_04 = Personagem("Arruaceiro", 10,24,2,2, 4,200,200, 4,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
-arruaceiro_05 = Personagem("Arruaceiro", 24,10,4,2, 4,200,200, 4,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
-arruaceiro_06 = Personagem("Arruaceiro", 24,24,2,2, 4,200,200, 4,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
-arruaceiro_07 = Personagem("Arruaceiro", 10,10,5,5, 50,200,200, 4,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
-arruaceiro_08 = Personagem("Arruaceiro", 25,25,5,5, 4,200,200, 4,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
-arruaceiro_09 = Personagem("Arruaceiro", 15,36,4,6, 4,400,400, 10,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
-arruaceiro_10 = Personagem("Arruaceiro", 36,15,6,4, 4,400,400, 10,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
-arruaceiro_11 = Personagem("Arruaceiro", 36,36,4,4, 4,400,400, 10,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
-arruaceiro_12 = Personagem("Arruaceiro", 15,15,4,12, 4,400,400, 10,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
-arruaceiro_13 = Personagem("Arruaceiro", 15,15,12,4, 4,400,400, 10,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
-arruaceiro_14 = Personagem("Arruaceiro", 20,48,8,8, 8,400,400, 40,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
-arruaceiro_15 = Personagem("Arruaceiro", 48,20,8,4, 8,400,400, 40,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
-arruaceiro_16 = Personagem("Arruaceiro", 48,48,4,4, 8,400,400, 40,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
-arruaceiro_17 = Personagem("Arruaceiro", 20,20,10,10, 50,400,400, 40,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
-arruaceiro_18 = Personagem("Arruaceiro", 50,50,10,10, 8,400,400, 40,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)
-#narrador_inimigo, bebado_inimigo, mulher_prantos, mulher_toalha, mane_bone, senhor_doente, garoto_irritado, garoto_fracote, garoto_convencido, garoto_serio, garoto_forte, garoto_homem, motoqueiro_comparsa, bandido_comparsa, estudante_30, estudante_31, estudante_32, estudante_33, estudante_34, estudante_40, estudante_41, estudante_42, estudante_43, estudante_44
+garoto = [Personagem("Garoto Irritado", 10,10,10,10, 10,100,100, 0,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado),Personagem("Garoto Fracote", 3,10,2,2, 0,100,100, 0,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado),Personagem("Garoto Convencido", 8,12,5,10, 0,110,110, 0,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado),Personagem("Garoto Serio", 30,25,10,5, 0,200,200, 0,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado),Personagem("Garoto Forte", 150,100,20,20, 0,2000,2000, 0,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado),Personagem("Garoto, um Homem", 1500,1000,50,50, 0,20000,20000, 0,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)]
+gangue = [Personagem("Bandido", 300,100,20,20, 0,2500,2500, 0,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado),Personagem("Motoqueiro Comparsa", 3000,10,10,-5, 0,50,50, 0,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)]
+estudante = [Personagem("Estudante Briguento", 5,12,2,2, 0,110,110, 2,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado),Personagem("Estudante Briguento", 13,4,5,1, 0,130,130, 2,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado),Personagem("Estudante Briguento", 8,8,2,1, 0,100,100, 2,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado),Personagem("Estudante Briguento", 10,8,5,5, 0,120,120, 2,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado),Personagem("Estudante Briguento", 20,2,6,6, 6,666,666, 2,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado),Personagem("Estudante Briguento", 30,15,5,5, 5,360,360, 3,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado),Personagem("Estudante Briguento", 50,30,10,10, 10,550,550, 3,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado),Personagem("Estudante Briguento", 90,70,15,15, 15,790,790, 3,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado),Personagem("Estudante Briguento", 180,100,20,20, 20,1500,1500, 3,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado),Personagem("Estudante Briguento", 300,200,40,40, 40,320,3200, 3,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)]
+arruaceiro = [Personagem("Arruaceiro", 5,12,2,3, 2,200,200, 2,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado),Personagem("Arruaceiro", 12,5,3,2, 2,200,200, 2,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado),Personagem("Arruaceiro", 12,12,2,2, 2,200,200, 3,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado),Personagem("Arruaceiro", 5,5,2,12, 2,200,200, 3,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado),Personagem("Arruaceiro", 5,5,12,2, 2,200,200, 3,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado),Personagem("Arruaceiro", 10,24,2,2, 4,200,200, 4,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado),Personagem("Arruaceiro", 24,10,4,2, 4,200,200, 4,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado),Personagem("Arruaceiro", 24,24,2,2, 4,200,200, 4,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado),Personagem("Arruaceiro", 10,10,5,5, 50,200,200, 4,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado),Personagem("Arruaceiro", 25,25,5,5, 4,200,200, 4,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado),Personagem("Arruaceiro", 15,36,4,6, 4,400,400, 10,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado),Personagem("Arruaceiro", 36,15,6,4, 4,400,400, 10,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado),Personagem("Arruaceiro", 36,36,4,4, 4,400,400, 10,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado),Personagem("Arruaceiro", 15,15,4,12, 4,400,400, 10,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado),Personagem("Arruaceiro", 15,15,12,4, 4,400,400, 10,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado),Personagem("Arruaceiro", 20,48,8,8, 8,400,400, 40,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado),Personagem("Arruaceiro", 48,20,8,4, 8,400,400, 40,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado),Personagem("Arruaceiro", 48,48,4,4, 8,400,400, 40,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado),Personagem("Arruaceiro", 20,20,10,10, 50,400,400, 40,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado),Personagem("Arruaceiro", 50,50,10,10, 8,400,400, 40,0, "inimigo", desequipado_roupa, desequipado_capa, desequipado_luva, desequipado_anel, desequipado_maos, desequipado_calcado)]
+#narrador_inimigo, bebado_inimigo, mulher_prantos, mulher_toalha, mane_bone, senhor_doente, garoto, motoqueiro_comparsa, bandido_comparsa, arruaceiro, estudante
 
 #-- _itens_ --#
 #nome, ataque, defesa, agilidade, sorte, taxarecuperacao, vidamaxima, vidaatual, preco, tipo
@@ -250,12 +216,12 @@ contador_de_batalha= 0
 contador_de_rodadas = 0
 
 
-#global narrador_inimigo, bebado_inimigo, mulher_prantos, mulher_toalha, mane_bone, senhor_doente, garoto_irritado, garoto_fracote, garoto_convencido, garoto_serio, garoto_forte, garoto_homem, motoqueiro_comparsa, bandido_comparsa, estudante_30, estudante_31, estudante_32, estudante_33, estudante_34, estudante_40, estudante_41, estudante_42, estudante_43, estudante_44, aliado_headbanger,Venda, Reserva_Venda,porcentagem_inflacao,bermuda_linho_regata,bermuda_linho_polo,calca_jeans_regata,calca_jeans_polo,desequipado_roupa,desequipado_capa,desequipado_luva,desequipado_anel,desequipado_maos,desequipado_calcado,espaco_vazio,pedaco_pizza,bolo_chocolate,pijama_inicial,uniforme_estudantil,malha_ninja,lapis_apontado,punhal_envelhecido,talheres_prata,jaqueta_imitacao,jaqueta_couro,agasalho_la,suplemento_alimenticio,lata_energetico,luva_la,luva_couro,soco_pvc,soco_latao,luva_spikes_alu,soco_alu,luva_spikes_aco,soco_aco,luva_spikes_ag,soco_ag,luva_spikes_au,soco_au,luva_spikes_titanio,soco_titanio,anel_forca1,anel_forca2,anel_forca3,anel_resistencia1,anel_resistencia2,anel_resistencia3,anel_consistencia1,anel_consistencia2,anel_consistencia3,anel_da_imortalidade,anel_da_divindade,chinelo_inicial,papetes_masculinas,tenis_velho,tenis_simplorio,sapato_simplorio,tenis_comum,tenis_trilha,tenis_caminhada,tenis_corrida,tenis_ZX5000,item_adicionado,quantidade_adicionada,variavel_cenario,objeto,situacao,temporario,variavel_lugar,ponto_de_save,mostrar_save, aliado_jogador,aliado_reserva, aliado_garota,adversario_inimigo,eegg,acao_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,variavel_para_comparar,contador_de_batalha,contador_de_rodadas
+#global narrador_inimigo, bebado_inimigo, mulher_prantos, mulher_toalha, mane_bone, senhor_doente, garoto, motoqueiro_comparsa, bandido_comparsa, arruaceiro, estudante, aliado_headbanger,Venda, Reserva_Venda,porcentagem_inflacao,bermuda_linho_regata,bermuda_linho_polo,calca_jeans_regata,calca_jeans_polo,desequipado_roupa,desequipado_capa,desequipado_luva,desequipado_anel,desequipado_maos,desequipado_calcado,espaco_vazio,pedaco_pizza,bolo_chocolate,pijama_inicial,uniforme_estudantil,malha_ninja,lapis_apontado,punhal_envelhecido,talheres_prata,jaqueta_imitacao,jaqueta_couro,agasalho_la,suplemento_alimenticio,lata_energetico,luva_la,luva_couro,soco_pvc,soco_latao,luva_spikes_alu,soco_alu,luva_spikes_aco,soco_aco,luva_spikes_ag,soco_ag,luva_spikes_au,soco_au,luva_spikes_titanio,soco_titanio,anel_forca1,anel_forca2,anel_forca3,anel_resistencia1,anel_resistencia2,anel_resistencia3,anel_consistencia1,anel_consistencia2,anel_consistencia3,anel_da_imortalidade,anel_da_divindade,chinelo_inicial,papetes_masculinas,tenis_velho,tenis_simplorio,sapato_simplorio,tenis_comum,tenis_trilha,tenis_caminhada,tenis_corrida,tenis_ZX5000,item_adicionado,quantidade_adicionada,variavel_cenario,objeto,situacao,temporario,variavel_lugar,ponto_de_save,mostrar_save, aliado_jogador,aliado_reserva, aliado_garota,adversario_inimigo,eegg,acao_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,variavel_para_comparar,contador_de_batalha,contador_de_rodadas
 
 
 #--Adicionar Item ao Inventario--#
 def adicionaItem():
-    global narrador_inimigo, bebado_inimigo, mulher_prantos, mulher_toalha, mane_bone, senhor_doente, garoto_irritado, garoto_fracote, garoto_convencido, garoto_serio, garoto_forte, garoto_homem, motoqueiro_comparsa, bandido_comparsa, estudante_30, estudante_31, estudante_32, estudante_33, estudante_34, estudante_40, estudante_41, estudante_42, estudante_43, estudante_44, aliado_headbanger,Venda, Reserva_Venda,porcentagem_inflacao,bermuda_linho_regata,bermuda_linho_polo,calca_jeans_regata,calca_jeans_polo,desequipado_roupa,desequipado_capa,desequipado_luva,desequipado_anel,desequipado_maos,desequipado_calcado,espaco_vazio,pedaco_pizza,bolo_chocolate,pijama_inicial,uniforme_estudantil,malha_ninja,lapis_apontado,punhal_envelhecido,talheres_prata,jaqueta_imitacao,jaqueta_couro,agasalho_la,suplemento_alimenticio,lata_energetico,luva_la,luva_couro,soco_pvc,soco_latao,luva_spikes_alu,soco_alu,luva_spikes_aco,soco_aco,luva_spikes_ag,soco_ag,luva_spikes_au,soco_au,luva_spikes_titanio,soco_titanio,anel_forca1,anel_forca2,anel_forca3,anel_resistencia1,anel_resistencia2,anel_resistencia3,anel_consistencia1,anel_consistencia2,anel_consistencia3,anel_da_imortalidade,anel_da_divindade,chinelo_inicial,papetes_masculinas,tenis_velho,tenis_simplorio,sapato_simplorio,tenis_comum,tenis_trilha,tenis_caminhada,tenis_corrida,tenis_ZX5000,item_adicionado,quantidade_adicionada,variavel_cenario,objeto,situacao,temporario,variavel_lugar,ponto_de_save,mostrar_save, aliado_jogador,aliado_reserva, aliado_garota,adversario_inimigo,eegg,acao_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,variavel_para_comparar,contador_de_batalha,contador_de_rodadas
+    global narrador_inimigo, bebado_inimigo, mulher_prantos, mulher_toalha, mane_bone, senhor_doente, garoto, motoqueiro_comparsa, bandido_comparsa, arruaceiro, estudante, aliado_headbanger,Venda, Reserva_Venda,porcentagem_inflacao,bermuda_linho_regata,bermuda_linho_polo,calca_jeans_regata,calca_jeans_polo,desequipado_roupa,desequipado_capa,desequipado_luva,desequipado_anel,desequipado_maos,desequipado_calcado,espaco_vazio,pedaco_pizza,bolo_chocolate,pijama_inicial,uniforme_estudantil,malha_ninja,lapis_apontado,punhal_envelhecido,talheres_prata,jaqueta_imitacao,jaqueta_couro,agasalho_la,suplemento_alimenticio,lata_energetico,luva_la,luva_couro,soco_pvc,soco_latao,luva_spikes_alu,soco_alu,luva_spikes_aco,soco_aco,luva_spikes_ag,soco_ag,luva_spikes_au,soco_au,luva_spikes_titanio,soco_titanio,anel_forca1,anel_forca2,anel_forca3,anel_resistencia1,anel_resistencia2,anel_resistencia3,anel_consistencia1,anel_consistencia2,anel_consistencia3,anel_da_imortalidade,anel_da_divindade,chinelo_inicial,papetes_masculinas,tenis_velho,tenis_simplorio,sapato_simplorio,tenis_comum,tenis_trilha,tenis_caminhada,tenis_corrida,tenis_ZX5000,item_adicionado,quantidade_adicionada,variavel_cenario,objeto,situacao,temporario,variavel_lugar,ponto_de_save,mostrar_save, aliado_jogador,aliado_reserva, aliado_garota,adversario_inimigo,eegg,acao_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,variavel_para_comparar,contador_de_batalha,contador_de_rodadas
     variavel_para_comparar=0
     i=0
     while i<=29:
@@ -275,7 +241,7 @@ def adicionaItem():
 
 #--Inventario--#
 def inventarioPersonagem():
-    global narrador_inimigo, bebado_inimigo, mulher_prantos, mulher_toalha, mane_bone, senhor_doente, garoto_irritado, garoto_fracote, garoto_convencido, garoto_serio, garoto_forte, garoto_homem, motoqueiro_comparsa, bandido_comparsa, estudante_30, estudante_31, estudante_32, estudante_33, estudante_34, estudante_40, estudante_41, estudante_42, estudante_43, estudante_44, aliado_headbanger,Venda, Reserva_Venda,porcentagem_inflacao,bermuda_linho_regata,bermuda_linho_polo,calca_jeans_regata,calca_jeans_polo,desequipado_roupa,desequipado_capa,desequipado_luva,desequipado_anel,desequipado_maos,desequipado_calcado,espaco_vazio,pedaco_pizza,bolo_chocolate,pijama_inicial,uniforme_estudantil,malha_ninja,lapis_apontado,punhal_envelhecido,talheres_prata,jaqueta_imitacao,jaqueta_couro,agasalho_la,suplemento_alimenticio,lata_energetico,luva_la,luva_couro,soco_pvc,soco_latao,luva_spikes_alu,soco_alu,luva_spikes_aco,soco_aco,luva_spikes_ag,soco_ag,luva_spikes_au,soco_au,luva_spikes_titanio,soco_titanio,anel_forca1,anel_forca2,anel_forca3,anel_resistencia1,anel_resistencia2,anel_resistencia3,anel_consistencia1,anel_consistencia2,anel_consistencia3,anel_da_imortalidade,anel_da_divindade,chinelo_inicial,papetes_masculinas,tenis_velho,tenis_simplorio,sapato_simplorio,tenis_comum,tenis_trilha,tenis_caminhada,tenis_corrida,tenis_ZX5000,item_adicionado,quantidade_adicionada,variavel_cenario,objeto,situacao,temporario,variavel_lugar,ponto_de_save,mostrar_save, aliado_jogador,aliado_reserva, aliado_garota,adversario_inimigo,eegg,acao_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,variavel_para_comparar,contador_de_batalha,contador_de_rodadas
+    global narrador_inimigo, bebado_inimigo, mulher_prantos, mulher_toalha, mane_bone, senhor_doente, garoto, motoqueiro_comparsa, bandido_comparsa, arruaceiro, estudante, aliado_headbanger,Venda, Reserva_Venda,porcentagem_inflacao,bermuda_linho_regata,bermuda_linho_polo,calca_jeans_regata,calca_jeans_polo,desequipado_roupa,desequipado_capa,desequipado_luva,desequipado_anel,desequipado_maos,desequipado_calcado,espaco_vazio,pedaco_pizza,bolo_chocolate,pijama_inicial,uniforme_estudantil,malha_ninja,lapis_apontado,punhal_envelhecido,talheres_prata,jaqueta_imitacao,jaqueta_couro,agasalho_la,suplemento_alimenticio,lata_energetico,luva_la,luva_couro,soco_pvc,soco_latao,luva_spikes_alu,soco_alu,luva_spikes_aco,soco_aco,luva_spikes_ag,soco_ag,luva_spikes_au,soco_au,luva_spikes_titanio,soco_titanio,anel_forca1,anel_forca2,anel_forca3,anel_resistencia1,anel_resistencia2,anel_resistencia3,anel_consistencia1,anel_consistencia2,anel_consistencia3,anel_da_imortalidade,anel_da_divindade,chinelo_inicial,papetes_masculinas,tenis_velho,tenis_simplorio,sapato_simplorio,tenis_comum,tenis_trilha,tenis_caminhada,tenis_corrida,tenis_ZX5000,item_adicionado,quantidade_adicionada,variavel_cenario,objeto,situacao,temporario,variavel_lugar,ponto_de_save,mostrar_save, aliado_jogador,aliado_reserva, aliado_garota,adversario_inimigo,eegg,acao_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,variavel_para_comparar,contador_de_batalha,contador_de_rodadas
     while 1:
         variavel_para_comparar=0
         i=0
@@ -313,7 +279,9 @@ def inventarioPersonagem():
         while 1:
             print("Para analisar um item digite a sua posicao!\nPara voltar ao jogo digite voltar.")
             acao_do_personagem = raw_input('-')
-            if acao_do_personagem.isdigit():
+            if acao_do_personagem =="a" or acao_do_personagem =="b" or acao_do_personagem =="c" or acao_do_personagem =="d" or acao_do_personagem =="e" or acao_do_personagem =="f":
+                break
+            elif acao_do_personagem.isdigit():
                 acao_do_personagem=int(acao_do_personagem)
                 break
             else:
@@ -674,7 +642,7 @@ def inventarioPersonagem():
 
 #--Sistema de Troca de Personagem--#
 def trocaPersonagem():
-    global narrador_inimigo, bebado_inimigo, mulher_prantos, mulher_toalha, mane_bone, senhor_doente, garoto_irritado, garoto_fracote, garoto_convencido, garoto_serio, garoto_forte, garoto_homem, motoqueiro_comparsa, bandido_comparsa, estudante_30, estudante_31, estudante_32, estudante_33, estudante_34, estudante_40, estudante_41, estudante_42, estudante_43, estudante_44, aliado_headbanger,Venda, Reserva_Venda,porcentagem_inflacao,bermuda_linho_regata,bermuda_linho_polo,calca_jeans_regata,calca_jeans_polo,desequipado_roupa,desequipado_capa,desequipado_luva,desequipado_anel,desequipado_maos,desequipado_calcado,espaco_vazio,pedaco_pizza,bolo_chocolate,pijama_inicial,uniforme_estudantil,malha_ninja,lapis_apontado,punhal_envelhecido,talheres_prata,jaqueta_imitacao,jaqueta_couro,agasalho_la,suplemento_alimenticio,lata_energetico,luva_la,luva_couro,soco_pvc,soco_latao,luva_spikes_alu,soco_alu,luva_spikes_aco,soco_aco,luva_spikes_ag,soco_ag,luva_spikes_au,soco_au,luva_spikes_titanio,soco_titanio,anel_forca1,anel_forca2,anel_forca3,anel_resistencia1,anel_resistencia2,anel_resistencia3,anel_consistencia1,anel_consistencia2,anel_consistencia3,anel_da_imortalidade,anel_da_divindade,chinelo_inicial,papetes_masculinas,tenis_velho,tenis_simplorio,sapato_simplorio,tenis_comum,tenis_trilha,tenis_caminhada,tenis_corrida,tenis_ZX5000,item_adicionado,quantidade_adicionada,variavel_cenario,objeto,situacao,temporario,variavel_lugar,ponto_de_save,mostrar_save, aliado_jogador,aliado_reserva, aliado_garota,adversario_inimigo,eegg,acao_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,variavel_para_comparar,contador_de_batalha,contador_de_rodadas
+    global narrador_inimigo, bebado_inimigo, mulher_prantos, mulher_toalha, mane_bone, senhor_doente, garoto, motoqueiro_comparsa, bandido_comparsa, arruaceiro, estudante, aliado_headbanger,Venda, Reserva_Venda,porcentagem_inflacao,bermuda_linho_regata,bermuda_linho_polo,calca_jeans_regata,calca_jeans_polo,desequipado_roupa,desequipado_capa,desequipado_luva,desequipado_anel,desequipado_maos,desequipado_calcado,espaco_vazio,pedaco_pizza,bolo_chocolate,pijama_inicial,uniforme_estudantil,malha_ninja,lapis_apontado,punhal_envelhecido,talheres_prata,jaqueta_imitacao,jaqueta_couro,agasalho_la,suplemento_alimenticio,lata_energetico,luva_la,luva_couro,soco_pvc,soco_latao,luva_spikes_alu,soco_alu,luva_spikes_aco,soco_aco,luva_spikes_ag,soco_ag,luva_spikes_au,soco_au,luva_spikes_titanio,soco_titanio,anel_forca1,anel_forca2,anel_forca3,anel_resistencia1,anel_resistencia2,anel_resistencia3,anel_consistencia1,anel_consistencia2,anel_consistencia3,anel_da_imortalidade,anel_da_divindade,chinelo_inicial,papetes_masculinas,tenis_velho,tenis_simplorio,sapato_simplorio,tenis_comum,tenis_trilha,tenis_caminhada,tenis_corrida,tenis_ZX5000,item_adicionado,quantidade_adicionada,variavel_cenario,objeto,situacao,temporario,variavel_lugar,ponto_de_save,mostrar_save, aliado_jogador,aliado_reserva, aliado_garota,adversario_inimigo,eegg,acao_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,variavel_para_comparar,contador_de_batalha,contador_de_rodadas
     while 1:
         print("\n#"+"-"*30+"#\n")
         print("\n "+str(aliado_jogador.identificacao)+" (atual) Nome: "+str(aliado_jogador.Nome)+" Vida: "+str(aliado_jogador.status[5])+" Ataque: "+str(aliado_jogador.status[0])+" Defesa: "+str(aliado_jogador.status[1])+"\n           Agilidade: "+str(aliado_jogador.status[2])+" Sorte: "+str(aliado_jogador.status[3])+" Reconstituicao: "+str(aliado_jogador.status[4])+" Dinheiro: "+str(aliado_jogador.dinheiro)+" Reais\n")
@@ -1566,7 +1534,7 @@ def trocaPersonagem():
 
 #--Loja: Vender--#
 def lojaVender():
-    global narrador_inimigo, bebado_inimigo, mulher_prantos, mulher_toalha, mane_bone, senhor_doente, garoto_irritado, garoto_fracote, garoto_convencido, garoto_serio, garoto_forte, garoto_homem, motoqueiro_comparsa, bandido_comparsa, estudante_30, estudante_31, estudante_32, estudante_33, estudante_34, estudante_40, estudante_41, estudante_42, estudante_43, estudante_44, aliado_headbanger,Venda, Reserva_Venda,porcentagem_inflacao,bermuda_linho_regata,bermuda_linho_polo,calca_jeans_regata,calca_jeans_polo,desequipado_roupa,desequipado_capa,desequipado_luva,desequipado_anel,desequipado_maos,desequipado_calcado,espaco_vazio,pedaco_pizza,bolo_chocolate,pijama_inicial,uniforme_estudantil,malha_ninja,lapis_apontado,punhal_envelhecido,talheres_prata,jaqueta_imitacao,jaqueta_couro,agasalho_la,suplemento_alimenticio,lata_energetico,luva_la,luva_couro,soco_pvc,soco_latao,luva_spikes_alu,soco_alu,luva_spikes_aco,soco_aco,luva_spikes_ag,soco_ag,luva_spikes_au,soco_au,luva_spikes_titanio,soco_titanio,anel_forca1,anel_forca2,anel_forca3,anel_resistencia1,anel_resistencia2,anel_resistencia3,anel_consistencia1,anel_consistencia2,anel_consistencia3,anel_da_imortalidade,anel_da_divindade,chinelo_inicial,papetes_masculinas,tenis_velho,tenis_simplorio,sapato_simplorio,tenis_comum,tenis_trilha,tenis_caminhada,tenis_corrida,tenis_ZX5000,item_adicionado,quantidade_adicionada,variavel_cenario,objeto,situacao,temporario,variavel_lugar,ponto_de_save,mostrar_save, aliado_jogador,aliado_reserva, aliado_garota,adversario_inimigo,eegg,acao_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,variavel_para_comparar,contador_de_batalha,contador_de_rodadas
+    global narrador_inimigo, bebado_inimigo, mulher_prantos, mulher_toalha, mane_bone, senhor_doente, garoto, motoqueiro_comparsa, bandido_comparsa, arruaceiro, estudante, aliado_headbanger,Venda, Reserva_Venda,porcentagem_inflacao,bermuda_linho_regata,bermuda_linho_polo,calca_jeans_regata,calca_jeans_polo,desequipado_roupa,desequipado_capa,desequipado_luva,desequipado_anel,desequipado_maos,desequipado_calcado,espaco_vazio,pedaco_pizza,bolo_chocolate,pijama_inicial,uniforme_estudantil,malha_ninja,lapis_apontado,punhal_envelhecido,talheres_prata,jaqueta_imitacao,jaqueta_couro,agasalho_la,suplemento_alimenticio,lata_energetico,luva_la,luva_couro,soco_pvc,soco_latao,luva_spikes_alu,soco_alu,luva_spikes_aco,soco_aco,luva_spikes_ag,soco_ag,luva_spikes_au,soco_au,luva_spikes_titanio,soco_titanio,anel_forca1,anel_forca2,anel_forca3,anel_resistencia1,anel_resistencia2,anel_resistencia3,anel_consistencia1,anel_consistencia2,anel_consistencia3,anel_da_imortalidade,anel_da_divindade,chinelo_inicial,papetes_masculinas,tenis_velho,tenis_simplorio,sapato_simplorio,tenis_comum,tenis_trilha,tenis_caminhada,tenis_corrida,tenis_ZX5000,item_adicionado,quantidade_adicionada,variavel_cenario,objeto,situacao,temporario,variavel_lugar,ponto_de_save,mostrar_save, aliado_jogador,aliado_reserva, aliado_garota,adversario_inimigo,eegg,acao_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,variavel_para_comparar,contador_de_batalha,contador_de_rodadas
     while 1:
         variavel_para_comparar=0
         i=0
@@ -1628,7 +1596,7 @@ def lojaVender():
 
 #--Loja: Comprar--#
 def lojaComprar():
-    global narrador_inimigo, bebado_inimigo, mulher_prantos, mulher_toalha, mane_bone, senhor_doente, garoto_irritado, garoto_fracote, garoto_convencido, garoto_serio, garoto_forte, garoto_homem, motoqueiro_comparsa, bandido_comparsa, estudante_30, estudante_31, estudante_32, estudante_33, estudante_34, estudante_40, estudante_41, estudante_42, estudante_43, estudante_44, aliado_headbanger,Venda, Reserva_Venda,porcentagem_inflacao,bermuda_linho_regata,bermuda_linho_polo,calca_jeans_regata,calca_jeans_polo,desequipado_roupa,desequipado_capa,desequipado_luva,desequipado_anel,desequipado_maos,desequipado_calcado,espaco_vazio,pedaco_pizza,bolo_chocolate,pijama_inicial,uniforme_estudantil,malha_ninja,lapis_apontado,punhal_envelhecido,talheres_prata,jaqueta_imitacao,jaqueta_couro,agasalho_la,suplemento_alimenticio,lata_energetico,luva_la,luva_couro,soco_pvc,soco_latao,luva_spikes_alu,soco_alu,luva_spikes_aco,soco_aco,luva_spikes_ag,soco_ag,luva_spikes_au,soco_au,luva_spikes_titanio,soco_titanio,anel_forca1,anel_forca2,anel_forca3,anel_resistencia1,anel_resistencia2,anel_resistencia3,anel_consistencia1,anel_consistencia2,anel_consistencia3,anel_da_imortalidade,anel_da_divindade,chinelo_inicial,papetes_masculinas,tenis_velho,tenis_simplorio,sapato_simplorio,tenis_comum,tenis_trilha,tenis_caminhada,tenis_corrida,tenis_ZX5000,item_adicionado,quantidade_adicionada,variavel_cenario,objeto,situacao,temporario,variavel_lugar,ponto_de_save,mostrar_save, aliado_jogador,aliado_reserva, aliado_garota,adversario_inimigo,eegg,acao_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,variavel_para_comparar,contador_de_batalha,contador_de_rodadas
+    global narrador_inimigo, bebado_inimigo, mulher_prantos, mulher_toalha, mane_bone, senhor_doente, garoto, motoqueiro_comparsa, bandido_comparsa, arruaceiro, estudante, aliado_headbanger,Venda, Reserva_Venda,porcentagem_inflacao,bermuda_linho_regata,bermuda_linho_polo,calca_jeans_regata,calca_jeans_polo,desequipado_roupa,desequipado_capa,desequipado_luva,desequipado_anel,desequipado_maos,desequipado_calcado,espaco_vazio,pedaco_pizza,bolo_chocolate,pijama_inicial,uniforme_estudantil,malha_ninja,lapis_apontado,punhal_envelhecido,talheres_prata,jaqueta_imitacao,jaqueta_couro,agasalho_la,suplemento_alimenticio,lata_energetico,luva_la,luva_couro,soco_pvc,soco_latao,luva_spikes_alu,soco_alu,luva_spikes_aco,soco_aco,luva_spikes_ag,soco_ag,luva_spikes_au,soco_au,luva_spikes_titanio,soco_titanio,anel_forca1,anel_forca2,anel_forca3,anel_resistencia1,anel_resistencia2,anel_resistencia3,anel_consistencia1,anel_consistencia2,anel_consistencia3,anel_da_imortalidade,anel_da_divindade,chinelo_inicial,papetes_masculinas,tenis_velho,tenis_simplorio,sapato_simplorio,tenis_comum,tenis_trilha,tenis_caminhada,tenis_corrida,tenis_ZX5000,item_adicionado,quantidade_adicionada,variavel_cenario,objeto,situacao,temporario,variavel_lugar,ponto_de_save,mostrar_save, aliado_jogador,aliado_reserva, aliado_garota,adversario_inimigo,eegg,acao_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,variavel_para_comparar,contador_de_batalha,contador_de_rodadas
     while 1:
         variavel_para_comparar=0
         i=0
@@ -1719,7 +1687,7 @@ def lojaComprar():
 
 #--Ficha do Personagem--#
 def ficha_personagem():
-    global narrador_inimigo, bebado_inimigo, mulher_prantos, mulher_toalha, mane_bone, senhor_doente, garoto_irritado, garoto_fracote, garoto_convencido, garoto_serio, garoto_forte, garoto_homem, motoqueiro_comparsa, bandido_comparsa, estudante_30, estudante_31, estudante_32, estudante_33, estudante_34, estudante_40, estudante_41, estudante_42, estudante_43, estudante_44, aliado_headbanger,Venda, Reserva_Venda,porcentagem_inflacao,bermuda_linho_regata,bermuda_linho_polo,calca_jeans_regata,calca_jeans_polo,desequipado_roupa,desequipado_capa,desequipado_luva,desequipado_anel,desequipado_maos,desequipado_calcado,espaco_vazio,pedaco_pizza,bolo_chocolate,pijama_inicial,uniforme_estudantil,malha_ninja,lapis_apontado,punhal_envelhecido,talheres_prata,jaqueta_imitacao,jaqueta_couro,agasalho_la,suplemento_alimenticio,lata_energetico,luva_la,luva_couro,soco_pvc,soco_latao,luva_spikes_alu,soco_alu,luva_spikes_aco,soco_aco,luva_spikes_ag,soco_ag,luva_spikes_au,soco_au,luva_spikes_titanio,soco_titanio,anel_forca1,anel_forca2,anel_forca3,anel_resistencia1,anel_resistencia2,anel_resistencia3,anel_consistencia1,anel_consistencia2,anel_consistencia3,anel_da_imortalidade,anel_da_divindade,chinelo_inicial,papetes_masculinas,tenis_velho,tenis_simplorio,sapato_simplorio,tenis_comum,tenis_trilha,tenis_caminhada,tenis_corrida,tenis_ZX5000,item_adicionado,quantidade_adicionada,variavel_cenario,objeto,situacao,temporario,variavel_lugar,ponto_de_save,mostrar_save, aliado_jogador,aliado_reserva, aliado_garota,adversario_inimigo,eegg,acao_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,variavel_para_comparar,contador_de_batalha,contador_de_rodadas
+    global narrador_inimigo, bebado_inimigo, mulher_prantos, mulher_toalha, mane_bone, senhor_doente, garoto, motoqueiro_comparsa, bandido_comparsa, arruaceiro, estudante, aliado_headbanger,Venda, Reserva_Venda,porcentagem_inflacao,bermuda_linho_regata,bermuda_linho_polo,calca_jeans_regata,calca_jeans_polo,desequipado_roupa,desequipado_capa,desequipado_luva,desequipado_anel,desequipado_maos,desequipado_calcado,espaco_vazio,pedaco_pizza,bolo_chocolate,pijama_inicial,uniforme_estudantil,malha_ninja,lapis_apontado,punhal_envelhecido,talheres_prata,jaqueta_imitacao,jaqueta_couro,agasalho_la,suplemento_alimenticio,lata_energetico,luva_la,luva_couro,soco_pvc,soco_latao,luva_spikes_alu,soco_alu,luva_spikes_aco,soco_aco,luva_spikes_ag,soco_ag,luva_spikes_au,soco_au,luva_spikes_titanio,soco_titanio,anel_forca1,anel_forca2,anel_forca3,anel_resistencia1,anel_resistencia2,anel_resistencia3,anel_consistencia1,anel_consistencia2,anel_consistencia3,anel_da_imortalidade,anel_da_divindade,chinelo_inicial,papetes_masculinas,tenis_velho,tenis_simplorio,sapato_simplorio,tenis_comum,tenis_trilha,tenis_caminhada,tenis_corrida,tenis_ZX5000,item_adicionado,quantidade_adicionada,variavel_cenario,objeto,situacao,temporario,variavel_lugar,ponto_de_save,mostrar_save, aliado_jogador,aliado_reserva, aliado_garota,adversario_inimigo,eegg,acao_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,variavel_para_comparar,contador_de_batalha,contador_de_rodadas
     print("\n#"+"-"*30+"#\n"+"\n Nome: "+str(aliado_jogador.nome))
     time.sleep(0.23)
     print("\n Vida: "+str(aliado_jogador.status[6])+" de "+str(aliado_jogador.status[5]))
@@ -1739,7 +1707,7 @@ def ficha_personagem():
 
 #--Save--#
 def save():
-    global narrador_inimigo, bebado_inimigo, mulher_prantos, mulher_toalha, mane_bone, senhor_doente, garoto_irritado, garoto_fracote, garoto_convencido, garoto_serio, garoto_forte, garoto_homem, motoqueiro_comparsa, bandido_comparsa, estudante_30, estudante_31, estudante_32, estudante_33, estudante_34, estudante_40, estudante_41, estudante_42, estudante_43, estudante_44, aliado_headbanger,Venda, Reserva_Venda,porcentagem_inflacao,bermuda_linho_regata,bermuda_linho_polo,calca_jeans_regata,calca_jeans_polo,desequipado_roupa,desequipado_capa,desequipado_luva,desequipado_anel,desequipado_maos,desequipado_calcado,espaco_vazio,pedaco_pizza,bolo_chocolate,pijama_inicial,uniforme_estudantil,malha_ninja,lapis_apontado,punhal_envelhecido,talheres_prata,jaqueta_imitacao,jaqueta_couro,agasalho_la,suplemento_alimenticio,lata_energetico,luva_la,luva_couro,soco_pvc,soco_latao,luva_spikes_alu,soco_alu,luva_spikes_aco,soco_aco,luva_spikes_ag,soco_ag,luva_spikes_au,soco_au,luva_spikes_titanio,soco_titanio,anel_forca1,anel_forca2,anel_forca3,anel_resistencia1,anel_resistencia2,anel_resistencia3,anel_consistencia1,anel_consistencia2,anel_consistencia3,anel_da_imortalidade,anel_da_divindade,chinelo_inicial,papetes_masculinas,tenis_velho,tenis_simplorio,sapato_simplorio,tenis_comum,tenis_trilha,tenis_caminhada,tenis_corrida,tenis_ZX5000,item_adicionado,quantidade_adicionada,variavel_cenario,objeto,situacao,temporario,variavel_lugar,ponto_de_save,mostrar_save, aliado_jogador,aliado_reserva, aliado_garota,adversario_inimigo,eegg,acao_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,variavel_para_comparar,contador_de_batalha,contador_de_rodadas
+    global narrador_inimigo, bebado_inimigo, mulher_prantos, mulher_toalha, mane_bone, senhor_doente, garoto, motoqueiro_comparsa, bandido_comparsa, arruaceiro, estudante, aliado_headbanger,Venda, Reserva_Venda,porcentagem_inflacao,bermuda_linho_regata,bermuda_linho_polo,calca_jeans_regata,calca_jeans_polo,desequipado_roupa,desequipado_capa,desequipado_luva,desequipado_anel,desequipado_maos,desequipado_calcado,espaco_vazio,pedaco_pizza,bolo_chocolate,pijama_inicial,uniforme_estudantil,malha_ninja,lapis_apontado,punhal_envelhecido,talheres_prata,jaqueta_imitacao,jaqueta_couro,agasalho_la,suplemento_alimenticio,lata_energetico,luva_la,luva_couro,soco_pvc,soco_latao,luva_spikes_alu,soco_alu,luva_spikes_aco,soco_aco,luva_spikes_ag,soco_ag,luva_spikes_au,soco_au,luva_spikes_titanio,soco_titanio,anel_forca1,anel_forca2,anel_forca3,anel_resistencia1,anel_resistencia2,anel_resistencia3,anel_consistencia1,anel_consistencia2,anel_consistencia3,anel_da_imortalidade,anel_da_divindade,chinelo_inicial,papetes_masculinas,tenis_velho,tenis_simplorio,sapato_simplorio,tenis_comum,tenis_trilha,tenis_caminhada,tenis_corrida,tenis_ZX5000,item_adicionado,quantidade_adicionada,variavel_cenario,objeto,situacao,temporario,variavel_lugar,ponto_de_save,mostrar_save, aliado_jogador,aliado_reserva, aliado_garota,adversario_inimigo,eegg,acao_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,variavel_para_comparar,contador_de_batalha,contador_de_rodadas
     ficha_personagem()
     print('\nDeseja salvar seu progresso?("sim" ou "nao")\n')
     time.sleep(0.5)
@@ -1860,7 +1828,7 @@ def save():
 
 #--Sistema de batalha--#
 def batalha(entrada_inimigo_batalha):
-    global narrador_inimigo, bebado_inimigo, mulher_prantos, mulher_toalha, mane_bone, senhor_doente, garoto_irritado, garoto_fracote, garoto_convencido, garoto_serio, garoto_forte, garoto_homem, motoqueiro_comparsa, bandido_comparsa, estudante_30, estudante_31, estudante_32, estudante_33, estudante_34, estudante_40, estudante_41, estudante_42, estudante_43, estudante_44, aliado_headbanger,Venda, Reserva_Venda,porcentagem_inflacao,bermuda_linho_regata,bermuda_linho_polo,calca_jeans_regata,calca_jeans_polo,desequipado_roupa,desequipado_capa,desequipado_luva,desequipado_anel,desequipado_maos,desequipado_calcado,espaco_vazio,pedaco_pizza,bolo_chocolate,pijama_inicial,uniforme_estudantil,malha_ninja,lapis_apontado,punhal_envelhecido,talheres_prata,jaqueta_imitacao,jaqueta_couro,agasalho_la,suplemento_alimenticio,lata_energetico,luva_la,luva_couro,soco_pvc,soco_latao,luva_spikes_alu,soco_alu,luva_spikes_aco,soco_aco,luva_spikes_ag,soco_ag,luva_spikes_au,soco_au,luva_spikes_titanio,soco_titanio,anel_forca1,anel_forca2,anel_forca3,anel_resistencia1,anel_resistencia2,anel_resistencia3,anel_consistencia1,anel_consistencia2,anel_consistencia3,anel_da_imortalidade,anel_da_divindade,chinelo_inicial,papetes_masculinas,tenis_velho,tenis_simplorio,sapato_simplorio,tenis_comum,tenis_trilha,tenis_caminhada,tenis_corrida,tenis_ZX5000,item_adicionado,quantidade_adicionada,variavel_cenario,objeto,situacao,temporario,variavel_lugar,ponto_de_save,mostrar_save, aliado_jogador,aliado_reserva, aliado_garota,adversario_inimigo,eegg,acao_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,variavel_para_comparar,contador_de_batalha,contador_de_rodadas
+    global narrador_inimigo, bebado_inimigo, mulher_prantos, mulher_toalha, mane_bone, senhor_doente, garoto, motoqueiro_comparsa, bandido_comparsa, arruaceiro, estudante, aliado_headbanger,Venda, Reserva_Venda,porcentagem_inflacao,bermuda_linho_regata,bermuda_linho_polo,calca_jeans_regata,calca_jeans_polo,desequipado_roupa,desequipado_capa,desequipado_luva,desequipado_anel,desequipado_maos,desequipado_calcado,espaco_vazio,pedaco_pizza,bolo_chocolate,pijama_inicial,uniforme_estudantil,malha_ninja,lapis_apontado,punhal_envelhecido,talheres_prata,jaqueta_imitacao,jaqueta_couro,agasalho_la,suplemento_alimenticio,lata_energetico,luva_la,luva_couro,soco_pvc,soco_latao,luva_spikes_alu,soco_alu,luva_spikes_aco,soco_aco,luva_spikes_ag,soco_ag,luva_spikes_au,soco_au,luva_spikes_titanio,soco_titanio,anel_forca1,anel_forca2,anel_forca3,anel_resistencia1,anel_resistencia2,anel_resistencia3,anel_consistencia1,anel_consistencia2,anel_consistencia3,anel_da_imortalidade,anel_da_divindade,chinelo_inicial,papetes_masculinas,tenis_velho,tenis_simplorio,sapato_simplorio,tenis_comum,tenis_trilha,tenis_caminhada,tenis_corrida,tenis_ZX5000,item_adicionado,quantidade_adicionada,variavel_cenario,objeto,situacao,temporario,variavel_lugar,ponto_de_save,mostrar_save, aliado_jogador,aliado_reserva, aliado_garota,adversario_inimigo,eegg,acao_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,variavel_para_comparar,contador_de_batalha,contador_de_rodadas
     adversario_inimigo=entrada_inimigo_batalha
     adversario_inimigo.status=entrada_inimigo_batalha.status
     print("\nBatalha!!!\nE hora da briga, estudante!!!\n")
@@ -2624,49 +2592,49 @@ def ruasPerigosas(distancia_restante,periculosidade_ruas):
         teste_de_sorte=random.randrange(100)
         if(distancia_restante<=2):periculosidade_ruas-=2
         if(periculosidade_ruas<3):
-            if(teste_de_sorte<10): batalha(estudante_30)
-            elif(teste_de_sorte<20): batalha(arruaceiro_00)
-            elif(teste_de_sorte<30): batalha(estudante_31)
-            elif(teste_de_sorte<40): batalha(arruaceiro_01)
-            elif(teste_de_sorte<50): batalha(estuadante_32)
-            elif(teste_de_sorte<60): batalha(arruaceiro_02)
-            elif(teste_de_sorte<70): batalha(estudante_33)
-            elif(teste_de_sorte<80): batalha(arruaceiro_03)
-            elif(teste_de_sorte<90): batalha(estudante_34)
-            elif(teste_de_sorte<100): batalha(arruaceiro_04)
+            if(teste_de_sorte<10): batalha(estudante[0])
+            elif(teste_de_sorte<20): batalha(arruaceiro[0])
+            elif(teste_de_sorte<30): batalha(estudante[1])
+            elif(teste_de_sorte<40): batalha(arruaceiro[1])
+            elif(teste_de_sorte<50): batalha(estuadante[2])
+            elif(teste_de_sorte<60): batalha(arruaceiro[2])
+            elif(teste_de_sorte<70): batalha(estudante[3])
+            elif(teste_de_sorte<80): batalha(arruaceiro[3])
+            elif(teste_de_sorte<90): batalha(estudante[4])
+            elif(teste_de_sorte<100): batalha(arruaceiro[4])
         elif(periculosidade_ruas<5):
-            if(teste_de_sorte<10): batalha(arruaceiro_00)
-            elif(teste_de_sorte<20): batalha(arruaceiro_01)
-            elif(teste_de_sorte<30): batalha(arruaceiro_02)
-            elif(teste_de_sorte<40): batalha(arruaceiro_03)
-            elif(teste_de_sorte<50): batalha(arruaceiro_03)
-            elif(teste_de_sorte<60): batalha(arruaceiro_04)
-            elif(teste_de_sorte<70): batalha(arruaceiro_04)
-            elif(teste_de_sorte<80): batalha(estudante_31)
-            elif(teste_de_sorte<90): batalha(estudante_32)
-            elif(teste_de_sorte<100): batalha(estudante_33)
+            if(teste_de_sorte<10): batalha(arruaceiro[0])
+            elif(teste_de_sorte<20): batalha(arruaceiro[1])
+            elif(teste_de_sorte<30): batalha(arruaceiro[2])
+            elif(teste_de_sorte<40): batalha(arruaceiro[3])
+            elif(teste_de_sorte<50): batalha(arruaceiro[3])
+            elif(teste_de_sorte<60): batalha(arruaceiro[4])
+            elif(teste_de_sorte<70): batalha(arruaceiro[5])
+            elif(teste_de_sorte<80): batalha(estudante[1])
+            elif(teste_de_sorte<90): batalha(estudante[2])
+            elif(teste_de_sorte<100): batalha(estudante[3])
         elif(periculosidade_ruas<7):
-            if(teste_de_sorte<10): batalha(arruaceiro_01)
-            elif(teste_de_sorte<20): batalha(arruaceiro_02)
-            elif(teste_de_sorte<30): batalha(arruaceiro_03)
-            elif(teste_de_sorte<40): batalha(arruaceiro_04)
-            elif(teste_de_sorte<50): batalha(arruaceiro_04)
-            elif(teste_de_sorte<60): batalha(arruaceiro_05)
-            elif(teste_de_sorte<70): batalha(arruaceiro_05)
-            elif(teste_de_sorte<80): batalha(arruaceiro_06)
-            elif(teste_de_sorte<90): batalha(arruaceiro_06)
-            elif(teste_de_sorte<100): batalha(arruaceiro_07)
+            if(teste_de_sorte<10): batalha(arruaceiro[1])
+            elif(teste_de_sorte<20): batalha(arruaceiro[2])
+            elif(teste_de_sorte<30): batalha(arruaceiro[3])
+            elif(teste_de_sorte<40): batalha(arruaceiro[4])
+            elif(teste_de_sorte<50): batalha(arruaceiro[4])
+            elif(teste_de_sorte<60): batalha(arruaceiro[5])
+            elif(teste_de_sorte<70): batalha(arruaceiro[5])
+            elif(teste_de_sorte<80): batalha(arruaceiro[6])
+            elif(teste_de_sorte<90): batalha(arruaceiro[6])
+            elif(teste_de_sorte<100): batalha(arruaceiro[7])
         elif(periculosidade_ruas<9):
-            if(teste_de_sorte<10): batalha(arruaceiro_04)
-            elif(teste_de_sorte<20): batalha(arruaceiro_05)
-            elif(teste_de_sorte<30): batalha(arruaceiro_05)
-            elif(teste_de_sorte<40): batalha(arruaceiro_06)
-            elif(teste_de_sorte<50): batalha(arruaceiro_06)
-            elif(teste_de_sorte<60): batalha(arruaceiro_07)
-            elif(teste_de_sorte<70): batalha(arruaceiro_07)
-            elif(teste_de_sorte<80): batalha(arruaceiro_08)
-            elif(teste_de_sorte<90): batalha(arruaceiro_08)
-            elif(teste_de_sorte<100): batalha(estudante_40)
+            if(teste_de_sorte<10): batalha(arruaceiro[4])
+            elif(teste_de_sorte<20): batalha(arruaceiro[5])
+            elif(teste_de_sorte<30): batalha(arruaceiro[5])
+            elif(teste_de_sorte<40): batalha(arruaceiro[6])
+            elif(teste_de_sorte<50): batalha(arruaceiro[6])
+            elif(teste_de_sorte<60): batalha(arruaceiro[7])
+            elif(teste_de_sorte<70): batalha(arruaceiro[7])
+            elif(teste_de_sorte<80): batalha(arruaceiro[8])
+            elif(teste_de_sorte<90): batalha(arruaceiro[8])
+            elif(teste_de_sorte<100): batalha(estudante[5])
         teste_de_sorte=random.randrange(100)
         if(teste_de_sorte<50):
             print 'O seu oponente deixou cair dinheiro no chao durante a luta!'
@@ -2730,7 +2698,7 @@ def matarAlguem():
 
 #--Seu predio: Quarto Andar--#
 def seuPredioQuartoAndar():
-    global narrador_inimigo, bebado_inimigo, mulher_prantos, mulher_toalha, mane_bone, senhor_doente, garoto_irritado, garoto_fracote, garoto_convencido, garoto_serio, garoto_forte, garoto_homem, motoqueiro_comparsa, bandido_comparsa, estudante_30, estudante_31, estudante_32, estudante_33, estudante_34, estudante_40, estudante_41, estudante_42, estudante_43, estudante_44, aliado_headbanger,Venda, Reserva_Venda,porcentagem_inflacao,bermuda_linho_regata,bermuda_linho_polo,calca_jeans_regata,calca_jeans_polo,desequipado_roupa,desequipado_capa,desequipado_luva,desequipado_anel,desequipado_maos,desequipado_calcado,espaco_vazio,pedaco_pizza,bolo_chocolate,pijama_inicial,uniforme_estudantil,malha_ninja,lapis_apontado,punhal_envelhecido,talheres_prata,jaqueta_imitacao,jaqueta_couro,agasalho_la,suplemento_alimenticio,lata_energetico,luva_la,luva_couro,soco_pvc,soco_latao,luva_spikes_alu,soco_alu,luva_spikes_aco,soco_aco,luva_spikes_ag,soco_ag,luva_spikes_au,soco_au,luva_spikes_titanio,soco_titanio,anel_forca1,anel_forca2,anel_forca3,anel_resistencia1,anel_resistencia2,anel_resistencia3,anel_consistencia1,anel_consistencia2,anel_consistencia3,anel_da_imortalidade,anel_da_divindade,chinelo_inicial,papetes_masculinas,tenis_velho,tenis_simplorio,sapato_simplorio,tenis_comum,tenis_trilha,tenis_caminhada,tenis_corrida,tenis_ZX5000,item_adicionado,quantidade_adicionada,variavel_cenario,objeto,situacao,temporario,variavel_lugar,ponto_de_save,mostrar_save, aliado_jogador,aliado_reserva, aliado_garota,adversario_inimigo,eegg,acao_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,variavel_para_comparar,contador_de_batalha,contador_de_rodadas
+    global narrador_inimigo, bebado_inimigo, mulher_prantos, mulher_toalha, mane_bone, senhor_doente, garoto, motoqueiro_comparsa, bandido_comparsa, arruaceiro, estudante, aliado_headbanger,Venda, Reserva_Venda,porcentagem_inflacao,bermuda_linho_regata,bermuda_linho_polo,calca_jeans_regata,calca_jeans_polo,desequipado_roupa,desequipado_capa,desequipado_luva,desequipado_anel,desequipado_maos,desequipado_calcado,espaco_vazio,pedaco_pizza,bolo_chocolate,pijama_inicial,uniforme_estudantil,malha_ninja,lapis_apontado,punhal_envelhecido,talheres_prata,jaqueta_imitacao,jaqueta_couro,agasalho_la,suplemento_alimenticio,lata_energetico,luva_la,luva_couro,soco_pvc,soco_latao,luva_spikes_alu,soco_alu,luva_spikes_aco,soco_aco,luva_spikes_ag,soco_ag,luva_spikes_au,soco_au,luva_spikes_titanio,soco_titanio,anel_forca1,anel_forca2,anel_forca3,anel_resistencia1,anel_resistencia2,anel_resistencia3,anel_consistencia1,anel_consistencia2,anel_consistencia3,anel_da_imortalidade,anel_da_divindade,chinelo_inicial,papetes_masculinas,tenis_velho,tenis_simplorio,sapato_simplorio,tenis_comum,tenis_trilha,tenis_caminhada,tenis_corrida,tenis_ZX5000,item_adicionado,quantidade_adicionada,variavel_cenario,objeto,situacao,temporario,variavel_lugar,ponto_de_save,mostrar_save, aliado_jogador,aliado_reserva, aliado_garota,adversario_inimigo,eegg,acao_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,variavel_para_comparar,contador_de_batalha,contador_de_rodadas
     variavel_lugar = "seu predio, 4o andar"
     temporario[0]= False
     if(situacao[0]<5):
@@ -2792,7 +2760,7 @@ def seuPredioQuartoAndar():
                                 break
                             else:
                                 if(acao_do_personagem=="sim" or acao_do_personagem=="s" or acao_do_personagem=="si" or acao_do_personagem=="sm" or acao_do_personagem=="im" or acao_do_personagem=="ssim"):
-                                    batalha(estudante_40)
+                                    batalha(estudante[5])
                                     if(aliado_jogador.status[6]<=0):break
                                     if(adversario_inimigo.status[6]>0):
                                         while (adversario_inimigo.status[6]>0):
@@ -2804,7 +2772,7 @@ def seuPredioQuartoAndar():
                                                 if(acao_do_personagem == "nao" or acao_do_personagem=="n" or acao_do_personagem=="nao" or acao_do_personagem=="no" or acao_do_personagem=="na" or acao_do_personagem=="na" or acao_do_personagem=="ao" or acao_do_personagem=="ao" or acao_do_personagem=="ñ" or acao_do_personagem=="ñao" or acao_do_personagem=="ño" or acao_do_personagem=="ñõ" or acao_do_personagem=="ña" or acao_do_personagem=="ñaõ" or acao_do_personagem=="aõ"):
                                                     print(" - Entao vamos voltar a lutar!")
                                                     time.sleep(2)
-                                                    batalha(estudante_40)
+                                                    batalha(estudante[5])
                                                 else:
                                                     if(acao_do_personagem=="sim" or acao_do_personagem=="s" or acao_do_personagem=="si" or acao_do_personagem=="sm" or acao_do_personagem=="im" or acao_do_personagem=="ssim"):
                                                         print(" - Tem certeza?(sim ou nao) ... Se voce fugir, deixara METADE DE TODO O SEU DINHEIRO conosco!")
@@ -2820,7 +2788,7 @@ def seuPredioQuartoAndar():
                                                             if(acao_do_personagem == "nao" or acao_do_personagem=="n" or acao_do_personagem=="nao" or acao_do_personagem=="no" or acao_do_personagem=="na" or acao_do_personagem=="na" or acao_do_personagem=="ao" or acao_do_personagem=="ao" or acao_do_personagem=="ñ" or acao_do_personagem=="ñao" or acao_do_personagem=="ño" or acao_do_personagem=="ñõ" or acao_do_personagem=="ña" or acao_do_personagem=="ñaõ" or acao_do_personagem=="aõ"):
                                                                 print(" - Entao vamos voltar a lutar!")
                                                                 time.sleep(2)
-                                                                batalha(estudante_40)
+                                                                batalha(estudante[5])
                                                             else:
                                                                 print('ENTRADA INVALIDA! Digite "sim" ou "nao".\n')
                                                                 time.sleep(1)
@@ -2859,7 +2827,7 @@ def seuPredioQuartoAndar():
                                     break
                                 else:
                                     if(acao_do_personagem=="sim" or acao_do_personagem=="s" or acao_do_personagem=="si" or acao_do_personagem=="sm" or acao_do_personagem=="im" or acao_do_personagem=="ssim"):
-                                        batalha(estudante_41)
+                                        batalha(estudante[6])
                                         if(aliado_jogador.status[6]<=0):break
                                         if(adversario_inimigo.status[6]>0):
                                             while (adversario_inimigo.status[6]>0):
@@ -2871,7 +2839,7 @@ def seuPredioQuartoAndar():
                                                     if(acao_do_personagem == "nao" or acao_do_personagem=="n" or acao_do_personagem=="nao" or acao_do_personagem=="no" or acao_do_personagem=="na" or acao_do_personagem=="na" or acao_do_personagem=="ao" or acao_do_personagem=="ao" or acao_do_personagem=="ñ" or acao_do_personagem=="ñao" or acao_do_personagem=="ño" or acao_do_personagem=="ñõ" or acao_do_personagem=="ña" or acao_do_personagem=="ñaõ" or acao_do_personagem=="aõ"):
                                                         print(" - Entao cai dentro!!!")
                                                         time.sleep(2)
-                                                        batalha(estudante_41)
+                                                        batalha(estudante[6])
                                                     else:
                                                         if(acao_do_personagem=="sim" or acao_do_personagem=="s" or acao_do_personagem=="si" or acao_do_personagem=="sm" or acao_do_personagem=="im" or acao_do_personagem=="ssim"):
                                                             print(" - E serio?(sim ou nao) ... Se voce fugir, deixara METADE DE TODO O SEU DINHEIRO conosco!")
@@ -2889,7 +2857,7 @@ def seuPredioQuartoAndar():
                                                                 if(acao_do_personagem == "nao" or acao_do_personagem=="n" or acao_do_personagem=="nao" or acao_do_personagem=="no" or acao_do_personagem=="na" or acao_do_personagem=="na" or acao_do_personagem=="ao" or acao_do_personagem=="ao" or acao_do_personagem=="ñ" or acao_do_personagem=="ñao" or acao_do_personagem=="ño" or acao_do_personagem=="ñõ" or acao_do_personagem=="ña" or acao_do_personagem=="ñaõ" or acao_do_personagem=="aõ"):
                                                                     print(" - Entao cai dentro!!!")
                                                                     time.sleep(2)
-                                                                    batalha(estudante_41)
+                                                                    batalha(estudante[6])
                                                                 else:
                                                                     print('ENTRADA INVALIDA! Digite "sim" ou "nao".\n')
                                                                     time.sleep(1)
@@ -2935,7 +2903,7 @@ def seuPredioQuartoAndar():
                                         break
                                     else:
                                         if(acao_do_personagem=="sim" or acao_do_personagem=="s" or acao_do_personagem=="si" or acao_do_personagem=="sm" or acao_do_personagem=="im" or acao_do_personagem=="ssim"):
-                                            batalha(estudante_42)
+                                            batalha(estudante[7])
                                             if(aliado_jogador.status[6]<=0):break
                                             if(adversario_inimigo.status[6]>0):
                                                 while (adversario_inimigo.status[6]>0):
@@ -2947,7 +2915,7 @@ def seuPredioQuartoAndar():
                                                         if(acao_do_personagem == "nao" or acao_do_personagem=="n" or acao_do_personagem=="nao" or acao_do_personagem=="no" or acao_do_personagem=="na" or acao_do_personagem=="na" or acao_do_personagem=="ao" or acao_do_personagem=="ao" or acao_do_personagem=="ñ" or acao_do_personagem=="ñao" or acao_do_personagem=="ño" or acao_do_personagem=="ñõ" or acao_do_personagem=="ña" or acao_do_personagem=="ñaõ" or acao_do_personagem=="aõ"):
                                                             print(" - Venha!!!")
                                                             time.sleep(2)
-                                                            batalha(estudante_42)
+                                                            batalha(estudante[7])
                                                         else:
                                                             if(acao_do_personagem=="sim" or acao_do_personagem=="s" or acao_do_personagem=="si" or acao_do_personagem=="sm" or acao_do_personagem=="im" or acao_do_personagem=="ssim"):
                                                                 print(" - Voce vai mesmo?(sim ou nao) ... Se voce fugir, deixara METADE DE TODO O SEU DINHEIRO conosco!")
@@ -2965,7 +2933,7 @@ def seuPredioQuartoAndar():
                                                                     if(acao_do_personagem == "nao" or acao_do_personagem=="n" or acao_do_personagem=="nao" or acao_do_personagem=="no" or acao_do_personagem=="na" or acao_do_personagem=="na" or acao_do_personagem=="ao" or acao_do_personagem=="ao" or acao_do_personagem=="ñ" or acao_do_personagem=="ñao" or acao_do_personagem=="ño" or acao_do_personagem=="ñõ" or acao_do_personagem=="ña" or acao_do_personagem=="ñaõ" or acao_do_personagem=="aõ"):
                                                                         print(" - Venha!!!")
                                                                         time.sleep(2)
-                                                                        batalha(estudante_42)
+                                                                        batalha(estudante[7])
                                                                     else:
                                                                         print('ENTRADA INVALIDA! Digite "sim" ou "nao".\n')
                                                                         time.sleep(1)
@@ -3009,7 +2977,7 @@ def seuPredioQuartoAndar():
                                             break
                                         else:
                                             if(acao_do_personagem=="sim" or acao_do_personagem=="s" or acao_do_personagem=="si" or acao_do_personagem=="sm" or acao_do_personagem=="im" or acao_do_personagem=="ssim"):
-                                                batalha(estudante_43)
+                                                batalha(estudante[8])
                                                 if(aliado_jogador.status[6]<=0):break
                                                 if(adversario_inimigo.status[6]>0):
                                                     while (adversario_inimigo.status[6]>0):
@@ -3021,7 +2989,7 @@ def seuPredioQuartoAndar():
                                                             if(acao_do_personagem == "nao" or acao_do_personagem=="n" or acao_do_personagem=="nao" or acao_do_personagem=="no" or acao_do_personagem=="na" or acao_do_personagem=="na" or acao_do_personagem=="ao" or acao_do_personagem=="ao" or acao_do_personagem=="ñ" or acao_do_personagem=="ñao" or acao_do_personagem=="ño" or acao_do_personagem=="ñõ" or acao_do_personagem=="ña" or acao_do_personagem=="ñaõ" or acao_do_personagem=="aõ"):
                                                                 print(" - Voce vai MORRER!!!")
                                                                 time.sleep(2)
-                                                                batalha(estudante_43)
+                                                                batalha(estudante[8])
                                                             else:
                                                                 if(acao_do_personagem=="sim" or acao_do_personagem=="s" or acao_do_personagem=="si" or acao_do_personagem=="sm" or acao_do_personagem=="im" or acao_do_personagem=="ssim"):
                                                                     print(" - Vai fugir mesmo, lixo?(sim ou nao) ... Se voce fugir, deixara METADE DE TODO O SEU DINHEIRO conosco!")
@@ -3039,7 +3007,7 @@ def seuPredioQuartoAndar():
                                                                         if(acao_do_personagem == "nao" or acao_do_personagem=="n" or acao_do_personagem=="nao" or acao_do_personagem=="no" or acao_do_personagem=="na" or acao_do_personagem=="na" or acao_do_personagem=="ao" or acao_do_personagem=="ao" or acao_do_personagem=="ñ" or acao_do_personagem=="ñao" or acao_do_personagem=="ño" or acao_do_personagem=="ñõ" or acao_do_personagem=="ña" or acao_do_personagem=="ñaõ" or acao_do_personagem=="aõ"):
                                                                             print(" - Voce vai MORRER!!!")
                                                                             time.sleep(2)
-                                                                            batalha(estudante_43)
+                                                                            batalha(estudante[8])
                                                                         else:
                                                                             print('ENTRADA INVALIDA! Digite "sim" ou "nao".\n')
                                                                             time.sleep(1)
@@ -3089,7 +3057,7 @@ def seuPredioQuartoAndar():
                                                 break
                                             else:
                                                 if(acao_do_personagem=="sim" or acao_do_personagem=="s" or acao_do_personagem=="si" or acao_do_personagem=="sm" or acao_do_personagem=="im" or acao_do_personagem=="ssim"):
-                                                    batalha(estudante_44)
+                                                    batalha(estudante[9])
                                                     if(aliado_jogador.status[6]<=0):break
                                                     if(adversario_inimigo.status[6]>0):
                                                         while (adversario_inimigo.status[6]>0):
@@ -3101,7 +3069,7 @@ def seuPredioQuartoAndar():
                                                                 if(acao_do_personagem == "nao" or acao_do_personagem=="n" or acao_do_personagem=="nao" or acao_do_personagem=="no" or acao_do_personagem=="na" or acao_do_personagem=="na" or acao_do_personagem=="ao" or acao_do_personagem=="ao" or acao_do_personagem=="ñ" or acao_do_personagem=="ñao" or acao_do_personagem=="ño" or acao_do_personagem=="ñõ" or acao_do_personagem=="ña" or acao_do_personagem=="ñaõ" or acao_do_personagem=="aõ"):
                                                                     print(" - Desde o inicio, eu sabia que voce nao era qualquer um!")
                                                                     time.sleep(2)
-                                                                    batalha(estudante_44)
+                                                                    batalha(estudante[9])
                                                                 else:
                                                                     if(acao_do_personagem=="sim" or acao_do_personagem=="s" or acao_do_personagem=="si" or acao_do_personagem=="sm" or acao_do_personagem=="im" or acao_do_personagem=="ssim"):
                                                                         print(" - Certeza, vai abandonar a ultima luta?(sim ou nao) ... Se voce fugir, deixara METADE DE TODO O SEU DINHEIRO conosco!")
@@ -3119,7 +3087,7 @@ def seuPredioQuartoAndar():
                                                                             if(acao_do_personagem == "nao" or acao_do_personagem=="n" or acao_do_personagem=="nao" or acao_do_personagem=="no" or acao_do_personagem=="na" or acao_do_personagem=="na" or acao_do_personagem=="ao" or acao_do_personagem=="ao" or acao_do_personagem=="ñ" or acao_do_personagem=="ñao" or acao_do_personagem=="ño" or acao_do_personagem=="ñõ" or acao_do_personagem=="ña" or acao_do_personagem=="ñaõ" or acao_do_personagem=="aõ"):
                                                                                 print(" - Ainda bem, nao quero deixar a nossa luta para depois!!!")
                                                                                 time.sleep(2)
-                                                                                batalha(estudante_44)
+                                                                                batalha(estudante[9])
                                                                             else:
                                                                                 print('ENTRADA INVALIDA! Digite "sim" ou "nao".\n')
                                                                                 time.sleep(1)
@@ -3173,7 +3141,7 @@ def seuPredioQuartoAndar():
 
 #--Seu predio: Terceiro Andar--#
 def seuPredioTerceiroAndar():
-    global narrador_inimigo, bebado_inimigo, mulher_prantos, mulher_toalha, mane_bone, senhor_doente, garoto_irritado, garoto_fracote, garoto_convencido, garoto_serio, garoto_forte, garoto_homem, motoqueiro_comparsa, bandido_comparsa, estudante_30, estudante_31, estudante_32, estudante_33, estudante_34, estudante_40, estudante_41, estudante_42, estudante_43, estudante_44, aliado_headbanger,Venda, Reserva_Venda,porcentagem_inflacao,bermuda_linho_regata,bermuda_linho_polo,calca_jeans_regata,calca_jeans_polo,desequipado_roupa,desequipado_capa,desequipado_luva,desequipado_anel,desequipado_maos,desequipado_calcado,espaco_vazio,pedaco_pizza,bolo_chocolate,pijama_inicial,uniforme_estudantil,malha_ninja,lapis_apontado,punhal_envelhecido,talheres_prata,jaqueta_imitacao,jaqueta_couro,agasalho_la,suplemento_alimenticio,lata_energetico,luva_la,luva_couro,soco_pvc,soco_latao,luva_spikes_alu,soco_alu,luva_spikes_aco,soco_aco,luva_spikes_ag,soco_ag,luva_spikes_au,soco_au,luva_spikes_titanio,soco_titanio,anel_forca1,anel_forca2,anel_forca3,anel_resistencia1,anel_resistencia2,anel_resistencia3,anel_consistencia1,anel_consistencia2,anel_consistencia3,anel_da_imortalidade,anel_da_divindade,chinelo_inicial,papetes_masculinas,tenis_velho,tenis_simplorio,sapato_simplorio,tenis_comum,tenis_trilha,tenis_caminhada,tenis_corrida,tenis_ZX5000,item_adicionado,quantidade_adicionada,variavel_cenario,objeto,situacao,temporario,variavel_lugar,ponto_de_save,mostrar_save, aliado_jogador,aliado_reserva, aliado_garota,adversario_inimigo,eegg,acao_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,variavel_para_comparar,contador_de_batalha,contador_de_rodadas
+    global narrador_inimigo, bebado_inimigo, mulher_prantos, mulher_toalha, mane_bone, senhor_doente, garoto, motoqueiro_comparsa, bandido_comparsa, arruaceiro, estudante, aliado_headbanger,Venda, Reserva_Venda,porcentagem_inflacao,bermuda_linho_regata,bermuda_linho_polo,calca_jeans_regata,calca_jeans_polo,desequipado_roupa,desequipado_capa,desequipado_luva,desequipado_anel,desequipado_maos,desequipado_calcado,espaco_vazio,pedaco_pizza,bolo_chocolate,pijama_inicial,uniforme_estudantil,malha_ninja,lapis_apontado,punhal_envelhecido,talheres_prata,jaqueta_imitacao,jaqueta_couro,agasalho_la,suplemento_alimenticio,lata_energetico,luva_la,luva_couro,soco_pvc,soco_latao,luva_spikes_alu,soco_alu,luva_spikes_aco,soco_aco,luva_spikes_ag,soco_ag,luva_spikes_au,soco_au,luva_spikes_titanio,soco_titanio,anel_forca1,anel_forca2,anel_forca3,anel_resistencia1,anel_resistencia2,anel_resistencia3,anel_consistencia1,anel_consistencia2,anel_consistencia3,anel_da_imortalidade,anel_da_divindade,chinelo_inicial,papetes_masculinas,tenis_velho,tenis_simplorio,sapato_simplorio,tenis_comum,tenis_trilha,tenis_caminhada,tenis_corrida,tenis_ZX5000,item_adicionado,quantidade_adicionada,variavel_cenario,objeto,situacao,temporario,variavel_lugar,ponto_de_save,mostrar_save, aliado_jogador,aliado_reserva, aliado_garota,adversario_inimigo,eegg,acao_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,variavel_para_comparar,contador_de_batalha,contador_de_rodadas
     if temporario[0]==True:
         print("Agora que voce venceu todos os lutadores do 3o andar voce subiu ao 4o.")
         time.sleep(2)
@@ -3276,7 +3244,7 @@ def seuPredioTerceiroAndar():
                         if(situacao[5] == 0):
                             print("Eu sou o seu oponente! Venca todos deste andar para subir!")
                             time.sleep(2)
-                            batalha(estudante_30)
+                            batalha(estudante[0])
                             if(aliado_jogador.status[6]<=0):
                                 aliado_jogador.status[6]=1
                                 print(" - Voce e fraco, se fosse uma luta no andar de cima voce teria morrido!")
@@ -3288,7 +3256,7 @@ def seuPredioTerceiroAndar():
                                     while (adversario_inimigo.status[6]>0):
                                         print(" - Voce nao pode fugir das lutas, e uma regra para continuar no desafio e ganhar o premio!")
                                         time.sleep(2)
-                                        batalha(estudante_30)
+                                        batalha(estudante[0])
                                         if(aliado_jogador.status[6]<=0):
                                             aliado_jogador.status[6]=1
                                             print(" - Voce e fraco, se fosse uma luta no andar de cima voce teria morrido!")
@@ -3335,7 +3303,7 @@ def seuPredioTerceiroAndar():
                             if(situacao[6] == 0):
                                 print(" - Voce e o desafiante??? Parece um fracote!")
                                 time.sleep(2)
-                                batalha(estudante_31)
+                                batalha(estudante[1])
                                 if(aliado_jogador.status[6]<=0):
                                     aliado_jogador.status[6]=1
                                     print(" - Voce e mesmo um fracote!")
@@ -3347,7 +3315,7 @@ def seuPredioTerceiroAndar():
                                         while (adversario_inimigo.status[6]>0):
                                             print(" - Volte aqui seu fracote! Nao seja um covarde! Voce nao pode fugir de TODAS as lutas!")
                                             time.sleep(2)
-                                            batalha(estudante_31)
+                                            batalha(estudante[1])
                                             if(aliado_jogador.status[6]<=0):
                                                 aliado_jogador.status[6]=1
                                                 print(" - Voce e mesmo um fracote!")
@@ -3394,7 +3362,7 @@ def seuPredioTerceiroAndar():
                                 if(situacao[7]==0):
                                     print(" - Cai dentro, rapa!")
                                     time.sleep(2)
-                                    batalha(estudante_32)
+                                    batalha(estudante[2])
                                     if(aliado_jogador.status[6]<=0):
                                         aliado_jogador.status[6]=1
                                         print(" - Moleque criado a leite com pera!")
@@ -3406,7 +3374,7 @@ def seuPredioTerceiroAndar():
                                             while (adversario_inimigo.status[6]>0):
                                                 print(" - Ramelao, nao foge da luta, nao!")
                                                 time.sleep(2)
-                                                batalha(estudante_32)
+                                                batalha(estudante[2])
                                                 if(aliado_jogador.status[6]<=0):
                                                     aliado_jogador.status[6]=1
                                                     print(" - Moleque criado a leite com pera!")
@@ -3453,7 +3421,7 @@ def seuPredioTerceiroAndar():
                                     if(situacao[8]==0):
                                         print(" - OOo, CIDADAO!")
                                         time.sleep(2)
-                                        batalha(estudante_33)
+                                        batalha(estudante[3])
                                         if(aliado_jogador.status[6]<=0):
                                             aliado_jogador.status[6]=1
                                             print(" - Olha la, o cara nao aguenta e depois vai chorando pra casa!")
@@ -3465,7 +3433,7 @@ def seuPredioTerceiroAndar():
                                                 while (adversario_inimigo.status[6]>0):
                                                     print(" - Ta na hora de acordar pra vida, cidadao!")
                                                     time.sleep(2)
-                                                    batalha(estudante_33)
+                                                    batalha(estudante[3])
                                                     if(aliado_jogador.status[6]<=0):
                                                         aliado_jogador.status[6]=1
                                                         print(" - Olha la, o cara nao aguenta e depois vai chorando pra casa!")
@@ -3512,7 +3480,7 @@ def seuPredioTerceiroAndar():
                                         if(situacao[9]==0):
                                             print(" - Qual e, velho? O negocio e descer o murro de ferro na cara do inimigo!")
                                             time.sleep(2)
-                                            batalha(estudante_34)
+                                            batalha(estudante[4])
                                             if(aliado_jogador.status[6]<=0):
                                                 aliado_jogador.status[6]=1
                                                 print(" - Voce nao tem um sangue fervente o suficiente para derreter o metal!")
@@ -3524,7 +3492,7 @@ def seuPredioTerceiroAndar():
                                                     while (adversario_inimigo.status[6]>0):
                                                         print(" - As mentiras ja sao antigas demais, mas voce nao quer saber!\nCorrer e uma futilidade!")
                                                         time.sleep(2)
-                                                        batalha(estudante_34)
+                                                        batalha(estudante[4])
                                                         if(aliado_jogador.status[6]<=0):
                                                             aliado_jogador.status[6]=1
                                                             print(" - Voce nao tem um sangue fervente o suficiente para derreter o metal!")
@@ -3578,7 +3546,7 @@ def seuPredioTerceiroAndar():
 
 #--Seu predio: Segundo Andar--#
 def seuPredioSegundoAndar():
-    global narrador_inimigo, bebado_inimigo, mulher_prantos, mulher_toalha, mane_bone, senhor_doente, garoto_irritado, garoto_fracote, garoto_convencido, garoto_serio, garoto_forte, garoto_homem, motoqueiro_comparsa, bandido_comparsa, estudante_30, estudante_31, estudante_32, estudante_33, estudante_34, estudante_40, estudante_41, estudante_42, estudante_43, estudante_44, aliado_headbanger,Venda, Reserva_Venda,porcentagem_inflacao,bermuda_linho_regata,bermuda_linho_polo,calca_jeans_regata,calca_jeans_polo,desequipado_roupa,desequipado_capa,desequipado_luva,desequipado_anel,desequipado_maos,desequipado_calcado,espaco_vazio,pedaco_pizza,bolo_chocolate,pijama_inicial,uniforme_estudantil,malha_ninja,lapis_apontado,punhal_envelhecido,talheres_prata,jaqueta_imitacao,jaqueta_couro,agasalho_la,suplemento_alimenticio,lata_energetico,luva_la,luva_couro,soco_pvc,soco_latao,luva_spikes_alu,soco_alu,luva_spikes_aco,soco_aco,luva_spikes_ag,soco_ag,luva_spikes_au,soco_au,luva_spikes_titanio,soco_titanio,anel_forca1,anel_forca2,anel_forca3,anel_resistencia1,anel_resistencia2,anel_resistencia3,anel_consistencia1,anel_consistencia2,anel_consistencia3,anel_da_imortalidade,anel_da_divindade,chinelo_inicial,papetes_masculinas,tenis_velho,tenis_simplorio,sapato_simplorio,tenis_comum,tenis_trilha,tenis_caminhada,tenis_corrida,tenis_ZX5000,item_adicionado,quantidade_adicionada,variavel_cenario,objeto,situacao,temporario,variavel_lugar,ponto_de_save,mostrar_save, aliado_jogador,aliado_reserva, aliado_garota,adversario_inimigo,eegg,acao_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,variavel_para_comparar,contador_de_batalha,contador_de_rodadas
+    global narrador_inimigo, bebado_inimigo, mulher_prantos, mulher_toalha, mane_bone, senhor_doente, garoto, motoqueiro_comparsa, bandido_comparsa, arruaceiro, estudante, aliado_headbanger,Venda, Reserva_Venda,porcentagem_inflacao,bermuda_linho_regata,bermuda_linho_polo,calca_jeans_regata,calca_jeans_polo,desequipado_roupa,desequipado_capa,desequipado_luva,desequipado_anel,desequipado_maos,desequipado_calcado,espaco_vazio,pedaco_pizza,bolo_chocolate,pijama_inicial,uniforme_estudantil,malha_ninja,lapis_apontado,punhal_envelhecido,talheres_prata,jaqueta_imitacao,jaqueta_couro,agasalho_la,suplemento_alimenticio,lata_energetico,luva_la,luva_couro,soco_pvc,soco_latao,luva_spikes_alu,soco_alu,luva_spikes_aco,soco_aco,luva_spikes_ag,soco_ag,luva_spikes_au,soco_au,luva_spikes_titanio,soco_titanio,anel_forca1,anel_forca2,anel_forca3,anel_resistencia1,anel_resistencia2,anel_resistencia3,anel_consistencia1,anel_consistencia2,anel_consistencia3,anel_da_imortalidade,anel_da_divindade,chinelo_inicial,papetes_masculinas,tenis_velho,tenis_simplorio,sapato_simplorio,tenis_comum,tenis_trilha,tenis_caminhada,tenis_corrida,tenis_ZX5000,item_adicionado,quantidade_adicionada,variavel_cenario,objeto,situacao,temporario,variavel_lugar,ponto_de_save,mostrar_save, aliado_jogador,aliado_reserva, aliado_garota,adversario_inimigo,eegg,acao_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,variavel_para_comparar,contador_de_batalha,contador_de_rodadas
     if(variavel_lugar == "seu predio, 3o andarb" or variavel_lugar == "seu predio, 4o andarb"):
         seuPredioTerceiroAndar()
     variavel_lugar = "seu predio, 2o andar"
@@ -3653,7 +3621,7 @@ def seuPredioSegundoAndar():
                             if(situacao[3]==6):
                                 print(" - Obrigado por me treinar, senhor.")
                                 time.sleep(2)
-                                batalha(garoto_homem)
+                                batalha(garoto[5])
                                 if(aliado_jogador.status[6]<=0):
                                     aliado_jogador.status[6]=1
                                     print(" - Me supere. Estarei te esperando.")
@@ -3663,7 +3631,7 @@ def seuPredioSegundoAndar():
                                         while (adversario_inimigo.status[6]>0):
                                             print(" - Nao abandone nossa luta!")
                                             time.sleep(1)
-                                            batalha(garoto_homem)
+                                            batalha(garoto[5])
                                             if(aliado_jogador.status[6]<=0):
                                                 aliado_jogador.status[6]=1
                                                 print(" - Me supere. Estarei te esperando.")
@@ -3681,7 +3649,7 @@ def seuPredioSegundoAndar():
                             if(situacao[3]==5):
                                 print(" - Estou empolgado! Nao aguentava mais esperar pela nossa luta!")
                                 time.sleep(2)
-                                batalha(garoto_forte)
+                                batalha(garoto[4])
                                 if(aliado_jogador.status[6]<=0):
                                     aliado_jogador.status[6]=1
                                     print(" - Quando voce estiver pronto para uma revanche, me procure novamente.")
@@ -3691,7 +3659,7 @@ def seuPredioSegundoAndar():
                                         while (adversario_inimigo.status[6]>0):
                                             print(" - A nossa luta nao acabou ainda!")
                                             time.sleep(1)
-                                            batalha(garoto_forte)
+                                            batalha(garoto[4])
                                             if(aliado_jogador.status[6]<=0):
                                                 aliado_jogador.status[6]=1
                                                 print(" - Quando voce estiver pronto para uma revanche, me procure novamente.")
@@ -3709,7 +3677,7 @@ def seuPredioSegundoAndar():
                             if(situacao[3]==4):
                                 print(" - Dessa vez nao vou perder tao facil!")
                                 time.sleep(2)
-                                batalha(garoto_serio)
+                                batalha(garoto[3])
                                 if(aliado_jogador.status[6]<=0):
                                     aliado_jogador.status[6]=1
                                     print(" - Estou te levando a serio, nao vou perder mais!")
@@ -3721,7 +3689,7 @@ def seuPredioSegundoAndar():
                                         while (adversario_inimigo.status[6]>0):
                                             print(" - Honre a nossa luta ate o fim!")
                                             time.sleep(1)
-                                            batalha(garoto_serio)
+                                            batalha(garoto[3])
                                             if(aliado_jogador.status[6]<=0):
                                                 aliado_jogador.status[6]=1
                                                 print(" - Estou te levando a serio, nao vou perder mais!")
@@ -3741,7 +3709,7 @@ def seuPredioSegundoAndar():
                             if(situacao[3]==3):
                                 print(" - Eu estava te esperando, panaca!")
                                 time.sleep(2)
-                                batalha(garoto_convencido)
+                                batalha(garoto[2])
                                 if(aliado_jogador.status[6]<=0):
                                     aliado_jogador.status[6]=1
                                     print(" - Nao aguenta o tranco, nao? Hahaha!")
@@ -3753,7 +3721,7 @@ def seuPredioSegundoAndar():
                                         while (adversario_inimigo.status[6]>0):
                                             print(" - Volte aqui seu panaca!")
                                             time.sleep(1)
-                                            batalha(garoto_convencido)
+                                            batalha(garoto[2])
                                             if(aliado_jogador.status[6]<=0):
                                                 aliado_jogador.status[6]=1
                                                 print(" - Nao aguenta o tranco, nao? Hahaha!")
@@ -3773,7 +3741,7 @@ def seuPredioSegundoAndar():
                             if(situacao[3]==2):
                                 print(" - Meu avo disse que voce viria... - disse o garoto baixinho - Vamos logo ao que interessa!")
                                 time.sleep(2)
-                                batalha(garoto_fracote)
+                                batalha(garoto[1])
                                 if(aliado_jogador.status[6]<=0):
                                     aliado_jogador.status[6]=1
                                     print(" - Voce nao e tao forte quanto meu avo falou.")
@@ -3784,7 +3752,7 @@ def seuPredioSegundoAndar():
                                         while (adversario_inimigo.status[6]>0):
                                             print(" - Meu avo disse para nao parar de lutar ate eu nao aguentar mais!")
                                             time.sleep(1)
-                                            batalha(garoto_fracote)
+                                            batalha(garoto[1])
                                             if(aliado_jogador.status[6]<=0):
                                                 aliado_jogador.status[6]=1
                                                 print(" - Voce nao e tao forte quanto meu avo falou.")
@@ -3829,7 +3797,7 @@ def seuPredioSegundoAndar():
                                     time.sleep(1)
                                     print(" - VOCE VAI PAGAR CARO!")
                                     time.sleep(2)
-                                    batalha(garoto_irritado)
+                                    batalha(garoto[0])
                                     if(aliado_jogador.status[6]<=0):break
                                     if(adversario_inimigo.status[6]>0):
                                         print(" - SAIA JA DAQUI!")
@@ -3897,7 +3865,7 @@ def seuPredioSegundoAndar():
                                                 time.sleep(1)
                                                 print(" - VOCE VAI PAGAR CARO!")
                                                 time.sleep(1)
-                                                batalha(garoto_irritado)
+                                                batalha(garoto[0])
                                                 if(aliado_jogador.status[6]<=0):break
                                                 if(adversario_inimigo.status[6]>0):
                                                     print(" - SAIA JA DAQUI!")
@@ -4156,7 +4124,7 @@ def seuPredioSegundoAndar():
 
 #--Seu predio: Primeiro Andar--#
 def seuPredioPrimeiroAndar():
-    global narrador_inimigo, bebado_inimigo, mulher_prantos, mulher_toalha, mane_bone, senhor_doente, garoto_irritado, garoto_fracote, garoto_convencido, garoto_serio, garoto_forte, garoto_homem, motoqueiro_comparsa, bandido_comparsa, estudante_30, estudante_31, estudante_32, estudante_33, estudante_34, estudante_40, estudante_41, estudante_42, estudante_43, estudante_44, aliado_headbanger,Venda, Reserva_Venda,porcentagem_inflacao,bermuda_linho_regata,bermuda_linho_polo,calca_jeans_regata,calca_jeans_polo,desequipado_roupa,desequipado_capa,desequipado_luva,desequipado_anel,desequipado_maos,desequipado_calcado,espaco_vazio,pedaco_pizza,bolo_chocolate,pijama_inicial,uniforme_estudantil,malha_ninja,lapis_apontado,punhal_envelhecido,talheres_prata,jaqueta_imitacao,jaqueta_couro,agasalho_la,suplemento_alimenticio,lata_energetico,luva_la,luva_couro,soco_pvc,soco_latao,luva_spikes_alu,soco_alu,luva_spikes_aco,soco_aco,luva_spikes_ag,soco_ag,luva_spikes_au,soco_au,luva_spikes_titanio,soco_titanio,anel_forca1,anel_forca2,anel_forca3,anel_resistencia1,anel_resistencia2,anel_resistencia3,anel_consistencia1,anel_consistencia2,anel_consistencia3,anel_da_imortalidade,anel_da_divindade,chinelo_inicial,papetes_masculinas,tenis_velho,tenis_simplorio,sapato_simplorio,tenis_comum,tenis_trilha,tenis_caminhada,tenis_corrida,tenis_ZX5000,item_adicionado,quantidade_adicionada,variavel_cenario,objeto,situacao,temporario,variavel_lugar,ponto_de_save,mostrar_save, aliado_jogador,aliado_reserva, aliado_garota,adversario_inimigo,eegg,acao_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,variavel_para_comparar,contador_de_batalha,contador_de_rodadas
+    global narrador_inimigo, bebado_inimigo, mulher_prantos, mulher_toalha, mane_bone, senhor_doente, garoto, motoqueiro_comparsa, bandido_comparsa, arruaceiro, estudante, aliado_headbanger,Venda, Reserva_Venda,porcentagem_inflacao,bermuda_linho_regata,bermuda_linho_polo,calca_jeans_regata,calca_jeans_polo,desequipado_roupa,desequipado_capa,desequipado_luva,desequipado_anel,desequipado_maos,desequipado_calcado,espaco_vazio,pedaco_pizza,bolo_chocolate,pijama_inicial,uniforme_estudantil,malha_ninja,lapis_apontado,punhal_envelhecido,talheres_prata,jaqueta_imitacao,jaqueta_couro,agasalho_la,suplemento_alimenticio,lata_energetico,luva_la,luva_couro,soco_pvc,soco_latao,luva_spikes_alu,soco_alu,luva_spikes_aco,soco_aco,luva_spikes_ag,soco_ag,luva_spikes_au,soco_au,luva_spikes_titanio,soco_titanio,anel_forca1,anel_forca2,anel_forca3,anel_resistencia1,anel_resistencia2,anel_resistencia3,anel_consistencia1,anel_consistencia2,anel_consistencia3,anel_da_imortalidade,anel_da_divindade,chinelo_inicial,papetes_masculinas,tenis_velho,tenis_simplorio,sapato_simplorio,tenis_comum,tenis_trilha,tenis_caminhada,tenis_corrida,tenis_ZX5000,item_adicionado,quantidade_adicionada,variavel_cenario,objeto,situacao,temporario,variavel_lugar,ponto_de_save,mostrar_save, aliado_jogador,aliado_reserva, aliado_garota,adversario_inimigo,eegg,acao_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,variavel_para_comparar,contador_de_batalha,contador_de_rodadas
     if(variavel_lugar == "seu predio, 2o andarb" or variavel_lugar == "seu predio, 3o andarb" or variavel_lugar == "seu predio, 4o andarb"):
         seuPredioSegundoAndar()
     if(aliado_jogador.status[6]>0):
@@ -4571,7 +4539,7 @@ def seuPredioPrimeiroAndar():
 
 #--Sua Rua--#
 def suaRua():
-    global narrador_inimigo, bebado_inimigo, mulher_prantos, mulher_toalha, mane_bone, senhor_doente, garoto_irritado, garoto_fracote, garoto_convencido, garoto_serio, garoto_forte, garoto_homem, motoqueiro_comparsa, bandido_comparsa, estudante_30, estudante_31, estudante_32, estudante_33, estudante_34, estudante_40, estudante_41, estudante_42, estudante_43, estudante_44, aliado_headbanger,Venda, Reserva_Venda,porcentagem_inflacao,bermuda_linho_regata,bermuda_linho_polo,calca_jeans_regata,calca_jeans_polo,desequipado_roupa,desequipado_capa,desequipado_luva,desequipado_anel,desequipado_maos,desequipado_calcado,espaco_vazio,pedaco_pizza,bolo_chocolate,pijama_inicial,uniforme_estudantil,malha_ninja,lapis_apontado,punhal_envelhecido,talheres_prata,jaqueta_imitacao,jaqueta_couro,agasalho_la,suplemento_alimenticio,lata_energetico,luva_la,luva_couro,soco_pvc,soco_latao,luva_spikes_alu,soco_alu,luva_spikes_aco,soco_aco,luva_spikes_ag,soco_ag,luva_spikes_au,soco_au,luva_spikes_titanio,soco_titanio,anel_forca1,anel_forca2,anel_forca3,anel_resistencia1,anel_resistencia2,anel_resistencia3,anel_consistencia1,anel_consistencia2,anel_consistencia3,anel_da_imortalidade,anel_da_divindade,chinelo_inicial,papetes_masculinas,tenis_velho,tenis_simplorio,sapato_simplorio,tenis_comum,tenis_trilha,tenis_caminhada,tenis_corrida,tenis_ZX5000,item_adicionado,quantidade_adicionada,variavel_cenario,objeto,situacao,temporario,variavel_lugar,ponto_de_save,mostrar_save, aliado_jogador,aliado_reserva, aliado_garota,adversario_inimigo,eegg,acao_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,variavel_para_comparar,contador_de_batalha,contador_de_rodadas
+    global narrador_inimigo, bebado_inimigo, mulher_prantos, mulher_toalha, mane_bone, senhor_doente, garoto, motoqueiro_comparsa, bandido_comparsa, arruaceiro, estudante, aliado_headbanger,Venda, Reserva_Venda,porcentagem_inflacao,bermuda_linho_regata,bermuda_linho_polo,calca_jeans_regata,calca_jeans_polo,desequipado_roupa,desequipado_capa,desequipado_luva,desequipado_anel,desequipado_maos,desequipado_calcado,espaco_vazio,pedaco_pizza,bolo_chocolate,pijama_inicial,uniforme_estudantil,malha_ninja,lapis_apontado,punhal_envelhecido,talheres_prata,jaqueta_imitacao,jaqueta_couro,agasalho_la,suplemento_alimenticio,lata_energetico,luva_la,luva_couro,soco_pvc,soco_latao,luva_spikes_alu,soco_alu,luva_spikes_aco,soco_aco,luva_spikes_ag,soco_ag,luva_spikes_au,soco_au,luva_spikes_titanio,soco_titanio,anel_forca1,anel_forca2,anel_forca3,anel_resistencia1,anel_resistencia2,anel_resistencia3,anel_consistencia1,anel_consistencia2,anel_consistencia3,anel_da_imortalidade,anel_da_divindade,chinelo_inicial,papetes_masculinas,tenis_velho,tenis_simplorio,sapato_simplorio,tenis_comum,tenis_trilha,tenis_caminhada,tenis_corrida,tenis_ZX5000,item_adicionado,quantidade_adicionada,variavel_cenario,objeto,situacao,temporario,variavel_lugar,ponto_de_save,mostrar_save, aliado_jogador,aliado_reserva, aliado_garota,adversario_inimigo,eegg,acao_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,variavel_para_comparar,contador_de_batalha,contador_de_rodadas
     while 1:
         if(aliado_jogador.status[6]<=0):break
         print("\n#", "-"*30,"#\n", "\nLista de Acoes\n\nCenario: "+str(variavel_lugar)+"\n\nVoce pode:\nolhar\n")
@@ -4900,6 +4868,7 @@ while 1:
                     else:
                         print('Entrada invalida!\n')
         if(ponto_de_save==0):
+            batalha(estudante[0])
             print("\nIniciando novo jogo...\n")
             time.sleep(1.5)
             print("\n\nVoce e um homem... Qual e o seu nome? (maximo 25 caracteres)\n")
@@ -5358,7 +5327,7 @@ while 1:
             time.sleep(2)
             print(" - EU VOU TE QUEBRAR ATE VOCE ME DAR O DINHEIRO!!!\n")
             time.sleep(2)
-            batalha(bandido_comparsa)
+            batalha(gangue[0])
             if(aliado_jogador.status[6]<=0):
                 aliado_jogador.status[6]=1
                 print("Voce caiu no chao...")
@@ -5388,7 +5357,7 @@ while 1:
                 time.sleep(6)
                 aliado_reserva = aliado_jogador
                 aliado_jogador = aliado_headbanger
-                batalha(bandido_comparsa)
+                batalha(gangue[0])
                 aliado_jogador = aliado_reserva
                 print(" - Pare! Por favor!\n")
                 time.sleep(3)
@@ -5414,7 +5383,7 @@ while 1:
                 if(adversario_inimigo.status[6]>0):
                     while(adversario_inimigo.status[6]>0):
                         print("Voce correu um pouco mas ele te alcancou de novo!\n")
-                        batalha(bandido_comparsa)
+                        batalha(gangue[0])
                         if(aliado_jogador.status[6]<=0):
                             aliado_jogador.status[6]=1
                             print("Voce caiu no chao...")
@@ -5444,7 +5413,7 @@ while 1:
                             time.sleep(6)
                             aliado_reserva = aliado_jogador
                             aliado_jogador = aliado_headbanger
-                            batalha(bandido_comparsa)
+                            batalha(gangue[0])
                             aliado_headbanger = aliado_jogador
                             aliado_jogador = aliado_reserva
                             print(" - Pare! Por favor!\n")
@@ -5489,7 +5458,7 @@ while 1:
                     time.sleep(3)
                     print(" - Agora voce vai entregar o dinheiro, ou nao vai?! - inqueriu, o motoqueiro montado em sua Twister 250.")
                     time.sleep(3)
-                    batalha(motoqueiro_comparsa)
+                    batalha(gangue[1])
                     if(aliado_jogador.status[6]<=0): break
                     if(adversario_inimigo.status[6]>0):
                         print("Correndo entre uns becos da sua rua, voce conseguiu se esconder...")
