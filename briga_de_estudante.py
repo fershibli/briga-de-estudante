@@ -73,8 +73,8 @@ aliado_garota = Personagem("Garota", 25,20,1,1, 0,300,300, 25,0, 2, equipamento_
 #-- _inimigos_ --#
 adversario_inimigo = Personagem("Inimigo", 10,8,1,1, 0,100,100, 0,0, "inimigo", desequipado[0], desequipado[1], desequipado[2], desequipado[3], desequipado[4], desequipado[5])
 narrador_inimigo = Personagem("Narrador", 15,8,5,5, 10,100,100, 0,0, "inimigo", desequipado[0], desequipado[1], desequipado[2], desequipado[3], desequipado[4], desequipado[5])
-bebado_inimigo = Personagem("Bebado", 4,4,-3,-3, -10,500,100, 0,0, "inimigo", desequipado[0], desequipado[1], desequipado[2], desequipado[3], desequipado[4], desequipado[5])
-mulher_prantos = Personagem("Mulher aos Prantos", 15,15,-10,10, -5,300,300, 0,0, "inimigo", desequipado[0], desequipado[1], desequipado[2], desequipado[3], desequipado[4], desequipado[5])
+bebado_inimigo = Personagem("Bebado", 4,4,0,0, -10,500,100, 0,0, "inimigo", desequipado[0], desequipado[1], desequipado[2], desequipado[3], desequipado[4], desequipado[5])
+mulher_prantos = Personagem("Mulher aos Prantos", 15,15,0,10, -5,300,300, 0,0, "inimigo", desequipado[0], desequipado[1], desequipado[2], desequipado[3], desequipado[4], desequipado[5])
 mulher_toalha = Personagem("Mulher de Toalha", 20,20,5,5, 0,800,800, 0,0, "inimigo", desequipado[0], desequipado[1], desequipado[2], desequipado[3], desequipado[4], desequipado[5])
 mane_bone = Personagem("Mane de Bone", 10,5,10,1, 0,100,100, 0,0, "inimigo", desequipado[0], desequipado[1], desequipado[2], desequipado[3], desequipado[4], desequipado[5])
 senhor_doente = Personagem("Senhor Doente", 5,3,-3,3, -1,110,110, 0,0, "inimigo", desequipado[0], desequipado[1], desequipado[2], desequipado[3], desequipado[4], desequipado[5])
@@ -219,6 +219,7 @@ def adicionaItem():
 #--Inventario--#
 def inventarioPersonagem():
     global narrador_inimigo, bebado_inimigo, mulher_prantos, mulher_toalha, mane_bone, senhor_doente, garoto_oponente, gangue_comparsa, arruaceiro_oponente, estudante_brigento, aliado_headbanger,Venda, Reserva_Venda,porcentagem_inflacao,bermuda_linho,calca_jeans,desequipado,pedaco_pizza,bolo_chocolate,equipamento_inicial,malha_ninja,punhal_envelhecido,talheres_prata,jaqueta_imitacao,jaqueta_couro,agasalho_la,suplemento_alimenticio,lata_energetico,soco_ingles,luva_luva,anel_magico,anel_da_imortalidade,anel_da_divindade,papetes_masculinas,tenis_calcado,sapato_simplorio,item_adicionado,quantidade_adicionada,variavel_cenario,objeto,situacao,temporario,variavel_lugar,ponto_de_save,mostrar_save, aliado_jogador,aliado_reserva, aliado_garota,adversario_inimigo,eegg,acao_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,variavel_para_comparar,contador_de_batalha,contador_de_rodadas
+    os.system('cls')
     while 1:
         variavel_para_comparar=0
         i=0
@@ -232,7 +233,6 @@ def inventarioPersonagem():
             i+=1
         print "\n#"+"-"*77+"#\n Inventario:"+str(variavel_para_comparar).rjust(42-len(str(variavel_para_comparar)))+" espaco(s) livre(s) de 30.\n#"+"-"*77+"#\n"+']]Mochila[[                  |             ]]Equipamentos[['.center(79)+"\n"+'|'.center(79)
         variavel_para_comparar=0
-        time.sleep(0.5)
         i=0
         while i<=29:
             if i<6:
@@ -261,8 +261,10 @@ def inventarioPersonagem():
             print("Para analisar um item digite a sua posicao!\nPara voltar ao jogo digite voltar.")
             acao_do_personagem = raw_input('-')
             if acao_do_personagem =="a" or acao_do_personagem =="b" or acao_do_personagem =="c" or acao_do_personagem =="d" or acao_do_personagem =="e" or acao_do_personagem =="f":
+                os.system('cls')
                 break
             elif acao_do_personagem.isdigit():
+                os.system('cls')
                 acao_do_personagem=int(acao_do_personagem)
                 break
             else:
@@ -629,7 +631,7 @@ def inventarioPersonagem():
                                 else:
                                     print("\nENTRADA INVLIDA!\n")
                                     time.sleep(0.5)
-        raw_input('|>')
+        if acao_do_personagem!="voltar": raw_input('|>')
         os.system('cls')
 
 #--Sistema de Troca de Personagem--#
@@ -1680,22 +1682,18 @@ def lojaComprar():
 #--Ficha do Personagem--#
 def ficha_personagem():
     global narrador_inimigo, bebado_inimigo, mulher_prantos, mulher_toalha, mane_bone, senhor_doente, garoto_oponente, gangue_comparsa, arruaceiro_oponente, estudante_brigento, aliado_headbanger,Venda, Reserva_Venda,porcentagem_inflacao,bermuda_linho,calca_jeans,desequipado,pedaco_pizza,bolo_chocolate,equipamento_inicial,malha_ninja,punhal_envelhecido,talheres_prata,jaqueta_imitacao,jaqueta_couro,agasalho_la,suplemento_alimenticio,lata_energetico,soco_ingles,luva_luva,anel_magico,anel_da_imortalidade,anel_da_divindade,papetes_masculinas,tenis_calcado,sapato_simplorio,item_adicionado,quantidade_adicionada,variavel_cenario,objeto,situacao,temporario,variavel_lugar,ponto_de_save,mostrar_save, aliado_jogador,aliado_reserva, aliado_garota,adversario_inimigo,eegg,acao_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,variavel_para_comparar,contador_de_batalha,contador_de_rodadas
-    print("\n#"+"-"*30+"#\n"+"\n Nome: "+str(aliado_jogador.nome))
+    os.system('cls')
+    print "\n#"+"-"*78+"#\n"+"\n Nome: "+str(aliado_jogador.nome)
     time.sleep(0.23)
-    print("\n Vida: "+str(aliado_jogador.status[6])+" de "+str(aliado_jogador.status[5]))
+    print "\n Vida: "+str(aliado_jogador.status[6])+" de "+str(aliado_jogador.status[5])+" Reconstituicao: ".rjust(45-len(str(aliado_jogador.status[6]))-len(str(aliado_jogador.status[5])))+str(aliado_jogador.status[4])
     time.sleep(0.23)
-    print("\n Reconstituicao: "+str(aliado_jogador.status[4]))
+    print "\n Ataque: "+str(aliado_jogador.status[0])+"Agilidade: ".rjust(42-len(str(aliado_jogador.status[0])))+str(aliado_jogador.status[2])+"\n Defesa: "+str(aliado_jogador.status[1])+"Sorte: ".rjust(38-len(str(aliado_jogador.status[1])))+str(aliado_jogador.status[3])
     time.sleep(0.23)
-    print("\n Ataque: "+str(aliado_jogador.status[0])+"\n Defesa: "+str(aliado_jogador.status[1])+"\n Agilidade: "+str(aliado_jogador.status[2])+"\n Sorte: "+str(aliado_jogador.status[3]))
+    print "\n Capa: "+str(aliado_jogador.equipamento[1].nome)+"Luvas: ".rjust(40-len(str(aliado_jogador.equipamento[1].nome)))+str(aliado_jogador.equipamento[2].nome)+"\n Roupa: "+str(aliado_jogador.equipamento[0].nome)+"Anel: ".rjust(38-len(str(aliado_jogador.equipamento[0].nome)))+str(aliado_jogador.equipamento[3].nome)+"\n Calcado: "+str(aliado_jogador.equipamento[5].nome)+"Arma: ".rjust(36-len(str(aliado_jogador.equipamento[5].nome)))+str(aliado_jogador.equipamento[4].nome)
     time.sleep(0.23)
-    print("\n Capa: "+str(aliado_jogador.equipamento[1].nome)+"\n Roupa: "+str(aliado_jogador.equipamento[0].nome)+"\n calcado: "+str(aliado_jogador.equipamento[5].nome))
+    print "\n Dinheiro: "+str(aliado_jogador.dinheiro)+" Reais\n"
     time.sleep(0.23)
-    print("\n Luvas: "+str(aliado_jogador.equipamento[2].nome)+"\n Anel: "+str(aliado_jogador.equipamento[3].nome)+"\n Arma: "+str(aliado_jogador.equipamento[4].nome))
-    time.sleep(0.23)
-    print("\n Dinheiro: "+str(aliado_jogador.dinheiro)+" Reais\n")
-    time.sleep(0.23)
-    print("\n#"+"-"*30+"#\n")
-    time.sleep(0.23)
+    print "\n#"+"-"*78+"#\n"
 
 #--Save--#
 def save():
@@ -1830,9 +1828,9 @@ def batalha(entrada_inimigo_batalha):
     while(adversario_inimigo.status[6]>0):
         if(aliado_jogador.status[6]<=0):break
         if aliado_jogador.status[6] < aliado_jogador.status[5]:
-            print 'Auto-recuperacao: '+str(aliado_jogador.status[4])
-            raw_input('|>')
-            os.system("cls")
+            print '\n\nAuto-recuperacao: '+str(aliado_jogador.status[4])+"\n"
+        raw_input('|>')
+        os.system("cls")
         aliado_jogador.status[6]+=aliado_jogador.status[4]
         if aliado_jogador.status[6] > aliado_jogador.status[5]: aliado_jogador.status[6]=aliado_jogador.status[5]
         if aliado_jogador.status[6] <=0 : aliado_jogador.status[6]=1
@@ -1868,10 +1866,10 @@ def batalha(entrada_inimigo_batalha):
                     print("O limite dos seus pontos de vida aumentou!\n")
                     time.sleep(2)
                     aliado_jogador.status[5]=aliado_jogador.status[5]+int((random.randrange(aliado_jogador.status[5]))/20)+1
-        if adversario_inimigo.status[6]<=0.005*adversario_inimigo.status[5]: barra_inimigo = "[-----------------------------!]"
+        if adversario_inimigo.status[6]<=0.05*adversario_inimigo.status[5]: barra_inimigo = "[-----------------------------!]"
         elif adversario_inimigo.status[6]<=adversario_inimigo.status[5]: barra_inimigo = "["+"-"*int(30-(adversario_inimigo.status[6]*30/adversario_inimigo.status[5]))+"|"*int(adversario_inimigo.status[6]*30/adversario_inimigo.status[5])+"]"
         else: barra_inimigo = "[!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!]"
-        if aliado_jogador.status[6]<=0.005*aliado_jogador.status[5]: barra_jogador = "[!-----------------------------]"
+        if aliado_jogador.status[6]<=0.05*aliado_jogador.status[5]: barra_jogador = "[!-----------------------------]"
         elif aliado_jogador.status[6]<=aliado_jogador.status[5]: barra_jogador = "["+"|"*int(aliado_jogador.status[6]*30/aliado_jogador.status[5])+"-"*int(30-(aliado_jogador.status[6]*30/aliado_jogador.status[5]))+"]"
         else: barra_jogador = "[!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!]"
         print "\n#"+"-"*77+"#\n"+'|'.center(79)+'\n'+str(aliado_jogador.nome)+' '*(39-len(str(aliado_jogador.nome)))+'|'+str(adversario_inimigo.nome).rjust(78-len(aliado_jogador.nome)-(39-len(str(aliado_jogador.nome))))+"\n"+str(barra_jogador)+' '*(39-len(str(barra_jogador)))+'|'+str(barra_inimigo).rjust(39)+"\n"+str(aliado_jogador.status[6])+' /'+str(aliado_jogador.status[5])+' '*(37-len(str(aliado_jogador.status[6]))-len(str(aliado_jogador.status[5])))+'|'+str(adversario_inimigo.status[6]).rjust(79-(39+len(str(adversario_inimigo.status[5]))+len(str(aliado_jogador.status[5]))))+' /'+str(adversario_inimigo.status[5])+"\n"+'|'.center(79)+"\n#"+"-"*77+"#\nO que voce fara agora, "+str(aliado_jogador.nome)+"?\nAtacar, defender ou fugir?"
@@ -1908,7 +1906,7 @@ def batalha(entrada_inimigo_batalha):
                             teste_de_sorte = random.randrange(100)
                             if (teste_de_sorte<=30+aliado_jogador.status[3]):
                                 variavel_para_comparar=aliado_jogador.status[1]
-                                aliado_jogador.status[1]=aliado_jogador.status[1]+int((random.randrange(aliado_jogador.status[1]))/6)+1
+                                aliado_jogador.status[1]=aliado_jogador.status[1]+int((random.randrange(aliado_jogador.status[1]))/12)+1
                                 if (variavel_para_comparar < aliado_jogador.status[1]):
                                     print("\nVoce testou o seu limite e agora esta mais forte!")
                                     time.sleep(2)
@@ -1923,7 +1921,7 @@ def batalha(entrada_inimigo_batalha):
                                 time.sleep(2)
                                 print("Seus pontos de defesa subiram!\n")
                                 time.sleep(2)
-                                aliado_jogador.status[1]=aliado_jogador.status[1]+int((random.randrange(aliado_jogador.status[1]))/6)+2
+                                aliado_jogador.status[1]=aliado_jogador.status[1]+int((random.randrange(aliado_jogador.status[1]))/12)+2
                         elif(teste_de_sorte==3):
                             teste_de_sorte = random.randrange(100)
                             if (teste_de_sorte<=10+aliado_jogador.status[3]):
@@ -1931,7 +1929,7 @@ def batalha(entrada_inimigo_batalha):
                                 time.sleep(2)
                                 print("Seus pontos de defesa subiram!\n")
                                 time.sleep(2)
-                                aliado_jogador.status[1]=aliado_jogador.status[1]+int((random.randrange(aliado_jogador.status[1]))/6)+3
+                                aliado_jogador.status[1]=aliado_jogador.status[1]+int((random.randrange(aliado_jogador.status[1]))/12)+3
                         elif(teste_de_sorte==2):
                             teste_de_sorte = random.randrange(100)
                             if (teste_de_sorte==10+aliado_jogador.status[3]):
@@ -1939,7 +1937,7 @@ def batalha(entrada_inimigo_batalha):
                                 time.sleep(2)
                                 print("Seus pontos de defesa subiram!\n")
                                 time.sleep(2)
-                                aliado_jogador.status[1]=aliado_jogador.status[1]+int((random.randrange(aliado_jogador.status[1]))/6)+4
+                                aliado_jogador.status[1]=aliado_jogador.status[1]+int((random.randrange(aliado_jogador.status[1]))/24)+4
                         adversario_inimigo.status[6]-=calculo_do_dano
                     else:
                         if (calculo_do_dano == 0):#S_defesa(3aliado_jogador.status[1]) ANULA S_ataque(2adversario_inimigo.status[0])
@@ -1989,7 +1987,7 @@ def batalha(entrada_inimigo_batalha):
                             teste_de_sorte = random.randrange(100)
                             if (teste_de_sorte<=30+aliado_jogador.status[3]):
                                 variavel_para_comparar=aliado_jogador.status[1]
-                                aliado_jogador.status[1]=aliado_jogador.status[1]+int((random.randrange(aliado_jogador.status[1]))/6)+1
+                                aliado_jogador.status[1]=aliado_jogador.status[1]+int((random.randrange(aliado_jogador.status[1]))/12)+1
                                 if (variavel_para_comparar < aliado_jogador.status[1]):
                                     print("\nVoce testou o seu limite e agora esta mais forte!")
                                     time.sleep(2)
@@ -2004,7 +2002,7 @@ def batalha(entrada_inimigo_batalha):
                                 time.sleep(2)
                                 print("Seus pontos de defesa subiram!\n")
                                 time.sleep(2)
-                                aliado_jogador.status[1]=aliado_jogador.status[1]+int((random.randrange(aliado_jogador.status[1]))/6)+2
+                                aliado_jogador.status[1]=aliado_jogador.status[1]+int((random.randrange(aliado_jogador.status[1]))/12)+2
                         if(teste_de_sorte==3):
                             teste_de_sorte = random.randrange(200)
                             if (teste_de_sorte<=20+aliado_jogador.status[3]):
@@ -2012,7 +2010,7 @@ def batalha(entrada_inimigo_batalha):
                                 time.sleep(2)
                                 print("Seus pontos de defesa subiram!\n")
                                 time.sleep(2)
-                                aliado_jogador.status[1]=aliado_jogador.status[1]+int((random.randrange(aliado_jogador.status[1]))/6)+3
+                                aliado_jogador.status[1]=aliado_jogador.status[1]+int((random.randrange(aliado_jogador.status[1]))/12)+3
                         if(teste_de_sorte==4):
                             teste_de_sorte = random.randrange(300)
                             if (teste_de_sorte<=30+aliado_jogador.status[3]):
@@ -2020,12 +2018,12 @@ def batalha(entrada_inimigo_batalha):
                                 time.sleep(2)
                                 print("Seus pontos de defesa subiram!\n")
                                 time.sleep(2)
-                                aliado_jogador.status[1]=aliado_jogador.status[1]+int((random.randrange(aliado_jogador.status[1]))/6)+4
+                                aliado_jogador.status[1]=aliado_jogador.status[1]+int((random.randrange(aliado_jogador.status[1]))/24)+4
                         if(teste_de_sorte>=5):
                             teste_de_sorte = random.randrange(100)
                             if (teste_de_sorte<=10+aliado_jogador.status[3]):
                                 variavel_para_comparar=aliado_jogador.status[1]
-                                aliado_jogador.status[1]=aliado_jogador.status[1]+int((random.randrange(aliado_jogador.status[1]))/6)+int((random.randrange(aliado_jogador.status[0]))/6)+1
+                                aliado_jogador.status[1]=aliado_jogador.status[1]+int((random.randrange(aliado_jogador.status[1]))/12)+int((random.randrange(aliado_jogador.status[0]))/24)+1
                                 if (variavel_para_comparar < aliado_jogador.status[1]):
                                     print("\nVoce testou o seu limite e agora esta mais forte!")
                                     time.sleep(2)
@@ -2046,9 +2044,12 @@ def batalha(entrada_inimigo_batalha):
                                 time.sleep(3)
                                 print("TODOS os seus pontos subiram!\n")
                                 time.sleep(3)
-                                aliado_jogador.status[5]=aliado_jogador.status[5]+int((random.randrange(aliado_jogador.status[5]))/6)+4
-                                aliado_jogador.status[0]=aliado_jogador.status[0]+int((random.randrange(aliado_jogador.status[0]))/6)+3
-                                aliado_jogador.status[1]=aliado_jogador.status[1]+int((random.randrange(aliado_jogador.status[1]))/6)+2
+                                aliado_jogador.status[5]=aliado_jogador.status[5]+int((random.randrange(aliado_jogador.status[5]))/12)+4
+                                aliado_jogador.status[0]=aliado_jogador.status[0]+int((random.randrange(aliado_jogador.status[0]))/12)+3
+                                aliado_jogador.status[1]=aliado_jogador.status[1]+int((random.randrange(aliado_jogador.status[1]))/12)+2
+                                aliado_jogador.status[2]+=1
+                                aliado_jogador.status[3]+=1
+                                aliado_jogador.status[4]+=1
                         else:
                             teste_de_sorte = random.randrange(300)
                             if(teste_de_sorte<=30+aliado_jogador.status[2]+aliado_jogador.status[3]-adversario_inimigo.status[2]-adversario_inimigo.status[3]):
@@ -2073,9 +2074,9 @@ def batalha(entrada_inimigo_batalha):
                         teste_de_sorte = random.randrange(5)#aumento de defesa
                         if(teste_de_sorte<=1):
                             teste_de_sorte = random.randrange(200)
-                            if (teste_de_sorte<=45+aliado_jogador.status[3]):
+                            if (teste_de_sorte<=40+aliado_jogador.status[3]):
                                 variavel_para_comparar=aliado_jogador.status[1]
-                                aliado_jogador.status[1]=aliado_jogador.status[1]+int((random.randrange(aliado_jogador.status[1]))/6)+1
+                                aliado_jogador.status[1]=aliado_jogador.status[1]+int((random.randrange(aliado_jogador.status[1]))/12)+1
                                 if (variavel_para_comparar < aliado_jogador.status[1]):
                                     print("\nVoce testou o seu limite e agora esta mais forte!")
                                     time.sleep(2)
@@ -2084,21 +2085,21 @@ def batalha(entrada_inimigo_batalha):
                                 if (variavel_para_comparar > aliado_jogador.status[1]):
                                     aliado_jogador.status[1]=variavel_para_comparar
                         elif(teste_de_sorte>=4):
-                            teste_de_sorte = random.randrange(200)
+                            teste_de_sorte = random.randrange(300)
+                            if (teste_de_sorte<=60+aliado_jogador.status[3]):
+                                print("\nVoce testou o seu limite e agora esta mais forte!")
+                                time.sleep(2)
+                                print("Seus pontos de defesa subiram!\n")
+                                time.sleep(2)
+                                aliado_jogador.status[1]=aliado_jogador.status[1]+int((random.randrange(aliado_jogador.status[1]))/12)+2
+                        elif(teste_de_sorte==3):
+                            teste_de_sorte = random.randrange(400)
                             if (teste_de_sorte<=40+aliado_jogador.status[3]):
                                 print("\nVoce testou o seu limite e agora esta mais forte!")
                                 time.sleep(2)
                                 print("Seus pontos de defesa subiram!\n")
                                 time.sleep(2)
-                                aliado_jogador.status[1]=aliado_jogador.status[1]+int((random.randrange(aliado_jogador.status[1]))/6)+2
-                        elif(teste_de_sorte==3):
-                            teste_de_sorte = random.randrange(200)
-                            if (teste_de_sorte<=20+aliado_jogador.status[3]):
-                                print("\nVoce testou o seu limite e agora esta mais forte!")
-                                time.sleep(2)
-                                print("Seus pontos de defesa subiram!\n")
-                                time.sleep(2)
-                                aliado_jogador.status[1]=aliado_jogador.status[1]+int((random.randrange(aliado_jogador.status[1]))/6)+3
+                                aliado_jogador.status[1]=aliado_jogador.status[1]+int((random.randrange(aliado_jogador.status[1]))/12)+3
                         elif(teste_de_sorte==2):
                             teste_de_sorte = random.randrange(300)
                             if (teste_de_sorte<=30+aliado_jogador.status[3]):
@@ -2106,7 +2107,7 @@ def batalha(entrada_inimigo_batalha):
                                 time.sleep(2)
                                 print("Seus pontos de defesa subiram!\n")
                                 time.sleep(2)
-                                aliado_jogador.status[1]=aliado_jogador.status[1]+int((random.randrange(aliado_jogador.status[1]))/6)+4
+                                aliado_jogador.status[1]=aliado_jogador.status[1]+int((random.randrange(aliado_jogador.status[1]))/24)+4
                         adversario_inimigo.status[6]-=calculo_do_dano
                     else:
                         if(calculo_do_dano==0):
@@ -2362,7 +2363,7 @@ def batalha(entrada_inimigo_batalha):
                                         time.sleep(2)
                                         aliado_jogador.status[0]=aliado_jogador.status[0]+int((random.randrange(aliado_jogador.status[0]))/6)+3
                             else:
-                                print("\nMesmo sem se defender, a constituicao do inimigo\n foi alta o suficiente para resistir ao seu ataque.\n")
+                                print("\nMesmo sem se defender, a constituicao do inimigo\nfoi alta o suficiente para resistir ao seu ataque.\n")
                                 time.sleep(3)
                             calculo_do_dano=2*adversario_inimigo.status[0]+random.randrange(adversario_inimigo.status[0])-aliado_jogador.status[1]-random.randrange(aliado_jogador.status[1])
                             if(calculo_do_dano>0):
@@ -2375,7 +2376,7 @@ def batalha(entrada_inimigo_batalha):
                                     time.sleep(2)
                                     aliado_jogador.status[6]=aliado_jogador.status[6]-calculo_do_dano
                             else:
-                                print("\nMesmo sem se defender, sua constituicao\n foi alta o suficiente para resistir ao ataque do oponente.\n")
+                                print("\nMesmo sem se defender, sua constituicao\nfoi alta o suficiente para resistir ao ataque do oponente.\n")
                                 time.sleep(3)
                         else:#S_ataque(2aliado_jogador.status[0]) vs ataque(adversario_inimigo.status[0])
                             print("\nVoce avancou violentamente sobre o inimigo, pressionando-o sem compaixao!")
@@ -2518,7 +2519,7 @@ def batalha(entrada_inimigo_batalha):
                                 print("\nMesmo sem se defender, sua constituicao \nfoi alta o suficiente para resistir ao ataque do oponente.\n")
                                 time.sleep(3)
                         else:#ataque(aliado_jogador.status[0]) vs ataque(adversario_inimigo.status[0])
-                            print("\nVoces se atacaram num ritmo leve, parecem estar testando um ao outro,\n ficou claro que nenhum dos dois mostrou tudo o que e capaz.\n")
+                            print("\nVoces se atacaram num ritmo leve, parecem estar testando um ao outro,\nficou claro que nenhum dos dois mostrou tudo o que e capaz.\n")
                             time.sleep(4)
                             calculo_do_dano=aliado_jogador.status[0]+random.randrange(aliado_jogador.status[0])-adversario_inimigo.status[1]-random.randrange(adversario_inimigo.status[1])
                             if(calculo_do_dano>0):
@@ -2674,8 +2675,6 @@ def batalha(entrada_inimigo_batalha):
                     calculo_da_fuga=calculo_da_fuga+((aliado_jogador.status[2]-adversario_inimigo.status[2])*0.10)+((aliado_jogador.status[3]-adversario_inimigo.status[3])*0.10)
                     if(batalha_escapar =="sim"):
                         break
-        raw_input("|>")
-        os.system("cls")
     batalha_escapar="nao"
     variavel_para_comparar = 0
     contador_de_batalha = 0
@@ -3283,7 +3282,7 @@ def seuPredioTerceiroAndar():
             time.sleep(2)
             print(" - Voce sabe que nos dois ultimos andares desse predio, o terceiro e o quarto,")
             time.sleep(2)
-            print("so tem quartos de estudantes briguentos, e nos estamos desafiando outros\n arruaceiros a lutarem conosco!")
+            print("so tem quartos de estudantes briguentos, e nos estamos desafiando outros\narruaceiros a lutarem conosco!")
             time.sleep(2)
             print("...")
             time.sleep(1)
@@ -4247,38 +4246,31 @@ def seuPredioPrimeiroAndar():
         seuPredioSegundoAndar()
     if(aliado_jogador.status[6]>0):
         variavel_lugar = "seu predio, 1o andar"
-        print("Agora voce esta no corredor do primeiro andar do seu predio.")
-        time.sleep(3)
+        print("\nCenario: Agora voce esta no corredor do primeiro andar do seu predio.\n")
+    while 1:
+        raw_input('|>')
+        os.system('cls')
         print("\n#"+"-"*30+"#\n"+"\n Lista de Acoes\n\n Cenario: "+str(variavel_lugar)+"\n\n Voce pode:\n olhar\n")
-        time.sleep(1)
         if (variavel_cenario[0] == "sim"):
             print("\n cheirar\n checar os quartos\n")
-            time.sleep(1)
             if (variavel_cenario[2] == "sim" and objeto[0] == "nao"):
                 print(" olhar o bebado\n")
-                time.sleep(1)
-        if(objeto[1] == "sim"):
+        if(objeto[1] == "sim" and objeto[3]!='sim'):
             print("\n arrombar o quarto 10\n")
-            time.sleep(1)
         if (objeto[0] == "1"):
             print("\n acordar o bebado\n")
             print("\n revistar o bebado\n")
-            time.sleep(1)
         if (objeto[0] == "2"):
             print("\n mover o bebado\n")
-            time.sleep(1)
         if (objeto[0] == "3"):
             print("\n atacar o bebado\n")
-            time.sleep(1)
         if (objeto[0] == "sim"):
             print("\n abrir a porta dos fundos\n")
-            time.sleep(1)
         print("\n ver ficha do personagem\n ver mochila\n subir as escadas\n descer as escadas\n\n salvar o jogo\n"+"\n#"+"-"*30+"#\n")
-        time.sleep(2)
-        print("\nO que voce vai fazer, "+str(aliado_jogador.nome)+"?\n")
+        print("\nO que voce fara agora, "+str(aliado_jogador.nome)+"?\n")
         acao_do_personagem = raw_input("-")
         acao_do_personagem = acao_do_personagem.lower()
-    while 1:
+        os.system("cls")
         if(aliado_jogador.status[6]<=0):break
         if(acao_do_personagem=="checar os quartos" or acao_do_personagem=="checar quartos" or acao_do_personagem=="checar" or acao_do_personagem=="quartos" or acao_do_personagem=="checaros quartos" or acao_do_personagem=="checar osquartos" or acao_do_personagem=="checarosquartos" or acao_do_personagem=="checa os quartos" or acao_do_personagem=="checa os quarto" or acao_do_personagem=="checa o quarto" or acao_do_personagem=="checa o quartos" or acao_do_personagem=="checar os quarto" or acao_do_personagem=="checar o quarto" or acao_do_personagem=="bater na porta de um dos quartos" or acao_do_personagem=="checar um dos quartos" or acao_do_personagem=="bater na porta dos quartos" or acao_do_personagem=="bater a porta dos quartos" or acao_do_personagem=="bater quartos" or acao_do_personagem=="bater"):
             print("Qual dos quartos?(10, 11, 12 ou 14)\n")
@@ -4290,108 +4282,86 @@ def seuPredioPrimeiroAndar():
             ficha_personagem()
         else:
             if(acao_do_personagem == "olhar" or acao_do_personagem == "ver" or acao_do_personagem == "olhar o quarto" or acao_do_personagem == "olha" or acao_do_personagem == "olhar quarto" or acao_do_personagem == "olha quarto" or acao_do_personagem == "olhar o quarto" or acao_do_personagem == "olha o quarto" or acao_do_personagem == "ve" or acao_do_personagem == "ve"):
+                
+                print("\nVoce ve um corredor estreito com 5 portas, o seu e os outros quartos desse \nandar do predio.")
+                time.sleep(1)
+                print("\nNum dos lados desse corredor ha uma janela quebrada,")
+                time.sleep(1)
                 if (objeto[0]=="sim" or objeto[0]=="pegou o dinheiro"):
-                    print("Voce ve um corredor estreito com 5 portas, o seu e os outros quartos desse \nandar do predio.")
-                    time.sleep(3)
-                    print("Num dos lados desse corredor ha uma janela quebrada, mas no outro se encontra a porta dos fundos.")
-                    time.sleep(3)
-                    print("Ao longo do corredor, em frente aos quartos ha um par de escadas azul-pastel \num pouco alaranjada ao redor das ferrugens.")
-                    time.sleep(3)
-                    print("A mais proxima sobe e a colada a parede desce.")
-                    time.sleep(3)
+                    print("mas no outro se encontra a porta dos fundos.")
+                    time.sleep(1.5)
                 elif (variavel_cenario[2] == "1" or variavel_cenario[2] == "sim"):
-                    print("Voce ve um corredor estreito com 5 portas, o seu e os outros quartos desse \nandar do predio.")
-                    time.sleep(3)
-                    print("Num dos lados desse corredor ha uma janela quebrada,")
-                    time.sleep(3)
-                    print("mas no outro se encontra um bebado caido no chao, imundo e cercado de vomito, \nencostado na porta dos fundos, impedindo o acesso.")
-                    time.sleep(3)
-                    print("E ao longo do corredor, em frente aos quartos ha um par de escadas azul-pastel \num pouco alaranjada ao redor das ferrugens.")
-                    time.sleep(3)
-                    print("A mais proxima sobe e a colada a parede desce.")
-                    time.sleep(3)
+                    print("mas no outro se encontra um bebado caido no chao, imundo e cercado de vomito,\nencostado na porta dos fundos, impedindo o acesso.")
+                    time.sleep(1.5)
                 else:
-                    print("Voce ve um corredor estreito com 5 portas, o seu e os outros quartos desse \nandar do predio.")
-                    time.sleep(3)
-                    print("Num dos lados desse corredor ha uma janela quebrada,")
-                    time.sleep(3)
-                    print("mas no outro se encontra, encostado na porta dos fundos e caido no chao coberto \npor cacos de vidro, um homem sujo, cercado por algum liquido que parece laranja...")
-                    time.sleep(3)
-                    print("E ao longo do corredor, em frente aos quartos ha um par de escadas azul-pastel \num pouco alaranjada ao redor das ferrugens.")
-                    time.sleep(3)
-                    print("A mais proxima sobe e a colada a parede desce.")
-                    time.sleep(3)
+                    print("mas no outro se encontra, encostado na porta dos fundos e caido no chao \ncoberto por cacos de vidro, um homem sujo, \ncercado por algum liquido que parece laranja...")
+                    time.sleep(1.5)
                     variavel_cenario[0] = "sim"
+                print("\nE ao longo do corredor, em frente aos quartos ha um par de escadas azul-pastel \num pouco alaranjada ao redor das ferrugens.")
+                time.sleep(1)
+                print("A mais proxima sobe e a colada a parede desce.\n")
             else:
                 if(acao_do_personagem=="cheirar" or acao_do_personagem=="cherar" or acao_do_personagem=="dar um tapa" or acao_do_personagem=="cheira" or acao_do_personagem=="chera"):
                     if(variavel_cenario[2]=="nao"):
                         variavel_cenario[2]="sim"
-                    print("Voce sente um cheiro forte de alcool e vomito")
-                    time.sleep(3)
+                    print("\nVoce sente um cheiro forte de alcool e vomito\n")
                 else:
                     if(acao_do_personagem=="10"):
                         if(objeto[3]=="sim"):
-                            print("Voce ve uma porta arrombada... Nao ha mais nada de interessante dentro do quarto.")
-                            time.sleep(3)
+                            print("\nVoce ve uma porta arrombada... \nNao ha mais nada de interessante dentro do quarto.\n")
                         else:
-                            print("Voce bateu na porta, mas ninguem atendeu... Ela parece facil de ser arrombada...")
-                            time.sleep(3)
+                            print("\nVoce bateu na porta, mas ninguem atendeu... \nEla parece facil de ser arrombada...\n")
                             objeto[1]="sim"
                     else:
                         if(acao_do_personagem=="11"):
                             if(situacao[1]==0):
-                                print("Quando voce bateu, a porta se abriu no primeiro toque \npor nao ter uma fechadura...")
-                                time.sleep(4)
-                                print("Voce ve, dentro da casa, uma mulher alta de ombros largos, BEM LARGOS, \nmusculosa e com o maxilar largo...")
-                                time.sleep(4)
-                                print("Ela estava apenas de toalha...")
+                                print("\nQuando voce bateu, a porta se abriu no primeiro toque \npor nao ter uma fechadura...")
                                 time.sleep(2)
+                                print("Voce ve, dentro da casa, uma mulher alta de ombros largos, BEM LARGOS, \nmusculosa e com o maxilar largo...")
+                                time.sleep(2)
+                                print("Ela estava apenas de toalha...")
+                                time.sleep(1)
                                 print(" - MAS QUE ATREVIMENTO! SUMA DAQUI! - diz a mulher enquanto te epurra com a \nporta que e fechada violentamente.")
-                                time.sleep(4)
-                                print("Voce perdeu 5 pontos de vida ao cair no corredor...")
-                                time.sleep(3)
+                                time.sleep(2)
+                                print("Voce perdeu 5 pontos de vida ao cair no corredor...\n")
                                 aliado_jogador.status[6]=aliado_jogador.status[6]-5
                                 if(aliado_jogador.status[6]<=0):
                                     aliado_jogador.status[6]=1
                                 situacao[1]=1
                             else:
                                 if(situacao[1]==1):
-                                    print("Voce empurrou a porta sem fechadura, mas moradora que ainda estava te toalha, \nfuriosamente fechou a porta gritando, antes que voce pudesse terminar de abrir!")
-                                    time.sleep(3)
-                                    print("Voce perdeu 5 pontos de vida ao cair no corredor...")
-                                    time.sleep(3)
+                                    print("\nVoce empurrou a porta sem fechadura, mas moradora que ainda estava te toalha, \nfuriosamente fechou a porta gritando, antes que voce pudesse terminar de abrir!")
+                                    time.sleep(1)
+                                    print("Voce perdeu 5 pontos de vida ao cair no corredor...\n")
                                     aliado_jogador.status[6]=aliado_jogador.status[6]-5
                                     if(aliado_jogador.status[6]<=0):
                                         aliado_jogador.status[6]=1
                                     situacao[1]=2
                                 else:
                                     if(situacao[1]==2):
-                                        print("Voce abriu a porta e levou um soco na cara, \ncaindo em seguida no chao do corredor.")
-                                        time.sleep(3)
-                                        print("Voce perdeu 10 pontos de vida...")
-                                        time.sleep(3)
+                                        print("\nVoce abriu a porta e levou um soco na cara, \ncaindo em seguida no chao do corredor.")
+                                        time.sleep(1)
+                                        print("Voce perdeu 10 pontos de vida...\n")
                                         aliado_jogador.status[6]=aliado_jogador.status[6]-10
                                         if(aliado_jogador.status[6]<=0):
                                             aliado_jogador.status[6]=1
                                         situacao[1]=3
                                     else:
                                         if(situacao[1]==3):
-                                            print("Voce abriu a porta e viu a mulher de toalha extremamente furiosa \ncom os ombros levemente curvados, deixando a mostra seus bracos musculosos e gigantescos.")
-                                            time.sleep(3)
+                                            print("\nVoce abriu a porta e viu a mulher de toalha extremamente furiosa \ncom os ombros levemente curvados, deixando a mostra seus bracos musculosos e gigantescos.")
+                                            time.sleep(1)
                                             print(" - VOCE VAI APANHAR MUITO AGORA!")
-                                            time.sleep(3)
+                                            time.sleep(1)
                                             batalha(mulher_toalha)
                                             if(aliado_jogador.status[6]<=0):break
                                             if(adversario_inimigo.status[6]>0):
-                                                print(" - E NAO VOLTE MAIS AQUI!")
-                                                time.sleep(3)
+                                                print("\n - E NAO VOLTE MAIS AQUI!\n")
                                             else:
-                                                print("A mulher caiu inconsciente no chao...")
+                                                print("\nA mulher caiu inconsciente no chao...")
                                                 time.sleep(1)
                                                 print("Dentro da casa voce encontrou 100 reais e um suplemento alimenticio")
                                                 time.sleep(2)
-                                                print("Voce guardou ambos na mochila!")
-                                                time.sleep(2)
+                                                print("Voce guardou ambos na mochila!\n")
                                                 aliado_jogador.dinheiro=aliado_jogador.dinheiro+100
                                                 quantidade_adicionada=1
                                                 item_adicionado=suplemento_alimenticio
@@ -4399,29 +4369,28 @@ def seuPredioPrimeiroAndar():
                                                 situacao[1]=4
                                         else:
                                             if(situacao[1]==4):
-                                                print("Voce entra no quarto, encontra a mulher que voce derrotou caida no chao \ne mais nada alem dos moveis velhos dela.")
+                                                print("\nVoce entra no quarto, encontra a mulher que voce derrotou caida no chao \ne mais nada alem dos moveis velhos dela.\n")
                         else:
                             if(acao_do_personagem=="12"):
-                                print("Voce bateu na porta...")
+                                print("\nVoce bateu na porta...")
                                 time.sleep(0.5)
                                 print(" - Ja vai! - exclama uma senhora de dentro da casa.")
                                 time.sleep(1)
                                 print("...")
                                 time.sleep(0.5)
-                                print(" - Ola, meu jovem! Por que voce nao entra e prova um pouco do bolo que eu acabei de fazer?")
+                                print(" - Ola, meu jovem! \nPor que voce nao entra e prova um pouco do bolo que eu acabei de fazer?")
                                 time.sleep(1.5)
                                 print("...")
-                                time.sleep(0.5)
-                                print("Voce recurperou TODOS os seus pontos de vida!")
-                                time.sleep(2)
+                                time.sleep(1)
+                                print "\n"+"Voce recurperou TODOS os seus pontos de vida!".center(79)+"\n"
                                 aliado_jogador.status[6]=aliado_jogador.status[5]
                             else:
                                 if(acao_do_personagem=="14"):
                                     if(objeto[4]=="sim"):
-                                        print("Suma daqui seu idiota... Deixe-a em paz...")
+                                        print("\nSuma daqui seu idiota... Deixe-a em paz...\n")
                                     else:
                                         if(objeto[0]=="sim" or objeto[0]=="pegou o dinheiro"):
-                                            print("Voce bateu na porta...")
+                                            print("\nVoce bateu na porta...")
                                             time.sleep(1)
                                             print("Voce escuta passos de dentro vindo a porta...")
                                             time.sleep(1)
@@ -4435,64 +4404,58 @@ def seuPredioPrimeiroAndar():
                                             time.sleep(1)
                                             print("...")
                                             time.sleep(0.75)
-                                            print(" - VOCE VAI PAGAR CARO POR MATAR MEU MARIDO!")
+                                            print(" - VOCE VAI PAGAR CARO POR MATAR MEU MARIDO!\n")
                                             time.sleep(1)
                                             batalha(mulher_prantos)
                                             if(aliado_jogador.status[6]<=0):break
                                             if(adversario_inimigo.status[6]>0):
-                                                print(" - CHEGA!")
+                                                print("\n - CHEGA!")
                                                 time.sleep(0.5)
                                                 print(" - Voce matou meu marido...")
                                                 time.sleep(1)
                                                 print(" - Como voce teve a pachorra de me procurar?!")
                                                 time.sleep(1)
-                                                print("Ela fechou a porta chorando.")
-                                                time.sleep(1)
+                                                print("Ela fechou a porta chorando.\n")
                                             else:
-                                                print("A mulher caiu inconsciente no chao...")
-                                                time.sleep(2)
+                                                print("\nA mulher caiu inconsciente no chao...")
+                                                time.sleep(1)
                                                 print("Dentro da casa voce encontrou um par de talheres de prata...")
-                                                time.sleep(2)
+                                                time.sleep(1)
                                                 print("Voce os guardou na mochila...")
-                                                time.sleep(2)
+                                                time.sleep(1)
                                                 print("...")
-                                                time.sleep(2)
-                                                print("Seu idiota...")
-                                                time.sleep(3)
+                                                time.sleep(0.5)
+                                                print("Seu idiota...\n")
                                                 quantidade_adicionada=1
                                                 item_adicionado=talheres_prata
                                                 adicionaItem()
                                                 objeto[4]="sim"
                                         else:
-                                            print("Voce bateu na porta...")
+                                            print("\nVoce bateu na porta...")
                                             time.sleep(1)
-                                            print(" - JA DISSE PARA VOCE IR EMBORA SEU BEBADO! - grita uma mulher de dentro.\n - NINGUEM TE MERECE COMO MARIDO!")
-                                            time.sleep(2)
+                                            print(" - JA DISSE PARA VOCE IR EMBORA SEU BEBADO! - grita uma mulher de dentro.\n - NINGUEM TE MERECE COMO MARIDO!\n")
                                 else:
                                     if(acao_do_personagem=="13"):
-                                        print("Voce e bobo?")
+                                        print("\nVoce e bobo?")
                                         time.sleep(0.5)
                                         print("Esse e o seu quarto!")
                                         time.sleep(0.5)
-                                        print("Voce esta atrasado demais para voltar!")
-                                        time.sleep(1)
+                                        print("Voce esta atrasado demais para voltar!\n")
                                     else:
                                         if(acao_do_personagem=="arrombar a porta do quarto 10" or acao_do_personagem=="arrombar 10" or acao_do_personagem=="arrombar quarto 10" or acao_do_personagem=="arrombar o quarto 10" or acao_do_personagem=="arrombar" or acao_do_personagem=="arrombar a porta" or acao_do_personagem=="quarto 10" or acao_do_personagem=="entrar no quarto 10"):
                                             if(objeto[3]=="sim"):
-                                                print("Voce ja arrombou essa porta... \nNao ha mais nada de interessante dentro do quarto.")
-                                                time.sleep(1)
+                                                print("V\noce ja arrombou essa porta... \nNao ha mais nada de interessante dentro do quarto.\n")
                                             else:
-                                                print("Voce entrou no quarto e encontrou uma Jaqueta de Couro!")
-                                                time.sleep(1.5)
-                                                print("Voce a guardou na mochila!")
+                                                print("\nVoce entrou no quarto e encontrou uma Jaqueta de Couro!")
                                                 time.sleep(1)
+                                                print("Voce a guardou na mochila!\n")
                                                 item_adicionado=jaqueta_imitacao
                                                 quantidade_adicionada=1
                                                 adicionaItem()
                                                 objeto[3]="sim"
                                         else:
                                             if(acao_do_personagem=="subir as escadas" or acao_do_personagem=="subir" or acao_do_personagem=="subir escadas" or acao_do_personagem=="subi" or acao_do_personagem=="subi as escadas" or acao_do_personagem=="subir escada" or acao_do_personagem=="subi escada" or acao_do_personagem=="subi a escada" or acao_do_personagem=="sobe"):
-                                                print("Voce subiu para o segundo andar, \nla voce encontrou mais cinco quartos e outra escada ascendente.")
+                                                print("\nVoce subiu para o segundo andar, \nla voce encontrou mais cinco quartos e outra escada ascendente.\n")
                                                 time.sleep(1)
                                                 seuPredioSegundoAndar()
                                                 if(aliado_jogador.status[6]<=0):break
@@ -4500,47 +4463,42 @@ def seuPredioPrimeiroAndar():
                                                 if(acao_do_personagem=="olhar o bebado"  or acao_do_personagem=="bebado"  or acao_do_personagem=="bebado" or acao_do_personagem=="olhar bebado" or acao_do_personagem=="olha o bebado" or acao_do_personagem=="olha bebado" or acao_do_personagem=="olhar o bebado" or acao_do_personagem=="olhar bebado" or acao_do_personagem=="olha o bebado" or acao_do_personagem=="olha bebado"):
                                                     if objeto[0]!="pegou o dinheiro" and objeto[0]!='sim':
                                                         objeto[0]="1"
-                                                        print("Voce ve um homem de 40 anos, coberto por cacos de vidro, bebida e vomito, \ndormindo no chao.")
-                                                        time.sleep(1)
-                                                    else: print 'Voce ve um bebado morto.'
+                                                        print("\nVoce ve um homem de 40 anos, coberto por cacos de vidro, bebida e vomito, \ndormindo no chao.\n")
+                                                    else: print '\nVoce ve um bebado morto.\n'
                                                 else:
                                                     if(acao_do_personagem=="revistar o bebado" or acao_do_personagem=="revistar bebado" or acao_do_personagem=="revistar" or acao_do_personagem=="revista bebado" or acao_do_personagem=="revista o bebado" or acao_do_personagem=="revistar o bebado" or acao_do_personagem=="revistar bebado" or acao_do_personagem=="revistar" or acao_do_personagem=="revista bebado" or acao_do_personagem=="revista o bebado"):
                                                         if(objeto[2]=="nao"):
-                                                            print("Voce achou um energetico e o guardou na mochila!")
-                                                            time.sleep(1)
+                                                            print("\nVoce achou um energetico e o guardou na mochila!\n")
                                                             item_adicionado=lata_energetico
                                                             quantidade_adicionada=1
                                                             adicionaItem()
                                                             objeto[2]="sim"
                                                         else:
-                                                            print("Voce nao encontrou mais nada...\n")
-                                                            time.sleep(2)
+                                                            print("\nVoce nao encontrou mais nada...\n")
                                                     else:
                                                         if(acao_do_personagem=="acordar o bebado" or acao_do_personagem=="acordar" or acao_do_personagem=="acordar bebado" or acao_do_personagem=="acorda o bebado" or acao_do_personagem=="acorda bebado" or acao_do_personagem=="acordar o bebado" or acao_do_personagem=="acordar bebado" or acao_do_personagem=="acorda o bebado" or acao_do_personagem=="acorda bebado"):
                                                             if objeto[0]!="pegou o dinheiro" and objeto[0]!='sim':
                                                                 objeto[0]="2"
-                                                            print("Voce tenta acordar o bebado, mas nao consegue...")
-                                                            time.sleep(1)
+                                                            print("\nVoce tenta acordar o bebado, mas nao consegue...\n")
                                                         else:
                                                             if(acao_do_personagem=="mover o bebado" or acao_do_personagem=="mover bebado" or acao_do_personagem=="move o bebado" or acao_do_personagem=="move bebado" or acao_do_personagem=="mover o bebado" or acao_do_personagem=="mover bebado" or acao_do_personagem=="move o bebado" or acao_do_personagem=="move bebado" or acao_do_personagem=="mover" or acao_do_personagem=="move"):
                                                                 if objeto[0]!="pegou o dinheiro" and objeto[0]!='sim':
                                                                     objeto[0]="3"
-                                                                    print("Voce pensa em mover o bebado...")
+                                                                    print("\nVoce pensa em mover o bebado...")
                                                                     time.sleep(1)
                                                                     print("Mas o cheiro e a sujeira fazem voce vomitar em cima dele!")
                                                                     time.sleep(2)
                                                                     print("...")
                                                                     time.sleep(1)
-                                                                    print("Ele continua dormindo...")
-                                                                    time.sleep(1)
+                                                                    print("Ele continua dormindo...\n")
                                                                 else:
-                                                                    print 'AO MENOS RESPEITE OS QUE ESTAO MORTOS!'
+                                                                    print '\nAO MENOS RESPEITE OS QUE ESTAO MORTOS!'
                                                                     time.sleep(1)
-                                                                    print 'Deixe-o descansar em paz...'
+                                                                    print 'Deixe-o descansar em paz...\n'
                                                             else:
                                                                 if(acao_do_personagem=="atacar o bebado" or acao_do_personagem=="atacar bebado" or acao_do_personagem=="ataca o bebado" or acao_do_personagem=="ataca bebado" or acao_do_personagem=="atacar o bebado" or acao_do_personagem=="atacar bebado" or acao_do_personagem=="ataca o bebado" or acao_do_personagem=="ataca bebado" or acao_do_personagem=="atacar" or acao_do_personagem=="ataca"):
                                                                     if objeto[0]!="pegou o dinheiro" and objeto[0]!="sim":
-                                                                        print("Voce chuta varias vezes o bebado violentamente!")
+                                                                        print("\nVoce chuta varias vezes o bebado violentamente!")
                                                                         time.sleep(0.5)
                                                                         raw_input("(Aperte Enter)")
                                                                         raw_input("!!!")
@@ -4557,14 +4515,13 @@ def seuPredioPrimeiroAndar():
                                                                         print("...")
                                                                         time.sleep(1)
                                                                         print(" - Ssseu muleque i-insstrosmestido!... *hic*\n")
-                                                                        time.sleep(2)
+                                                                        time.sleep(1)
                                                                         batalha(bebado_inimigo)
                                                                         if(aliado_jogador.status[6]<=0):break
                                                                         if(adversario_inimigo.status[6]>0):
-                                                                            print("Voce escapa da briga, mas em seguida o bebado tosse sangue e cai no chao...")
-                                                                            time.sleep(2)
+                                                                            print("\nVoce escapa da briga, mas em seguida o bebado tosse sangue e cai no chao...\n")
                                                                         else:
-                                                                            print("O bebado coberto de bebida, vomito e sangue, cai de costas no chao,")
+                                                                            print("\nO bebado coberto de bebida, vomito e sangue, cai de costas no chao,")
                                                                             time.sleep(1)
                                                                             print("sendo empalado pelos diversos cacos de vidro...")
                                                                             time.sleep(1)
@@ -4572,14 +4529,13 @@ def seuPredioPrimeiroAndar():
                                                                             time.sleep(1.5)
                                                                             print("Voce vira o rosto fechando os olhos e abaixando os punhos...")
                                                                             time.sleep(2)
-                                                                            print("Agora, desencostado da porta dos fundos, o bebado ja nao e mais um impecilio...")
-                                                                            time.sleep(1)
+                                                                            print("Agora, desencostado da porta dos fundos, o bebado ja nao e mais um impecilio...\n")
                                                                         objeto[0]="sim"
-                                                                    else: print 'Ele ja esta morto!'
+                                                                    else: print '\nEle ja esta morto!\n'
                                                                 else:
                                                                     if(acao_do_personagem=="abrir a porta dos fundos" or acao_do_personagem=="abrir porta dos fundos" or acao_do_personagem=="abrir porta do fundos" or acao_do_personagem=="abrir porta dos fundo" or acao_do_personagem=="abrir" or acao_do_personagem=="abrir porta do fundo" or acao_do_personagem=="abrir a porta" or acao_do_personagem=="abrir porta"):
                                                                         if(objeto[0]=="sim"):
-                                                                            print("Voce abre a porta... ")
+                                                                            print("\nVoce abre a porta... ")
                                                                             time.sleep(1)
                                                                             print("E um armario de limpeza.")
                                                                             time.sleep(1)
@@ -4589,8 +4545,7 @@ def seuPredioPrimeiroAndar():
                                                                             time.sleep(1)
                                                                             print("...")
                                                                             time.sleep(2)
-                                                                            print("Voce tambem achou um lapis apontado e o guardou na mochila!")
-                                                                            time.sleep(1)
+                                                                            print("Voce tambem achou um lapis apontado e o guardou na mochila!\n")
                                                                             item_adicionado=equipamento_inicial[2]
                                                                             quantidade_adicionada=1
                                                                             adicionaItem()
@@ -4598,17 +4553,15 @@ def seuPredioPrimeiroAndar():
                                                                             aliado_jogador.dinheiro=aliado_jogador.dinheiro+10
                                                                         else:
                                                                             if(objeto[0]=="pegou o dinheiro"):
-                                                                                print("Voce ve materiais de limpesa e uma mala aberta.")
-                                                                                time.sleep(0.5)
+                                                                                print("\nVoce ve materiais de limpesa e uma mala aberta.\n")
                                                                             else:
-                                                                                print("Nao da para abrir!")
-                                                                                time.sleep(0.5)
+                                                                                print("\nNao da para abrir!\n")
                                                                     else:
                                                                         if(acao_do_personagem=="descer as escadas" or acao_do_personagem=="descer escadas" or acao_do_personagem=="descer escada" or acao_do_personagem=="descer a escada" or acao_do_personagem=="sair" or acao_do_personagem=="descer" or acao_do_personagem=="sair do predio"):
                                                                             if(ponto_de_save==1):
                                                                                 while 1:
-                                                                                    print("Do lado de fora ha um oponente MUITO forte.")
-                                                                                    time.sleep(3)
+                                                                                    print("\nDo lado de fora ha um oponente MUITO forte.")
+                                                                                    time.sleep(1.5)
                                                                                     print("Tem certeza que esta pronto para sair? (sim ou nao)")
                                                                                     acao_do_personagem=raw_input("-")
                                                                                     acao_do_personagem=acao_do_personagem.lower()
@@ -4617,18 +4570,18 @@ def seuPredioPrimeiroAndar():
                                                                                         break
                                                                                     else:
                                                                                         if(acao_do_personagem== "nao" or acao_do_personagem=="n" or acao_do_personagem=="ao" or acao_do_personagem=="no" or acao_do_personagem=="na" or acao_do_personagem== "naao" or acao_do_personagem=="naoo" or acao_do_personagem=="aoo" or acao_do_personagem=="noo" or acao_do_personagem=="naa" or acao_do_personagem== "noop" or acao_do_personagem=="a" or acao_do_personagem=="mao" or acao_do_personagem=="nso" or acao_do_personagem=="ns" or acao_do_personagem== "nnao" or acao_do_personagem=="nn" or acao_do_personagem=="aao" or acao_do_personagem=="nno" or acao_do_personagem=="nna"):
-                                                                                            print("Voce decidiu nao sair do predio.")
+                                                                                            print("\nVoce decidiu nao sair do predio.\n")
                                                                                             time.sleep(0.5)
                                                                                             break
                                                                                         else:
                                                                                             print("Entrada invalida!")
                                                                                             time.sleep(0.5)
                                                                                 if(acao_do_personagem=="sim"):
-                                                                                    print("Voce desceu as escadas e saiu do predio...")
+                                                                                    print("\nVoce desceu as escadas e saiu do predio...\n")
                                                                                     time.sleep(0.5)
                                                                                     break
                                                                             else:
-                                                                                print("Voce desceu as escadas e saiu do predio...")
+                                                                                print("\nVoce desceu as escadas e saiu do predio...\n")
                                                                                 time.sleep(0.5)
                                                                                 variavel_lugar = "sua rua"
                                                                                 suaRua()
@@ -4641,27 +4594,6 @@ def seuPredioPrimeiroAndar():
                                                                                     inventarioPersonagem()
                                                                                 else:
                                                                                     print('\nEntrada Invalida!\n')
-                                                                                    time.sleep(0.5)
-        print("\n#"+"-"*30+"#\n"+"\n Lista de Acoes\n\n Cenario: "+str(variavel_lugar)+"\n\n Voce pode:\n olhar\n")
-        if (variavel_cenario[0] == "sim"):
-            print("\n cheirar\n checar os quartos\n")
-            if (variavel_cenario[2] == "sim" and objeto[0] == "nao"):
-                print(" olhar o bebado\n")
-        if(objeto[1] == "sim"):
-            print("\n arrombar o quarto 10\n")
-        if (objeto[0] == "1"):
-            print("\n acordar o bebado\n")
-            print("\n revistar o bebado\n")
-        if (objeto[0] == "2"):
-            print("\n mover o bebado\n")
-        if (objeto[0] == "3"):
-            print("\n atacar o bebado\n")
-        if (objeto[0] == "sim"):
-            print("\n abrir a porta dos fundos\n")
-        print("\n ver ficha do personagem\n ver mochila\n subir as escadas\n descer as escadas\n\n salvar o jogo\n"+"\n#"+"-"*30+"#\n")
-        print("\nO que voce fara agora, "+str(aliado_jogador.nome)+"?\n")
-        acao_do_personagem = raw_input("-")
-        acao_do_personagem = acao_do_personagem.lower()
 
 #--Sua Rua--#
 def suaRua():
@@ -4931,6 +4863,8 @@ while 1:
                         print("\nCarregado!\n")
                         time.sleep(1)
                         ficha_personagem()
+                        raw_input('|>')
+                        os.system('cls')
                     else:
                         print("\nERRO: Voce nao possui dados salvos.\n")
                         time.sleep(0.5)
@@ -5101,7 +5035,7 @@ while 1:
                         time.sleep(1)
                         print('mas os resultados dessas acoes podem mudar de acordo com o que voce faz,')
                         time.sleep(1)
-                        print('sendo assim recomendo que voce repita algumas acoes no cenario,\n depois de realizar algo que o modifique de alguma forma, pois elas mudam.')
+                        print('sendo assim recomendo que voce repita algumas acoes no cenario,\ndepois de realizar algo que o modifique de alguma forma, pois elas mudam.')
                         time.sleep(1)
                         print('\nAcho que ja e o bastante para comecarmos, mas posso repetir se voce quiser...')
                         time.sleep(1)
@@ -5149,6 +5083,7 @@ while 1:
                 print("\nE agora, "+str(aliado_jogador.nome)+", o que voce vai fazer?\n")
                 acao_do_personagem = raw_input("-")
                 acao_do_personagem = acao_do_personagem.lower()
+                os.system("cls")
                 if (acao_do_personagem == "ver ficha do personagem" or acao_do_personagem == "ver a ficha do personagem" or acao_do_personagem == "ver a ficha de personagem" or acao_do_personagem == "ficha" or acao_do_personagem=="ficha do personagem" or acao_do_personagem=="ficha de personagem" or acao_do_personagem=="ver ficha de personagem" or acao_do_personagem=="ver ficha" or acao_do_personagem == "olhar ficha do personagem" or acao_do_personagem == "ver minha ficha" or acao_do_personagem=="minha ficha" or acao_do_personagem=="ficha personagem" or acao_do_personagem=="olhar ficha de personagem" or acao_do_personagem=="olhar ficha"):
                     ficha_personagem()
                 else:
@@ -5393,9 +5328,7 @@ while 1:
                 seuPredioPrimeiroAndar()
             else:
                 os.system("cls")
-                print("\nCenario: Voce continua atrasado para a aula - nao que voce deva se importar \nmuito com isso.")
-                raw_input("|>")
-                os.system("cls")
+                print("\nSituacao: Voce continua atrasado para a aula - nao que voce deva se importar \nmuito com isso.\n")
                 variavel_lugar = "seu predio, 1o andar"
                 seuPredioPrimeiroAndar()
             if(aliado_jogador.status[6]<=0):break
