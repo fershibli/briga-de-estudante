@@ -88,11 +88,12 @@ arruaceiro_oponente = [Personagem("Arruaceiro", 5,12,2,3, 2,200,200, 2,0, "inimi
 #-- _itens_ --#
 #nome, ataque, defesa, agilidade, sorte, taxarecuperacao, vidamaxima, vidaatual, preco, tipo
 #-- _consumivel_ --#
-pedaco_pizza = Item("Pedaco de Pizza", 0,0,0,0, 0,0,50, 5, "consumivel")
-super_tudo = Item("Super X-Tudo", 0,0,0,0, 0,0,aliado_jogador.status[5], 100, "consumivel")
+pedaco_pizza = [Item("Pedaco Pequeno de Pizza", 0,0,0,0, 0,0,50, 5, "consumivel"),Item("Pedaco de Pizza", 0,0,0,0, 0,0,100, 12, "consumivel"),Item("Meia Pizza", 0,0,0,0, 0,0,200, 26, "consumivel")]
+pizza_inteira = [Item("Pizza Inteira", 0,0,0,0, 0,0,400, 54, "consumivel"),Item("Pizza Grande", 0,0,0,0, 0,0,600, 80, "consumivel"),Item("Pizza Gigante", 0,0,0,0, 0,0,800, 170, "consumivel"),Item("Pizza Gigante (recheio extra)", 0,0,0,0, 0,0,1000, 200, "consumivel")]
+lanches_cantina = [Item("Risole", 0,0,0,0, 0,0,25, 2.50, "consumivel"),Item("Coxinha", 0,0,0,0, 0,0,30, 2.50, "consumivel"),Item("X-Burger", 0,0,0,0, 0,0,80, 7.50, "consumivel"),Item("X-Salada", 0,0,0,0, 0,0,95, 8.50, "consumivel"),Item("X-Bacon", 0,0,0,0, 0,0,110, 8.50, "consumivel"),Item("X-Tudo", 0,0,0,0, 0,0,150, 15, "consumivel"),Item("X-Tudo Gigante", 0,0,0,0, 0,0,300, 40, "consumivel"),Item("Super eXtra-Tudo", 0,0,0,0, 0,0,aliado_jogador.status[5]/2, 200, "consumivel"),Item("Super eXtra-Tudo Gigante", 0,0,0,0, 0,0,aliado_jogador.status[5]*2, 500, "consumivel")]
 #-- _aprimoramento_ --#
-suplemento_alimenticio = Item("Suplemento Alimenticio", 10,0,0,0, 0,0,0, 5, "consumivel de aprimoramento")
-lata_energetico = Item("Energetico", 0,0,0,0, 1,50,0, 5, "consumivel de aprimoramento")
+suplemento_alimenticio = [Item("Suplemento Alimenticio (A)", 10,0,0,0, 0,0,0, 5, "consumivel de aprimoramento"),Item("Suplemento Alimenticio (D)", 0,10,0,0, 0,0,0, 5, "consumivel de aprimoramento"),Item("Suplemento Alimenticio (V)", 0,0,5,0, 0,0,0, 5, "consumivel de aprimoramento"),Item("Suplemento Alimenticio (S)", 10,10,5,1, 1,10,0, 5, "consumivel de aprimoramento")]
+lata_energetico = [Item("Energetico", 0,0,0,0, 1,50,0, 5, "consumivel de aprimoramento"),Item("Energetico X", 0,0,0,-10, 10,500,0, 5, "consumivel de aprimoramento")]
 #-- _roupa_ --#
 bermuda_linho = [Item("Bermuda de Linho e Regata ", 0,1,4,0, 0,0,0, 100, "roupa"),Item("Bermuda de Linho e Polo", 0,2,3,2, 0,0,0, 140, "roupa")]
 calca_jeans = [Item("Calca Jeans e Regata", 0,4,1,0, 0,0,0, 110, "roupa"),Item("Calca Jeans e Polo",0,6,0,2, 0,0,0, 150, "roupa")]
@@ -111,8 +112,10 @@ anel_magico = [Item("Anel da Forca 1", 10,-2,-2,-2, 0,0,0, 500, "anel"),Item("An
 anel_da_imortalidade = Item("Anel da Imortalidade", aliado_jogador.status[0],aliado_jogador.status[1],aliado_jogador.status[2],aliado_jogador.status[3], aliado_jogador.status[4],aliado_jogador.status[5],aliado_jogador.status[6], 100000, "anel")
 anel_da_divindade = Item("Anel da Divindade", aliado_jogador.status[0]*2,aliado_jogador.status[1]*2,aliado_jogador.status[2]*2,aliado_jogador.status[3]*2, aliado_jogador.status[4]*2,aliado_jogador.status[5]*2,aliado_jogador.status[6]*2, 100000000, "anel")
 #-- _arma_ --#
-punhal_envelhecido = Item("Punhal Envelhecido", 10,0,0,3, 0,0,0, 300, "arma")
+baralho_as = Item("Ace of Spades", aliado_jogador.status[3]*3,0,0,-5, 0,0,0, 3, "arma")
+punhal_envelhecido = Item("Punhal Envelhecido", 10,0,0,3, 0,0,0, 100, "arma")
 talheres_prata = Item("Talheres de prata(Garfo e Faca)", 8,0,0,0, 0,0,0, 10, "arma")
+guarda_chuva = [Item("Guarda-Chuva Compacto", 5,5,0,0, 0,0,0, 12, "arma"),Item("Guarda-Chuva", 10,10,5,0, 0,0,0, 30, "arma"),Item("Guarda-Chuva Pontudo", 15,10,5,-3, 0,0,0, 30, "arma"),Item("Guarda-Chuva Italiano", 20,20,5,5, 0,0,0, 130, "arma")]
 #-- _calcado_ --#
 papetes_masculinas = Item("Papetes Masculinas", 0,0,1,0, 0,0,0, 15, "calcado")
 sapato_simplorio = Item("Sapato Simplorio", 0,2,1,0, 0,0,0, 50, "calcado")
@@ -159,7 +162,7 @@ situacao = [0  ,0,0,0 ,0,0  ,0,0,0 ,0,0]
 #[9]  quarto 34 do seu predio
 #[10] quarto 20 do seu predio
 
-temporario = [False, False, False]
+temporario=[False, False, False, False, False]
 #[0]  verifica se pegou o uniforme no seu quarto depois e reciclada para verificar se ja venceu o terceiro andar do seu predio
 #[1]  verifica se pegou o soco ingles no seu quarto depois e reciclada para verificar se 
 #[2]  verifica se ja zerou o jogo antes
@@ -182,7 +185,7 @@ contador_de_batalha= 0
 contador_de_rodadas = 0
 
 
-#global narrador_inimigo, bebado_inimigo, mulher_prantos, mulher_toalha, mane_bone, senhor_doente, garoto_oponente, gangue_comparsa, arruaceiro_oponente, estudante_brigento, aliado_headbanger,Venda, Reserva_Venda,porcentagem_inflacao,bermuda_linho,calca_jeans,desequipado,pedaco_pizza,bolo_chocolate,equipamento_inicial,malha_ninja,punhal_envelhecido,talheres_prata,jaqueta_imitacao,jaqueta_couro,agasalho_la,suplemento_alimenticio,lata_energetico,soco_ingles,luva_luva,anel_magico,anel_da_imortalidade,anel_da_divindade,papetes_masculinas,tenis_calcado,sapato_simplorio,item_adicionado,quantidade_adicionada,variavel_cenario,objeto,situacao,temporario,variavel_lugar,ponto_de_save,mostrar_save, aliado_jogador,aliado_reserva, aliado_garota,adversario_inimigo,eegg,acao_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,variavel_para_comparar,contador_de_batalha,contador_de_rodadas
+#global narrador_inimigo, bebado_inimigo, mulher_prantos, mulher_toalha, mane_bone, senhor_doente, garoto_oponente, gangue_comparsa, arruaceiro_oponente, estudante_brigento, aliado_headbanger,Venda, Reserva_Venda,porcentagem_inflacao,bermuda_linho,calca_jeans,desequipado,pedaco_pizza, pizza_inteira,bolo_chocolate,equipamento_inicial,malha_ninja,punhal_envelhecido,talheres_prata,jaqueta_imitacao,jaqueta_couro,agasalho_la,suplemento_alimenticio,lata_energetico,soco_ingles,luva_luva,anel_magico,anel_da_imortalidade,anel_da_divindade,papetes_masculinas,tenis_calcado,sapato_simplorio,item_adicionado,quantidade_adicionada,variavel_cenario,objeto,situacao,temporario,variavel_lugar,ponto_de_save,mostrar_save, aliado_jogador,aliado_reserva, aliado_garota,adversario_inimigo,eegg,acao_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,variavel_para_comparar,contador_de_batalha,contador_de_rodadas
 
 #--Mudanca de status pela troca de equipamento--#
 def statusMudanca(coloca_item, w):
@@ -199,7 +202,7 @@ def statusMudanca(coloca_item, w):
 
 #--Adicionar Item ao Inventario--#
 def adicionaItem():
-    global narrador_inimigo, bebado_inimigo, mulher_prantos, mulher_toalha, mane_bone, senhor_doente, garoto_oponente, gangue_comparsa, arruaceiro_oponente, estudante_brigento, aliado_headbanger,Venda, Reserva_Venda,porcentagem_inflacao,bermuda_linho,calca_jeans,desequipado,pedaco_pizza,bolo_chocolate,equipamento_inicial,malha_ninja,punhal_envelhecido,talheres_prata,jaqueta_imitacao,jaqueta_couro,agasalho_la,suplemento_alimenticio,lata_energetico,soco_ingles,luva_luva,anel_magico,anel_da_imortalidade,anel_da_divindade,papetes_masculinas,tenis_calcado,sapato_simplorio,item_adicionado,quantidade_adicionada,variavel_cenario,objeto,situacao,temporario,variavel_lugar,ponto_de_save,mostrar_save, aliado_jogador,aliado_reserva, aliado_garota,adversario_inimigo,eegg,acao_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,variavel_para_comparar,contador_de_batalha,contador_de_rodadas
+    global narrador_inimigo, bebado_inimigo, mulher_prantos, mulher_toalha, mane_bone, senhor_doente, garoto_oponente, gangue_comparsa, arruaceiro_oponente, estudante_brigento, aliado_headbanger,Venda, Reserva_Venda,porcentagem_inflacao,bermuda_linho,calca_jeans,desequipado,pedaco_pizza, pizza_inteira,bolo_chocolate,equipamento_inicial,malha_ninja,punhal_envelhecido,talheres_prata,jaqueta_imitacao,jaqueta_couro,agasalho_la,suplemento_alimenticio,lata_energetico,soco_ingles,luva_luva,anel_magico,anel_da_imortalidade,anel_da_divindade,papetes_masculinas,tenis_calcado,sapato_simplorio,item_adicionado,quantidade_adicionada,variavel_cenario,objeto,situacao,temporario,variavel_lugar,ponto_de_save,mostrar_save, aliado_jogador,aliado_reserva, aliado_garota,adversario_inimigo,eegg,acao_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,variavel_para_comparar,contador_de_batalha,contador_de_rodadas
     variavel_para_comparar=0
     i=0
     while i<=29:
@@ -219,7 +222,7 @@ def adicionaItem():
 
 #--Inventario--#
 def inventarioPersonagem():
-    global narrador_inimigo, bebado_inimigo, mulher_prantos, mulher_toalha, mane_bone, senhor_doente, garoto_oponente, gangue_comparsa, arruaceiro_oponente, estudante_brigento, aliado_headbanger,Venda, Reserva_Venda,porcentagem_inflacao,bermuda_linho,calca_jeans,desequipado,pedaco_pizza,bolo_chocolate,equipamento_inicial,malha_ninja,punhal_envelhecido,talheres_prata,jaqueta_imitacao,jaqueta_couro,agasalho_la,suplemento_alimenticio,lata_energetico,soco_ingles,luva_luva,anel_magico,anel_da_imortalidade,anel_da_divindade,papetes_masculinas,tenis_calcado,sapato_simplorio,item_adicionado,quantidade_adicionada,variavel_cenario,objeto,situacao,temporario,variavel_lugar,ponto_de_save,mostrar_save, aliado_jogador,aliado_reserva, aliado_garota,adversario_inimigo,eegg,acao_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,variavel_para_comparar,contador_de_batalha,contador_de_rodadas
+    global narrador_inimigo, bebado_inimigo, mulher_prantos, mulher_toalha, mane_bone, senhor_doente, garoto_oponente, gangue_comparsa, arruaceiro_oponente, estudante_brigento, aliado_headbanger,Venda, Reserva_Venda,porcentagem_inflacao,bermuda_linho,calca_jeans,desequipado,pedaco_pizza, pizza_inteira,bolo_chocolate,equipamento_inicial,malha_ninja,punhal_envelhecido,talheres_prata,jaqueta_imitacao,jaqueta_couro,agasalho_la,suplemento_alimenticio,lata_energetico,soco_ingles,luva_luva,anel_magico,anel_da_imortalidade,anel_da_divindade,papetes_masculinas,tenis_calcado,sapato_simplorio,item_adicionado,quantidade_adicionada,variavel_cenario,objeto,situacao,temporario,variavel_lugar,ponto_de_save,mostrar_save, aliado_jogador,aliado_reserva, aliado_garota,adversario_inimigo,eegg,acao_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,variavel_para_comparar,contador_de_batalha,contador_de_rodadas
     os.system('cls')
     while 1:
         variavel_para_comparar=0
@@ -637,22 +640,22 @@ def inventarioPersonagem():
 
 #--Fichas do Sistema de Troca--#
 def fichaTroca(jogador, reserva, garota, headbanger):
-global narrador_inimigo, bebado_inimigo, mulher_prantos, mulher_toalha, mane_bone, senhor_doente, garoto_oponente, gangue_comparsa, arruaceiro_oponente, estudante_brigento, aliado_headbanger,Venda, Reserva_Venda,porcentagem_inflacao,bermuda_linho,calca_jeans,desequipado,pedaco_pizza,bolo_chocolate,equipamento_inicial,malha_ninja,punhal_envelhecido,talheres_prata,jaqueta_imitacao,jaqueta_couro,agasalho_la,suplemento_alimenticio,lata_energetico,soco_ingles,luva_luva,anel_magico,anel_da_imortalidade,anel_da_divindade,papetes_masculinas,tenis_calcado,sapato_simplorio,item_adicionado,quantidade_adicionada,variavel_cenario,objeto,situacao,temporario,variavel_lugar,ponto_de_save,mostrar_save, aliado_jogador,aliado_reserva, aliado_garota,adversario_inimigo,eegg,acao_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,variavel_para_comparar,contador_de_batalha,contador_de_rodadas
-        if jogador == True : print "\n#"+"-"*77+"#\n "+str(aliado_jogador.identificacao)+" ) Nome: "+str(aliado_jogador.nome)+"\nVida: "+str(aliado_jogador.status[6])+" de "+str(aliado_jogador.status[5])+" Reconstituicao: ".rjust(45-len(str(aliado_jogador.status[6]))-len(str(aliado_jogador.status[5])))+str(aliado_jogador.status[4])+"\n Ataque: "+str(aliado_jogador.status[0])+"Agilidade: ".rjust(42-len(str(aliado_jogador.status[0])))+str(aliado_jogador.status[2])+"\n Defesa: "+str(aliado_jogador.status[1])+"Sorte: ".rjust(38-len(str(aliado_jogador.status[1])))+str(aliado_jogador.status[3])+"\n Capa: "+str(aliado_jogador.equipamento[1].nome)+"Luvas: ".rjust(40-len(str(aliado_jogador.equipamento[1].nome)))+str(aliado_jogador.equipamento[2].nome)+"\n Roupa: "+str(aliado_jogador.equipamento[0].nome)+"Anel: ".rjust(38-len(str(aliado_jogador.equipamento[0].nome)))+str(aliado_jogador.equipamento[3].nome)+"\n Calcado: "+str(aliado_jogador.equipamento[5].nome)+"Arma: ".rjust(36-len(str(aliado_jogador.equipamento[5].nome)))+str(aliado_jogador.equipamento[4].nome)+"\n Dinheiro: "+str(aliado_jogador.dinheiro)+" Reais\n"
-        if aliado_jogador.identificacao!=1 and aliado_reserva.disponivel == True and reserva == True :
-            print "\n#"+"-"*77+"#\n "+str(aliado_reserva.identificacao)+" ) Nome: "+str(aliado_reserva.nome)+"\nVida: "+str(aliado_reserva.status[6])+" de "+str(aliado_reserva.status[5])+" Reconstituicao: ".rjust(45-len(str(aliado_reserva.status[6]))-len(str(aliado_reserva.status[5])))+str(aliado_reserva.status[4])+"\n Ataque: "+str(aliado_reserva.status[0])+"Agilidade: ".rjust(42-len(str(aliado_reserva.status[0])))+str(aliado_reserva.status[2])+"\n Defesa: "+str(aliado_reserva.status[1])+"Sorte: ".rjust(38-len(str(aliado_reserva.status[1])))+str(aliado_reserva.status[3])+"\n Capa: "+str(aliado_reserva.equipamento[1].nome)+"Luvas: ".rjust(40-len(str(aliado_reserva.equipamento[1].nome)))+str(aliado_reserva.equipamento[2].nome)+"\n Roupa: "+str(aliado_reserva.equipamento[0].nome)+"Anel: ".rjust(38-len(str(aliado_reserva.equipamento[0].nome)))+str(aliado_reserva.equipamento[3].nome)+"\n Calcado: "+str(aliado_reserva.equipamento[5].nome)+"Arma: ".rjust(36-len(str(aliado_reserva.equipamento[5].nome)))+str(aliado_reserva.equipamento[4].nome)+"\n Dinheiro: "+str(aliado_reserva.dinheiro)+" Reais\n"
-            time.sleep(0.15)
-        if aliado_jogador.identificacao!=2 and aliado_garota.disponivel == True and garota == True :
-            print "\n#"+"-"*77+"#\n "+str(aliado_garota.identificacao)+" ) Nome: "+str(aliado_garota.nome)+"\nVida: "+str(aliado_garota.status[6])+" de "+str(aliado_garota.status[5])+" Reconstituicao: ".rjust(45-len(str(aliado_garota.status[6]))-len(str(aliado_garota.status[5])))+str(aliado_garota.status[4])+"\n Ataque: "+str(aliado_garota.status[0])+"Agilidade: ".rjust(42-len(str(aliado_garota.status[0])))+str(aliado_garota.status[2])+"\n Defesa: "+str(aliado_garota.status[1])+"Sorte: ".rjust(38-len(str(aliado_garota.status[1])))+str(aliado_garota.status[3])+"\n Capa: "+str(aliado_garota.equipamento[1].nome)+"Luvas: ".rjust(40-len(str(aliado_garota.equipamento[1].nome)))+str(aliado_garota.equipamento[2].nome)+"\n Roupa: "+str(aliado_garota.equipamento[0].nome)+"Anel: ".rjust(38-len(str(aliado_garota.equipamento[0].nome)))+str(aliado_garota.equipamento[3].nome)+"\n Calcado: "+str(aliado_garota.equipamento[5].nome)+"Arma: ".rjust(36-len(str(aliado_garota.equipamento[5].nome)))+str(aliado_garota.equipamento[4].nome)+"\n Dinheiro: "+str(aliado_garota.dinheiro)+" Reais\n"
-            time.sleep(0.15)
-        if aliado_jogador.identificacao!=3 and aliado_headbanger.disponivel == True and headbanger == True :
-            print "\n#"+"-"*77+"#\n "+str(aliado_headbanger.identificacao)+" ) Nome: "+str(aliado_headbanger.nome)+"\nVida: "+str(aliado_headbanger.status[6])+" de "+str(aliado_headbanger.status[5])+" Reconstituicao: ".rjust(45-len(str(aliado_headbanger.status[6]))-len(str(aliado_headbanger.status[5])))+str(aliado_headbanger.status[4])+"\n Ataque: "+str(aliado_headbanger.status[0])+"Agilidade: ".rjust(42-len(str(aliado_headbanger.status[0])))+str(aliado_headbanger.status[2])+"\n Defesa: "+str(aliado_headbanger.status[1])+"Sorte: ".rjust(38-len(str(aliado_headbanger.status[1])))+str(aliado_headbanger.status[3])+"\n Capa: "+str(aliado_headbanger.equipamento[1].nome)+"Luvas: ".rjust(40-len(str(aliado_headbanger.equipamento[1].nome)))+str(aliado_headbanger.equipamento[2].nome)+"\n Roupa: "+str(aliado_headbanger.equipamento[0].nome)+"Anel: ".rjust(38-len(str(aliado_headbanger.equipamento[0].nome)))+str(aliado_headbanger.equipamento[3].nome)+"\n Calcado: "+str(aliado_headbanger.equipamento[5].nome)+"Arma: ".rjust(36-len(str(aliado_headbanger.equipamento[5].nome)))+str(aliado_headbanger.equipamento[4].nome)+"\n Dinheiro: "+str(aliado_headbanger.dinheiro)+" Reais\n"
-            time.sleep(0.15)
-        print "\n#"+"-"*77+"#\n"
+    global narrador_inimigo, bebado_inimigo, mulher_prantos, mulher_toalha, mane_bone, senhor_doente, garoto_oponente, gangue_comparsa, arruaceiro_oponente, estudante_brigento, aliado_headbanger,Venda, Reserva_Venda,porcentagem_inflacao,bermuda_linho,calca_jeans,desequipado,pedaco_pizza, pizza_inteira,bolo_chocolate,equipamento_inicial,malha_ninja,punhal_envelhecido,talheres_prata,jaqueta_imitacao,jaqueta_couro,agasalho_la,suplemento_alimenticio,lata_energetico,soco_ingles,luva_luva,anel_magico,anel_da_imortalidade,anel_da_divindade,papetes_masculinas,tenis_calcado,sapato_simplorio,item_adicionado,quantidade_adicionada,variavel_cenario,objeto,situacao,temporario,variavel_lugar,ponto_de_save,mostrar_save, aliado_jogador,aliado_reserva, aliado_garota,adversario_inimigo,eegg,acao_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,variavel_para_comparar,contador_de_batalha,contador_de_rodadas
+    if jogador == True : print "\n#"+"-"*77+"#\n "+str(aliado_jogador.identificacao)+" ) Nome: "+str(aliado_jogador.nome)+"\nVida: "+str(aliado_jogador.status[6])+" de "+str(aliado_jogador.status[5])+" Reconstituicao: ".rjust(45-len(str(aliado_jogador.status[6]))-len(str(aliado_jogador.status[5])))+str(aliado_jogador.status[4])+"\n Ataque: "+str(aliado_jogador.status[0])+"Agilidade: ".rjust(42-len(str(aliado_jogador.status[0])))+str(aliado_jogador.status[2])+"\n Defesa: "+str(aliado_jogador.status[1])+"Sorte: ".rjust(38-len(str(aliado_jogador.status[1])))+str(aliado_jogador.status[3])+"\n Capa: "+str(aliado_jogador.equipamento[1].nome)+"Luvas: ".rjust(40-len(str(aliado_jogador.equipamento[1].nome)))+str(aliado_jogador.equipamento[2].nome)+"\n Roupa: "+str(aliado_jogador.equipamento[0].nome)+"Anel: ".rjust(38-len(str(aliado_jogador.equipamento[0].nome)))+str(aliado_jogador.equipamento[3].nome)+"\n Calcado: "+str(aliado_jogador.equipamento[5].nome)+"Arma: ".rjust(36-len(str(aliado_jogador.equipamento[5].nome)))+str(aliado_jogador.equipamento[4].nome)+"\n Dinheiro: "+str(aliado_jogador.dinheiro)+" Reais\n"
+    if aliado_jogador.identificacao!=1 and aliado_reserva.disponivel == True and reserva == True :
+        print "\n#"+"-"*77+"#\n "+str(aliado_reserva.identificacao)+" ) Nome: "+str(aliado_reserva.nome)+"\nVida: "+str(aliado_reserva.status[6])+" de "+str(aliado_reserva.status[5])+" Reconstituicao: ".rjust(45-len(str(aliado_reserva.status[6]))-len(str(aliado_reserva.status[5])))+str(aliado_reserva.status[4])+"\n Ataque: "+str(aliado_reserva.status[0])+"Agilidade: ".rjust(42-len(str(aliado_reserva.status[0])))+str(aliado_reserva.status[2])+"\n Defesa: "+str(aliado_reserva.status[1])+"Sorte: ".rjust(38-len(str(aliado_reserva.status[1])))+str(aliado_reserva.status[3])+"\n Capa: "+str(aliado_reserva.equipamento[1].nome)+"Luvas: ".rjust(40-len(str(aliado_reserva.equipamento[1].nome)))+str(aliado_reserva.equipamento[2].nome)+"\n Roupa: "+str(aliado_reserva.equipamento[0].nome)+"Anel: ".rjust(38-len(str(aliado_reserva.equipamento[0].nome)))+str(aliado_reserva.equipamento[3].nome)+"\n Calcado: "+str(aliado_reserva.equipamento[5].nome)+"Arma: ".rjust(36-len(str(aliado_reserva.equipamento[5].nome)))+str(aliado_reserva.equipamento[4].nome)+"\n Dinheiro: "+str(aliado_reserva.dinheiro)+" Reais\n"
+        time.sleep(0.15)
+    if aliado_jogador.identificacao!=2 and aliado_garota.disponivel == True and garota == True :
+        print "\n#"+"-"*77+"#\n "+str(aliado_garota.identificacao)+" ) Nome: "+str(aliado_garota.nome)+"\nVida: "+str(aliado_garota.status[6])+" de "+str(aliado_garota.status[5])+" Reconstituicao: ".rjust(45-len(str(aliado_garota.status[6]))-len(str(aliado_garota.status[5])))+str(aliado_garota.status[4])+"\n Ataque: "+str(aliado_garota.status[0])+"Agilidade: ".rjust(42-len(str(aliado_garota.status[0])))+str(aliado_garota.status[2])+"\n Defesa: "+str(aliado_garota.status[1])+"Sorte: ".rjust(38-len(str(aliado_garota.status[1])))+str(aliado_garota.status[3])+"\n Capa: "+str(aliado_garota.equipamento[1].nome)+"Luvas: ".rjust(40-len(str(aliado_garota.equipamento[1].nome)))+str(aliado_garota.equipamento[2].nome)+"\n Roupa: "+str(aliado_garota.equipamento[0].nome)+"Anel: ".rjust(38-len(str(aliado_garota.equipamento[0].nome)))+str(aliado_garota.equipamento[3].nome)+"\n Calcado: "+str(aliado_garota.equipamento[5].nome)+"Arma: ".rjust(36-len(str(aliado_garota.equipamento[5].nome)))+str(aliado_garota.equipamento[4].nome)+"\n Dinheiro: "+str(aliado_garota.dinheiro)+" Reais\n"
+        time.sleep(0.15)
+    if aliado_jogador.identificacao!=3 and aliado_headbanger.disponivel == True and headbanger == True :
+        print "\n#"+"-"*77+"#\n "+str(aliado_headbanger.identificacao)+" ) Nome: "+str(aliado_headbanger.nome)+"\nVida: "+str(aliado_headbanger.status[6])+" de "+str(aliado_headbanger.status[5])+" Reconstituicao: ".rjust(45-len(str(aliado_headbanger.status[6]))-len(str(aliado_headbanger.status[5])))+str(aliado_headbanger.status[4])+"\n Ataque: "+str(aliado_headbanger.status[0])+"Agilidade: ".rjust(42-len(str(aliado_headbanger.status[0])))+str(aliado_headbanger.status[2])+"\n Defesa: "+str(aliado_headbanger.status[1])+"Sorte: ".rjust(38-len(str(aliado_headbanger.status[1])))+str(aliado_headbanger.status[3])+"\n Capa: "+str(aliado_headbanger.equipamento[1].nome)+"Luvas: ".rjust(40-len(str(aliado_headbanger.equipamento[1].nome)))+str(aliado_headbanger.equipamento[2].nome)+"\n Roupa: "+str(aliado_headbanger.equipamento[0].nome)+"Anel: ".rjust(38-len(str(aliado_headbanger.equipamento[0].nome)))+str(aliado_headbanger.equipamento[3].nome)+"\n Calcado: "+str(aliado_headbanger.equipamento[5].nome)+"Arma: ".rjust(36-len(str(aliado_headbanger.equipamento[5].nome)))+str(aliado_headbanger.equipamento[4].nome)+"\n Dinheiro: "+str(aliado_headbanger.dinheiro)+" Reais\n"
+        time.sleep(0.15)
+    print "\n#"+"-"*77+"#\n"
 
 #--Inventario do Sistema de Troca--#
 def inventarioTroca(aliado_analisado):
-global narrador_inimigo, bebado_inimigo, mulher_prantos, mulher_toalha, mane_bone, senhor_doente, garoto_oponente, gangue_comparsa, arruaceiro_oponente, estudante_brigento, aliado_headbanger,Venda, Reserva_Venda,porcentagem_inflacao,bermuda_linho,calca_jeans,desequipado,pedaco_pizza,bolo_chocolate,equipamento_inicial,malha_ninja,punhal_envelhecido,talheres_prata,jaqueta_imitacao,jaqueta_couro,agasalho_la,suplemento_alimenticio,lata_energetico,soco_ingles,luva_luva,anel_magico,anel_da_imortalidade,anel_da_divindade,papetes_masculinas,tenis_calcado,sapato_simplorio,item_adicionado,quantidade_adicionada,variavel_cenario,objeto,situacao,temporario,variavel_lugar,ponto_de_save,mostrar_save, aliado_jogador,aliado_reserva, aliado_garota,adversario_inimigo,eegg,acao_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,variavel_para_comparar,contador_de_batalha,contador_de_rodadas
+    global narrador_inimigo, bebado_inimigo, mulher_prantos, mulher_toalha, mane_bone, senhor_doente, garoto_oponente, gangue_comparsa, arruaceiro_oponente, estudante_brigento, aliado_headbanger,Venda, Reserva_Venda,porcentagem_inflacao,bermuda_linho,calca_jeans,desequipado,pedaco_pizza, pizza_inteira,bolo_chocolate,equipamento_inicial,malha_ninja,punhal_envelhecido,talheres_prata,jaqueta_imitacao,jaqueta_couro,agasalho_la,suplemento_alimenticio,lata_energetico,soco_ingles,luva_luva,anel_magico,anel_da_imortalidade,anel_da_divindade,papetes_masculinas,tenis_calcado,sapato_simplorio,item_adicionado,quantidade_adicionada,variavel_cenario,objeto,situacao,temporario,variavel_lugar,ponto_de_save,mostrar_save, aliado_jogador,aliado_reserva, aliado_garota,adversario_inimigo,eegg,acao_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,variavel_para_comparar,contador_de_batalha,contador_de_rodadas
     while 1:
         variavel_para_comparar=0
         i=0
@@ -693,7 +696,7 @@ global narrador_inimigo, bebado_inimigo, mulher_prantos, mulher_toalha, mane_bon
         while 1:
             print("Para analisar um item digite a sua posicao!\nPara voltar ao jogo digite voltar.")
             acao_do_personagem = raw_input('-')
-            elif acao_do_personagem.isdigit():
+            if acao_do_personagem.isdigit():
                 os.system('cls')
                 acao_do_personagem=int(acao_do_personagem)
                 break
@@ -812,7 +815,7 @@ global narrador_inimigo, bebado_inimigo, mulher_prantos, mulher_toalha, mane_bon
 
 #--Sistema de Troca de Personagem--#
 def trocaPersonagem():
-    global narrador_inimigo, bebado_inimigo, mulher_prantos, mulher_toalha, mane_bone, senhor_doente, garoto_oponente, gangue_comparsa, arruaceiro_oponente, estudante_brigento, aliado_headbanger,Venda, Reserva_Venda,porcentagem_inflacao,bermuda_linho,calca_jeans,desequipado,pedaco_pizza,bolo_chocolate,equipamento_inicial,malha_ninja,punhal_envelhecido,talheres_prata,jaqueta_imitacao,jaqueta_couro,agasalho_la,suplemento_alimenticio,lata_energetico,soco_ingles,luva_luva,anel_magico,anel_da_imortalidade,anel_da_divindade,papetes_masculinas,tenis_calcado,sapato_simplorio,item_adicionado,quantidade_adicionada,variavel_cenario,objeto,situacao,temporario,variavel_lugar,ponto_de_save,mostrar_save, aliado_jogador,aliado_reserva, aliado_garota,adversario_inimigo,eegg,acao_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,variavel_para_comparar,contador_de_batalha,contador_de_rodadas
+    global narrador_inimigo, bebado_inimigo, mulher_prantos, mulher_toalha, mane_bone, senhor_doente, garoto_oponente, gangue_comparsa, arruaceiro_oponente, estudante_brigento, aliado_headbanger,Venda, Reserva_Venda,porcentagem_inflacao,bermuda_linho,calca_jeans,desequipado,pedaco_pizza, pizza_inteira,bolo_chocolate,equipamento_inicial,malha_ninja,punhal_envelhecido,talheres_prata,jaqueta_imitacao,jaqueta_couro,agasalho_la,suplemento_alimenticio,lata_energetico,soco_ingles,luva_luva,anel_magico,anel_da_imortalidade,anel_da_divindade,papetes_masculinas,tenis_calcado,sapato_simplorio,item_adicionado,quantidade_adicionada,variavel_cenario,objeto,situacao,temporario,variavel_lugar,ponto_de_save,mostrar_save, aliado_jogador,aliado_reserva, aliado_garota,adversario_inimigo,eegg,acao_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,variavel_para_comparar,contador_de_batalha,contador_de_rodadas
     while 1:
         fichaTroca(True,True,True,True)
         while 1:
@@ -1027,7 +1030,8 @@ def trocaPersonagem():
                     aliado_reserva.dinheiro-=acao_do_personagem
                     aliado_headbanger.dinheiro+=acao_do_personagem
                     print str(aliado_reserva.nome)+' transferiu '+acao_do_personagem+' Reais para '+str(aliado_headbanger.nome)+'.'
-            elif acao_do_personagem=="transferir item": inventarioTroca(aliado_reserva)
+            elif acao_do_personagem=="transferir item":
+                inventarioTroca(aliado_reserva)
                 while 1:
                     variavel_para_comparar=0
                     i=0
@@ -1308,7 +1312,7 @@ def trocaPersonagem():
 
 #--Loja: Vender--#
 def lojaVender():
-    global narrador_inimigo, bebado_inimigo, mulher_prantos, mulher_toalha, mane_bone, senhor_doente, garoto_oponente, gangue_comparsa, arruaceiro_oponente, estudante_brigento, aliado_headbanger,Venda, Reserva_Venda,porcentagem_inflacao,bermuda_linho,calca_jeans,desequipado,pedaco_pizza,bolo_chocolate,equipamento_inicial,malha_ninja,punhal_envelhecido,talheres_prata,jaqueta_imitacao,jaqueta_couro,agasalho_la,suplemento_alimenticio,lata_energetico,soco_ingles,luva_luva,anel_magico,anel_da_imortalidade,anel_da_divindade,papetes_masculinas,tenis_calcado,sapato_simplorio,item_adicionado,quantidade_adicionada,variavel_cenario,objeto,situacao,temporario,variavel_lugar,ponto_de_save,mostrar_save, aliado_jogador,aliado_reserva, aliado_garota,adversario_inimigo,eegg,acao_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,variavel_para_comparar,contador_de_batalha,contador_de_rodadas
+    global narrador_inimigo, bebado_inimigo, mulher_prantos, mulher_toalha, mane_bone, senhor_doente, garoto_oponente, gangue_comparsa, arruaceiro_oponente, estudante_brigento, aliado_headbanger,Venda, Reserva_Venda,porcentagem_inflacao,bermuda_linho,calca_jeans,desequipado,pedaco_pizza, pizza_inteira,bolo_chocolate,equipamento_inicial,malha_ninja,punhal_envelhecido,talheres_prata,jaqueta_imitacao,jaqueta_couro,agasalho_la,suplemento_alimenticio,lata_energetico,soco_ingles,luva_luva,anel_magico,anel_da_imortalidade,anel_da_divindade,papetes_masculinas,tenis_calcado,sapato_simplorio,item_adicionado,quantidade_adicionada,variavel_cenario,objeto,situacao,temporario,variavel_lugar,ponto_de_save,mostrar_save, aliado_jogador,aliado_reserva, aliado_garota,adversario_inimigo,eegg,acao_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,variavel_para_comparar,contador_de_batalha,contador_de_rodadas
     while 1:
         variavel_para_comparar=0
         i=0
@@ -1370,7 +1374,7 @@ def lojaVender():
 
 #--Loja: Comprar--#
 def lojaComprar():
-    global narrador_inimigo, bebado_inimigo, mulher_prantos, mulher_toalha, mane_bone, senhor_doente, garoto_oponente, gangue_comparsa, arruaceiro_oponente, estudante_brigento, aliado_headbanger,Venda, Reserva_Venda,porcentagem_inflacao,bermuda_linho,calca_jeans,desequipado,pedaco_pizza,bolo_chocolate,equipamento_inicial,malha_ninja,punhal_envelhecido,talheres_prata,jaqueta_imitacao,jaqueta_couro,agasalho_la,suplemento_alimenticio,lata_energetico,soco_ingles,luva_luva,anel_magico,anel_da_imortalidade,anel_da_divindade,papetes_masculinas,tenis_calcado,sapato_simplorio,item_adicionado,quantidade_adicionada,variavel_cenario,objeto,situacao,temporario,variavel_lugar,ponto_de_save,mostrar_save, aliado_jogador,aliado_reserva, aliado_garota,adversario_inimigo,eegg,acao_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,variavel_para_comparar,contador_de_batalha,contador_de_rodadas
+    global narrador_inimigo, bebado_inimigo, mulher_prantos, mulher_toalha, mane_bone, senhor_doente, garoto_oponente, gangue_comparsa, arruaceiro_oponente, estudante_brigento, aliado_headbanger,Venda, Reserva_Venda,porcentagem_inflacao,bermuda_linho,calca_jeans,desequipado,pedaco_pizza, pizza_inteira,bolo_chocolate,equipamento_inicial,malha_ninja,punhal_envelhecido,talheres_prata,jaqueta_imitacao,jaqueta_couro,agasalho_la,suplemento_alimenticio,lata_energetico,soco_ingles,luva_luva,anel_magico,anel_da_imortalidade,anel_da_divindade,papetes_masculinas,tenis_calcado,sapato_simplorio,item_adicionado,quantidade_adicionada,variavel_cenario,objeto,situacao,temporario,variavel_lugar,ponto_de_save,mostrar_save, aliado_jogador,aliado_reserva, aliado_garota,adversario_inimigo,eegg,acao_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,variavel_para_comparar,contador_de_batalha,contador_de_rodadas
     while 1:
         variavel_para_comparar=0
         i=0
@@ -1461,7 +1465,7 @@ def lojaComprar():
 
 #--Ficha do Personagem--#
 def ficha_personagem():
-    global narrador_inimigo, bebado_inimigo, mulher_prantos, mulher_toalha, mane_bone, senhor_doente, garoto_oponente, gangue_comparsa, arruaceiro_oponente, estudante_brigento, aliado_headbanger,Venda, Reserva_Venda,porcentagem_inflacao,bermuda_linho,calca_jeans,desequipado,pedaco_pizza,bolo_chocolate,equipamento_inicial,malha_ninja,punhal_envelhecido,talheres_prata,jaqueta_imitacao,jaqueta_couro,agasalho_la,suplemento_alimenticio,lata_energetico,soco_ingles,luva_luva,anel_magico,anel_da_imortalidade,anel_da_divindade,papetes_masculinas,tenis_calcado,sapato_simplorio,item_adicionado,quantidade_adicionada,variavel_cenario,objeto,situacao,temporario,variavel_lugar,ponto_de_save,mostrar_save, aliado_jogador,aliado_reserva, aliado_garota,adversario_inimigo,eegg,acao_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,variavel_para_comparar,contador_de_batalha,contador_de_rodadas
+    global narrador_inimigo, bebado_inimigo, mulher_prantos, mulher_toalha, mane_bone, senhor_doente, garoto_oponente, gangue_comparsa, arruaceiro_oponente, estudante_brigento, aliado_headbanger,Venda, Reserva_Venda,porcentagem_inflacao,bermuda_linho,calca_jeans,desequipado,pedaco_pizza, pizza_inteira,bolo_chocolate,equipamento_inicial,malha_ninja,punhal_envelhecido,talheres_prata,jaqueta_imitacao,jaqueta_couro,agasalho_la,suplemento_alimenticio,lata_energetico,soco_ingles,luva_luva,anel_magico,anel_da_imortalidade,anel_da_divindade,papetes_masculinas,tenis_calcado,sapato_simplorio,item_adicionado,quantidade_adicionada,variavel_cenario,objeto,situacao,temporario,variavel_lugar,ponto_de_save,mostrar_save, aliado_jogador,aliado_reserva, aliado_garota,adversario_inimigo,eegg,acao_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,variavel_para_comparar,contador_de_batalha,contador_de_rodadas
     os.system('cls')
     print "\n#"+"-"*77+"#\n"+"\n Nome: "+str(aliado_jogador.nome)
     time.sleep(0.23)
@@ -1477,7 +1481,7 @@ def ficha_personagem():
 
 #--Save--#
 def save():
-    global narrador_inimigo, bebado_inimigo, mulher_prantos, mulher_toalha, mane_bone, senhor_doente, garoto_oponente, gangue_comparsa, arruaceiro_oponente, estudante_brigento, aliado_headbanger,Venda, Reserva_Venda,porcentagem_inflacao,bermuda_linho,calca_jeans,desequipado,pedaco_pizza,bolo_chocolate,equipamento_inicial,malha_ninja,punhal_envelhecido,talheres_prata,jaqueta_imitacao,jaqueta_couro,agasalho_la,suplemento_alimenticio,lata_energetico,soco_ingles,luva_luva,anel_magico,anel_da_imortalidade,anel_da_divindade,papetes_masculinas,tenis_calcado,sapato_simplorio,item_adicionado,quantidade_adicionada,variavel_cenario,objeto,situacao,temporario,variavel_lugar,ponto_de_save,mostrar_save, aliado_jogador,aliado_reserva, aliado_garota,adversario_inimigo,eegg,acao_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,variavel_para_comparar,contador_de_batalha,contador_de_rodadas
+    global narrador_inimigo, bebado_inimigo, mulher_prantos, mulher_toalha, mane_bone, senhor_doente, garoto_oponente, gangue_comparsa, arruaceiro_oponente, estudante_brigento, aliado_headbanger,Venda, Reserva_Venda,porcentagem_inflacao,bermuda_linho,calca_jeans,desequipado,pedaco_pizza, pizza_inteira,bolo_chocolate,equipamento_inicial,malha_ninja,punhal_envelhecido,talheres_prata,jaqueta_imitacao,jaqueta_couro,agasalho_la,suplemento_alimenticio,lata_energetico,soco_ingles,luva_luva,anel_magico,anel_da_imortalidade,anel_da_divindade,papetes_masculinas,tenis_calcado,sapato_simplorio,item_adicionado,quantidade_adicionada,variavel_cenario,objeto,situacao,temporario,variavel_lugar,ponto_de_save,mostrar_save, aliado_jogador,aliado_reserva, aliado_garota,adversario_inimigo,eegg,acao_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,variavel_para_comparar,contador_de_batalha,contador_de_rodadas
     ficha_personagem()
     print('\nDeseja salvar seu progresso?("sim" ou "nao")\n')
     time.sleep(0.5)
@@ -1598,7 +1602,7 @@ def save():
 
 #--Inventario do Sistema de Batalha--#
 def inventarioBatalha():
-    global narrador_inimigo, bebado_inimigo, mulher_prantos, mulher_toalha, mane_bone, senhor_doente, garoto_oponente, gangue_comparsa, arruaceiro_oponente, estudante_brigento, aliado_headbanger,Venda, Reserva_Venda,porcentagem_inflacao,bermuda_linho,calca_jeans,desequipado,pedaco_pizza,bolo_chocolate,equipamento_inicial,malha_ninja,punhal_envelhecido,talheres_prata,jaqueta_imitacao,jaqueta_couro,agasalho_la,suplemento_alimenticio,lata_energetico,soco_ingles,luva_luva,anel_magico,anel_da_imortalidade,anel_da_divindade,papetes_masculinas,tenis_calcado,sapato_simplorio,item_adicionado,quantidade_adicionada,variavel_cenario,objeto,situacao,temporario,variavel_lugar,ponto_de_save,mostrar_save, aliado_jogador,aliado_reserva, aliado_garota,adversario_inimigo,eegg,acao_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,variavel_para_comparar,contador_de_batalha,contador_de_rodadas
+    global narrador_inimigo, bebado_inimigo, mulher_prantos, mulher_toalha, mane_bone, senhor_doente, garoto_oponente, gangue_comparsa, arruaceiro_oponente, estudante_brigento, aliado_headbanger,Venda, Reserva_Venda,porcentagem_inflacao,bermuda_linho,calca_jeans,desequipado,pedaco_pizza, pizza_inteira,bolo_chocolate,equipamento_inicial,malha_ninja,punhal_envelhecido,talheres_prata,jaqueta_imitacao,jaqueta_couro,agasalho_la,suplemento_alimenticio,lata_energetico,soco_ingles,luva_luva,anel_magico,anel_da_imortalidade,anel_da_divindade,papetes_masculinas,tenis_calcado,sapato_simplorio,item_adicionado,quantidade_adicionada,variavel_cenario,objeto,situacao,temporario,variavel_lugar,ponto_de_save,mostrar_save, aliado_jogador,aliado_reserva, aliado_garota,adversario_inimigo,eegg,acao_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,variavel_para_comparar,contador_de_batalha,contador_de_rodadas
     os.system('cls')
     while 1:
         variavel_para_comparar=0
@@ -1663,7 +1667,7 @@ def inventarioBatalha():
 
 #--Sistema de batalha--#
 def batalha(entrada_inimigo_batalha):
-    global narrador_inimigo, bebado_inimigo, mulher_prantos, mulher_toalha, mane_bone, senhor_doente, garoto_oponente, gangue_comparsa, arruaceiro_oponente, estudante_brigento, aliado_headbanger,Venda, Reserva_Venda,porcentagem_inflacao,bermuda_linho,calca_jeans,desequipado,pedaco_pizza,bolo_chocolate,equipamento_inicial,malha_ninja,punhal_envelhecido,talheres_prata,jaqueta_imitacao,jaqueta_couro,agasalho_la,suplemento_alimenticio,lata_energetico,soco_ingles,luva_luva,anel_magico,anel_da_imortalidade,anel_da_divindade,papetes_masculinas,tenis_calcado,sapato_simplorio,item_adicionado,quantidade_adicionada,variavel_cenario,objeto,situacao,temporario,variavel_lugar,ponto_de_save,mostrar_save, aliado_jogador,aliado_reserva, aliado_garota,adversario_inimigo,eegg,acao_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,variavel_para_comparar,contador_de_batalha,contador_de_rodadas
+    global narrador_inimigo, bebado_inimigo, mulher_prantos, mulher_toalha, mane_bone, senhor_doente, garoto_oponente, gangue_comparsa, arruaceiro_oponente, estudante_brigento, aliado_headbanger,Venda, Reserva_Venda,porcentagem_inflacao,bermuda_linho,calca_jeans,desequipado,pedaco_pizza, pizza_inteira,bolo_chocolate,equipamento_inicial,malha_ninja,punhal_envelhecido,talheres_prata,jaqueta_imitacao,jaqueta_couro,agasalho_la,suplemento_alimenticio,lata_energetico,soco_ingles,luva_luva,anel_magico,anel_da_imortalidade,anel_da_divindade,papetes_masculinas,tenis_calcado,sapato_simplorio,item_adicionado,quantidade_adicionada,variavel_cenario,objeto,situacao,temporario,variavel_lugar,ponto_de_save,mostrar_save, aliado_jogador,aliado_reserva, aliado_garota,adversario_inimigo,eegg,acao_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,variavel_para_comparar,contador_de_batalha,contador_de_rodadas
     adversario_inimigo=entrada_inimigo_batalha
     adversario_inimigo.status=entrada_inimigo_batalha.status
     raw_input('|>')
@@ -1727,6 +1731,8 @@ def batalha(entrada_inimigo_batalha):
             acao_do_personagem = acao_do_personagem.lower()
             if (acao_do_personagem == "ver ficha do personagem" or acao_do_personagem == "ver a ficha do personagem" or acao_do_personagem == "ver a ficha de personagem" or acao_do_personagem == "ficha" or acao_do_personagem=="ficha do personagem" or acao_do_personagem=="ficha de personagem" or acao_do_personagem=="ver ficha de personagem" or acao_do_personagem=="ver ficha" or acao_do_personagem == "olhar ficha do personagem" or acao_do_personagem == "ver minha ficha" or acao_do_personagem=="minha ficha" or acao_do_personagem=="ficha personagem" or acao_do_personagem=="olhar ficha de personagem" or acao_do_personagem=="olhar ficha"):
                 ficha_personagem()
+                raw_input('|>')
+                os.system('cls')
             elif (acao_do_personagem=="ver a bolsa" or acao_do_personagem=="ver inventario" or acao_do_personagem=="ver o inventario" or acao_do_personagem=="ver bolsa" or acao_do_personagem=="ver mochila" or acao_do_personagem=="ver mala" or acao_do_personagem=="ver a mochila" or acao_do_personagem=="ver a mala" or acao_do_personagem=="inventario" or acao_do_personagem=="inventario" or acao_do_personagem=="iventario" or acao_do_personagem=="iventario" or acao_do_personagem=="mochila" or acao_do_personagem=="mochla" or acao_do_personagem=="mala" or acao_do_personagem=="bolsa" or acao_do_personagem=="itens" or acao_do_personagem=="itens" or acao_do_personagem=="item"):
                 inventarioBatalha()
                 if temporario[4] == True: break
@@ -2154,7 +2160,7 @@ def batalha(entrada_inimigo_batalha):
                                             print 'Voce nem pode tocar no inimigo!'
                                             time.sleep(0.5)
                                         else:
-                                            print("\nSeu ataque de gopes duplos pressionaram a defesa do seu inimigo, \ncausando "+str(calculo_do_dano)+" pontos de dano!\n")
+                                            print("\nSeu ataque de golpes duplos pressionaram a defesa do seu inimigo, \ncausando "+str(calculo_do_dano)+" pontos de dano!\n")
                                             time.sleep(3)
                                             teste_de_sorte=random.randrange(200)
                                             if(teste_de_sorte<=25+aliado_jogador.status[3]):
@@ -2615,7 +2621,7 @@ def batalha(entrada_inimigo_batalha):
 def ruasPerigosas(distancia_restante,periculosidade_ruas):
     caminhada_perigosa=0
     if(ponto_de_save==3):
-        print 'Sao 10 ruas perigosas de distancia ate a escola'
+        print 'Sao 10 ruas perigosas de distancia ate a faculdade'
         time.sleep(3)
     while 0<distancia_restante:
         if caminhada_perigosa>0: print 'Voce seguiu para a proxima rua! Faltam '+str(distancia_restante)+'!'
@@ -2733,7 +2739,7 @@ def matarAlguem():
 
 #--Seu predio: Quarto Andar--#
 def seuPredioQuartoAndar():
-    global narrador_inimigo, bebado_inimigo, mulher_prantos, mulher_toalha, mane_bone, senhor_doente, garoto_oponente, gangue_comparsa, arruaceiro_oponente, estudante_brigento, aliado_headbanger,Venda, Reserva_Venda,porcentagem_inflacao,bermuda_linho,calca_jeans,desequipado,pedaco_pizza,bolo_chocolate,equipamento_inicial,malha_ninja,punhal_envelhecido,talheres_prata,jaqueta_imitacao,jaqueta_couro,agasalho_la,suplemento_alimenticio,lata_energetico,soco_ingles,luva_luva,anel_magico,anel_da_imortalidade,anel_da_divindade,papetes_masculinas,tenis_calcado,sapato_simplorio,item_adicionado,quantidade_adicionada,variavel_cenario,objeto,situacao,temporario,variavel_lugar,ponto_de_save,mostrar_save, aliado_jogador,aliado_reserva, aliado_garota,adversario_inimigo,eegg,acao_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,variavel_para_comparar,contador_de_batalha,contador_de_rodadas
+    global narrador_inimigo, bebado_inimigo, mulher_prantos, mulher_toalha, mane_bone, senhor_doente, garoto_oponente, gangue_comparsa, arruaceiro_oponente, estudante_brigento, aliado_headbanger,Venda, Reserva_Venda,porcentagem_inflacao,bermuda_linho,calca_jeans,desequipado,pedaco_pizza, pizza_inteira,bolo_chocolate,equipamento_inicial,malha_ninja,punhal_envelhecido,talheres_prata,jaqueta_imitacao,jaqueta_couro,agasalho_la,suplemento_alimenticio,lata_energetico,soco_ingles,luva_luva,anel_magico,anel_da_imortalidade,anel_da_divindade,papetes_masculinas,tenis_calcado,sapato_simplorio,item_adicionado,quantidade_adicionada,variavel_cenario,objeto,situacao,temporario,variavel_lugar,ponto_de_save,mostrar_save, aliado_jogador,aliado_reserva, aliado_garota,adversario_inimigo,eegg,acao_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,variavel_para_comparar,contador_de_batalha,contador_de_rodadas
     variavel_lugar = "seu predio, 4o andar"
     temporario[0]= False
     if(situacao[0]<5):
@@ -3176,7 +3182,7 @@ def seuPredioQuartoAndar():
 
 #--Seu predio: Terceiro Andar--#
 def seuPredioTerceiroAndar():
-    global narrador_inimigo, bebado_inimigo, mulher_prantos, mulher_toalha, mane_bone, senhor_doente, garoto_oponente, gangue_comparsa, arruaceiro_oponente, estudante_brigento, aliado_headbanger,Venda, Reserva_Venda,porcentagem_inflacao,bermuda_linho,calca_jeans,desequipado,pedaco_pizza,bolo_chocolate,equipamento_inicial,malha_ninja,punhal_envelhecido,talheres_prata,jaqueta_imitacao,jaqueta_couro,agasalho_la,suplemento_alimenticio,lata_energetico,soco_ingles,luva_luva,anel_magico,anel_da_imortalidade,anel_da_divindade,papetes_masculinas,tenis_calcado,sapato_simplorio,item_adicionado,quantidade_adicionada,variavel_cenario,objeto,situacao,temporario,variavel_lugar,ponto_de_save,mostrar_save, aliado_jogador,aliado_reserva, aliado_garota,adversario_inimigo,eegg,acao_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,variavel_para_comparar,contador_de_batalha,contador_de_rodadas
+    global narrador_inimigo, bebado_inimigo, mulher_prantos, mulher_toalha, mane_bone, senhor_doente, garoto_oponente, gangue_comparsa, arruaceiro_oponente, estudante_brigento, aliado_headbanger,Venda, Reserva_Venda,porcentagem_inflacao,bermuda_linho,calca_jeans,desequipado,pedaco_pizza, pizza_inteira,bolo_chocolate,equipamento_inicial,malha_ninja,punhal_envelhecido,talheres_prata,jaqueta_imitacao,jaqueta_couro,agasalho_la,suplemento_alimenticio,lata_energetico,soco_ingles,luva_luva,anel_magico,anel_da_imortalidade,anel_da_divindade,papetes_masculinas,tenis_calcado,sapato_simplorio,item_adicionado,quantidade_adicionada,variavel_cenario,objeto,situacao,temporario,variavel_lugar,ponto_de_save,mostrar_save, aliado_jogador,aliado_reserva, aliado_garota,adversario_inimigo,eegg,acao_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,variavel_para_comparar,contador_de_batalha,contador_de_rodadas
     if temporario[0]==True:
         print("Agora que voce venceu todos os lutadores do 3o andar voce subiu ao 4o.")
         time.sleep(2)
@@ -3581,7 +3587,7 @@ def seuPredioTerceiroAndar():
 
 #--Seu predio: Segundo Andar--#
 def seuPredioSegundoAndar():
-    global narrador_inimigo, bebado_inimigo, mulher_prantos, mulher_toalha, mane_bone, senhor_doente, garoto_oponente, gangue_comparsa, arruaceiro_oponente, estudante_brigento, aliado_headbanger,Venda, Reserva_Venda,porcentagem_inflacao,bermuda_linho,calca_jeans,desequipado,pedaco_pizza,bolo_chocolate,equipamento_inicial,malha_ninja,punhal_envelhecido,talheres_prata,jaqueta_imitacao,jaqueta_couro,agasalho_la,suplemento_alimenticio,lata_energetico,soco_ingles,luva_luva,anel_magico,anel_da_imortalidade,anel_da_divindade,papetes_masculinas,tenis_calcado,sapato_simplorio,item_adicionado,quantidade_adicionada,variavel_cenario,objeto,situacao,temporario,variavel_lugar,ponto_de_save,mostrar_save, aliado_jogador,aliado_reserva, aliado_garota,adversario_inimigo,eegg,acao_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,variavel_para_comparar,contador_de_batalha,contador_de_rodadas
+    global narrador_inimigo, bebado_inimigo, mulher_prantos, mulher_toalha, mane_bone, senhor_doente, garoto_oponente, gangue_comparsa, arruaceiro_oponente, estudante_brigento, aliado_headbanger,Venda, Reserva_Venda,porcentagem_inflacao,bermuda_linho,calca_jeans,desequipado,pedaco_pizza, pizza_inteira,bolo_chocolate,equipamento_inicial,malha_ninja,punhal_envelhecido,talheres_prata,jaqueta_imitacao,jaqueta_couro,agasalho_la,suplemento_alimenticio,lata_energetico,soco_ingles,luva_luva,anel_magico,anel_da_imortalidade,anel_da_divindade,papetes_masculinas,tenis_calcado,sapato_simplorio,item_adicionado,quantidade_adicionada,variavel_cenario,objeto,situacao,temporario,variavel_lugar,ponto_de_save,mostrar_save, aliado_jogador,aliado_reserva, aliado_garota,adversario_inimigo,eegg,acao_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,variavel_para_comparar,contador_de_batalha,contador_de_rodadas
     if(variavel_lugar == "seu predio, 3o andarb" or variavel_lugar == "seu predio, 4o andarb"):
         seuPredioTerceiroAndar()
     variavel_lugar = "seu predio, 2o andar"
@@ -3651,7 +3657,7 @@ def seuPredioSegundoAndar():
                                 time.sleep(0.5)
                                 print(" - Ola! - diz o avo do garoto - Muito obrigado por treinar o meu neto,")
                                 time.sleep(1)
-                                print("agora ele nao precisa se esconder mais dos trombadinhas da escola.")
+                                print("agora ele nao precisa se esconder mais dos trombadinhas da faculdade.")
                                 time.sleep(2)
                             if(situacao[3]==6):
                                 print(" - Obrigado por me treinar, senhor.")
@@ -3936,7 +3942,7 @@ def seuPredioSegundoAndar():
                                         time.sleep(1)
                                         print("Voce ganhou um pedaco de pizza!")
                                         time.sleep(1)
-                                        item_adicionado=pedaco_pizza
+                                        item_adicionado=pedaco_pizza[0]
                                         quantidade_adicionada=1
                                         adicionaItem()
                                         print(" - Ate outra hora, vizinho!")
@@ -3997,8 +4003,8 @@ def seuPredioSegundoAndar():
                                         if(acao_do_personagem=="sim" or acao_do_personagem=="s" or acao_do_personagem=="si" or acao_do_personagem=="sm" or acao_do_personagem=="im" or acao_do_personagem=="ssim"):
                                             print("Voce guardou a pizza inteira na mochila!")
                                             time.sleep(1)
-                                            item_adicionado=pedaco_pizza
-                                            quantidade_adicionada=8
+                                            item_adicionado=pizza_inteira[0]
+                                            quantidade_adicionada=1
                                             adicionaItem()
                                             situacao[4]=1
                                             break
@@ -4159,7 +4165,7 @@ def seuPredioSegundoAndar():
 
 #--Seu predio: Primeiro Andar--#
 def seuPredioPrimeiroAndar():
-    global narrador_inimigo, bebado_inimigo, mulher_prantos, mulher_toalha, mane_bone, senhor_doente, garoto_oponente, gangue_comparsa, arruaceiro_oponente, estudante_brigento, aliado_headbanger,Venda, Reserva_Venda,porcentagem_inflacao,bermuda_linho,calca_jeans,desequipado,pedaco_pizza,bolo_chocolate,equipamento_inicial,malha_ninja,punhal_envelhecido,talheres_prata,jaqueta_imitacao,jaqueta_couro,agasalho_la,suplemento_alimenticio,lata_energetico,soco_ingles,luva_luva,anel_magico,anel_da_imortalidade,anel_da_divindade,papetes_masculinas,tenis_calcado,sapato_simplorio,item_adicionado,quantidade_adicionada,variavel_cenario,objeto,situacao,temporario,variavel_lugar,ponto_de_save,mostrar_save, aliado_jogador,aliado_reserva, aliado_garota,adversario_inimigo,eegg,acao_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,variavel_para_comparar,contador_de_batalha,contador_de_rodadas
+    global narrador_inimigo, bebado_inimigo, mulher_prantos, mulher_toalha, mane_bone, senhor_doente, garoto_oponente, gangue_comparsa, arruaceiro_oponente, estudante_brigento, aliado_headbanger,Venda, Reserva_Venda,porcentagem_inflacao,bermuda_linho,calca_jeans,desequipado,pedaco_pizza, pizza_inteira,bolo_chocolate,equipamento_inicial,malha_ninja,punhal_envelhecido,talheres_prata,jaqueta_imitacao,jaqueta_couro,agasalho_la,suplemento_alimenticio,lata_energetico,soco_ingles,luva_luva,anel_magico,anel_da_imortalidade,anel_da_divindade,papetes_masculinas,tenis_calcado,sapato_simplorio,item_adicionado,quantidade_adicionada,variavel_cenario,objeto,situacao,temporario,variavel_lugar,ponto_de_save,mostrar_save, aliado_jogador,aliado_reserva, aliado_garota,adversario_inimigo,eegg,acao_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,variavel_para_comparar,contador_de_batalha,contador_de_rodadas
     if(variavel_lugar == "seu predio, 2o andarb" or variavel_lugar == "seu predio, 3o andarb" or variavel_lugar == "seu predio, 4o andarb"):
         seuPredioSegundoAndar()
     if(aliado_jogador.status[6]>0):
@@ -4282,7 +4288,7 @@ def seuPredioPrimeiroAndar():
                                                 print("Voce guardou ambos na mochila!\n")
                                                 aliado_jogador.dinheiro=aliado_jogador.dinheiro+100
                                                 quantidade_adicionada=1
-                                                item_adicionado=suplemento_alimenticio
+                                                item_adicionado=suplemento_alimenticio[0]
                                                 adicionaItem()
                                                 situacao[1]=4
                                         else:
@@ -4387,7 +4393,7 @@ def seuPredioPrimeiroAndar():
                                                     if(acao_do_personagem=="revistar o bebado" or acao_do_personagem=="revistar bebado" or acao_do_personagem=="revistar" or acao_do_personagem=="revista bebado" or acao_do_personagem=="revista o bebado" or acao_do_personagem=="revistar o bebado" or acao_do_personagem=="revistar bebado" or acao_do_personagem=="revistar" or acao_do_personagem=="revista bebado" or acao_do_personagem=="revista o bebado"):
                                                         if(objeto[2]=="nao"):
                                                             print("\nVoce achou um energetico e o guardou na mochila!\n")
-                                                            item_adicionado=lata_energetico
+                                                            item_adicionado=lata_energetico[0]
                                                             quantidade_adicionada=1
                                                             adicionaItem()
                                                             objeto[2]="sim"
@@ -4515,7 +4521,7 @@ def seuPredioPrimeiroAndar():
 
 #--Sua Rua--#
 def suaRua():
-    global narrador_inimigo, bebado_inimigo, mulher_prantos, mulher_toalha, mane_bone, senhor_doente, garoto_oponente, gangue_comparsa, arruaceiro_oponente, estudante_brigento, aliado_headbanger,Venda, Reserva_Venda,porcentagem_inflacao,bermuda_linho,calca_jeans,desequipado,pedaco_pizza,bolo_chocolate,equipamento_inicial,malha_ninja,punhal_envelhecido,talheres_prata,jaqueta_imitacao,jaqueta_couro,agasalho_la,suplemento_alimenticio,lata_energetico,soco_ingles,luva_luva,anel_magico,anel_da_imortalidade,anel_da_divindade,papetes_masculinas,tenis_calcado,sapato_simplorio,item_adicionado,quantidade_adicionada,variavel_cenario,objeto,situacao,temporario,variavel_lugar,ponto_de_save,mostrar_save, aliado_jogador,aliado_reserva, aliado_garota,adversario_inimigo,eegg,acao_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,variavel_para_comparar,contador_de_batalha,contador_de_rodadas
+    global narrador_inimigo, bebado_inimigo, mulher_prantos, mulher_toalha, mane_bone, senhor_doente, garoto_oponente, gangue_comparsa, arruaceiro_oponente, estudante_brigento, aliado_headbanger,Venda, Reserva_Venda,porcentagem_inflacao,bermuda_linho,calca_jeans,desequipado,pedaco_pizza, pizza_inteira,bolo_chocolate,equipamento_inicial,malha_ninja,punhal_envelhecido,talheres_prata,jaqueta_imitacao,jaqueta_couro,agasalho_la,suplemento_alimenticio,lata_energetico,soco_ingles,luva_luva,anel_magico,anel_da_imortalidade,anel_da_divindade,papetes_masculinas,tenis_calcado,sapato_simplorio,item_adicionado,quantidade_adicionada,variavel_cenario,objeto,situacao,temporario,variavel_lugar,ponto_de_save,mostrar_save, aliado_jogador,aliado_reserva, aliado_garota,adversario_inimigo,eegg,acao_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,variavel_para_comparar,contador_de_batalha,contador_de_rodadas
     while 1:
         if(aliado_jogador.status[6]<=0):break
         print("\n#", "-"*30,"#\n", "\nLista de Acoes\n\nCenario: "+str(variavel_lugar)+"\n\nVoce pode:\nolhar\n")
@@ -4568,7 +4574,8 @@ def suaRua():
                     else:
                         if(acao_do_personagem=="entrar na pizzaria" or acao_do_personagem=="pizzaria" or acao_do_personagem=="entrar pizzaria" or acao_do_personagem=="entrar a pizzaria" or acao_do_personagem=="entrar na pizaria" or acao_do_personagem=="pizaria" or acao_do_personagem=="entrar pizaria" or acao_do_personagem=="entrar a pizaria" or acao_do_personagem=="entrar na pizza" or acao_do_personagem=="pizza" or acao_do_personagem=="entrar pizza" or acao_do_personagem=="entrar a pizza" or acao_do_personagem=="entrar na piza" or acao_do_personagem=="piza" or acao_do_personagem=="entrar piza" or acao_do_personagem=="entrar a piza" or acao_do_personagem=="entra na pizzaria" or acao_do_personagem=="comer pizzaria" or acao_do_personagem=="entra pizzaria" or acao_do_personagem=="entra a pizzaria" or acao_do_personagem=="entra na pizaria" or acao_do_personagem=="comer pizaria" or acao_do_personagem=="entra pizaria" or acao_do_personagem=="entra a pizaria" or acao_do_personagem=="entra na pizza" or acao_do_personagem=="comer pizza" or acao_do_personagem=="entra pizza" or acao_do_personagem=="entra a pizza" or acao_do_personagem=="entra na piza" or acao_do_personagem=="comer piza" or acao_do_personagem=="entra piza" or acao_do_personagem=="entra a piza" or acao_do_personagem=="etrar na pizzaria" or acao_do_personagem=="ppizzaria" or acao_do_personagem=="etrar pizzaria" or acao_do_personagem=="etrar a pizzaria" or acao_do_personagem=="etrar na pizaria" or acao_do_personagem=="ppizaria" or acao_do_personagem=="etrar pizaria" or acao_do_personagem=="etrar a pizaria" or acao_do_personagem=="etrar na pizza" or acao_do_personagem=="ppizza" or acao_do_personagem=="etrar pizza" or acao_do_personagem=="etrar a pizza" or acao_do_personagem=="etrar na piza" or acao_do_personagem=="ppiza" or acao_do_personagem=="etrar piza" or acao_do_personagem=="etrar a piza" or acao_do_personagem=="etra na pizzaria" or acao_do_personagem=="come pizzaria" or acao_do_personagem=="etra pizzaria" or acao_do_personagem=="etra a pizzaria" or acao_do_personagem=="etra na pizaria" or acao_do_personagem=="come pizaria" or acao_do_personagem=="etra pizaria" or acao_do_personagem=="etra a pizaria" or acao_do_personagem=="etra na pizza" or acao_do_personagem=="come pizza" or acao_do_personagem=="etra pizza" or acao_do_personagem=="etra a pizza" or acao_do_personagem=="etra na piza" or acao_do_personagem=="come piza" or acao_do_personagem=="etra piza" or acao_do_personagem=="etra a piza"):
                             porcentagem_inflacao=1.5
-                            Venda.inventario[1][1]=pedaco_pizza
+                            Venda.inventario[1][1]=pizza_inteira[0]
+                            Venda.inventario[1][1]=pedaco_pizza[0]
                             Venda.inventario[1][0]=talheres_prata
                             lojaComprar()
                             Venda=Reserva_Venda
@@ -5345,7 +5352,7 @@ while 1:
                 time.sleep(3)
                 print("Voce continua sem respostas...")
                 time.sleep(3)
-                print("Sera que voce encontrara alguma pista na escola?")
+                print("Sera que voce encontrara alguma pista na faculdade?")
                 time.sleep(5)
             else:
                 if(adversario_inimigo.status[6]>0):
@@ -5402,7 +5409,7 @@ while 1:
                             time.sleep(3)
                             print("Voce continua sem respostas...")
                             time.sleep(3)
-                            print("Sera que voce encontrara alguma pista na escola?")
+                            print("Sera que voce encontrara alguma pista na faculdade?")
                             time.sleep(5)
                         else:
                             print(" - Pare! Por favor!\n")
@@ -5413,7 +5420,7 @@ while 1:
                             time.sleep(3)
                             print("Voce continua sem respostas...")
                             time.sleep(3)
-                            print("Sera que voce encontrara alguma pista na escola?")
+                            print("Sera que voce encontrara alguma pista na faculdade?")
                             time.sleep(5)
                 else:
                     print(" - Pare! Por favor!\n")
@@ -5468,12 +5475,24 @@ while 1:
             else:
                 raw_input("|>")
                 os.system("cls")
-                print("Cenario:Voce esta na sua rua, por agora tudo esta calmo....")
+                print("Cenario: Voce esta na sua rua, por agora tudo esta calmo....")
                 suaRua()
             if(aliado_jogador.status[6]<=0):break
             ponto_de_save = 4
+            variavel_lugar="rua da faculdade"
             save()
 
+##########--------------------------------------------------FIM DA QUARTA PARTE--------------------------------------------------##########
+        if(ponto_de_save==4):
+            if(variavel_lugar == "sua faculdade"):
+                suaFaculdade()
+            variavel_lugar="rua da faculdade"
+            print 'Cenario: Voce finalmente chegou na rua faculdade! \nMas algo parece estranho por aqui, \nmuitos estudantes e arruaceiros estao brigando!'
+            ruaFaculdade()
+            if(aliado_jogador.status[6]<=0):break
+            ponto_de_save = 5
+            save()
+            
 ##########--------------------------------------------------FIM DO JOGO--------------------------------------------------##########
         break
     if(aliado_jogador.status[6]>0):
