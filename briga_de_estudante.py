@@ -4905,10 +4905,7 @@ while 1:
                     acao_do_personagem = acao_do_personagem.lower()
                     if(acao_do_personagem=="sim" or acao_do_personagem=="s" or acao_do_personagem=="si" or acao_do_personagem=="sm" or acao_do_personagem=="im" or acao_do_personagem=="ssim"):break
                 elif(acao_do_personagem== "nao" or acao_do_personagem=="n" or acao_do_personagem=="ao" or acao_do_personagem=="no" or acao_do_personagem=="na" or acao_do_personagem== "naao" or acao_do_personagem=="naoo" or acao_do_personagem=="aoo" or acao_do_personagem=="noo" or acao_do_personagem=="naa" or acao_do_personagem== "noop" or acao_do_personagem=="a" or acao_do_personagem=="mao" or acao_do_personagem=="nso" or acao_do_personagem=="ns" or acao_do_personagem== "nnao" or acao_do_personagem=="nn" or acao_do_personagem=="aao" or acao_do_personagem=="nno" or acao_do_personagem=="nna"):break
-                else:
-                    print('Entrada invalida!')
-                    acao_do_personagem = raw_input("-")
-                    acao_do_personagem = acao_do_personagem.lower()
+                else: print('Entrada invalida!')
             while 1:
                 if(acao_do_personagem=="sim" or acao_do_personagem=="s" or acao_do_personagem=="si" or acao_do_personagem=="sm" or acao_do_personagem=="im" or acao_do_personagem=="ssim"):
                     break
@@ -4979,12 +4976,11 @@ while 1:
             while 1:
                 raw_input("|>")
                 os.system("cls")
-                print("\n"+"Lista de Acoes".center(79)+"\n"+"Cenario: ".rjust(49-len(str(variavel_lugar)))+str(variavel_lugar)+"\n\n"+"Voce pode:".center(79)+"\n")
-                if (variavel_cenario[0] == "sim"):print("olhar"+"olhar as gavetas".rjust(74)+"\narrumar o quarto"+"olhar o guarda-roupas".rjust(63)+"\nvestir"+"olhar a estante".rjust(73)+"\n\n"+"olhar pela janela".rjust(79))
-                else: print("olhar\narrumar o quarto\nvestir\n")
+                print("\n#"+ "-"*30+"#\n\nLista de Acoes\n\nCenario: "+str(variavel_lugar)+"\n\nVoce pode:\n\nolhar\narrumar o quarto\nvestir\n")
+                if (variavel_cenario[0] == "sim"): print("olhar as gavetas\nolhar o guarda-roupas\nolhar a estante\n\nolhar pela janela")
                 print("\nver ficha do personagem\nver mochila\nsair do quarto\n")
-                if(eegg > 1 and eegg<6): print("Voce nao deve olhar a janela")
-                print("\n\n\nE agora, "+str(aliado_jogador.nome)+", o que voce vai fazer?")
+                if(eegg > 1 and eegg<6): print("Voce nao deve:\nolhar a janela\n")
+                print("#"+ "-"*30+"#\n\nE agora, "+str(aliado_jogador.nome)+", o que voce vai fazer?")
                 acao_do_personagem = raw_input("-")
                 acao_do_personagem = acao_do_personagem.lower()
                 os.system("cls")
