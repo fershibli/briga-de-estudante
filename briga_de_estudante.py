@@ -3618,11 +3618,11 @@ def seuPredioTerceiroAndar(): #iemanjá
                                                             time.sleep(2)
                                                             break
                                                         else:
-                                                            escrever(0.3," - Seus punhos sao sinceros e cheios de paixao!\n",0.5)
-                                                            escrever(0.3,"Ele tirou a jaqueta de couro que vestia.\n",1.5)
-                                                            escrever(0.35," - Aceite este presente, ")
-                                                            escrever(0.2,"herdando as chamas da nossa batalha!\n",0.5)
-                                                            escrever(0.3,"\nVoce guardou a Jaqueta de Couro na sua mochila!\n",1)
+                                                            escrever(0.03," - Seus punhos sao sinceros e cheios de paixao!\n",0.5)
+                                                            escrever(0.03,"Ele tirou a jaqueta de couro que vestia.\n",1.5)
+                                                            escrever(0.035," - Aceite este presente, ")
+                                                            escrever(0.02,"herdando as chamas da nossa batalha!\n",0.5)
+                                                            escrever(0.03,"\nVoce guardou a Jaqueta de Couro na sua mochila!\n",1)
                                                             item_adicionado=jaqueta_imitacao
                                                             quantidade_adicionada=1
                                                             adicionaItem()
@@ -3642,11 +3642,11 @@ def seuPredioTerceiroAndar(): #iemanjá
                                                                         time.sleep(2)
                                                             break
                                                 else:
-                                                    escrever(0.3," - Seus punhos sao sinceros e cheios de paixao!\n",0.5)
-                                                    escrever(0.3,"Ele tirou a jaqueta de couro que vestia.\n",1.5)
-                                                    escrever(0.35," - Aceite este presente, ")
-                                                    escrever(0.2,"herdando as chamas da nossa batalha!\n",0.5)
-                                                    escrever(0.3,"\nVoce guardou a Jaqueta de Couro na sua mochila!\n",1)
+                                                    escrever(0.03," - Seus punhos sao sinceros e cheios de paixao!\n",0.5)
+                                                    escrever(0.03,"Ele tirou a jaqueta de couro que vestia.\n",1.5)
+                                                    escrever(0.035," - Aceite este presente, ")
+                                                    escrever(0.02,"herdando as chamas da nossa batalha!\n",0.5)
+                                                    escrever(0.03,"\nVoce guardou a Jaqueta de Couro na sua mochila!\n",1)
                                                     item_adicionado=jaqueta_imitacao
                                                     quantidade_adicionada=1
                                                     adicionaItem()
@@ -3878,19 +3878,19 @@ def seuPredioSegundoAndar():
                                         escrever(0.02,"Em seguida ele fechou e trancou a porta.\n")
                                         situacao[3]==1
                                     else:
-                                        escrever(0.02,"O garoto caiu no chao dentro da casa e comecou a chorar.\n - SAIA DAQUI ANTES QUE EU CHAME A POLICIA! - disse o senhor que ja estava um pouco melhor...\nEm seguida ele fechou e trancou a porta.\n")
+                                        escrever(0.02,"O garoto caiu no chao dentro do quarto e comecou a chorar.\n - SAIA DAQUI ANTES QUE EU CHAME A POLICIA! - disse o senhor que ja estava um pouco melhor...\nEm seguida ele fechou e trancou a porta.\n")
                                         situacao[3]=1
                                 else:
                                     escrever(0.04,"O senhor caiu no chao com uma mao no peito...\n",0.5)
                                     escrever(0.02,"Ele tentava gritar algo enquanto estendia a outra mao...\n",0.5)
                                     escrever(0.03,"Mas nao conseguia dizer nada, estava tendo crise de asma...\n",0.5)
-                                    escrever(0.02,"Sua mao apontava para um lugar dentro da casa...\nVai ajudar o idoso?")
+                                    escrever(0.02,"Sua mao apontava para um lugar dentro do quarto...\nVai ajudar o idoso?")
                                     print(" (sim ou nao)")
                                     while 1:
                                         acao_do_personagem = raw_input("-")
                                         acao_do_personagem = acao_do_personagem.lower()
                                         if(acao_do_personagem=="sim" or acao_do_personagem=="s" or acao_do_personagem=="si" or acao_do_personagem=="sm" or acao_do_personagem=="im" or acao_do_personagem=="ssim"):
-                                            escrever(0.009,"Voce entrou na casa, pegou a bombinha em cima da mesa \ne a apertou na boca do velho...\n",1)
+                                            escrever(0.009,"Voce entrou no quarto, pegou a bombinha em cima da mesa \ne a apertou na boca do velho...\n",1)
                                             escrever(0.1," - Ah... Ah... ",0.5)
                                             escrever(0.02,"- o senhor tentava recuperar o ar ",0.5)
                                             escrever(0.08,"- Voce nao e um mau rapaz \nno fim das contas...\n",0.1)
@@ -3923,7 +3923,7 @@ def seuPredioSegundoAndar():
                                                     escrever(0.02,"Em seguida ele fechou e trancou a porta.\n")
                                                     situacao[3]=1
                                                 else:
-                                                    escrever(0.02,"O garoto caiu no chao dentro da casa e comecou a chorar.\n - SAIA DAQUI ANTES QUE EU CHAME A POLICIA! - disse o senhor que ja estava um pouco melhor...\nEm seguida ele fechou e trancou a porta.\n")
+                                                    escrever(0.02,"O garoto caiu no chao dentro do quarto e comecou a chorar.\n - SAIA DAQUI ANTES QUE EU CHAME A POLICIA! - disse o senhor que ja estava um pouco melhor...\nEm seguida ele fechou e trancou a porta.\n")
                                                     situacao[3]=1
                                                 break
                                             else: print('ENTRADA INVALIDA!')
@@ -4170,7 +4170,7 @@ def seuPredioPrimeiroAndar():
                     else:
                         if(acao_do_personagem=="11"):
                             if(situacao[1]==0):
-                                escrever(0.025,"\nQuando voce bateu, a porta se abriu no primeiro toque \npor nao ter uma fechadura...\nVoce ve, dentro da casa, uma mulher alta de ombros largos, BEM LARGOS, \nmusculosa e com o maxilar largo...\n",0.5)
+                                escrever(0.025,"\nQuando voce bateu, a porta se abriu no primeiro toque \npor nao ter uma fechadura...\nVoce ve, dentro do quarto, uma mulher alta de ombros largos, BEM LARGOS, \nmusculosa e com o maxilar largo...\n",0.5)
                                 escrever(0.04,"Ela estava apenas de toalha...\n\n")
                                 escrever(0.01," - MAS QUE ATREVIMENTO! SUMA DAQUI! ",0.5)
                                 escrever(0.025,"- diz a mulher enquanto te epurra com a \nporta que e fechada violentamente.\n\n",0.5)
@@ -4205,7 +4205,7 @@ def seuPredioPrimeiroAndar():
                                                 escrever(0.02,"\n - E NAO VOLTE MAIS AQUI!\n")
                                             else:
                                                 escrever(0.03,"\nA mulher caiu inconsciente no chao...\n")
-                                                escrever(0.02,"Dentro da casa voce encontrou 100 reais e um suplemento alimenticio\nVoce guardou ambos na mochila!\n\n")
+                                                escrever(0.02,"Dentro da quarto voce encontrou 100 reais e um suplemento alimenticio\nVoce guardou ambos na mochila!\n\n")
                                                 aliado_jogador.dinheiro=aliado_jogador.dinheiro+100
                                                 quantidade_adicionada=1
                                                 item_adicionado=suplemento_alimenticio[0]
@@ -4216,7 +4216,7 @@ def seuPredioPrimeiroAndar():
                                                 escrever(0.02,"\nVoce entra no quarto, encontra a mulher que voce derrotou caida no chao \ne mais nada alem dos moveis velhos dela.\n\n")
                         else:
                             if(acao_do_personagem=="12"):
-                                escrever(0.02,"\nVoce bateu na porta...\n - Ja vai! - exclama uma senhora de dentro da casa.\n\n")
+                                escrever(0.02,"\nVoce bateu na porta...\n - Ja vai! - exclama uma senhora de dentro da quarto.\n\n")
                                 escrever(1,"...\n\n")
                                 escrever(0.1," - Ola, meu jovem!")
                                 escrever(0.08," Por que voce nao entra e prova um pouco \ndo bolo que eu acabei de fazer?\n\n")
@@ -4281,7 +4281,7 @@ def seuPredioPrimeiroAndar():
                                                 escrever(0.015," - Como voce teve a pachorra de me procurar?!\n")
                                                 escrever(0.02,"Ela fechou a porta chorando.\n")
                                             else:
-                                                escrever(0.02,"\nA mulher caiu inconsciente no chao...\nDentro da casa voce encontrou um par de talheres de prata...\nVoce os guardou na mochila...")
+                                                escrever(0.02,"\nA mulher caiu inconsciente no chao...\nDentro da quarto voce encontrou um par de talheres de prata...\nVoce os guardou na mochila...")
                                                 escrever(1,"...")
                                                 escrever(0.05,"Seu idiota...\n")
                                                 quantidade_adicionada=1
@@ -4938,76 +4938,80 @@ while 1:
                 print (' (digite "nao" para ver o tutorial)')
                 acao_do_personagem = raw_input("-")
                 acao_do_personagem = acao_do_personagem.lower()
-                if(acao_do_personagem=="sim" or acao_do_personagem=="s" or acao_do_personagem=="si" or acao_do_personagem=="sm" or acao_do_personagem=="im" or acao_do_personagem=="ssim"):
+                if 's' in acao_do_personagem and not 'n' in acao_do_personagem :
                     while 1:
                         escrever(0.02,'Nao me lembro de voce...',0.5)
                         escrever(0.02,' Tem certeza de que nos conhecemos???\n')
                         acao_do_personagem = raw_input("-")
                         acao_do_personagem = acao_do_personagem.lower()
-                        if(acao_do_personagem=="sim" or acao_do_personagem=="s" or acao_do_personagem=="si" or acao_do_personagem=="sm" or acao_do_personagem=="im" or acao_do_personagem=="ssim" or acao_do_personagem== "nao" or acao_do_personagem=="n" or acao_do_personagem=="ao" or acao_do_personagem=="no" or acao_do_personagem=="na" or acao_do_personagem== "naao" or acao_do_personagem=="naoo" or acao_do_personagem=="aoo" or acao_do_personagem=="noo" or acao_do_personagem=="naa" or acao_do_personagem== "noop" or acao_do_personagem=="a" or acao_do_personagem=="mao" or acao_do_personagem=="nso" or acao_do_personagem=="ns" or acao_do_personagem== "nnao" or acao_do_personagem=="nn" or acao_do_personagem=="aao" or acao_do_personagem=="nno" or acao_do_personagem=="nna"):break
+                        if 'n' in acao_do_personagem and not 's' in acao_do_personagem or 's' in acao_do_personagem and not 'n' in acao_do_personagem:break
                         else: print('Entrada invalida!')
-                if(acao_do_personagem=="sim" or acao_do_personagem=="s" or acao_do_personagem=="si" or acao_do_personagem=="sm" or acao_do_personagem=="im" or acao_do_personagem=="ssim" or acao_do_personagem== "nao" or acao_do_personagem=="n" or acao_do_personagem=="ao" or acao_do_personagem=="no" or acao_do_personagem=="na" or acao_do_personagem== "naao" or acao_do_personagem=="naoo" or acao_do_personagem=="aoo" or acao_do_personagem=="noo" or acao_do_personagem=="naa" or acao_do_personagem== "noop" or acao_do_personagem=="a" or acao_do_personagem=="mao" or acao_do_personagem=="nso" or acao_do_personagem=="ns" or acao_do_personagem== "nnao" or acao_do_personagem=="nn" or acao_do_personagem=="aao" or acao_do_personagem=="nno" or acao_do_personagem=="nna"):break
-                else: print('Entrada invalida!')
-            while 1:
-                if(acao_do_personagem=="sim" or acao_do_personagem=="s" or acao_do_personagem=="si" or acao_do_personagem=="sm" or acao_do_personagem=="im" or acao_do_personagem=="ssim"):
-                    break
-                else:
-                    if(acao_do_personagem== "nao" or acao_do_personagem=="n" or acao_do_personagem=="ao" or acao_do_personagem=="no" or acao_do_personagem=="na" or acao_do_personagem== "naao" or acao_do_personagem=="naoo" or acao_do_personagem=="aoo" or acao_do_personagem=="noo" or acao_do_personagem=="naa" or acao_do_personagem== "noop" or acao_do_personagem=="a" or acao_do_personagem=="mao" or acao_do_personagem=="nso" or acao_do_personagem=="ns" or acao_do_personagem== "nnao" or acao_do_personagem=="nn" or acao_do_personagem=="aao" or acao_do_personagem=="nno" or acao_do_personagem=="nna"):
-                        os.system("cls")
-                        escrever(0.02,'\nPermita-me, entao, me apresentar...\n',0.5)
-                        escrever(0.03,'\nSou o narrador da nossa historia,',0.5)
-                        escrever(0.03,' vou apenas te guiar de acordo com as suas \ndecisoes...\n',0.5)
-                        escrever(0.01,'Entao saiba que nao vou facilitar as coisas para voce!\n',0.5)
-                        escrever(0.03,'Porem minha funcao e te guiar,',0.2)
-                        escrever(0.02,' ser os seus olhos,',0.2)
-                        escrever(0.02,' ouvidos,',0.2)
-                        escrever(0.02,' maos e nariz.\n',0.5)
-                        escrever(0.02,'\nToda vez te mostrarei uma lista para voce nao se sentir tao deslocado.\n',0.5)
-                        escrever(0.02,'Claro, voce pode tentar outras coisas,')
-                        escrever(0.07,' mas eu dito as regras aqui.\n',0.5)
-                        escrever(0.02,'\nVoce so recebera minha atencao quando eu pedir e\npercebera isso quando ver um hifen apos a minha pergunta.\n',1)
-                        escrever(0.02,'\nFui claro?')
-                        print(' (sim ou nao)')
-                        acao_do_personagem = raw_input("-")
-                        acao_do_personagem = acao_do_personagem.lower()
-                        while 1:
-                            if(acao_do_personagem=="sim" or acao_do_personagem=="s" or acao_do_personagem=="si" or acao_do_personagem=="sm" or acao_do_personagem=="im" or acao_do_personagem=="ssim"):break
-                            elif(acao_do_personagem== "nao" or acao_do_personagem=="n" or acao_do_personagem=="ao" or acao_do_personagem=="no" or acao_do_personagem=="na" or acao_do_personagem== "naao" or acao_do_personagem=="naoo" or acao_do_personagem=="aoo" or acao_do_personagem=="noo" or acao_do_personagem=="naa" or acao_do_personagem== "noop" or acao_do_personagem=="a" or acao_do_personagem=="mao" or acao_do_personagem=="nso" or acao_do_personagem=="ns" or acao_do_personagem== "nnao" or acao_do_personagem=="nn" or acao_do_personagem=="aao" or acao_do_personagem=="nno" or acao_do_personagem=="nna"): escrever(0.04,'Voce e bobo??\n')
-                            else:
-                                print('Entrada invalida!')
-                            acao_do_personagem = raw_input("-")
-                            acao_do_personagem = acao_do_personagem.lower()
-                        os.system("cls")
-                        escrever(0.02,'\nBom menino!\n',0.5)
-                        escrever(0.02,'\nPor vezes a tela se apaga, por isso preste bastante atencao no que voce le.\n',1)
-                        escrever(0.02,'\nFalando nisso, ha o "|>"',1.3)
-                        escrever(0.02,', que pedira a sua anuencia para apagar a tela.\n',0.2)
-                        escrever(0.02,'\nE so mais uma coisa...',0.5)
-                        escrever(0.02,' Fique atento as mudancas que causar durante o jogo!\n',1)
-                        escrever(0.02,'\nAcho que ja e o bastante para comecarmos, mas posso repetir se voce quiser...\n',1)
-                        escrever(0.02,'\nVoce entendeu tudo o que eu disse?')
-                        print(' (sim ou nao)')
-                    else:
-                        print('Entrada invalida!')
+                if 'n' in acao_do_personagem and not 's' in acao_do_personagem :
+                    os.system("cls")
+                    escrever(0.02,'\nPermita-me, entao, me apresentar...\n',0.5)
+                    escrever(0.03,'\nSou o narrador da nossa historia,',0.5)
+                    escrever(0.03,' vou apenas te guiar de acordo com as suas \ndecisoes...\n',0.5)
+                    escrever(0.01,'Entao saiba que nao vou facilitar as coisas para voce!\n',0.5)
+                    escrever(0.03,'Porem minha funcao e te guiar,',0.2)
+                    escrever(0.02,' ser os seus olhos,',0.2)
+                    escrever(0.02,' ouvidos,',0.2)
+                    escrever(0.02,' maos e nariz.\n',0.5)
+                    escrever(0.02,'\nToda vez te mostrarei uma lista para voce nao se sentir tao deslocado.\n',0.5)
+                    escrever(0.02,'Claro, voce pode tentar outras coisas,')
+                    escrever(0.07,' mas eu dito as regras aqui.\n',0.5)
+                    escrever(0.02,'\nVoce so recebera minha atencao quando eu pedir e\npercebera isso quando ver um hifen apos a minha pergunta.\n',1)
+                    escrever(0.02,'\nFui claro?')
+                    print(' (sim ou nao)')
                     acao_do_personagem = raw_input("-")
                     acao_do_personagem = acao_do_personagem.lower()
-                    if(acao_do_personagem=="sim" or acao_do_personagem=="s" or acao_do_personagem=="si" or acao_do_personagem=="sm" or acao_do_personagem=="im" or acao_do_personagem=="ssim"): objeto[0]="ganha presente"
-                    if(acao_do_personagem== "nao" or acao_do_personagem=="n" or acao_do_personagem=="ao" or acao_do_personagem=="no" or acao_do_personagem=="na" or acao_do_personagem== "naao" or acao_do_personagem=="naoo" or acao_do_personagem=="aoo" or acao_do_personagem=="noo" or acao_do_personagem=="naa" or acao_do_personagem== "noop" or acao_do_personagem=="a" or acao_do_personagem=="mao" or acao_do_personagem=="nso" or acao_do_personagem=="ns" or acao_do_personagem== "nnao" or acao_do_personagem=="nn" or acao_do_personagem=="aao" or acao_do_personagem=="nno" or acao_do_personagem=="nna"):
-                        os.system("cls")
-                        escrever(0.04,'\nComo assim voce nao entendeu?? Voce e bobo??\n')
+                    while 1:
+                        if(acao_do_personagem=="sim" or acao_do_personagem=="s" or acao_do_personagem=="si" or acao_do_personagem=="sm" or acao_do_personagem=="im" or acao_do_personagem=="ssim"):break
+                        elif(acao_do_personagem== "nao" or acao_do_personagem=="n" or acao_do_personagem=="ao" or acao_do_personagem=="no" or acao_do_personagem=="na" or acao_do_personagem== "naao" or acao_do_personagem=="naoo" or acao_do_personagem=="aoo" or acao_do_personagem=="noo" or acao_do_personagem=="naa" or acao_do_personagem== "noop" or acao_do_personagem=="a" or acao_do_personagem=="mao" or acao_do_personagem=="nso" or acao_do_personagem=="ns" or acao_do_personagem== "nnao" or acao_do_personagem=="nn" or acao_do_personagem=="aao" or acao_do_personagem=="nno" or acao_do_personagem=="nna"): escrever(0.04,'Voce e bobo??\n')
+                        else:
+                            print('Entrada invalida!')
                         acao_do_personagem = raw_input("-")
                         acao_do_personagem = acao_do_personagem.lower()
-                        if(acao_do_personagem=="sim" or acao_do_personagem=="s" or acao_do_personagem=="si" or acao_do_personagem=="sm" or acao_do_personagem=="im" or acao_do_personagem=="ssim"):break
-                        elif(acao_do_personagem== "nao" or acao_do_personagem=="n" or acao_do_personagem=="ao" or acao_do_personagem=="no" or acao_do_personagem=="na" or acao_do_personagem== "naao" or acao_do_personagem=="naoo" or acao_do_personagem=="aoo" or acao_do_personagem=="noo" or acao_do_personagem=="naa" or acao_do_personagem== "noop" or acao_do_personagem=="a" or acao_do_personagem=="mao" or acao_do_personagem=="nso" or acao_do_personagem=="ns" or acao_do_personagem== "nnao" or acao_do_personagem=="nn" or acao_do_personagem=="aao" or acao_do_personagem=="nno" or acao_do_personagem=="nna"):
-                            escrever(0.04,'Entao aprenda jogando, seu espertalhao!\n',2)
-                            break
-            os.system("cls")
-            if(objeto[0]=="ganha presente"):
-                escrever(0.02,"\nOtimo, "+str(aliado_jogador.nome)+".\n",1)
-                escrever(0.02,"Acho que comecamos com o pe direito! Fico feliz que voce tenha me escutado \ncomo um bom garoto!\nPor isso deixei um presente para voce no seu guarda-roupas, tenho certeza que \nvoce ficara feliz.\n")
-            else:
-                escrever(0.03,"\nEu realmente nao me lembro de voce...",0.5)
-                escrever(0.02,"\nEntao nao espere que eu te trate como um conhecido!\n")
+                    os.system("cls")
+                    escrever(0.02,'\nBom menino!\n',0.5)
+                    escrever(0.02,'\nPor vezes a tela se apaga, por isso preste bastante atencao no que voce le.\n',1)
+                    escrever(0.02,'\nQuando ver o seguinte simbolo no canto esquerdo da tela,\n\n |>\n',1)
+                    escrever(0.02,'\nbasta apertar enter para apagar a tela, entao leia tudo antes de o apertar.\n',1.5)
+                    escrever(0.02,'\nE so mais uma coisa...',0.5)
+                    escrever(0.02,' Fique atento as mudancas que causar durante o jogo!\n',1)
+                    escrever(0.02,'\nAcho que ja e o bastante para comecarmos...\n',1)
+                    objeto[0]="ganha presente"
+                    while 1:
+                        escrever(0.02,'\nVoce entendeu tudo o que eu disse?')
+                        print(' (sim ou nao)')
+                        acao_do_personagem = raw_input("-")
+                        acao_do_personagem = acao_do_personagem.lower()
+                        if 'n' in acao_do_personagem and not 's' in acao_do_personagem or 's' in acao_do_personagem and not 'n' in acao_do_personagem:break
+                        else: print('Entrada invalida!')
+                if 's' in acao_do_personagem and not 'n' in acao_do_personagem:
+                    if objeto[0]=="ganha presente":
+                        escrever(0.02,"\nOtimo, "+str(aliado_jogador.nome)+".\n",1)
+                        escrever(0.02,"Acho que comecamos com o pe direito! Fico feliz que voce tenha me escutado \ncomo um bom garoto!\nPor isso deixei um presente para voce no seu guarda-roupas, tenho certeza que \nvoce ficara feliz.\n")
+                        break
+                    else:
+                        escrever(0.03,"\nEu realmente nao me lembro de voce...",0.5)
+                        escrever(0.02,"\nEntao nao espere que eu te trate como um conhecido!\n")
+                        break
+                elif 'n' in acao_do_personagem and not 's' in acao_do_personagem:
+                    if objeto[0]=="ganha presente":
+                        os.system("cls")
+                        escrever(0.04,'\nComo assim voce nao entendeu?? Voce e bobo??\n')
+                        while 1:
+                            acao_do_personagem = raw_input("-")
+                            acao_do_personagem = acao_do_personagem.lower()
+                            if 's' in acao_do_personagem and not 'n' in acao_do_personagem:
+                                escrever(0.02,'Certo, certo... Apenas tente jogar, ok? Nao quero explicar de novo!\n')
+                                break
+                            elif 'n' in acao_do_personagem and not 's' in acao_do_personagem:
+                                escrever(0.02,'Entao aprenda jogando, seu espertalhao!\n',2)
+                                break
+                            else: print('Nao entendi, voce e bobo ou nao?! (sim ou nao)')
+                        break
+                if not 'n' in acao_do_personagem and not 's' in acao_do_personagem: print('Entrada invalida!')
 
 #####################----------------------------__INICIO DO JOGO__----------------------------#####################
             raw_input("|>")
