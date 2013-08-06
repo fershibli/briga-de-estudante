@@ -1687,8 +1687,7 @@ def batalha(entrada_inimigo_batalha):
     time.sleep(3)
     os.system("cls")
     contador_de_rodadas=1
-    while(adversario_inimigo.status[6]>0):
-        if(aliado_jogador.status[6]<=0):break
+    while(adversario_inimigo.status[6]>0 and aliado_jogador.status[6]>0):
         if contador_de_rodadas!=1:
             if aliado_jogador.status[6] < aliado_jogador.status[5] and aliado_jogador.status[4]>0:
                 print ('\nVoce se recuperou em '+str(aliado_jogador.status[4])+" pontos de vida.\n")
@@ -1701,26 +1700,112 @@ def batalha(entrada_inimigo_batalha):
                 if adversario_inimigo.status[6] > adversario_inimigo.status[5]: adversario_inimigo.status[6]=adversario_inimigo.status[5]
                 if adversario_inimigo.status[6] <=0 : adversario_inimigo.status[6]=1
             raw_input('|>')
-        os.system("cls")
-        print("\n]]"+ "="*75+"[[\n"+"\t\t\t   Inicio da rodada numero "+str(contador_de_rodadas)+"\n]]"+"="*75+"[[\n")
+            os.system("cls")
+            teste_de_sorte=random.randrange(1000)
+            statusEquipamento(False,0)
+            statusEquipamento(False,1)
+            statusEquipamento(False,2)
+            statusEquipamento(False,3)
+            statusEquipamento(False,4)
+            statusEquipamento(False,5)
+            if teste_de_sorte<800-aliado_jogador.status[0]-aliado_jogador.status[1]-aliado_jogador.status[2]-aliado_jogador.status[3]-aliado_jogador.status[4]-int(aliado_jogador.status[5]/10):
+                teste_de_sorte=random.randrange(1000)
+                if contador_de_rodadas%15==0 and contador_de_rodadas%50!=0 and teste_de_sorte>100-10*aliado_jogador.status[4]:
+                    print('\nSeu corpo respondeu a adrenalina gerada pela batalha!\n\n')
+                    time.sleep(1.5)
+                    print('TODOS os seus pontos de luta subiram!\n\n')
+                    aliado_jogador.status[0]+=5
+                    aliado_jogador.status[1]+=5
+                    aliado_jogador.status[2]+=1
+                    aliado_jogador.status[4]+=1
+                    aliado_jogador.status[5]+=10
+                    time.sleep(1.5)
+                    print('Mas isso gerou um leve estresse muscular, causando '+str(aliado_jogador.status[6]*0.1)+' pontos de dano...')
+                    aliado_jogador.status[6]-=aliado_jogador.status[6]*0.1
+                elif contador_de_rodadas%50==0:
+                    print('\nEm seguida o inimigo avancou sobre voce usando golpes baixos!\n\n')
+                    escrever(0.5,'...\n',0.5)
+                    escrever(0.01,'\nDespertando sua furia!!!\n',1)
+                    escrever(0.01,'\nVoce se defendeu dissipando a energia dos golpes em som e luz!!!\n',1)
+                    print('TODOS os seus pontos de luta subiram!\n')
+                    aliado_jogador.status[0]+=int(contador_de_rodadas/25*(random.randrange(5)+1)+(((contador_de_rodadas+50)%20)/5))
+                    aliado_jogador.status[1]+=int(contador_de_rodadas/25*(random.randrange(5)+1)+(((contador_de_rodadas+50)%20)/5))
+                    aliado_jogador.status[2]+=int(contador_de_rodadas/100*(random.randrange(2)+1)+(((contador_de_rodadas+50)%20)/10))
+                    aliado_jogador.status[3]+=int(contador_de_rodadas/100*(random.randrange(2)+1)+(((contador_de_rodadas+50)%20)/10))
+                    aliado_jogador.status[4]+=int(contador_de_rodadas/100*(random.randrange(2)+1)+(((contador_de_rodadas+50)%20)/10))
+                    variavel_para_comparar=aliado_jogador.status[5]
+                    aliado_jogador.status[5]+=int(contador_de_rodadas/2*(random.randrange(3)+1)+(((contador_de_rodadas+50)%20)*10))
+                    aliado_jogador.status[6]+=aliado_jogador.status[5]-variavel_para_comparar
+                    raw_input('|>')
+                    os.system("cls")
+                elif random.randrange(aliado_jogador.status[2]+aliado_jogador.status[3]) < random.randrange(adversario_inimigo.status[2]+adversario_inimigo.status[3]):
+                    print('\nEm seguida o inimigo avancou sobre voce usando golpes baixos!\n\n')
+                    escrever(0.5,'...\n',0.5)
+                    if booleana[3]==False : calculo_do_dano = adversario_inimigo.status[0]+(random.randrange(adversario_inimigo.status[0]))-aliado_jogador.status[1]-(random.randrange(aliado_jogador.status[1]))
+                    else: calculo_do_dano = adversario_inimigo.status[0]+(random.randrange(adversario_inimigo.status[0]))-2*aliado_jogador.status[1]-(random.randrange(aliado_jogador.status[1]))
+                    if (calculo_do_dano>0):
+                        print("\nVoce foi atacado diretamente, sofrendo "+str(calculo_do_dano)+" pontos de dano!\n")
+                        time.sleep(3)
+                        aliado_jogador.status[6]=aliado_jogador.status[6]-calculo_do_dano
+                    else:
+                        print("\nMesmo sem se defender, sua constituicao \nfoi alta o suficiente para resistir ao ataque do oponente.\n")
+                        time.sleep(3)
+                elif teste_de_sorte<50 and adversario_inimigo.status[0]+adversario_inimigo.status[1]+adversario_inimigo.status[2]+adversario_inimigo.status[3]+adversario_inimigo.status[4]+int(adversario_inimigo.status[5]/10) >= aliado_jogador.status[0]+aliado_jogador.status[1]+aliado_jogador.status[2]+aliado_jogador.status[3]+aliado_jogador.status[4]+int(aliado_jogador.status[5]/10):
+                    escrever(0.03,'\nVoce sente uma forca desconhecida brotar da sua alma')
+                    escrever(0.08,'...\n\n',1)
+                    escrever(0.03,'\nSeu corpo agora parece tentar superar as caracteristicas fortes do oponente')
+                    escrever(0.08,'...\n\n',1)
+                    print('TODOS os seus pontos de luta subiram!\n')
+                    aliado_jogador.status[0]+=int(2*adversario_inimigo.status[0]/aliado_jogador.status[0])+1
+                    aliado_jogador.status[1]+=int(2*adversario_inimigo.status[1]/aliado_jogador.status[1])+1
+                    aliado_jogador.status[2]+=int(adversario_inimigo.status[2]/aliado_jogador.status[2])+1
+                    aliado_jogador.status[3]+=int(adversario_inimigo.status[3]/aliado_jogador.status[3])+1
+                    aliado_jogador.status[4]+=int(adversario_inimigo.status[4]/aliado_jogador.status[4])+1
+                    aliado_jogador.status[6]+=int(10*adversario_inimigo.status[5]/aliado_jogador.status[5])+5
+                    aliado_jogador.status[5]+=int(10*adversario_inimigo.status[5]/aliado_jogador.status[5])+5
+                    raw_input('|>')
+                    os.system("cls")
+            teste_de_sorte=random.randrange(1000)
+            if teste_de_sorte<50+contador_de_rodadas and adversario_inimigo.status[0]+adversario_inimigo.status[1]+adversario_inimigo.status[2]+adversario_inimigo.status[3]+adversario_inimigo.status[4]+int(adversario_inimigo.status[5]/10) <= aliado_jogador.status[0]+aliado_jogador.status[1]+aliado_jogador.status[2]+aliado_jogador.status[3]+aliado_jogador.status[4]+int(aliado_jogador.status[5]/10):
+                escrever(0.03,'\nO inimigo ficou mais forte com a batalha...\n\n',1)
+                print('Todos os pontos de luta do oponente aumentaram temporariamente!\n\n')
+                adversario_inimigo.status[0]+=random.randrange(int(adversario_inimigo.status[0]/50)+1)+3
+                adversario_inimigo.status[1]+=random.randrange(int(adversario_inimigo.status[1]/50)+1)+3
+                adversario_inimigo.status[2]+=random.randrange(int(adversario_inimigo.status[0]/100)+1)+1
+                adversario_inimigo.status[4]+=random.randrange(int(adversario_inimigo.status[4]/10)+1)+1
+                variavel_para_comparar=adversario_inimigo.status[5]
+                adversario_inimigo.status[5]+=random.randrange(int(adversario_inimigo.status[5]/50)+1)+10
+                adversario_inimigo.status[6]+=adversario_inimigo.status[5]-variavel_para_comparar
+                raw_input('|>')
+                os.system("cls")
+            statusEquipamento(True,0)
+            statusEquipamento(True,1)
+            statusEquipamento(True,2)
+            statusEquipamento(True,3)
+            statusEquipamento(True,4)
+            statusEquipamento(True,5)
+        else: os.system("cls")
         if(aliado_jogador.status[6]<10):
             if(contador_de_rodadas==1):
                 print("\nVoce entrou na batalha quase sem forcas vitais!")
                 time.sleep(1)
-                print("Seu ultimo recurso e a tensao!\n")
-                time.sleep(1)
+                print("Seu ultimo recurso e a tensao!\n\n")
+                raw_input('|>')
+                os.system("cls")
             else:
                 if(contador_de_batalha==0):
                     print("\nVoce esta com a vida muito proxima a zero!")
                     time.sleep(1)
-                    print("Seu ultimo recurso e a tensao!\n")
-                    time.sleep(1)
+                    print("Seu ultimo recurso e a tensao!\n\n")
+                    raw_input('|>')
+                    os.system("cls")
             if(contador_de_batalha>0):       
                 print("\nVoce aguentou mais uma rodada com a vida proxima a zero!")
                 time.sleep(1)
-                print("Voce extendeu o limite do seu folego e agora o limite dos seus pontos de vida subiu!\n")
-                time.sleep(2)
-                aliado_jogador.status[5]+=+contador_de_batalha
+                print("Voce extendeu o limite do seu folego e agora o limite dos seus pontos de vida subiu!\n\n")
+                raw_input('|>')
+                os.system("cls")
+                aliado_jogador.status[5]+=contador_de_batalha
             contador_de_batalha+=1
         else:
             if(aliado_jogador.status[6]<=aliado_jogador.status[5]*0.05):
@@ -1728,10 +1813,12 @@ def batalha(entrada_inimigo_batalha):
                 if(teste_de_sorte<=10+aliado_jogador.status[3]):
                     print("\nVoce esta dando o seu melhor para aguentar, isso esta melhorando o seu folego!")
                     time.sleep(1)
-                    print("O limite dos seus pontos de vida aumentou!\n")
-                    time.sleep(2)
+                    print("O limite dos seus pontos de vida aumentou!\n\n")
+                    raw_input('|>')
+                    os.system("cls")
                     aliado_jogador.status[5]+=int((random.randrange(aliado_jogador.status[5]))/20)+1
         while 1:
+            print("\n]]"+ "="*75+"[[\n"+"\t\t\t   Inicio da rodada numero "+str(contador_de_rodadas)+"\n]]"+"="*75+"[[\n")
             if adversario_inimigo.status[6]<=0.05*adversario_inimigo.status[5]: barra_inimigo = "[-----------------------------!]"
             elif adversario_inimigo.status[6]<=adversario_inimigo.status[5]: barra_inimigo = "["+"-"*int(30-(adversario_inimigo.status[6]*30/adversario_inimigo.status[5]))+"|"*int(adversario_inimigo.status[6]*30/adversario_inimigo.status[5])+"]"
             else: barra_inimigo = "[!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!]"
@@ -1756,6 +1843,7 @@ def batalha(entrada_inimigo_batalha):
                 raw_input('|>')
             else: break
         contador_de_rodadas=contador_de_rodadas+1
+        print('\n\n')
         if booleana[4]==True:
             booleana[4]=False
             if booleana[3]==False : print ("\n"+"Postura de Batalha:".center(79)+"\n\n"+str(aliado_jogador.nome)+str(adversario_inimigo.nome).rjust(79-len(aliado_jogador.nome))+"\n\n(evasiva)"+"(ofensiva)".rjust(69))
@@ -2199,7 +2287,7 @@ def batalha(entrada_inimigo_batalha):
                                                 statusEquipamento(False,0)
                                                 aliado_jogador.status[0]=aliado_jogador.status[0]+int((random.randrange(aliado_jogador.status[0]))/6)+3
                                                 statusEquipamento(True,0)
-                                        if(teste_de_sorte>=2):
+                                        elif(teste_de_sorte>=2):
                                             teste_de_sorte=random.randrange(50)
                                             if(teste_de_sorte<=5+aliado_jogador.status[3]):
                                                 print("\nVoce ultrapassou o seu limite e agora esta mais forte!")
@@ -2607,7 +2695,7 @@ def batalha(entrada_inimigo_batalha):
                     print("\nVoce tenta aumentar o ritmo de esquiva...\n")
                     time.sleep(2)
                     teste_de_sorte=random.randrange(10)+calculo_da_fuga
-                    if(teste_de_sorte==10):
+                    if(teste_de_sorte>=10):
                         print('\nVoce esquivou de qualquer manobra ofensiva do oponente e conseguiu uma brecha para fugir!\n')
                         time.sleep(3)
                         print('\nDeseja fugir da luta?("sim" ou "nao")\n')
@@ -2723,7 +2811,9 @@ def ruasPerigosas(distancia_restante,periculosidade_ruas):
         print ('Sao 10 ruas perigosas de distancia ate a faculdade')
         time.sleep(3)
     while 0<distancia_restante:
-        if caminhada_perigosa>0: print ('Voce seguiu para a proxima rua! Faltam '+str(distancia_restante)+'!')
+        if caminhada_perigosa>0:
+            print ('Voce seguiu para a proxima rua! Faltam '+str(distancia_restante)+'!')
+            adversario_inimigo.status[6]=adversario_inimigo.status[5]
         raw_input('|>')
         os.system('cls')
         teste_de_sorte=random.randrange(100)
@@ -4439,7 +4529,7 @@ def seuPredioPrimeiroAndar():
 def suaRua():
     global narrador_inimigo, bebado_inimigo, mulher_prantos, mulher_toalha, mane_bone, senhor_doente, garoto_oponente, gangue_comparsa, arruaceiro_oponente, estudante_brigento, aliado_headbanger,Venda, Reserva_Venda,porcentagem_inflacao,bermuda_linho,calca_jeans,desequipado,pedaco_pizza, pizza_inteira,bolo_chocolate,equipamento_inicial,malha_ninja,punhal_envelhecido,talheres_prata,jaqueta_imitacao,jaqueta_couro,agasalho_la,suplemento_alimenticio,lata_energetico,soco_ingles,luva_luva,anel_magico,anel_da_imortalidade,anel_da_divindade,papetes_masculinas,tenis_calcado,sapato_simplorio,item_adicionado,quantidade_adicionada,variavel_cenario,objeto,situacao,booleana,variavel_lugar,ponto_de_save,mostrar_save, aliado_jogador,aliado_reserva, aliado_garota,adversario_inimigo,eegg,acao_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,variavel_para_comparar,contador_de_batalha,contador_de_rodadas
     while 1:
-        if(aliado_jogador.status[6]<=0):break
+        if aliado_jogador.status[6]<=0: break
         print("\n#", "-"*30,"#\n", "\nLista de Acoes\n\nCenario: "+str(variavel_lugar)+"\n\nVoce pode:\nolhar\n")
         print("\nentrar na loja\n\nentrar na pizzaria\n")
         print("\nentrar no predio\n\nver ficha do personagem\nver mochila\n\npegar onibus\nir a pe\n\nsalvar o jogo\n"+"\n#"+"-"*30+"#\n")
@@ -4537,6 +4627,7 @@ def suaRua():
                                                             time.sleep(2)
                                                         print (' O onibus chegou!!!')
                                                         time.sleep(2)
+                                                        booleana[6]=True
                                                         break
                                                 else:
                                                     if(acao_do_personagem== "nao" or acao_do_personagem=="n" or acao_do_personagem=="ao" or acao_do_personagem=="no" or acao_do_personagem=="na" or acao_do_personagem== "naao" or acao_do_personagem=="naoo" or acao_do_personagem=="aoo" or acao_do_personagem=="noo" or acao_do_personagem=="naa" or acao_do_personagem== "noop" or acao_do_personagem=="a" or acao_do_personagem=="mao" or acao_do_personagem=="nso" or acao_do_personagem=="ns" or acao_do_personagem== "nnao" or acao_do_personagem=="nn" or acao_do_personagem=="aao" or acao_do_personagem=="nno" or acao_do_personagem=="nna"):
@@ -4544,6 +4635,8 @@ def suaRua():
                                                     else:
                                                         print ('Nao entendi...')
                                             if(acao_do_personagem=="sim" or acao_do_personagem=="s" or acao_do_personagem=="si" or acao_do_personagem=="sm" or acao_do_personagem=="im" or acao_do_personagem=="ssim"): break
+                                            if booleana[6]==True: break
+                                        else: print('Voce nao tem grana para ir de onibus! Va a pe, seu pobre!')
                                     else:
                                         if acao_do_personagem=='ir a pe' or acao_do_personagem=='ir pe' or acao_do_personagem=='ir andando' or acao_do_personagem=='sair' or acao_do_personagem=='ir pra escola' or acao_do_personagem=='ir a escola' or acao_do_personagem=='ir para a escola' or acao_do_personagem=='ir a aula' or acao_do_personagem=='ir para a aula' or acao_do_personagem=='ir pra aula' or acao_do_personagem=='ir pra fatec' or acao_do_personagem=='ir para a fatec' or acao_do_personagem=='ir a fatec' or acao_do_personagem=='fatec' or acao_do_personagem=='ir pra facul' or acao_do_personagem=='ir para a faculdade' or acao_do_personagem=='ir pra faculdade' or acao_do_personagem=='ir a faculdade' or acao_do_personagem=='ir para faculdade' or acao_do_personagem=='pe' or acao_do_personagem=='ir para a proxima rua' or acao_do_personagem=='andando' or acao_do_personagem=='ir caminhando' or acao_do_personagem=='caminhando':
                                             while 9:
@@ -4554,11 +4647,13 @@ def suaRua():
                                                     if(ponto_de_save==3):
                                                         ruasPerigosas(10,1)
                                                         break
+                                                        booleana[6]=True
                                                 else:
                                                     if(acao_do_personagem== "nao" or acao_do_personagem=="n" or acao_do_personagem=="ao" or acao_do_personagem=="no" or acao_do_personagem=="na" or acao_do_personagem== "naao" or acao_do_personagem=="naoo" or acao_do_personagem=="aoo" or acao_do_personagem=="noo" or acao_do_personagem=="naa" or acao_do_personagem== "noop" or acao_do_personagem=="a" or acao_do_personagem=="mao" or acao_do_personagem=="nso" or acao_do_personagem=="ns" or acao_do_personagem== "nnao" or acao_do_personagem=="nn" or acao_do_personagem=="aao" or acao_do_personagem=="nno" or acao_do_personagem=="nna"):
                                                         break
                                                     else:
                                                         print ('Nao entendi...')
+                                            if booleana[6]==True: break
                                         else:
                                             print('\nEntrada Invalida!\n')
                                             time.sleep(0.5)
@@ -5181,6 +5276,7 @@ while 1:
                                                         aliado_jogador.status[4]=777
                                                         aliado_jogador.status[5]=7777777
                                                         aliado_jogador.status[6]=7777777
+                                                        aliado_jogador.nome="Deus "+str(aliado_jogador.nome)
                                                         time.sleep(5)
                                                         os.system('cls')
                                                         while 1:
@@ -5476,26 +5572,20 @@ while 1:
             raw_input("\nReiniciando...(APERTE ENTER)\n")
             if (aliado_jogador.status[6] <= 0):
                 print("Voce morreu, "+ aliado_jogador.nome+ "...\nO jogo acabou para voce...")
-                
-                aliado_jogador = Personagem("NULO", 10,8,1,1, 0,100,100, 0, 1, equipamento_inicial[0], desequipado_capa, desequipado[2], desequipado[3], desequipado[4], equipamento_inicial[3])
+                aliado_jogador = Personagem("NULO", 10,8,1,1, 0,100,100, 0,0, 1, True, equipamento_inicial[0], desequipado[1], desequipado[2], desequipado[3], desequipado[4], equipamento_inicial[3])
                 aliado_reserva = aliado_jogador
-                aliado_headbanger = Personagem("Lutador Headbanger", 1200,800,50,50, 100,100000,100000, 0, 3, desequipado[0], desequipado[1], desequipado[2], desequipado[3], desequipado[4], desequipado[5])
-                aliado_garota = Personagem("Garota", 25,20,1,1, 0,300,300, 25, 2, equipamento_inicial[1], desequipado[1], desequipado[2], desequipado[3], equipamento_inicial[2], equipamento_inicial[4])
-
+                aliado_headbanger = Personagem("Lutador Headbanger", 1200,800,50,50, 100,10000,10000, 0,0, 3, False, desequipado[0], desequipado[1], desequipado[2], desequipado[3], desequipado[4], desequipado[5])
+                aliado_garota = Personagem("Garota", 25,20,1,1, 0,300,300, 25,0, 2, False, equipamento_inicial[1], desequipado[1], desequipado[2], desequipado[3], equipamento_inicial[2], equipamento_inicial[4])
                 item_adicionado=desequipado[6]
                 quantidade_adicionada=1
                 porcentagem_inflacao=1
-
-                variavel_cenario = ["nao" ,"nao" ,"nao"]
+                variavel_cenario = ["nao","nao","nao","nao","nao", "nao","nao","nao","nao","nao", "nao","nao","nao","nao","nao"]
                 objeto = ["nao", "nao", "nao", "nao", "nao"]
-                situacao = [0  ,0,0,0 ,0,0  ,0,0,0 ,0,0]
-                booleana = [False, False, False]
-
+                situacao = [0  ,0,0,0 ,0,0  ,0,0,0 ,0,0,  0  ,0,0,0 ,0,0  ,0,0,0 ,0,0]
+                booleana=[False,False,False,False,False, False,False,False,False,False, False,False,False,False,False, False,False,False,False,False]
                 variavel_lugar = "seu quarto"
                 ponto_de_save = 0
-
                 mostrar_save = ''
-
                 eegg = 1
             break
         else:
@@ -5503,7 +5593,5 @@ while 1:
                 break
             else:
                 print('\nEntrada invalida!(digite "sim" ou "nao)\n')
-    if(acao_do_personagem== "nao" or acao_do_personagem=="n" or acao_do_personagem=="ao" or acao_do_personagem=="no" or acao_do_personagem=="na" or acao_do_personagem== "naao" or acao_do_personagem=="naoo" or acao_do_personagem=="aoo" or acao_do_personagem=="noo" or acao_do_personagem=="naa" or acao_do_personagem== "noop" or acao_do_personagem=="a" or acao_do_personagem=="mao" or acao_do_personagem=="nso" or acao_do_personagem=="ns" or acao_do_personagem== "nnao" or acao_do_personagem=="nn" or acao_do_personagem=="aao" or acao_do_personagem=="nno" or acao_do_personagem=="nna"):
-        break
-    
+    if(acao_do_personagem== "nao" or acao_do_personagem=="n" or acao_do_personagem=="ao" or acao_do_personagem=="no" or acao_do_personagem=="na" or acao_do_personagem== "naao" or acao_do_personagem=="naoo" or acao_do_personagem=="aoo" or acao_do_personagem=="noo" or acao_do_personagem=="naa" or acao_do_personagem== "noop" or acao_do_personagem=="a" or acao_do_personagem=="mao" or acao_do_personagem=="nso" or acao_do_personagem=="ns" or acao_do_personagem== "nnao" or acao_do_personagem=="nn" or acao_do_personagem=="aao" or acao_do_personagem=="nno" or acao_do_personagem=="nna"): break
 exit()
