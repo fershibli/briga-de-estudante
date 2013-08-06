@@ -187,7 +187,7 @@ eegg = 1
 acao_do_personagem = "" 
 batalha_escapar = ""
 
-teste_de_sorte = 0
+teste_de_sorte = [0,1,2,3,4,5,6,7,8,9]
 calculo_do_dano = 0
 calculo_da_fuga = 0
 variavel_para_comparar = 0
@@ -1701,24 +1701,24 @@ def batalha(entrada_inimigo_batalha):
                 if adversario_inimigo.status[6] <=0 : adversario_inimigo.status[6]=1
             raw_input('|>')
             os.system("cls")
-            teste_de_sorte=random.randrange(1000)
+            teste_de_sorte[8]=random.randrange(1000)
             statusEquipamento(False,0)
             statusEquipamento(False,1)
             statusEquipamento(False,2)
             statusEquipamento(False,3)
             statusEquipamento(False,4)
             statusEquipamento(False,5)
-            if teste_de_sorte<800-aliado_jogador.status[0]-aliado_jogador.status[1]-aliado_jogador.status[2]-aliado_jogador.status[3]-aliado_jogador.status[4]-int(aliado_jogador.status[5]/10):
-                teste_de_sorte=random.randrange(1000)
-                if contador_de_rodadas%15==0 and contador_de_rodadas%50!=0 and teste_de_sorte>100-10*aliado_jogador.status[4]:
+            if teste_de_sorte[8]<800-aliado_jogador.status[0]-aliado_jogador.status[1]-aliado_jogador.status[2]-aliado_jogador.status[3]-aliado_jogador.status[4]-int(aliado_jogador.status[5]/10):
+                teste_de_sorte[9]=random.randrange(1000)
+                if contador_de_rodadas%15==0 and contador_de_rodadas%50!=0 and teste_de_sorte[9]>100-10*aliado_jogador.status[4]:
                     print('\nSeu corpo respondeu a adrenalina gerada pela batalha!\n\n')
                     time.sleep(1.5)
-                    print('TODOS os seus pontos de luta subiram!\n\n')
+                    print('Seus pontos de ataque, defesa, agilidade e vida subiram!\n\n')
                     aliado_jogador.status[0]+=5
                     aliado_jogador.status[1]+=5
                     aliado_jogador.status[2]+=1
-                    aliado_jogador.status[4]+=1
                     aliado_jogador.status[5]+=10
+                    aliado_jogador.status[6]+=10
                     time.sleep(1.5)
                     print('Mas isso gerou um leve estresse muscular, causando '+str(aliado_jogador.status[6]*0.1)+' pontos de dano...')
                     aliado_jogador.status[6]-=aliado_jogador.status[6]*0.1
@@ -1726,47 +1726,44 @@ def batalha(entrada_inimigo_batalha):
                     print('\nEm seguida o inimigo avancou sobre voce usando golpes baixos!\n\n')
                     escrever(0.5,'...\n',0.5)
                     escrever(0.01,'\nDespertando sua furia!!!\n',1)
-                    escrever(0.01,'\nVoce se defendeu dissipando a energia dos golpes em som e luz!!!\n',1)
-                    print('TODOS os seus pontos de luta subiram!\n')
+                    escrever(0.01,'\nVoce se defendeu dissipando a energia dos golpes num grande estrondo!!!\n',1)
+                    print('Seus pontos de luta subiram!\n')
                     aliado_jogador.status[0]+=int(contador_de_rodadas/25*(random.randrange(5)+1)+(((contador_de_rodadas+50)%20)/5))
                     aliado_jogador.status[1]+=int(contador_de_rodadas/25*(random.randrange(5)+1)+(((contador_de_rodadas+50)%20)/5))
                     aliado_jogador.status[2]+=int(contador_de_rodadas/100*(random.randrange(2)+1)+(((contador_de_rodadas+50)%20)/10))
-                    aliado_jogador.status[3]+=int(contador_de_rodadas/100*(random.randrange(2)+1)+(((contador_de_rodadas+50)%20)/10))
-                    aliado_jogador.status[4]+=int(contador_de_rodadas/100*(random.randrange(2)+1)+(((contador_de_rodadas+50)%20)/10))
                     variavel_para_comparar=aliado_jogador.status[5]
                     aliado_jogador.status[5]+=int(contador_de_rodadas/2*(random.randrange(3)+1)+(((contador_de_rodadas+50)%20)*10))
                     aliado_jogador.status[6]+=aliado_jogador.status[5]-variavel_para_comparar
                     raw_input('|>')
                     os.system("cls")
-                elif random.randrange(aliado_jogador.status[2]+aliado_jogador.status[3]) < random.randrange(adversario_inimigo.status[2]+adversario_inimigo.status[3]):
-                    print('\nEm seguida o inimigo avancou sobre voce usando golpes baixos!\n\n')
-                    escrever(0.5,'...\n',0.5)
-                    if booleana[3]==False : calculo_do_dano = adversario_inimigo.status[0]+(random.randrange(adversario_inimigo.status[0]))-aliado_jogador.status[1]-(random.randrange(aliado_jogador.status[1]))
-                    else: calculo_do_dano = adversario_inimigo.status[0]+(random.randrange(adversario_inimigo.status[0]))-2*aliado_jogador.status[1]-(random.randrange(aliado_jogador.status[1]))
-                    if (calculo_do_dano>0):
-                        print("\nVoce foi atacado diretamente, sofrendo "+str(calculo_do_dano)+" pontos de dano!\n")
-                        time.sleep(3)
-                        aliado_jogador.status[6]=aliado_jogador.status[6]-calculo_do_dano
-                    else:
-                        print("\nMesmo sem se defender, sua constituicao \nfoi alta o suficiente para resistir ao ataque do oponente.\n")
-                        time.sleep(3)
-                elif teste_de_sorte<50 and adversario_inimigo.status[0]+adversario_inimigo.status[1]+adversario_inimigo.status[2]+adversario_inimigo.status[3]+adversario_inimigo.status[4]+int(adversario_inimigo.status[5]/10) >= aliado_jogador.status[0]+aliado_jogador.status[1]+aliado_jogador.status[2]+aliado_jogador.status[3]+aliado_jogador.status[4]+int(aliado_jogador.status[5]/10):
+                elif aliado_jogador.status[2]+aliado_jogador.status[3]>0 and adversario_inimigo.status[2]+adversario_inimigo.status[3]>0:
+                    if random.randrange(aliado_jogador.status[2]+aliado_jogador.status[3]) < random.randrange(adversario_inimigo.status[2]+adversario_inimigo.status[3]):
+                        print('\nEm seguida o inimigo avancou sobre voce usando golpes baixos!\n\n')
+                        escrever(0.5,'...\n',0.5)
+                        if booleana[3]==False : calculo_do_dano = adversario_inimigo.status[0]+(random.randrange(adversario_inimigo.status[0]))-aliado_jogador.status[1]-(random.randrange(aliado_jogador.status[1]))
+                        else: calculo_do_dano = adversario_inimigo.status[0]+(random.randrange(adversario_inimigo.status[0]))-2*aliado_jogador.status[1]-(random.randrange(aliado_jogador.status[1]))
+                        if (calculo_do_dano>0):
+                            print("\nVoce foi atacado diretamente, sofrendo "+str(calculo_do_dano)+" pontos de dano!\n")
+                            time.sleep(3)
+                            aliado_jogador.status[6]=aliado_jogador.status[6]-calculo_do_dano
+                        else:
+                            print("\nMesmo sem se defender, sua constituicao \nfoi alta o suficiente para resistir ao ataque do oponente.\n")
+                            time.sleep(3)
+                elif teste_de_sorte[9]>842 and teste_de_sorte[9]<911 and adversario_inimigo.status[0]+adversario_inimigo.status[1]+adversario_inimigo.status[2]+adversario_inimigo.status[3]+adversario_inimigo.status[4]+int(adversario_inimigo.status[5]/10) >= aliado_jogador.status[0]+aliado_jogador.status[1]+aliado_jogador.status[2]+aliado_jogador.status[3]+aliado_jogador.status[4]+int(aliado_jogador.status[5]/10):
                     escrever(0.03,'\nVoce sente uma forca desconhecida brotar da sua alma')
                     escrever(0.08,'...\n\n',1)
                     escrever(0.03,'\nSeu corpo agora parece tentar superar as caracteristicas fortes do oponente')
                     escrever(0.08,'...\n\n',1)
-                    print('TODOS os seus pontos de luta subiram!\n')
-                    aliado_jogador.status[0]+=int(2*adversario_inimigo.status[0]/aliado_jogador.status[0])+1
-                    aliado_jogador.status[1]+=int(2*adversario_inimigo.status[1]/aliado_jogador.status[1])+1
+                    print('Seus pontos de luta subiram!\n')
+                    aliado_jogador.status[0]+=int(adversario_inimigo.status[0]/aliado_jogador.status[0])+1
+                    aliado_jogador.status[1]+=int(adversario_inimigo.status[1]/aliado_jogador.status[1])+1
                     aliado_jogador.status[2]+=int(adversario_inimigo.status[2]/aliado_jogador.status[2])+1
-                    aliado_jogador.status[3]+=int(adversario_inimigo.status[3]/aliado_jogador.status[3])+1
-                    aliado_jogador.status[4]+=int(adversario_inimigo.status[4]/aliado_jogador.status[4])+1
-                    aliado_jogador.status[6]+=int(10*adversario_inimigo.status[5]/aliado_jogador.status[5])+5
-                    aliado_jogador.status[5]+=int(10*adversario_inimigo.status[5]/aliado_jogador.status[5])+5
+                    aliado_jogador.status[6]+=int(adversario_inimigo.status[5]/aliado_jogador.status[5])+10
+                    aliado_jogador.status[5]+=int(adversario_inimigo.status[5]/aliado_jogador.status[5])+10
                     raw_input('|>')
                     os.system("cls")
-            teste_de_sorte=random.randrange(1000)
-            if teste_de_sorte<50+contador_de_rodadas and adversario_inimigo.status[0]+adversario_inimigo.status[1]+adversario_inimigo.status[2]+adversario_inimigo.status[3]+adversario_inimigo.status[4]+int(adversario_inimigo.status[5]/10) <= aliado_jogador.status[0]+aliado_jogador.status[1]+aliado_jogador.status[2]+aliado_jogador.status[3]+aliado_jogador.status[4]+int(aliado_jogador.status[5]/10):
+            teste_de_sorte[8]=random.randrange(1000)
+            if teste_de_sorte[8]<50+contador_de_rodadas and adversario_inimigo.status[0]+adversario_inimigo.status[1]+adversario_inimigo.status[2]+adversario_inimigo.status[3]+adversario_inimigo.status[4]+int(adversario_inimigo.status[5]/10) <= aliado_jogador.status[0]+aliado_jogador.status[1]+aliado_jogador.status[2]+aliado_jogador.status[3]+aliado_jogador.status[4]+int(aliado_jogador.status[5]/10):
                 escrever(0.03,'\nO inimigo ficou mais forte com a batalha...\n\n',1)
                 print('Todos os pontos de luta do oponente aumentaram temporariamente!\n\n')
                 adversario_inimigo.status[0]+=random.randrange(int(adversario_inimigo.status[0]/50)+1)+3
@@ -1809,8 +1806,8 @@ def batalha(entrada_inimigo_batalha):
             contador_de_batalha+=1
         else:
             if(aliado_jogador.status[6]<=aliado_jogador.status[5]*0.05):
-                teste_de_sorte=random.randrange(150)
-                if(teste_de_sorte<=10+aliado_jogador.status[3]):
+                teste_de_sorte[0]=random.randrange(150)
+                if(teste_de_sorte[0]<=10+aliado_jogador.status[3]):
                     print("\nVoce esta dando o seu melhor para aguentar, isso esta melhorando o seu folego!")
                     time.sleep(1)
                     print("O limite dos seus pontos de vida aumentou!\n\n")
@@ -1851,12 +1848,12 @@ def batalha(entrada_inimigo_batalha):
             time.sleep(2)
             escrever(0.025,"\nO inimigo atacou enquanto voce usava o item...\n")
             time.sleep(0.5)
-            teste_de_sorte=random.randrange(10)+calculo_da_fuga
-            if(teste_de_sorte>8):
+            teste_de_sorte[0]=random.randrange(10)+calculo_da_fuga
+            if(teste_de_sorte[0]>8):
                 escrever(0.025,'\nVoce esquivou de qualquer manobra ofensiva do oponente!\n')
                 time.sleep(0.5)
             else:
-                if(teste_de_sorte>5):
+                if(teste_de_sorte[0]>5):
                     escrever(0.025,'\nVoce nao conseguiu se esquivar')
                     time.sleep(0.5)
                     escrever(0.025,', \nmas pode se defender!\n')
@@ -1877,7 +1874,7 @@ def batalha(entrada_inimigo_batalha):
                             time.sleep(3)
                             aliado_jogador.status[6] = aliado_jogador.status[6]-calculo_do_dano
                 else:
-                    if(teste_de_sorte>2):
+                    if(teste_de_sorte[0]>2):
                         print('\nVoce nao conseguiu uma brecha para se esquivar ou se defender...\n')
                         time.sleep(2)
                         if booleana[3]==False : calculo_do_dano = adversario_inimigo.status[0]+(random.randrange(adversario_inimigo.status[0]))-aliado_jogador.status[1]-(random.randrange(aliado_jogador.status[1]))
@@ -1899,8 +1896,8 @@ def batalha(entrada_inimigo_batalha):
                             else : print("\nO inimigo aproveitou a oportunidade e te atacou violentamente, \ncausando "+str(calculo_do_dano)+" pontos de dano.\n")
                             time.sleep(3)
                             aliado_jogador.status[6]=aliado_jogador.status[6]-calculo_do_dano
-                            teste_de_sorte=random.randrange(300)
-                            if(teste_de_sorte<=30+aliado_jogador.status[3]):
+                            teste_de_sorte[1]=random.randrange(300)
+                            if(teste_de_sorte[1]<=30+aliado_jogador.status[3]):
                                 print("\nVoce aumentou seu folego enquanto tentava aguentar os golpes que voce levou em cheio!")
                                 time.sleep(2)
                                 print("O limite dos seus pontos de vida cresceu!")
@@ -1914,12 +1911,12 @@ def batalha(entrada_inimigo_batalha):
             booleana[3]=True
             print ("\n"+"Postura de Batalha:".center(79)+"\n\n"+str(aliado_jogador.nome)+str(adversario_inimigo.nome).rjust(79-len(aliado_jogador.nome))+"\n\n(defensiva)"+"(ofensiva)".rjust(69))
             time.sleep(2)
-            teste_de_sorte = random.randrange(50)
-            if (teste_de_sorte<=10+aliado_jogador.status[3]-adversario_inimigo.status[3]):#S_defesa(3personagem_jogador[2]) vs ataque(adversario_inimigo.status[0])
+            teste_de_sorte[0] = random.randrange(50)
+            if (teste_de_sorte[0]<=10+aliado_jogador.status[3]-adversario_inimigo.status[3]):#S_defesa(3personagem_jogador[2]) vs ataque(adversario_inimigo.status[0])
                 print("\nSua postura de defesa te favoreceu!\n")
                 time.sleep(2)
-                teste_de_sorte = random.randrange(40)
-                if (teste_de_sorte<=10+adversario_inimigo.status[3]-aliado_jogador.status[3]):#S_defesa(3personagem_jogador[2]) vs S_ataque(2adversario_inimigo.status[0])
+                teste_de_sorte[1] = random.randrange(40)
+                if (teste_de_sorte[1]<=10+adversario_inimigo.status[3]-aliado_jogador.status[3]):#S_defesa(3personagem_jogador[2]) vs S_ataque(2adversario_inimigo.status[0])
                     print("\n... Mas o ataque do inimigo foi critico!\n")
                     calculo_do_dano = (2*adversario_inimigo.status[0])+int((random.randrange(adversario_inimigo.status[0]))*0.35)-(3*aliado_jogador.status[1])-int((random.randrange(aliado_jogador.status[1]))*0.35)
                     if (calculo_do_dano < 0):#S_defesa(3aliado_jogador.status[1]) CONTRA-ATACA S_ataque(2adversario_inimigo.status[0])
@@ -1928,13 +1925,13 @@ def batalha(entrada_inimigo_batalha):
                         time.sleep(2)
                         print("Alem de defender voce conseguiu contra-atacar, \ncausando "+str(calculo_do_dano)+" pontos de dano ao inimigo!\n")
                         time.sleep(3)
-                        teste_de_sorte = random.randrange(5)#aumento de defesa
-                        if(teste_de_sorte<=1):
-                            teste_de_sorte = random.randrange(100)
-                            if (teste_de_sorte<=30+aliado_jogador.status[3]):
+                        teste_de_sorte[2] = random.randrange(5)#aumento de defesa
+                        if(teste_de_sorte[2]<=1):
+                            teste_de_sorte[3] = random.randrange(100)
+                            if (teste_de_sorte[3]<=30+aliado_jogador.status[3]):
                                 variavel_para_comparar=aliado_jogador.status[1]
                                 statusEquipamento(False,1)
-                                aliado_jogador.status[1]=aliado_jogador.status[1]+int((random.randrange(aliado_jogador.status[1]))/12)+1
+                                aliado_jogador.status[1]=aliado_jogador.status[1]+int((random.randrange(aliado_jogador.status[1]))/9)
                                 statusEquipamento(True,1)
                                 if (variavel_para_comparar < aliado_jogador.status[1]):
                                     print("\nVoce testou o seu limite e agora esta mais forte!")
@@ -1943,9 +1940,9 @@ def batalha(entrada_inimigo_batalha):
                                     time.sleep(2)
                                 if (variavel_para_comparar > aliado_jogador.status[1]):
                                     aliado_jogador.status[1]=variavel_para_comparar
-                        elif(teste_de_sorte>=4):
-                            teste_de_sorte = random.randrange(100)
-                            if (teste_de_sorte<=20+aliado_jogador.status[3]):
+                        elif(teste_de_sorte[2]>=4):
+                            teste_de_sorte[3] = random.randrange(100)
+                            if (teste_de_sorte[3]<=20+aliado_jogador.status[3]):
                                 print("\nVoce testou o seu limite e agora esta mais forte!")
                                 time.sleep(2)
                                 print("Seus pontos de defesa subiram!\n")
@@ -1953,19 +1950,19 @@ def batalha(entrada_inimigo_batalha):
                                 statusEquipamento(False,1)
                                 aliado_jogador.status[1]=aliado_jogador.status[1]+int((random.randrange(aliado_jogador.status[1]))/12)+2
                                 statusEquipamento(True,1)
-                        elif(teste_de_sorte==3):
-                            teste_de_sorte = random.randrange(100)
-                            if (teste_de_sorte<=10+aliado_jogador.status[3]):
+                        elif(teste_de_sorte[2]==3):
+                            teste_de_sorte[3] = random.randrange(100)
+                            if (teste_de_sorte[3]<=10+aliado_jogador.status[3]):
                                 print("\nVoce testou o seu limite e agora esta mais forte!")
                                 time.sleep(2)
                                 print("Seus pontos de defesa subiram!\n")
                                 time.sleep(2)
                                 statusEquipamento(False,1)
-                                aliado_jogador.status[1]=aliado_jogador.status[1]+int((random.randrange(aliado_jogador.status[1]))/12)+3
+                                aliado_jogador.status[1]=aliado_jogador.status[1]+int((random.randrange(aliado_jogador.status[1]))/12)+4
                                 statusEquipamento(True,1)
-                        elif(teste_de_sorte==2):
-                            teste_de_sorte = random.randrange(100)
-                            if (teste_de_sorte==10+aliado_jogador.status[3]):
+                        elif(teste_de_sorte[2]==2):
+                            teste_de_sorte[3] = random.randrange(100)
+                            if (teste_de_sorte[3]==10+aliado_jogador.status[3]):
                                 print("\nVoce testou o seu limite e agora esta mais forte!")
                                 time.sleep(2)
                                 print("Seus pontos de defesa subiram!\n")
@@ -1980,8 +1977,8 @@ def batalha(entrada_inimigo_batalha):
                             time.sleep(2)
                         else:
                             time.sleep(2)
-                            teste_de_sorte = random.randrange(300)
-                            if(teste_de_sorte<=30+aliado_jogador.status[2]+aliado_jogador.status[3]-adversario_inimigo.status[2]-adversario_inimigo.status[4]):
+                            teste_de_sorte[2] = random.randrange(300)
+                            if(teste_de_sorte[2]<=30+aliado_jogador.status[2]+aliado_jogador.status[3]-adversario_inimigo.status[2]-adversario_inimigo.status[4]):
                                 print ("\nApesar de vantajosa, a sua defesa nao pareceu ser o suficiente,")
                                 time.sleep(0.5)
                                 print ('mas voce conseguiu esquivar de todos os ataques,')
@@ -2008,8 +2005,8 @@ def batalha(entrada_inimigo_batalha):
                             time.sleep(2)
                             aliado_jogador.status[6] = aliado_jogador.status[6]-calculo_do_dano
             else:
-                teste_de_sorte = random.randrange(40)
-                if(teste_de_sorte<=10-aliado_jogador.status[3]+adversario_inimigo.status[3]):#defesa(2personagem_jogador[2]) vs S_ataque(2adversario_inimigo.status[0])
+                teste_de_sorte[1] = random.randrange(40)
+                if(teste_de_sorte[1]<=10-aliado_jogador.status[3]+adversario_inimigo.status[3]):#defesa(2personagem_jogador[2]) vs S_ataque(2adversario_inimigo.status[0])
                     calculo_do_dano = 2*adversario_inimigo.status[0]+int((random.randrange(adversario_inimigo.status[0]))*0.35)-int((1.5)*aliado_jogador.status[1])-int((random.randrange(aliado_jogador.status[1]))*0.35)
                     if (calculo_do_dano<0):
                         calculo_do_dano = (calculo_do_dano/2)*(-1)+int(((random.randrange(aliado_jogador.status[0]))/2)*0.35)
@@ -2017,13 +2014,13 @@ def batalha(entrada_inimigo_batalha):
                         time.sleep(2)
                         print("O inimigo avancou furiosamente mas voce o lancou para tras \ne contra-atacou causando "+str(calculo_do_dano)+" pontos de dano ao inimigo!\n")
                         time.sleep(3)
-                        teste_de_sorte = random.randrange(6)#aumento de defesa
-                        if(teste_de_sorte<=1):
-                            teste_de_sorte = random.randrange(100)
-                            if (teste_de_sorte<=30+aliado_jogador.status[3]):
+                        teste_de_sorte[2] = random.randrange(6)#aumento de defesa
+                        if(teste_de_sorte[2]<=1):
+                            teste_de_sorte[3] = random.randrange(100)
+                            if (teste_de_sorte[3]<=30+aliado_jogador.status[3]):
                                 variavel_para_comparar=aliado_jogador.status[1]
                                 statusEquipamento(False,1)
-                                aliado_jogador.status[1]=aliado_jogador.status[1]+int((random.randrange(aliado_jogador.status[1]))/12)+1
+                                aliado_jogador.status[1]=aliado_jogador.status[1]+int((random.randrange(aliado_jogador.status[1]))/9)
                                 statusEquipamento(True,1)
                                 if (variavel_para_comparar < aliado_jogador.status[1]):
                                     print("\nVoce testou o seu limite e agora esta mais forte!")
@@ -2032,9 +2029,9 @@ def batalha(entrada_inimigo_batalha):
                                     time.sleep(2)
                                 if (variavel_para_comparar > aliado_jogador.status[1]):
                                     aliado_jogador.status[1]=variavel_para_comparar
-                        if(teste_de_sorte==2):
-                            teste_de_sorte = random.randrange(200)
-                            if (teste_de_sorte<=40+aliado_jogador.status[3]):
+                        elif(teste_de_sorte[2]==2):
+                            teste_de_sorte[3] = random.randrange(200)
+                            if (teste_de_sorte[3]<=40+aliado_jogador.status[3]):
                                 print("\nVoce testou o seu limite e agora esta mais forte!")
                                 time.sleep(2)
                                 print("Seus pontos de defesa subiram!\n")
@@ -2042,19 +2039,19 @@ def batalha(entrada_inimigo_batalha):
                                 statusEquipamento(False,1)
                                 aliado_jogador.status[1]=aliado_jogador.status[1]+int((random.randrange(aliado_jogador.status[1]))/12)+2
                                 statusEquipamento(True,1)
-                        if(teste_de_sorte==3):
-                            teste_de_sorte = random.randrange(200)
-                            if (teste_de_sorte<=20+aliado_jogador.status[3]):
+                        elif(teste_de_sorte[2]==3):
+                            teste_de_sorte[3] = random.randrange(200)
+                            if (teste_de_sorte[3]<=20+aliado_jogador.status[3]):
                                 print("\nVoce testou o seu limite e agora esta mais forte!")
                                 time.sleep(2)
                                 print("Seus pontos de defesa subiram!\n")
                                 time.sleep(2)
                                 statusEquipamento(False,1)
-                                aliado_jogador.status[1]=aliado_jogador.status[1]+int((random.randrange(aliado_jogador.status[1]))/12)+3
+                                aliado_jogador.status[1]=aliado_jogador.status[1]+int((random.randrange(aliado_jogador.status[1]))/12)+4
                                 statusEquipamento(True,1)
-                        if(teste_de_sorte==4):
-                            teste_de_sorte = random.randrange(300)
-                            if (teste_de_sorte<=30+aliado_jogador.status[3]):
+                        elif(teste_de_sorte[2]==4):
+                            teste_de_sorte[3] = random.randrange(300)
+                            if (teste_de_sorte[3]<=30+aliado_jogador.status[3]):
                                 print("\nVoce testou o seu limite e agora esta mais forte!")
                                 time.sleep(2)
                                 print("Seus pontos de defesa subiram!\n")
@@ -2062,17 +2059,17 @@ def batalha(entrada_inimigo_batalha):
                                 statusEquipamento(False,1)
                                 aliado_jogador.status[1]=aliado_jogador.status[1]+int((random.randrange(aliado_jogador.status[1]))/24)+4
                                 statusEquipamento(True,1)
-                        if(teste_de_sorte>=5):
-                            teste_de_sorte = random.randrange(100)
-                            if (teste_de_sorte<=10+aliado_jogador.status[3]):
+                        elif(teste_de_sorte[2]>=5):
+                            teste_de_sorte[3] = random.randrange(100)
+                            if (teste_de_sorte[3]<=10+aliado_jogador.status[3]):
                                 variavel_para_comparar=aliado_jogador.status[1]
                                 statusEquipamento(False,1)
-                                aliado_jogador.status[1]=aliado_jogador.status[1]+int((random.randrange(aliado_jogador.status[1]))/12)+int((random.randrange(aliado_jogador.status[0]))/24)+1
+                                aliado_jogador.status[1]=aliado_jogador.status[1]+int((random.randrange(aliado_jogador.status[1]))/12)+int((random.randrange(aliado_jogador.status[0]))/24)
                                 statusEquipamento(True,1)
                                 if (variavel_para_comparar < aliado_jogador.status[1]):
                                     print("\nVoce testou o seu limite e agora esta mais forte!")
                                     time.sleep(2)
-                                    print("Seus pontos de defesa subiram!\n")
+                                    print("Seus pontos de defesa subiram baseado nos seus pontos de ataque!\n")
                                     time.sleep(2)
                                 if (variavel_para_comparar > aliado_jogador.status[1]):
                                     aliado_jogador.status[1]=variavel_para_comparar
@@ -2083,27 +2080,25 @@ def batalha(entrada_inimigo_batalha):
                             time.sleep(2)
                             print("suas forcas se anularam numa estrondosa colisao!\n")
                             time.sleep(2)
-                            teste_de_sorte=random.randrange(300)
-                            if(teste_de_sorte<=10+aliado_jogador.status[3]):
+                            teste_de_sorte[2]=random.randrange(300)
+                            if(teste_de_sorte[2]<=10+aliado_jogador.status[3]):
                                 print("\nA liberacao de energia durante a colisao despertou novos limites para sua forca e agora esta mais forte!")
                                 time.sleep(3)
-                                print("TODOS os seus pontos subiram!\n")
+                                print("Os seus pontos de ataque, defesa, agilidade e vida subiram!\n")
                                 time.sleep(3)
                                 statusEquipamento(False,0)
                                 statusEquipamento(False,1)
                                 statusEquipamento(False,5)
-                                aliado_jogador.status[5]=aliado_jogador.status[5]+int((random.randrange(aliado_jogador.status[5]))/12)+4
-                                aliado_jogador.status[0]=aliado_jogador.status[0]+int((random.randrange(aliado_jogador.status[0]))/12)+3
-                                aliado_jogador.status[1]=aliado_jogador.status[1]+int((random.randrange(aliado_jogador.status[1]))/12)+2
+                                aliado_jogador.status[5]=aliado_jogador.status[5]+int((random.randrange(aliado_jogador.status[5]))/15)+4
+                                aliado_jogador.status[0]=aliado_jogador.status[0]+int((random.randrange(aliado_jogador.status[0]))/10)+3
+                                aliado_jogador.status[1]=aliado_jogador.status[1]+int((random.randrange(aliado_jogador.status[1]))/20)+1
                                 statusEquipamento(True,0)
                                 statusEquipamento(True,1)
                                 statusEquipamento(True,5)
                                 aliado_jogador.status[2]+=1
-                                aliado_jogador.status[3]+=1
-                                aliado_jogador.status[4]+=1
                         else:
-                            teste_de_sorte = random.randrange(300)
-                            if(teste_de_sorte<=30+aliado_jogador.status[2]+aliado_jogador.status[3]-adversario_inimigo.status[2]-adversario_inimigo.status[3]):
+                            teste_de_sorte[2] = random.randrange(300)
+                            if(teste_de_sorte[2]<=30+aliado_jogador.status[2]+aliado_jogador.status[3]-adversario_inimigo.status[2]-adversario_inimigo.status[3]):
                                 print ("\nApesar da pressao do ataque inimigo,")
                                 time.sleep(0.5)
                                 print ('voce conseguiu esquivar de todos os ataques,')
@@ -2122,13 +2117,13 @@ def batalha(entrada_inimigo_batalha):
                         time.sleep(2)
                         print("Voce barrou o ataque naturalmente e contra-atacou, \ncausando "+str(calculo_do_dano)+" pontos de dano ao inimigo!\n")
                         time.sleep(3)
-                        teste_de_sorte = random.randrange(5)#aumento de defesa
-                        if(teste_de_sorte<=1):
-                            teste_de_sorte = random.randrange(200)
-                            if (teste_de_sorte<=40+aliado_jogador.status[3]):
+                        teste_de_sorte[2] = random.randrange(5)#aumento de defesa
+                        if(teste_de_sorte[2]<=1):
+                            teste_de_sorte[3] = random.randrange(200)
+                            if (teste_de_sorte[3]<=40+aliado_jogador.status[3]):
                                 variavel_para_comparar=aliado_jogador.status[1]
                                 statusEquipamento(False,1)
-                                aliado_jogador.status[1]=aliado_jogador.status[1]+int((random.randrange(aliado_jogador.status[1]))/12)+1
+                                aliado_jogador.status[1]=aliado_jogador.status[1]+int((random.randrange(aliado_jogador.status[1]))/9)
                                 statusEquipamento(True,1)
                                 if (variavel_para_comparar < aliado_jogador.status[1]):
                                     print("\nVoce testou o seu limite e agora esta mais forte!")
@@ -2137,9 +2132,9 @@ def batalha(entrada_inimigo_batalha):
                                     time.sleep(2)
                                 if (variavel_para_comparar > aliado_jogador.status[1]):
                                     aliado_jogador.status[1]=variavel_para_comparar
-                        elif(teste_de_sorte>=4):
-                            teste_de_sorte = random.randrange(300)
-                            if (teste_de_sorte<=60+aliado_jogador.status[3]):
+                        elif(teste_de_sorte[2]>=4):
+                            teste_de_sorte[3] = random.randrange(300)
+                            if (teste_de_sorte[3]<=60+aliado_jogador.status[3]):
                                 print("\nVoce testou o seu limite e agora esta mais forte!")
                                 time.sleep(2)
                                 print("Seus pontos de defesa subiram!\n")
@@ -2147,19 +2142,19 @@ def batalha(entrada_inimigo_batalha):
                                 statusEquipamento(False,1)
                                 aliado_jogador.status[1]=aliado_jogador.status[1]+int((random.randrange(aliado_jogador.status[1]))/12)+2
                                 statusEquipamento(True,1)
-                        elif(teste_de_sorte==3):
-                            teste_de_sorte = random.randrange(400)
-                            if (teste_de_sorte<=40+aliado_jogador.status[3]):
+                        elif(teste_de_sorte[2]==3):
+                            teste_de_sorte[3] = random.randrange(400)
+                            if (teste_de_sorte[3]<=40+aliado_jogador.status[3]):
                                 print("\nVoce testou o seu limite e agora esta mais forte!")
                                 time.sleep(2)
                                 print("Seus pontos de defesa subiram!\n")
                                 time.sleep(2)
                                 statusEquipamento(False,1)
-                                aliado_jogador.status[1]=aliado_jogador.status[1]+int((random.randrange(aliado_jogador.status[1]))/12)+3
+                                aliado_jogador.status[1]=aliado_jogador.status[1]+int((random.randrange(aliado_jogador.status[1]))/12)+4
                                 statusEquipamento(True,1)
-                        elif(teste_de_sorte==2):
-                            teste_de_sorte = random.randrange(300)
-                            if (teste_de_sorte<=30+aliado_jogador.status[3]):
+                        elif(teste_de_sorte[2]==2):
+                            teste_de_sorte[3] = random.randrange(300)
+                            if (teste_de_sorte[3]<=30+aliado_jogador.status[3]):
                                 print("\nVoce testou o seu limite e agora esta mais forte!")
                                 time.sleep(2)
                                 print("Seus pontos de defesa subiram!\n")
@@ -2173,8 +2168,8 @@ def batalha(entrada_inimigo_batalha):
                             print("\nVoce barrou o ataque do inimigo!\n")
                             time.sleep(2)
                         else:
-                            teste_de_sorte = random.randrange(300)
-                            if(teste_de_sorte<=30+aliado_jogador.status[2]+aliado_jogador.status[3]-adversario_inimigo.status[2]-adversario_inimigo.status[3]):
+                            teste_de_sorte[2] = random.randrange(300)
+                            if(teste_de_sorte[2]<=30+aliado_jogador.status[2]+aliado_jogador.status[3]-adversario_inimigo.status[2]-adversario_inimigo.status[3]):
                                 print("\nVoce conseguiu esquivar de todos os ataques, o inimigo nem pode tocar em voce!")
                                 time.sleep(1.5)
                             else:
@@ -2183,16 +2178,16 @@ def batalha(entrada_inimigo_batalha):
                                 aliado_jogador.status[6] = aliado_jogador.status[6]-calculo_do_dano
         else:
             if (acao_do_personagem=="atacar" or acao_do_personagem=="a" or acao_do_personagem=="at" or acao_do_personagem=="ata" or acao_do_personagem=="atac" or acao_do_personagem=="ataca" or acao_do_personagem=="atcar" or acao_do_personagem=="tacar" or acao_do_personagem=="aacar" or acao_do_personagem=="ataar" or acao_do_personagem=="atacr" or acao_do_personagem=="acar" or acao_do_personagem=="aaar" or acao_do_personagem=="aacr" or acao_do_personagem=="aaca" or acao_do_personagem=="atar" or acao_do_personagem=="atcr" or acao_do_personagem=="atca" or acao_do_personagem=="ata" or acao_do_personagem=="ataa" or acao_do_personagem=="atara" or acao_do_personagem=="stssr" or acao_do_personagem=="atavar" or acao_do_personagem=="atahvea" or acao_do_personagem=="atrex" or acao_do_personagem=="atasfa" or acao_do_personagem=="atacart" or acao_do_personagem=="taacar" or acao_do_personagem=="tacaar" or acao_do_personagem=="tacara" or acao_do_personagem=="aactar" or acao_do_personagem=="aacatr" or acao_do_personagem=="aacart" or acao_do_personagem=="aatcar" or acao_do_personagem=="cataar" or acao_do_personagem=="taaacar" or acao_do_personagem=="catar" or acao_do_personagem=="rataca" or acao_do_personagem=="atraca" or acao_do_personagem=="atracar"):
-                teste_de_sorte=random.randrange(2)
-                if (teste_de_sorte==1):#ataque(aliado_jogador.status[0]) vs defesa(2adversario_inimigo.status[1])
+                teste_de_sorte[0]=random.randrange(2)
+                if (teste_de_sorte[0]==1):#ataque(aliado_jogador.status[0]) vs defesa(2adversario_inimigo.status[1])
                     print ("\n"+"Postura de Batalha:".center(79)+"\n\n"+str(aliado_jogador.nome)+str(adversario_inimigo.nome).rjust(79-len(aliado_jogador.nome))+"\n\n(ofensiva)"+"(defensiva)".rjust(69))
                     time.sleep(2)
-                    teste_de_sorte=random.randrange(40)
-                    if (teste_de_sorte<=10+aliado_jogador.status[3]-adversario_inimigo.status[3]):#S_ataque(2aliado_jogador.status[0]) vs defesa(2adversario_inimigo.status[1])
+                    teste_de_sorte[1]=random.randrange(40)
+                    if (teste_de_sorte[1]<=10+aliado_jogador.status[3]-adversario_inimigo.status[3]):#S_ataque(2aliado_jogador.status[0]) vs defesa(2adversario_inimigo.status[1])
                         print("\nSeu ataque foi critico!!!\n")
                         time.sleep(2)
-                        teste_de_sorte=random.randrange(50)
-                        if (teste_de_sorte<=10+adversario_inimigo.status[3]-aliado_jogador.status[3]):#S_ataque(2aliado_jogador.status[0]) vs S_defesa(3adversario_inimigo.status[1])
+                        teste_de_sorte[2]=random.randrange(50)
+                        if (teste_de_sorte[2]<=10+adversario_inimigo.status[3]-aliado_jogador.status[3]):#S_ataque(2aliado_jogador.status[0]) vs S_defesa(3adversario_inimigo.status[1])
                             print("\nApesar do seu critico, voce e pressionado pela postura de defesa do seu inimigo!\n")
                             time.sleep(3)
                             calculo_do_dano=2*aliado_jogador.status[0]+int((random.randrange(aliado_jogador.status[0]))*0.35)-3*adversario_inimigo.status[1]-int((random.randrange(adversario_inimigo.status[1]))*0.35)
@@ -2203,22 +2198,22 @@ def batalha(entrada_inimigo_batalha):
                                 print("Alem de te bloquear, ele te contra-atacou, causando "+str(calculo_do_dano)+" pontos de dano!\n")
                                 time.sleep(2)
                                 aliado_jogador.status[6] = aliado_jogador.status[6]-calculo_do_dano
-                                teste_de_sorte=random.randrange(200)
-                                if(teste_de_sorte<=40+aliado_jogador.status[3]):
+                                teste_de_sorte[3]=random.randrange(200)
+                                if(teste_de_sorte[3]<=40+(aliado_jogador.status[3]*2)):
                                     print("\nVoce tentou ao maximo ultrapassar a defesa do seu inimigo, exigiu muito dos seus musculos que se fortaleceram!\n")
                                     time.sleep(3)
                                     print("\nSeus pontos de ataque subiram!\n")
                                     time.sleep(2)
                                     statusEquipamento(False,0)
-                                    aliado_jogador.status[0]=aliado_jogador.status[0]+int((random.randrange(aliado_jogador.status[0]))/6)+4
+                                    aliado_jogador.status[0]=aliado_jogador.status[0]+int((random.randrange(aliado_jogador.status[0]))/12)+4
                                     statusEquipamento(True,0)
                             else:
                                 if (calculo_do_dano==0):#S_ataque(2aliado_jogador.status[0]) ANULA S_defesa(3adversario_inimigo.status[1])
                                     print("\nA disputa de forcas e intensa, voce e seu inimigo deram o melhor de si, mas nenhum dos dois se sobrepos!\n")
                                     time.sleep(3)
                                 else:#S_ataque(2aliado_jogador.status[0]) ATACA S_defesa(3adversario_inimigo.status[1])
-                                    teste_de_sorte = random.randrange(300)
-                                    if(teste_de_sorte<=30-aliado_jogador.status[2]-aliado_jogador.status[3]+adversario_inimigo.status[2]+adversario_inimigo.status[3]):
+                                    teste_de_sorte[3] = random.randrange(300)
+                                    if(teste_de_sorte[3]<=30-aliado_jogador.status[2]-aliado_jogador.status[3]+adversario_inimigo.status[2]+adversario_inimigo.status[3]):
                                         print ('\nSua forca parece ser mais do que o bastante, mas foi irrelevante,')
                                         time.sleep(0.5)
                                         print ('seu oponente conseguiu esquivar de todos os seus ataques...')
@@ -2233,8 +2228,8 @@ def batalha(entrada_inimigo_batalha):
                                         print("Voce causou "+str(calculo_do_dano)+" pontos de dano ao seu inimigo!\n")
                                         time.sleep(2)
                                         adversario_inimigo.status[6]-=calculo_do_dano
-                                        teste_de_sorte=random.randrange(100)
-                                        if(teste_de_sorte==10+aliado_jogador.status[3]):
+                                        teste_de_sorte[4]=random.randrange(100)
+                                        if(teste_de_sorte[4]==10+aliado_jogador.status[3]):
                                             print("\nA explosao de energia dos seus musculos os expandiu definitivamente!\n")
                                             time.sleep(2)
                                             print("\nSeus pontos de ataque subiram!\n")
@@ -2256,8 +2251,8 @@ def batalha(entrada_inimigo_batalha):
                                     print("\nVoce assustou o inimigo por um instante, mas - por muito pouco - ele conseguiu barrar todos os seus movimentos ofensivos...\n")
                                     time.sleep(3)
                                 else:
-                                    teste_de_sorte=random.randrange(50)
-                                    if(teste_de_sorte<=10+aliado_jogador.status[3]):#XS_ataque(3aliado_jogador.status[0]) vs defesa(adversario_inimigo.status[1])
+                                    teste_de_sorte[3]=random.randrange(50)
+                                    if(teste_de_sorte[3]<=10+aliado_jogador.status[3]):#XS_ataque(3aliado_jogador.status[0]) vs defesa(adversario_inimigo.status[1])
                                         print("\nVoce rompeu a defesa do seu inimigo, causando "+str(calculo_do_dano)+" pontos de dano!")
                                         time.sleep(3)
                                         print("\nSuper Critico!!!\n")
@@ -2265,41 +2260,41 @@ def batalha(entrada_inimigo_batalha):
                                         print("Voce iniciou um ataque em frenesi!!!\n")
                                         time.sleep(2)
                                         adversario_inimigo.status[6]-=calculo_do_dano
-                                        teste_de_sorte=random.randrange(9)+5
-                                        while(teste_de_sorte>0):#XS_ataque(3aliado_jogador.status[0]) ATACA defesa(adversario_inimigo.status[1])
+                                        teste_de_sorte[4]=random.randrange(9)+5
+                                        while(teste_de_sorte[4]>0):#XS_ataque(3aliado_jogador.status[0]) ATACA defesa(adversario_inimigo.status[1])
                                             calculo_do_dano=2*(random.randrange(aliado_jogador.status[0]))-(random.randrange(adversario_inimigo.status[1]))
                                             while(calculo_do_dano<=0):
                                                 calculo_do_dano=(random.randrange(aliado_jogador.status[0])+3)-(random.randrange(adversario_inimigo.status[1]))
                                             print(str(calculo_do_dano)+" pontos de dano!\n")
                                             time.sleep(0.25)
                                             adversario_inimigo.status[6]-=calculo_do_dano
-                                            teste_de_sorte=teste_de_sorte-1
+                                            teste_de_sorte[4]=teste_de_sorte[4]-1
                                         print("\nVoce desferiu toda sua furia no inimigo!\n")
                                         time.sleep(2)
-                                        teste_de_sorte=random.randrange(3)
-                                        if(teste_de_sorte<=1):
-                                            teste_de_sorte=random.randrange(50)
-                                            if(teste_de_sorte<=5+aliado_jogador.status[3]):
+                                        teste_de_sorte[4]=random.randrange(30)
+                                        if(teste_de_sorte[4]<20):
+                                            teste_de_sorte[5]=random.randrange(50)
+                                            if(teste_de_sorte[5]<=5+aliado_jogador.status[3]):
                                                 print("\nVoce testou o seu limite e agora esta mais forte!")
                                                 time.sleep(2)
                                                 print("Seus pontos de ataque subiram!\n")
                                                 time.sleep(2)
                                                 statusEquipamento(False,0)
-                                                aliado_jogador.status[0]=aliado_jogador.status[0]+int((random.randrange(aliado_jogador.status[0]))/6)+3
+                                                aliado_jogador.status[0]=aliado_jogador.status[0]+int((random.randrange(aliado_jogador.status[0]))/12)+4
                                                 statusEquipamento(True,0)
-                                        elif(teste_de_sorte>=2):
-                                            teste_de_sorte=random.randrange(50)
-                                            if(teste_de_sorte<=5+aliado_jogador.status[3]):
+                                        else:
+                                            teste_de_sorte[5]=random.randrange(50)
+                                            if(teste_de_sorte[5]<=5+aliado_jogador.status[3]):
                                                 print("\nVoce ultrapassou o seu limite e agora esta mais forte!")
                                                 time.sleep(2)
                                                 print("Seus pontos de ataque subiram!\n")
                                                 time.sleep(2)
                                                 statusEquipamento(False,0)
-                                                aliado_jogador.status[0]=aliado_jogador.status[0]++int((random.randrange(aliado_jogador.status[0]))/3)+4
+                                                aliado_jogador.status[0]=aliado_jogador.status[0]+int((random.randrange(aliado_jogador.status[0]))/12)+8
                                                 statusEquipamento(True,0)
                                     else:#S_ataque(2aliado_jogador.status[0]) ATACA defesa(2adversario_inimigo.status[1])
-                                        teste_de_sorte = random.randrange(300)
-                                        if(teste_de_sorte<=30-aliado_jogador.status[2]-aliado_jogador.status[3]+adversario_inimigo.status[2]+adversario_inimigo.status[3]):
+                                        teste_de_sorte[4] = random.randrange(300)
+                                        if(teste_de_sorte[4]<=30-aliado_jogador.status[2]-aliado_jogador.status[3]+adversario_inimigo.status[2]+adversario_inimigo.status[3]):
                                             print ('\nMas seu surto de poder foi irrelevante,')
                                             time.sleep(0.5)
                                             print ('seu oponente conseguiu esquivar de todos os seus ataques...')
@@ -2309,19 +2304,19 @@ def batalha(entrada_inimigo_batalha):
                                         else:
                                             print("\nSeu ataque de golpes duplos pressionaram a defesa do seu inimigo, \ncausando "+str(calculo_do_dano)+" pontos de dano!\n")
                                             time.sleep(3)
-                                            teste_de_sorte=random.randrange(200)
-                                            if(teste_de_sorte<=25+aliado_jogador.status[3]):
+                                            teste_de_sorte[5]=random.randrange(200)
+                                            if(teste_de_sorte[5]<=25+aliado_jogador.status[3]):
                                                 print("\nVoce aprimorou o ritmo dos seus ataques e agora esta mais forte!")
                                                 time.sleep(2)
                                                 print("Seus pontos de ataque subiram!\n")
                                                 time.sleep(2)
                                                 statusEquipamento(False,0)
-                                                aliado_jogador.status[0]=aliado_jogador.status[0]+int((random.randrange(aliado_jogador.status[0]))/6)+2
+                                                aliado_jogador.status[0]=aliado_jogador.status[0]+int((random.randrange(aliado_jogador.status[0]))/12)+2
                                                 statusEquipamento(True,0)
                                             adversario_inimigo.status[6]-=calculo_do_dano
                     else:#ataque(aliado_jogador.status[0])
-                        teste_de_sorte=random.randrange(50)
-                        if(teste_de_sorte<=10+adversario_inimigo.status[3]-aliado_jogador.status[3]):#ataque(aliado_jogador.status[0]) vs S_defesa(3adversario_inimigo.status[1])
+                        teste_de_sorte[2]=random.randrange(50)
+                        if(teste_de_sorte[2]<=10+adversario_inimigo.status[3]-aliado_jogador.status[3]):#ataque(aliado_jogador.status[0]) vs S_defesa(3adversario_inimigo.status[1])
                             print("\nA postura de defesa do seu inimigo te colocou numa situacao dificil!\n")
                             time.sleep(2)
                             calculo_do_dano=aliado_jogador.status[0]+int(random.randrange(aliado_jogador.status[0])*0.35)-3*adversario_inimigo.status[1]-int(random.randrange(adversario_inimigo.status[1])*0.35)
@@ -2331,14 +2326,14 @@ def batalha(entrada_inimigo_batalha):
                                 time.sleep(3)
                                 print("Seu inimigo contra-atacou, causando "+str(calculo_do_dano)+" pontos de dano.\n")
                                 time.sleep(2)
-                                teste_de_sorte=random.randrange(100)
-                                if(teste_de_sorte<=15+aliado_jogador.status[3]):
+                                teste_de_sorte[3]=random.randrange(100)
+                                if(teste_de_sorte[3]<=15+aliado_jogador.status[3]):
                                     print("\nVoce testou o seu limite e agora esta mais forte!")
                                     time.sleep(2)
                                     print("Seus pontos de ataque subiram!\n")
                                     time.sleep(2)
                                     statusEquipamento(False,0)
-                                    aliado_jogador.status[0]=aliado_jogador.status[0]+int((random.randrange(aliado_jogador.status[0]))/6)+3
+                                    aliado_jogador.status[0]=aliado_jogador.status[0]+int((random.randrange(aliado_jogador.status[0]))/12)+3
                                     statusEquipamento(True,0)
                                 aliado_jogador.status[6]=aliado_jogador.status[6]-calculo_do_dano
                             else:
@@ -2348,8 +2343,8 @@ def batalha(entrada_inimigo_batalha):
                                     print("Ao mesmo tempo sua forca foi o bastante para evitar um contra-ataque!\n")
                                     time.sleep(2)
                                 else:#ataque(aliado_jogador.status[0]) ATACA S_defesa(3adversario_inimigo.status[1])
-                                    teste_de_sorte = random.randrange(300)
-                                    if(teste_de_sorte<=30-aliado_jogador.status[2]-aliado_jogador.status[3]+adversario_inimigo.status[2]+adversario_inimigo.status[3]):
+                                    teste_de_sorte[3] = random.randrange(300)
+                                    if(teste_de_sorte[3]<=30-aliado_jogador.status[2]-aliado_jogador.status[3]+adversario_inimigo.status[2]+adversario_inimigo.status[3]):
                                         print ('\nMesmo assim voce pressionou o seu oponente,')
                                         time.sleep(0.5)
                                         print ('que foi obrigado a esquivar de todos os seus ataques...')
@@ -2359,14 +2354,14 @@ def batalha(entrada_inimigo_batalha):
                                     else:                                    
                                         print("\nDepois de alguns golpes, voce tornou insignificante a vantagem defensiva do seu inimigo, \ncausando humilhantes, "+str(calculo_do_dano)+" pontos de dano a ele!\n")
                                         time.sleep(4)
-                                        teste_de_sorte=random.randrange(200)
-                                        if(teste_de_sorte<=20+aliado_jogador.status[3]):
+                                        teste_de_sorte[4]=random.randrange(200)
+                                        if(teste_de_sorte[4]<=20+aliado_jogador.status[3]):
                                             print("\nVoce testou o seu limite e agora esta mais forte!")
                                             time.sleep(2)
                                             print("Seus pontos de ataque subiram!\n")
                                             time.sleep(2)
                                             statusEquipamento(False,0)
-                                            aliado_jogador.status[0]=aliado_jogador.status[0]+int((random.randrange(aliado_jogador.status[0]))/6)+3
+                                            aliado_jogador.status[0]=aliado_jogador.status[0]+int((random.randrange(aliado_jogador.status[0]))/12)+3
                                             statusEquipamento(True,0)
                                         adversario_inimigo.status[6]-=calculo_do_dano
                         else:#ataque(aliado_jogador.status[0]) vs defesa(2adversario_inimigo.status[1])
@@ -2375,22 +2370,22 @@ def batalha(entrada_inimigo_batalha):
                                 calculo_do_dano=calculo_do_dano*(-1)+int((random.randrange(adversario_inimigo.status[0]))*0.35)
                                 print("\nO inimigo se defendeu e contra-atacou, te causando "+str(calculo_do_dano)+" pontos de dano!\n")
                                 time.sleep(2)
-                                teste_de_sorte=random.randrange(80)
-                                if(teste_de_sorte<=8+aliado_jogador.status[3]):
+                                teste_de_sorte[3]=random.randrange(80)
+                                if(teste_de_sorte[3]<=8+aliado_jogador.status[3]):
                                     print("\nVoce descobriu mais sobre a sua forca durante a disputa e agora esta mais forte!")
                                     time.sleep(2)
                                     print("Seus pontos de ataque subiram!\n")
                                     time.sleep(2)
                                     statusEquipamento(False,0)
-                                    aliado_jogador.status[0]=aliado_jogador.status[0]+int((random.randrange(aliado_jogador.status[0]))/6)+3
+                                    aliado_jogador.status[0]=aliado_jogador.status[0]+int((random.randrange(aliado_jogador.status[0]))/12)+3
                                     statusEquipamento(True,0)
                                 aliado_jogador.status[6] = aliado_jogador.status[6] - calculo_do_dano
                             else:
                                 if(calculo_do_dano==0):#ataque(aliado_jogador.status[0]) ANULA defesa(2adversario_inimigo.status[1])
                                     print("\nSeu oponente defendeu todos os seus golpes, \nmas voce nao deu brecha para que ele avancasse!\n")
                                     time.sleep(2)
-                                    teste_de_sorte=random.randrange(200)
-                                    if(teste_de_sorte<=25+aliado_jogador.status[3]):
+                                    teste_de_sorte[3]=random.randrange(200)
+                                    if(teste_de_sorte[3]<=25+aliado_jogador.status[3]):
                                         print("\nO trabalho que seu inimigo te deu rendeu frutos!")
                                         time.sleep(2)
                                         print("Voce descobriu mais sobre as taticas de luta dele e esta mais forte!")
@@ -2398,11 +2393,11 @@ def batalha(entrada_inimigo_batalha):
                                         print("Seus pontos de ataque subiram!\n")
                                         time.sleep(2)
                                         statusEquipamento(False,0)
-                                        aliado_jogador.status[0]=aliado_jogador.status[0]+(random.randrange(aliado_jogador.status[0]))+(random.randrange(aliado_jogador.status[3]))+2
+                                        aliado_jogador.status[0]=aliado_jogador.status[0]+(random.randrange(aliado_jogador.status[0])/12)+(random.randrange(aliado_jogador.status[3]))+1
                                         statusEquipamento(True,0)
                                 else:#ataque(aliado_jogador.status[0]) ATACA defesa(2adversario_inimigo.status[1])
-                                    teste_de_sorte = random.randrange(300)
-                                    if(teste_de_sorte<=30-aliado_jogador.status[2]-aliado_jogador.status[3]+adversario_inimigo.status[2]+adversario_inimigo.status[3]):
+                                    teste_de_sorte[3] = random.randrange(300)
+                                    if(teste_de_sorte[3]<=30-aliado_jogador.status[2]-aliado_jogador.status[3]+adversario_inimigo.status[2]+adversario_inimigo.status[3]):
                                         print("\nSeu oponente conseguiu esquivar\n de todos os seus ataques, \nvoce nem pode tocar no inimigo!")
                                         time.sleep(1.5)
                                     else:
@@ -2412,12 +2407,12 @@ def batalha(entrada_inimigo_batalha):
                 else:#ataque(aliado_jogador.status[0]) vs ataque(adversario_inimigo.status[0])
                     print ("\n"+"Postura de Batalha:".center(79)+"\n\n"+str(aliado_jogador.nome)+str(adversario_inimigo.nome).rjust(79-len(aliado_jogador.nome))+"\n\n(ofensiva)"+"(ofensiva)".rjust(69))
                     time.sleep(2)
-                    teste_de_sorte=random.randrange(40)
-                    if (teste_de_sorte<=10+aliado_jogador.status[3]-adversario_inimigo.status[3]):#S_ataque(2aliado_jogador.status[0]) vs ataque(adversario_inimigo.status[0])
+                    teste_de_sorte[1]=random.randrange(40)
+                    if (teste_de_sorte[1]<=10+aliado_jogador.status[3]-adversario_inimigo.status[3]):#S_ataque(2aliado_jogador.status[0]) vs ataque(adversario_inimigo.status[0])
                         print("\nSeu ataque foi critico!!!\n")
                         time.sleep(2)
-                        teste_de_sorte=random.randrange(40)
-                        if (teste_de_sorte<=10-aliado_jogador.status[3]+adversario_inimigo.status[3]):#S_ataque(2aliado_jogador.status[0]) vs S_ataque(2adversario_inimigo.status[0])
+                        teste_de_sorte[2]=random.randrange(40)
+                        if (teste_de_sorte[2]<=10-aliado_jogador.status[3]+adversario_inimigo.status[3]):#S_ataque(2aliado_jogador.status[0]) vs S_ataque(2adversario_inimigo.status[0])
                             print("\nMas o ataque do oponente tambem foi critico!!!\n")
                             time.sleep(2)
                             print("\nVoces entraram na briga pra valer!")
@@ -2426,28 +2421,28 @@ def batalha(entrada_inimigo_batalha):
                             time.sleep(2)
                             calculo_do_dano=2*aliado_jogador.status[0]+random.randrange(aliado_jogador.status[0])-adversario_inimigo.status[1]-random.randrange(adversario_inimigo.status[1])
                             if(calculo_do_dano>0):
-                                teste_de_sorte = random.randrange(300)
-                                if(teste_de_sorte<=30-aliado_jogador.status[2]-aliado_jogador.status[3]+adversario_inimigo.status[2]+adversario_inimigo.status[3]):
+                                teste_de_sorte[3] = random.randrange(300)
+                                if(teste_de_sorte[3]<=30-aliado_jogador.status[2]-aliado_jogador.status[3]+adversario_inimigo.status[2]+adversario_inimigo.status[3]):
                                     print("\nSeu oponente desviou dos seus golpes!")
                                     time.sleep(1)
                                 else:
                                     print("\nVoce causou significativos "+str(calculo_do_dano)+" pontos de dano ao inimigo!\n")
                                     time.sleep(2)
                                     adversario_inimigo.status[6]-=calculo_do_dano
-                                    teste_de_sorte=random.randrange(100)
-                                    if(teste_de_sorte<=10+aliado_jogador.status[3]):
+                                    teste_de_sorte[4]=random.randrange(100)
+                                    if(teste_de_sorte[4]<=10+aliado_jogador.status[3]):
                                         print("\nSeus pontos de ataque subiram enquanto voce forcava os seus musculos!\n")
                                         time.sleep(2)
                                         statusEquipamento(False,0)
-                                        aliado_jogador.status[0]=aliado_jogador.status[0]+int((random.randrange(aliado_jogador.status[0]))/6)+3
+                                        aliado_jogador.status[0]=aliado_jogador.status[0]+int((random.randrange(aliado_jogador.status[0]))/12)+3
                                         statusEquipamento(True,0)
                             else:
                                 print("\nMesmo sem se defender, a constituicao do inimigo\nfoi alta o suficiente para resistir ao seu ataque.\n")
                                 time.sleep(3)
                             calculo_do_dano=2*adversario_inimigo.status[0]+random.randrange(adversario_inimigo.status[0])-aliado_jogador.status[1]-random.randrange(aliado_jogador.status[1])
                             if(calculo_do_dano>0):
-                                teste_de_sorte = random.randrange(300)
-                                if(teste_de_sorte<=30-aliado_jogador.status[2]-aliado_jogador.status[3]+adversario_inimigo.status[2]+adversario_inimigo.status[3]):
+                                teste_de_sorte[3] = random.randrange(300)
+                                if(teste_de_sorte[3]<=30-aliado_jogador.status[2]-aliado_jogador.status[3]+adversario_inimigo.status[2]+adversario_inimigo.status[3]):
                                     print("\nE voce esquivou dos ataques dele!")
                                     time.sleep(1)
                                 else:
@@ -2464,20 +2459,20 @@ def batalha(entrada_inimigo_batalha):
                             time.sleep(3)
                             calculo_do_dano=2*aliado_jogador.status[0]+random.randrange(aliado_jogador.status[0])-adversario_inimigo.status[1]-random.randrange(adversario_inimigo.status[1])
                             if(calculo_do_dano>0):
-                                teste_de_sorte = random.randrange(300)
-                                if(teste_de_sorte<=30-aliado_jogador.status[2]-aliado_jogador.status[3]+adversario_inimigo.status[2]+adversario_inimigo.status[3]):
+                                teste_de_sorte[3] = random.randrange(300)
+                                if(teste_de_sorte[3]<=30-aliado_jogador.status[2]-aliado_jogador.status[3]+adversario_inimigo.status[2]+adversario_inimigo.status[3]):
                                     print("\nSeu oponente desviou dos seus golpes!")
                                     time.sleep(1)
                                 else:
                                     print("\nVoce golpeou o inimigo ate lhe causar "+str(calculo_do_dano)+" pontos de dano!\n")
                                     time.sleep(2)
-                                    teste_de_sorte = random.randrange(5)#aumento de ataque
-                                    if(teste_de_sorte<=1):
-                                        teste_de_sorte = random.randrange(200)
-                                        if (teste_de_sorte<=45+aliado_jogador.status[3]):
+                                    teste_de_sorte[4] = random.randrange(5)#aumento de ataque
+                                    if(teste_de_sorte[4]<=1):
+                                        teste_de_sorte[5] = random.randrange(200)
+                                        if (teste_de_sorte[5]<=45+aliado_jogador.status[3]):
                                             variavel_para_comparar=aliado_jogador.status[0]
                                             statusEquipamento(False,0)
-                                            aliado_jogador.status[0]=aliado_jogador.status[0]+int((random.randrange(aliado_jogador.status[0]))/6)+1
+                                            aliado_jogador.status[0]=aliado_jogador.status[0]+int((random.randrange(aliado_jogador.status[0]))/9)
                                             statusEquipamento(True,0)
                                             if (variavel_para_comparar < aliado_jogador.status[0]):
                                                 print("\nVoce testou o seu limite e agora esta mais forte!")
@@ -2486,35 +2481,35 @@ def batalha(entrada_inimigo_batalha):
                                                 time.sleep(2)
                                             if (variavel_para_comparar > aliado_jogador.status[0]):
                                                 aliado_jogador.status[0]=variavel_para_comparar
-                                    elif(teste_de_sorte>=4):
-                                        teste_de_sorte = random.randrange(200)
-                                        if (teste_de_sorte<=40+aliado_jogador.status[3]):
+                                    elif(teste_de_sorte[4]>=4):
+                                        teste_de_sorte[5] = random.randrange(200)
+                                        if (teste_de_sorte[5]<=40+aliado_jogador.status[3]):
                                             print("\nVoce testou o seu limite e agora esta mais forte!")
                                             time.sleep(2)
                                             print("Seus pontos de ataque subiram!\n")
                                             time.sleep(2)
                                             statusEquipamento(True,0)
-                                            aliado_jogador.status[0]=aliado_jogador.status[0]+int((random.randrange(aliado_jogador.status[0]))/6)+2
+                                            aliado_jogador.status[0]=aliado_jogador.status[0]+int((random.randrange(aliado_jogador.status[0]))/12)+2
                                             statusEquipamento(False,0)
-                                    elif(teste_de_sorte==3):
-                                        teste_de_sorte = random.randrange(200)
-                                        if (teste_de_sorte<=20+aliado_jogador.status[3]):
+                                    elif(teste_de_sorte[4]==3):
+                                        teste_de_sorte[5] = random.randrange(200)
+                                        if (teste_de_sorte[5]<=20+aliado_jogador.status[3]):
                                             print("\nVoce testou o seu limite e agora esta mais forte!")
                                             time.sleep(2)
                                             print("Seus pontos de ataque subiram!\n")
                                             time.sleep(2)
                                             statusEquipamento(False,0)
-                                            aliado_jogador.status[0]=aliado_jogador.status[0]+int((random.randrange(aliado_jogador.status[0]))/6)+3
+                                            aliado_jogador.status[0]=aliado_jogador.status[0]+int((random.randrange(aliado_jogador.status[0]))/12)+4
                                             statusEquipamento(True,0)
-                                    elif(teste_de_sorte==2):
-                                        teste_de_sorte = random.randrange(300)
-                                        if (teste_de_sorte<=30+aliado_jogador.status[3]):
+                                    elif(teste_de_sorte[4]==2):
+                                        teste_de_sorte[5] = random.randrange(300)
+                                        if (teste_de_sorte[5]<=30+aliado_jogador.status[3]):
                                             print("\nVoce testou o seu limite e agora esta mais forte!")
                                             time.sleep(2)
                                             print("Seus pontos de ataque subiram!\n")
                                             time.sleep(2)
                                             statusEquipamento(False,0)
-                                            aliado_jogador.status[0]=aliado_jogador.status[0]+int((random.randrange(aliado_jogador.status[0]))/6)+4
+                                            aliado_jogador.status[0]=aliado_jogador.status[0]+int((random.randrange(aliado_jogador.status[0]))/24)+8
                                             statusEquipamento(True,0)
                                     adversario_inimigo.status[6]-=calculo_do_dano
                             else:
@@ -2522,8 +2517,8 @@ def batalha(entrada_inimigo_batalha):
                                 time.sleep(3)
                             calculo_do_dano=adversario_inimigo.status[0]+random.randrange(adversario_inimigo.status[0])-aliado_jogador.status[1]-random.randrange(aliado_jogador.status[1])
                             if(calculo_do_dano>0):
-                                teste_de_sorte = random.randrange(300)
-                                if(teste_de_sorte<=30-aliado_jogador.status[2]-aliado_jogador.status[3]+adversario_inimigo.status[2]+adversario_inimigo.status[3]):
+                                teste_de_sorte[3] = random.randrange(300)
+                                if(teste_de_sorte[3]<=30-aliado_jogador.status[2]-aliado_jogador.status[3]+adversario_inimigo.status[2]+adversario_inimigo.status[3]):
                                     print("\nE voce esquivou dos ataques dele!")
                                     time.sleep(1)
                                 else:
@@ -2534,8 +2529,8 @@ def batalha(entrada_inimigo_batalha):
                                 print("\nMesmo sem se defender, sua constituicao \nfoi alta o suficiente para resistir nao ataque do oponente.\n")
                                 time.sleep(3)
                     else:#ataque(aliado_jogador.status[0]) vs ataque(adversario_inimigo.status[0])
-                        teste_de_sorte=random.randrange(40)
-                        if(teste_de_sorte==10+adversario_inimigo.status[3]-aliado_jogador.status[3]): #ataque(aliado_jogador.status[0]) vs S_ataque(2adversario_inimigo.status[0])
+                        teste_de_sorte[2]=random.randrange(40)
+                        if(teste_de_sorte[2]==10+adversario_inimigo.status[3]-aliado_jogador.status[3]): #ataque(aliado_jogador.status[0]) vs S_ataque(2adversario_inimigo.status[0])
                             print("\nO ataque do oponente foi critico!...\n")
                             time.sleep(2)
                             print("\nVoce foi pressionado enquanto trocavam golpes, \nos socos e chutes do seu oponente te acertaram em pontos menos resistentes do \nseu corpo, que estavam desprotegidos!")
@@ -2544,20 +2539,20 @@ def batalha(entrada_inimigo_batalha):
                             time.sleep(2)
                             calculo_do_dano=aliado_jogador.status[0]+random.randrange(aliado_jogador.status[0])-adversario_inimigo.status[1]-random.randrange(adversario_inimigo.status[1])
                             if(calculo_do_dano>0):
-                                teste_de_sorte = random.randrange(300)
-                                if(teste_de_sorte<=30-aliado_jogador.status[2]-aliado_jogador.status[3]+adversario_inimigo.status[2]+adversario_inimigo.status[3]):
+                                teste_de_sorte[3] = random.randrange(300)
+                                if(teste_de_sorte[3]<=30-aliado_jogador.status[2]-aliado_jogador.status[3]+adversario_inimigo.status[2]+adversario_inimigo.status[3]):
                                     print("\nSeu oponente desviou dos seus golpes!")
                                     time.sleep(1)
                                 else:
                                     print("\nVoce infringiu "+str(calculo_do_dano)+" pontos de dano ao inimigo!\n")
                                     time.sleep(2)
-                                    teste_de_sorte = random.randrange(5)#aumento de ataque
-                                    if(teste_de_sorte<=1):
-                                        teste_de_sorte = random.randrange(100)
-                                        if (teste_de_sorte<=15+aliado_jogador.status[3]):
+                                    teste_de_sorte[4] = random.randrange(5)#aumento de ataque
+                                    if(teste_de_sorte[4]<=1):
+                                        teste_de_sorte[5] = random.randrange(100)
+                                        if (teste_de_sorte[5]<=15+aliado_jogador.status[3]):
                                             variavel_para_comparar=aliado_jogador.status[0]
                                             statusEquipamento(False,0)
-                                            aliado_jogador.status[0]=aliado_jogador.status[0]+int((random.randrange(aliado_jogador.status[0]))/6)+1
+                                            aliado_jogador.status[0]=aliado_jogador.status[0]+int((random.randrange(aliado_jogador.status[0]))/9)
                                             statusEquipamento(True,0)
                                             if (variavel_para_comparar < aliado_jogador.status[0]):
                                                 print("\nVoce testou o seu limite e agora esta mais forte!")
@@ -2566,35 +2561,35 @@ def batalha(entrada_inimigo_batalha):
                                                 time.sleep(2)
                                             if (variavel_para_comparar > aliado_jogador.status[0]):
                                                 aliado_jogador.status[0]=variavel_para_comparar
-                                    elif(teste_de_sorte>=4):
-                                        teste_de_sorte = random.randrange(200)
-                                        if (teste_de_sorte<=40+aliado_jogador.status[3]):
+                                    elif(teste_de_sorte[4]>=4):
+                                        teste_de_sorte[5] = random.randrange(200)
+                                        if (teste_de_sorte[5]<=40+aliado_jogador.status[3]):
                                             print("\nVoce testou o seu limite e agora esta mais forte!")
                                             time.sleep(2)
                                             print("Seus pontos de ataque subiram!\n")
                                             time.sleep(2)
                                             statusEquipamento(False,0)
-                                            aliado_jogador.status[0]=aliado_jogador.status[0]+int((random.randrange(aliado_jogador.status[0]))/6)+2
+                                            aliado_jogador.status[0]=aliado_jogador.status[0]+int((random.randrange(aliado_jogador.status[0]))/12)+2
                                             statusEquipamento(True,0)
-                                    elif(teste_de_sorte==3):
-                                        teste_de_sorte = random.randrange(200)
-                                        if (teste_de_sorte<=20+aliado_jogador.status[3]):
+                                    elif(teste_de_sorte[4]==3):
+                                        teste_de_sorte[5] = random.randrange(200)
+                                        if (teste_de_sorte[5]<=20+aliado_jogador.status[3]):
                                             print("\nVoce testou o seu limite e agora esta mais forte!")
                                             time.sleep(2)
                                             print("Seus pontos de ataque subiram!\n")
                                             time.sleep(2)
                                             statusEquipamento(False,0)
-                                            aliado_jogador.status[0]=aliado_jogador.status[0]+int((random.randrange(aliado_jogador.status[0]))/6)+3
+                                            aliado_jogador.status[0]=aliado_jogador.status[0]+int((random.randrange(aliado_jogador.status[0]))/12)+4
                                             statusEquipamento(True,0)
-                                    elif(teste_de_sorte==2):
-                                        teste_de_sorte = random.randrange(300)
-                                        if (teste_de_sorte<=30+aliado_jogador.status[3]):
+                                    elif(teste_de_sorte[4]==2):
+                                        teste_de_sorte[5] = random.randrange(300)
+                                        if (teste_de_sorte[5]<=30+aliado_jogador.status[3]):
                                             print("\nVoce testou o seu limite e agora esta mais forte!")
                                             time.sleep(2)
                                             print("Seus pontos de ataque subiram!\n")
                                             time.sleep(2)
                                             statusEquipamento(False,0)
-                                            aliado_jogador.status[0]=aliado_jogador.status[0]+int((random.randrange(aliado_jogador.status[0]))/6)+4
+                                            aliado_jogador.status[0]=aliado_jogador.status[0]+int((random.randrange(aliado_jogador.status[0]))/24)+4
                                             statusEquipamento(True,0)
                                     adversario_inimigo.status[6]-=calculo_do_dano
                             else:
@@ -2602,8 +2597,8 @@ def batalha(entrada_inimigo_batalha):
                                 time.sleep(3)
                             calculo_do_dano=2*adversario_inimigo.status[0]+random.randrange(adversario_inimigo.status[0])-aliado_jogador.status[1]-random.randrange(aliado_jogador.status[1])
                             if(calculo_do_dano>0):
-                                teste_de_sorte = random.randrange(300)
-                                if(teste_de_sorte<=30-aliado_jogador.status[2]-aliado_jogador.status[3]+adversario_inimigo.status[2]+adversario_inimigo.status[3]):
+                                teste_de_sorte[3] = random.randrange(300)
+                                if(teste_de_sorte[3]<=30-aliado_jogador.status[2]-aliado_jogador.status[3]+adversario_inimigo.status[2]+adversario_inimigo.status[3]):
                                     print("\nE voce esquivou dos ataques dele!")
                                     time.sleep(1)
                                 else:
@@ -2618,20 +2613,20 @@ def batalha(entrada_inimigo_batalha):
                             time.sleep(4)
                             calculo_do_dano=aliado_jogador.status[0]+random.randrange(aliado_jogador.status[0])-adversario_inimigo.status[1]-random.randrange(adversario_inimigo.status[1])
                             if(calculo_do_dano>0):
-                                teste_de_sorte = random.randrange(300)
-                                if(teste_de_sorte<=30-aliado_jogador.status[2]-aliado_jogador.status[3]+adversario_inimigo.status[2]+adversario_inimigo.status[3]):
+                                teste_de_sorte[3] = random.randrange(300)
+                                if(teste_de_sorte[3]<=30-aliado_jogador.status[2]-aliado_jogador.status[3]+adversario_inimigo.status[2]+adversario_inimigo.status[3]):
                                     print("\nSeu oponente desviou dos seus golpes!")
                                     time.sleep(1)
                                 else:
                                     print("\nVoce feriu seu oponente em "+str(calculo_do_dano)+" pontos de dano!\n")
                                     time.sleep(2)
-                                    teste_de_sorte = random.randrange(5)#aumento de ataque
-                                    if(teste_de_sorte<=1):
-                                        teste_de_sorte = random.randrange(100)
-                                        if (teste_de_sorte<=15+aliado_jogador.status[3]):
+                                    teste_de_sorte[4] = random.randrange(5)#aumento de ataque
+                                    if(teste_de_sorte[4]<=1):
+                                        teste_de_sorte[5] = random.randrange(100)
+                                        if (teste_de_sorte[5]<=15+aliado_jogador.status[3]):
                                             variavel_para_comparar=aliado_jogador.status[0]
                                             statusEquipamento(False,0)
-                                            aliado_jogador.status[0]=aliado_jogador.status[0]+int((random.randrange(aliado_jogador.status[0]))/6)+1
+                                            aliado_jogador.status[0]=aliado_jogador.status[0]+int((random.randrange(aliado_jogador.status[0]))/9)
                                             statusEquipamento(True,0)
                                             if (variavel_para_comparar < aliado_jogador.status[0]):
                                                 print("\nVoce testou o seu limite e agora esta mais forte!")
@@ -2640,35 +2635,35 @@ def batalha(entrada_inimigo_batalha):
                                                 time.sleep(2)
                                             if (variavel_para_comparar > aliado_jogador.status[0]):
                                                 aliado_jogador.status[0]=variavel_para_comparar
-                                    elif(teste_de_sorte>=4):
-                                        teste_de_sorte = random.randrange(200)
-                                        if (teste_de_sorte<=40+aliado_jogador.status[3]):
+                                    elif(teste_de_sorte[4]>=4):
+                                        teste_de_sorte[5] = random.randrange(200)
+                                        if (teste_de_sorte[5]<=40+aliado_jogador.status[3]):
                                             print("\nVoce testou o seu limite e agora esta mais forte!")
                                             time.sleep(2)
                                             print("Seus pontos de ataque subiram!\n")
                                             time.sleep(2)
                                             statusEquipamento(False,0)
-                                            aliado_jogador.status[0]=aliado_jogador.status[0]+int((random.randrange(aliado_jogador.status[0]))/6)+2
+                                            aliado_jogador.status[0]=aliado_jogador.status[0]+int((random.randrange(aliado_jogador.status[0]))/12)+2
                                             statusEquipamento(True,0)
-                                    elif(teste_de_sorte==3):
-                                        teste_de_sorte = random.randrange(200)
-                                        if (teste_de_sorte<=20+aliado_jogador.status[3]):
+                                    elif(teste_de_sorte[4]==3):
+                                        teste_de_sorte[5] = random.randrange(200)
+                                        if (teste_de_sorte[5]<=20+aliado_jogador.status[3]):
                                             print("\nVoce testou o seu limite e agora esta mais forte!")
                                             time.sleep(2)
                                             print("Seus pontos de ataque subiram!\n")
                                             time.sleep(2)
                                             statusEquipamento(False,0)
-                                            aliado_jogador.status[0]=aliado_jogador.status[0]+int((random.randrange(aliado_jogador.status[0]))/6)+3
+                                            aliado_jogador.status[0]=aliado_jogador.status[0]+int((random.randrange(aliado_jogador.status[0]))/12)+4
                                             statusEquipamento(True,0)
-                                    elif(teste_de_sorte==2):
-                                        teste_de_sorte = random.randrange(300)
-                                        if (teste_de_sorte<=30+aliado_jogador.status[3]):
+                                    elif(teste_de_sorte[4]==2):
+                                        teste_de_sorte[5] = random.randrange(300)
+                                        if (teste_de_sorte[5]<=30+aliado_jogador.status[3]):
                                             print("\nVoce testou o seu limite e agora esta mais forte!")
                                             time.sleep(2)
                                             print("Seus pontos de ataque subiram!\n")
                                             time.sleep(2)
                                             statusEquipamento(False,0)
-                                            aliado_jogador.status[0]=aliado_jogador.status[0]+int((random.randrange(aliado_jogador.status[0]))/6)+4
+                                            aliado_jogador.status[0]=aliado_jogador.status[0]+int((random.randrange(aliado_jogador.status[0]))/24)+4
                                             statusEquipamento(True,0)
                                     adversario_inimigo.status[6]-=calculo_do_dano
                             else:
@@ -2676,8 +2671,8 @@ def batalha(entrada_inimigo_batalha):
                                 time.sleep(3)
                             calculo_do_dano=adversario_inimigo.status[0]+random.randrange(adversario_inimigo.status[0])-aliado_jogador.status[1]-random.randrange(aliado_jogador.status[1])
                             if(calculo_do_dano>0):
-                                teste_de_sorte = random.randrange(300)
-                                if(teste_de_sorte<=30-aliado_jogador.status[2]-aliado_jogador.status[3]+adversario_inimigo.status[2]+adversario_inimigo.status[3]):
+                                teste_de_sorte[3] = random.randrange(300)
+                                if(teste_de_sorte[3]<=30-aliado_jogador.status[2]-aliado_jogador.status[3]+adversario_inimigo.status[2]+adversario_inimigo.status[3]):
                                     print("\nE voce esquivou dos ataques dele!")
                                     time.sleep(1)
                                 else:
@@ -2694,8 +2689,8 @@ def batalha(entrada_inimigo_batalha):
                     time.sleep(2)
                     print("\nVoce tenta aumentar o ritmo de esquiva...\n")
                     time.sleep(2)
-                    teste_de_sorte=random.randrange(10)+calculo_da_fuga
-                    if(teste_de_sorte>=10):
+                    teste_de_sorte[0]=random.randrange(10)+calculo_da_fuga
+                    if(teste_de_sorte[0]>=10):
                         print('\nVoce esquivou de qualquer manobra ofensiva do oponente e conseguiu uma brecha para fugir!\n')
                         time.sleep(3)
                         print('\nDeseja fugir da luta?("sim" ou "nao")\n')
@@ -2711,11 +2706,11 @@ def batalha(entrada_inimigo_batalha):
                             batalha_escapar="sim"
                             break
                     else:
-                        if(teste_de_sorte>8):
+                        if(teste_de_sorte[0]>8):
                             print('\nVoce esquivou de qualquer manobra ofensiva do oponente, mas nao conseguiu uma brecha para fugir...\n')
                             time.sleep(3)
                         else:
-                            if(teste_de_sorte>5):
+                            if(teste_de_sorte[0]>5):
                                 print('\nVoce nao conseguiu uma brecha para fugir, nem pode se esquivar, \nmas pode se defender!\n')
                                 time.sleep(3)
                                 calculo_do_dano = adversario_inimigo.status[0]+(random.randrange(adversario_inimigo.status[0]))-2*aliado_jogador.status[1]-(random.randrange(aliado_jogador.status[1]))
@@ -2745,7 +2740,7 @@ def batalha(entrada_inimigo_batalha):
                                         time.sleep(3)
                                         aliado_jogador.status[6] = aliado_jogador.status[6]-calculo_do_dano
                             else:
-                                if(teste_de_sorte>2):
+                                if(teste_de_sorte[0]>2):
                                     print('\nVoce nao conseguiu uma brecha para fugir, se esquivar ou se defender...\n')
                                     time.sleep(2)
                                     calculo_do_dano = adversario_inimigo.status[0]+(random.randrange(adversario_inimigo.status[0]))-aliado_jogador.status[1]-(random.randrange(aliado_jogador.status[1]))
@@ -2766,14 +2761,14 @@ def batalha(entrada_inimigo_batalha):
                                         print("\nO inimigo aproveitou a abertura na sua defesa e te atacou violentamente, \ncausando "+str(calculo_do_dano)+" pontos de dano.\n")
                                         time.sleep(3)
                                         aliado_jogador.status[6]=aliado_jogador.status[6]-calculo_do_dano
-                                        teste_de_sorte=random.randrange(100)
-                                        if(teste_de_sorte<=20+aliado_jogador.status[3]):
+                                        teste_de_sorte[1]=random.randrange(100)
+                                        if(teste_de_sorte[1]<=20+aliado_jogador.status[3]):
                                             print("\nVoce aumentou seu folego enquanto tentava escapar dos golpes que voce levou em cheio!")
                                             time.sleep(2)
                                             print("O limite dos seus pontos de vida cresceu!")
                                             time.sleep(2)
                                             statusEquipamento(False,5)
-                                            aliado_jogador.status[5]=aliado_jogador.status[5]+int((random.randrange(aliado_jogador.status[5]))/6)+3
+                                            aliado_jogador.status[5]=aliado_jogador.status[5]+int((random.randrange(aliado_jogador.status[5]))/10)+3
                                             statusEquipamento(True,5)
                                     else:
                                         print("\nMesmo sem se defender, sua constituicao \nfoi alta o suficiente para resistir ao ataque do oponente.\n")
@@ -2816,54 +2811,54 @@ def ruasPerigosas(distancia_restante,periculosidade_ruas):
             adversario_inimigo.status[6]=adversario_inimigo.status[5]
         raw_input('|>')
         os.system('cls')
-        teste_de_sorte=random.randrange(100)
+        teste_de_sorte[6]=random.randrange(100)
         if distancia_restante<=2 and caminhada_perigosa>4 :periculosidade_ruas-=2
         if periculosidade_ruas<3 :
-            if(teste_de_sorte<10): batalha(estudante[0])
-            elif(teste_de_sorte<20): batalha(arruaceiro_oponente[0])
-            elif(teste_de_sorte<30): batalha(estudante_brigento[1])
-            elif(teste_de_sorte<40): batalha(arruaceiro_oponente[1])
-            elif(teste_de_sorte<50): batalha(estudante_brigento[2])
-            elif(teste_de_sorte<60): batalha(arruaceiro_oponente[2])
-            elif(teste_de_sorte<70): batalha(estudante_brigento[3])
-            elif(teste_de_sorte<80): batalha(arruaceiro_oponente[3])
-            elif(teste_de_sorte<90): batalha(estudante_brigento[4])
-            elif(teste_de_sorte<100): batalha(arruaceiro_oponente[4])
+            if(teste_de_sorte[6]<10): batalha(estudante[0])
+            elif(teste_de_sorte[6]<20): batalha(arruaceiro_oponente[0])
+            elif(teste_de_sorte[6]<30): batalha(estudante_brigento[1])
+            elif(teste_de_sorte[6]<40): batalha(arruaceiro_oponente[1])
+            elif(teste_de_sorte[6]<50): batalha(estudante_brigento[2])
+            elif(teste_de_sorte[6]<60): batalha(arruaceiro_oponente[2])
+            elif(teste_de_sorte[6]<70): batalha(estudante_brigento[3])
+            elif(teste_de_sorte[6]<80): batalha(arruaceiro_oponente[3])
+            elif(teste_de_sorte[6]<90): batalha(estudante_brigento[4])
+            elif(teste_de_sorte[6]<100): batalha(arruaceiro_oponente[4])
         elif periculosidade_ruas<5 :
-            if(teste_de_sorte<10): batalha(arruaceiro_oponente[0])
-            elif(teste_de_sorte<20): batalha(arruaceiro_oponente[1])
-            elif(teste_de_sorte<30): batalha(arruaceiro_oponente[2])
-            elif(teste_de_sorte<40): batalha(arruaceiro_oponente[3])
-            elif(teste_de_sorte<50): batalha(arruaceiro_oponente[3])
-            elif(teste_de_sorte<60): batalha(arruaceiro_oponente[4])
-            elif(teste_de_sorte<70): batalha(arruaceiro_oponente[5])
-            elif(teste_de_sorte<80): batalha(estudante_brigento[1])
-            elif(teste_de_sorte<90): batalha(estudante_brigento[2])
-            elif(teste_de_sorte<100): batalha(estudante_brigento[3])
+            if(teste_de_sorte[6]<10): batalha(arruaceiro_oponente[0])
+            elif(teste_de_sorte[6]<20): batalha(arruaceiro_oponente[1])
+            elif(teste_de_sorte[6]<30): batalha(arruaceiro_oponente[2])
+            elif(teste_de_sorte[6]<40): batalha(arruaceiro_oponente[3])
+            elif(teste_de_sorte[6]<50): batalha(arruaceiro_oponente[3])
+            elif(teste_de_sorte[6]<60): batalha(arruaceiro_oponente[4])
+            elif(teste_de_sorte[6]<70): batalha(arruaceiro_oponente[5])
+            elif(teste_de_sorte[6]<80): batalha(estudante_brigento[1])
+            elif(teste_de_sorte[6]<90): batalha(estudante_brigento[2])
+            elif(teste_de_sorte[6]<100): batalha(estudante_brigento[3])
         elif periculosidade_ruas<7 :
-            if(teste_de_sorte<10): batalha(arruaceiro_oponente[1])
-            elif(teste_de_sorte<20): batalha(arruaceiro_oponente[2])
-            elif(teste_de_sorte<30): batalha(arruaceiro_oponente[3])
-            elif(teste_de_sorte<40): batalha(arruaceiro_oponente[4])
-            elif(teste_de_sorte<50): batalha(arruaceiro_oponente[4])
-            elif(teste_de_sorte<60): batalha(arruaceiro_oponente[5])
-            elif(teste_de_sorte<70): batalha(arruaceiro_oponente[5])
-            elif(teste_de_sorte<80): batalha(arruaceiro_oponente[6])
-            elif(teste_de_sorte<90): batalha(arruaceiro_oponente[6])
-            elif(teste_de_sorte<100): batalha(arruaceiro_oponente[7])
+            if(teste_de_sorte[6]<10): batalha(arruaceiro_oponente[1])
+            elif(teste_de_sorte[6]<20): batalha(arruaceiro_oponente[2])
+            elif(teste_de_sorte[6]<30): batalha(arruaceiro_oponente[3])
+            elif(teste_de_sorte[6]<40): batalha(arruaceiro_oponente[4])
+            elif(teste_de_sorte[6]<50): batalha(arruaceiro_oponente[4])
+            elif(teste_de_sorte[6]<60): batalha(arruaceiro_oponente[5])
+            elif(teste_de_sorte[6]<70): batalha(arruaceiro_oponente[5])
+            elif(teste_de_sorte[6]<80): batalha(arruaceiro_oponente[6])
+            elif(teste_de_sorte[6]<90): batalha(arruaceiro_oponente[6])
+            elif(teste_de_sorte[6]<100): batalha(arruaceiro_oponente[7])
         elif periculosidade_ruas<9 :
-            if(teste_de_sorte<10): batalha(arruaceiro_oponente[4])
-            elif(teste_de_sorte<20): batalha(arruaceiro_oponente[5])
-            elif(teste_de_sorte<30): batalha(arruaceiro_oponente[5])
-            elif(teste_de_sorte<40): batalha(arruaceiro_oponente[6])
-            elif(teste_de_sorte<50): batalha(arruaceiro_oponente[6])
-            elif(teste_de_sorte<60): batalha(arruaceiro_oponente[7])
-            elif(teste_de_sorte<70): batalha(arruaceiro_oponente[7])
-            elif(teste_de_sorte<80): batalha(arruaceiro_oponente[8])
-            elif(teste_de_sorte<90): batalha(arruaceiro_oponente[8])
-            elif(teste_de_sorte<100): batalha(estudante_brigento[5])
-        teste_de_sorte=random.randrange(200)
-        if(teste_de_sorte<100+aliado_jogador.status[3]):
+            if(teste_de_sorte[6]<10): batalha(arruaceiro_oponente[4])
+            elif(teste_de_sorte[6]<20): batalha(arruaceiro_oponente[5])
+            elif(teste_de_sorte[6]<30): batalha(arruaceiro_oponente[5])
+            elif(teste_de_sorte[6]<40): batalha(arruaceiro_oponente[6])
+            elif(teste_de_sorte[6]<50): batalha(arruaceiro_oponente[6])
+            elif(teste_de_sorte[6]<60): batalha(arruaceiro_oponente[7])
+            elif(teste_de_sorte[6]<70): batalha(arruaceiro_oponente[7])
+            elif(teste_de_sorte[6]<80): batalha(arruaceiro_oponente[8])
+            elif(teste_de_sorte[6]<90): batalha(arruaceiro_oponente[8])
+            elif(teste_de_sorte[6]<100): batalha(estudante_brigento[5])
+        teste_de_sorte[7]=random.randrange(200)
+        if(teste_de_sorte[7]<100+aliado_jogador.status[3]):
             print ('O seu oponente deixou cair dinheiro no chao durante a luta!')
             time.sleep(2)
             aliado_jogador.dinheiro+=adversario_inimigo.dinheiro*0.15
@@ -4025,8 +4020,8 @@ def seuPredioSegundoAndar():
                                 if(situacao[4]==3):
                                     escrever(0.02," - E ai, rapaz!")
                                     escrever(0.05," . . . ")
-                                    teste_de_sorte = random.randrange(3)
-                                    if(teste_de_sorte==1):
+                                    teste_de_sorte[6] = random.randrange(3)
+                                    if(teste_de_sorte[6]==1):
                                         escrever(0.02,"Voce chegou em boa hora! \nEntre e coma um pedaco de pizza comigo!\n",1)
                                         escrever(0.02,"Voce ganhou um pedaco de pizza!\n",1)
                                         item_adicionado=pedaco_pizza[0]
@@ -4705,12 +4700,12 @@ def ruaFaculdade():
                             break
                         else:
                             if "bri" in acao_do_personagem or "brg" in acao_do_personagem or "lut" in acao_do_personagem or "bgar" in acao_do_personagem or "bate" in acao_do_personagem or "invest" in acao_do_personagem:
-                                teste_de_sorte=random.randrange(100)
-                                if(teste_de_sorte<5): batalha(estudante_brigento[1])
-                                elif(teste_de_sorte<10): batalha(estudante_brigento[2])
-                                elif(teste_de_sorte<15): batalha(estudante_brigento[3])
-                                elif(teste_de_sorte<20): batalha(estudante_brigento[4])
-                                elif(teste_de_sorte<25):
+                                teste_de_sorte[6]=random.randrange(100)
+                                if(teste_de_sorte[6]<5): batalha(estudante_brigento[1])
+                                elif(teste_de_sorte[6]<10): batalha(estudante_brigento[2])
+                                elif(teste_de_sorte[6]<15): batalha(estudante_brigento[3])
+                                elif(teste_de_sorte[6]<20): batalha(estudante_brigento[4])
+                                elif(teste_de_sorte[6]<25):
                                     batalha(estudante_brigento[5])
                                     if booleana[5] == False:
                                         if(aliado_jogador.status[6]<=0):break
@@ -4731,27 +4726,27 @@ def ruaFaculdade():
                                         booleana[5] = True
                                         print ('Voce tem toda a informacao que poderia conseguir aqui!\nProcurar mais dentro da faculdade parece uma boa ideia...')
                                         break
-                                elif(teste_de_sorte<30): batalha(arruaceiro_oponente[1])
-                                elif(teste_de_sorte<35): batalha(arruaceiro_oponente[2])
-                                elif(teste_de_sorte<40): batalha(arruaceiro_oponente[3])
-                                elif(teste_de_sorte<45): batalha(arruaceiro_oponente[3])
-                                elif(teste_de_sorte<50): batalha(arruaceiro_oponente[4])
-                                elif(teste_de_sorte<55): batalha(arruaceiro_oponente[4])
-                                elif(teste_de_sorte<60): batalha(arruaceiro_oponente[5])
-                                elif(teste_de_sorte<70): batalha(arruaceiro_oponente[5])
-                                elif(teste_de_sorte<80): batalha(arruaceiro_oponente[6])
-                                elif(teste_de_sorte<90): batalha(arruaceiro_oponente[7])
-                                elif(teste_de_sorte<100): batalha(estudante_brigento[8])
+                                elif(teste_de_sorte[6]<30): batalha(arruaceiro_oponente[1])
+                                elif(teste_de_sorte[6]<35): batalha(arruaceiro_oponente[2])
+                                elif(teste_de_sorte[6]<40): batalha(arruaceiro_oponente[3])
+                                elif(teste_de_sorte[6]<45): batalha(arruaceiro_oponente[3])
+                                elif(teste_de_sorte[6]<50): batalha(arruaceiro_oponente[4])
+                                elif(teste_de_sorte[6]<55): batalha(arruaceiro_oponente[4])
+                                elif(teste_de_sorte[6]<60): batalha(arruaceiro_oponente[5])
+                                elif(teste_de_sorte[6]<70): batalha(arruaceiro_oponente[5])
+                                elif(teste_de_sorte[6]<80): batalha(arruaceiro_oponente[6])
+                                elif(teste_de_sorte[6]<90): batalha(arruaceiro_oponente[7])
+                                elif(teste_de_sorte[6]<100): batalha(estudante_brigento[8])
                                 if(aliado_jogador.status[6]<=0):break
                                 if booleana[5] == False:
                                     print ('Depois de derrubar o oponente, voce o interrogou...')
                                     time.sleep(2)
-                                    teste_de_sorte=random.randrange(100)
-                                    if teste_de_sorte<20: print(' - Pare! Nao sei de nada disso!')
-                                    elif teste_de_sorte<40: print(' - Esquema? Eu realmente nao sei!')
-                                    elif teste_de_sorte<60: print(' - Bandidos?! Cara nao quero saber disso!')
-                                    elif teste_de_sorte<80: print(' - Por favor, me deixe em paz, eu nao sei!')
-                                    elif teste_de_sorte<100: print(' - Nao me interessa seus assuntos, suma!')
+                                    teste_de_sorte[7]=random.randrange(100)
+                                    if teste_de_sorte[7]<20: print(' - Pare! Nao sei de nada disso!')
+                                    elif teste_de_sorte[7]<40: print(' - Esquema? Eu realmente nao sei!')
+                                    elif teste_de_sorte[7]<60: print(' - Bandidos?! Cara nao quero saber disso!')
+                                    elif teste_de_sorte[7]<80: print(' - Por favor, me deixe em paz, eu nao sei!')
+                                    elif teste_de_sorte[7]<100: print(' - Nao me interessa seus assuntos, suma!')
                             else:
                                 if acao_do_personagem=="pegar onibus" or acao_do_personagem=="onibus" or acao_do_personagem=="ir onibus" or acao_do_personagem=="ir de onibus" :
                                     if ponto_de_save==4: print ('Voce nao pode voltar, investigue mais por aqui!')
@@ -4993,6 +4988,7 @@ while 1:
                         print('Entrada invalida!\n')
 
 #-- Primeira parte... TUTORIAL--#
+        batalha(aliado_reserva)
         if(ponto_de_save==0):
             os.system("cls")
             escrever(0.02,"\nIniciando novo jogo...\n",1)
