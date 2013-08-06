@@ -296,10 +296,10 @@ def inventarioPersonagem():
             else:
                 acao_do_personagem = acao_do_personagem.lower()
                 if acao_do_personagem !="a" or acao_do_personagem !="b" or acao_do_personagem !="c" or acao_do_personagem !="d" or acao_do_personagem !="e" or acao_do_personagem !="f":
-                    if(acao_do_personagem=="voltar"):break
+                    if(acao_do_personagem=="voltar" or acao_do_personagem=="volta" or acao_do_personagem=="volt" or acao_do_personagem=="vol" or acao_do_personagem=="vo" or acao_do_personagem=="v" or acao_do_personagem=="votar" or acao_do_personagem=="vota"):break
                     print("ENTRADA INVALIDA!")
                     time.sleep(0.5)
-        if(acao_do_personagem=="voltar"):break
+        if(acao_do_personagem=="voltar" or acao_do_personagem=="volta" or acao_do_personagem=="volt" or acao_do_personagem=="vol" or acao_do_personagem=="vo" or acao_do_personagem=="v" or acao_do_personagem=="votar" or acao_do_personagem=="vota"):break
         if acao_do_personagem =="a":
             if(aliado_jogador.equipamento[0].nome!="Nada"):
                 print("\nNome: "+str(aliado_jogador.equipamento[0].nome)+"\nTipo: "+str(aliado_jogador.equipamento[0].tipo)+"\nAtaque: "+str(aliado_jogador.equipamento[0].status[0])+"\nDefesa: "+str(aliado_jogador.equipamento[0].status[1])+"\nAgilidade: "+str(aliado_jogador.equipamento[0].status[2])+"\nSorte: "+str(aliado_jogador.equipamento[0].status[3])+"\nVida: "+str(aliado_jogador.equipamento[0].status[5])+"\nReconstituicao: "+str(aliado_jogador.equipamento[0].status[4])+"\n")
@@ -488,7 +488,7 @@ def inventarioPersonagem():
                         print("O que deseja fazer? (usar, descartar ou voltar)")
                         acao_do_personagem=raw_input("-")
                         acao_do_personagem=acao_do_personagem.lower()
-                        if(acao_do_personagem=="usar"):
+                        if(acao_do_personagem=="usar" or acao_do_personagem=="usa" or acao_do_personagem=="us" or acao_do_personagem=="u" or acao_do_personagem=="uar" or acao_do_personagem=="ua"):
                             aliado_jogador.equipamento[6]=aliado_jogador.inventario[1][i]
                             statusMudanca(True,6)
                             print("\nVoce usou  "+str( aliado_jogador.inventario[1][i].nome)+"!\n")
@@ -501,7 +501,7 @@ def inventarioPersonagem():
                             aliado_jogador.inventario[1][i]=desequipado[6]
                             break
                         else:
-                            if(acao_do_personagem=="descartar"):
+                            if(acao_do_personagem=="descartar" or acao_do_personagem=="descarta" or acao_do_personagem=="descart" or acao_do_personagem=="descar" or acao_do_personagem=="desca" or acao_do_personagem=="desc" or acao_do_personagem=="des" or acao_do_personagem=="de" or acao_do_personagem=="d" or acao_do_personagem=="dscartar" or acao_do_personagem=="dscrtar" or acao_do_personagem=="dscrtr" or acao_do_personagem=="descartr" or acao_do_personagem=="descrtr" or acao_do_personagem=="dscartr" or acao_do_personagem=="descrtar"):
                                 while aliado_jogador.inventario[1][i].tipo!="inventario":
                                     print("\nTem certeza que deseja descartar? (sim ou nao)\n")
                                     acao_do_personagem=raw_input("-")
@@ -515,12 +515,12 @@ def inventarioPersonagem():
                                             print("\nENTRADA INVALIDA!\n")
                                             time.sleep(0.5)
                                 if(acao_do_personagem=="sim" or acao_do_personagem=="s" or acao_do_personagem=="si" or acao_do_personagem=="sm" or acao_do_personagem=="im" or acao_do_personagem=="ssim"):
-                                    print("\nVoce descartou"+str(aliado_jogador.inventario[1][i].nome)+"!\n")
+                                    print("\nVoce descartou "+str(aliado_jogador.inventario[1][i].nome)+"!\n")
                                     time.sleep(0.5)
                                     aliado_jogador.inventario[1][i]=desequipado[6]
                                     break
                             else:
-                                if(acao_do_personagem=="voltar"):
+                                if(acao_do_personagem=="voltar" or acao_do_personagem=="volta" or acao_do_personagem=="volt" or acao_do_personagem=="vol" or acao_do_personagem=="vo" or acao_do_personagem=="v" or acao_do_personagem=="votar" or acao_do_personagem=="vota"):
                                     break
                                 else:
                                     print("\nENTRADA INVALIDA!\n")
@@ -531,7 +531,7 @@ def inventarioPersonagem():
                         print("O que deseja fazer? (usar, descartar ou voltar)")
                         acao_do_personagem=raw_input("-")
                         acao_do_personagem=acao_do_personagem.lower()
-                        if(acao_do_personagem=="usar"):
+                        if(acao_do_personagem=="usar" or acao_do_personagem=="usa" or acao_do_personagem=="us" or acao_do_personagem=="u" or acao_do_personagem=="uar" or acao_do_personagem=="ua"):
                             print("\nVoce usou "+ str(aliado_jogador.inventario[1][i].nome)+"!\n")
                             if aliado_jogador.status[6]+aliado_jogador.inventario[1][i].status[6]<1.1*aliado_jogador.status[5]:
                                 print ('Voce recuperou '+str(aliado_jogador.inventario[1][i].status[6])+' pontos de vida!')
@@ -544,7 +544,7 @@ def inventarioPersonagem():
                             aliado_jogador.inventario[1][i]=desequipado[6]
                             break
                         else:
-                            if(acao_do_personagem=="descartar"):
+                            if(acao_do_personagem=="descartar" or acao_do_personagem=="descarta" or acao_do_personagem=="descart" or acao_do_personagem=="descar" or acao_do_personagem=="desca" or acao_do_personagem=="desc" or acao_do_personagem=="des" or acao_do_personagem=="de" or acao_do_personagem=="d" or acao_do_personagem=="dscartar" or acao_do_personagem=="dscrtar" or acao_do_personagem=="dscrtr" or acao_do_personagem=="descartr" or acao_do_personagem=="descrtr" or acao_do_personagem=="dscartr" or acao_do_personagem=="descrtar"):
                                 while 1:
                                     print("\nTem certeza que deseja descartar? (sim ou nao)\n")
                                     acao_do_personagem=raw_input("-")
@@ -558,12 +558,12 @@ def inventarioPersonagem():
                                             print("\nENTRADA INVALIDA!\n")
                                             time.sleep(0.5)
                                 if(acao_do_personagem=="sim" or acao_do_personagem=="s" or acao_do_personagem=="si" or acao_do_personagem=="sm" or acao_do_personagem=="im" or acao_do_personagem=="ssim"):
-                                    print("\nVoce descartou"+str(aliado_jogador.inventario[1][i].nome)+"!\n")
+                                    print("\nVoce descartou "+str(aliado_jogador.inventario[1][i].nome)+"!\n")
                                     time.sleep(0.5)
                                     aliado_jogador.inventario[1][i]=desequipado[6]
                                     break
                             else:
-                                if(acao_do_personagem=="voltar"):
+                                if(acao_do_personagem=="voltar" or acao_do_personagem=="volta" or acao_do_personagem=="volt" or acao_do_personagem=="vol" or acao_do_personagem=="vo" or acao_do_personagem=="v" or acao_do_personagem=="votar" or acao_do_personagem=="vota"):
                                     break
                                 else:
                                     print("\nENTRADA INVALIDA!\n")
@@ -574,7 +574,7 @@ def inventarioPersonagem():
                         print("O que deseja fazer? (equipar, descartar ou voltar)")
                         acao_do_personagem=raw_input("-")
                         acao_do_personagem=acao_do_personagem.lower()
-                        if(acao_do_personagem=="descartar"):
+                        if(acao_do_personagem=="descartar" or acao_do_personagem=="descarta" or acao_do_personagem=="descart" or acao_do_personagem=="descar" or acao_do_personagem=="desca" or acao_do_personagem=="desc" or acao_do_personagem=="des" or acao_do_personagem=="de" or acao_do_personagem=="d" or acao_do_personagem=="dscartar" or acao_do_personagem=="dscrtar" or acao_do_personagem=="dscrtr" or acao_do_personagem=="descartr" or acao_do_personagem=="descrtr" or acao_do_personagem=="dscartr" or acao_do_personagem=="descrtar"):
                             while 1:
                                 print("\nTem certeza que deseja descartar? (sim ou nao)\n")
                                 acao_do_personagem=raw_input("-")
@@ -588,12 +588,12 @@ def inventarioPersonagem():
                                         print("\nENTRADA INVALIDA!\n")
                                         time.sleep(0.5)
                             if(acao_do_personagem=="sim" or acao_do_personagem=="s" or acao_do_personagem=="si" or acao_do_personagem=="sm" or acao_do_personagem=="im" or acao_do_personagem=="ssim"):
-                                print("\nVoce descartou"+str(aliado_jogador.inventario[1][i].nome)+"!\n")
+                                print("\nVoce descartou "+str(aliado_jogador.inventario[1][i].nome)+"!\n")
                                 time.sleep(0.5)
                                 aliado_jogador.inventario[1][i]=desequipado[6]
                                 break
                         else:
-                            if(acao_do_personagem=="equipar"):#roupa[0], capa[1], luva[2], anel[3], maos[4], calcado[5]
+                            if(acao_do_personagem=="equipar" or acao_do_personagem=="equipa" or acao_do_personagem=="equip" or acao_do_personagem=="equi" or acao_do_personagem=="equ" or acao_do_personagem=="eq" or acao_do_personagem=="e" or acao_do_personagem=="eqipar" or acao_do_personagem=="equpar" or acao_do_personagem=="eqpar" or acao_do_personagem=="eqpa" or acao_do_personagem=="equipr" or acao_do_personagem=="equpr" or acao_do_personagem=="eqpr" or acao_do_personagem=="eqipar" or acao_do_personagem=="eqipr" or acao_do_personagem=="eqp" or acao_do_personagem=="equpa"):#roupa[0], capa[1], luva[2], anel[3], maos[4], calcado[5]
                                 if(aliado_jogador.inventario[1][i].tipo=="roupa"):
                                     statusMudanca(False,0)
                                     item_adicionado=aliado_jogador.equipamento[0]#reserva roupa anterior em item_adicionado
@@ -652,7 +652,7 @@ def inventarioPersonagem():
                                     print("voce nao pode equipar!")
                                     time.sleep(0.5)
                             else:
-                                if(acao_do_personagem=="voltar"):
+                                if(acao_do_personagem=="voltar" or acao_do_personagem=="volta" or acao_do_personagem=="volt" or acao_do_personagem=="vol" or acao_do_personagem=="vo" or acao_do_personagem=="v" or acao_do_personagem=="votar" or acao_do_personagem=="vota"):
                                     break
                                 else:
                                     print("\nENTRADA INVLIDA!\n")
@@ -726,11 +726,11 @@ def inventarioTroca(aliado_analisado):
             else:
                 acao_do_personagem = acao_do_personagem.lower()
                 if acao_do_personagem !="a" or acao_do_personagem !="b" or acao_do_personagem !="c" or acao_do_personagem !="d" or acao_do_personagem !="e" or acao_do_personagem !="f":
-                    if(acao_do_personagem=="voltar"):break
+                    if(acao_do_personagem=="voltar" or acao_do_personagem=="volta" or acao_do_personagem=="volt" or acao_do_personagem=="vol" or acao_do_personagem=="vo" or acao_do_personagem=="v" or acao_do_personagem=="votar" or acao_do_personagem=="vota"):break
                     print("ENTRADA INVALIDA!")
                     time.sleep(0.5)
                 else: print ('Desequipe sozinho antes de trocar.')
-        if(acao_do_personagem=="voltar"):break
+        if(acao_do_personagem=="voltar" or acao_do_personagem=="volta" or acao_do_personagem=="volt" or acao_do_personagem=="vol" or acao_do_personagem=="vo" or acao_do_personagem=="v" or acao_do_personagem=="votar" or acao_do_personagem=="vota"):break
         i=0
         while i<=29:
             if(i==acao_do_personagem):
@@ -750,10 +750,10 @@ def inventarioTroca(aliado_analisado):
                     if  aliado_analisado.identificacao==acao_do_personagem: print ('Nao se escolha! \nSe nao quer entregar para ninguem, simplesmente digite voltar!')
                     else: break
                 else:
-                    if(acao_do_personagem=="voltar"):break
+                    if(acao_do_personagem=="voltar" or acao_do_personagem=="volta" or acao_do_personagem=="volt" or acao_do_personagem=="vol" or acao_do_personagem=="vo" or acao_do_personagem=="v" or acao_do_personagem=="votar" or acao_do_personagem=="vota"):break
                     print("ENTRADA INVALIDA!")
                     time.sleep(0.5)
-            if(acao_do_personagem=="voltar"):break
+            if(acao_do_personagem=="voltar" or acao_do_personagem=="volta" or acao_do_personagem=="volt" or acao_do_personagem=="vol" or acao_do_personagem=="vo" or acao_do_personagem=="v" or acao_do_personagem=="votar" or acao_do_personagem=="vota"):break
             if acao_do_personagem==aliado_jogador.identificacao and aliado_jogador.disponivel==True:
                 item_adicionado=aliado_analisado.inventario[1][i]
                 variavel_para_comparar=0
@@ -848,10 +848,10 @@ def trocaPersonagem():
                 acao_do_personagem=int(acao_do_personagem)
                 break
             else:
-                if(acao_do_personagem=="voltar"):break
+                if(acao_do_personagem=="voltar" or acao_do_personagem=="volta" or acao_do_personagem=="volt" or acao_do_personagem=="vol" or acao_do_personagem=="vo" or acao_do_personagem=="v" or acao_do_personagem=="votar" or acao_do_personagem=="vota"):break
                 print("ENTRADA INVALIDA!")
                 time.sleep(0.5)
-        if(acao_do_personagem=="voltar"):break
+        if(acao_do_personagem=="voltar" or acao_do_personagem=="volta" or acao_do_personagem=="volt" or acao_do_personagem=="vol" or acao_do_personagem=="vo" or acao_do_personagem=="v" or acao_do_personagem=="votar" or acao_do_personagem=="vota"):break
         if acao_do_personagem==aliado_jogador.identificacao:
             print ("O que deseja fazer? (substituir, transferir dinheiro ou transferir item)")
             if acao_do_personagem=="substituir":
@@ -863,10 +863,10 @@ def trocaPersonagem():
                         acao_do_personagem=int(acao_do_personagem)
                         break
                     else:
-                        if(acao_do_personagem=="voltar"):break
+                        if(acao_do_personagem=="voltar" or acao_do_personagem=="volta" or acao_do_personagem=="volt" or acao_do_personagem=="vol" or acao_do_personagem=="vo" or acao_do_personagem=="v" or acao_do_personagem=="votar" or acao_do_personagem=="vota"):break
                         print("ENTRADA INVALIDA!")
                         time.sleep(0.5)
-                if(acao_do_personagem=="voltar"):break
+                if(acao_do_personagem=="voltar" or acao_do_personagem=="volta" or acao_do_personagem=="volt" or acao_do_personagem=="vol" or acao_do_personagem=="vo" or acao_do_personagem=="v" or acao_do_personagem=="votar" or acao_do_personagem=="vota"):break
                 if acao_do_personagem==aliado_reserva.identificacao and aliado_reserva.disponivel == True:
                     if aliado_jogador.identificacao==2:
                         aliado_garota=aliado_jogador
@@ -904,10 +904,10 @@ def trocaPersonagem():
                         acao_do_personagem=int(acao_do_personagem)
                         break
                     else:
-                        if(acao_do_personagem=="voltar"):break
+                        if(acao_do_personagem=="voltar" or acao_do_personagem=="volta" or acao_do_personagem=="volt" or acao_do_personagem=="vol" or acao_do_personagem=="vo" or acao_do_personagem=="v" or acao_do_personagem=="votar" or acao_do_personagem=="vota"):break
                         print("ENTRADA INVALIDA!")
                         time.sleep(0.5)
-                if(acao_do_personagem=="voltar"):break
+                if(acao_do_personagem=="voltar" or acao_do_personagem=="volta" or acao_do_personagem=="volt" or acao_do_personagem=="vol" or acao_do_personagem=="vo" or acao_do_personagem=="v" or acao_do_personagem=="votar" or acao_do_personagem=="vota"):break
                 if acao_do_personagem==aliado_reserva.identificacao:
                     while 1:
                         print ('Quanto? (digite um valor ou "voltar")')
@@ -921,10 +921,10 @@ def trocaPersonagem():
                             else:
                                 break
                         else:
-                            if(acao_do_personagem=="voltar"):break
+                            if(acao_do_personagem=="voltar" or acao_do_personagem=="volta" or acao_do_personagem=="volt" or acao_do_personagem=="vol" or acao_do_personagem=="vo" or acao_do_personagem=="v" or acao_do_personagem=="votar" or acao_do_personagem=="vota"):break
                             print("ENTRADA INVALIDA!")
                             time.sleep(0.5)
-                    if(acao_do_personagem=="voltar"):break
+                    if(acao_do_personagem=="voltar" or acao_do_personagem=="volta" or acao_do_personagem=="volt" or acao_do_personagem=="vol" or acao_do_personagem=="vo" or acao_do_personagem=="v" or acao_do_personagem=="votar" or acao_do_personagem=="vota"):break
                     aliado_jogador.dinheiro-=acao_do_personagem
                     aliado_reserva.dinheiro+=acao_do_personagem
                     print (str(aliado_jogador.nome)+' transferiu '+str(acao_do_personagem)+' Reais para '+str(aliado_reserva.nome)+'.')
@@ -941,10 +941,10 @@ def trocaPersonagem():
                             else:
                                 break
                         else:
-                            if(acao_do_personagem=="voltar"):break
+                            if(acao_do_personagem=="voltar" or acao_do_personagem=="volta" or acao_do_personagem=="volt" or acao_do_personagem=="vol" or acao_do_personagem=="vo" or acao_do_personagem=="v" or acao_do_personagem=="votar" or acao_do_personagem=="vota"):break
                             print("ENTRADA INVALIDA!")
                             time.sleep(0.5)
-                    if(acao_do_personagem=="voltar"):break
+                    if(acao_do_personagem=="voltar" or acao_do_personagem=="volta" or acao_do_personagem=="volt" or acao_do_personagem=="vol" or acao_do_personagem=="vo" or acao_do_personagem=="v" or acao_do_personagem=="votar" or acao_do_personagem=="vota"):break
                     aliado_jogador.dinheiro-=acao_do_personagem
                     aliado_garota.dinheiro+=acao_do_personagem
                     print (str(aliado_jogador.nome)+' transferiu '+str(acao_do_personagem)+' Reais para '+str(aliado_garota.nome)+'.')
@@ -961,10 +961,10 @@ def trocaPersonagem():
                             else:
                                 break
                         else:
-                            if(acao_do_personagem=="voltar"):break
+                            if(acao_do_personagem=="voltar" or acao_do_personagem=="volta" or acao_do_personagem=="volt" or acao_do_personagem=="vol" or acao_do_personagem=="vo" or acao_do_personagem=="v" or acao_do_personagem=="votar" or acao_do_personagem=="vota"):break
                             print("ENTRADA INVALIDA!")
                             time.sleep(0.5)
-                    if(acao_do_personagem=="voltar"):break
+                    if(acao_do_personagem=="voltar" or acao_do_personagem=="volta" or acao_do_personagem=="volt" or acao_do_personagem=="vol" or acao_do_personagem=="vo" or acao_do_personagem=="v" or acao_do_personagem=="votar" or acao_do_personagem=="vota"):break
                     aliado_jogador.dinheiro-=acao_do_personagem
                     aliado_headbanger.dinheiro+=acao_do_personagem
                     print (str(aliado_jogador.nome)+' transferiu '+str(acao_do_personagem)+' Reais para '+str(aliado_headbanger.nome)+'.')
@@ -989,10 +989,10 @@ def trocaPersonagem():
                         acao_do_personagem=int(acao_do_personagem)
                         break
                     else:
-                        if(acao_do_personagem=="voltar"):break
+                        if(acao_do_personagem=="voltar" or acao_do_personagem=="volta" or acao_do_personagem=="volt" or acao_do_personagem=="vol" or acao_do_personagem=="vo" or acao_do_personagem=="v" or acao_do_personagem=="votar" or acao_do_personagem=="vota"):break
                         print("ENTRADA INVALIDA!")
                         time.sleep(0.5)
-                if(acao_do_personagem=="voltar"):break
+                if(acao_do_personagem=="voltar" or acao_do_personagem=="volta" or acao_do_personagem=="volt" or acao_do_personagem=="vol" or acao_do_personagem=="vo" or acao_do_personagem=="v" or acao_do_personagem=="votar" or acao_do_personagem=="vota"):break
                 if acao_do_personagem==aliado_jogador.identificacao:
                     while 1:
                         print ('Quanto? (digite um valor ou "voltar")')
@@ -1006,10 +1006,10 @@ def trocaPersonagem():
                             else:
                                 break
                         else:
-                            if(acao_do_personagem=="voltar"):break
+                            if(acao_do_personagem=="voltar" or acao_do_personagem=="volta" or acao_do_personagem=="volt" or acao_do_personagem=="vol" or acao_do_personagem=="vo" or acao_do_personagem=="v" or acao_do_personagem=="votar" or acao_do_personagem=="vota"):break
                             print("ENTRADA INVALIDA!")
                             time.sleep(0.5)
-                    if(acao_do_personagem=="voltar"):break
+                    if(acao_do_personagem=="voltar" or acao_do_personagem=="volta" or acao_do_personagem=="volt" or acao_do_personagem=="vol" or acao_do_personagem=="vo" or acao_do_personagem=="v" or acao_do_personagem=="votar" or acao_do_personagem=="vota"):break
                     aliado_reserva.dinheiro-=acao_do_personagem
                     aliado_jogador.dinheiro+=acao_do_personagem
                     print (str(aliado_reserva.nome)+' transferiu '+str(acao_do_personagem)+' Reais para '+str(aliado_jogador.nome)+'.')
@@ -1026,10 +1026,10 @@ def trocaPersonagem():
                             else:
                                 break
                         else:
-                            if(acao_do_personagem=="voltar"):break
+                            if(acao_do_personagem=="voltar" or acao_do_personagem=="volta" or acao_do_personagem=="volt" or acao_do_personagem=="vol" or acao_do_personagem=="vo" or acao_do_personagem=="v" or acao_do_personagem=="votar" or acao_do_personagem=="vota"):break
                             print("ENTRADA INVALIDA!")
                             time.sleep(0.5)
-                    if(acao_do_personagem=="voltar"):break
+                    if(acao_do_personagem=="voltar" or acao_do_personagem=="volta" or acao_do_personagem=="volt" or acao_do_personagem=="vol" or acao_do_personagem=="vo" or acao_do_personagem=="v" or acao_do_personagem=="votar" or acao_do_personagem=="vota"):break
                     aliado_reserva.dinheiro-=acao_do_personagem
                     aliado_garota.dinheiro+=acao_do_personagem
                     print (str(aliado_reserva.nome)+' transferiu '+str(acao_do_personagem)+' Reais para '+str(aliado_garota.nome)+'.')
@@ -1046,10 +1046,10 @@ def trocaPersonagem():
                             else:
                                 break
                         else:
-                            if(acao_do_personagem=="voltar"):break
+                            if(acao_do_personagem=="voltar" or acao_do_personagem=="volta" or acao_do_personagem=="volt" or acao_do_personagem=="vol" or acao_do_personagem=="vo" or acao_do_personagem=="v" or acao_do_personagem=="votar" or acao_do_personagem=="vota"):break
                             print("ENTRADA INVALIDA!")
                             time.sleep(0.5)
-                    if(acao_do_personagem=="voltar"):break
+                    if(acao_do_personagem=="voltar" or acao_do_personagem=="volta" or acao_do_personagem=="volt" or acao_do_personagem=="vol" or acao_do_personagem=="vo" or acao_do_personagem=="v" or acao_do_personagem=="votar" or acao_do_personagem=="vota"):break
                     aliado_reserva.dinheiro-=acao_do_personagem
                     aliado_headbanger.dinheiro+=acao_do_personagem
                     print (str(aliado_reserva.nome)+' transferiu '+str(acao_do_personagem)+' Reais para '+str(aliado_headbanger.nome)+'.')
@@ -1077,10 +1077,10 @@ def trocaPersonagem():
                             acao_do_personagem=int(acao_do_personagem)
                             break
                         else:
-                            if(acao_do_personagem=="voltar"):break
+                            if(acao_do_personagem=="voltar" or acao_do_personagem=="volta" or acao_do_personagem=="volt" or acao_do_personagem=="vol" or acao_do_personagem=="vo" or acao_do_personagem=="v" or acao_do_personagem=="votar" or acao_do_personagem=="vota"):break
                             print("ENTRADA INVALIDA!")
                             time.sleep(0.5)
-                    if(acao_do_personagem=="voltar"):break
+                    if(acao_do_personagem=="voltar" or acao_do_personagem=="volta" or acao_do_personagem=="volt" or acao_do_personagem=="vol" or acao_do_personagem=="vo" or acao_do_personagem=="v" or acao_do_personagem=="votar" or acao_do_personagem=="vota"):break
                     i=0
                     while i<=29:
                         if(i==acao_do_personagem):
@@ -1096,10 +1096,10 @@ def trocaPersonagem():
                                 acao_do_personagem=int(acao_do_personagem)
                                 break
                             else:
-                                if(acao_do_personagem=="voltar"):break
+                                if(acao_do_personagem=="voltar" or acao_do_personagem=="volta" or acao_do_personagem=="volt" or acao_do_personagem=="vol" or acao_do_personagem=="vo" or acao_do_personagem=="v" or acao_do_personagem=="votar" or acao_do_personagem=="vota"):break
                                 print("ENTRADA INVALIDA!")
                                 time.sleep(0.5)
-                        if(acao_do_personagem=="voltar"):break
+                        if(acao_do_personagem=="voltar" or acao_do_personagem=="volta" or acao_do_personagem=="volt" or acao_do_personagem=="vol" or acao_do_personagem=="vo" or acao_do_personagem=="v" or acao_do_personagem=="votar" or acao_do_personagem=="vota"):break
                         if acao_do_personagem==aliado_jogador.identificacao:
                             item_adicionado=aliado_reserva.inventario[1][i]
                             variavel_para_comparar=0
@@ -1181,10 +1181,10 @@ def trocaPersonagem():
                         acao_do_personagem=int(acao_do_personagem)
                         break
                     else:
-                        if(acao_do_personagem=="voltar"):break
+                        if(acao_do_personagem=="voltar" or acao_do_personagem=="volta" or acao_do_personagem=="volt" or acao_do_personagem=="vol" or acao_do_personagem=="vo" or acao_do_personagem=="v" or acao_do_personagem=="votar" or acao_do_personagem=="vota"):break
                         print("ENTRADA INVALIDA!")
                         time.sleep(0.5)
-                if(acao_do_personagem=="voltar"):break
+                if(acao_do_personagem=="voltar" or acao_do_personagem=="volta" or acao_do_personagem=="volt" or acao_do_personagem=="vol" or acao_do_personagem=="vo" or acao_do_personagem=="v" or acao_do_personagem=="votar" or acao_do_personagem=="vota"):break
                 if acao_do_personagem==aliado_jogador.identificacao:
                     while 1:
                         print ('Quanto? (digite um valor ou "voltar")')
@@ -1198,10 +1198,10 @@ def trocaPersonagem():
                             else:
                                 break
                         else:
-                            if(acao_do_personagem=="voltar"):break
+                            if(acao_do_personagem=="voltar" or acao_do_personagem=="volta" or acao_do_personagem=="volt" or acao_do_personagem=="vol" or acao_do_personagem=="vo" or acao_do_personagem=="v" or acao_do_personagem=="votar" or acao_do_personagem=="vota"):break
                             print("ENTRADA INVALIDA!")
                             time.sleep(0.5)
-                    if(acao_do_personagem=="voltar"):break
+                    if(acao_do_personagem=="voltar" or acao_do_personagem=="volta" or acao_do_personagem=="volt" or acao_do_personagem=="vol" or acao_do_personagem=="vo" or acao_do_personagem=="v" or acao_do_personagem=="votar" or acao_do_personagem=="vota"):break
                     aliado_garota.dinheiro-=acao_do_personagem
                     aliado_jogador.dinheiro+=acao_do_personagem
                     print (str(aliado_garota.nome)+' transferiu '+str(acao_do_personagem)+' Reais para '+str(aliado_jogador.nome)+'.')
@@ -1218,10 +1218,10 @@ def trocaPersonagem():
                             else:
                                 break
                         else:
-                            if(acao_do_personagem=="voltar"):break
+                            if(acao_do_personagem=="voltar" or acao_do_personagem=="volta" or acao_do_personagem=="volt" or acao_do_personagem=="vol" or acao_do_personagem=="vo" or acao_do_personagem=="v" or acao_do_personagem=="votar" or acao_do_personagem=="vota"):break
                             print("ENTRADA INVALIDA!")
                             time.sleep(0.5)
-                    if(acao_do_personagem=="voltar"):break
+                    if(acao_do_personagem=="voltar" or acao_do_personagem=="volta" or acao_do_personagem=="volt" or acao_do_personagem=="vol" or acao_do_personagem=="vo" or acao_do_personagem=="v" or acao_do_personagem=="votar" or acao_do_personagem=="vota"):break
                     aliado_garota.dinheiro-=acao_do_personagem
                     aliado_reserva.dinheiro+=acao_do_personagem
                     print (str(aliado_garota.nome)+' transferiu '+str(acao_do_personagem)+' Reais para '+str(aliado_reserva.nome)+'.')
@@ -1238,10 +1238,10 @@ def trocaPersonagem():
                             else:
                                 break
                         else:
-                            if(acao_do_personagem=="voltar"):break
+                            if(acao_do_personagem=="voltar" or acao_do_personagem=="volta" or acao_do_personagem=="volt" or acao_do_personagem=="vol" or acao_do_personagem=="vo" or acao_do_personagem=="v" or acao_do_personagem=="votar" or acao_do_personagem=="vota"):break
                             print("ENTRADA INVALIDA!")
                             time.sleep(0.5)
-                    if(acao_do_personagem=="voltar"):break
+                    if(acao_do_personagem=="voltar" or acao_do_personagem=="volta" or acao_do_personagem=="volt" or acao_do_personagem=="vol" or acao_do_personagem=="vo" or acao_do_personagem=="v" or acao_do_personagem=="votar" or acao_do_personagem=="vota"):break
                     aliado_garota.dinheiro-=acao_do_personagem
                     aliado_headbanger.dinheiro+=acao_do_personagem
                     print (str(aliado_garota.nome)+' transferiu '+str(acao_do_personagem)+' Reais para '+str(aliado_headbanger.nome)+'.')
@@ -1266,10 +1266,10 @@ def trocaPersonagem():
                         acao_do_personagem=int(acao_do_personagem)
                         break
                     else:
-                        if(acao_do_personagem=="voltar"):break
+                        if(acao_do_personagem=="voltar" or acao_do_personagem=="volta" or acao_do_personagem=="volt" or acao_do_personagem=="vol" or acao_do_personagem=="vo" or acao_do_personagem=="v" or acao_do_personagem=="votar" or acao_do_personagem=="vota"):break
                         print("ENTRADA INVALIDA!")
                         time.sleep(0.5)
-                if(acao_do_personagem=="voltar"):break
+                if(acao_do_personagem=="voltar" or acao_do_personagem=="volta" or acao_do_personagem=="volt" or acao_do_personagem=="vol" or acao_do_personagem=="vo" or acao_do_personagem=="v" or acao_do_personagem=="votar" or acao_do_personagem=="vota"):break
                 if acao_do_personagem==aliado_jogador.identificacao:
                     while 1:
                         print ('Quanto? (digite um valor ou "voltar")')
@@ -1283,10 +1283,10 @@ def trocaPersonagem():
                             else:
                                 break
                         else:
-                            if(acao_do_personagem=="voltar"):break
+                            if(acao_do_personagem=="voltar" or acao_do_personagem=="volta" or acao_do_personagem=="volt" or acao_do_personagem=="vol" or acao_do_personagem=="vo" or acao_do_personagem=="v" or acao_do_personagem=="votar" or acao_do_personagem=="vota"):break
                             print("ENTRADA INVALIDA!")
                             time.sleep(0.5)
-                    if(acao_do_personagem=="voltar"):break
+                    if(acao_do_personagem=="voltar" or acao_do_personagem=="volta" or acao_do_personagem=="volt" or acao_do_personagem=="vol" or acao_do_personagem=="vo" or acao_do_personagem=="v" or acao_do_personagem=="votar" or acao_do_personagem=="vota"):break
                     aliado_headbanger.dinheiro-=acao_do_personagem
                     aliado_jogador.dinheiro+=acao_do_personagem
                     print (str(aliado_headbanger.nome)+' transferiu '+str(acao_do_personagem)+' Reais para '+str(aliado_jogador.nome)+'.')
@@ -1303,10 +1303,10 @@ def trocaPersonagem():
                             else:
                                 break
                         else:
-                            if(acao_do_personagem=="voltar"):break
+                            if(acao_do_personagem=="voltar" or acao_do_personagem=="volta" or acao_do_personagem=="volt" or acao_do_personagem=="vol" or acao_do_personagem=="vo" or acao_do_personagem=="v" or acao_do_personagem=="votar" or acao_do_personagem=="vota"):break
                             print("ENTRADA INVALIDA!")
                             time.sleep(0.5)
-                    if(acao_do_personagem=="voltar"):break
+                    if(acao_do_personagem=="voltar" or acao_do_personagem=="volta" or acao_do_personagem=="volt" or acao_do_personagem=="vol" or acao_do_personagem=="vo" or acao_do_personagem=="v" or acao_do_personagem=="votar" or acao_do_personagem=="vota"):break
                     aliado_headbanger.dinheiro-=acao_do_personagem
                     aliado_reserva.dinheiro+=acao_do_personagem
                     print (str(aliado_headbanger.nome)+' transferiu '+str(acao_do_personagem)+' Reais para '+str(aliado_reserva.nome)+'.')
@@ -1323,10 +1323,10 @@ def trocaPersonagem():
                             else:
                                 break
                         else:
-                            if(acao_do_personagem=="voltar"):break
+                            if(acao_do_personagem=="voltar" or acao_do_personagem=="volta" or acao_do_personagem=="volt" or acao_do_personagem=="vol" or acao_do_personagem=="vo" or acao_do_personagem=="v" or acao_do_personagem=="votar" or acao_do_personagem=="vota"):break
                             print("ENTRADA INVALIDA!")
                             time.sleep(0.5)
-                    if(acao_do_personagem=="voltar"):break
+                    if(acao_do_personagem=="voltar" or acao_do_personagem=="volta" or acao_do_personagem=="volt" or acao_do_personagem=="vol" or acao_do_personagem=="vo" or acao_do_personagem=="v" or acao_do_personagem=="votar" or acao_do_personagem=="vota"):break
                     aliado_headbanger.dinheiro-=acao_do_personagem
                     aliado_garota.dinheiro+=acao_do_personagem
                     print (str(aliado_headbanger.nome)+' transferiu '+str(acao_do_personagem)+' Reais para '+str(aliado_garota.nome)+'.')
@@ -1359,10 +1359,10 @@ def lojaVender():
                 break
             else:
                 acao_do_personagem=acao_do_personagem.lower()
-                if(acao_do_personagem=="voltar"):break
+                if(acao_do_personagem=="voltar" or acao_do_personagem=="volta" or acao_do_personagem=="volt" or acao_do_personagem=="vol" or acao_do_personagem=="vo" or acao_do_personagem=="v" or acao_do_personagem=="votar" or acao_do_personagem=="vota"):break
                 print("ENTRADA INVALIDA!")
                 time.sleep(0.5)
-        if(acao_do_personagem=="voltar"):break
+        if(acao_do_personagem=="voltar" or acao_do_personagem=="volta" or acao_do_personagem=="volt" or acao_do_personagem=="vol" or acao_do_personagem=="vo" or acao_do_personagem=="v" or acao_do_personagem=="votar" or acao_do_personagem=="vota"):break
         i=0
         while i<=29:
             if(i==acao_do_personagem):
@@ -1422,10 +1422,10 @@ def lojaComprar():
                 break
             else:
                 acao_do_personagem=acao_do_personagem.lower()
-                if(acao_do_personagem=="voltar"):break
+                if(acao_do_personagem=="voltar" or acao_do_personagem=="volta" or acao_do_personagem=="volt" or acao_do_personagem=="vol" or acao_do_personagem=="vo" or acao_do_personagem=="v" or acao_do_personagem=="votar" or acao_do_personagem=="vota"):break
                 print("ENTRADA INVALIDA!")
                 time.sleep(0.5)
-        if(acao_do_personagem=="voltar"):break
+        if(acao_do_personagem=="voltar" or acao_do_personagem=="volta" or acao_do_personagem=="volt" or acao_do_personagem=="vol" or acao_do_personagem=="vo" or acao_do_personagem=="v" or acao_do_personagem=="votar" or acao_do_personagem=="vota"):break
         i=0
         while i<=29:
             if(i==acao_do_personagem):
@@ -1459,10 +1459,10 @@ def lojaComprar():
                         break
                 else:
                     acao_do_personagem=acao_do_personagem.lower()
-                    if(acao_do_personagem=="voltar"):break
+                    if(acao_do_personagem=="voltar" or acao_do_personagem=="volta" or acao_do_personagem=="volt" or acao_do_personagem=="vol" or acao_do_personagem=="vo" or acao_do_personagem=="v" or acao_do_personagem=="votar" or acao_do_personagem=="vota"):break
                     print("ENTRADA INVALIDA!")
                     time.sleep(0.5)
-            if(acao_do_personagem=="voltar"):break
+            if(acao_do_personagem=="voltar" or acao_do_personagem=="volta" or acao_do_personagem=="volt" or acao_do_personagem=="vol" or acao_do_personagem=="vo" or acao_do_personagem=="v" or acao_do_personagem=="votar" or acao_do_personagem=="vota"):break
             while 1:
                 print("Ficou "+str(item_adicionado.preco*quantidade_adicionada*porcentagem_inflacao)+" Reais.")
                 print("Vai comprar mesmo?(sim ou nao)")
@@ -1633,10 +1633,10 @@ def inventarioBatalha():
                 acao_do_personagem=int(acao_do_personagem)
                 break
             else:
-                if(acao_do_personagem=="voltar"):break
+                if(acao_do_personagem=="voltar" or acao_do_personagem=="volta" or acao_do_personagem=="volt" or acao_do_personagem=="vol" or acao_do_personagem=="vo" or acao_do_personagem=="v" or acao_do_personagem=="votar" or acao_do_personagem=="vota"):break
                 print("ENTRADA INVALIDA!")
                 time.sleep(0.5)
-        if(acao_do_personagem=="voltar"):break
+        if(acao_do_personagem=="voltar" or acao_do_personagem=="volta" or acao_do_personagem=="volt" or acao_do_personagem=="vol" or acao_do_personagem=="vo" or acao_do_personagem=="v" or acao_do_personagem=="votar" or acao_do_personagem=="vota"):break
         i=0
         while i<=29:
             if(i==acao_do_personagem):
@@ -1649,7 +1649,7 @@ def inventarioBatalha():
                 print("O que deseja fazer? (usar ou voltar)")
                 acao_do_personagem=raw_input("-")
                 acao_do_personagem=acao_do_personagem.lower()
-                if(acao_do_personagem=="usar"):
+                if(acao_do_personagem=="usar" or acao_do_personagem=="usa" or acao_do_personagem=="us" or acao_do_personagem=="u" or acao_do_personagem=="uar" or acao_do_personagem=="ua"):
                     print("\nVoce usou "+ str(aliado_jogador.inventario[1][i].nome)+"!\n")
                     if aliado_jogador.status[6]+aliado_jogador.inventario[1][i].status[6]<1.1*aliado_jogador.status[5]:
                         print ('Voce recuperou '+str(aliado_jogador.inventario[1][i].status[6])+' pontos de vida!')
@@ -1664,7 +1664,7 @@ def inventarioBatalha():
                     raw_input("\n|>")
                     os.system('cls')
                     break
-                elif(acao_do_personagem=="voltar"):
+                elif(acao_do_personagem=="voltar" or acao_do_personagem=="volta" or acao_do_personagem=="volt" or acao_do_personagem=="vol" or acao_do_personagem=="vo" or acao_do_personagem=="v" or acao_do_personagem=="votar" or acao_do_personagem=="vota"):
                     os.system('cls')
                     break
                 else:
@@ -4976,8 +4976,48 @@ def ruaFaculdade():
                                                         print ('Nao entendi...')
                                     else:
                                         print('\nEntrada Invalida!\n')
-    
 
+#--Acoes Recorrentes--#
+def acoesRecorrentes(mala_pode, ficha_pode, save_pode, aleatorio_pode):
+    global narrador_inimigo, bebado_inimigo, mulher_prantos, mulher_toalha, mane_bone, senhor_doente, garoto_oponente, gangue_comparsa, arruaceiro_oponente, estudante_brigento, aliado_headbanger,Venda, Reserva_Venda,porcentagem_inflacao,bermuda_linho,calca_jeans,desequipado,pedaco_pizza, pizza_inteira,bolo_chocolate,equipamento_inicial,malha_ninja,punhal_envelhecido,talheres_prata,jaqueta_imitacao,jaqueta_couro,agasalho_la,suplemento_alimenticio,lata_energetico,soco_ingles,luva_luva,anel_magico,anel_da_imortalidade,anel_da_divindade,papetes_masculinas,tenis_calcado,sapato_simplorio,item_adicionado,quantidade_adicionada,variavel_cenario,objeto,situacao,booleana,variavel_lugar,ponto_de_save,mostrar_save, aliado_jogador,aliado_reserva, aliado_garota,adversario_inimigo,eegg,acao_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,variavel_para_comparar,contador_de_batalha,contador_de_rodadas
+    booleana[10]=False
+    if aleatorio_pode==True:
+        teste_de_sorte=random.randrange(1000)
+        if teste_de_sorte+aliado_jogador.status[3]*10>500:
+            escrever(0.03,"\nAntes que voce pudesse realizar sua acao, um garoto passou ao seu lado.",0.5)
+            while 1:
+                escrever(0.03,"\nVai aborda-lo?")
+                print("(sim ou nao)")
+                acao_do_personagem=raw_input('-')
+                if 'n' in acao_do_personagem and not 's' in acao_do_personagem: break
+                elif 's' in acao_do_personagem and not 'n' in acao_do_personagem:
+                    while 2:
+                        escrever(0.03,"\n - Opa, voce quer comprar um energetico?")
+                        print("(sim ou nao)")
+                        acao_do_personagem=raw_input('-')
+                        if 'n' in acao_do_personagem and not 's' in acao_do_personagem: break
+                        elif 's' in acao_do_personagem and not 'n' in acao_do_personagem:
+                            escrever(0.02,"\nVoce pagou guardou um energetico na mochila!\n")
+                            item_adicionado=lata_energetico[0]
+                            quantidade_adicionada=1
+                            adicionaItem()
+                    break
+                else: print("\nEntrada Invalida!\n")
+            escrever(0.03,"\nContinuando com a sua acao...")
+            raw_input("\n|>")
+            os.system('cls')
+    if mala_pode==True:
+        if(acao_do_personagem=="ver a bolsa" or acao_do_personagem=="ver inventario" or acao_do_personagem=="ver o inventario" or acao_do_personagem=="ver bolsa" or acao_do_personagem=="ver mochila" or acao_do_personagem=="ver mala" or acao_do_personagem=="ver a mochila" or acao_do_personagem=="ver a mala" or acao_do_personagem=="inventario" or acao_do_personagem=="inventario" or acao_do_personagem=="iventario" or acao_do_personagem=="iventario" or acao_do_personagem=="mochila" or acao_do_personagem=="mochla" or acao_do_personagem=="mala" or acao_do_personagem=="bolsa" or acao_do_personagem=="itens" or acao_do_personagem=="itens" or acao_do_personagem=="item"):
+            inventarioPersonagem()
+    if ficha_pode==True:
+        if(acao_do_personagem == "ver ficha do personagem" or acao_do_personagem == "ver a ficha do personagem" or acao_do_personagem == "ver a ficha de personagem" or acao_do_personagem == "ficha" or acao_do_personagem=="ficha do personagem" or acao_do_personagem=="ficha de personagem" or acao_do_personagem=="ver ficha de personagem" or acao_do_personagem=="ver ficha" or acao_do_personagem == "olhar ficha do personagem" or acao_do_personagem == "ver minha ficha" or acao_do_personagem=="minha ficha" or acao_do_personagem=="ficha personagem" or acao_do_personagem=="olhar ficha de personagem" or acao_do_personagem=="olhar ficha"):
+            print ("\n#"+"-"*77+"#\n"+"\n Nome: "+str(aliado_jogador.nome)+"\n Vida: "+str(aliado_jogador.status[6])+" de "+str(aliado_jogador.status[5])+" Reconstituicao: ".rjust(45-len(str(aliado_jogador.status[6]))-len(str(aliado_jogador.status[5])))+str(aliado_jogador.status[4])+"\n Ataque: "+str(aliado_jogador.status[0])+"Agilidade: ".rjust(42-len(str(aliado_jogador.status[0])))+str(aliado_jogador.status[2])+"\n Defesa: "+str(aliado_jogador.status[1])+"Sorte: ".rjust(38-len(str(aliado_jogador.status[1])))+str(aliado_jogador.status[3])+"\n Capa: "+str(aliado_jogador.equipamento[1].nome)+"Luvas: ".rjust(40-len(str(aliado_jogador.equipamento[1].nome)))+str(aliado_jogador.equipamento[2].nome)+"\n Roupa: "+str(aliado_jogador.equipamento[0].nome)+"Anel: ".rjust(38-len(str(aliado_jogador.equipamento[0].nome)))+str(aliado_jogador.equipamento[3].nome)+"\n Calcado: "+str(aliado_jogador.equipamento[5].nome)+"Arma: ".rjust(36-len(str(aliado_jogador.equipamento[5].nome)))+str(aliado_jogador.equipamento[4].nome)+"\n Dinheiro: "+str(aliado_jogador.dinheiro)+" Reais\n"+"\n#"+"-"*77+"#\n")
+            raw_input("\n|>")
+            os.system('cls')
+    if save_pode==True:
+        if(acao_do_personagem == "salvar o jogo" or acao_do_personagem=="guardar o jogo" or acao_do_personagem == "salvar jogo" or acao_do_personagem=="guardar jogo" or acao_do_personagem == "salvar" or acao_do_personagem == "save" or acao_do_personagem == "save game" or acao_do_personagem == "salvar o progresso" or acao_do_personagem == "salvar progresso" or acao_do_personagem == "guardar o progresso" or acao_do_personagem == "guardar progresso" or acao_do_personagem == "save progress" or acao_do_personagem == "salva" or acao_do_personagem == "sava" or acao_do_personagem == "slvar" or acao_do_personagem == "svar" or acao_do_personagem == "svr" or acao_do_personagem == "slvr" or acao_do_personagem == "sav" or acao_do_personagem == "sve" or acao_do_personagem == "sv" or acao_do_personagem == "salvar o game" or acao_do_personagem == "guardar o game" or acao_do_personagem == "salvar game" or acao_do_personagem == "guardar game"):
+            save()
+    if(acao_do_personagem=="ver a bolsa" or acao_do_personagem=="ver inventario" or acao_do_personagem=="ver o inventario" or acao_do_personagem=="ver bolsa" or acao_do_personagem=="ver mochila" or acao_do_personagem=="ver mala" or acao_do_personagem=="ver a mochila" or acao_do_personagem=="ver a mala" or acao_do_personagem=="inventario" or acao_do_personagem=="inventario" or acao_do_personagem=="iventario" or acao_do_personagem=="iventario" or acao_do_personagem=="mochila" or acao_do_personagem=="mochla" or acao_do_personagem=="mala" or acao_do_personagem=="bolsa" or acao_do_personagem=="itens" or acao_do_personagem=="itens" or acao_do_personagem=="item" or acao_do_personagem == "salvar o jogo" or acao_do_personagem=="guardar o jogo" or acao_do_personagem == "salvar jogo" or acao_do_personagem=="guardar jogo" or acao_do_personagem == "salvar" or acao_do_personagem == "save" or acao_do_personagem == "save game" or acao_do_personagem == "salvar o progresso" or acao_do_personagem == "salvar progresso" or acao_do_personagem == "guardar o progresso" or acao_do_personagem == "guardar progresso" or acao_do_personagem == "save progress" or acao_do_personagem == "salva" or acao_do_personagem == "sava" or acao_do_personagem == "slvar" or acao_do_personagem == "svar" or acao_do_personagem == "svr" or acao_do_personagem == "slvr" or acao_do_personagem == "sav" or acao_do_personagem == "sve" or acao_do_personagem == "sv" or acao_do_personagem == "salvar o game" or acao_do_personagem == "guardar o game" or acao_do_personagem == "salvar game" or acao_do_personagem == "guardar game" or acao_do_personagem == "ver ficha do personagem" or acao_do_personagem == "ver a ficha do personagem" or acao_do_personagem == "ver a ficha de personagem" or acao_do_personagem == "ficha" or acao_do_personagem=="ficha do personagem" or acao_do_personagem=="ficha de personagem" or acao_do_personagem=="ver ficha de personagem" or acao_do_personagem=="ver ficha" or acao_do_personagem == "olhar ficha do personagem" or acao_do_personagem == "ver minha ficha" or acao_do_personagem=="minha ficha" or acao_do_personagem=="ficha personagem" or acao_do_personagem=="olhar ficha de personagem" or acao_do_personagem=="olhar ficha"):booleana[10]=True
 
 #####################----------------------------__BRIGA DE ESTUDANTE__----------------------------#####################
 while 1:
