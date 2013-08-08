@@ -2809,6 +2809,7 @@ def ruasPerigosas(distancia_restante,periculosidade_ruas):
         print ('Sao 10 ruas perigosas de distancia ate a faculdade')
         time.sleep(3)
     while 0<distancia_restante:
+        if aliado_jogador.status[6]<=0: break
         if caminhada_perigosa>0:
             print ('Voce seguiu para a proxima rua! Faltam '+str(distancia_restante)+'!')
             adversario_inimigo.status[6]=adversario_inimigo.status[5]
@@ -2976,7 +2977,7 @@ def seuPredioQuartoAndar():
                     time.sleep(2)
                     print(" - Aqui esta o meu: ")
                     time.sleep(1)
-                    print("\n"+str(adversario_inimigo.nome)+": "+str(adversario_inimigo.status[5])+"pontos de vida.\nAtaque : "+str(adversario_inimigo.status[0])+".     Defesa : "+str(adversario_inimigo.status[1])+".\n")
+                    print("\n"+str(estudante_brigento[5].nome)+": "+str(estudante_brigento[5].status[5])+"pontos de vida.\nAtaque : "+str(estudante_brigento[5].status[0])+".     Defesa : "+str(estudante_brigento[5].status[1])+".\n")
                     time.sleep(2)
                     print('\nDeseja prosseguir com a luta?("sim" ou "nao")\n')
                     time.sleep(1)
@@ -3043,7 +3044,7 @@ def seuPredioQuartoAndar():
                         time.sleep(2)
                         print(" - Aqui esta o meu cartao: ")
                         time.sleep(1)
-                        print("\n"+str(adversario_inimigo.nome)+": "+str(adversario_inimigo.status[5])+"pontos de vida.\nAtaque : "+str(adversario_inimigo.status[0])+".     Defesa : "+str(adversario_inimigo.status[1])+".\n")
+                        print("\n"+str(estudante_brigento[6].nome)+": "+str(estudante_brigento[6].status[5])+"pontos de vida.\nAtaque : "+str(estudante_brigento[6].status[0])+".     Defesa : "+str(estudante_brigento[6].status[1])+".\n")
                         time.sleep(2)
                         print('\nDeseja prosseguir com a luta?("sim" ou "nao")\n')
                         time.sleep(1)
@@ -3119,7 +3120,7 @@ def seuPredioQuartoAndar():
                             time.sleep(2)
                             print(" - Veja: ")
                             time.sleep(1)
-                            print("\n"+str(adversario_inimigo.nome)+": "+str(adversario_inimigo.status[5])+"pontos de vida.\nAtaque : "+str(adversario_inimigo.status[0])+".     Defesa : "+str(adversario_inimigo.status[1])+".\n")
+                            print("\n"+str(estudante_brigento[7].nome)+": "+str(estudante_brigento[7].status[5])+"pontos de vida.\nAtaque : "+str(estudante_brigento[7].status[0])+".     Defesa : "+str(estudante_brigento[7].status[1])+".\n")
                             time.sleep(2)
                             print('\nDeseja prosseguir com a luta?("sim" ou "nao")\n')
                             time.sleep(1)
@@ -3193,7 +3194,7 @@ def seuPredioQuartoAndar():
                                 time.sleep(2)
                                 print(" - Mas vou te dar a honra de apreciar o meu cartao: ")
                                 time.sleep(1)
-                                print("\n"+str(adversario_inimigo.nome)+": "+str(adversario_inimigo.status[5])+"pontos de vida.\nAtaque : "+str(adversario_inimigo.status[0])+".     Defesa : "+str(adversario_inimigo.status[1])+".\n")
+                                print("\n"+str(estudante_brigento[8].nome)+": "+str(estudante_brigento[8].status[5])+"pontos de vida.\nAtaque : "+str(estudante_brigento[8].status[0])+".     Defesa : "+str(estudante_brigento[8].status[1])+".\n")
                                 time.sleep(2)
                                 print('\nDeseja prosseguir com a luta?("sim" ou "nao")\n')
                                 time.sleep(1)
@@ -3273,7 +3274,7 @@ def seuPredioQuartoAndar():
                                     time.sleep(2)
                                     print(" - Vamos logo ao que interessa: ")
                                     time.sleep(1)
-                                    print("\n"+str(adversario_inimigo.nome)+": "+str(adversario_inimigo.status[5])+"pontos de vida.\nAtaque : "+str(adversario_inimigo.status[0])+".     Defesa : "+str(adversario_inimigo.status[1])+".\n")
+                                    print("\n"+str(estudante_brigento[9].nome)+": "+str(estudante_brigento[9].status[5])+"pontos de vida.\nAtaque : "+str(estudante_brigento[9].status[0])+".     Defesa : "+str(estudante_brigento[9].status[1])+".\n")
                                     time.sleep(2)
                                     print('\nDeseja prosseguir com a luta?("sim" ou "nao")\n')
                                     time.sleep(1)
