@@ -289,7 +289,7 @@ while True:
                     if i<6: i+=1
                 print ("#"+"-"*77+"#\n")
                 print("Para analisar um item digite a sua posicao!\nPara voltar ao jogo digite voltar.")
-                acao_do_personagem = raw_input('-')
+                acao_do_personagem = raw_input('-').lower()
                 if acao_do_personagem =="a" or acao_do_personagem =="b" or acao_do_personagem =="c" or acao_do_personagem =="d" or acao_do_personagem =="e" or acao_do_personagem =="f":
                     os.system('cls')
                     break
@@ -309,8 +309,7 @@ while True:
                     print("\nNome: "+str(aliado_jogador.equipamento[0].nome)+"\nTipo: "+str(aliado_jogador.equipamento[0].tipo)+"\nAtaque: "+str(aliado_jogador.equipamento[0].status[0])+"\nDefesa: "+str(aliado_jogador.equipamento[0].status[1])+"\nAgilidade: "+str(aliado_jogador.equipamento[0].status[2])+"\nSorte: "+str(aliado_jogador.equipamento[0].status[3])+"\nVida: "+str(aliado_jogador.equipamento[0].status[5])+"\nReconstituicao: "+str(aliado_jogador.equipamento[0].status[4])+"\n")
                     while 1:
                         print ("Deseja desequipar? (sim ou nao)")
-                        acao_do_personagem=raw_input("-")
-                        acao_do_personagem=acao_do_personagem.lower()
+                        acao_do_personagem=raw_input("-").lower()
                         if(acao_do_personagem== "nao" or acao_do_personagem=="n" or acao_do_personagem=="ao" or acao_do_personagem=="no" or acao_do_personagem=="na" or acao_do_personagem== "naao" or acao_do_personagem=="naoo" or acao_do_personagem=="aoo" or acao_do_personagem=="noo" or acao_do_personagem=="naa" or acao_do_personagem== "noop" or acao_do_personagem=="a" or acao_do_personagem=="mao" or acao_do_personagem=="nso" or acao_do_personagem=="ns" or acao_do_personagem== "nnao" or acao_do_personagem=="nn" or acao_do_personagem=="aao" or acao_do_personagem=="nno" or acao_do_personagem=="nna"):
                             break
                         elif(acao_do_personagem=="sim" or acao_do_personagem=="s" or acao_do_personagem=="si" or acao_do_personagem=="sm" or acao_do_personagem=="im" or acao_do_personagem=="ssim"):
@@ -338,8 +337,7 @@ while True:
                     print("\nNome: "+str(aliado_jogador.equipamento[1].nome)+"\nTipo: "+str(aliado_jogador.equipamento[1].tipo)+"\nAtaque: "+str(aliado_jogador.equipamento[1].status[0])+"\nDefesa: "+str(aliado_jogador.equipamento[1].status[1])+"\nAgilidade: "+str(aliado_jogador.equipamento[1].status[2])+"\nSorte: "+str(aliado_jogador.equipamento[1].status[3])+"\nVida: "+str(aliado_jogador.equipamento[1].status[5])+"\nReconstituicao: "+str(aliado_jogador.equipamento[1].status[4])+"\n")
                     while 1:
                         print ("Deseja desequipar? (sim ou nao)")
-                        acao_do_personagem=raw_input("-")
-                        acao_do_personagem=acao_do_personagem.lower()
+                        acao_do_personagem=raw_input("-").lower()
                         if(acao_do_personagem== "nao" or acao_do_personagem=="n" or acao_do_personagem=="ao" or acao_do_personagem=="no" or acao_do_personagem=="na" or acao_do_personagem== "naao" or acao_do_personagem=="naoo" or acao_do_personagem=="aoo" or acao_do_personagem=="noo" or acao_do_personagem=="naa" or acao_do_personagem== "noop" or acao_do_personagem=="a" or acao_do_personagem=="mao" or acao_do_personagem=="nso" or acao_do_personagem=="ns" or acao_do_personagem== "nnao" or acao_do_personagem=="nn" or acao_do_personagem=="aao" or acao_do_personagem=="nno" or acao_do_personagem=="nna"):
                             break
                         elif(acao_do_personagem=="sim" or acao_do_personagem=="s" or acao_do_personagem=="si" or acao_do_personagem=="sm" or acao_do_personagem=="im" or acao_do_personagem=="ssim"):
@@ -367,8 +365,7 @@ while True:
                     print("\nNome: "+str(aliado_jogador.equipamento[2].nome)+"\nTipo: "+str(aliado_jogador.equipamento[2].tipo)+"\nAtaque: "+str(aliado_jogador.equipamento[2].status[0])+"\nDefesa: "+str(aliado_jogador.equipamento[2].status[1])+"\nAgilidade: "+str(aliado_jogador.equipamento[2].status[2])+"\nSorte: "+str(aliado_jogador.equipamento[2].status[3])+"\nVida: "+str(aliado_jogador.equipamento[2].status[5])+"\nReconstituicao: "+str(aliado_jogador.equipamento[2].status[4])+"\n")
                     while 1:
                         print ("Deseja desequipar? (sim ou nao)")
-                        acao_do_personagem=raw_input("-")
-                        acao_do_personagem=acao_do_personagem.lower()
+                        acao_do_personagem=raw_input("-").lower()
                         if(acao_do_personagem== "nao" or acao_do_personagem=="n" or acao_do_personagem=="ao" or acao_do_personagem=="no" or acao_do_personagem=="na" or acao_do_personagem== "naao" or acao_do_personagem=="naoo" or acao_do_personagem=="aoo" or acao_do_personagem=="noo" or acao_do_personagem=="naa" or acao_do_personagem== "noop" or acao_do_personagem=="a" or acao_do_personagem=="mao" or acao_do_personagem=="nso" or acao_do_personagem=="ns" or acao_do_personagem== "nnao" or acao_do_personagem=="nn" or acao_do_personagem=="aao" or acao_do_personagem=="nno" or acao_do_personagem=="nna"):
                             break
                         elif(acao_do_personagem=="sim" or acao_do_personagem=="s" or acao_do_personagem=="si" or acao_do_personagem=="sm" or acao_do_personagem=="im" or acao_do_personagem=="ssim"):
@@ -396,8 +393,7 @@ while True:
                     print("\nNome: "+str(aliado_jogador.equipamento[3].nome)+"\nTipo: "+str(aliado_jogador.equipamento[3].tipo)+"\nAtaque: "+str(aliado_jogador.equipamento[3].status[0])+"\nDefesa: "+str(aliado_jogador.equipamento[3].status[1])+"\nAgilidade: "+str(aliado_jogador.equipamento[3].status[2])+"\nSorte: "+str(aliado_jogador.equipamento[3].status[3])+"\nVida: "+str(aliado_jogador.equipamento[3].status[5])+"\nReconstituicao: "+str(aliado_jogador.equipamento[3].status[4])+"\n")
                     while 1:
                         print ("Deseja desequipar? (sim ou nao)")
-                        acao_do_personagem=raw_input("-")
-                        acao_do_personagem=acao_do_personagem.lower()
+                        acao_do_personagem=raw_input("-").lower()
                         if(acao_do_personagem== "nao" or acao_do_personagem=="n" or acao_do_personagem=="ao" or acao_do_personagem=="no" or acao_do_personagem=="na" or acao_do_personagem== "naao" or acao_do_personagem=="naoo" or acao_do_personagem=="aoo" or acao_do_personagem=="noo" or acao_do_personagem=="naa" or acao_do_personagem== "noop" or acao_do_personagem=="a" or acao_do_personagem=="mao" or acao_do_personagem=="nso" or acao_do_personagem=="ns" or acao_do_personagem== "nnao" or acao_do_personagem=="nn" or acao_do_personagem=="aao" or acao_do_personagem=="nno" or acao_do_personagem=="nna"):
                             break
                         elif(acao_do_personagem=="sim" or acao_do_personagem=="s" or acao_do_personagem=="si" or acao_do_personagem=="sm" or acao_do_personagem=="im" or acao_do_personagem=="ssim"):
@@ -425,8 +421,7 @@ while True:
                     print("\nNome: "+str(aliado_jogador.equipamento[4].nome)+"\nTipo: "+str(aliado_jogador.equipamento[4].tipo)+"\nAtaque: "+str(aliado_jogador.equipamento[4].status[0])+"\nDefesa: "+str(aliado_jogador.equipamento[4].status[1])+"\nAgilidade: "+str(aliado_jogador.equipamento[4].status[2])+"\nSorte: "+str(aliado_jogador.equipamento[4].status[3])+"\nVida: "+str(aliado_jogador.equipamento[4].status[5])+"\nReconstituicao: "+str(aliado_jogador.equipamento[4].status[4])+"\n")
                     while 1:
                         print ("Deseja desequipar? (sim ou nao)")
-                        acao_do_personagem=raw_input("-")
-                        acao_do_personagem=acao_do_personagem.lower()
+                        acao_do_personagem=raw_input("-").lower()
                         if(acao_do_personagem== "nao" or acao_do_personagem=="n" or acao_do_personagem=="ao" or acao_do_personagem=="no" or acao_do_personagem=="na" or acao_do_personagem== "naao" or acao_do_personagem=="naoo" or acao_do_personagem=="aoo" or acao_do_personagem=="noo" or acao_do_personagem=="naa" or acao_do_personagem== "noop" or acao_do_personagem=="a" or acao_do_personagem=="mao" or acao_do_personagem=="nso" or acao_do_personagem=="ns" or acao_do_personagem== "nnao" or acao_do_personagem=="nn" or acao_do_personagem=="aao" or acao_do_personagem=="nno" or acao_do_personagem=="nna"):
                             break
                         elif(acao_do_personagem=="sim" or acao_do_personagem=="s" or acao_do_personagem=="si" or acao_do_personagem=="sm" or acao_do_personagem=="im" or acao_do_personagem=="ssim"):
@@ -454,8 +449,7 @@ while True:
                     print("\nNome: "+str(aliado_jogador.equipamento[5].nome)+"\nTipo: "+str(aliado_jogador.equipamento[5].tipo)+"\nAtaque: "+str(aliado_jogador.equipamento[5].status[0])+"\nDefesa: "+str(aliado_jogador.equipamento[5].status[1])+"\nAgilidade: "+str(aliado_jogador.equipamento[5].status[2])+"\nSorte: "+str(aliado_jogador.equipamento[5].status[3])+"\nVida: "+str(aliado_jogador.equipamento[5].status[5])+"\nReconstituicao: "+str(aliado_jogador.equipamento[5].status[4])+"\n")
                     while 1:
                         print ("Deseja desequipar? (sim ou nao)")
-                        acao_do_personagem=raw_input("-")
-                        acao_do_personagem=acao_do_personagem.lower()
+                        acao_do_personagem=raw_input("-").lower()
                         if(acao_do_personagem== "nao" or acao_do_personagem=="n" or acao_do_personagem=="ao" or acao_do_personagem=="no" or acao_do_personagem=="na" or acao_do_personagem== "naao" or acao_do_personagem=="naoo" or acao_do_personagem=="aoo" or acao_do_personagem=="noo" or acao_do_personagem=="naa" or acao_do_personagem== "noop" or acao_do_personagem=="a" or acao_do_personagem=="mao" or acao_do_personagem=="nso" or acao_do_personagem=="ns" or acao_do_personagem== "nnao" or acao_do_personagem=="nn" or acao_do_personagem=="aao" or acao_do_personagem=="nno" or acao_do_personagem=="nna"):
                             break
                         elif(acao_do_personagem=="sim" or acao_do_personagem=="s" or acao_do_personagem=="si" or acao_do_personagem=="sm" or acao_do_personagem=="im" or acao_do_personagem=="ssim"):
@@ -490,8 +484,7 @@ while True:
                         print("\nNome: "+str(aliado_jogador.inventario[1][i].nome)+ "\nTipo: "+str(aliado_jogador.inventario[1][i].tipo)+"\nVida: "+str(aliado_jogador.inventario[1][i].status[5])+"\nAtaque: "+str(aliado_jogador.inventario[1][i].status[0])+"\nDefesa: "+str(aliado_jogador.inventario[1][i].status[1])+"\nAgilidade: "+str(aliado_jogador.inventario[1][i].status[2])+"\nSorte: "+str(aliado_jogador.inventario[1][i].status[3])+"\n")
                         while aliado_jogador.inventario[1][i].tipo!="inventario":
                             print("O que deseja fazer? (usar, descartar ou voltar)")
-                            acao_do_personagem=raw_input("-")
-                            acao_do_personagem=acao_do_personagem.lower()
+                            acao_do_personagem=raw_input("-").lower()
                             if(acao_do_personagem=="usar" or acao_do_personagem=="usa" or acao_do_personagem=="us" or acao_do_personagem=="u" or acao_do_personagem=="uar" or acao_do_personagem=="ua"):
                                 aliado_jogador.equipamento[6]=aliado_jogador.inventario[1][i]
                                 statusMudanca(True,6)
@@ -508,8 +501,7 @@ while True:
                                 if(acao_do_personagem=="descartar" or acao_do_personagem=="descarta" or acao_do_personagem=="descart" or acao_do_personagem=="descar" or acao_do_personagem=="desca" or acao_do_personagem=="desc" or acao_do_personagem=="des" or acao_do_personagem=="de" or acao_do_personagem=="d" or acao_do_personagem=="dscartar" or acao_do_personagem=="dscrtar" or acao_do_personagem=="dscrtr" or acao_do_personagem=="descartr" or acao_do_personagem=="descrtr" or acao_do_personagem=="dscartr" or acao_do_personagem=="descrtar"):
                                     while aliado_jogador.inventario[1][i].tipo!="inventario":
                                         print("\nTem certeza que deseja descartar? (sim ou nao)\n")
-                                        acao_do_personagem=raw_input("-")
-                                        acao_do_personagem=acao_do_personagem.lower()
+                                        acao_do_personagem=raw_input("-").lower()
                                         if(acao_do_personagem== "nao" or acao_do_personagem=="n" or acao_do_personagem=="ao" or acao_do_personagem=="no" or acao_do_personagem=="na" or acao_do_personagem== "naao" or acao_do_personagem=="naoo" or acao_do_personagem=="aoo" or acao_do_personagem=="noo" or acao_do_personagem=="naa" or acao_do_personagem== "noop" or acao_do_personagem=="a" or acao_do_personagem=="mao" or acao_do_personagem=="nso" or acao_do_personagem=="ns" or acao_do_personagem== "nnao" or acao_do_personagem=="nn" or acao_do_personagem=="aao" or acao_do_personagem=="nno" or acao_do_personagem=="nna"):
                                             break
                                         else:
@@ -533,8 +525,7 @@ while True:
                         print("\nNome: "+str(aliado_jogador.inventario[1][i].nome)+ "\nTipo: "+str(aliado_jogador.inventario[1][i].tipo)+"\nVida: "+str(aliado_jogador.inventario[1][i].status[6])+"\n")
                         while 1:
                             print("O que deseja fazer? (usar, descartar ou voltar)")
-                            acao_do_personagem=raw_input("-")
-                            acao_do_personagem=acao_do_personagem.lower()
+                            acao_do_personagem=raw_input("-").lower()
                             if(acao_do_personagem=="usar" or acao_do_personagem=="usa" or acao_do_personagem=="us" or acao_do_personagem=="u" or acao_do_personagem=="uar" or acao_do_personagem=="ua"):
                                 print("\nVoce usou "+ str(aliado_jogador.inventario[1][i].nome)+"!\n")
                                 if aliado_jogador.status[6]+aliado_jogador.inventario[1][i].status[6]<1.1*aliado_jogador.status[5]:
@@ -551,8 +542,7 @@ while True:
                                 if(acao_do_personagem=="descartar" or acao_do_personagem=="descarta" or acao_do_personagem=="descart" or acao_do_personagem=="descar" or acao_do_personagem=="desca" or acao_do_personagem=="desc" or acao_do_personagem=="des" or acao_do_personagem=="de" or acao_do_personagem=="d" or acao_do_personagem=="dscartar" or acao_do_personagem=="dscrtar" or acao_do_personagem=="dscrtr" or acao_do_personagem=="descartr" or acao_do_personagem=="descrtr" or acao_do_personagem=="dscartr" or acao_do_personagem=="descrtar"):
                                     while 1:
                                         print("\nTem certeza que deseja descartar? (sim ou nao)\n")
-                                        acao_do_personagem=raw_input("-")
-                                        acao_do_personagem=acao_do_personagem.lower()
+                                        acao_do_personagem=raw_input("-").lower()
                                         if(acao_do_personagem== "nao" or acao_do_personagem=="n" or acao_do_personagem=="ao" or acao_do_personagem=="no" or acao_do_personagem=="na" or acao_do_personagem== "naao" or acao_do_personagem=="naoo" or acao_do_personagem=="aoo" or acao_do_personagem=="noo" or acao_do_personagem=="naa" or acao_do_personagem== "noop" or acao_do_personagem=="a" or acao_do_personagem=="mao" or acao_do_personagem=="nso" or acao_do_personagem=="ns" or acao_do_personagem== "nnao" or acao_do_personagem=="nn" or acao_do_personagem=="aao" or acao_do_personagem=="nno" or acao_do_personagem=="nna"):
                                             break
                                         else:
@@ -576,13 +566,11 @@ while True:
                         print("\nNome: "+str(aliado_jogador.inventario[1][i].nome)+"\nTipo: "+str(aliado_jogador.inventario[1][i].tipo)+"\nAtaque: "+str(aliado_jogador.inventario[1][i].status[0])+"\nDefesa: "+str(aliado_jogador.inventario[1][i].status[1])+"\nAgilidade: "+str(aliado_jogador.inventario[1][i].status[2])+"\nSorte: "+str(aliado_jogador.inventario[1][i].status[3])+"\nVida: "+str(aliado_jogador.inventario[1][i].status[5])+"\nReconstituicao: "+str(aliado_jogador.inventario[1][i].status[4])+"\n")
                         while aliado_jogador.inventario[1][i].tipo!="inventario":
                             print("O que deseja fazer? (equipar, descartar ou voltar)")
-                            acao_do_personagem=raw_input("-")
-                            acao_do_personagem=acao_do_personagem.lower()
+                            acao_do_personagem=raw_input("-").lower()
                             if(acao_do_personagem=="descartar" or acao_do_personagem=="descarta" or acao_do_personagem=="descart" or acao_do_personagem=="descar" or acao_do_personagem=="desca" or acao_do_personagem=="desc" or acao_do_personagem=="des" or acao_do_personagem=="de" or acao_do_personagem=="d" or acao_do_personagem=="dscartar" or acao_do_personagem=="dscrtar" or acao_do_personagem=="dscrtr" or acao_do_personagem=="descartr" or acao_do_personagem=="descrtr" or acao_do_personagem=="dscartr" or acao_do_personagem=="descrtar"):
                                 while 1:
                                     print("\nTem certeza que deseja descartar? (sim ou nao)\n")
-                                    acao_do_personagem=raw_input("-")
-                                    acao_do_personagem=acao_do_personagem.lower()
+                                    acao_do_personagem=raw_input("-").lower()
                                     if(acao_do_personagem== "nao" or acao_do_personagem=="n" or acao_do_personagem=="ao" or acao_do_personagem=="no" or acao_do_personagem=="na" or acao_do_personagem== "naao" or acao_do_personagem=="naoo" or acao_do_personagem=="aoo" or acao_do_personagem=="noo" or acao_do_personagem=="naa" or acao_do_personagem== "noop" or acao_do_personagem=="a" or acao_do_personagem=="mao" or acao_do_personagem=="nso" or acao_do_personagem=="ns" or acao_do_personagem== "nnao" or acao_do_personagem=="nn" or acao_do_personagem=="aao" or acao_do_personagem=="nno" or acao_do_personagem=="nna"):
                                         break
                                     else:
@@ -1497,8 +1485,7 @@ while True:
         print('\nDeseja salvar seu progresso?("sim" ou "nao")\n')
         time.sleep(0.5)
         while 1:
-            acao_do_personagem = raw_input("-")
-            acao_do_personagem = acao_do_personagem.lower()
+            acao_do_personagem = raw_input("-").lower()
             if(acao_do_personagem=="sim" or acao_do_personagem=="s" or acao_do_personagem=="si" or acao_do_personagem=="sm" or acao_do_personagem=="im" or acao_do_personagem=="ssim"):
                 print("\nDeseja salvar em qual espaco?\n")
                 time.sleep(0.5)
@@ -1651,8 +1638,7 @@ while True:
                 print("\nNome: "+str(aliado_jogador.inventario[1][i].nome)+ "\nTipo: "+str(aliado_jogador.inventario[1][i].tipo)+"\nVida: "+str(aliado_jogador.inventario[1][i].status[6])+"\n")
                 while 1:
                     print("O que deseja fazer? (usar ou voltar)")
-                    acao_do_personagem=raw_input("-")
-                    acao_do_personagem=acao_do_personagem.lower()
+                    acao_do_personagem=raw_input("-").lower()
                     if(acao_do_personagem=="usar" or acao_do_personagem=="usa" or acao_do_personagem=="us" or acao_do_personagem=="u" or acao_do_personagem=="uar" or acao_do_personagem=="ua"):
                         print("\nVoce usou "+ str(aliado_jogador.inventario[1][i].nome)+"!\n")
                         if aliado_jogador.status[6]+aliado_jogador.inventario[1][i].status[6]<1.1*aliado_jogador.status[5]:
@@ -1828,8 +1814,7 @@ while True:
                 else: barra_jogador = "[!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!]"
                 print ("\n#"+"-"*77+"#\n"+'|'.center(79)+'\n'+str(aliado_jogador.nome)+' '*(39-len(str(aliado_jogador.nome)))+'|'+str(adversario_inimigo.nome).rjust(78-len(aliado_jogador.nome)-(39-len(str(aliado_jogador.nome))))+"\n"+str(barra_jogador)+' '*(39-len(str(barra_jogador)))+'|'+str(barra_inimigo).rjust(39)+"\n"+str(aliado_jogador.status[6])+' /'+str(aliado_jogador.status[5])+' '*(37-len(str(aliado_jogador.status[6]))-len(str(aliado_jogador.status[5])))+'|'+str(adversario_inimigo.status[6]).rjust(79-(39+len(str(adversario_inimigo.status[5]))+len(str(aliado_jogador.status[5]))))+' /'+str(adversario_inimigo.status[5])+"\n"+'|'.center(79)+"\n#"+"-"*77+"#\nO que voce fara agora, "+str(aliado_jogador.nome)+"?\nAtacar, defender, ver mochila, ver ficha do personagem ou fugir?")
                 time.sleep(0.15)
-                acao_do_personagem = raw_input("-")
-                acao_do_personagem = acao_do_personagem.lower()
+                acao_do_personagem = raw_input("-").lower()
                 os.system("cls")
                 if (acao_do_personagem == "ver ficha do personagem" or acao_do_personagem == "ver a ficha do personagem" or acao_do_personagem == "ver a ficha de personagem" or acao_do_personagem == "ficha" or acao_do_personagem=="ficha do personagem" or acao_do_personagem=="ficha de personagem" or acao_do_personagem=="ver ficha de personagem" or acao_do_personagem=="ver ficha" or acao_do_personagem == "olhar ficha do personagem" or acao_do_personagem == "ver minha ficha" or acao_do_personagem=="minha ficha" or acao_do_personagem=="ficha personagem" or acao_do_personagem=="olhar ficha de personagem" or acao_do_personagem=="olhar ficha"):
                     print ("\n#"+"-"*77+"#\n"+"\n Nome: "+str(aliado_jogador.nome)+"\n Vida: "+str(aliado_jogador.status[6])+" de "+str(aliado_jogador.status[5])+" Reconstituicao: ".rjust(45-len(str(aliado_jogador.status[6]))-len(str(aliado_jogador.status[5])))+str(aliado_jogador.status[4])+"\n Ataque: "+str(aliado_jogador.status[0])+"Agilidade: ".rjust(42-len(str(aliado_jogador.status[0])))+str(aliado_jogador.status[2])+"\n Defesa: "+str(aliado_jogador.status[1])+"Sorte: ".rjust(38-len(str(aliado_jogador.status[1])))+str(aliado_jogador.status[3])+"\n Capa: "+str(aliado_jogador.equipamento[1].nome)+"Luvas: ".rjust(40-len(str(aliado_jogador.equipamento[1].nome)))+str(aliado_jogador.equipamento[2].nome)+"\n Roupa: "+str(aliado_jogador.equipamento[0].nome)+"Anel: ".rjust(38-len(str(aliado_jogador.equipamento[0].nome)))+str(aliado_jogador.equipamento[3].nome)+"\n Calcado: "+str(aliado_jogador.equipamento[5].nome)+"Arma: ".rjust(36-len(str(aliado_jogador.equipamento[5].nome)))+str(aliado_jogador.equipamento[4].nome)+"\n Dinheiro: "+str(aliado_jogador.dinheiro)+" Reais\n"+"\n#"+"-"*77+"#\n")
@@ -2239,7 +2224,7 @@ while True:
                                                 print("\nSeus pontos de ataque subiram!\n")
                                                 time.sleep(2)
                                                 statusEquipamento(False,0)
-                                                aliado_jogador.status[0]=aliado_jogador.status[0]+(random.randrange(aliado_jogador.status[0])/2*(ponto_de_save+1)*0.75))+3
+                                                aliado_jogador.status[0]=aliado_jogador.status[0]+(random.randrange(aliado_jogador.status[0])/(2*(ponto_de_save+1)*0.75))+3
                                                 statusEquipamento(True,0)
                             else:#S_ataque(2aliado_jogador.status[0]) vs defesa(2adversario_inimigo.status[1])
                                 calculo_do_dano = 2*aliado_jogador.status[0]+int((random.randrange(aliado_jogador.status[0]))*0.35)-2*adversario_inimigo.status[1]-int((random.randrange(adversario_inimigo.status[1]))*0.35)
@@ -2701,8 +2686,7 @@ while True:
                             time.sleep(1)
                             batalha_escapar=""
                             while 1:
-                                batalha_escapar = raw_input('-')
-                                batalha_escapar = batalha_escapar.lower()
+                                batalha_escapar = raw_input('-').lower()
                                 if(batalha_escapar== "nao" or batalha_escapar=="n" or batalha_escapar=="ao" or batalha_escapar=="no" or batalha_escapar=="na" or batalha_escapar== "naao" or batalha_escapar=="naoo" or batalha_escapar=="aoo" or batalha_escapar=="noo" or batalha_escapar=="naa" or batalha_escapar== "noop" or batalha_escapar=="a" or batalha_escapar=="mao" or batalha_escapar=="nso" or batalha_escapar=="ns" or batalha_escapar== "nnao" or batalha_escapar=="nn" or batalha_escapar=="aao" or batalha_escapar=="nno" or batalha_escapar=="nna"): break
                                 if(batalha_escapar=="sim" or batalha_escapar=="s" or batalha_escapar=="si" or batalha_escapar=="sm" or batalha_escapar=="im" or batalha_escapar=="ssim"): break
                                 else: print('\nEntrada invalida! Digite "sim" ou "nao".\n')
@@ -2727,8 +2711,7 @@ while True:
                                         time.sleep(1)
                                         batalha_escapar=""
                                         while 1:
-                                            batalha_escapar = raw_input('-')
-                                            batalha_escapar = batalha_escapar.lower()
+                                            batalha_escapar = raw_input('-').lower()
                                             if(batalha_escapar== "nao" or batalha_escapar=="n" or batalha_escapar=="ao" or batalha_escapar=="no" or batalha_escapar=="na" or batalha_escapar== "naao" or batalha_escapar=="naoo" or batalha_escapar=="aoo" or batalha_escapar=="noo" or batalha_escapar=="naa" or batalha_escapar== "noop" or batalha_escapar=="a" or batalha_escapar=="mao" or batalha_escapar=="nso" or batalha_escapar=="ns" or batalha_escapar== "nnao" or batalha_escapar=="nn" or batalha_escapar=="aao" or batalha_escapar=="nno" or batalha_escapar=="nna"): break
                                             if(batalha_escapar=="sim" or batalha_escapar=="s" or batalha_escapar=="si" or batalha_escapar=="sm" or batalha_escapar=="im" or batalha_escapar=="ssim"): break
                                             else: print('\nEntrada invalida! Digite "sim" ou "nao".\n')
@@ -2804,6 +2787,17 @@ while True:
         os.system("cls")
 
     #--Ruas Perigosas--#
+    def pausaPerigosa():
+        print('Voce deu sorte, a rua esta vazia... \nQuer guardar seu progresso? \nQuando carregar voltara para o local anterior a caminhada!')
+        save()
+        while 1:
+            print('Deseja olhar a sua mochila?(sim ou nao)')
+            acao_do_personagem=raw_input('-').lower()
+            if 's' in acao_do_personagem and not 'n' in acao_do_personagem:
+                inventarioPersonagem()
+                break
+            elif 'n' in acao_do_personagem and not 's' in acao_do_personagem: break
+            else: print("Entrada Invalida!")
     def ruasPerigosas(distancia_restante,periculosidade_ruas):
         caminhada_perigosa=0
         if(ponto_de_save==3):
@@ -2824,44 +2818,35 @@ while True:
                 elif(teste_de_sorte[6]<30): batalha(estudante_brigento[1])
                 elif(teste_de_sorte[6]<40): batalha(arruaceiro_oponente[1])
                 elif(teste_de_sorte[6]<50): batalha(estudante_brigento[2])
-                elif(teste_de_sorte[6]<60): batalha(arruaceiro_oponente[2])
-                elif(teste_de_sorte[6]<70): batalha(estudante_brigento[3])
-                elif(teste_de_sorte[6]<80): batalha(arruaceiro_oponente[3])
-                elif(teste_de_sorte[6]<90): batalha(estudante_brigento[4])
-                elif(teste_de_sorte[6]<100): batalha(arruaceiro_oponente[4])
+                elif(teste_de_sorte[6]<60): batalha(estudante_brigento[3])
+                elif(teste_de_sorte[6]<70): batalha(estudante_brigento[4])
+                elif(teste_de_sorte[6]<100): pausaPerigosa()
             elif periculosidade_ruas<5 :
                 if(teste_de_sorte[6]<10): batalha(arruaceiro_oponente[0])
                 elif(teste_de_sorte[6]<20): batalha(arruaceiro_oponente[1])
                 elif(teste_de_sorte[6]<30): batalha(arruaceiro_oponente[2])
                 elif(teste_de_sorte[6]<40): batalha(arruaceiro_oponente[3])
-                elif(teste_de_sorte[6]<50): batalha(arruaceiro_oponente[3])
-                elif(teste_de_sorte[6]<60): batalha(arruaceiro_oponente[4])
-                elif(teste_de_sorte[6]<70): batalha(arruaceiro_oponente[5])
-                elif(teste_de_sorte[6]<80): batalha(estudante_brigento[1])
-                elif(teste_de_sorte[6]<90): batalha(estudante_brigento[2])
-                elif(teste_de_sorte[6]<100): batalha(estudante_brigento[3])
+                elif(teste_de_sorte[6]<50): batalha(arruaceiro_oponente[4])
+                elif(teste_de_sorte[6]<60): batalha(estudante_brigento[1])
+                elif(teste_de_sorte[6]<75): batalha(estudante_brigento[2])
+                elif(teste_de_sorte[6]<100): pausaPerigosa()
             elif periculosidade_ruas<7 :
                 if(teste_de_sorte[6]<10): batalha(arruaceiro_oponente[1])
                 elif(teste_de_sorte[6]<20): batalha(arruaceiro_oponente[2])
                 elif(teste_de_sorte[6]<30): batalha(arruaceiro_oponente[3])
                 elif(teste_de_sorte[6]<40): batalha(arruaceiro_oponente[4])
-                elif(teste_de_sorte[6]<50): batalha(arruaceiro_oponente[4])
-                elif(teste_de_sorte[6]<60): batalha(arruaceiro_oponente[5])
-                elif(teste_de_sorte[6]<70): batalha(arruaceiro_oponente[5])
-                elif(teste_de_sorte[6]<80): batalha(arruaceiro_oponente[6])
-                elif(teste_de_sorte[6]<90): batalha(arruaceiro_oponente[6])
-                elif(teste_de_sorte[6]<100): batalha(arruaceiro_oponente[7])
+                elif(teste_de_sorte[6]<50): batalha(arruaceiro_oponente[5])
+                elif(teste_de_sorte[6]<70): batalha(arruaceiro_oponente[6])
+                elif(teste_de_sorte[6]<80): batalha(arruaceiro_oponente[7])
+                elif(teste_de_sorte[6]<100): pausaPerigosa()
             elif periculosidade_ruas<9 :
                 if(teste_de_sorte[6]<10): batalha(arruaceiro_oponente[4])
                 elif(teste_de_sorte[6]<20): batalha(arruaceiro_oponente[5])
-                elif(teste_de_sorte[6]<30): batalha(arruaceiro_oponente[5])
-                elif(teste_de_sorte[6]<40): batalha(arruaceiro_oponente[6])
-                elif(teste_de_sorte[6]<50): batalha(arruaceiro_oponente[6])
-                elif(teste_de_sorte[6]<60): batalha(arruaceiro_oponente[7])
-                elif(teste_de_sorte[6]<70): batalha(arruaceiro_oponente[7])
-                elif(teste_de_sorte[6]<80): batalha(arruaceiro_oponente[8])
-                elif(teste_de_sorte[6]<90): batalha(arruaceiro_oponente[8])
-                elif(teste_de_sorte[6]<100): batalha(estudante_brigento[5])
+                elif(teste_de_sorte[6]<30): batalha(arruaceiro_oponente[6])
+                elif(teste_de_sorte[6]<50): batalha(arruaceiro_oponente[7])
+                elif(teste_de_sorte[6]<70): batalha(estudante_brigento[5])
+                elif(teste_de_sorte[6]<85): batalha(arruaceiro_oponente[8])
+                elif(teste_de_sorte[6]<100): pausaPerigosa()
             teste_de_sorte[7]=random.randrange(200)
             if(teste_de_sorte[7]<100+aliado_jogador.status[3]):
                 print ('O seu oponente deixou cair dinheiro no chao durante a luta!')
@@ -2950,13 +2935,11 @@ while True:
             print("\nver ficha do personagem\nver mochila\ndescer as escadas\n\nsalvar o jogo\n")
             print("\n#"+ "-"*30+"#\n")
             print("\nE agora, "+str(aliado_jogador.nome)+", o que voce vai fazer?\n")
-            acao_do_personagem = raw_input("-")
-            acao_do_personagem = acao_do_personagem.lower()
+            acao_do_personagem = raw_input("-").lower()
             os.system("cls")
             if(acao_do_personagem=="checar os quartos" or acao_do_personagem=="checar quartos" or acao_do_personagem=="checar" or acao_do_personagem=="quartos" or acao_do_personagem=="checaros quartos" or acao_do_personagem=="checar osquartos" or acao_do_personagem=="checarosquartos" or acao_do_personagem=="checa os quartos" or acao_do_personagem=="checa os quarto" or acao_do_personagem=="checa o quarto" or acao_do_personagem=="checa o quartos" or acao_do_personagem=="checar os quarto" or acao_do_personagem=="checar o quarto" or acao_do_personagem=="bater na porta de um dos quartos" or acao_do_personagem=="checar um dos quartos" or acao_do_personagem=="bater na porta dos quartos" or acao_do_personagem=="bater a porta dos quartos" or acao_do_personagem=="bater quartos" or acao_do_personagem=="bater"):
                 print("Qual dos quartos?(40, 41, 42, 43 ou 44)\n")
-                acao_do_personagem = raw_input("-")
-                acao_do_personagem = acao_do_personagem.lower()
+                acao_do_personagem = raw_input("-").lower()
                 if(acao_do_personagem!="40" and acao_do_personagem!="41" and acao_do_personagem!="42" and acao_do_personagem!="43" and acao_do_personagem!="44"):
                     acao_do_personagem="entrada invalida!"
             acoesRecorrentes(True,True,True,True)
@@ -2983,8 +2966,7 @@ while True:
                         print('\nDeseja prosseguir com a luta?("sim" ou "nao")\n')
                         time.sleep(1)
                         while 1:
-                            acao_do_personagem = raw_input("-")
-                            acao_do_personagem = acao_do_personagem.lower()
+                            acao_do_personagem = raw_input("-").lower()
                             if(acao_do_personagem== "nao" or acao_do_personagem=="n" or acao_do_personagem=="ao" or acao_do_personagem=="no" or acao_do_personagem=="na" or acao_do_personagem== "naao" or acao_do_personagem=="naoo" or acao_do_personagem=="aoo" or acao_do_personagem=="noo" or acao_do_personagem=="naa" or acao_do_personagem== "noop" or acao_do_personagem=="a" or acao_do_personagem=="mao" or acao_do_personagem=="nso" or acao_do_personagem=="ns" or acao_do_personagem== "nnao" or acao_do_personagem=="nn" or acao_do_personagem=="aao" or acao_do_personagem=="nno" or acao_do_personagem=="nna"):
                                 break
                             else:
@@ -2996,8 +2978,7 @@ while True:
                                             print(" - O que foi, desistiu?(sim ou nao)")
                                             time.sleep(1)
                                             while 1:
-                                                acao_do_personagem=raw_input("-")
-                                                acao_do_personagem = acao_do_personagem.lower()
+                                                acao_do_personagem=raw_input("-").lower()
                                                 if(acao_do_personagem== "nao" or acao_do_personagem=="n" or acao_do_personagem=="ao" or acao_do_personagem=="no" or acao_do_personagem=="na" or acao_do_personagem== "naao" or acao_do_personagem=="naoo" or acao_do_personagem=="aoo" or acao_do_personagem=="noo" or acao_do_personagem=="naa" or acao_do_personagem== "noop" or acao_do_personagem=="a" or acao_do_personagem=="mao" or acao_do_personagem=="nso" or acao_do_personagem=="ns" or acao_do_personagem== "nnao" or acao_do_personagem=="nn" or acao_do_personagem=="aao" or acao_do_personagem=="nno" or acao_do_personagem=="nna"):
                                                     print(" - Entao vamos voltar a lutar!")
                                                     time.sleep(2)
@@ -3006,8 +2987,7 @@ while True:
                                                     if(acao_do_personagem=="sim" or acao_do_personagem=="s" or acao_do_personagem=="si" or acao_do_personagem=="sm" or acao_do_personagem=="im" or acao_do_personagem=="ssim"):
                                                         print(" - Tem certeza?(sim ou nao) ... Se voce fugir, deixara METADE DE TODO O SEU DINHEIRO conosco!")
                                                         time.sleep(1)
-                                                        acao_do_personagem=raw_input("-")
-                                                        acao_do_personagem=acao_do_personagem.lower()
+                                                        acao_do_personagem=raw_input("-").lower()
                                                         if(acao_do_personagem=="sim" or acao_do_personagem=="s" or acao_do_personagem=="si" or acao_do_personagem=="sm" or acao_do_personagem=="im" or acao_do_personagem=="ssim"):
                                                             print(" - Muito obrigado pela colaboracao financeira! Ate outro dia, talvez...")
                                                             time.sleep(2)
@@ -3050,8 +3030,7 @@ while True:
                             print('\nDeseja prosseguir com a luta?("sim" ou "nao")\n')
                             time.sleep(1)
                             while 1:
-                                acao_do_personagem = raw_input("-")
-                                acao_do_personagem = acao_do_personagem.lower()
+                                acao_do_personagem = raw_input("-").lower()
                                 if(acao_do_personagem== "nao" or acao_do_personagem=="n" or acao_do_personagem=="ao" or acao_do_personagem=="no" or acao_do_personagem=="na" or acao_do_personagem== "naao" or acao_do_personagem=="naoo" or acao_do_personagem=="aoo" or acao_do_personagem=="noo" or acao_do_personagem=="naa" or acao_do_personagem== "noop" or acao_do_personagem=="a" or acao_do_personagem=="mao" or acao_do_personagem=="nso" or acao_do_personagem=="ns" or acao_do_personagem== "nnao" or acao_do_personagem=="nn" or acao_do_personagem=="aao" or acao_do_personagem=="nno" or acao_do_personagem=="nna"):
                                     break
                                 else:
@@ -3063,8 +3042,7 @@ while True:
                                                 print(" - O que ha? Vai cair fora mesmo???(sim ou nao)")
                                                 time.sleep(1)
                                                 while 1:
-                                                    acao_do_personagem = raw_input("-")
-                                                    acao_do_personagem = acao_do_personagem.lower()
+                                                    acao_do_personagem = raw_input("-").lower()
                                                     if(acao_do_personagem== "nao" or acao_do_personagem=="n" or acao_do_personagem=="ao" or acao_do_personagem=="no" or acao_do_personagem=="na" or acao_do_personagem== "naao" or acao_do_personagem=="naoo" or acao_do_personagem=="aoo" or acao_do_personagem=="noo" or acao_do_personagem=="naa" or acao_do_personagem== "noop" or acao_do_personagem=="a" or acao_do_personagem=="mao" or acao_do_personagem=="nso" or acao_do_personagem=="ns" or acao_do_personagem== "nnao" or acao_do_personagem=="nn" or acao_do_personagem=="aao" or acao_do_personagem=="nno" or acao_do_personagem=="nna"):
                                                         print(" - Entao cai dentro!!!")
                                                         time.sleep(2)
@@ -3073,8 +3051,7 @@ while True:
                                                         if(acao_do_personagem=="sim" or acao_do_personagem=="s" or acao_do_personagem=="si" or acao_do_personagem=="sm" or acao_do_personagem=="im" or acao_do_personagem=="ssim"):
                                                             print(" - E serio?(sim ou nao) ... Se voce fugir, deixara METADE DE TODO O SEU DINHEIRO conosco!")
                                                             time.sleep(1)
-                                                            acao_do_personagem=raw_input("-")
-                                                            acao_do_personagem=acao_do_personagem.lower()
+                                                            acao_do_personagem=raw_input("-").lower()
                                                             if(acao_do_personagem=="sim" or acao_do_personagem=="s" or acao_do_personagem=="si" or acao_do_personagem=="sm" or acao_do_personagem=="im" or acao_do_personagem=="ssim"):
                                                                 print(" - Hahaha! Voce nao e o primeiro que sai do desafio! Por que voce acha que tem um premio?")
                                                                 time.sleep(1)
@@ -3126,8 +3103,7 @@ while True:
                                 print('\nDeseja prosseguir com a luta?("sim" ou "nao")\n')
                                 time.sleep(1)
                                 while 1:
-                                    acao_do_personagem = raw_input("-")
-                                    acao_do_personagem = acao_do_personagem.lower()
+                                    acao_do_personagem = raw_input("-").lower()
                                     if(acao_do_personagem== "nao" or acao_do_personagem=="n" or acao_do_personagem=="ao" or acao_do_personagem=="no" or acao_do_personagem=="na" or acao_do_personagem== "naao" or acao_do_personagem=="naoo" or acao_do_personagem=="aoo" or acao_do_personagem=="noo" or acao_do_personagem=="naa" or acao_do_personagem== "noop" or acao_do_personagem=="a" or acao_do_personagem=="mao" or acao_do_personagem=="nso" or acao_do_personagem=="ns" or acao_do_personagem== "nnao" or acao_do_personagem=="nn" or acao_do_personagem=="aao" or acao_do_personagem=="nno" or acao_do_personagem=="nna"):
                                         break
                                     else:
@@ -3139,8 +3115,7 @@ while True:
                                                     print(" - Voce vai fugir?(sim ou nao) Humhumhumhum...")
                                                     time.sleep(1)
                                                     while 1:
-                                                        acao_do_personagem = raw_input("-")
-                                                        acao_do_personagem = acao_do_personagem.lower()
+                                                        acao_do_personagem = raw_input("-").lower()
                                                         if(acao_do_personagem== "nao" or acao_do_personagem=="n" or acao_do_personagem=="ao" or acao_do_personagem=="no" or acao_do_personagem=="na" or acao_do_personagem== "naao" or acao_do_personagem=="naoo" or acao_do_personagem=="aoo" or acao_do_personagem=="noo" or acao_do_personagem=="naa" or acao_do_personagem== "noop" or acao_do_personagem=="a" or acao_do_personagem=="mao" or acao_do_personagem=="nso" or acao_do_personagem=="ns" or acao_do_personagem== "nnao" or acao_do_personagem=="nn" or acao_do_personagem=="aao" or acao_do_personagem=="nno" or acao_do_personagem=="nna"):
                                                             print(" - Venha!!!")
                                                             time.sleep(2)
@@ -3149,8 +3124,7 @@ while True:
                                                             if(acao_do_personagem=="sim" or acao_do_personagem=="s" or acao_do_personagem=="si" or acao_do_personagem=="sm" or acao_do_personagem=="im" or acao_do_personagem=="ssim"):
                                                                 print(" - Voce vai mesmo?(sim ou nao) ... Se voce fugir, deixara METADE DE TODO O SEU DINHEIRO conosco!")
                                                                 time.sleep(1)
-                                                                acao_do_personagem=raw_input("-")
-                                                                acao_do_personagem=acao_do_personagem.lower()
+                                                                acao_do_personagem=raw_input("-").lower()
                                                                 if(acao_do_personagem=="sim" or acao_do_personagem=="s" or acao_do_personagem=="si" or acao_do_personagem=="sm" or acao_do_personagem=="im" or acao_do_personagem=="ssim"):
                                                                     print(" - Humhumhumhum... Fraco! Eu sempre soube que voce era fraco!")
                                                                     time.sleep(1)
@@ -3200,8 +3174,7 @@ while True:
                                     print('\nDeseja prosseguir com a luta?("sim" ou "nao")\n')
                                     time.sleep(1)
                                     while 1:
-                                        acao_do_personagem = raw_input("-")
-                                        acao_do_personagem = acao_do_personagem.lower()
+                                        acao_do_personagem = raw_input("-").lower()
                                         if(acao_do_personagem== "nao" or acao_do_personagem=="n" or acao_do_personagem=="ao" or acao_do_personagem=="no" or acao_do_personagem=="na" or acao_do_personagem== "naao" or acao_do_personagem=="naoo" or acao_do_personagem=="aoo" or acao_do_personagem=="noo" or acao_do_personagem=="naa" or acao_do_personagem== "noop" or acao_do_personagem=="a" or acao_do_personagem=="mao" or acao_do_personagem=="nso" or acao_do_personagem=="ns" or acao_do_personagem== "nnao" or acao_do_personagem=="nn" or acao_do_personagem=="aao" or acao_do_personagem=="nno" or acao_do_personagem=="nna"):
                                             break
                                         else:
@@ -3213,8 +3186,7 @@ while True:
                                                         print(" - ... Fugindo?(sim ou nao)")
                                                         time.sleep(1)
                                                         while 1:
-                                                            acao_do_personagem = raw_input("-")
-                                                            acao_do_personagem = acao_do_personagem.lower()
+                                                            acao_do_personagem = raw_input("-").lower()
                                                             if(acao_do_personagem== "nao" or acao_do_personagem=="n" or acao_do_personagem=="ao" or acao_do_personagem=="no" or acao_do_personagem=="na" or acao_do_personagem== "naao" or acao_do_personagem=="naoo" or acao_do_personagem=="aoo" or acao_do_personagem=="noo" or acao_do_personagem=="naa" or acao_do_personagem== "noop" or acao_do_personagem=="a" or acao_do_personagem=="mao" or acao_do_personagem=="nso" or acao_do_personagem=="ns" or acao_do_personagem== "nnao" or acao_do_personagem=="nn" or acao_do_personagem=="aao" or acao_do_personagem=="nno" or acao_do_personagem=="nna"):
                                                                 print(" - Voce vai MORRER!!!")
                                                                 time.sleep(2)
@@ -3223,8 +3195,7 @@ while True:
                                                                 if(acao_do_personagem=="sim" or acao_do_personagem=="s" or acao_do_personagem=="si" or acao_do_personagem=="sm" or acao_do_personagem=="im" or acao_do_personagem=="ssim"):
                                                                     print(" - Vai fugir mesmo, lixo?(sim ou nao) ... Se voce fugir, deixara METADE DE TODO O SEU DINHEIRO conosco!")
                                                                     time.sleep(1)
-                                                                    acao_do_personagem=raw_input("-")
-                                                                    acao_do_personagem=acao_do_personagem.lower()
+                                                                    acao_do_personagem=raw_input("-").lower()
                                                                     if(acao_do_personagem=="sim" or acao_do_personagem=="s" or acao_do_personagem=="si" or acao_do_personagem=="sm" or acao_do_personagem=="im" or acao_do_personagem=="ssim"):
                                                                         print(" - Sao os lixos como voce que pagaram o premio que NUNCA SERA SEU!")
                                                                         time.sleep(1)
@@ -3280,8 +3251,7 @@ while True:
                                         print('\nDeseja prosseguir com a luta?("sim" ou "nao")\n')
                                         time.sleep(1)
                                         while 1:
-                                            acao_do_personagem = raw_input("-")
-                                            acao_do_personagem = acao_do_personagem.lower()
+                                            acao_do_personagem = raw_input("-").lower()
                                             if(acao_do_personagem== "nao" or acao_do_personagem=="n" or acao_do_personagem=="ao" or acao_do_personagem=="no" or acao_do_personagem=="na" or acao_do_personagem== "naao" or acao_do_personagem=="naoo" or acao_do_personagem=="aoo" or acao_do_personagem=="noo" or acao_do_personagem=="naa" or acao_do_personagem== "noop" or acao_do_personagem=="a" or acao_do_personagem=="mao" or acao_do_personagem=="nso" or acao_do_personagem=="ns" or acao_do_personagem== "nnao" or acao_do_personagem=="nn" or acao_do_personagem=="aao" or acao_do_personagem=="nno" or acao_do_personagem=="nna"):
                                                 break
                                             else:
@@ -3293,8 +3263,7 @@ while True:
                                                             print(" - ... Vai abandonar a nossa luta?(sim ou nao)")
                                                             time.sleep(1)
                                                             while 1:
-                                                                acao_do_personagem = raw_input("-")
-                                                                acao_do_personagem = acao_do_personagem.lower()
+                                                                acao_do_personagem = raw_input("-").lower()
                                                                 if(acao_do_personagem== "nao" or acao_do_personagem=="n" or acao_do_personagem=="ao" or acao_do_personagem=="no" or acao_do_personagem=="na" or acao_do_personagem== "naao" or acao_do_personagem=="naoo" or acao_do_personagem=="aoo" or acao_do_personagem=="noo" or acao_do_personagem=="naa" or acao_do_personagem== "noop" or acao_do_personagem=="a" or acao_do_personagem=="mao" or acao_do_personagem=="nso" or acao_do_personagem=="ns" or acao_do_personagem== "nnao" or acao_do_personagem=="nn" or acao_do_personagem=="aao" or acao_do_personagem=="nno" or acao_do_personagem=="nna"):
                                                                     print(" - Desde o inicio, eu sabia que voce nao era qualquer um!")
                                                                     time.sleep(2)
@@ -3303,8 +3272,7 @@ while True:
                                                                     if(acao_do_personagem=="sim" or acao_do_personagem=="s" or acao_do_personagem=="si" or acao_do_personagem=="sm" or acao_do_personagem=="im" or acao_do_personagem=="ssim"):
                                                                         print(" - Certeza, vai abandonar a ultima luta?(sim ou nao) ... Se voce fugir, deixara METADE DE TODO O SEU DINHEIRO conosco!")
                                                                         time.sleep(1)
-                                                                        acao_do_personagem=raw_input("-")
-                                                                        acao_do_personagem=acao_do_personagem.lower()
+                                                                        acao_do_personagem=raw_input("-").lower()
                                                                         if(acao_do_personagem=="sim" or acao_do_personagem=="s" or acao_do_personagem=="si" or acao_do_personagem=="sm" or acao_do_personagem=="im" or acao_do_personagem=="ssim"):
                                                                             print(" - Recupere-se e treine mais!")
                                                                             time.sleep(1)
@@ -3407,14 +3375,12 @@ while True:
             print("\nver ficha do personagem\nver mochila\ndescer as escadas\n\nsalvar o jogo\n")
             print("\n#"+"-"*30+"#\n")
             print("\nE agora, "+str(aliado_jogador.nome)+", o que voce vai fazer?\n")
-            acao_do_personagem = raw_input("-")
-            acao_do_personagem = acao_do_personagem.lower()
+            acao_do_personagem = raw_input("-").lower()
             os.system("cls")
             if(acao_do_personagem=="checar os quartos" or acao_do_personagem=="checar quartos" or acao_do_personagem=="checar" or acao_do_personagem=="quartos" or acao_do_personagem=="checaros quartos" or acao_do_personagem=="checar osquartos" or acao_do_personagem=="checarosquartos" or acao_do_personagem=="checa os quartos" or acao_do_personagem=="checa os quarto" or acao_do_personagem=="checa o quarto" or acao_do_personagem=="checa o quartos" or acao_do_personagem=="checar os quarto" or acao_do_personagem=="checar o quarto" or acao_do_personagem=="bater na porta de um dos quartos" or acao_do_personagem=="checar um dos quartos" or acao_do_personagem=="bater na porta dos quartos" or acao_do_personagem=="bater a porta dos quartos" or acao_do_personagem=="bater quartos" or acao_do_personagem=="bater"):
                 print("Qual dos quartos?(30, 31, 32, 33 ou 34)\n")
                 time.sleep(1)
-                acao_do_personagem = raw_input("-")
-                acao_do_personagem = acao_do_personagem.lower()
+                acao_do_personagem = raw_input("-").lower()
                 if(acao_do_personagem!="30" and acao_do_personagem!="31" and acao_do_personagem!="32" and acao_do_personagem!="33" and acao_do_personagem!="34"):
                     acao_do_personagem="entrada invalida!"
             acoesRecorrentes(True,True,True,True)
@@ -3752,13 +3718,11 @@ while True:
             if(situacao[2]==1):
                 print("\narrombar o quarto 24")
             print("\nver ficha do personagem\nver mochila\nsubir as escadas\ndescer as escadas\n\nsalvar o jogo\n\n#"+"-"*30+"#\n\nE agora, "+str(aliado_jogador.nome)+", o que voce vai fazer?\n")
-            acao_do_personagem = raw_input("-")
-            acao_do_personagem = acao_do_personagem.lower()
+            acao_do_personagem = raw_input("-").lower()
             os.system("cls")
             if(acao_do_personagem=="checar os quartos" or acao_do_personagem=="checar quartos" or acao_do_personagem=="checar" or acao_do_personagem=="quartos" or acao_do_personagem=="checaros quartos" or acao_do_personagem=="checar osquartos" or acao_do_personagem=="checarosquartos" or acao_do_personagem=="checa os quartos" or acao_do_personagem=="checa os quarto" or acao_do_personagem=="checa o quarto" or acao_do_personagem=="checa o quartos" or acao_do_personagem=="checar os quarto" or acao_do_personagem=="checar o quarto" or acao_do_personagem=="bater na porta de um dos quartos" or acao_do_personagem=="checar um dos quartos" or acao_do_personagem=="bater na porta dos quartos" or acao_do_personagem=="bater a porta dos quartos" or acao_do_personagem=="bater quartos" or acao_do_personagem=="bater"):
                 print("Qual dos quartos?(20, 21, 22, 23 ou 24)\n")
-                acao_do_personagem = raw_input("-")
-                acao_do_personagem = acao_do_personagem.lower()
+                acao_do_personagem = raw_input("-").lower()
                 if(acao_do_personagem!="20" and acao_do_personagem!="21" and acao_do_personagem!="22" and acao_do_personagem!="23" and acao_do_personagem!="24"):
                     acao_do_personagem="entrada invalida!"
             acoesRecorrentes(True,True,True,True)
@@ -3780,8 +3744,7 @@ while True:
                             escrever(0.02,"Abrir a porta?")
                             print(" (sim ou nao)")
                             while 1:
-                                acao_do_personagem = raw_input("-")
-                                acao_do_personagem = acao_do_personagem.lower()
+                                acao_do_personagem = raw_input("-").lower()
                                 if(acao_do_personagem=="sim" or acao_do_personagem=="s" or acao_do_personagem=="si" or acao_do_personagem=="sm" or acao_do_personagem=="im" or acao_do_personagem=="ssim"):
                                     escrever(0.04,"Voce entrou, nao havia ninguem...\n",1)
                                     escrever(0.02,"Ao revistar o quarto voce encontrou 10 Reais!\n")
@@ -3948,8 +3911,7 @@ while True:
                                     escrever(0.02,"Sua mao apontava para um lugar dentro do quarto...\nVai ajudar o idoso?")
                                     print(" (sim ou nao)")
                                     while 1:
-                                        acao_do_personagem = raw_input("-")
-                                        acao_do_personagem = acao_do_personagem.lower()
+                                        acao_do_personagem = raw_input("-").lower()
                                         if(acao_do_personagem=="sim" or acao_do_personagem=="s" or acao_do_personagem=="si" or acao_do_personagem=="sm" or acao_do_personagem=="im" or acao_do_personagem=="ssim"):
                                             escrever(0.009,"Voce entrou no quarto, pegou a bombinha em cima da mesa \ne a apertou na boca do velho...\n",1)
                                             escrever(0.1," - Ah... Ah... ",0.5)
@@ -4011,8 +3973,7 @@ while True:
                                     escrever(0.02,"Voce vai dizer a ele que comeu a sua pizza?")
                                     print(" (sim ou nao)")
                                     while 1:
-                                        acao_do_personagem = raw_input("-")
-                                        acao_do_personagem = acao_do_personagem.lower()
+                                        acao_do_personagem = raw_input("-").lower()
                                         if(acao_do_personagem=="sim" or acao_do_personagem=="s" or acao_do_personagem=="si" or acao_do_personagem=="sm" or acao_do_personagem=="im" or acao_do_personagem=="ssim"):
                                             escrever(0.05," - ...",0.1)
                                             escrever(0.05," VOCE...\n",0.1)
@@ -4042,8 +4003,7 @@ while True:
                                     print(" (sim ou nao)")
                                     time.sleep(0.5)
                                     while 1:
-                                        acao_do_personagem = raw_input("-")
-                                        acao_do_personagem = acao_do_personagem.lower()
+                                        acao_do_personagem = raw_input("-").lower()
                                         if(acao_do_personagem=="sim" or acao_do_personagem=="s" or acao_do_personagem=="si" or acao_do_personagem=="sm" or acao_do_personagem=="im" or acao_do_personagem=="ssim"):
                                             escrever(0.02,"Voce guardou a pizza inteira na mochila!\n")
                                             item_adicionado=pizza_inteira[0]
@@ -4102,16 +4062,14 @@ while True:
                                                     if(situacao[2]==3): break
                                                     escrever(0.03,"Melhor nao continuar...")
                                                     print(" (sim ou nao)")
-                                                    acao_do_personagem=raw_input("-")
-                                                    acao_do_personagem=acao_do_personagem.lower()
+                                                    acao_do_personagem=raw_input("-").lower()
                                                     if(acao_do_personagem=="sim" or acao_do_personagem=="s" or acao_do_personagem=="si" or acao_do_personagem=="sm" or acao_do_personagem=="im" or acao_do_personagem=="ssim"):
                                                         while 2:
                                                             escrever(0.02,"Eu insisto... ",0.1)
                                                             escrever(0.02,"E melhor parar... ",0.1)
                                                             escrever(0.02,"Voce esta de cabeca quente...")
                                                             print(" (sim ou nao)")
-                                                            acao_do_personagem=raw_input("-")
-                                                            acao_do_personagem=acao_do_personagem.lower()
+                                                            acao_do_personagem=raw_input("-").lower()
                                                             if(acao_do_personagem=="sim" or acao_do_personagem=="s" or acao_do_personagem=="si" or acao_do_personagem=="sm" or acao_do_personagem=="im" or acao_do_personagem=="ssim"):
                                                                 raw_input("(Aperte ENTER)")
                                                                 raw_input("!!!!!!!!!!!!")
@@ -4175,8 +4133,7 @@ while True:
             print("\nver ficha do personagem\nver mochila\nsair do quarto\n")
             if(eegg > 1 and eegg<6): print("Voce nao deve:\nolhar a janela\n")
             print("#"+ "-"*30+"#\n\nE agora, "+str(aliado_jogador.nome)+", o que voce vai fazer?")
-            acao_do_personagem = raw_input("-")
-            acao_do_personagem = acao_do_personagem.lower()
+            acao_do_personagem = raw_input("-").lower()
             os.system("cls")
             acoesRecorrentes(True,True,False,False)
             if (acao_do_personagem== "vetir" or acao_do_personagem=="vest" or acao_do_personagem=="vesti" or acao_do_personagem=="veti" or acao_do_personagem=="estir" or acao_do_personagem=="esti" or acao_do_personagem=="etir" or acao_do_personagem == "vestir" or acao_do_personagem == "vesir" or acao_do_personagem == "vestir uniforme" or acao_do_personagem == "vestir o uniforme" or acao_do_personagem == "vestir o uniforme estudantil" or acao_do_personagem == "vestir uniforme estudantil" or acao_do_personagem == "se vestir" or acao_do_personagem == "se vestir para a aula" or acao_do_personagem == "se vestir pra aula" or acao_do_personagem == "vestir para a aula" or acao_do_personagem == "me arrumar" or acao_do_personagem == "tomar banho" or acao_do_personagem == "ir ao banheiro" or acao_do_personagem == "cagar" or acao_do_personagem == "mijar" or acao_do_personagem == "fazer xixi" or acao_do_personagem == "trocar de roupa" or acao_do_personagem == "me trocar" or acao_do_personagem == "trocar"):
@@ -4221,8 +4178,7 @@ while True:
                                     escrever(0.02,"\nVoce encontrou uma bela caixa de presente. \nVai abrir?")
                                     print(" (sim ou nao)")
                                     while 1:
-                                        acao_do_personagem = raw_input("-")
-                                        acao_do_personagem = acao_do_personagem.lower()
+                                        acao_do_personagem = raw_input("-").lower()
                                         if(acao_do_personagem=="sim" or acao_do_personagem=="s" or acao_do_personagem=="si" or acao_do_personagem=="sm" or acao_do_personagem=="im" or acao_do_personagem=="ssim"):
                                             escrever(0.03,"Voce desembalou o presente e...",2)
                                             escrever(0.01," Encontrou um par de Papetes Masculinas!\n",0.5)
@@ -4302,8 +4258,7 @@ while True:
                                             escrever(0.03,"Mas voce ve um pedaco de papel vermelho colocado entre as paginas de um \ndos livros...\nLer o bilhete??")
                                             print(" (sim ou nao)")
                                             while 1:
-                                                acao_do_personagem=raw_input("-")
-                                                acao_do_personagem=acao_do_personagem.lower()
+                                                acao_do_personagem=raw_input("-").lower()
                                                 if(acao_do_personagem=="sim" or acao_do_personagem=="s" or acao_do_personagem=="si" or acao_do_personagem=="sm" or acao_do_personagem=="im" or acao_do_personagem=="ssim"):
                                                     escrever(0.03,'\n "       Voce pode digitar seus comandos de outras formas, como por exemplo,\n'+"\nao inves de digitar 'ver mochila' voce pode simplesmente digitar 'mala'!\n"+'\nTente sempre digitar da forma mais simples, isso facilitara muito o seu jogo!\n\nNao custa nada tentar! ;)\n\n                               assinado: Programador "\n')
                                                     break
@@ -4327,8 +4282,7 @@ while True:
                                                 time.sleep(5)
                                                 os.system('cls')
                                                 while 1:
-                                                    acao_do_personagem = raw_input("")
-                                                    acao_do_personagem = acao_do_personagem.lower()
+                                                    acao_do_personagem = raw_input("").lower()
                                                     if(acao_do_personagem=="reconstruir o universo" or acao_do_personagem == "reconstruir universo" or acao_do_personagem == "construir o universo" or acao_do_personagem == "criar um novo universo" or acao_do_personagem == "construir um universo" or acao_do_personagem == "criar o universo"):
                                                         break
                                                     os.system('cls')
@@ -4375,14 +4329,12 @@ while True:
             if (objeto[0] == "sim"):
                 print("\nabrir a porta dos fundos")
             print("\nver ficha do personagem\nver mochila\nsubir as escadas\ndescer as escadas\n\nsalvar o jogo\n"+"\n#"+"-"*30+"#\n\nO que voce fara agora, "+str(aliado_jogador.nome)+"?\n")
-            acao_do_personagem = raw_input("-")
-            acao_do_personagem = acao_do_personagem.lower()
+            acao_do_personagem = raw_input("-").lower()
             os.system("cls")
             acoesRecorrentes(True,True,True,True)
             if(acao_do_personagem=="checar os quartos" or acao_do_personagem=="checar quartos" or acao_do_personagem=="checar" or acao_do_personagem=="quartos" or acao_do_personagem=="checaros quartos" or acao_do_personagem=="checar osquartos" or acao_do_personagem=="checarosquartos" or acao_do_personagem=="checa os quartos" or acao_do_personagem=="checa os quarto" or acao_do_personagem=="checa o quarto" or acao_do_personagem=="checa o quartos" or acao_do_personagem=="checar os quarto" or acao_do_personagem=="checar o quarto" or acao_do_personagem=="bater na porta de um dos quartos" or acao_do_personagem=="checar um dos quartos" or acao_do_personagem=="bater na porta dos quartos" or acao_do_personagem=="bater a porta dos quartos" or acao_do_personagem=="bater quartos" or acao_do_personagem=="bater"):
                 print("Qual dos quartos?(10, 11, 12 ou 14)\n")
-                acao_do_personagem = raw_input("-")
-                acao_do_personagem = acao_do_personagem.lower()
+                acao_do_personagem = raw_input("-").lower()
                 if(acao_do_personagem!="10" and acao_do_personagem!="11" and acao_do_personagem!="12" and acao_do_personagem!="13" and acao_do_personagem!="14"):
                     acao_do_personagem="entrada invalida!"
             if(acao_do_personagem == "olhar" or acao_do_personagem == "ver" or acao_do_personagem == "olhar o quarto" or acao_do_personagem == "olha" or acao_do_personagem == "olhar quarto" or acao_do_personagem == "olha quarto" or acao_do_personagem == "olhar o quarto" or acao_do_personagem == "olha o quarto" or acao_do_personagem == "ve" or acao_do_personagem == "ve"):
@@ -4463,8 +4415,7 @@ while True:
                                 while 1:
                                     escrever(0.02,"Vai entrar e comer um pedaco de bolo?")
                                     print(" (sim ou nao)")
-                                    acao_do_personagem=raw_input('-')
-                                    acao_do_personagem=acao_do_personagem.lower()
+                                    acao_do_personagem=raw_input('-').lower()
                                     os.system('cls')
                                     if "n" in acao_do_personagem and not "s" in acao_do_personagem:
                                         escrever(0.02,"Voce recusou o convite...\n")
@@ -4645,8 +4596,7 @@ while True:
                                                                                 while 1:
                                                                                     escrever(0.03,"\nDo lado de fora ha um oponente MUITO forte.\nTem certeza que esta pronto para sair?")
                                                                                     print(" (sim ou nao)")
-                                                                                    acao_do_personagem=raw_input("-")
-                                                                                    acao_do_personagem=acao_do_personagem.lower()
+                                                                                    acao_do_personagem=raw_input("-").lower()
                                                                                     if(acao_do_personagem=="sim" or acao_do_personagem=="s" or acao_do_personagem=="si" or acao_do_personagem=="sm" or acao_do_personagem=="im" or acao_do_personagem=="ssim"):
                                                                                         acao_do_personagem="sim"
                                                                                         break
@@ -4676,15 +4626,13 @@ while True:
             print("\nentrar na loja\n\nentrar na pizzaria\n")
             print("\nentrar no predio\n\nver ficha do personagem\nver mochila\n\npegar onibus\nir a pe\n\nsalvar o jogo\n"+"\n#"+"-"*30+"#\n")
             print("\nQual sera a sua atitude, "+str(aliado_jogador.nome)+"?\n")
-            acao_do_personagem = raw_input("-")
-            acao_do_personagem = acao_do_personagem.lower()
+            acao_do_personagem = raw_input("-").lower()
             os.system("cls")
             acoesRecorrentes(True,True,True,True)
             if(acao_do_personagem=="entrar na loja" or acao_do_personagem=="loja" or acao_do_personagem=="entrar loja" or acao_do_personagem=="entrar a loja" or acao_do_personagem=="entra na loja" or acao_do_personagem=="lloja" or acao_do_personagem=="entra loja" or acao_do_personagem=="entra a loja" or acao_do_personagem=="etrar na loja" or acao_do_personagem=="lojja" or acao_do_personagem=="etrar loja" or acao_do_personagem=="etrar a loja" or acao_do_personagem=="etra na loja" or acao_do_personagem=="llojja" or acao_do_personagem=="etra loja" or acao_do_personagem=="etra a loja"):
                 while 2:
                     print("\nVai comprar, vender ou sair?")
-                    acao_do_personagem=raw_input("-")
-                    acao_do_personagem=acao_do_personagem.lower()
+                    acao_do_personagem=raw_input("-").lower()
                     if(acao_do_personagem=="comprar"):
                         porcentagem_inflacao=1
                         Venda.inventario[1][0]=bermuda_linho[0]
@@ -4748,8 +4696,7 @@ while True:
                                 if aliado_jogador.dinheiro>=5:
                                     while 5:
                                         print ('Voce ira de onibus? (sim ou nao)')
-                                        acao_do_personagem=raw_input("-")
-                                        acao_do_personagem=acao_do_personagem.lower()
+                                        acao_do_personagem=raw_input("-").lower()
                                         if(acao_do_personagem=="sim" or acao_do_personagem=="s" or acao_do_personagem=="si" or acao_do_personagem=="sm" or acao_do_personagem=="im" or acao_do_personagem=="ssim"):
                                             if(ponto_de_save==3):
                                                 for i in range(3):
@@ -4771,8 +4718,7 @@ while True:
                                 if acao_do_personagem=='ir a pe' or acao_do_personagem=='ir pe' or acao_do_personagem=='ir andando' or acao_do_personagem=='sair' or acao_do_personagem=='ir pra escola' or acao_do_personagem=='ir a escola' or acao_do_personagem=='ir para a escola' or acao_do_personagem=='ir a aula' or acao_do_personagem=='ir para a aula' or acao_do_personagem=='ir pra aula' or acao_do_personagem=='ir pra fatec' or acao_do_personagem=='ir para a fatec' or acao_do_personagem=='ir a fatec' or acao_do_personagem=='fatec' or acao_do_personagem=='ir pra facul' or acao_do_personagem=='ir para a faculdade' or acao_do_personagem=='ir pra faculdade' or acao_do_personagem=='ir a faculdade' or acao_do_personagem=='ir para faculdade' or acao_do_personagem=='pe' or acao_do_personagem=='ir para a proxima rua' or acao_do_personagem=='andando' or acao_do_personagem=='ir caminhando' or acao_do_personagem=='caminhando':
                                     while 9:
                                         print ('Voce ira a pe? (sim ou nao)')
-                                        acao_do_personagem=raw_input("-")
-                                        acao_do_personagem=acao_do_personagem.lower()
+                                        acao_do_personagem=raw_input("-").lower()
                                         if(acao_do_personagem=="sim" or acao_do_personagem=="s" or acao_do_personagem=="si" or acao_do_personagem=="sm" or acao_do_personagem=="im" or acao_do_personagem=="ssim"):
                                             if(ponto_de_save==3):
                                                 ruasPerigosas(10,1)
@@ -4806,8 +4752,7 @@ while True:
             if ponto_de_save==4: print("\nver ficha do personagem\nver mochila\n\nsalvar o jogo\n"+"\n#"+"-"*30+"#\n")
             else: print("\nentrar na faculdade\n\nver ficha do personagem\nver mochila\n\npegar onibus\nir a pe\n\nsalvar o jogo\n"+"\n#"+"-"*30+"#\n")
             print("\n"+str(aliado_jogador.nome)+", o que pretende fazer?\n")
-            acao_do_personagem = raw_input("-")
-            acao_do_personagem = acao_do_personagem.lower()
+            acao_do_personagem = raw_input("-").lower()
             os.system("cls")
             acoesRecorrentes(True,True,True,True)
             if "fac" in acao_do_personagem or "fatec" in acao_do_personagem or "universidade" in acao_do_personagem: suaFaculdade()
@@ -4881,8 +4826,7 @@ while True:
                                 if aliado_jogador.dinheiro>=5:
                                     while 5:
                                         print ('Voce ira de onibus? (sim ou nao)')
-                                        acao_do_personagem=raw_input("-")
-                                        acao_do_personagem=acao_do_personagem.lower()
+                                        acao_do_personagem=raw_input("-").lower()
                                         if(acao_do_personagem=="sim" or acao_do_personagem=="s" or acao_do_personagem=="si" or acao_do_personagem=="sm" or acao_do_personagem=="im" or acao_do_personagem=="ssim"):
                                             break#evento de viagem
                                         else:
@@ -4897,8 +4841,7 @@ while True:
                                 else:
                                     while 9:
                                         print ('Voce ira a pe? (sim ou nao)')
-                                        acao_do_personagem=raw_input("-")
-                                        acao_do_personagem=acao_do_personagem.lower()
+                                        acao_do_personagem=raw_input("-").lower()
                                         if(acao_do_personagem=="sim" or acao_do_personagem=="s" or acao_do_personagem=="si" or acao_do_personagem=="sm" or acao_do_personagem=="im" or acao_do_personagem=="ssim"):
                                             if(ponto_de_save==3):
                                                 ruasPerigosas(10,1)
@@ -4923,14 +4866,14 @@ while True:
                     while 1:
                         escrever(0.03,"\nVai aborda-lo?")
                         print("(sim ou nao)")
-                        acao_do_personagem=raw_input('-')
+                        acao_do_personagem=raw_input('-').lower()
                         if 'n' in acao_do_personagem and not 's' in acao_do_personagem: break
                         elif 's' in acao_do_personagem and not 'n' in acao_do_personagem:
                             while 2:
                                 teste_de_sorte[11]=(random.randrange(3)+1)*10
                                 escrever(0.03,"\nOpa, voce quer comprar um energetico?")
                                 print(" Farei por "+str(teste_de_sorte[11])+" reais!(sim ou nao)")
-                                acao_do_personagem=raw_input('-')
+                                acao_do_personagem=raw_input('-').lower()
                                 if 'n' in acao_do_personagem and not 's' in acao_do_personagem: break
                                 elif 's' in acao_do_personagem and not 'n' in acao_do_personagem:
                                     if(aliado_jogador.dinheiro >= teste_de_sorte[11]):
@@ -5016,13 +4959,12 @@ while True:
  | |_______________________________________________________________________| | 
  |/_________________________________________________________________________\|
 ''')
-            print('Digite "comecar" "continuar" "aumentar velocidade texto" "criar/zerar saves"')
-            acao_do_personagem = raw_input("-")
-            acao_do_personagem = acao_do_personagem.lower()
+            print('Digite "comecar", "continuar", "aumentar velocidade texto" ou "zerar saves":')
+            acao_do_personagem = raw_input("-").lower()
             if "mu" in acao_do_personagem or "au" in acao_do_personagem or "ve" in acao_do_personagem or "te" in acao_do_personagem:
                 while 2:
                     print("Deseja aumentar a velocidade do texto em 2, 3, 4 ou 5 vezes?")
-                    acao_do_personagem=raw_input('-')
+                    acao_do_personagem=raw_input('-').lower()
                     if '2' in acao_do_personagem or 'd' in acao_do_personagem:
                         velocidade_texto=2
                         break
@@ -5218,8 +5160,7 @@ while True:
             escrever(0.02," Qual e o seu nome?",0.5)
             print(" (maximo 25 caracteres)")
             while 1:
-                aliado_jogador.nome = raw_input("-")
-                aliado_jogador.nome = aliado_jogador.nome.capitalize()
+                aliado_jogador.nome = raw_input("-").capitalize()
                 if len(str(aliado_jogador.nome))>25: print ('Entrada invalida: digite um nome com 25 caracteres ou menos!')
                 elif len(str(aliado_jogador.nome))<1: print ('Entrada invalida: digite um nome com ao menos um caracter!')
                 elif '\n' in aliado_jogador.nome: print ('Entrada invalida: nomes nao podem ter quebra de linha.')
@@ -5228,8 +5169,7 @@ while True:
                 os.system("cls")
                 escrever(0.02,"\nSeu nome e "+str(aliado_jogador.nome)+ "?\n")
                 while 2:
-                    acao_do_personagem = raw_input("-")
-                    acao_do_personagem = acao_do_personagem.lower()
+                    acao_do_personagem = raw_input("-").lower()
                     if(acao_do_personagem=="sim" or acao_do_personagem=="s" or acao_do_personagem=="si" or acao_do_personagem=="sm" or acao_do_personagem=="im" or acao_do_personagem=="ssim"):
                         break
                     else:
@@ -5513,8 +5453,7 @@ while True:
         print("Voce morreu, "+ aliado_jogador.nome+ "...\nO jogo acabou para voce...")
     print("\nVoce deseja jogar novamente, "+str(aliado_jogador.nome)+'?("sim" ou "nao")\n')
     while 1:
-        acao_do_personagem = raw_input("-")
-        acao_do_personagem = acao_do_personagem.lower()
+        acao_do_personagem = raw_input("-").lower()
         if(acao_do_personagem=="sim" or acao_do_personagem=="s" or acao_do_personagem=="si" or acao_do_personagem=="sm" or acao_do_personagem=="im" or acao_do_personagem=="ssim"): break
         elif(acao_do_personagem== "nao" or acao_do_personagem=="n" or acao_do_personagem=="ao" or acao_do_personagem=="no" or acao_do_personagem=="na" or acao_do_personagem== "naao" or acao_do_personagem=="naoo" or acao_do_personagem=="aoo" or acao_do_personagem=="noo" or acao_do_personagem=="naa" or acao_do_personagem== "noop" or acao_do_personagem=="a" or acao_do_personagem=="mao" or acao_do_personagem=="nso" or acao_do_personagem=="ns" or acao_do_personagem== "nnao" or acao_do_personagem=="nn" or acao_do_personagem=="aao" or acao_do_personagem=="nno" or acao_do_personagem=="nna"): break
         else: print('\nEntrada invalida!(digite "sim" ou "nao)\n')
