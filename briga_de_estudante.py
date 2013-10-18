@@ -1679,7 +1679,7 @@ while True:
                 print ("\nENTRADA INVALIDA!\n")
                 time.sleep(0.5)
 
-
+    #aumento_status/X*(ponto_de_save+1)*0.75)
     #--Sistema de batalha--#
     def batalha(entrada_inimigo_batalha):
         global narrador_inimigo, bebado_inimigo, mulher_prantos, mulher_toalha, mane_bone, senhor_doente, garoto_oponente, gangue_comparsa, arruaceiro_oponente, estudante_brigento, aliado_headbanger,Venda, Reserva_Venda,porcentagem_inflacao,bermuda_linho,calca_jeans,desequipado,pedaco_pizza, pizza_inteira,bolo_chocolate,equipamento_inicial,malha_ninja,punhal_envelhecido,talheres_prata,jaqueta_imitacao,jaqueta_couro,agasalho_la,suplemento_alimenticio,lata_energetico,soco_ingles,luva_luva,anel_magico,anel_da_imortalidade,anel_da_divindade,papetes_masculinas,tenis_calcado,sapato_simplorio,item_adicionado,quantidade_adicionada,variavel_cenario,objeto,situacao,booleana,variavel_lugar,ponto_de_save,mostrar_save, aliado_jogador,aliado_reserva, aliado_garota,adversario_inimigo,eegg,acao_do_personagem,batalha_escapar,teste_de_sorte,calculo_do_dano,calculo_da_fuga,variavel_para_comparar,contador_de_batalha,contador_de_rodadas
@@ -1906,7 +1906,7 @@ while True:
                                     time.sleep(2)
                                     print("O limite dos seus pontos de vida cresceu!")
                                     time.sleep(2)
-                                    aliado_jogador.status[5]=aliado_jogador.status[5]+int((random.randrange(aliado_jogador.status[5]))/10)+3
+                                    aliado_jogador.status[5]=aliado_jogador.status[5]+int((random.randrange(aliado_jogador.status[5]))/(10*(ponto_de_save+1)*0.75))+3
                             else:
                                 print("\nMesmo sem se defender, sua constituicao \nfoi alta o suficiente para resistir ao ataque do oponente.\n")
                                 time.sleep(3)
@@ -1935,7 +1935,7 @@ while True:
                                 if (teste_de_sorte[3]<=30+aliado_jogador.status[3]):
                                     variavel_para_comparar=aliado_jogador.status[1]
                                     statusEquipamento(False,1)
-                                    aliado_jogador.status[1]=aliado_jogador.status[1]+int((random.randrange(aliado_jogador.status[1]))/9)
+                                    aliado_jogador.status[1]=aliado_jogador.status[1]+int((random.randrange(aliado_jogador.status[1]))/(9*(ponto_de_save+1)*0.75))
                                     statusEquipamento(True,1)
                                     if (variavel_para_comparar < aliado_jogador.status[1]):
                                         print("\nVoce testou o seu limite e agora esta mais forte!")
@@ -1952,7 +1952,7 @@ while True:
                                     print("Seus pontos de defesa subiram!\n")
                                     time.sleep(2)
                                     statusEquipamento(False,1)
-                                    aliado_jogador.status[1]=aliado_jogador.status[1]+int((random.randrange(aliado_jogador.status[1]))/12)+2
+                                    aliado_jogador.status[1]=aliado_jogador.status[1]+int((random.randrange(aliado_jogador.status[1]))/(12*(ponto_de_save+1)*0.75))+2
                                     statusEquipamento(True,1)
                             elif(teste_de_sorte[2]==3):
                                 teste_de_sorte[3] = random.randrange(100)
@@ -1962,7 +1962,7 @@ while True:
                                     print("Seus pontos de defesa subiram!\n")
                                     time.sleep(2)
                                     statusEquipamento(False,1)
-                                    aliado_jogador.status[1]=aliado_jogador.status[1]+int((random.randrange(aliado_jogador.status[1]))/12)+4
+                                    aliado_jogador.status[1]=aliado_jogador.status[1]+int((random.randrange(aliado_jogador.status[1]))/(12*(ponto_de_save+1)*0.75))+4
                                     statusEquipamento(True,1)
                             elif(teste_de_sorte[2]==2):
                                 teste_de_sorte[3] = random.randrange(100)
@@ -1972,7 +1972,7 @@ while True:
                                     print("Seus pontos de defesa subiram!\n")
                                     time.sleep(2)
                                     statusEquipamento(False,1)
-                                    aliado_jogador.status[1]=aliado_jogador.status[1]+int((random.randrange(aliado_jogador.status[1]))/24)+4
+                                    aliado_jogador.status[1]=aliado_jogador.status[1]+int((random.randrange(aliado_jogador.status[1]))/(24*(ponto_de_save+1)*0.75))+4
                                     statusEquipamento(True,1)
                             adversario_inimigo.status[6]-=calculo_do_dano
                         else:
@@ -2024,7 +2024,7 @@ while True:
                                 if (teste_de_sorte[3]<=30+aliado_jogador.status[3]):
                                     variavel_para_comparar=aliado_jogador.status[1]
                                     statusEquipamento(False,1)
-                                    aliado_jogador.status[1]=aliado_jogador.status[1]+int((random.randrange(aliado_jogador.status[1]))/9)
+                                    aliado_jogador.status[1]=aliado_jogador.status[1]+int((random.randrange(aliado_jogador.status[1]))/(9*(ponto_de_save+1)*0.75))
                                     statusEquipamento(True,1)
                                     if (variavel_para_comparar < aliado_jogador.status[1]):
                                         print("\nVoce testou o seu limite e agora esta mais forte!")
@@ -2041,7 +2041,7 @@ while True:
                                     print("Seus pontos de defesa subiram!\n")
                                     time.sleep(2)
                                     statusEquipamento(False,1)
-                                    aliado_jogador.status[1]=aliado_jogador.status[1]+int((random.randrange(aliado_jogador.status[1]))/12)+2
+                                    aliado_jogador.status[1]=aliado_jogador.status[1]+int((random.randrange(aliado_jogador.status[1]))/(12*(ponto_de_save+1)*0.75))+2
                                     statusEquipamento(True,1)
                             elif(teste_de_sorte[2]==3):
                                 teste_de_sorte[3] = random.randrange(200)
@@ -2051,7 +2051,7 @@ while True:
                                     print("Seus pontos de defesa subiram!\n")
                                     time.sleep(2)
                                     statusEquipamento(False,1)
-                                    aliado_jogador.status[1]=aliado_jogador.status[1]+int((random.randrange(aliado_jogador.status[1]))/12)+4
+                                    aliado_jogador.status[1]=aliado_jogador.status[1]+int((random.randrange(aliado_jogador.status[1]))/(12*(ponto_de_save+1)*0.75))+4
                                     statusEquipamento(True,1)
                             elif(teste_de_sorte[2]==4):
                                 teste_de_sorte[3] = random.randrange(300)
@@ -2061,14 +2061,14 @@ while True:
                                     print("Seus pontos de defesa subiram!\n")
                                     time.sleep(2)
                                     statusEquipamento(False,1)
-                                    aliado_jogador.status[1]=aliado_jogador.status[1]+int((random.randrange(aliado_jogador.status[1]))/24)+4
+                                    aliado_jogador.status[1]=aliado_jogador.status[1]+int((random.randrange(aliado_jogador.status[1]))/(24*(ponto_de_save+1)*0.75))+4
                                     statusEquipamento(True,1)
                             elif(teste_de_sorte[2]>=5):
                                 teste_de_sorte[3] = random.randrange(100)
                                 if (teste_de_sorte[3]<=10+aliado_jogador.status[3]):
                                     variavel_para_comparar=aliado_jogador.status[1]
                                     statusEquipamento(False,1)
-                                    aliado_jogador.status[1]=aliado_jogador.status[1]+int((random.randrange(aliado_jogador.status[1]))/12)+int((random.randrange(aliado_jogador.status[0]))/24)
+                                    aliado_jogador.status[1]=aliado_jogador.status[1]+int((random.randrange(aliado_jogador.status[1]))/12)+int((random.randrange(aliado_jogador.status[0]))/(24*(ponto_de_save+1)*0.75))
                                     statusEquipamento(True,1)
                                     if (variavel_para_comparar < aliado_jogador.status[1]):
                                         print("\nVoce testou o seu limite e agora esta mais forte!")
@@ -2093,9 +2093,9 @@ while True:
                                     statusEquipamento(False,0)
                                     statusEquipamento(False,1)
                                     statusEquipamento(False,5)
-                                    aliado_jogador.status[5]=aliado_jogador.status[5]+int((random.randrange(aliado_jogador.status[5]))/15*(ponto_de_save+1)*0.75)+4
-                                    aliado_jogador.status[0]=aliado_jogador.status[0]+int((random.randrange(aliado_jogador.status[0]))/10*(ponto_de_save+1)*0.75)+3
-                                    aliado_jogador.status[1]=aliado_jogador.status[1]+int((random.randrange(aliado_jogador.status[1]))/20*(ponto_de_save+1)*0.75)+1
+                                    aliado_jogador.status[5]=aliado_jogador.status[5]+int((random.randrange(aliado_jogador.status[5]))/(15*(ponto_de_save+1)*0.75))+4
+                                    aliado_jogador.status[0]=aliado_jogador.status[0]+int((random.randrange(aliado_jogador.status[0]))/(10*(ponto_de_save+1)*0.75))+3
+                                    aliado_jogador.status[1]=aliado_jogador.status[1]+int((random.randrange(aliado_jogador.status[1]))/(20*(ponto_de_save+1)*0.75))+1
                                     statusEquipamento(True,0)
                                     statusEquipamento(True,1)
                                     statusEquipamento(True,5)
@@ -2127,7 +2127,7 @@ while True:
                                 if (teste_de_sorte[3]<=40+aliado_jogador.status[3]):
                                     variavel_para_comparar=aliado_jogador.status[1]
                                     statusEquipamento(False,1)
-                                    aliado_jogador.status[1]=aliado_jogador.status[1]+int((random.randrange(aliado_jogador.status[1]))/9)
+                                    aliado_jogador.status[1]=aliado_jogador.status[1]+int((random.randrange(aliado_jogador.status[1]))/(9*(ponto_de_save+1)*0.75))
                                     statusEquipamento(True,1)
                                     if (variavel_para_comparar < aliado_jogador.status[1]):
                                         print("\nVoce testou o seu limite e agora esta mais forte!")
@@ -2144,7 +2144,7 @@ while True:
                                     print("Seus pontos de defesa subiram!\n")
                                     time.sleep(2)
                                     statusEquipamento(False,1)
-                                    aliado_jogador.status[1]=aliado_jogador.status[1]+int((random.randrange(aliado_jogador.status[1]))/12)+2
+                                    aliado_jogador.status[1]=aliado_jogador.status[1]+int((random.randrange(aliado_jogador.status[1]))/(12*(ponto_de_save+1)*0.75))+2
                                     statusEquipamento(True,1)
                             elif(teste_de_sorte[2]==3):
                                 teste_de_sorte[3] = random.randrange(400)
@@ -2154,7 +2154,7 @@ while True:
                                     print("Seus pontos de defesa subiram!\n")
                                     time.sleep(2)
                                     statusEquipamento(False,1)
-                                    aliado_jogador.status[1]=aliado_jogador.status[1]+int((random.randrange(aliado_jogador.status[1]))/12)+4
+                                    aliado_jogador.status[1]=aliado_jogador.status[1]+int((random.randrange(aliado_jogador.status[1]))/(12*(ponto_de_save+1)*0.75))+4
                                     statusEquipamento(True,1)
                             elif(teste_de_sorte[2]==2):
                                 teste_de_sorte[3] = random.randrange(300)
@@ -2164,7 +2164,7 @@ while True:
                                     print("Seus pontos de defesa subiram!\n")
                                     time.sleep(2)
                                     statusEquipamento(False,1)
-                                    aliado_jogador.status[1]=aliado_jogador.status[1]+int((random.randrange(aliado_jogador.status[1]))/24)+4
+                                    aliado_jogador.status[1]=aliado_jogador.status[1]+int((random.randrange(aliado_jogador.status[1]))/(24*(ponto_de_save+1)*0.75))+4
                                     statusEquipamento(True,1)
                             adversario_inimigo.status[6]-=calculo_do_dano
                         else:
@@ -2209,7 +2209,7 @@ while True:
                                         print("\nSeus pontos de ataque subiram!\n")
                                         time.sleep(2)
                                         statusEquipamento(False,0)
-                                        aliado_jogador.status[0]=aliado_jogador.status[0]+int((random.randrange(aliado_jogador.status[0]))/12)+4
+                                        aliado_jogador.status[0]=aliado_jogador.status[0]+int((random.randrange(aliado_jogador.status[0]))/(12*(ponto_de_save+1)*0.75))+4
                                         statusEquipamento(True,0)
                                 else:
                                     if (calculo_do_dano==0):#S_ataque(2aliado_jogador.status[0]) ANULA S_defesa(3adversario_inimigo.status[1])
@@ -2239,7 +2239,7 @@ while True:
                                                 print("\nSeus pontos de ataque subiram!\n")
                                                 time.sleep(2)
                                                 statusEquipamento(False,0)
-                                                aliado_jogador.status[0]=aliado_jogador.status[0]+(random.randrange(aliado_jogador.status[0]))+3
+                                                aliado_jogador.status[0]=aliado_jogador.status[0]+(random.randrange(aliado_jogador.status[0])/2*(ponto_de_save+1)*0.75))+3
                                                 statusEquipamento(True,0)
                             else:#S_ataque(2aliado_jogador.status[0]) vs defesa(2adversario_inimigo.status[1])
                                 calculo_do_dano = 2*aliado_jogador.status[0]+int((random.randrange(aliado_jogador.status[0]))*0.35)-2*adversario_inimigo.status[1]-int((random.randrange(adversario_inimigo.status[1]))*0.35)
@@ -2284,7 +2284,7 @@ while True:
                                                     print("Seus pontos de ataque subiram!\n")
                                                     time.sleep(2)
                                                     statusEquipamento(False,0)
-                                                    aliado_jogador.status[0]=aliado_jogador.status[0]+int((random.randrange(aliado_jogador.status[0]))/12)+4
+                                                    aliado_jogador.status[0]=aliado_jogador.status[0]+int((random.randrange(aliado_jogador.status[0]))/(12*(ponto_de_save+1)*0.75))+4
                                                     statusEquipamento(True,0)
                                             else:
                                                 teste_de_sorte[5]=random.randrange(50)
@@ -2294,7 +2294,7 @@ while True:
                                                     print("Seus pontos de ataque subiram!\n")
                                                     time.sleep(2)
                                                     statusEquipamento(False,0)
-                                                    aliado_jogador.status[0]=aliado_jogador.status[0]+int((random.randrange(aliado_jogador.status[0]))/12)+8
+                                                    aliado_jogador.status[0]=aliado_jogador.status[0]+int((random.randrange(aliado_jogador.status[0]))/(10*(ponto_de_save+1)*0.75))+8
                                                     statusEquipamento(True,0)
                                         else:#S_ataque(2aliado_jogador.status[0]) ATACA defesa(2adversario_inimigo.status[1])
                                             teste_de_sorte[4] = random.randrange(300)
@@ -2315,7 +2315,7 @@ while True:
                                                     print("Seus pontos de ataque subiram!\n")
                                                     time.sleep(2)
                                                     statusEquipamento(False,0)
-                                                    aliado_jogador.status[0]=aliado_jogador.status[0]+int((random.randrange(aliado_jogador.status[0]))/12)+2
+                                                    aliado_jogador.status[0]=aliado_jogador.status[0]+int((random.randrange(aliado_jogador.status[0]))/(12*(ponto_de_save+1)*0.75))+2
                                                     statusEquipamento(True,0)
                                                 adversario_inimigo.status[6]-=calculo_do_dano
                         else:#ataque(aliado_jogador.status[0])
@@ -2337,7 +2337,7 @@ while True:
                                         print("Seus pontos de ataque subiram!\n")
                                         time.sleep(2)
                                         statusEquipamento(False,0)
-                                        aliado_jogador.status[0]=aliado_jogador.status[0]+int((random.randrange(aliado_jogador.status[0]))/12)+3
+                                        aliado_jogador.status[0]=aliado_jogador.status[0]+int((random.randrange(aliado_jogador.status[0]))/(12*(ponto_de_save+1)*0.75))+3
                                         statusEquipamento(True,0)
                                     aliado_jogador.status[6]=aliado_jogador.status[6]-calculo_do_dano
                                 else:
@@ -2365,7 +2365,7 @@ while True:
                                                 print("Seus pontos de ataque subiram!\n")
                                                 time.sleep(2)
                                                 statusEquipamento(False,0)
-                                                aliado_jogador.status[0]=aliado_jogador.status[0]+int((random.randrange(aliado_jogador.status[0]))/12)+3
+                                                aliado_jogador.status[0]=aliado_jogador.status[0]+int((random.randrange(aliado_jogador.status[0]))/(12*(ponto_de_save+1)*0.75))+3
                                                 statusEquipamento(True,0)
                                             adversario_inimigo.status[6]-=calculo_do_dano
                             else:#ataque(aliado_jogador.status[0]) vs defesa(2adversario_inimigo.status[1])
@@ -2381,7 +2381,7 @@ while True:
                                         print("Seus pontos de ataque subiram!\n")
                                         time.sleep(2)
                                         statusEquipamento(False,0)
-                                        aliado_jogador.status[0]=aliado_jogador.status[0]+int((random.randrange(aliado_jogador.status[0]))/12)+3
+                                        aliado_jogador.status[0]=aliado_jogador.status[0]+int((random.randrange(aliado_jogador.status[0]))/(12*(ponto_de_save+1)*0.75))+3
                                         statusEquipamento(True,0)
                                     aliado_jogador.status[6] = aliado_jogador.status[6] - calculo_do_dano
                                 else:
@@ -2397,7 +2397,7 @@ while True:
                                             print("Seus pontos de ataque subiram!\n")
                                             time.sleep(2)
                                             statusEquipamento(False,0)
-                                            aliado_jogador.status[0]=aliado_jogador.status[0]+(random.randrange(aliado_jogador.status[0])/12)+(random.randrange(aliado_jogador.status[3]))+1
+                                            aliado_jogador.status[0]=aliado_jogador.status[0]+(random.randrange(aliado_jogador.status[0])/(12*(ponto_de_save+1)*0.75))+(random.randrange(aliado_jogador.status[3])/(6*(ponto_de_save+1)*0.75))+1
                                             statusEquipamento(True,0)
                                     else:#ataque(aliado_jogador.status[0]) ATACA defesa(2adversario_inimigo.status[1])
                                         teste_de_sorte[3] = random.randrange(300)
@@ -2438,7 +2438,7 @@ while True:
                                             print("\nSeus pontos de ataque subiram enquanto voce forcava os seus musculos!\n")
                                             time.sleep(2)
                                             statusEquipamento(False,0)
-                                            aliado_jogador.status[0]=aliado_jogador.status[0]+int((random.randrange(aliado_jogador.status[0]))/12)+3
+                                            aliado_jogador.status[0]=aliado_jogador.status[0]+int((random.randrange(aliado_jogador.status[0]))/(12*(ponto_de_save+1)*0.75))+3
                                             statusEquipamento(True,0)
                                 else:
                                     print("\nMesmo sem se defender, a constituicao do inimigo\nfoi alta o suficiente para resistir ao seu ataque.\n")
@@ -2476,7 +2476,7 @@ while True:
                                             if (teste_de_sorte[5]<=45+aliado_jogador.status[3]):
                                                 variavel_para_comparar=aliado_jogador.status[0]
                                                 statusEquipamento(False,0)
-                                                aliado_jogador.status[0]=aliado_jogador.status[0]+int((random.randrange(aliado_jogador.status[0]))/9)
+                                                aliado_jogador.status[0]=aliado_jogador.status[0]+int((random.randrange(aliado_jogador.status[0]))/(9*(ponto_de_save+1)*0.75))
                                                 statusEquipamento(True,0)
                                                 if (variavel_para_comparar < aliado_jogador.status[0]):
                                                     print("\nVoce testou o seu limite e agora esta mais forte!")
@@ -2493,7 +2493,7 @@ while True:
                                                 print("Seus pontos de ataque subiram!\n")
                                                 time.sleep(2)
                                                 statusEquipamento(True,0)
-                                                aliado_jogador.status[0]=aliado_jogador.status[0]+int((random.randrange(aliado_jogador.status[0]))/12)+2
+                                                aliado_jogador.status[0]=aliado_jogador.status[0]+int((random.randrange(aliado_jogador.status[0]))/(12*(ponto_de_save+1)*0.75))+2
                                                 statusEquipamento(False,0)
                                         elif(teste_de_sorte[4]==3):
                                             teste_de_sorte[5] = random.randrange(200)
@@ -2503,7 +2503,7 @@ while True:
                                                 print("Seus pontos de ataque subiram!\n")
                                                 time.sleep(2)
                                                 statusEquipamento(False,0)
-                                                aliado_jogador.status[0]=aliado_jogador.status[0]+int((random.randrange(aliado_jogador.status[0]))/12)+4
+                                                aliado_jogador.status[0]=aliado_jogador.status[0]+int((random.randrange(aliado_jogador.status[0]))/(12*(ponto_de_save+1)*0.75))+4
                                                 statusEquipamento(True,0)
                                         elif(teste_de_sorte[4]==2):
                                             teste_de_sorte[5] = random.randrange(300)
@@ -2513,7 +2513,7 @@ while True:
                                                 print("Seus pontos de ataque subiram!\n")
                                                 time.sleep(2)
                                                 statusEquipamento(False,0)
-                                                aliado_jogador.status[0]=aliado_jogador.status[0]+int((random.randrange(aliado_jogador.status[0]))/24)+8
+                                                aliado_jogador.status[0]=aliado_jogador.status[0]+int((random.randrange(aliado_jogador.status[0]))/(24*(ponto_de_save+1)*0.75))+8
                                                 statusEquipamento(True,0)
                                         adversario_inimigo.status[6]-=calculo_do_dano
                                 else:
@@ -2556,7 +2556,7 @@ while True:
                                             if (teste_de_sorte[5]<=15+aliado_jogador.status[3]):
                                                 variavel_para_comparar=aliado_jogador.status[0]
                                                 statusEquipamento(False,0)
-                                                aliado_jogador.status[0]=aliado_jogador.status[0]+int((random.randrange(aliado_jogador.status[0]))/9)
+                                                aliado_jogador.status[0]=aliado_jogador.status[0]+int((random.randrange(aliado_jogador.status[0]))/(9*(ponto_de_save+1)*0.75))
                                                 statusEquipamento(True,0)
                                                 if (variavel_para_comparar < aliado_jogador.status[0]):
                                                     print("\nVoce testou o seu limite e agora esta mais forte!")
@@ -2573,7 +2573,7 @@ while True:
                                                 print("Seus pontos de ataque subiram!\n")
                                                 time.sleep(2)
                                                 statusEquipamento(False,0)
-                                                aliado_jogador.status[0]=aliado_jogador.status[0]+int((random.randrange(aliado_jogador.status[0]))/12)+2
+                                                aliado_jogador.status[0]=aliado_jogador.status[0]+int((random.randrange(aliado_jogador.status[0]))/(12*(ponto_de_save+1)*0.75))+2
                                                 statusEquipamento(True,0)
                                         elif(teste_de_sorte[4]==3):
                                             teste_de_sorte[5] = random.randrange(200)
@@ -2583,7 +2583,7 @@ while True:
                                                 print("Seus pontos de ataque subiram!\n")
                                                 time.sleep(2)
                                                 statusEquipamento(False,0)
-                                                aliado_jogador.status[0]=aliado_jogador.status[0]+int((random.randrange(aliado_jogador.status[0]))/12)+4
+                                                aliado_jogador.status[0]=aliado_jogador.status[0]+int((random.randrange(aliado_jogador.status[0]))/(12*(ponto_de_save+1)*0.75))+4
                                                 statusEquipamento(True,0)
                                         elif(teste_de_sorte[4]==2):
                                             teste_de_sorte[5] = random.randrange(300)
@@ -2593,7 +2593,7 @@ while True:
                                                 print("Seus pontos de ataque subiram!\n")
                                                 time.sleep(2)
                                                 statusEquipamento(False,0)
-                                                aliado_jogador.status[0]=aliado_jogador.status[0]+int((random.randrange(aliado_jogador.status[0]))/24)+4
+                                                aliado_jogador.status[0]=aliado_jogador.status[0]+int((random.randrange(aliado_jogador.status[0]))/(24*(ponto_de_save+1)*0.75))+4
                                                 statusEquipamento(True,0)
                                         adversario_inimigo.status[6]-=calculo_do_dano
                                 else:
@@ -2630,7 +2630,7 @@ while True:
                                             if (teste_de_sorte[5]<=15+aliado_jogador.status[3]):
                                                 variavel_para_comparar=aliado_jogador.status[0]
                                                 statusEquipamento(False,0)
-                                                aliado_jogador.status[0]=aliado_jogador.status[0]+int((random.randrange(aliado_jogador.status[0]))/9)
+                                                aliado_jogador.status[0]=aliado_jogador.status[0]+int((random.randrange(aliado_jogador.status[0]))/(9*(ponto_de_save+1)*0.75))
                                                 statusEquipamento(True,0)
                                                 if (variavel_para_comparar < aliado_jogador.status[0]):
                                                     print("\nVoce testou o seu limite e agora esta mais forte!")
@@ -2647,7 +2647,7 @@ while True:
                                                 print("Seus pontos de ataque subiram!\n")
                                                 time.sleep(2)
                                                 statusEquipamento(False,0)
-                                                aliado_jogador.status[0]=aliado_jogador.status[0]+int((random.randrange(aliado_jogador.status[0]))/12)+2
+                                                aliado_jogador.status[0]=aliado_jogador.status[0]+int((random.randrange(aliado_jogador.status[0]))/(12*(ponto_de_save+1)*0.75))+2
                                                 statusEquipamento(True,0)
                                         elif(teste_de_sorte[4]==3):
                                             teste_de_sorte[5] = random.randrange(200)
@@ -2657,7 +2657,7 @@ while True:
                                                 print("Seus pontos de ataque subiram!\n")
                                                 time.sleep(2)
                                                 statusEquipamento(False,0)
-                                                aliado_jogador.status[0]=aliado_jogador.status[0]+int((random.randrange(aliado_jogador.status[0]))/12)+4
+                                                aliado_jogador.status[0]=aliado_jogador.status[0]+int((random.randrange(aliado_jogador.status[0]))/(12*(ponto_de_save+1)*0.75))+4
                                                 statusEquipamento(True,0)
                                         elif(teste_de_sorte[4]==2):
                                             teste_de_sorte[5] = random.randrange(300)
@@ -2667,7 +2667,7 @@ while True:
                                                 print("Seus pontos de ataque subiram!\n")
                                                 time.sleep(2)
                                                 statusEquipamento(False,0)
-                                                aliado_jogador.status[0]=aliado_jogador.status[0]+int((random.randrange(aliado_jogador.status[0]))/24)+4
+                                                aliado_jogador.status[0]=aliado_jogador.status[0]+int((random.randrange(aliado_jogador.status[0]))/(24*(ponto_de_save+1)*0.75))+4
                                                 statusEquipamento(True,0)
                                         adversario_inimigo.status[6]-=calculo_do_dano
                                 else:
@@ -2772,7 +2772,7 @@ while True:
                                                 print("O limite dos seus pontos de vida cresceu!")
                                                 time.sleep(2)
                                                 statusEquipamento(False,5)
-                                                aliado_jogador.status[5]=aliado_jogador.status[5]+int((random.randrange(aliado_jogador.status[5]))/10)+3
+                                                aliado_jogador.status[5]=aliado_jogador.status[5]+int((random.randrange(aliado_jogador.status[5]))/(10*(ponto_de_save+1)*0.75))+3
                                                 statusEquipamento(True,5)
                                         else:
                                             print("\nMesmo sem se defender, sua constituicao \nfoi alta o suficiente para resistir ao ataque do oponente.\n")
