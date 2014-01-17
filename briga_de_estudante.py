@@ -13,6 +13,21 @@ import os
 
 #pesquise Socket no Python, faça o sistema de batalha online
 
+#desenhar colisao do soco na animacao de batalha
+#juntar quest no shopping com quarto de fauna propria
+#incluir atributo esperteza
+# ataque especial que:
+#   usa a agilidade para aumentar o dano, outro que usa a sorte
+#   so machuca rodadas depois
+#   aumenta muito a agilidade temporariamente
+#   acumula os danos recebidos por N rodadas e devolve tudo de uma vez
+#   remove recuperacao por rodada do oponente
+#   provoca sangramento dando danos por rodada até o fim da batalha
+#   diminui o ataque do oponente, outro que diminui a defesa e etc...
+#   causa dano aleatoriamente nos dois, espinhos no chao, dependendo da esperteza e da sorte
+#   ...
+
+
 #revisar texto da fase na sua rua, no 3º e 4ºandar do prédio
 #suposto erro no sistema de ruas perigosas, revise...
 #Headbanger tá overpower demais, repense...
@@ -1723,6 +1738,7 @@ while True:
         time.sleep(3)
         os.system("cls")
         contador_de_rodadas=1
+        batalha_escapar="nao"
         while(adversario_inimigo.status[6]>0 and aliado_jogador.status[6]>0):
             if contador_de_rodadas!=1:
                 if aliado_jogador.status[6] < aliado_jogador.status[5] and aliado_jogador.status[4]>0:
@@ -2793,7 +2809,6 @@ while True:
                             break
                         booleana[3]=False
             print ("\n")
-        batalha_escapar="nao"
         variavel_para_comparar = 0
         contador_de_batalha = 0
         contador_de_rodadas = 1
@@ -2974,8 +2989,8 @@ while True:
                                 if(acao_do_personagem=="sim" or acao_do_personagem=="s" or acao_do_personagem=="si" or acao_do_personagem=="sm" or acao_do_personagem=="im" or acao_do_personagem=="ssim"):
                                     batalha(estudante_brigento[5])
                                     if(aliado_jogador.status[6]<=0):break
-                                    if(adversario_inimigo.status[6]>0):
-                                        while (adversario_inimigo.status[6]>0):
+                                    if(batalha_escapar=="escapou"):
+                                        while (batalha_escapar=="escapou"):
                                             print(" - O que foi, desistiu?(sim ou nao)")
                                             time.sleep(1)
                                             while 1:
@@ -3038,8 +3053,8 @@ while True:
                                     if(acao_do_personagem=="sim" or acao_do_personagem=="s" or acao_do_personagem=="si" or acao_do_personagem=="sm" or acao_do_personagem=="im" or acao_do_personagem=="ssim"):
                                         batalha(estudante_brigento[6])
                                         if(aliado_jogador.status[6]<=0):break
-                                        if(adversario_inimigo.status[6]>0):
-                                            while (adversario_inimigo.status[6]>0):
+                                        if(batalha_escapar=="escapou"):
+                                            while (batalha_escapar=="escapou"):
                                                 print(" - O que ha? Vai cair fora mesmo???(sim ou nao)")
                                                 time.sleep(1)
                                                 while 1:
@@ -3111,8 +3126,8 @@ while True:
                                         if(acao_do_personagem=="sim" or acao_do_personagem=="s" or acao_do_personagem=="si" or acao_do_personagem=="sm" or acao_do_personagem=="im" or acao_do_personagem=="ssim"):
                                             batalha(estudante_brigento[7])
                                             if(aliado_jogador.status[6]<=0):break
-                                            if(adversario_inimigo.status[6]>0):
-                                                while (adversario_inimigo.status[6]>0):
+                                            if(batalha_escapar=="escapou"):
+                                                while (batalha_escapar=="escapou"):
                                                     print(" - Voce vai fugir?(sim ou nao) Humhumhumhum...")
                                                     time.sleep(1)
                                                     while 1:
@@ -3182,8 +3197,8 @@ while True:
                                             if(acao_do_personagem=="sim" or acao_do_personagem=="s" or acao_do_personagem=="si" or acao_do_personagem=="sm" or acao_do_personagem=="im" or acao_do_personagem=="ssim"):
                                                 batalha(estudante_brigento[8])
                                                 if(aliado_jogador.status[6]<=0):break
-                                                if(adversario_inimigo.status[6]>0):
-                                                    while (adversario_inimigo.status[6]>0):
+                                                if(batalha_escapar=="escapou"):
+                                                    while (batalha_escapar=="escapou"):
                                                         print(" - ... Fugindo?(sim ou nao)")
                                                         time.sleep(1)
                                                         while 1:
@@ -3259,8 +3274,8 @@ while True:
                                                 if(acao_do_personagem=="sim" or acao_do_personagem=="s" or acao_do_personagem=="si" or acao_do_personagem=="sm" or acao_do_personagem=="im" or acao_do_personagem=="ssim"):
                                                     batalha(estudante_brigento[9])
                                                     if(aliado_jogador.status[6]<=0):break
-                                                    if(adversario_inimigo.status[6]>0):
-                                                        while (adversario_inimigo.status[6]>0):
+                                                    if(batalha_escapar=="escapou"):
+                                                        while (batalha_escapar=="escapou"):
                                                             print(" - ... Vai abandonar a nossa luta?(sim ou nao)")
                                                             time.sleep(1)
                                                             while 1:
@@ -3407,8 +3422,8 @@ while True:
                                 print(" - Va cuidar desses seus ferimentos e volte para lutar mais!")
                                 time.sleep(1)
                             else:
-                                if(adversario_inimigo.status[6]>0 and aliado_jogador.status[6]>1):
-                                    while (adversario_inimigo.status[6]>0):
+                                if(batalha_escapar=="escapou" and aliado_jogador.status[6]>1):
+                                    while (batalha_escapar=="escapou"):
                                         print(" - Voce nao pode fugir das lutas, e uma regra para continuar no desafio e ganhar o premio!")
                                         time.sleep(2)
                                         batalha(estudante_brigento[0])
@@ -3466,8 +3481,8 @@ while True:
                                     print(" - Va se curar para continuar tentando subir para o quarto andar!")
                                     time.sleep(1)
                                 else:
-                                    if(adversario_inimigo.status[6]>0 and aliado_jogador.status[6]>1):
-                                        while (adversario_inimigo.status[6]>0):
+                                    if(batalha_escapar=="escapou" and aliado_jogador.status[6]>1):
+                                        while (batalha_escapar=="escapou"):
                                             print(" - Volte aqui seu fracote! Nao seja um covarde! Voce nao pode fugir de TODAS as lutas!")
                                             time.sleep(2)
                                             batalha(estudante_brigento[1])
@@ -3525,8 +3540,8 @@ while True:
                                         print(" - La em cima ninguem vai te dar essa colher de cha que eu to te dando!")
                                         time.sleep(1)
                                     else:
-                                        if(adversario_inimigo.status[6]>0 and aliado_jogador.status[6]>1):
-                                            while (adversario_inimigo.status[6]>0):
+                                        if(batalha_escapar=="escapou" and aliado_jogador.status[6]>1):
+                                            while (batalha_escapar=="escapou"):
                                                 print(" - Ramelao, nao foge da luta, nao!")
                                                 time.sleep(2)
                                                 batalha(estudante_brigento[2])
@@ -3584,8 +3599,8 @@ while True:
                                             print(" - Se voce continuar tropecando assim, cedo ou tarde o mundo vai te atropela!")
                                             time.sleep(1)
                                         else:
-                                            if(adversario_inimigo.status[6]>0 and aliado_jogador.status[6]>1):
-                                                while (adversario_inimigo.status[6]>0):
+                                            if(batalha_escapar=="escapou" and aliado_jogador.status[6]>1):
+                                                while (batalha_escapar=="escapou"):
                                                     print(" - Ta na hora de acordar pra vida, cidadao!")
                                                     time.sleep(2)
                                                     batalha(estudante_brigento[3])
@@ -3643,8 +3658,8 @@ while True:
                                                 print(" - Voce precisa cauterizar suas feridas para \nchagas maiores tomarem o resto do seu corpo!")
                                                 time.sleep(1)
                                             else:
-                                                if(adversario_inimigo.status[6]>0 and aliado_jogador.status[6]>1):
-                                                    while (adversario_inimigo.status[6]>0):
+                                                if(batalha_escapar=="escapou" and aliado_jogador.status[6]>1):
+                                                    while (batalha_escapar=="escapou"):
                                                         print(" - As mentiras ja sao antigas demais, mas voce nao quer saber!\nCorrer e uma futilidade!")
                                                         time.sleep(2)
                                                         batalha(estudante_brigento[4])
@@ -3772,8 +3787,8 @@ while True:
                                     aliado_jogador.status[6]=1
                                     escrever(0.02," - Me supere. Estarei te esperando.\n")
                                 else:
-                                    if(adversario_inimigo.status[6]>0 and aliado_jogador.status[6]>1):
-                                        while (adversario_inimigo.status[6]>0):
+                                    if(batalha_escapar=="escapou" and aliado_jogador.status[6]>1):
+                                        while (batalha_escapar=="escapou"):
                                             escrever(0.02," - Nao abandone nossa luta!\n")
                                             batalha(garoto_oponente[5])
                                             if(aliado_jogador.status[6]<=0):
@@ -3794,8 +3809,8 @@ while True:
                                     aliado_jogador.status[6]=1
                                     escrever(0.02," - Quando voce estiver pronto para uma revanche, me procure novamente.\n")
                                 else:
-                                    if(adversario_inimigo.status[6]>0 and aliado_jogador.status[6]>1):
-                                        while (adversario_inimigo.status[6]>0):
+                                    if(batalha_escapar=="escapou" and aliado_jogador.status[6]>1):
+                                        while (batalha_escapar=="escapou"):
                                             escrever(0.02," - A nossa luta nao acabou ainda!\n")
                                             batalha(garoto_oponente[4])
                                             if(aliado_jogador.status[6]<=0):
@@ -3816,8 +3831,8 @@ while True:
                                     aliado_jogador.status[6]=1
                                     escrever(0.02," - Estou te levando a serio, nao vou perder mais!\n - Estarei te esperando para uma revanche.\n")
                                 else:
-                                    if(adversario_inimigo.status[6]>0 and aliado_jogador.status[6]>1):
-                                        while (adversario_inimigo.status[6]>0):
+                                    if(batalha_escapar=="escapou" and aliado_jogador.status[6]>1):
+                                        while (batalha_escapar=="escapou"):
                                             escrever(0.02," - Honre a nossa luta ate o fim!\n")
                                             batalha(garoto_oponente[3])
                                             if(aliado_jogador.status[6]<=0):
@@ -3838,8 +3853,8 @@ while True:
                                     aliado_jogador.status[6]=1
                                     escrever(0.02," - Nao aguenta o tranco, nao? Hahaha!\n - Volte qualquer hora para apanhar mais!\n")
                                 else:
-                                    if(adversario_inimigo.status[6]>0 and aliado_jogador.status[6]>1):
-                                        while (adversario_inimigo.status[6]>0):
+                                    if(batalha_escapar=="escapou" and aliado_jogador.status[6]>1):
+                                        while (batalha_escapar=="escapou"):
                                             escrever(0.02," - Volte aqui seu panaca!\n")
                                             batalha(garoto_oponente[2])
                                             if(aliado_jogador.status[6]<=0):
@@ -3861,8 +3876,8 @@ while True:
                                     escrever(0.02," - Voce nao e tao forte quanto meu avo falou.\n")
                                     situacao[3]=3
                                 else:
-                                    if(adversario_inimigo.status[6]>0 and aliado_jogador.status[6]>1):
-                                        while (adversario_inimigo.status[6]>0):
+                                    if(batalha_escapar=="escapou" and aliado_jogador.status[6]>1):
+                                        while (batalha_escapar=="escapou"):
                                             escrever(0.02," - Meu avo disse para nao parar de lutar ate eu nao aguentar mais!\n")
                                             batalha(garoto_oponente[1])
                                             if(aliado_jogador.status[6]<=0):
@@ -3887,7 +3902,7 @@ while True:
                                 escrever(0.02," - Saia daqui entao!\n")
                                 batalha(senhor_doente)
                                 if(aliado_jogador.status[6]<=0):break
-                                if(adversario_inimigo.status[6]>0):
+                                if(batalha_escapar=="escapou"):
                                     escrever(0.03,"Depois de se afastar o senhor comecou a gritar...\n",0.1)
                                     escrever(0.02,"Com a mao no peito, ele comecou a tossir...\n",0.1)
                                     escrever(0.1," - Ahhhh... ",0.1)
@@ -3898,7 +3913,7 @@ while True:
                                     escrever(0.01," - VOCE VAI PAGAR CARO!\n")
                                     batalha(garoto_oponente[0])
                                     if(aliado_jogador.status[6]<=0):break
-                                    if(adversario_inimigo.status[6]>0):
+                                    if(batalha_escapar=="escapou"):
                                         escrever(0.02," - SAIA JA DAQUI!\n",0.5)
                                         escrever(0.02,"Em seguida ele fechou e trancou a porta.\n")
                                         situacao[3]==1
@@ -3942,7 +3957,7 @@ while True:
                                                 escrever(0.01," - VOCE VAI PAGAR CARO!\n")
                                                 batalha(garoto_oponente[0])
                                                 if(aliado_jogador.status[6]<=0):break
-                                                if(adversario_inimigo.status[6]>0):
+                                                if(batalha_escapar=="escapou"):
                                                     escrever(0.02," - SAIA JA DAQUI!\n",0.5)
                                                     escrever(0.02,"Em seguida ele fechou e trancou a porta.\n")
                                                     situacao[3]=1
@@ -4028,7 +4043,7 @@ while True:
                                             escrever(0.01," - Quale merh-mao? Ta querenu treta?\n")
                                             batalha(mane_bone)
                                             if(aliado_jogador.status[6]<=0):break
-                                            if(adversario_inimigo.status[6]>0):
+                                            if(batalha_escapar=="escapou"):
                                                 escrever(0.02,"Ele corre atras de voce e te da um chute no joelho!\n",1)
                                                 escrever(0.009,"!!!\n",0.5)
                                                 escrever(0.02,"Voce perdeu 30 pontos de vida!\n",0.5)
@@ -4234,7 +4249,7 @@ while True:
                                                         escrever(0.01,"\nJa chega! Voce esgotou minha paciencia!\n")
                                                         batalha(narrador_inimigo)
                                                         if(aliado_jogador.status[6]<=0):break
-                                                        if(adversario_inimigo.status[6]>0):
+                                                        if(batalha_escapar=="escapou"):
                                                             escrever(0.02,"\nVou te deixar em paz por agora, \nmas tente voltar a me irritar para ver o que te acontece!\n")
                                                         else:
                                                             escrever(0.04,"\nAaaah!",1)
@@ -4396,7 +4411,7 @@ while True:
                                             escrever(0.015," - VOCE VAI APANHAR MUITO AGORA!\n")
                                             batalha(mulher_toalha)
                                             if(aliado_jogador.status[6]<=0):break
-                                            if(adversario_inimigo.status[6]>0):
+                                            if(batalha_escapar=="escapou"):
                                                 escrever(0.02,"\n - E NAO VOLTE MAIS AQUI!\n")
                                             else:
                                                 escrever(0.03,"\nA mulher caiu inconsciente no chao...\n")
@@ -4469,7 +4484,7 @@ while True:
                                             escrever(0.02," - VOCE VAI PAGAR CARO POR MATAR MEU MARIDO!\n")
                                             batalha(mulher_prantos)
                                             if(aliado_jogador.status[6]<=0):break
-                                            if(adversario_inimigo.status[6]>0):
+                                            if(batalha_escapar=="escapou"):
                                                 escrever(0.02,"\n - CHEGA!\n")
                                                 escrever(0.06," - Voce matou meu marido...\n")
                                                 escrever(0.015," - Como voce teve a pachorra de me procurar?!\n")
@@ -4566,7 +4581,7 @@ while True:
                                                                         escrever(0.02," *hic*\n",0.5)
                                                                         batalha(bebado_inimigo)
                                                                         if(aliado_jogador.status[6]<=0):break
-                                                                        if(adversario_inimigo.status[6]>0):
+                                                                        if(batalha_escapar=="escapou"):
                                                                             escrever(0.02,"\nVoce escapa da briga, mas em seguida o bebado tosse sangue e cai no chao...\n")
                                                                         else:
                                                                             escrever(0.03,"\nO bebado coberto de bebida, vomito e sangue, cai de costas no chao,\nsendo empalado pelos diversos cacos de vidro...\n",0.5)
@@ -5271,8 +5286,8 @@ while True:
                 print("Sera que voce encontrara alguma pista na faculdade?")
                 time.sleep(5)
             else:
-                if(adversario_inimigo.status[6]>0):
-                    while(adversario_inimigo.status[6]>0):
+                if(batalha_escapar=="escapou"):
+                    while(batalha_escapar=="escapou"):
                         print("Voce correu um pouco mas ele te alcancou de novo!\n")
                         batalha(gangue_comparsa[0])
                         if(aliado_jogador.status[6]<=0):
@@ -5351,7 +5366,7 @@ while True:
                     time.sleep(3)
                     batalha(gangue_comparsa[1])
                     if(aliado_jogador.status[6]<=0): break
-                    if(adversario_inimigo.status[6]>0):
+                    if(batalha_escapar=="escapou"):
                         print("Correndo entre uns becos da sua rua, voce conseguiu se esconder...")
                         time.sleep(2)
                         print("...")
