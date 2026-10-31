@@ -25,6 +25,6 @@ The browser version runs `web/game/briga_de_estudante.py` (a Python 3 port made 
 
 Builds are made by GitHub Actions (`.github/workflows/release.yml`) for macOS, Windows and Linux. Push a tag such as `v1.0` (or run the workflow by hand) and the zipped builds are attached to a GitHub release.
 
-The game is Python 2.7, which GitHub runners no longer ship: Linux builds inside the official `python:2.7` Docker image, Windows installs it with Chocolatey, and macOS uses the Intel installer through Rosetta (that job is allowed to fail).
+The game is Python 2.7, which GitHub runners no longer ship: Linux builds inside the official `python:2.7` Docker image, Windows installs it with Chocolatey, and macOS builds on an Intel runner (`macos-15-intel`) with the official installer (that job is allowed to fail). The macOS build is for Intel Macs.
 
 To play from source: `python2.7 briga_de_estudante.py`.
