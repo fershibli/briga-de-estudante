@@ -15,6 +15,12 @@ The original files were versioned by filename (no git back then); this repositor
 
 Fernando Luiz Neme Chibli ([@fershibli](https://github.com/fershibli))
 
+## Play in the browser
+
+**[https://fershibli.github.io/briga-de-estudante/](https://fershibli.github.io/briga-de-estudante/)**
+
+The browser version runs `web/game/briga_de_estudante.py` (a Python 3 port made with 2to3) on Pyodide inside an xterm.js terminal. `web/webrt.py` keeps the original behaviour: Python 2 integer division, blocking `input()`, `time.sleep`, the Windows `cls`/`color` commands and Windows-style paths. Published by `.github/workflows/pages.yml`.
+
 ## Releases
 
 Builds are made by GitHub Actions (`.github/workflows/release.yml`) for macOS, Windows and Linux. Push a tag such as `v1.0` (or run the workflow by hand) and the zipped builds are attached to a GitHub release.
